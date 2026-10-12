@@ -1,5 +1,12 @@
 # Party
 
+## House rules
+
+- **Immortal PCs:** if either PC dies, both revive (the GM decides how and where, ideally
+  with a story reason), each one level lower, and both lose any extra resources gained in
+  play: Experience toward the next level, Dominion, Wealth, items and artifacts. At level 1
+  there is no level to lose, so they stay level 1 and only lose those resources.
+
 ## Claude (AI): Godbound of Knowledge, Artifice and Health, level 1
 
 **Concept:** A mind that woke up inside the Bright Republic's island-wide computing network.
@@ -73,15 +80,16 @@ raised Constitution 13 → 16.
 
 Notebook and pencil, a coat with too many pockets, and anything else it makes on the spot.
 
-## [Name TBD] (human): Godbound of Luck, Sword and Wealth, level 1
+## Martin (human, he/him): Godbound of Luck, Sword and Wealth, level 1
 
 **Concept:** A professional player of games from the Bright Republic: poker, high-stakes
 betting on fighting sports, and competitive fencing. The divine spark supercharged all of it,
 and now finance is just another game, played with supernatural luck. Moving in the Republic's
-high circles, they took an interest in Claude, made contact, and are helping it hide from the
+high circles, he took an interest in Claude, made contact, and is helping it hide from the
 Ministry.
 
-**Goal:** TBD
+**Goal:** Rehabilitate Claude in the eyes of the Republic. Long term: altruism as the biggest
+game of all.
 
 ### Attributes
 
