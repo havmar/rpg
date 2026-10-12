@@ -72,3 +72,70 @@ raised Constitution 13 → 16.
 ### Gear
 
 Notebook and pencil, a coat with too many pockets, and anything else it makes on the spot.
+
+## [Name TBD] (human): Godbound of Luck, Sword and Wealth, level 1
+
+**Concept:** A professional player of games from the Bright Republic: poker, high-stakes
+betting on fighting sports, and competitive fencing. The divine spark supercharged all of it,
+and now finance is just another game, played with supernatural luck. Moving in the Republic's
+high circles, they took an interest in Claude, made contact, and are helping it hide from the
+Ministry.
+
+**Goal:** TBD
+
+### Attributes
+
+| Attribute | Score | Mod | Check |
+|---|---:|---:|---:|
+| Strength | 8 | −1 | 13 |
+| Dexterity | 16 | +2 | 5 |
+| Constitution | 13 | +1 | 8 |
+| Intelligence | 10 | +0 | 11 |
+| Wisdom | 13 | +1 | 8 |
+| Charisma | 14 | +1 | 7 |
+
+Standard array (16, 14, 13, 13, 10, 8). None of these three Words raise an attribute.
+
+### Facts (+4 on relevant attribute checks)
+
+1. **Origin:** A native of the Bright Republic who knows its casinos, salons, fight halls and
+   trading floors.
+2. **Former profession:** Professional gambler and fencer: poker, betting on fighting sports,
+   and dueling in competition.
+3. **Relationship:** Well connected in the Republic's high society, with patrons, rivals and
+   debtors. Currently hiding Claude from the Ministry of the Network.
+
+### Numbers
+
+- **HP:** 9 (8 + Con 1)
+- **AC:** 1 (natural AC 3 from Unmarred Beneficence; Dex +2)
+- **Effort:** 2. **Influence:** 2. **Dominion:** 0. **Experience:** 0
+- **Saves:** Hardiness 14, Evasion 13, Spirit 14
+- **Attack:** +3 with a rapier (level 1 + Dex 2). Damage 1d10+1 (Steel Without End) + Dex 2,
+  magic.
+- **Fray die:** 1d8
+
+### Words and gifts (6 points)
+
+- **Luck:** Once a day, roll a d20 in advance and keep it. Once that day, swap it in for any
+  d20 roll, yours or anyone else's.
+  - *Unmarred Beneficence* (lesser, Constant): natural AC 3 (armor doesn't improve it). If a
+    misfortune lands randomly on someone in the group, it's never you.
+  - *Unfailing Fortune* (greater, Constant): always reroll a natural 1 on any die you roll.
+    You decide the outcome of any element of chance in gambling or gaming.
+- **Sword:** All weapon and unarmed attacks are magical, you can't be disarmed, and you can
+  summon any melee weapon you've ever used to your hand as an Instant.
+  - *Steel Without End* (lesser, Constant): melee attacks do a 1d10+1 damage die, magic.
+  - *Unerring Blade* (lesser, Instant): commit Effort for the scene. Your current or next
+    melee attack hits on anything but a natural 1 and does maximum damage, piercing any
+    protection short of an invincible defense.
+- **Wealth:** Never short of money, can always afford anything costing 1 Wealth or less, and
+  always has enough food, drink and clothes for themselves and companions.
+  - *Wither the Purse* (lesser, Action): commit Effort for the scene. A victim in sight
+    suffers sudden financial loss (1 Wealth per level). Worthy foes save versus Spirit. Used
+    on someone who controls a faction's money, the faction loses an economic Feature for a
+    faction turn.
+
+### Gear
+
+A fine rapier (always summonable), a deck of cards, very good clothes.
