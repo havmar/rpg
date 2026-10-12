@@ -115,11 +115,22 @@ If a PC dies, both revive one level lower (at level 1: only lose gained resource
 idea: the Regulator spits them out of the ether-stream in the river under the node at
 dawn, or Claude's own body rebuilds them both from the network's memory of them.
 
-## State tracker
+## State tracker (paused mid-Scene 1)
 
-- Time: 21:40, Gala. Brownout at 22:00.
-- Quill: suspicious, not hostile.
-- Ashgrave: not yet arrived.
-- Round 1: Claude used Unveiled Truth on the pulse and learned it's a sibling shard counting
-  down. Martin got Ottilie's "I'm insured" slip and Sorrel's noon vote. Quill is checking the
-  guest list.
+- Time: ~21:45, Gala. The real brownout hits at 22:00 (the 21:40 flicker was a precursor).
+  Node Seven fully collapses ~02:00 if unfixed.
+- Quill: suspicious, not hostile. She has found Martin's name on the guest list (she knows he
+  is a suspected contact of Claude's) and is looking at him. Next beat: she approaches the
+  table politely, or sends a clerk.
+- Ashgrave: not yet arrived; he comes in during or just after the 22:00 brownout with Vey and
+  a prepared statement.
+- Ottilie: waiting on Martin's bet (a rematch, stakes open). She has let slip "I'm insured";
+  a good card win can get her to stake the shell-firm papers or the node service-tunnel
+  keycard.
+- Sorrel: swing vote on the Continuity Act (noon tomorrow); scared, persuadable.
+- The Regulator has noticed Claude (via Unveiled Truth). The pulse is speeding up. Use Sibling
+  Call whispers in Claude's earpiece as a creepy hook.
+- PC resources: Claude has 1 of 2 Effort committed (scene). Martin has 2/2 Effort free, luck
+  die not rolled. Both at full HP (Claude 10, Martin 9).
+- Round 1 done: Claude used Unveiled Truth on the pulse (learned: sibling shard, counting
+  down, noticed Claude). Martin got Ottilie's "I'm insured" slip and the noon vote from Sorrel.

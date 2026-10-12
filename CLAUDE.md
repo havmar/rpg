@@ -31,9 +31,13 @@ Each campaign lives in `<system>/campaigns/<name>/`:
   Only the GM reads this file. AI players, and the main session when it is a player, never
   open it, not even to check it before committing.
 - `world.md` (optional): established places, NPCs and facts revealed to the players.
+- `transcript.md`: everything said at the table, in order: GM replies word for word, plus each
+  round's player actions. Written by the main session. Never put GM secrets in it.
 
-This is a cloud session, so the container is wiped when the session ends. Commit and push the
-campaign folder at natural breaks and at the end of every session, or the game is lost.
+This is a cloud session, so the container is wiped when the session ends. **After every GM
+reply**, append it (and the player actions that led to it) to `transcript.md`, then commit and
+push the campaign folder, so nothing is ever lost. Also commit and push at the end of every
+session.
 
 ## How to run a session
 
@@ -58,7 +62,9 @@ the setup at the top of the campaign's `log.md`.
      its own PC's action:
      `[HUMAN] <exact words>` and `[AI PC: <name>] <action>`. Never reword, shorten or "fix"
      the human's message.
-  3. Show the GM's reply to the human word for word, under a `**GM:**` label. Then show your
+  3. Append the round's actions and the GM's reply to `transcript.md`, then commit and push
+     the campaign folder (`git add <system>/campaigns/<name>`).
+  4. Show the GM's reply to the human word for word, under a `**GM:**` label. Then show your
      own PC's in-character reaction, if any, as a quoted block, e.g.
      `> **Ilsa (AI):** "Cover me, I'm going for the idol."`
 - Play your PC as a good party member: give it wants and flaws, back up the human, leave them
@@ -83,7 +89,8 @@ the setup at the top of the campaign's `log.md`.
   only what its character can perceive (never GM secrets), plus what the human's character
   just said and did, and asks for its action. The GM resolves everything and narrates the
   result. Show the AI player's reply as a quoted block with the character's name.
-- The GM writes all campaign files and commits and pushes them at breaks.
+- The GM writes all campaign files, appends each narration to `transcript.md`, and commits and
+  pushes after every narration.
 
 ### Both setups
 

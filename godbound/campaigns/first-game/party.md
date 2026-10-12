@@ -50,7 +50,7 @@ raised Constitution 13 → 16.
 
 ### Numbers
 
-- **HP:** 10 (8 + Con 2)
+- **HP:** 10 (8 + Con 2). Current: 10/10
 - **AC:** 4 (self-made armor, AC 3 from Reverence of Steel; Dex −1)
 - **Effort:** 2 (1 committed for the scene: The Unveiled Truth, Gala). **Influence:** 2. **Dominion:** 0. **Experience:** 0
 - **Saves:** Hardiness 13, Evasion 12, Spirit 14
@@ -115,9 +115,9 @@ Standard array (16, 14, 13, 13, 10, 8). None of these three Words raise an attri
 
 ### Numbers
 
-- **HP:** 9 (8 + Con 1)
+- **HP:** 9 (8 + Con 1). Current: 9/9
 - **AC:** 1 (natural AC 3 from Unmarred Beneficence; Dex +2)
-- **Effort:** 2. **Influence:** 2. **Dominion:** 0. **Experience:** 0
+- **Effort:** 2 (none committed). Daily luck die: not yet rolled today. **Influence:** 2. **Dominion:** 0. **Experience:** 0
 - **Saves:** Hardiness 14, Evasion 13, Spirit 14
 - **Attack:** +3 with a rapier (level 1 + Dex 2). Damage 1d10+1 (Steel Without End) + Dex 2,
   magic.
