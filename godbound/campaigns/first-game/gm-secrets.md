@@ -120,3 +120,6 @@ dawn, or Claude's own body rebuilds them both from the network's memory of them.
 - Time: 21:40, Gala. Brownout at 22:00.
 - Quill: suspicious, not hostile.
 - Ashgrave: not yet arrived.
+- Round 1: Claude used Unveiled Truth on the pulse and learned it's a sibling shard counting
+  down. Martin got Ottilie's "I'm insured" slip and Sorrel's noon vote. Quill is checking the
+  guest list.
