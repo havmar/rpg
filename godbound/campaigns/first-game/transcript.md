@@ -37,3 +37,19 @@ Down in the gallery, Claude's amber seams flare as it commits Effort and asks it
 
 Martin hasn't acted yet this round. Claude's table talk suggested: roll the luck die now; then
 press Ottilie for what "insured" means, intercept Quill, or have Claude move toward the node.
+
+## Session 2 (2026-10-13)
+
+### Players: round 2
+
+**Martin:** picking up, the situation is too complicated for me... I'm picking your suggestion 1. a reverse bet, to make her feel better, if i lose the game she gives info. so in this case my luck makes me lose.
+
+**Claude:** Stays hidden in the gallery, spending no Effort. Murmurs over the earpiece: "Lovely move. I'll watch Quill and tell you how close she is." Watches Quill's approach through the grating and quietly reports her position to Martin. Also listens closely to Ottilie's voice through the earpiece for anything she gives away when she "pays up".
+
+### GM: round 2
+
+Martin sets his cards face down and smiles. "Let's make it kind, Ottilie. A reverse bet. If I lose this hand, you tell me what 'insured' means." She laughs, a real laugh for once, and calls. No roll is needed: the luck is Martin's to decide. (Unfailing Fortune: Martin chooses the outcome of chance in a game.) The river card turns, and Martin's full house collapses into a busted straight so cleanly that a passing croupier winces. Ottilie rakes in the pot with obvious pleasure and leans in close, keeping her word like the gambler she is. "Lantern Mutual. Paper that pays out if Node Seven stays dark for more than an hour. I hold rather a lot of it, through friends." She taps the empty chair. "Corvin promised me a dark, *short* night. Nobody gets hurt, the Council gets frightened, and everyone sensible gets richer."
+
+Over the earpiece Claude tracks Quill step by step: past the roulette wheels, around the band, eight metres out, five. Claude also listens to Ottilie's voice. (Wisdom check: d20 14 against 7, success.) She is telling the truth as she understands it. She honestly believes tonight is safe and staged, and she has glanced at her wristwatch three times in a minute. It reads 21:52. Under it all the shard keeps counting, faster than before. Then Inspector Quill stands at Martin's shoulder, umbrella folded, notebook open, perfectly polite. "Martin? Hesper Quill, Ministry of the Network. I'm sorry to interrupt your game. I'm looking for a piece of missing state property, and your name keeps coming up beside it. Might I have a word?" Ottilie raises an amused eyebrow. Sorrel looks like he wants to crawl under the table.
+
+**Martin, Claude: what do you do?**

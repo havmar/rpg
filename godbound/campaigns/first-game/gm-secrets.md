@@ -134,3 +134,8 @@ dawn, or Claude's own body rebuilds them both from the network's memory of them.
   die not rolled. Both at full HP (Claude 10, Martin 9).
 - Round 1 done: Claude used Unveiled Truth on the pulse (learned: sibling shard, counting
   down, noticed Claude). Martin got Ottilie's "I'm insured" slip and the noon vote from Sorrel.
+- Round 2 (resumed 2026-10-13): Martin lost on purpose (Unfailing Fortune, no Effort). Ottilie
+  paid up: Lantern Mutual policies pay if Node Seven is dark over an hour; "Corvin promised a
+  dark, short night." She believes the brownout is controlled and harmless. Claude (Wis check
+  d20 14 vs 7) read her: sincere, keeps checking her watch for 22:00. Quill now at the table,
+  time ~21:52. The 22:00 brownout comes next.
