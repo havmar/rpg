@@ -139,3 +139,10 @@ dawn, or Claude's own body rebuilds them both from the network's memory of them.
   dark, short night." She believes the brownout is controlled and harmless. Claude (Wis check
   d20 14 vs 7) read her: sincere, keeps checking her watch for 22:00. Quill now at the table,
   time ~21:52. The 22:00 brownout comes next.
+- Round 3: Martin leveled with Quill; Claude surrendered in person. Quill reaction 2d6 4 +2
+  (voluntary surrender, honesty) = 6: wary, procedural, not yet convinced. 22:00 brownout hit
+  during the talk, worse than staged: violet flare atop Node Seven (the Regulator feeding).
+  Ottilie is shaken ("that's not what he said") and flippable. Quill offers a deal: she'll
+  come and look if Claude wears Ministry etheric restraint cuffs (mostly symbolic, Claude could
+  break or unmake them, which would cost her trust). Ashgrave still not arrived; due any
+  moment with Vey.

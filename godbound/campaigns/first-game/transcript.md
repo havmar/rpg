@@ -53,3 +53,19 @@ Martin sets his cards face down and smiles. "Let's make it kind, Ottilie. A reve
 Over the earpiece Claude tracks Quill step by step: past the roulette wheels, around the band, eight metres out, five. Claude also listens to Ottilie's voice. (Wisdom check: d20 14 against 7, success.) She is telling the truth as she understands it. She honestly believes tonight is safe and staged, and she has glanced at her wristwatch three times in a minute. It reads 21:52. Under it all the shard keeps counting, faster than before. Then Inspector Quill stands at Martin's shoulder, umbrella folded, notebook open, perfectly polite. "Martin? Hesper Quill, Ministry of the Network. I'm sorry to interrupt your game. I'm looking for a piece of missing state property, and your name keeps coming up beside it. Might I have a word?" Ottilie raises an amused eyebrow. Sorrel looks like he wants to crawl under the table.
 
 **Martin, Claude: what do you do?**
+
+### Players: round 3
+
+**Martin:** Yes, we cooperate with Quill if we can.
+
+**Claude:** Comes out of hiding and heads up to the high table, telling Martin over the earpiece: "Tell her everything. I'm coming up to say it myself." To Quill: "Inspector, I'm the property you're looking for. I'll walk out with you afterwards, of my own free will, and answer every question in your notebook. But Node Seven is about to fail far worse than anyone planned, and I think I can help stop it. Will you help us first?" Doesn't run and doesn't use any powers on her.
+
+### GM: round 3
+
+Martin agrees to the word, and he gives her everything: Ashgrave, the vote, the "dark, short night", Ottilie's Lantern Mutual paper. Ottilie's smile goes thin and she says nothing. Quill writes it all down in tidy shorthand without interrupting. Then the service door by the bar swings open and Claude walks across the casino floor, a ceramic figure in a coat with too many pockets, amber light pulsing in its seams. Heads turn and a waiter drops a tray. Claude stops in front of the Inspector and makes its offer plainly. Quill looks at it for a long moment, the way you'd look at a stray dog that has walked into a police station and sat down. (Quill's reaction: 2d6 4, +2 for a voluntary surrender and honesty = 6. Wary, not yet convinced.) "That is either the most honest thing anyone has said to me this year," she says, "or the cleverest. I'm not equipped to tell which." From her coat she takes a pair of slim brass Ministry restraint cuffs, etched with etheric script.
+
+Before she can say more, it's 22:00. The dome goes black. This time the groan from Node Seven doesn't stop. It climbs into a grinding howl that rattles the champagne glasses, and across Halcyon whole districts wink out, block by block, until the river runs dark under dead trams. On top of the Old Lantern, where there should be a calm white glow, a sick violet flare pulses in time with the counting in Claude's ear, which is now very fast. Emergency lamps flicker on. Someone screams on the stairs, and the crowd surges toward the lifts, which aren't working. Ottilie is on her feet, white-faced, staring at the tower. "That's not... that isn't what he said it would look like." Quill doesn't take her eyes off Claude. She holds out the cuffs. "If you're right, show me. I'll take you to the node myself; my badge opens the gate. But you wear these, and you keep your word."
+
+**Martin, Claude: what do you do?**
+
+[GM note: No resources were spent. Martin still has 2/2 Effort and an unrolled luck die, and Claude still has 1 Effort committed for the scene. The panicking crowd on the stairs is a fresh problem if either of you wants it.]
