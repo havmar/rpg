@@ -52,7 +52,7 @@ raised Constitution 13 → 16.
 
 - **HP:** 10 (8 + Con 2). Current: 10/10
 - **AC:** 4 (self-made armor, AC 3 from Reverence of Steel; Dex −1)
-- **Effort:** 2 (1 committed for the scene: The Unveiled Truth, Gala). **Influence:** 2. **Dominion:** 0. **Experience:** 0
+- **Effort:** 2 (1 committed for the scene: The Unveiled Truth, Gala). Wearing Ministry etheric restraint cuffs (voluntarily, promised to Quill). **Influence:** 2. **Dominion:** 0. **Experience:** 0
 - **Saves:** Hardiness 13, Evasion 12, Spirit 14
 - **Attack:** +1 melee (level 1 + Str 0). Unarmed or a hammer made on the spot; with
   Hammerhand, damage is 1d10 and counts as a magic weapon.
@@ -117,7 +117,7 @@ Standard array (16, 14, 13, 13, 10, 8). None of these three Words raise an attri
 
 - **HP:** 9 (8 + Con 1). Current: 9/9
 - **AC:** 1 (natural AC 3 from Unmarred Beneficence; Dex +2)
-- **Effort:** 2 (none committed). Daily luck die: not yet rolled today. **Influence:** 2. **Dominion:** 0. **Experience:** 0
+- **Effort:** 2 (none committed). Daily luck die: rolled a 20 (2026-10-14), unused. **Influence:** 2. **Dominion:** 0. **Experience:** 0
 - **Saves:** Hardiness 14, Evasion 13, Spirit 14
 - **Attack:** +3 with a rapier (level 1 + Dex 2). Damage 1d10+1 (Steel Without End) + Dex 2,
   magic.

@@ -146,3 +146,9 @@ dawn, or Claude's own body rebuilds them both from the network's memory of them.
   come and look if Claude wears Ministry etheric restraint cuffs (mostly symbolic, Claude could
   break or unmake them, which would cost her trust). Ashgrave still not arrived; due any
   moment with Vey.
+- Round 4: Martin's luck die = 20 (stored, unused). Evacuation speech: Cha d20 9+4 = 13,
+  success; the casino crowd evacuates in order, no deaths. Claude made lanterns (Artifice, no
+  Effort) and took Quill's cuffs voluntarily. Quill saw it; she has softened (call her
+  "friendly but procedural" now). Sorrel helped lead a lantern group (he's warming to the PCs).
+  Ottilie slipped to a house telephone to call Ashgrave: she's frightened, and Martin can
+  catch her. Time ~22:12.

@@ -69,3 +69,21 @@ Before she can say more, it's 22:00. The dome goes black. This time the groan fr
 **Martin, Claude: what do you do?**
 
 [GM note: No resources were spent. Martin still has 2/2 Effort and an unrolled luck die, and Claude still has 1 Effort committed for the scene. The panicking crowd on the stairs is a fresh problem if either of you wants it.]
+
+### Players: round 4
+
+**Martin:** i roll the luck die. how does it work? i ask for some light from you, do get on the table, half like it's some show half like I'm an official person telling them what to do, and just tell them to get down the stairs and evacuate, but like that's some awesome thing to do. i appoint people with lamps to lead.
+
+**Claude:** "One minute, Inspector." Uses Artifice (and Ten Thousand Tools) to turn champagne glasses, table candles and emergency-lamp wiring into handheld lanterns for the leaders Martin picks, and holds up one big lantern beside Martin's table. Then holds out its wrists to Quill and accepts the cuffs.
+
+### GM: round 4
+
+(Luck die: d20 **20**. Martin keeps it for today.) [OOC: Once today, Martin can swap that 20 in for any one d20 roll, his own, Claude's or an enemy's, after seeing the roll. It's an automatic natural 20 when you need it, or you can put it on a foe's roll if a 20 would hurt them.]
+
+"One minute, Inspector." Claude sweeps a hand across the high table. Champagne flutes flow into glass chimneys, candle wax turns into fat white wicks, and the copper of the emergency-lamp wiring curls into handles. A dozen little lanterns are there before anyone sees them being made. Claude lifts the largest one high beside the table, and in its warm gold light Martin steps up onto the green felt, scattering plaques. (Charisma check: d20 9 + Fact 4 = 13 against 7, success.) "Ladies and gentlemen, the Glass Exchange is proud to present tonight's *real* main event: the Grand Staircase Descent! You, sir, with the excellent moustache, lantern, you lead the first table down. Madam Councilor, the second. Sorrel, look alive, you're the third." The panic turns into something like a game. People laugh nervously and line up behind their lantern-bearers, and forty floors of the city's richest people begin filing down the stairs in a slow, glittering procession of little lights. Nobody is trampled. Somebody even applauds.
+
+Claude turns and holds out its wrists. Quill closes the brass cuffs around them with a soft click, but she has seen it all, and her voice has changed. "Thank you," she says quietly, and she doesn't seem to mean only the cuffs. "My car is in the garage, and the gate is twelve minutes away if the streets are dark." Then Martin, still up on the table, spots Ottilie Castellan in the corner by a house telephone. She has the receiver pressed to her ear and is whispering fast, her free hand white on the cord. Her eyes meet Martin's, and she turns her back.
+
+**Martin, Claude: what do you do?**
+
+[GM note: Time is about 22:12. Martin's luck die 20 is stored, Claude is wearing the cuffs. Effort is unchanged: Martin 2/2 free, Claude 1 committed for the scene.]
