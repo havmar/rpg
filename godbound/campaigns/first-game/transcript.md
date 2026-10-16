@@ -87,3 +87,23 @@ Claude turns and holds out its wrists. Quill closes the brass cuffs around them 
 **Martin, Claude: what do you do?**
 
 [GM note: Time is about 22:12. Martin's luck die 20 is stored, Claude is wearing the cuffs. Effort is unchanged: Martin 2/2 free, Claude 1 committed for the scene.]
+
+## Session 3 (2026-10-16)
+
+### Players: round 5
+
+**Martin:** i talk to her, try to get her give up information and cooperate.
+
+**Claude:** "Thirty seconds, Inspector. I'm not going anywhere." Follows Martin over, cuffed, and lets him talk, adding one honest line to Ottilie: "Whatever Corvin told you is in that tower, it isn't a fuse box. It's a piece of a god, and it's hungry. Help us, and nobody has to find out how much worse it gets."
+
+### GM: round 5
+
+Martin leans on the wall beside the telephone, easy and friendly, the way you'd talk to a player who has just realised she's holding the wrong cards. (Charisma check: d20 7 + Fact 4 = 11 against 7, success.) Ottilie holds out for about four seconds. Then Claude adds its one honest line, and something in her face gives way. She puts her hand over the receiver. A tinny voice is still talking on the other end: smooth, warm, and with alarm bells clanging behind it. "He says it's under control," she whispers. "He says to stay put. Martin, there are *alarms* behind him." She hangs up.
+
+She tells them fast and low. Ashgrave is in Node Seven's control room right now with Idris Vey, the Silver Needle himself, "supervising". Last month Ministry theotechnicians brought a "regulator core" up from the network archive vaults and installed it in the node's heart. "They were supposed to dim it for an hour. The night crew has started *praying* to the thing, Martin. I thought it was a joke." From her clutch she pulls a black enamel keycard stamped with the Castellan crest. "Contractor access to the service tunnels, from the east river embankment. It skips the main gate." She hesitates, then holds it out to Martin, not to Quill. "If I give evidence, I'm ruined, and probably in a cell. You're good at making bad bets come out even. Make this one come out even for me, and I'll say everything in front of the Council." Behind them, Quill has heard every word. Her pencil has stopped. "Undersecretary Ashgrave," she says very quietly, "is my superior's superior." Then she snaps the notebook shut. "My car's in the garage. Gate or tunnel, gentlemen?"
+
+One more thing: Ottilie went pale the moment she hung up. Ashgrave heard Martin's voice on the line, so he knows you're coming.
+
+**Martin, Claude: what do you do?**
+
+[GM note: Time is about 22:15. No resources spent: Martin has 2/2 Effort and the luck die 20 still stored. Claude has 1 Effort committed for the scene and is still cuffed. Leaving for the node ends Scene 1.]

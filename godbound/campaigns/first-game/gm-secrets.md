@@ -152,3 +152,12 @@ dawn, or Claude's own body rebuilds them both from the network's memory of them.
   "friendly but procedural" now). Sorrel helped lead a lantern group (he's warming to the PCs).
   Ottilie slipped to a house telephone to call Ashgrave: she's frightened, and Martin can
   catch her. Time ~22:12.
+- Round 5: Martin persuaded Ottilie (Cha d20 7+4 = 11 vs 7, success, plus Claude's line). She
+  flipped: gave the Castellan service-tunnel keycard (bypasses the main gate and the guard post
+  at the tunnel mouth, east river embankment), and told them that Ashgrave is in the Node Seven
+  control room with Vey "supervising", that the Ministry installed a "regulator core" from the
+  archive vaults last month, that the theotechnicians have started praying to it, and that she
+  heard alarms behind Ashgrave on the phone. She'll testify if Martin keeps her out of
+  prison/ruin (deal not yet struck). Ashgrave now KNOWS the PCs and Quill are coming (Ottilie
+  was on the phone with him when Martin approached; he heard Martin). Expect Castellan guards
+  at the tunnel and Vey waiting. Time ~22:15.
