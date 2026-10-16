@@ -107,3 +107,19 @@ One more thing: Ottilie went pale the moment she hung up. Ashgrave heard Martin'
 **Martin, Claude: what do you do?**
 
 [GM note: Time is about 22:15. No resources spent: Martin has 2/2 Effort and the luck die 20 still stored. Claude has 1 Effort committed for the scene and is still cuffed. Leaving for the node ends Scene 1.]
+
+### Players: round 6
+
+**Martin:** let's go down through the tunnel
+
+**Claude:** To Ottilie: "We'll do everything we can to make it come out even for you. Stay with the crowd and stay safe." To Quill: "The tunnel, please. He'll be watching the gate." In the car (still cuffed, no Effort spent), listens to the counting and reports how fast it's going, and asks Quill about Idris Vey, "the Silver Needle."
+
+### GM: round 6 (Scene 2 begins)
+
+Quill drives the way she writes, neatly and fast. Her black Ministry sedan slides through streets lit only by headlamps, candles in windows and the violet throb over the rooftops. In Claude's earpiece the counting has become a steady drumroll, and it's still speeding up. Claude does the arithmetic aloud: under four hours at this rate, maybe much less if anything feeds it. "The Silver Needle," Quill says, eyes on the road. "Sabre-Captain Idris Vey. He's Special Resources Department, on loan to the Undersecretary as a bodyguard. Comics, cinema serials, my nephew has the lunchbox. He keeps the old dueling code: offer a challenge properly and he'll accept it. He hasn't lost a sanctioned bout in years." Her eyes flick to Martin in the mirror. "Though the papers said the last man to take him to the final point was a gambler."
+
+They come out onto the east river embankment, and the city's trouble is waiting for them. Above the black water, Tram Line 4 has stopped dead on a buckled elevated span. Its front car is tipped half off the rails, hanging 15 metres over the river, and a severed power rail spits violet sparks against its side. Thirty-odd passengers are screaming inside. Through the cracked windows Claude can see a driver slumped over the controls and a man with his leg pinned under a twisted seat. On the embankment a Halcyon Broadcasting van has its battery floodlights on the wreck, and a reporter is talking breathlessly into a camera. Fifty metres downriver, past all of it, is a steel hatch set into the embankment wall with a lit Castellan guard post beside it. Eight contract guards in grey with magnetic rifles are spreading out in front of the hatch, and one of them is on a field telephone, pointing at your car.
+
+**Martin, Claude: what do you do?**
+
+[GM note: Scene 1 is logged and Scene 2 has started. Claude's scene Effort has come back: Claude 2/2 free, still cuffed. Martin has 2/2 Effort free and luck die 20 stored. Time is about 22:30. HP is full for both.]

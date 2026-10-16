@@ -52,7 +52,7 @@ raised Constitution 13 → 16.
 
 - **HP:** 10 (8 + Con 2). Current: 10/10
 - **AC:** 4 (self-made armor, AC 3 from Reverence of Steel; Dex −1)
-- **Effort:** 2 (1 committed for the scene: The Unveiled Truth, Gala). Wearing Ministry etheric restraint cuffs (voluntarily, promised to Quill). **Influence:** 2. **Dominion:** 0. **Experience:** 0
+- **Effort:** 2 (none committed; the Scene 1 commitment has ended). Wearing Ministry etheric restraint cuffs (voluntarily, promised to Quill). **Influence:** 2. **Dominion:** 0. **Experience:** 0
 - **Saves:** Hardiness 13, Evasion 12, Spirit 14
 - **Attack:** +1 melee (level 1 + Str 0). Unarmed or a hammer made on the spot; with
   Hammerhand, damage is 1d10 and counts as a magic weapon.

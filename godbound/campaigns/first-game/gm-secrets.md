@@ -161,3 +161,25 @@ dawn, or Claude's own body rebuilds them both from the network's memory of them.
   prison/ruin (deal not yet struck). Ashgrave now KNOWS the PCs and Quill are coming (Ottilie
   was on the phone with him when Martin approached; he heard Martin). Expect Castellan guards
   at the tunnel and Vey waiting. Time ~22:15.
+
+## Scene 2 prep (began ~22:15, round 6)
+
+- At the east embankment: elevated tram line 4 has stalled on a bent span over the river, the
+  front car tilted and dangling over the water about 15 m up, ~30 passengers, a sparking power
+  rail, some injured (one crushed leg, an unconscious driver). A Halcyon Broadcasting news van
+  is filming with battery floodlights. This is the PUBLIC rehabilitation moment: heal and
+  rescue on camera with Quill watching. Cost: time (each rescue beat costs ~10 min) and maybe
+  Effort.
+- Tunnel mouth 50 m downriver: a steel hatch in the embankment with a Castellan guard post.
+  Ashgrave has phoned ahead: 1 small Trained Soldiers mob of contract guards (12 HD, AC 6, +2,
+  1d8 magnetic rifles, Morale 9) under orders to "detain the rogue construct". They are hired
+  men who know nothing; they could be bluffed, bribed (Martin's Wealth), or scared off (they
+  break if they see the news van filming them shoot at people).
+- Through the tunnel (~600 m) to the node basement: Vey waits at the control-room stair
+  (Scene 3).
+- Clock: the shard's count is accelerating. Claude can estimate "under four hours, maybe much
+  less". Real collapse ~02:00 unless something speeds it up (e.g. the Regulator feeding on a
+  big fight inside the node).
+- Quill on Vey: an SRD champion on loan as Ashgrave's bodyguard, with a comic series. He keeps
+  the old dueling code and will accept a proper challenge. He hasn't lost a sanctioned bout in
+  years; Martin is the last man to take him to the final point.

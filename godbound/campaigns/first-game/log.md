@@ -6,23 +6,34 @@ plays Martin). **Format:** quick one-shot, 3–4 scenes. House rules are at the 
 
 ## Session 1 (2026-10-12)
 
-### Scene 1: the Lanternfall Gala (in progress)
+### Scene 1: the Lanternfall Gala
 
-21:40, Glass Exchange casino above Halcyon. Martin is up 40,000 marks at the high table with
-Ottilie Castellan (Castellan Precision Works heiress, wants a rematch from Vissio) and nervous
-Councilor Benedek Sorrel; the fourth seat is reserved for Undersecretary C. Ashgrave, Ministry
-of the Network. Claude listens through a copper earpiece from the service gallery two floors
-down. Inspector Hesper Quill (Ministry of the Network, Claude's polite pursuer) arrived with
-two clerks and asked for the guest list. The whole city's lights flickered and Node Seven
-groaned. Claude heard a rhythmic counting pulse in the grid.
-Martin learned that Ashgrave "never misses a table the night before a vote". The vote is at
-noon tomorrow on the Emergency Continuity Act (Ministry emergency control of the nodes), and
-Sorrel is the reluctant swing vote. Ottilie said Ashgrave will come "when the evening gets
-interesting" and that she isn't worried about the nodes because she's "insured".
-Claude used The Unveiled Truth and learned that a shard of the same broken Made God that gave
-it its soul is inside Node Seven, hungry and counting down, and that it noticed Claude
-listening. The pulse sped up.
+21:40, Glass Exchange casino above Halcyon. Martin was at the high table with Ottilie
+Castellan (heiress to Castellan Precision Works, which makes the node spare parts) and nervous
+Councilor Benedek Sorrel, beside an empty seat reserved for Undersecretary Corvin Ashgrave of
+the Ministry of the Network. Claude was listening by earpiece from the service gallery.
+Inspector Hesper Quill (Ministry of the Network, Claude's polite pursuer) arrived. The city
+flickered and Claude heard a counting pulse in the grid. Using The Unveiled Truth, Claude
+learned it is a hungry shard of the same broken Made God that gave Claude its soul, sitting
+inside Node Seven, counting down, and aware of Claude.
+Martin learned that tomorrow's noon vote is on the Emergency Continuity Act (Ministry control
+of the nodes), with Sorrel as the swing vote. By losing a reverse bet on purpose, he got
+Ottilie to explain "insured": Lantern Mutual paper that pays if Node Seven stays dark for over
+an hour. Ashgrave had promised her "a dark, short night". Martin told Quill everything, and
+Claude came out and surrendered to her in person, offering to go with her willingly once the
+node is safe. At 22:00 the brownout hit, far worse than staged: districts went dark and a
+violet flare pulsed on top of Node Seven. Claude made lanterns, and Martin turned the panic
+into a showy, orderly evacuation down the stairs, with nobody hurt. Claude then accepted
+Quill's brass restraint cuffs.
+Ottilie, frightened, flipped. Ashgrave is in the Node Seven control room with Sabre-Captain
+Idris Vey ("the Silver Needle"). The Ministry installed a "regulator core" from the archive
+vaults there last month, and the night crew has begun praying to it. She gave Martin a
+Castellan service-tunnel keycard (east river embankment entrance) and will testify if Martin
+keeps her from ruin (no promise made, but Claude said they'd do everything they can).
+Ashgrave overheard Martin on her phone call, so he knows they're coming. Martin rolled his
+daily luck die: 20, still unused.
 
-**Paused here:** about 21:45. Inspector Quill has just looked up from the guest list straight
-at Martin. Ottilie is waiting for Martin's bet. Claude is hidden in the service gallery with
-1 Effort committed for the scene. Martin's daily luck die hasn't been rolled yet.
+### Scene 2: the dark city and the tunnel (begins ~22:15)
+
+Quill drives Martin and Claude (still cuffed) through blacked-out Halcyon toward the east
+river embankment tunnel.
