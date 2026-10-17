@@ -16,14 +16,16 @@ A solo tabletop roleplaying campaign inspired by *Electric Bastionland*. See [AG
 
 - **Day 1, 06:00:** The rented room above the Copper Kettle. Starting state. Loop 1 has begun.
 - **Knowledge carried across loops:** none yet.
-- **Unresolved leads:** an impossible bell has sounded beneath Bastion before dawn; a debt collector is due at noon.
+- **Unresolved leads:** an impossible bell has sounded beneath Bastion at dawn; a debt collector is due at noon; someone is calling from the stairwell.
 - **Promises and relationships:** none established in play.
 
 ## Session log
 
-### Opening scene pending
+### 001 — The bell beneath Bastion (Day 1, 06:00)
 
-The first in-chat scene begins only after the campaign setup and its illustration have been committed to this repository. Player choices and outcomes will be appended here as play continues.
+The first sound of the day rises through the floorboards: a deep bell from somewhere under Bastion, although the municipal underground bell registry has been blank for thirty years. Silas Vane wakes in his room above the Copper Kettle. Rain ticks against the window; the brass inspection key in his hand is warm. A debt collector is due at noon. From the stairwell, a woman calls, “Inspector? Tell me that was you.” The player has not yet chosen an action.
+
+Illustration: [001-the-bell-beneath-bastion.webp](bastion-image/001-the-bell-beneath-bastion.webp).
 
 ## Illustrations
 
