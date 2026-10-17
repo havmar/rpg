@@ -7,7 +7,7 @@ This repository hosts a one-player tabletop roleplaying campaign inspired by *El
 - Bastion is a strange, crowded industrial city: debt, odd jobs, civic absurdity, dangerous expeditions, and people with understandable motives. Keep scenes concrete, playable, and sometimes darkly funny.
 - The player chooses his character's actions, speech, and name. Offer clear leads without forcing a menu or deciding for him.
 - Keep facts learned in play consistent. Let creative solutions work. State the stakes of a dangerous action before resolving it.
-- End each game-master story message with a clear situation and a question about what he does. Include one newly generated image illustrating that message. Save each final illustration under `bastion-image/` and link it in the message.
+- End each game-master story message with a clear situation and a question about what he does. Include one newly generated image illustrating that message. Save each final illustration under `bastion-image/`. Show the image and add a separate direct GitHub file link so the player can open it in a browser and zoom on Android.
 
 ## Compact house rules
 - Character: a male former municipal bell inspector, temporarily called Silas Vane until the player names him. He owes 10,000 crowns to the Office of Civic Debts.
