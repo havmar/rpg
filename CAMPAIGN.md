@@ -16,8 +16,8 @@ A solo tabletop roleplaying campaign inspired by *Electric Bastionland*. See [AG
 
 - **Day 1, 06:00:** The rented room above the Copper Kettle. Starting state. Loop 1 has begun.
 - **Current condition:** HP 0, STR 9, DEX 11, CHA 9. Bruised against a cask; conscious. Brass key has slid onto the cellar floor within reach.
-- **Knowledge carried across loops:** the sound leads to a municipal inspection hatch in the Copper Kettle cellar; its fresh seal is dated tomorrow; the brass inspection key fits its lock; a stone stair and taut brass bell cord lie below.
-- **Unresolved leads:** the hatch has opened and cold water is surging upward in pulses; a debt collector is due at noon.
+- **Knowledge carried across loops:** the sound leads to a municipal inspection hatch in the Copper Kettle cellar; its fresh seal is dated tomorrow; the brass inspection key fits its lock. Below is a flooded pumping chamber with an upturned bronze bell stuffed with folded notices and a municipal worker in a waxed coat.
+- **Unresolved leads:** the worker recognizes Silas and says his appointment is tomorrow; the notices and the bell remain unexplained; the hatch is open, water surges upward in pulses, and a debt collector is due at noon.
 - **Promises and relationships:** none established in play.
 
 ## Session log
@@ -39,6 +39,12 @@ Illustration: [002-the-cellar-hatch.webp](bastion-image/002-the-cellar-hatch.web
 The player opens the hatch despite the visible pressure. STR save d20 = 15 against STR 10: failure. The lid gives way and a cold upward surge throws Silas against a cask. Damage d6 = 4: his 3 HP absorb 3, and the remaining 1 reduces STR from 10 to 9. He remains conscious at HP 0. His brass key skids across the cellar floor within reach. The opened hatch reveals a narrow spiral stair into darkness with a taut brass bell cord hanging down; water surges upward in pulses. Mrs. Pike is beside the opening with a lantern. Silas has not yet chosen to descend, close the hatch, reset, or take another action.
 
 Illustration: [003-the-hatch-opens.webp](bastion-image/003-the-hatch-opens.webp).
+
+### 004 — The upturned bell (Day 1, about 06:10)
+
+The player descends the wet stair to investigate. DEX save d20 = 13 against DEX 11: failure. As a pulse recedes, Silas slips down the last steps and lands noisily in knee-deep water, alerting a municipal worker; he takes no additional damage (HP 0, STR 9). The brass inspection key remains on the cellar floor above; Mrs. Pike remains by the open hatch with her lantern. In the old pumping chamber, a great bronze bell stands mouth-up with folded notices packed into its rim. A man in a waxed municipal coat holds a spanner and recognizes Silas: “Vane? Your appointment is tomorrow. Who opened the hatch?” He is wary, not attacking. The player has not yet answered or examined the notices.
+
+Illustration: [004-the-upturned-bell.webp](bastion-image/004-the-upturned-bell.webp).
 
 ## Illustrations
 
