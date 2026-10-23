@@ -88,7 +88,9 @@ her tenement). Tells: forgets Corin's nickname for her ("Vess"), taps two finger
 
 ## State tracking
 
-- Scene: 1 (office). FIGHT, start of round 2 (Ledger 18, thugs 12, Arden 5). Rask is down, unconscious
-  at 0 HP (alive, can be questioned). Kobold A (5 HP) is on the landing fighting Ledger. Kobold B (5 HP)
-  is running down the stairs to tell Quill. Arden has the key.
+- Scene: 1 (office). Fight over. Rask unconscious on the landing. Kobold 'Snik' is pinned by Ledger
+  (scared, will talk easily: knows 'face-man pays', 'grey coat', 'the red place in the Cogs' i.e.
+  Redcinder Foundry; doesn't know the name). Kobold B escaped to tell Quill, so Quill knows the
+  PCs have the key and will move faster: he may try the Vessa swap or watch Kundarak.
+  Ledger HP 11/12.
 - Rod: in Kundarak Box 77. Corin: alive, Redcinder Foundry.

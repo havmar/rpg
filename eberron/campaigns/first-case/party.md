@@ -53,7 +53,7 @@ know it has. Counts things when nervous. Wants a purpose that isn't war.
 |---:|---:|---:|---:|---:|---:|
 | +2 | +0 | +2 | +3 | +1 | −1 |
 
-- **HP:** 12/12. **AC:** 16 (integrated plating). **Initiative:** +0
+- **HP:** 11/12. **AC:** 16 (integrated plating). **Initiative:** +0
 - **Action points:** 2/2
 - **Trained skills (+2):** Arcana, History, Investigation, Tinkering
 - **Warforged:** doesn't eat, sleep or breathe; advantage against poison.

@@ -57,3 +57,17 @@ Ledger's forearm hammer comes around with the full weight of two metres of Canni
 Arden reloads, leans out from behind the desk and fires past Ledger's elbow, but the kobold ducks behind the warforged's bulk at the wrong moment and the bolt thunks into the doorframe a hand's width from its ear (d20 3 + 5 = 8 vs AC 12, miss). Downstairs, Mother Pell is screaming in Brelish about her floors, and the runaway kobold is already at the street door. In a moment it'll be out in the rain, headed for whoever sent it.
 
 Round 2: one kobold is still nose-to-chest-plate with Ledger on the landing, one is getting away down the stairs, and the gnoll is unconscious at your feet. **Ledger first, then Arden: what do you do?**
+
+### Round 4
+
+**[HUMAN]** pacify Pell, let the other kobold go.
+
+**[AI PC: Ledger]** Drops the hammer arm and grabs the remaining kobold by the scruff, trying to pin it against the wall alive rather than crush it. "You are now a witness. Please hold still."
+
+**GM:**
+
+Ledger lets the hammer arm drop and reaches for the kobold. The little thing is slippery as a wet eel (grapple: d20 6 + 2 = 8, a miss, so you get it with a cost). It writhes, and its hooked knife scores a bright line across Ledger's wrist joint (1 damage, **Ledger 11/12**) before the big three-fingered hand closes on its scruff and pins it to the wall, feet kicking. "Witness," it squeaks in broken Common, "yes, yes, witness, no squish." Down in the street, the other one is gone into the rain and the dark.
+
+Arden goes down to the noodle shop to find Mother Pell, a wide old woman, standing in the steam with a ladle held like a mace and a lot to say about her door, her stairs and "that dog-faced thing bleeding on my landing." She stops shouting when she sees it's you, though she keeps the ladle up. Upstairs you've got an unconscious gnoll in a Daask sash, a terrified kobold, and a client white-knuckling the edge of your desk. Somewhere out there, a man who wears faces is about to hear that his errand went wrong.
+
+What do you say to Pell, and what do you want from your two guests?
