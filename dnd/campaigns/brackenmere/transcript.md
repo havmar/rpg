@@ -22,3 +22,17 @@ What do you do?
 > **Brin (AI):** "Easy, Tomas. Nobody's drowning a child on my watch. Wenna's a clever one, I'd bet, and wee feet don't wander off by themselves."
 
 Brin kneels by the small prints and studies them closely, looking for other tracks, drag marks, or boot prints near the water (Perception). He then asks Tomas, "Did anyone come near the mill last night? And who checks that wheel?"
+
+### Round 2: DM (Sela's check, Brin's check)
+
+**Round 2 (DM):** Sela's Wisdom check came up 15 against DC 12. The chain that drives the wheel has been cut clean through, and the sluice gate has been dropped from underneath the mill, which is why the water stopped. Snagged on the broken chain is a strip of damp blue ribbon. Tomas goes pale: "She wore that yesterday."
+
+Brin's Perception check came up 17 against DC 12. He follows the heavy drag marks along the bank to a rusted sluice grate under the mill wall. Its bolts are loose, with fresh scratches around them, and cold air breathes out through the bars. It smells of wet stone and goblin sweat. Something big has been dragged through here in the last few hours.
+
+What do Brin and Sela do?
+
+### Player action: [AI PC: Brin Ironhand]
+
+> **Brin (AI):** "Tomas, forty gold for your mill, from the Mayor's man? That's a lot of coin for a mill with a stopped wheel. Sela, come see this. Those aren't Wenna's feet."
+
+Brin follows the heavy drag marks toward the grate, shield up and sword hand loose, and waves Sela over to look. He asks her to keep an eye on the wheel while he checks the grate.
