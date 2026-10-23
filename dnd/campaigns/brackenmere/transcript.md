@@ -16,3 +16,9 @@ The rain has stopped, but the Crooked Lantern is still full of wet cloaks and wo
 He points at the muddy bank. Small bare footprints run down to the water. None come out.
 
 What do you do?
+
+### Player action: [AI PC: Brin Ironhand]
+
+> **Brin (AI):** "Easy, Tomas. Nobody's drowning a child on my watch. Wenna's a clever one, I'd bet, and wee feet don't wander off by themselves."
+
+Brin kneels by the small prints and studies them closely, looking for other tracks, drag marks, or boot prints near the water (Perception). He then asks Tomas, "Did anyone come near the mill last night? And who checks that wheel?"
