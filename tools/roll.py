@@ -4,6 +4,8 @@
 Usage:
   python3 tools/roll.py 1d20+3          # sum of dice plus modifier
   python3 tools/roll.py 4d6kh3          # keep highest 3 (attribute generation)
+  python3 tools/roll.py 2d20kh1+5       # D&D advantage (keep highest 1)
+  python3 tools/roll.py 2d20kl1+5       # D&D disadvantage (keep lowest 1)
   python3 tools/roll.py 5d6+2 --gb      # Godbound damage: each die read on the
                                         # damage chart, modifier on the best die
   python3 tools/roll.py 1d20 1d8 2d6    # several rolls at once
@@ -14,7 +16,7 @@ import random
 import re
 import sys
 
-DICE = re.compile(r"^(\d*)d(\d+)(?:kh(\d+))?([+-]\d+)?$")
+DICE = re.compile(r"^(\d*)d(\d+)(?:(kh|kl)(\d+))?([+-]\d+)?$")
 
 
 def godbound_damage(value):
@@ -32,7 +34,7 @@ def roll(expr, gb=False):
     if not m:
         sys.exit(f"cannot parse '{expr}' (expected e.g. 1d20+3, 4d6kh3, 5d6)")
     count, sides = int(m.group(1) or 1), int(m.group(2))
-    keep, mod = m.group(3), int(m.group(4) or 0)
+    keep_mode, keep_n, mod = m.group(3), m.group(4), int(m.group(5) or 0)
     dice = [random.randint(1, sides) for _ in range(count)]
 
     if gb:
@@ -42,8 +44,8 @@ def roll(expr, gb=False):
         dmg = [godbound_damage(p) for p in parts]
         return f"{expr}: dice {dice} -> with mod {parts} -> damage {dmg} = {sum(dmg)}"
 
-    kept = sorted(dice, reverse=True)[: int(keep)] if keep else dice
-    note = f" keep {kept}" if keep else ""
+    kept = sorted(dice, reverse=keep_mode == "kh")[: int(keep_n)] if keep_mode else dice
+    note = f" keep {kept}" if keep_mode else ""
     return f"{expr}: {dice}{note} {'+' if mod >= 0 else '-'} {abs(mod)} = {sum(kept) + mod}"
 
 
