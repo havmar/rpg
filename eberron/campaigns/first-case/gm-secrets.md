@@ -97,4 +97,10 @@ her tenement). Tells: forgets Corin's nickname for her ("Vess"), taps two finger
   out of play, tied up in Lower Dura).
   Outside: a lit window on the top floor office, one kobold lookout on the gate (sleepy), a
   side culvert where the slag channel runs out (Stealth DC 13, leads to the casting floor).
+- Scene 3 (climax) begun: the PCs were heard in the culvert and Quill is ready. Positions: Quill (as Mr. Grey)
+  on the gantry 6 m up, beside the crane lever. Corin chained, hanging from the crane hook 3 m over a
+  cooling slag channel (hot, not molten: a drop means 2d6 burns and he's stuck). Anvil on the casting
+  floor, 8 m from the culvert mouth. 2 kobolds with hand crossbows (+4, 1d6) on the far gantry.
+  Offer: hand the key up and Vessa comes with Quill to Kundarak at dawn; Corin goes free. (A lie:
+  he taps two fingers.)
 - Rod: in Kundarak Box 77. Corin: alive, Redcinder Foundry.

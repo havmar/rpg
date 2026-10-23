@@ -115,3 +115,17 @@ Arden, you've scouted worse than this. How do you want to go in?
 Arden picks the culvert, away from the dozing lookout, and goes in low and slow while Ledger and Vessa hang back with the lantern shuttered. Ledger's footing is fine (Stealth: d20 11, enough while it follows a few metres behind). Arden's isn't. Halfway through the tunnel, in the pitch dark, his bad leg comes down on something round that rolls (Stealth: d20 4 + 5 = 9 vs DC 13, fail). An old iron casting pan tips over and rings like a gong down the brick tunnel.
 
 [OOC] Arden has 2 action points. You can spend one now to add 1d6 to that 9, and a roll of 4 or more turns it into a success. Do you spend it, or let the noise stand and see what happens?
+
+### Round 8
+
+**[HUMAN]** don't spend the point, let's proceed
+
+**[AI PC: Ledger]** Stays frozen for a few heartbeats, listening, one hand on Vessa's shoulder to keep her still. Then it keeps following Arden through the culvert, ready to step up beside him if anyone comes.
+
+**GM:**
+
+The echo dies away. For three of Ledger's heartbeats nothing happens. Then, as Arden comes out of the culvert onto the casting floor, a lever thunks overhead and the old work-lamps buzz to life one after another down the hall. Red light washes over rusted moulds and dead crucibles, and over a long slag channel down the middle of the floor where the old cinders still glow dull orange, too hot to touch. A rusted crane hangs above the channel, and a man in chains dangles from its hook about three metres over the glowing cinders. He's bruised and swollen, and his face is like Vessa's. Behind Arden, Vessa chokes out "*Corin*."
+
+"Mister Kell. I'd hoped you'd use the gate." On a gantry six metres up, beside the crane's control lever, stands a polite, forgettable man in a grey coat, leaning on a silver-topped cane. Two kobolds with hand crossbows crouch on the far gantry. Between you and the crane, a warforged steps out of the shadows. It's bulkier than Ledger, with old Cyran sigils scratched off its shoulder plates and a great maul held loosely in its hands. "Let's be civilised," says the grey man. "Toss the key up here. The young lady comes with me to Kundarak at dawn, one quick errand. Then her brother walks free, and nobody falls into anything hot." He rests two fingers lightly on the lever.
+
+What do you do?
