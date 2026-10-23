@@ -103,10 +103,13 @@ her tenement). Tells: forgets Corin's nickname for her ("Vess"), taps two finger
   floor, 8 m from the culvert mouth. 2 kobolds with hand crossbows (+4, 1d6) on the far gantry.
   Offer: hand the key up and Vessa comes with Quill to Kundarak at dawn; Corin goes free. (A lie:
   he taps two fingers.)
-- Climax round 1 done: Quill is at 6/18, prone on the greased gantry, wounded leg, crawling for the far
-  stair and starting to shift his face (he'll flee). The crane lever got knocked: Corin dropped 1 m and
-  the brake is slipping, so he hits the slag at the END of next round unless someone works the lever
-  (gantry, greased, 6 m up via ladder) or grabs or redirects the chain (Str DC 13). Both kobolds missed.
-  Anvil hesitates: he wasn't told about hurting a Cyran soldier and is looking at Corin. He's very
-  talkable (DC 10 now).
+- Climax resolved: Corin is saved (Ledger and Anvil held the chain, and Arden locked the brake but
+  slid on the grease, the cost of a failed roll). Quill ESCAPED by the far stair. He left his grey coat
+  on the gantry; in its pocket is a card for "The Silver Cane, a gambling den in Callestan" (a later
+  hook, optional) and the Kundarak receipt for Box 77. Kobolds fled. Anvil stood down and is now
+  unemployed; he could become an ally or NPC. Quill now knows Arden's and Ledger's faces, so he's a
+  recurring villain.
+- Next: aftermath. Corin can explain the rod (Mournland salvage from Making, the 'Making Key',
+  controls Cyran-made warforged) and tell them where it is. Anvil's reaction to hearing that is a
+  good moment. Then the choice of what to do with the rod: Kundarak at dawn.
 - Rod: in Kundarak Box 77. Corin: alive, Redcinder Foundry.

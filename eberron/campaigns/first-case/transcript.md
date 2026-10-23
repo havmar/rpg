@@ -145,3 +145,17 @@ Arden holds the key out over the glowing slag channel, and the grey man's polite
 The crane shrieks. Corin drops a full metre in a scream of chain, swinging just two metres over the glowing cinders now, and the brake keeps clicking as it slips another link at a time. It won't hold long. Both kobolds fire at Arden and miss wildly, one bolt sparking off a crucible and the other off a mould (d20 2 + 4 = 6 and d20 5 + 4 = 9, misses). Up on the gantry the grey man is dragging himself toward the far stair, and his face is *running*, the features sliding like wax, grey eyes going dark. And the big Cyran warforged hasn't moved. It's staring at the man on the chain, and its maul is pointed at the floor.
 
 Corin has maybe a few seconds before the brake gives. The face-man is escaping, and the warforged is wavering. What do you do?
+
+### Round 10
+
+**[HUMAN]** save corin, grab the crane lever
+
+**[AI PC: Ledger]** Shouts to the big Cyran warforged: "He is Cyran. So are you. The war is over, and nobody is paying you enough for this. Help me catch the chain!" Then goes to the edge of the slag channel, reaches out for the hanging chain (or Corin's legs), and braces with all its weight to take the load off the slipping brake until Arden gets the lever.
+
+**GM:**
+
+Arden takes the ladder two rungs at a time, bad leg and all, and throws himself at the lever on the greased gantry (Dex: d20 7 + 3 = 10 vs DC 13, success with a cost). His boots go out from under him, but his hand closes on the brake handle as he falls and wrenches it home, *CLANK*. Down below, Ledger's words hit the big warforged like an order from the old days (persuasion with advantage: d20 18 − 1 = 17, success). Its head snaps up. Then it drops the maul, and the two of them catch the chain together, steel hands over steel hands, until the hook groans to a stop with Corin's boots dangling a metre over the glowing cinders (Str: d20 10 + 2 = 12, plus the Cyran's weight on the chain, enough).
+
+By the time Arden picks himself up off the grease, the far stair is empty. The kobolds have gone too, scrambling up into the rafters and away. The only thing left of the grey man is his coat, crumpled on the grating where he shrugged out of it to crawl faster, and a smear of blood leading off into the dark. The Cyran warforged lowers Corin gently onto the cinder floor, then stands back and says quietly, "I was told he was a thief. Not a soldier." Vessa is already on her knees beside her brother. Corin squints up through a swollen eye at the three of you, at Arden, and at the brass key, and croaks, "...Vess, I told you not to give that to anyone."
+
+The face-man is gone, but Corin is alive and Vessa has her brother back. What do you do?
