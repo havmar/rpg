@@ -23,7 +23,7 @@ the warforged has followed him ever since.
 | +1 | +3 | +2 | +1 | +2 | −1 |
 
 - **HP:** 12/12. **AC:** 15 (leather duster and waistcoat +2, Dex +3). **Initiative:** +3
-- **Action points:** 2/2
+- **Action points:** 1/2
 - **Trained skills (+2):** Perception, Investigation, Insight, Stealth
 - **Attacks:** Brelish service sword +5, 1d8+3. Hand crossbow +5, 1d6+3, range 9 m / 36 m.
 - **Features:**
@@ -58,6 +58,6 @@ know it has. Counts things when nervous. Wants a purpose that isn't war.
 - **Trained skills (+2):** Arcana, History, Investigation, Tinkering
 - **Warforged:** doesn't eat, sleep or breathe; advantage against poison.
 - **Attacks:** forearm hammer +4, 1d8+2. Arcane spark (cantrip) +5, 1d10, range 36 m.
-- **Spells:** 2 slots per long rest. Cure Wounds (1d8+3), Identify, Grease.
+- **Spells:** 2 slots per long rest (1 left: Grease used). Cure Wounds (1d8+3), Identify, Grease.
   Free: Mending, Light, Detect Magic (takes a minute).
 - **Gear:** tinker's tools, a spare everbright lantern, the office's account book, 6 gp.

@@ -129,3 +129,19 @@ The echo dies away. For three of Ledger's heartbeats nothing happens. Then, as A
 "Mister Kell. I'd hoped you'd use the gate." On a gantry six metres up, beside the crane's control lever, stands a polite, forgettable man in a grey coat, leaning on a silver-topped cane. Two kobolds with hand crossbows crouch on the far gantry. Between you and the crane, a warforged steps out of the shadows. It's bulkier than Ledger, with old Cyran sigils scratched off its shoulder plates and a great maul held loosely in its hands. "Let's be civilised," says the grey man. "Toss the key up here. The young lady comes with me to Kundarak at dawn, one quick errand. Then her brother walks free, and nobody falls into anything hot." He rests two fingers lightly on the lever.
 
 What do you do?
+
+### Round 9
+
+**[HUMAN]** make gray man and kobolds slippery, threaten to throw key into cauldron and shoot gray man in the leg with luck token to make him slip
+
+**[AI PC: Ledger]** Following Arden's lead, casts Grease (1 of its 2 slots) on the gantry right under the grey man and the crane lever, so he can't keep his footing or a steady hand on it. If it gets another action before the kobolds are dealt with, it uses its second slot to Grease their gantry too. Otherwise it stays between Vessa and the Cyran warforged.
+
+**[TABLE]** "luck token" means Arden spends 1 action point on the shot.
+
+**GM:**
+
+Arden holds the key out over the glowing slag channel, and the grey man's polite smile freezes. In that half-second Ledger's three fingers sketch a quick sigil and the gantry under him goes slick with grey grease (Grease: Dex save d20 3 + 3 = 6 vs DC 13, fail). His good shoes go out from under him. Arden's bolt arrives as he falls (attack with advantage: d20 16 + 5 = 21, +2 from the action point = 23 vs AC 14, hit; 1d6+3 → 9, +3 sneak attack → **12**). It takes him through the thigh. He hits the grating hard, the cane spins away into the dark, and his flailing hand catches the crane lever on the way down.
+
+The crane shrieks. Corin drops a full metre in a scream of chain, swinging just two metres over the glowing cinders now, and the brake keeps clicking as it slips another link at a time. It won't hold long. Both kobolds fire at Arden and miss wildly, one bolt sparking off a crucible and the other off a mould (d20 2 + 4 = 6 and d20 5 + 4 = 9, misses). Up on the gantry the grey man is dragging himself toward the far stair, and his face is *running*, the features sliding like wax, grey eyes going dark. And the big Cyran warforged hasn't moved. It's staring at the man on the chain, and its maul is pointed at the floor.
+
+Corin has maybe a few seconds before the brake gives. The face-man is escaping, and the warforged is wavering. What do you do?

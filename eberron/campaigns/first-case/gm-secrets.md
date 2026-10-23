@@ -103,4 +103,10 @@ her tenement). Tells: forgets Corin's nickname for her ("Vess"), taps two finger
   floor, 8 m from the culvert mouth. 2 kobolds with hand crossbows (+4, 1d6) on the far gantry.
   Offer: hand the key up and Vessa comes with Quill to Kundarak at dawn; Corin goes free. (A lie:
   he taps two fingers.)
+- Climax round 1 done: Quill is at 6/18, prone on the greased gantry, wounded leg, crawling for the far
+  stair and starting to shift his face (he'll flee). The crane lever got knocked: Corin dropped 1 m and
+  the brake is slipping, so he hits the slag at the END of next round unless someone works the lever
+  (gantry, greased, 6 m up via ladder) or grabs or redirects the chain (Str DC 13). Both kobolds missed.
+  Anvil hesitates: he wasn't told about hurting a Cyran soldier and is looking at Corin. He's very
+  talkable (DC 10 now).
 - Rod: in Kundarak Box 77. Corin: alive, Redcinder Foundry.
