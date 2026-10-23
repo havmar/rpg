@@ -43,3 +43,17 @@ What do you do?
 The key goes into Arden's waistcoat pocket, Vessa ducks behind the desk, and the door comes off its top hinge in a spray of frosted glass. A gnoll in a sodden Daask-red sash ducks through with a spear in both hands. Ledger says "Office hours are posted downstairs" from right beside its ear, the gnoll flinches toward the voice, and that's when Arden's bolt hits it high in the shoulder (readied shot: d20 11 + 5 = 16 vs AC 13, hit; 1d6+3 → 6, +1 sneak attack with Ledger beside it → 7). The gnoll staggers against the doorframe and bleeds on the floorboards, but it stays up. "The key," it growls, showing yellow teeth. "And the woman. Face-man wants her breathing." Behind it on the landing, two kobolds with hooked knives chitter and look for a way past.
 
 Initiative: Ledger 18, the Daask thugs 12, Arden 5. Ledger is fastest, so the wounded gnoll is right beside it in the doorway and the kobolds are bunched behind. **Ledger, what do you do?** And Arden, you're up after the thugs move, so tell me if you want to plan anything.
+
+### Round 3
+
+**[HUMAN]** reload and try to get a shot in by Ledger.
+
+**[AI PC: Ledger]** Swings its forearm hammer into the wounded gnoll and stays planted in the doorway so the kobolds can't get past into the room. "Your appointment has been cancelled."
+
+**GM:**
+
+Ledger's forearm hammer comes around with the full weight of two metres of Cannith steel and catches the gnoll under the jaw (d20 **natural 20**, hit; 1d8+2 → 8, more than enough). The gnoll's head snaps back against the doorframe, it folds onto the landing, and it stays down. It's out cold but still breathing in wet snores. One kobold hisses and lunges at Ledger with its hooked knife, and the blade scrapes off the scorched chest plate (d20 10 + 4 = 14 vs AC 16, miss). The other one takes one look at the gnoll, squeals, and runs clattering down the stairs.
+
+Arden reloads, leans out from behind the desk and fires past Ledger's elbow, but the kobold ducks behind the warforged's bulk at the wrong moment and the bolt thunks into the doorframe a hand's width from its ear (d20 3 + 5 = 8 vs AC 12, miss). Downstairs, Mother Pell is screaming in Brelish about her floors, and the runaway kobold is already at the street door. In a moment it'll be out in the rain, headed for whoever sent it.
+
+Round 2: one kobold is still nose-to-chest-plate with Ledger on the landing, one is getting away down the stairs, and the gnoll is unconscious at your feet. **Ledger first, then Arden: what do you do?**

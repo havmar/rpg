@@ -88,7 +88,7 @@ her tenement). Tells: forgets Corin's nickname for her ("Vess"), taps two finger
 
 ## State tracking
 
-- Scene: 1 (office). FIGHT in progress. Arden has the key in his pocket. Rask is at 4/11 HP, in the
-  doorway; 2 kobolds (5 HP each) are on the landing behind him. Initiative: Ledger 18, thugs 12,
-  Arden 5. Round 1, Ledger's turn. Rask's orders: take the key and Vessa alive.
+- Scene: 1 (office). FIGHT, start of round 2 (Ledger 18, thugs 12, Arden 5). Rask is down, unconscious
+  at 0 HP (alive, can be questioned). Kobold A (5 HP) is on the landing fighting Ledger. Kobold B (5 HP)
+  is running down the stairs to tell Quill. Arden has the key.
 - Rod: in Kundarak Box 77. Corin: alive, Redcinder Foundry.
