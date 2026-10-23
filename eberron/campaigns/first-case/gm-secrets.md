@@ -88,7 +88,7 @@ her tenement). Tells: forgets Corin's nickname for her ("Vess"), taps two finger
 
 ## State tracking
 
-- Scene: 1 (office). Case taken (15 gp deferred). Vessa told her story; Ledger read the tag (Box 77,
-  Bazaar branch, keyholder-bound). Arden heard the thugs on the stairs (Perception 13): they are
-  at the door now, so the PCs get to act before the thugs do.
+- Scene: 1 (office). FIGHT in progress. Arden has the key in his pocket. Rask is at 4/11 HP, in the
+  doorway; 2 kobolds (5 HP each) are on the landing behind him. Initiative: Ledger 18, thugs 12,
+  Arden 5. Round 1, Ledger's turn. Rask's orders: take the key and Vessa alive.
 - Rod: in Kundarak Box 77. Corin: alive, Redcinder Foundry.

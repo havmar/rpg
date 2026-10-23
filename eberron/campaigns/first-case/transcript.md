@@ -31,3 +31,15 @@ Ledger reads the tag without touching it (History: d20 8 + 5 = 13, success). It'
 What do you do?
 
 **Ledger (AI):** sets down the stamp without a sound and whispers, "Sir. Three visitors, none of them scheduled."
+
+### Round 2
+
+**[HUMAN]** pocket the key, crossbow ready, vessa behind the desk
+
+**[AI PC: Ledger]** Steps quietly to the wall beside the door, on the hinge side, forearm hammer ready, so whoever comes through has to pass it. Doesn't attack first; if the door opens, it says flatly, "Office hours are posted downstairs."
+
+**GM:**
+
+The key goes into Arden's waistcoat pocket, Vessa ducks behind the desk, and the door comes off its top hinge in a spray of frosted glass. A gnoll in a sodden Daask-red sash ducks through with a spear in both hands. Ledger says "Office hours are posted downstairs" from right beside its ear, the gnoll flinches toward the voice, and that's when Arden's bolt hits it high in the shoulder (readied shot: d20 11 + 5 = 16 vs AC 13, hit; 1d6+3 → 6, +1 sneak attack with Ledger beside it → 7). The gnoll staggers against the doorframe and bleeds on the floorboards, but it stays up. "The key," it growls, showing yellow teeth. "And the woman. Face-man wants her breathing." Behind it on the landing, two kobolds with hooked knives chitter and look for a way past.
+
+Initiative: Ledger 18, the Daask thugs 12, Arden 5. Ledger is fastest, so the wounded gnoll is right beside it in the doorway and the kobolds are bunched behind. **Ledger, what do you do?** And Arden, you're up after the thugs move, so tell me if you want to plan anything.
