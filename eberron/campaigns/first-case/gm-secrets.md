@@ -88,9 +88,13 @@ her tenement). Tells: forgets Corin's nickname for her ("Vess"), taps two finger
 
 ## State tracking
 
-- Scene: 1 (office). Fight over. Rask unconscious on the landing. Kobold 'Snik' is pinned by Ledger
-  (scared, will talk easily: knows 'face-man pays', 'grey coat', 'the red place in the Cogs' i.e.
-  Redcinder Foundry; doesn't know the name). Kobold B escaped to tell Quill, so Quill knows the
-  PCs have the key and will move faster: he may try the Vessa swap or watch Kundarak.
-  Ledger HP 11/12.
+- Scene 2: the PCs skipped Kundarak and are going straight to Redcinder with Vessa AND the key
+  (rod still in Box 77). Quill was warned by the escaped kobold. Adapted climax: Quill (as Mr. Grey)
+  offers Corin in exchange for the key plus Vessa walking into Kundarak with him in the morning.
+  He plans to double-cross: keep both siblings, wear Vessa's face at the bank. Without the rod,
+  Anvil has to be fought or talked down (Corin may still know the command word, which is useful
+  later). Defenders at Redcinder: Quill, Anvil, kobold B plus 1 more kobold on the gantry (Rask is
+  out of play, tied up in Lower Dura).
+  Outside: a lit window on the top floor office, one kobold lookout on the gate (sleepy), a
+  side culvert where the slag channel runs out (Stealth DC 13, leads to the casting floor).
 - Rod: in Kundarak Box 77. Corin: alive, Redcinder Foundry.

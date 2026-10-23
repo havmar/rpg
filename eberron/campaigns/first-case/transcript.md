@@ -85,3 +85,19 @@ Mother Pell lowers the ladle a few centimetres. "Five gold, Kell. *Before* Sul. 
 Ledger knows the place, or close enough (History: d20 8 + 5 = 13, success). There's only one dead works in the Cogs where the slag cools red: **Redcinder Foundry**, beside the Ashblack furnaces. It made shell casings for Breland until 994 and has been shut ever since. Its ledgers were among the thousands that once crossed Ledger's desk. Rask the gnoll stirs and groans on the landing. He's waking up. The kobold that ran is long gone, which means the face-man will know before midnight that his people failed, and that Arden Kell has the key.
 
 You know where Corin probably is, where the box is, and that someone wants Vessa's face. What do you do next?
+
+### Round 6
+
+**[HUMAN]** (out of character) who is Corin? *(Answered by the main session from what the GM had narrated: Vessa's brother, an ex-Cyran sapper doing salvage and dock work, lived on Lantern Row, missing three nights, mailed the key; Snik says he's at the "red place" in the Cogs.)*
+
+**[HUMAN]** tie up the gnoll and throw him out, take Vessa with us to the foundry if she agrees
+
+**[AI PC: Ledger]** Helps truss the gnoll with curtain cord and carries him down to the street over one shoulder. Lets Snik go at the street door with a polite "You are released from witness duty. Do not come back." Takes the everbright lantern and its tinker's tools, and walks on Vessa's other side on the way to the Cogs, counting the turns under its breath.
+
+**GM:**
+
+Vessa doesn't hesitate. "He's my brother. I'm coming." The gnoll ends up trussed in your curtain cord in the gutter outside Pell's, still groggy. Snik scampers off into the rain without a backward glance. Then it's down: a creaking public lift through Lower Dura's underside, a long iron stair, and finally the Cogs, where the city's foundries burn kilometres below the sky. The rain doesn't reach this far, but the heat does. The air tastes of sulphur and hot metal, and Ledger's lantern-light catches ash drifting like snow. Ledger counts forty-one turns. Vessa stays close between you both, her shawl pulled over her mouth.
+
+**Redcinder Foundry** squats against the black bulk of the Ashblack furnaces: a brick hall with soot-black walls, a tall dead chimney and rusted gates chained shut. A red glow leaks from somewhere inside, and the cinders crunching under your boots are the colour of dried blood. One window high up in the old foreman's office is lit. A small figure huddles on the gatepost under a scrap of tarp, nodding off, probably a kobold lookout. Off to the left, a low brick culvert runs out from the foundry floor where the old slag channel used to drain. It's dark, and it's big enough for a crouching human. A crouching warforged might fit too.
+
+Arden, you've scouted worse than this. How do you want to go in?
