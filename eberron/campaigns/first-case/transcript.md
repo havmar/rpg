@@ -101,3 +101,17 @@ Vessa doesn't hesitate. "He's my brother. I'm coming." The gnoll ends up trussed
 **Redcinder Foundry** squats against the black bulk of the Ashblack furnaces: a brick hall with soot-black walls, a tall dead chimney and rusted gates chained shut. A red glow leaks from somewhere inside, and the cinders crunching under your boots are the colour of dried blood. One window high up in the old foreman's office is lit. A small figure huddles on the gatepost under a scrap of tarp, nodding off, probably a kobold lookout. Off to the left, a low brick culvert runs out from the foundry floor where the old slag channel used to drain. It's dark, and it's big enough for a crouching human. A crouching warforged might fit too.
 
 Arden, you've scouted worse than this. How do you want to go in?
+
+### Round 7
+
+**[HUMAN]** i don't understand why this place is dangerous, what is it and why would corin be here. let's try sneaking if it's hostile here
+
+**[AI PC: Ledger]** Answers quietly with what it has already worked out: "The kobold called Corin 'box-man' and said he is at the red place. Snik and the gnoll work for the face-man. So I believe the face-man's people are holding Corin here, sir. That lookout is theirs." Then, since it is loud and not stealthy, it hangs back a few metres behind Arden with Vessa, lantern shuttered, and follows only where Arden signals it's safe.
+
+**GM:**
+
+[OOC] Here's the short version. Corin found something valuable and locked it in that Kundarak box, which is why a man called "the face-man" (grey coat, can change his face) wants the key. The face-man hired the Daask thugs who attacked your office. The kobold said Corin, the "box-man", is being held at "the red place", and Ledger worked out that means this abandoned foundry. So this is very likely the kidnappers' hideout. Corin is probably inside, the face-man and his hired muscle probably are too, and that lookout belongs to them. Sneaking is a good call.
+
+Arden picks the culvert, away from the dozing lookout, and goes in low and slow while Ledger and Vessa hang back with the lantern shuttered. Ledger's footing is fine (Stealth: d20 11, enough while it follows a few metres behind). Arden's isn't. Halfway through the tunnel, in the pitch dark, his bad leg comes down on something round that rolls (Stealth: d20 4 + 5 = 9 vs DC 13, fail). An old iron casting pan tips over and rings like a gong down the brick tunnel.
+
+[OOC] Arden has 2 action points. You can spend one now to add 1d6 to that 9, and a roll of 4 or more turns it into a success. Do you spend it, or let the noise stand and see what happens?
