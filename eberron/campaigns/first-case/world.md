@@ -14,3 +14,10 @@
 - **The grey man:** a polite man in a grey coat with a silver-topped cane offered Vessa 50 gp for
   anything Corin left.
 - **Sergeant Dallow** of the Lower Dura Watch told Vessa that Corin "probably skipped town".
+- **Mother Pell** runs the noodle house below the office. Arden owes her 5 gp for the broken door.
+- **The face-man:** whoever hired the Daask thugs. A kobold says he "has many faces", usually
+  "grey coat, grey eyes", and pays in Galifar crowns. The thugs were sent for the key, and for
+  Vessa alive.
+- **Redcinder Foundry:** a dead foundry in the Cogs near the Ashblack furnaces, closed since the
+  war. Its slag runs red. The kobold says the "box-man" (Corin?) is held at "the red place".
+- **Daask:** Droaamish monster gang in Sharn. The gnoll wore a Daask-red sash.

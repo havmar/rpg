@@ -71,3 +71,17 @@ Ledger lets the hammer arm drop and reaches for the kobold. The little thing is 
 Arden goes down to the noodle shop to find Mother Pell, a wide old woman, standing in the steam with a ladle held like a mace and a lot to say about her door, her stairs and "that dog-faced thing bleeding on my landing." She stops shouting when she sees it's you, though she keeps the ladle up. Upstairs you've got an unconscious gnoll in a Daask sash, a terrified kobold, and a client white-knuckling the edge of your desk. Somewhere out there, a man who wears faces is about to hear that his errand went wrong.
 
 What do you say to Pell, and what do you want from your two guests?
+
+### Round 5
+
+**[HUMAN]** tell Pell I'll pay for the door, then question the kobold
+
+**[AI PC: Ledger]** Calls down the stairwell, still holding the kobold at arm's length: "Mrs Pell, the door will be repaired. I have added it to the accounts." Then, quieter, to the kobold: "Who is the face-man?" After that it keeps the kobold pinned and lets Arden lead the questioning, keeping one lens on the unconscious gnoll.
+
+**GM:**
+
+Mother Pell lowers the ladle a few centimetres. "Five gold, Kell. *Before* Sul. And the dog bleeds on your side of the landing, not mine." Then she goes back to her pots, grumbling. Upstairs, the kobold, which says its name is Snik, decides it wants to live and talks to the rain on the window as fast as it can. The face-man "has many faces, many many," but most of the time he's "grey coat, grey eyes, nice voice, pays in crowns." He hired Rask the gnoll, Rask hired Snik, and the job was simple: "Get key. Get woman. Woman *alive*, face-man very clear, face-man wants to look at her good." Vessa makes a small sound. As for her brother: "Box-man? Box-man at red place. Hot place, down in Cogs, red cinders everywhere, gets in your scales."
+
+Ledger knows the place, or close enough (History: d20 8 + 5 = 13, success). There's only one dead works in the Cogs where the slag cools red: **Redcinder Foundry**, beside the Ashblack furnaces. It made shell casings for Breland until 994 and has been shut ever since. Its ledgers were among the thousands that once crossed Ledger's desk. Rask the gnoll stirs and groans on the landing. He's waking up. The kobold that ran is long gone, which means the face-man will know before midnight that his people failed, and that Arden Kell has the key.
+
+You know where Corin probably is, where the box is, and that someone wants Vessa's face. What do you do next?
