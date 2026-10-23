@@ -15,3 +15,19 @@ The woman is in her late twenties, soaked to the skin, a laundry-worker's shawl 
 What do you do?
 
 **Ledger (AI):** looks up from the account book and quietly stamps a line: "Fifteen gold. Received: 0."
+
+### Round 1
+
+**[HUMAN]** taking the case. we go over everything important.
+
+**[AI PC: Ledger]** Opens a fresh page in the account book, writes "Marrow, Vessa: missing brother" and, after a pause, "fee: 15 gp, deferred." Doesn't touch the key, but leans in to study the Kundarak tag and its runes. Asks Vessa politely what Corin does for work, where he lives, and whether the note he mailed is with her.
+
+**GM:**
+
+Vessa finally sits down. Her answers come in quick, tired bursts while Ledger's stamp thunks across the page. Corin was a sapper in the Cyran army, and these days he takes salvage and dock work, "whatever pays, and some things that shouldn't." He rents a room in a refugee tenement on Lantern Row in Malleon's Gate. She takes a damp, folded scrap of Orien post-paper out of her shawl: *"Vess. Don't open it, don't give it to anyone. I'll explain. C."* The man who offered her fifty gold was soft-spoken and grey all over: grey coat, grey eyes, a silver-topped cane. The Watch sergeant she reported Corin to, "a Sergeant Dallow," barely wrote anything down.
+
+Ledger reads the tag without touching it (History: d20 8 + 5 = 13, success). It's a deposit key for **Box 77 at the Kundarak branch in the Bazaar of Middle Dura**. Kundarak keys like this one only open the box for a named keyholder, so a thief who stole the key couldn't use it alone. That's when Arden hears it under the drumming rain (Perception: d20 9 + 4 = 13, just enough): the third stair creaks, the one that always creaks, and then the fourth. Something heavy is coming up, with lighter steps behind it, and nobody has said a word to Mother Pell downstairs. A tall, shaggy silhouette with a hyena's snout fills the frosted glass. Two small shapes crouch at its knees. They're still out on the landing, so you have a heartbeat to act first.
+
+What do you do?
+
+**Ledger (AI):** sets down the stamp without a sound and whispers, "Sir. Three visitors, none of them scheduled."

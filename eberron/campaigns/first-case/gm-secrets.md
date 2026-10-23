@@ -88,5 +88,7 @@ her tenement). Tells: forgets Corin's nickname for her ("Vess"), taps two finger
 
 ## State tracking
 
-- Scene: 1 (office), opening narrated. Thugs not yet arrived.
+- Scene: 1 (office). Case taken (15 gp deferred). Vessa told her story; Ledger read the tag (Box 77,
+  Bazaar branch, keyholder-bound). Arden heard the thugs on the stairs (Perception 13): they are
+  at the door now, so the PCs get to act before the thugs do.
 - Rod: in Kundarak Box 77. Corin: alive, Redcinder Foundry.
