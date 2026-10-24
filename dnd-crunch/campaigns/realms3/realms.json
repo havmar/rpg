@@ -1,0 +1,637 @@
+{
+ "version": 2,
+ "seed": 53,
+ "month": 1,
+ "rng": 2707130170,
+ "level": 3,
+ "hexes": {
+  "A1": {
+   "level": 5,
+   "biome": "mountains",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false
+  },
+  "A2": {
+   "level": 13,
+   "biome": "forest",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false
+  },
+  "A3": {
+   "level": 4,
+   "biome": "plains",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false
+  },
+  "A4": {
+   "level": 19,
+   "biome": "swamp",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false
+  },
+  "A5": {
+   "level": 2,
+   "biome": "savanna",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false
+  },
+  "B1": {
+   "level": 14,
+   "biome": "tundra",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false
+  },
+  "B2": {
+   "level": 11,
+   "biome": "taiga",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": true
+  },
+  "B3": {
+   "level": 3,
+   "biome": "forest",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false
+  },
+  "B4": {
+   "level": 10,
+   "biome": "plains",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false
+  },
+  "B5": {
+   "level": 1,
+   "biome": "desert",
+   "people": "tower folk",
+   "holder": "tower",
+   "lake": false
+  },
+  "C1": {
+   "level": 8,
+   "biome": "taiga",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false
+  },
+  "C2": {
+   "level": 6,
+   "biome": "forest",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false
+  },
+  "C3": {
+   "level": 9,
+   "biome": "hills",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false
+  },
+  "C4": {
+   "level": 12,
+   "biome": "swamp",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false
+  },
+  "C5": {
+   "level": 18,
+   "biome": "savanna",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false
+  },
+  "D1": {
+   "level": 16,
+   "biome": "tundra",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false
+  },
+  "D2": {
+   "level": 17,
+   "biome": "forest",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false
+  },
+  "D3": {
+   "level": 15,
+   "biome": "swamp",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": true
+  },
+  "D4": {
+   "level": 7,
+   "biome": "forest",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false
+  },
+  "D5": {
+   "level": 20,
+   "biome": "savanna",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false
+  }
+ },
+ "rivers": [
+  {
+   "from": "D3",
+   "edges": [
+    "C4|D3",
+    "C3|D3",
+    "C3|D2",
+    "C2|D2",
+    "C2|D1",
+    "C1|D1"
+   ]
+  },
+  {
+   "from": "B2",
+   "edges": [
+    "B2|C3",
+    "B2|B3",
+    "A3|B3",
+    "A3|A4"
+   ]
+  }
+ ],
+ "factions": {
+  "Orcs": {
+   "name": "Orcs",
+   "tower": false,
+   "leader": {
+    "name": "Hruma",
+    "title": "Boss",
+    "label": "bad",
+    "tag": "Raider"
+   },
+   "goal": {
+    "kind": "raid",
+    "target": "a8",
+    "attr": "wealth",
+    "text": "rob Goblinkind's Caravans a8 in C2",
+    "since": 1,
+    "against": "Goblinkind"
+   },
+   "force": 4,
+   "cunning": 4,
+   "wealth": 4,
+   "gp": 430,
+   "seat": "D1",
+   "hostile": 0,
+   "disorder": 0,
+   "dissident": null,
+   "xp": 0,
+   "hp": 22
+  },
+  "Goblinkind": {
+   "name": "Goblinkind",
+   "tower": false,
+   "leader": {
+    "name": "Zarga",
+    "title": "Big Boss",
+    "label": "good",
+    "tag": "Steward"
+   },
+   "goal": {
+    "kind": "buy",
+    "asset": "walls",
+    "attr": "force",
+    "text": "build Walls at D2",
+    "since": 1,
+    "against": null
+   },
+   "force": 3,
+   "cunning": 3,
+   "wealth": 3,
+   "gp": 320,
+   "seat": "D2",
+   "hostile": 0,
+   "disorder": 0,
+   "dissident": null,
+   "xp": 0,
+   "hp": 16
+  },
+  "Humans": {
+   "name": "Humans",
+   "tower": false,
+   "leader": {
+    "name": "Leopold",
+    "title": "Reeve",
+    "label": "good",
+    "tag": "Steward"
+   },
+   "goal": {
+    "kind": "buy",
+    "asset": "walls",
+    "attr": "force",
+    "text": "build Walls at A4",
+    "since": 1,
+    "against": null
+   },
+   "force": 3,
+   "cunning": 3,
+   "wealth": 3,
+   "gp": 250,
+   "seat": "A4",
+   "hostile": 0,
+   "disorder": 0,
+   "dissident": null,
+   "xp": 0,
+   "hp": 16
+  },
+  "Tieflings": {
+   "name": "Tieflings",
+   "tower": false,
+   "leader": {
+    "name": "Iados",
+    "title": "Exarch",
+    "label": "bad",
+    "tag": "Tyrant"
+   },
+   "goal": {
+    "kind": "buy",
+    "asset": "treasury",
+    "attr": "wealth",
+    "text": "buy Treasury (1,200 GP)",
+    "since": 1,
+    "against": null
+   },
+   "force": 5,
+   "cunning": 5,
+   "wealth": 5,
+   "gp": 450,
+   "seat": "D5",
+   "hostile": 0,
+   "disorder": 0,
+   "dissident": null,
+   "xp": 0,
+   "hp": 31
+  },
+  "Elves": {
+   "name": "Elves",
+   "tower": false,
+   "leader": {
+    "name": "Valanthe",
+    "title": "Warden",
+    "label": "bad",
+    "tag": "Conqueror"
+   },
+   "goal": {
+    "kind": "seize",
+    "hex": "B1",
+    "attr": "force",
+    "text": "take B1 (L14, Orcs')",
+    "since": 1,
+    "against": "Orcs"
+   },
+   "force": 3,
+   "cunning": 3,
+   "wealth": 3,
+   "gp": 270,
+   "seat": "A2",
+   "hostile": 0,
+   "disorder": 0,
+   "dissident": null,
+   "xp": 0,
+   "hp": 16
+  },
+  "Gnomes": {
+   "name": "Gnomes",
+   "tower": false,
+   "leader": {
+    "name": "Ellywick",
+    "title": "Tinker-General",
+    "label": "bad",
+    "tag": "Raider"
+   },
+   "goal": {
+    "kind": "raid",
+    "target": "a16",
+    "attr": "wealth",
+    "text": "rob Tieflings' Mercenaries a16 in C5",
+    "since": 1,
+    "against": "Tieflings"
+   },
+   "force": 4,
+   "cunning": 4,
+   "wealth": 4,
+   "gp": 370,
+   "seat": "D3",
+   "hostile": 0,
+   "disorder": 0,
+   "dissident": null,
+   "xp": 0,
+   "hp": 22
+  },
+  "tower": {
+   "name": "tower",
+   "tower": true,
+   "leader": {
+    "name": "Morten",
+    "title": "Wizard",
+    "label": "tower",
+    "tag": "Tower"
+   },
+   "goal": null,
+   "gp": 100,
+   "seat": "B5",
+   "hostile": 0,
+   "disorder": 0,
+   "dissident": null,
+   "xp": 0,
+   "force": 1,
+   "cunning": 1,
+   "wealth": 1,
+   "hp": 7
+  }
+ },
+ "assets": {
+  "a1": {
+   "id": "a1",
+   "owner": "Orcs",
+   "kind": "thugs",
+   "hex": "D1",
+   "hp": 3,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a2": {
+   "id": "a2",
+   "owner": "Orcs",
+   "kind": "thugs",
+   "hex": "D1",
+   "hp": 3,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a3": {
+   "id": "a3",
+   "owner": "Orcs",
+   "kind": "informers",
+   "hex": "B1",
+   "hp": 3,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a4": {
+   "id": "a4",
+   "owner": "Orcs",
+   "kind": "farms",
+   "hex": "C1",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a5": {
+   "id": "a5",
+   "owner": "Goblinkind",
+   "kind": "militia",
+   "hex": "D2",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a6": {
+   "id": "a6",
+   "owner": "Goblinkind",
+   "kind": "militia",
+   "hex": "C3",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a7": {
+   "id": "a7",
+   "owner": "Goblinkind",
+   "kind": "smugglers",
+   "hex": "C2",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a8": {
+   "id": "a8",
+   "owner": "Goblinkind",
+   "kind": "caravans",
+   "hex": "C2",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a9": {
+   "id": "a9",
+   "owner": "Humans",
+   "kind": "thugs",
+   "hex": "A4",
+   "hp": 3,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a10": {
+   "id": "a10",
+   "owner": "Humans",
+   "kind": "militia",
+   "hex": "A4",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a11": {
+   "id": "a11",
+   "owner": "Humans",
+   "kind": "saboteurs",
+   "hex": "A3",
+   "hp": 6,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a12": {
+   "id": "a12",
+   "owner": "Humans",
+   "kind": "mercenaries",
+   "hex": "A4",
+   "hp": 6,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a13": {
+   "id": "a13",
+   "owner": "Tieflings",
+   "kind": "militia",
+   "hex": "D5",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a14": {
+   "id": "a14",
+   "owner": "Tieflings",
+   "kind": "knights",
+   "hex": "C5",
+   "hp": 12,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a15": {
+   "id": "a15",
+   "owner": "Tieflings",
+   "kind": "smugglers",
+   "hex": "D5",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a16": {
+   "id": "a16",
+   "owner": "Tieflings",
+   "kind": "mercenaries",
+   "hex": "C5",
+   "hp": 6,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a17": {
+   "id": "a17",
+   "owner": "Elves",
+   "kind": "militia",
+   "hex": "A2",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a18": {
+   "id": "a18",
+   "owner": "Elves",
+   "kind": "militia",
+   "hex": "A2",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a19": {
+   "id": "a19",
+   "owner": "Elves",
+   "kind": "smugglers",
+   "hex": "B3",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a20": {
+   "id": "a20",
+   "owner": "Elves",
+   "kind": "farms",
+   "hex": "B2",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a21": {
+   "id": "a21",
+   "owner": "Gnomes",
+   "kind": "thugs",
+   "hex": "D3",
+   "hp": 3,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a22": {
+   "id": "a22",
+   "owner": "Gnomes",
+   "kind": "knights",
+   "hex": "D3",
+   "hp": 12,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a23": {
+   "id": "a23",
+   "owner": "Gnomes",
+   "kind": "saboteurs",
+   "hex": "B4",
+   "hp": 6,
+   "from": null,
+   "seen": false,
+   "leader": null
+  },
+  "a24": {
+   "id": "a24",
+   "owner": "Gnomes",
+   "kind": "farms",
+   "hex": "C4",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
+  }
+ },
+ "next_id": 25,
+ "names": [
+  "Morten",
+  "Hruma",
+  "Zarga",
+  "Leopold",
+  "Iados",
+  "Valanthe",
+  "Ellywick"
+ ],
+ "fallen": [],
+ "morten": "B5",
+ "events": [],
+ "report": {
+  "month": 0,
+  "plan": [],
+  "happened": [
+   "Month 1: the world begins."
+  ],
+  "tower": [
+   "HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 100 GP · Morten level 3",
+   "Assets: none",
+   "Hexes: B5",
+   "Hostile: nobody",
+   "Allies: Goblinkind, Humans"
+  ],
+  "next": [
+   "Open: Morten is in B5 (L1, desert, tower); travel 1 day a hex, d6 each day outside B5 (1 = encounter).",
+   "Open: missions here: Delve floor 1.",
+   "Open: the tower's one action (100 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free."
+  ]
+ },
+ "log": []
+}
