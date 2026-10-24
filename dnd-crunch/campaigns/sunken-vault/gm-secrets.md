@@ -231,7 +231,7 @@ Update as rooms are entered, cleared or reset. After a death, note what moved.
 
 | Room | Status |
 |---|---|
-| R1 | unexplored |
+| R1 | entered Day 1 09:20; combat with 3 rats in progress |
 | R2 | unexplored |
 | R3 | unexplored |
 | R4 | unexplored |
