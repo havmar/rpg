@@ -3,8 +3,8 @@
 - **Table mode:** open
 - **Morten played by:** the GM (human's request: "play for a while, cheesing all around");
   the human can step in anytime
-- **Month 2 · Day 1 · B4** (L5, hills, tower) · rested
-- **Deaths:** 0 here · **XP:** 3,150 · **level 4** (level 5 at 6,500)
+- **Month 3 · Day 1 · A5** (L3, desert, Tieflings, at war with the tower) · rested
+- **Deaths:** 0 here · **XP:** 3,750 · **level 4** (level 5 at 6,500)
 
 ## Morten
 
@@ -12,8 +12,8 @@
 - Lost spells: none
 - Mage Armor free cast: ✓ · Arcane Recovery: ✓ · Heroic Inspiration: ✓
 - Concentration: none · Conditions: none · Exhaustion 0 · fed
-- Light: lamp (1 flask in it); 6 spare oil; 7 torches
-- Rations 8 · Coins 1 GP 5 SP · Potion of Healing ×1 · Ice Knife scroll
+- Light: lamp (1 flask in it); 5 spare oil; 7 torches
+- Rations 6 · Coins 5 SP · Potion of Healing ×1 · Ice Knife scroll
 - Familiar: owl (Fey), the tower's courier
 
 ## Habits
@@ -29,11 +29,10 @@
 
 ## Domain
 
-- Tower F1 · 142 GP · hexes B4 C5 · wars none · court: Doran (Humans), pool 1
-- Month 2 orders: Fund Tieflings mirror Iados 1 GP · court coup:Tieflings = 1 · Build F2
-  (needs 11+ GP deposited from the mission; otherwise no action)
-- Month 2 plan: B4 → A5, Strike Tiefling ruler Kallista (Brutal), whose next target is
-  the tower (lowest Force neighbour)
+- Tower F0 · 50 GP · hexes B4 C5 · war: Tieflings (Kallista) · court: Doran (Humans), pool 1
+- Month 3 orders: no tower action (at F0 the Brutal rulers skip the tower: they never
+  enslave a Force 0 neighbour) · court defend = 1
+- Month 3 plan: Delve floor 3 under A5
 - Full state: `world.md` (open) and `realms.json` (the script's)
 
 ## Known dungeon

@@ -87,3 +87,77 @@ Choose Morten's month, or say "you decide".
 
 **Tower:** F1 · 142 GP · hexes B4 C5 · wars: none
 **Court:** Doran (Humans) · pool 1
+
+## Month 2 · Morten's month
+
+**Morten (GM):** Kallista (Tieflings, Brutal, F4) can't afford Force 5 this month, so she'll enslave her weakest neighbour she can beat: the tower (F1). Strike her first (+3 on the tower's defence, +3 on Iados's coup), build the tower to F2 with the mission's loot, and back Iados's coup with the court.
+
+**Month 2 orders:** Fund Tieflings mirror Iados 1 GP · court coup:Tieflings = 1 · Build F2 (200 GP; needs 11+ GP deposited from the mission).
+
+**Month 2 · Day 2 · A5 (L3, desert, Tieflings)**
+- Travel B4 → A5 across the river. Mage Armor (free cast): AC 15. Ration (8 → 7).
+- Wandering check 1d6: **1, encounter.**
+- Rumours: Tieflings: Kallista (Brutal) drags the weak off to fill the ranks. Last month: built Force to 4. Rival Iados (Altruistic) C1 vs C3.
+
+**Wandering · A5 · 4 Worgs** (High, 400 XP)
+- Worg: AC 13 · HP 26 · Large · speed 10 sq · Bite +5, 1d8+3 piercing, and the next attack on the target has Advantage. WIS +0, DEX +1, CON +1.
+- Area: open desert dunes, daylight. Morten at H20; worgs A F2, B H2, C J2, D L3 (12+ sq).
+- Init: Morten d20 13 +4 = 17 › Worgs d20 6 +1 = 7.
+- R1 Morten (GM): Web on the near pair, layered on the sand (anchored on the floor). Cast DC 12 → d20 14 +6 = 20, CAST, cube F2–I5. A DEX → d20 10 +1 = 11, FAIL, Restrained. B → d20 16 +1 = 17, saves. Morten walks back 6 sq.
+- R1 Worgs: A breaks free? STR → d20 NAT 1 +3 = 4, stuck. B starts its turn in the web → DEX d20 9 +1 = 10, FAIL, Restrained. C and D Dash 20 sq, end adjacent (no bite).
+- R2 Morten (GM): Thunderwave at level 2 on both adjacent worgs, then Misty Step out. Cast DC 12 → d20 7 +6 = 13, CAST. C CON → d20 9 +1 = 10, FAIL; D → NAT 1, FAIL → 3d8: 5+7+4 = 16 thunder each, pushed 3 m. C 26 → 10, D 26 → 10. Misty Step DC 12 → d20 19 +6 = 25: 6 sq, then walks 6 sq.
+- R2 Worgs: A STR → d20 5 +3 = 8, B → d20 6 +3 = 9: both stuck. C and D Dash, adjacent, no bite.
+- R3 Morten: Thunderwave at level 2 → d20 4 +6 = 10, FIZZLE → Heroic Inspiration reroll → **NAT 20**: damage dice doubled. (CORRECTION: saves were rolled before the cast; those dice are thrown away.) C CON → d20 5 +1 = 6, FAIL → 6d8: 3+6+5+2+5+2 = 23. Dead. D → d20 15 +1 = 16, saves → 11. Dead.
+- Morale (half the pack down): WIS d20 16, holds.
+- R3 Worgs: A STR → d20 11 +3 = 14, free; B → d20 16 +3 = 19, free. They leave the web and come to 8 sq.
+- R4 Morten (GM): they're side by side; Sleep on the corner between them (Web drops). Cast DC 11 → d20 10 +6 = 16, CAST. A WIS → d20 14, saves. B → d20 5, FAIL, Incapacitated. Misty Step DC 12 → d20 18 +6 = 24 and walks: 20 sq from A.
+- R4 Worgs: A Dashes, adjacent, no bite. B's second save → d20 3, FAIL: **Unconscious.**
+- R5 Morten: Thunderwave at level 2 on A → d20 19 +6 = 25, CAST. CON d20 12 +1 = 13, FAIL → 3d8: 4+6+4 = 14. A 26 → 12, pushed 3 m. Misty Step → d20 3 +6 = 9, FIZZLE. Misty Step lost until Long Rest. He walks 6 sq.
+- R5 Worg A: Bite → d20 14 +5 = 19 vs AC 15, hit → Shield DC 11 → d20 14 +6 = 20, CAST: AC 20, MISS.
+- R6 Morten: Magic Missile at level 2 → d20 19 +6 = 25, CAST → 4d4+4: 3+3+1+4+4 = 15. A dead.
+- R7–R8 Morten: Dash to the sleeping B.
+- R9 Morten (GM): Scorching Ray at point-blank on the sleeper, with Advantage → d20 5, 1 keep 5 +6 = 11, FIZZLE. Scorching Ray lost until Long Rest.
+- R10 Morten (GM): an Unconscious creature fails DEX saves, so douse it: Attack action, throw Oil → auto-fail, covered. No damage; it sleeps on. Oil 6 → 5.
+- R11 Morten: Fire Bolt with Advantage, within 1.5 m of an Unconscious target → d20 14, 2 keep 14 +6 = 20 vs AC 13, CRIT → 2d10: 5+9 = 14 + 5 burning oil = 19 fire. B 26 → 7, wakes.
+- R11 Worg B: Bite → d20 9 +5 = 14 vs AC 15, MISS.
+- R12 Morten: Magic Missile → d20 16 +6 = 22, CAST → 3d4+3: 2+3+4+3 = 12. B dead.
+- Result: 0 damage taken. XP 3,150 → 3,550. +40 GP (1 GP 5 SP → 41 GP 5 SP). Lost: Misty Step, Scorching Ray.
+
+**Month 2 · Day 2–3 · A5 · Long Rest**
+- **Morten (GM):** the Strike doesn't have to be today. He camps (no wandering check: those come on entering a hex) and takes a Long Rest. Ration (7 → 6). All spells, Heroic Inspiration and the free Mage Armor back. Mage Armor: AC 15.
+
+**Strike on Kallista · A5 · 2 Worgs** (Moderate, 200 XP) · her guard
+- Init: Morten d20 4 +4 = 8 › Worgs d20 13 +1 = 14. They start 12 sq away.
+- R1 Worgs: Dash, adjacent, no bite.
+- R1 Morten: Thunderwave at level 2 → d20 15 +6 = 21, CAST. W1 CON d20 19 +1 = 20, saves; W2 d20 5 +1 = 6, FAIL → 3d8: 3+1+6 = 10. W1 26 → 21, W2 26 → 16 (pushed). Misty Step → d20 9 +6 = 15, CAST, then walks: 12+ sq.
+- R2 Worgs: Dash, adjacent, no bite.
+- R2 Morten: Thunderwave at level 2 → d20 13 +6 = 19, CAST. W1 → NAT 1, FAIL; W2 → d20 14 +1 = 15, saves → 3d8: 8+1+7 = 16. W1 21 → 5, W2 16 → 8. Misty Step → d20 18 +6 = 24 and walks.
+- R3 Worgs: Dash, adjacent, no bite.
+- R3 Morten: Thunderwave at level 2 → d20 11 +6 = 17, CAST. W1 d20 2 +1 = 3, FAIL; W2 d20 14 +1 = 15, saves → 3d8: 5+5+7 = 17. W1 dead (17), W2 dead (8 on the save).
+- Result: **Strike succeeded.** 0 damage. XP 3,550 → 3,750. +20 GP (61 GP 5 SP).
+- End of month: deposit 61 GP to the tower. Morten stays in A5 and rests out the month.
+
+## Month 2 · Domain turn
+
+**Log**
+- Morten: Strike on Tieflings ruler Kallista in A5: +3 against Kallista this month. War: tower vs Tieflings. Deposit 61 GP → tower 203 GP.
+- Income: tower L6 × 10 = 60, upkeep −12 → 251 GP. Fund Iados 1 GP → 250. Court: coup Tieflings 1.
+- Tower: Build Force 1 → 2, −200 GP (250 → 50).
+- Order: Elves · Goblinkind · Humans · Gnomes · Tieflings · Orcs.
+- Elves (Faelar, Greedy): Conquer D2 (Goblinkind, L12) from D3 → d10 4 + F5 = 9 vs d10 9 + F5 = 14, LOSS. Elves F5 → 4.
+- Goblinkind, Gnomes: save.
+- Humans (Galen, Brutal): Enslave Orcs at B3 from A3 → d10 7 + F5 = 12 vs d10 6 + F2 = 8, WIN. Humans F5 → 6. Orcs F2 → 0.
+- Tieflings (Kallista, Brutal): Enslave the tower at C5 from B5 → d10 7 + F4 = 11 vs d10 4 + F2 + 3 strike = 9, LOSS for the tower. Tieflings F4 → 5. Tower F2 → 0.
+- Orcs (Mogra, Neutral): guards the throne: Cunning 1 → 2, −200 GP.
+- Mirrors save, except: Tieflings mirror Iados: Coup vs Kallista → d10 3 + C1 + 3 strike + 1 court = 8 vs d10 6 + C3 = 9, LOSS. Iados C1 → 0. Court risk d6 4: Doran lives.
+
+**Realms**
+- Elves · Faelar (Greedy) F4 C4 357 GP · D3 D4 D5 · mirror Erevan (Neutral) C2 176 GP
+- Gnomes · Quillon (Neutral) F4 C3 179 GP · A1 B1 C1 C2 · mirror Pockle (Cruel) C1 116 GP
+- Goblinkind · Nagra (Neutral) F5 C4 149 GP · C3 D1 D2 · mirror Skreek (Cruel) C2 144 GP
+- Humans · Galen (Brutal) F6 C4 305 GP · A2 A3 B2 · mirror Mirela (Neutral) C2 168 GP
+- Orcs · Mogra (Neutral) F0 C2 177 GP · B3 C4 · mirror Nazha (Brutal) C1 38 GP
+- Tieflings · Kallista (Brutal) F5 C3 309 GP · A4 A5 B5 · mirror Iados (Altruistic) C0 137 GP · at war with the tower
+
+**Tower:** F0 · 50 GP · hexes B4 C5 · wars: Tieflings
+**Court:** Doran (Humans) · pool 1
