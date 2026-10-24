@@ -2,8 +2,8 @@
 
 - **Table mode:** open
 - **Morten played by:** the GM (human's request); the human can step in anytime
-- **Day 1 · 08:00 · Floor 3, camp** (deepest camp reached: 3)
-- **Deaths:** 0 here (1 in the Sunken Vault) · **XP:** 1,150 · level 3 (level 4 at 2,700)
+- **Day 6 · Floor 3, camp** (deepest camp reached: 3), just revived
+- **Deaths:** 2 here, both to the 3.8 Death Dogs (1 in the Sunken Vault) · **XP:** 2,300 · level 3 (level 4 at 2,700)
 
 ## Morten
 
@@ -12,8 +12,8 @@
 - Mage Armor free cast: ✓ · Arcane Recovery: ✓ · Heroic Inspiration: ✓
 - Concentration: none · Conditions: none · Exhaustion 0
 - Light: lamp (fresh flask) + 6 spare oil; 7 torches
-- Rations 3 · Water full · Coins 26 GP 5 SP · Garnet (50 GP) · Acid ×1 · Ice Knife scroll
-- Familiar: owl (Fey)
+- Rations 2 · Water full · Coins carried: none · **Purse (76 GP 5 SP) lying on the floor of room 3.7** · Ice Knife scroll · Acid used
+- Familiar: none (third owl killed in 3.8; incense 10 GP)
 
 ## Habits
 
@@ -27,7 +27,10 @@
 
 ## Known dungeon
 
-- Floor 3 camp. A door E leads to room 3.1.
+- 3.1 Boars: cleared. 3.2 Giant Octopus: alive, bypassed (Sleep, then walk the ledge each time).
+- 3.3 Death Dog: cleared. 3.4 Giant Badgers: cleared (9 m ceiling, hanging chains).
+- 3.5 Flying Swords: cleared. 3.6 Satyr: bribed, friendly (9 m ceiling, hanging chains).
+- 3.7 Darkmantles: cleared. 3.8 two Death Dogs: alive, full HP; killed Morten twice.
 
 ## Combat
 
