@@ -12,6 +12,8 @@ self-contained. Paths in this file are relative to the repo root (where the sess
 dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
   realms.md              overworld rules (Realms), for campaigns with a realms.json
+  realms-plan.md         the design record of Realms v1
+  realms-v2-plan.md      the plan for Realms v2 (WWN-style factions with assets); not built yet
   agents/player.md       instructions for the AI player who runs Morten
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
   tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
