@@ -15,6 +15,7 @@ dnd-crunch/
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
   tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
   campaigns/<name>/      one folder per campaign (see Campaign files)
+  sessions/              per-session notes and full transcripts
 ```
 
 ## Rules source
@@ -188,6 +189,8 @@ Leave out a section only when it's empty.
   cover and gang up, beasts go for the nearest target, smart foes target concentration.
   Morale: a group that loses half its number or its leader may flee or surrender (roll a
   WIS save DC 10 for the group if unsure).
+- Roll step by step whenever a result decides the next choice (a fizzle, a save, a hit).
+  Don't roll a later step in the same call, or you'll have to throw those dice away.
 - Ask the human before big retcons. A fixable GM error (wrong AC, a missed modifier) is
   corrected in the next LOG line with `CORRECTION:`.
 
