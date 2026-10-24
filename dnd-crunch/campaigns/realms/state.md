@@ -29,7 +29,8 @@
   purse before a risky fight. Kite with Thunderwave + Misty Step (chargers Dash and can't
   bite). In the domain: Strike a ruler so the tower's battle and the rival's coup both get
   +3; fund the rival 1 GP so the court can back the coup; keep the tower at F0 while a
-  Brutal ruler is next door; Specters: strike at noon, Magic Missile (they never enslave a Force 0 neighbour).
+  Brutal ruler is next door (they never enslave a Force 0 neighbour). Specters: strike at
+  noon (Sunlight Sensitivity) and use Magic Missile (force isn't resisted).
 
 ## Domain
 
