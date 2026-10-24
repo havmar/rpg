@@ -17,7 +17,7 @@ please start a new game, in dnd crunch
 
 **Month 1 · Day 1 · 08:20 · B5 (L1, desert, tower)** · Floor 1, room 1.1 · **R1 · Init: Morten 22 › Giant Badger 15**
 
-**The world:** 4×5 hexes, six realms. Your tower is B5, the south-west corner of the map's south edge; the hex is warded and can't be seized.
+**The world:** 4×5 hexes, six realms. Your tower is B5, on the south edge, second column from the west; the hex is warded and can't be seized.
 - Next door: A5 Humans (Reeve Leopold, good: keeps the peace, ally) · B4 Gnomes (Tinker-General Ellywick, bad: robs its neighbours, F4 C4 W4) · C5 Tieflings (Exarch Iados, bad: squeezes its own people, F5 C5 W5; Knights and Mercenaries in C5).
 - Further off: Goblinkind (good: keeps the peace, ally), Orcs (bad: robs its neighbours), Elves (bad: takes land).
 - Map page: Morten's War Table (link below).
