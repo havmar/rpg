@@ -11,13 +11,17 @@ self-contained. Paths in this file are relative to the repo root (where the sess
 ```
 dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
-  realms.md              overworld rules (Realms), for campaigns with a realms.json
+  realms.md              overworld rules, Realms v2 (WWN-style factions with assets)
+  realms-v1.md           Realms v1 rules, kept for the `realms` campaign
   realms-plan.md         the design record of Realms v1
-  realms-v2-plan.md      the plan for Realms v2 (WWN-style factions with assets); not built yet
+  realms-v2-plan.md      the design record of Realms v2 (implemented)
   agents/player.md       instructions for the AI player who runs Morten
+  ui/realms-map.html     the Realms map page (a template; see ui/README.md)
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
   tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
-  tools/realms.py        overworld engine: world generator, domain turns, encounters
+  tools/realms.py        Realms v2 engine: world, domain turns, mission fights, sim, map.json
+  tools/realms_v1.py     Realms v1 engine, for the `realms` campaign
+  tools/realms_page.py   builds a campaign's map page (page.html) from its map.json
   campaigns/<name>/      one folder per campaign (see Campaign files)
   sessions/              per-session notes and full transcripts
 ```
@@ -258,21 +262,31 @@ it's fastest:
 
 ## Realms (overworld)
 
-A campaign with a `realms.json` is played by `dnd-crunch/realms.md`, which adds to this
-file (and wins where they differ): a hex map of six realms, monthly domain turns run by
-`tools/realms.py`, Morten's tower and court. Field replies change in two ways:
+A campaign with a `realms.json` is played by `dnd-crunch/realms.md` (Realms v2), which adds
+to this file (and wins where they differ): a hex map of six realms, each realm and Morten's
+tower a faction with assets on the map, monthly domain turns run by `tools/realms.py`.
+The `realms` campaign still plays **v1** (`realms-v1.md`, `tools/realms_v1.py`); its
+`rules.md` says so. Field replies change in two ways:
 
 - The header adds month, day and hex, e.g. **Month 3 · Day 4 · C2 (L9, forest, Elves)**.
 - A **Rumours** section appears when Morten is in or next to a realm's hex.
 
 **Heads-up: the human enjoys the dungeon fight reports but finds the domain turns hard to
-follow.** The bare roll log of a domain turn isn't enough. In chat, lead with the domain:
-- **The plan:** what Morten's mission and the tower's orders are meant to do in the domain,
-  and why.
-- **What happened,** in plain words, one bullet per event that matters: who did what, why
-  their tag made them do it, the roll in short, and the result.
-- **What changed for the tower:** Force, gold, hexes, wars, allies, court, and the threats
-  and chances for next month.
+follow.** The bare roll log of a domain turn isn't enough. The v2 report is built for this
+(`realms.md` section 9): in chat, give it in its order and keep the roll log for
+`transcript.md`:
+- **The plan:** what Morten's mission and the tower's action were for (pass the why with
+  `--plan`).
+- **What happened:** one bullet per event near the tower, its allies and Morten, each
+  leader as *label: verb* and the goal it served; the rest in one Elsewhere line.
+- **The tower now**, then **Next month:** threats, chances and the open choices.
+
+Leaders are always shown as *label: verb* ("bad: takes land"), never a bare tag. The report
+holds only what the tower can know: never paste `--gm` output or `realms.json` into chat.
+
+**The map page** shows the domain at a glance: after every domain turn, run
+`python3 dnd-crunch/tools/realms_page.py dnd-crunch/campaigns/<name>` and republish the
+page; its link is in `state.md`.
 
 When the human asks for **outcome-only fights**, report each fight in chat in one or two
 lines (foes, result, HP and spells lost, XP and gold). Keep the full roll-by-roll log in
@@ -296,6 +310,8 @@ Each campaign lives in `dnd-crunch/campaigns/<name>/`:
 - `gm-secrets.md`: the dungeon or adventure: full map, room keys, monster placement, trap
   DCs, treasure. Only the GM reads it. Write it before the first scene and mark rooms
   explored as the wizard reaches them.
+- Realms campaigns add `realms.json` (the script's), `world.md` and `map.json` (open: the
+  tower's view) and the map page's link in `state.md` (`realms.md` section 9).
 
 This is a cloud session, so the container is wiped when the session ends. **After every GM
 reply**, update `state.md`, append to `transcript.md`, then commit and push the campaign

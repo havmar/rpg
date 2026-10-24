@@ -1,0 +1,1133 @@
+{
+ "version": 2,
+ "campaign": "realms2",
+ "month": 3,
+ "layout": {
+  "cols": 4,
+  "rows": 5,
+  "orientation": "flat-top",
+  "shift": "odd"
+ },
+ "hexes": [
+  {
+   "id": "A1",
+   "col": 0,
+   "row": 0,
+   "level": 13,
+   "biome": "taiga",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": "Gnomes",
+   "income": 130,
+   "neighbours": [
+    "A2",
+    "B1"
+   ],
+   "assets": [
+    {
+     "id": "a6",
+     "owner": "Gnomes",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "A2",
+   "col": 0,
+   "row": 1,
+   "level": 20,
+   "biome": "forest",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": true,
+   "seat_of": "Humans",
+   "income": 200,
+   "neighbours": [
+    "A1",
+    "A3",
+    "B1",
+    "B2"
+   ],
+   "assets": [
+    {
+     "id": "a1",
+     "owner": "Humans",
+     "name": "Walls",
+     "type": "Force",
+     "tier": 2,
+     "hp": 10,
+     "max_hp": 10,
+     "leader": null,
+     "attack": "none",
+     "counter": "1d8",
+     "special": "can't move; its hex can't be seized while it stands"
+    },
+    {
+     "id": "a2",
+     "owner": "Humans",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "A3",
+   "col": 0,
+   "row": 2,
+   "level": 16,
+   "biome": "plains",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "income": 160,
+   "neighbours": [
+    "A2",
+    "A4",
+    "B2",
+    "B3"
+   ],
+   "assets": [
+    {
+     "id": "a3",
+     "owner": "Humans",
+     "name": "Men-at-arms",
+     "type": "Force",
+     "tier": 2,
+     "hp": 6,
+     "max_hp": 6,
+     "leader": null,
+     "attack": "F vs F, 1d8",
+     "counter": "1d6",
+     "special": ""
+    },
+    {
+     "id": "a4",
+     "owner": "Humans",
+     "name": "Farms",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "none",
+     "counter": "none",
+     "special": "income +50"
+    }
+   ]
+  },
+  {
+   "id": "A4",
+   "col": 0,
+   "row": 3,
+   "level": 14,
+   "biome": "hills",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "income": 140,
+   "neighbours": [
+    "A3",
+    "A5",
+    "B3",
+    "B4"
+   ],
+   "assets": [
+    {
+     "id": "a11",
+     "owner": "Tieflings",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 2,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4",
+     "special": ""
+    },
+    {
+     "id": "a12",
+     "owner": "Tieflings",
+     "name": "Mine",
+     "type": "Wealth",
+     "tier": 2,
+     "hp": 6,
+     "max_hp": 6,
+     "leader": null,
+     "attack": "none",
+     "counter": "1d4",
+     "special": "income +200; only in hills or mountains"
+    }
+   ]
+  },
+  {
+   "id": "A5",
+   "col": 0,
+   "row": 4,
+   "level": 3,
+   "biome": "desert",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "income": 30,
+   "neighbours": [
+    "A4",
+    "B4",
+    "B5"
+   ],
+   "assets": []
+  },
+  {
+   "id": "B1",
+   "col": 1,
+   "row": 0,
+   "level": 2,
+   "biome": "taiga",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "income": 20,
+   "neighbours": [
+    "A1",
+    "A2",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "assets": [
+    {
+     "id": "a9",
+     "owner": "Gnomes",
+     "name": "Farms",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "none",
+     "counter": "none",
+     "special": "income +50"
+    }
+   ]
+  },
+  {
+   "id": "B2",
+   "col": 1,
+   "row": 1,
+   "level": 6,
+   "biome": "forest",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "income": 60,
+   "neighbours": [
+    "A2",
+    "A3",
+    "B1",
+    "B3",
+    "C2",
+    "C3"
+   ],
+   "assets": [
+    {
+     "id": "a5",
+     "owner": "Humans",
+     "name": "Caravans",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "W vs W, 1d4",
+     "counter": "none",
+     "special": "income +100; may move 2 hexes"
+    }
+   ]
+  },
+  {
+   "id": "B3",
+   "col": 1,
+   "row": 2,
+   "level": 8,
+   "biome": "forest",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": null,
+   "income": 80,
+   "neighbours": [
+    "A3",
+    "A4",
+    "B2",
+    "B4",
+    "C3",
+    "C4"
+   ],
+   "assets": [
+    {
+     "id": "a13",
+     "owner": "Orcs",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 1,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4",
+     "special": ""
+    },
+    {
+     "id": "a14",
+     "owner": "Orcs",
+     "name": "Caravans",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "W vs W, 1d4",
+     "counter": "none",
+     "special": "income +100; may move 2 hexes"
+    }
+   ]
+  },
+  {
+   "id": "B4",
+   "col": 1,
+   "row": 3,
+   "level": 5,
+   "biome": "hills",
+   "people": "Orcs",
+   "holder": "tower",
+   "lake": false,
+   "seat_of": null,
+   "income": 50,
+   "neighbours": [
+    "A4",
+    "A5",
+    "B3",
+    "B5",
+    "C4",
+    "C5"
+   ],
+   "assets": []
+  },
+  {
+   "id": "B5",
+   "col": 1,
+   "row": 4,
+   "level": 17,
+   "biome": "savanna",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": "Tieflings",
+   "income": 170,
+   "neighbours": [
+    "A5",
+    "B4",
+    "C5"
+   ],
+   "assets": [
+    {
+     "id": "a10",
+     "owner": "Tieflings",
+     "name": "Men-at-arms",
+     "type": "Force",
+     "tier": 2,
+     "hp": 6,
+     "max_hp": 6,
+     "leader": null,
+     "attack": "F vs F, 1d8",
+     "counter": "1d6",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "C1",
+   "col": 2,
+   "row": 0,
+   "level": 10,
+   "biome": "mountains",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "income": 100,
+   "neighbours": [
+    "B1",
+    "C2",
+    "D1"
+   ],
+   "assets": [
+    {
+     "id": "a7",
+     "owner": "Gnomes",
+     "name": "Walls",
+     "type": "Force",
+     "tier": 2,
+     "hp": 10,
+     "max_hp": 10,
+     "leader": null,
+     "attack": "none",
+     "counter": "1d8",
+     "special": "can't move; its hex can't be seized while it stands"
+    },
+    {
+     "id": "a8",
+     "owner": "Gnomes",
+     "name": "Mine",
+     "type": "Wealth",
+     "tier": 2,
+     "hp": 6,
+     "max_hp": 6,
+     "leader": null,
+     "attack": "none",
+     "counter": "1d4",
+     "special": "income +200; only in hills or mountains"
+    }
+   ]
+  },
+  {
+   "id": "C2",
+   "col": 2,
+   "row": 1,
+   "level": 4,
+   "biome": "taiga",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "income": 40,
+   "neighbours": [
+    "B1",
+    "B2",
+    "C1",
+    "C3",
+    "D1",
+    "D2"
+   ],
+   "assets": []
+  },
+  {
+   "id": "C3",
+   "col": 2,
+   "row": 2,
+   "level": 9,
+   "biome": "hills",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": null,
+   "income": 90,
+   "neighbours": [
+    "B2",
+    "B3",
+    "C2",
+    "C4",
+    "D2",
+    "D3"
+   ],
+   "assets": [
+    {
+     "id": "a21",
+     "owner": "Goblinkind",
+     "name": "Thugs",
+     "type": "Force",
+     "tier": 1,
+     "hp": 3,
+     "max_hp": 3,
+     "leader": null,
+     "attack": "F vs F, 1d4",
+     "counter": "1d4",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "C4",
+   "col": 2,
+   "row": 3,
+   "level": 11,
+   "biome": "plains",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": true,
+   "seat_of": "Orcs",
+   "income": 110,
+   "neighbours": [
+    "B3",
+    "B4",
+    "C3",
+    "C5",
+    "D3",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "a15",
+     "owner": "Orcs",
+     "name": "Worgs",
+     "type": "Force",
+     "tier": 2,
+     "hp": 5,
+     "max_hp": 5,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d6",
+     "special": "the people's beasts: Worgs"
+    },
+    {
+     "id": "a16",
+     "owner": "Orcs",
+     "name": "Thugs",
+     "type": "Force",
+     "tier": 1,
+     "hp": 3,
+     "max_hp": 3,
+     "leader": null,
+     "attack": "F vs F, 1d4",
+     "counter": "1d4",
+     "special": ""
+    },
+    {
+     "id": "a17",
+     "owner": "Orcs",
+     "name": "Informers",
+     "type": "Cunning",
+     "tier": 1,
+     "hp": 3,
+     "max_hp": 3,
+     "leader": null,
+     "attack": "C vs C, 1d4",
+     "counter": "none",
+     "special": "reveals every asset in its hex to its owner"
+    },
+    {
+     "id": "a18",
+     "owner": "Orcs",
+     "name": "Farms",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "none",
+     "counter": "none",
+     "special": "income +50"
+    },
+    {
+     "id": "a19",
+     "owner": "Goblinkind",
+     "name": "Hyenas",
+     "type": "Force",
+     "tier": 2,
+     "hp": 5,
+     "max_hp": 5,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d6",
+     "special": "the people's beasts: hyenas"
+    },
+    {
+     "id": "a29",
+     "owner": "tower",
+     "name": "Seditionists",
+     "type": "Cunning",
+     "tier": 2,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": "Hruma, an orc smith",
+     "attack": "C vs C, 1d6",
+     "counter": "none",
+     "special": "coup: may attack the seat's faction HP directly"
+    }
+   ]
+  },
+  {
+   "id": "C5",
+   "col": 2,
+   "row": 4,
+   "level": 1,
+   "biome": "jungle",
+   "people": "tower folk",
+   "holder": "tower",
+   "lake": false,
+   "seat_of": "tower",
+   "income": 10,
+   "neighbours": [
+    "B4",
+    "B5",
+    "C4",
+    "D4",
+    "D5"
+   ],
+   "assets": [
+    {
+     "id": "a27",
+     "owner": "tower",
+     "name": "Informers",
+     "type": "Cunning",
+     "tier": 1,
+     "hp": 3,
+     "max_hp": 3,
+     "leader": null,
+     "attack": "C vs C, 1d4",
+     "counter": "none",
+     "special": "reveals every asset in its hex to its owner"
+    },
+    {
+     "id": "a28",
+     "owner": "tower",
+     "name": "Farms",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 1,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "none",
+     "counter": "none",
+     "special": "income +50"
+    }
+   ]
+  },
+  {
+   "id": "D1",
+   "col": 3,
+   "row": 0,
+   "level": 15,
+   "biome": "mountains",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": "Goblinkind",
+   "income": 150,
+   "neighbours": [
+    "C1",
+    "C2",
+    "D2"
+   ],
+   "assets": [
+    {
+     "id": "a20",
+     "owner": "Goblinkind",
+     "name": "Men-at-arms",
+     "type": "Force",
+     "tier": 2,
+     "hp": 6,
+     "max_hp": 6,
+     "leader": null,
+     "attack": "F vs F, 1d8",
+     "counter": "1d6",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "D2",
+   "col": 3,
+   "row": 1,
+   "level": 12,
+   "biome": "mountains",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": null,
+   "income": 120,
+   "neighbours": [
+    "C2",
+    "C3",
+    "D1",
+    "D3"
+   ],
+   "assets": [
+    {
+     "id": "a22",
+     "owner": "Goblinkind",
+     "name": "Mine",
+     "type": "Wealth",
+     "tier": 2,
+     "hp": 6,
+     "max_hp": 6,
+     "leader": null,
+     "attack": "none",
+     "counter": "1d4",
+     "special": "income +200; only in hills or mountains"
+    }
+   ]
+  },
+  {
+   "id": "D3",
+   "col": 3,
+   "row": 2,
+   "level": 18,
+   "biome": "forest",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "income": 180,
+   "neighbours": [
+    "C3",
+    "C4",
+    "D2",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "a25",
+     "owner": "Elves",
+     "name": "Caravans",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "W vs W, 1d4",
+     "counter": "none",
+     "special": "income +100; may move 2 hexes"
+    }
+   ]
+  },
+  {
+   "id": "D4",
+   "col": 3,
+   "row": 3,
+   "level": 7,
+   "biome": "swamp",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "income": 70,
+   "neighbours": [
+    "C4",
+    "C5",
+    "D3",
+    "D5"
+   ],
+   "assets": [
+    {
+     "id": "a24",
+     "owner": "Elves",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "D5",
+   "col": 3,
+   "row": 4,
+   "level": 19,
+   "biome": "savanna",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": "Elves",
+   "income": 190,
+   "neighbours": [
+    "C5",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "a23",
+     "owner": "Elves",
+     "name": "Men-at-arms",
+     "type": "Force",
+     "tier": 2,
+     "hp": 6,
+     "max_hp": 6,
+     "leader": null,
+     "attack": "F vs F, 1d8",
+     "counter": "1d6",
+     "special": ""
+    },
+    {
+     "id": "a26",
+     "owner": "Elves",
+     "name": "Farms",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "none",
+     "counter": "none",
+     "special": "income +50"
+    }
+   ]
+  }
+ ],
+ "rivers": [
+  [
+   "C4",
+   "D3"
+  ],
+  [
+   "C3",
+   "C4"
+  ],
+  [
+   "B3",
+   "C3"
+  ],
+  [
+   "B2",
+   "B3"
+  ],
+  [
+   "A3",
+   "B2"
+  ],
+  [
+   "A2",
+   "A3"
+  ],
+  [
+   "A5",
+   "B5"
+  ],
+  [
+   "A5",
+   "B4"
+  ],
+  [
+   "A4",
+   "A5"
+  ]
+ ],
+ "factions": [
+  {
+   "name": "tower",
+   "tower": true,
+   "leader": {
+    "name": "Morten",
+    "title": "Wizard",
+    "label": null,
+    "tag": null,
+    "verb": null
+   },
+   "goal": "back Hruma's rising against Mogra in C4",
+   "hp": 7,
+   "max_hp": 7,
+   "force": 1,
+   "cunning": 1,
+   "wealth": 1,
+   "treasury": 260,
+   "seat": "C5",
+   "hexes": [
+    "B4",
+    "C5"
+   ],
+   "hostile": 0,
+   "ally": false,
+   "disorder": 0
+  },
+  {
+   "name": "Humans",
+   "tower": false,
+   "leader": {
+    "name": "Galen",
+    "title": "Marshal",
+    "label": "bad",
+    "tag": "Slaver",
+    "verb": "takes people for soldiers"
+   },
+   "goal": "break the Orcs' Militia in B3 (month 2 of it)",
+   "hp": 22,
+   "max_hp": 22,
+   "force": 4,
+   "cunning": 4,
+   "wealth": 4,
+   "treasury": 380,
+   "seat": "A2",
+   "hexes": [
+    "A2",
+    "A3",
+    "B2"
+   ],
+   "hostile": 0,
+   "ally": false,
+   "disorder": 0
+  },
+  {
+   "name": "Elves",
+   "tower": false,
+   "leader": {
+    "name": "Faelar",
+    "title": "Speaker",
+    "label": "bad",
+    "tag": "Raider",
+    "verb": "robs its neighbours"
+   },
+   "goal": "Punish the tower: break its Farms in C5 (2 months left)",
+   "hp": 19,
+   "max_hp": 22,
+   "force": 4,
+   "cunning": 4,
+   "wealth": 4,
+   "treasury": 510,
+   "seat": "D5",
+   "hexes": [
+    "D3",
+    "D4",
+    "D5"
+   ],
+   "hostile": 2,
+   "ally": false,
+   "disorder": 0
+  },
+  {
+   "name": "Goblinkind",
+   "tower": false,
+   "leader": {
+    "name": "Nagra",
+    "title": "Big Boss",
+    "label": "bad",
+    "tag": "Conqueror",
+    "verb": "takes land"
+   },
+   "goal": "seize C4 from the Orcs (month 1 of it)",
+   "hp": 22,
+   "max_hp": 22,
+   "force": 4,
+   "cunning": 4,
+   "wealth": 4,
+   "treasury": 470,
+   "seat": "D1",
+   "hexes": [
+    "C3",
+    "D1",
+    "D2"
+   ],
+   "hostile": 0,
+   "ally": false,
+   "disorder": 0
+  },
+  {
+   "name": "Orcs",
+   "tower": false,
+   "leader": {
+    "name": "Mogra",
+    "title": "Chief",
+    "label": "bad",
+    "tag": "Tyrant",
+    "verb": "squeezes its own people"
+   },
+   "goal": "raise Force to 3 (needs 400 GP)",
+   "hp": 7,
+   "max_hp": 10,
+   "force": 2,
+   "cunning": 2,
+   "wealth": 2,
+   "treasury": 150,
+   "seat": "C4",
+   "hexes": [
+    "B3",
+    "C4"
+   ],
+   "hostile": 0,
+   "ally": false,
+   "disorder": 0
+  },
+  {
+   "name": "Gnomes",
+   "tower": false,
+   "leader": {
+    "name": "Quillon",
+    "title": "Mayor",
+    "label": "good",
+    "tag": "Steward",
+    "verb": "keeps the peace"
+   },
+   "goal": "build Walls in C1 (done)",
+   "hp": 16,
+   "max_hp": 16,
+   "force": 3,
+   "cunning": 3,
+   "wealth": 3,
+   "treasury": 290,
+   "seat": "A1",
+   "hexes": [
+    "A1",
+    "B1",
+    "C1",
+    "C2"
+   ],
+   "hostile": 0,
+   "ally": true,
+   "disorder": 0
+  },
+  {
+   "name": "Tieflings",
+   "tower": false,
+   "leader": {
+    "name": "Iados",
+    "title": "Magister",
+    "label": "good",
+    "tag": "Liberator",
+    "verb": "fights tyrants"
+   },
+   "goal": "break the Orcs' Militia in B3 (month 1 of it)",
+   "hp": 16,
+   "max_hp": 16,
+   "force": 3,
+   "cunning": 3,
+   "wealth": 3,
+   "treasury": 240,
+   "seat": "B5",
+   "hexes": [
+    "A4",
+    "A5",
+    "B5"
+   ],
+   "hostile": 0,
+   "ally": true,
+   "disorder": 0
+  }
+ ],
+ "morten": {
+  "hex": "C4",
+  "level": 4
+ },
+ "events": [
+  {
+   "month": 2,
+   "actor": "tower",
+   "action": "Mission",
+   "from_hex": "C4",
+   "to_hex": "C4",
+   "target": "Contact: the people of C4",
+   "result": "won: Hruma, an orc smith, will lead a rising (Persuasion 17 vs DC 12)"
+  },
+  {
+   "month": 2,
+   "actor": "tower",
+   "action": "Buy",
+   "from_hex": null,
+   "to_hex": "C4",
+   "target": "Seditionists, led by Hruma",
+   "result": "bought for 600 GP"
+  },
+  {
+   "month": 2,
+   "actor": "Gnomes",
+   "action": "Buy",
+   "from_hex": null,
+   "to_hex": "C1",
+   "target": "Walls",
+   "result": "bought for 600 GP; goal done"
+  },
+  {
+   "month": 2,
+   "actor": "Humans",
+   "action": "Attack",
+   "from_hex": "A3",
+   "to_hex": "B3",
+   "target": "Orcs' Militia",
+   "result": "won: Militia 4 → 1 HP (d10+4 = 11 vs d10+2 = 5)"
+  },
+  {
+   "month": 2,
+   "actor": "Elves",
+   "action": "Attack",
+   "from_hex": "D4",
+   "to_hex": "C5",
+   "target": "the tower's Farms",
+   "result": "won: Farms 4 → 1 HP (d10+4 = 9 vs d10+1 = 4)"
+  },
+  {
+   "month": 2,
+   "actor": "Goblinkind",
+   "action": "Move",
+   "from_hex": "C3",
+   "to_hex": "C4",
+   "target": "Hyenas",
+   "result": "moved into the Orcs' seat"
+  },
+  {
+   "month": 2,
+   "actor": "Tieflings",
+   "action": "Attack",
+   "from_hex": "A4",
+   "to_hex": "B3",
+   "target": "Orcs' Militia",
+   "result": "lost: counter 1d4, Tiefling Militia 4 → 2 HP"
+  },
+  {
+   "month": 2,
+   "actor": "Orcs",
+   "action": "Buy",
+   "from_hex": null,
+   "to_hex": "C4",
+   "target": "Thugs",
+   "result": "bought for 200 GP"
+  },
+  {
+   "month": 2,
+   "actor": "Orcs",
+   "action": "Goal",
+   "from_hex": null,
+   "to_hex": null,
+   "target": "raise Force to 3",
+   "result": "new goal"
+  }
+ ],
+ "report": {
+  "plan": [
+   "Morten went to C4 to Contact the orcs who hate Mogra's squeeze, so the tower can back a coup there.",
+   "The tower's action: Buy Seditionists in C4 if the Contact found a leader."
+  ],
+  "happened": [
+   "Morten's Contact in C4 found Hruma, an orc smith; the tower bought Seditionists under her (600 GP).",
+   "Elves (bad: robs its neighbours, hostile to the tower) attacked the tower's Farms in C5 from D4 and won: Farms 4 → 1 HP.",
+   "Goblinkind (bad: takes land) moved their Hyenas into C4, the Orcs' seat, to seize it.",
+   "Humans (bad: takes people for soldiers) broke the Orcs' Militia in B3 down to 1 HP; the Tieflings attacked it too and lost.",
+   "Elsewhere: the Gnomes bought Walls in C1."
+  ],
+  "tower": [
+   "HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 260 GP.",
+   "Assets: Informers and Farms (1/4 HP) in C5; Seditionists (Hruma) in C4.",
+   "Hexes: B4, C5. Hostile: Elves, 2 months left. Allies: Gnomes, Tieflings."
+  ],
+  "next": [
+   "Threat: the Elves' Militia in D4 sits next to C5 and will hit the Farms again.",
+   "Threat: Goblinkind want C4; their Hyenas are in the same hex as Hruma's Seditionists.",
+   "Chance: Mogra is at 7/10 HP. Seditionists can strike the Orcs' HP directly from C4.",
+   "Chance: the Orcs' Militia in B3 is at 1 HP, next to the tower's B4.",
+   "Open: Morten's mission (Strike, Rob, Contact or Delve) and the tower's action."
+  ]
+ }
+}

@@ -1,463 +1,349 @@
-# Realms: the overworld
+# Realms v2: the overworld
 
-An overworld for D&D Crunch: a small hex map of six realms, played as monthly domain turns on
-top of the dungeon game. Same feel: minimal narration, open numbers, every roll in the log.
-Morten is a wizard-lord in his tower. He can play the vigilante (rob the vicious, strike
-their leaders, fund the rebels who will overthrow them) or simply conquer.
+An overworld for D&D Crunch: a small hex map of six realms and Morten's tower, played as
+monthly domain turns on top of the dungeon game. Same feel: minimal narration, open
+numbers, every roll in the log. Every realm and the tower is a **faction** with **assets**
+on the map (a militia, a spy ring, a caravan), after the faction rules of *Worlds Without
+Number* (the same engine as *Stars Without Number*). Every asset turns into a D&D fight
+when Morten goes after it in person.
 
-A campaign with a `realms.json` is played by this file, which adds to `dnd-crunch/CLAUDE.md`.
-Where the two differ, this file wins. The script `dnd-crunch/tools/realms.py` runs the world:
-it generates the map, rolls the domain turn and keeps `realms.json`. The numbers below are
-in one table (Constants) and in the script's constants block; keep the two the same.
+A campaign with a `realms.json` of version 2 is played by this file, which adds to
+`dnd-crunch/CLAUDE.md` and wins where they differ. The script `dnd-crunch/tools/realms.py`
+runs the world: it generates the map, rolls the domain turn and keeps `realms.json`. Its
+constants block and the table in section 10 hold the same numbers; change both together.
+Version 1 (`realms-v1.md`, `tools/realms_v1.py`) still runs the `realms` campaign; v2
+refuses a v1 `realms.json`. The design record is `realms-v2-plan.md`.
 
 ## 1. The map
 
-- **4 columns × 5 rows = 20 hexes**, named like the dungeon grid: columns A–D west → east,
-  rows 1–5 north → south. A1 is the north-west hex.
-- **Layout:** flat-topped hexes in columns; columns B and D sit half a hex south.
-- **Neighbours** of a hex: the hexes above and below it in its column, plus two in each
-  neighbouring column: rows r−1 and r if the hex is in column A or C, rows r and r+1 if it
-  is in B or D. Off-map ones drop out. `world.md` lists every hex's neighbours, since maps
-  can't be drawn on the phone.
-- **Travel:** entering a hex takes **1 day**. The hex's size in km isn't fixed.
+As in v1:
 
-### Hex level
-
-- The levels **1 to 20 are each used once**, shuffled over the hexes. Levels never change.
-- In the world, a hex's level is how deep its **ley** runs: deep ley breeds strong monsters
-  and rich land.
-- The level does three jobs:
-  - **Income:** the hex pays its holder **level × 10 GP a month**.
-  - **Wandering monsters:** encounters in the hex are built for a character of that level.
-  - **Dungeon:** the hex holds **floor N** of the 20-floor dungeon, N = its level.
-
-### Biomes
-
-One biome per hex, colder in the north. Flavour only: no effect on monsters or rolls.
-
-| Row | Biomes |
-|---|---|
-| 1 | tundra, taiga, mountains |
-| 2 | taiga, hills, mountains, forest |
-| 3 | forest, plains, hills, swamp |
-| 4 | plains, forest, swamp, hills, savanna |
-| 5 | desert, savanna, jungle, mountains |
-
-### Water
-
-- **Rivers run along hex edges, never through a hex.** There are **2 rivers**, each 3–6
-  edges long, starting at a lake or the map's edge and ending at the map's edge. They don't
-  share an edge.
-  - `world.md` lists a river as the pairs of hexes that share a river edge, e.g. B2|B3.
-  - **When an attack crosses a river edge, the defender gets +1.**
-- **Lakes sit inside a hex** and cover at most half of it. There are **2 lakes**, in
-  different hexes. Flavour only (and a river can start at one).
-
-### Monsters
-
-As in the dungeon: one random SRD monster type, 1–4 of them, fitting a Low, Moderate or
-High budget for the hex's level. Biome doesn't filter them. The `encounter` command rolls
-them.
+- **4 columns × 5 rows = 20 hexes**, columns A–D west → east, rows 1–5 north → south.
+  Flat-topped, columns B and D sit half a hex south. `world.md` lists every hex's
+  neighbours.
+- **Hex level 1–20**, each used once: its ley. A hex pays its holder **level × 10 GP a
+  month**, sets the wandering monsters, and holds **floor N** of the dungeon (N = level).
+- **Biomes** by row, flavour only (a Mine needs hills or mountains).
+- **2 rivers** along hex edges, **2 lakes** inside hexes. An asset that came into its hex
+  over a river edge attacks at **+1 to the defender**.
+- **Travel:** entering a hex takes 1 day. Each day outside the tower hex, `1d6`: on a 1, a
+  wandering encounter for that hex's level (`encounter --hex HEX`).
 
 ## 2. Peoples and realms
 
-- There are **6 realms**, each of one **people**: **Humans**, **Elves**, **Orcs**,
-  **Gnomes**, **Tieflings** and **Goblinkind** (goblins, hobgoblins, bugbears, kobolds and
-  gnolls, counted as one people). A realm is named by its people (`Orcs`, `Goblinkind`).
-- **Every hex has a people:** at the start, the people of the realm that holds it.
-  Conquest changes who holds a hex, never its people.
-- **Claim:** a realm gets **+1** when it attacks a hex of its own people. That's all; a
-  foreign hex pays full income.
-- **Morten's tower** is on the **level 1 hex**. Its people are the **tower folk**, claimed by
-  nobody.
-- **Territory:** each realm starts with **3 contiguous hexes**. The 19th non-tower hex goes
-  to the **adjacent realm with the lowest total hex level** (ties: die roll), so one realm
-  holds 4.
-- Peoples differ only in names. No racial bonuses.
+- **6 peoples, 6 realms:** Humans, Elves, Orcs, Gnomes, Tieflings, Goblinkind. Each realm
+  starts with 3 contiguous hexes (one of them 4). Every hex keeps its people; conquest
+  changes only the holder.
+- **Claim:** +1 to an attack made in a hex of the attacker's own people.
+- **The tower** is on the level 1 hex, its people the tower folk. The hex is **warded**: it
+  can never be seized, but assets in it can be attacked, and so can the tower itself.
 
-## 3. Factions and leaders
+## 3. Factions
 
-Every realm holds **two factions**:
+| Field | What it is |
+|---|---|
+| **Force** 1–8 | armies and the fear of them |
+| **Cunning** 1–8 | spies, informers, friends in the right places |
+| **Wealth** 1–8 | trade, land, coffers |
+| **HP** | the regime's health: **4 + the bonus of each attribute** (1→1, 2→2, 3→4, 4→6, 5→9, 6→12, 7→16, 8→20). At 0 the ruler falls (section 7) |
+| **Treasury** | GP |
+| **Seat** | the hex the ruler sits in (a realm's deepest hex at the start; the tower hex for the tower) |
+| **Leader** | name, title, **label: verb** (section 8) |
+| **Goal** | what it is working on, one line, shown to all |
+| **XP** | from goals done; spent on the goal's attribute |
+| **Hostile** | months left of "punish the tower" |
 
-- **The ruler:** holds the realm's hexes, army and treasury.
-- **The mirror:** the rival who wants to take over. No hexes, no army: only Cunning and a
-  purse.
+- **Attributes gate assets:** an asset needs its type's attribute at its **Needs** or more.
+- **Limits:** a faction may hold as many assets of a type as the matching attribute; each
+  one over costs **100 GP a month**.
+- **Start:** S = the realm's hex levels summed. Force = Cunning = Wealth = S ÷ 10, rounded,
+  min 1. Treasury S × 10 GP. Assets: 2 Force (one at the seat), 1 Cunning, 1 Wealth, each
+  random among those its attribute allows. 4 rulers bad, 2 good; each realm starts with a
+  goal.
+- **The tower:** F1 C1 W1, HP 7, 100 GP, no assets. Its leader is Morten.
 
-Each faction has a named **leader**, and the **tag belongs to the leader**: when a coup swaps
-them, the tags go with them.
+## 4. Assets
 
-### Stats
+An asset sits in one hex and belongs to one faction. **Attack** "X vs Y, damage": the
+attacker's X against the defender's Y, the damage on a win. **Counter**: what the attacker
+takes when the defence wins. **Fight**: what Morten meets when he goes after it (section 6).
+Costs are the book's FacCreds × 100 GP; the book's entry is in the script (`book`).
 
-| Stat | Ruler | Mirror |
+**Force**
+
+| Asset | Tier | Needs | Cost | HP | Attack | Counter | Special | Fight |
+|---|---|---|---|---|---|---|---|---|
+| Thugs | 1 | F1 | 200 | 3 | F vs F, 1d3+1 | 1d4 | | Bandit, Tough, Tough Boss |
+| Militia | 1 | F1 | 400 | 4 | F vs F, 1d6 | 1d4+1 | | Guard, Scout, Guard Captain |
+| Beast pack | 2 | F2 | 500 | 5 | F vs F, 2d4 | 1d4+1 | the people's beasts | by people (below) |
+| Walls | 2 | F3 | 600 | 10 | none | 1d6 | can't move; owner +1 on defence in its hex; the hex can't be seized | Animated Armor, Guard, Gargoyle |
+| Knights | 3 | F4 | 800 | 12 | F vs F, 1d8 | 1d8 | upkeep 100 | Knight, Warrior Veteran, Warhorse |
+| Warband | 3 | F6 | 1,600 | 16 | F vs F, 2d8 | 2d6 | upkeep 200 | Berserker, Warrior Veteran, Gladiator, Ogre |
+
+**Cunning**
+
+| Asset | Tier | Needs | Cost | HP | Attack | Counter | Special | Fight |
+|---|---|---|---|---|---|---|---|---|
+| Informers | 1 | C1 | 200 | 3 | none | none | its owner sees every asset in its hex | Spy, Bandit, Noble |
+| Smugglers | 1 | C1 | 200 | 4 | C vs W, 1d4 | none | income +50; moves 2 | Bandit, Pirate, Bandit Captain |
+| Saboteurs | 2 | C2 | 500 | 6 | C vs C, 2d4 | none | | Tough, Spy, Scout |
+| Seditionists | 2 | C2 | 600 | 6 | C vs C, 1d6 | none | **coup** (section 7); only after a Contact; led by the dissident | Cultist, Cultist Fanatic |
+| Assassins | 3 | C3 | 600 | 4 | C vs C, 2d6 | none | a win also does 1d4 to the target faction's HP | Spy, Assassin |
+| Court mage | 3 | C5 | 1,000 | 6 | C vs C, 1d8 | 1d6 | can't move; once a month cancels an attack on its owner's asset in its hex (C vs C) | Mage, Cultist Fanatic, Guard, Imp |
+
+**Wealth**
+
+| Asset | Tier | Needs | Cost | HP | Attack | Counter | Special | Fight |
+|---|---|---|---|---|---|---|---|---|
+| Farms | 1 | W1 | 200 | 4 | none | 1d4 | income +50; can't move | Guard, Mastiff, Scout |
+| Caravans | 1 | W2 | 400 | 4 | W vs W, 1d4 | 1d4−1 | income +100; moves 2 | Guard, Scout, Warrior Veteran, Mastiff |
+| Mine | 2 | W3 | 800 | 4 | none | 1d4 | income +150; hills or mountains; can't move | Tough, Guard, Tough Boss |
+| Mercenaries | 2 | W3 | 800 | 6 | W vs F, 2d4+2 | 1d6 | upkeep 100 | Warrior Veteran, Berserker, Bandit Captain, Tough |
+| Treasury | 3 | W4 | 1,200 | 8 | none | 1d6 | income +100; a Rob here takes double; can't move | Guard Captain, Animated Armor, Guard |
+| Toll road | 3 | W5 | 1,000 | 8 | W vs W, 1d6 | none | income +250; can't move | Knight, Warrior Veteran, Scout, Guard |
+
+**Beast packs:** Humans Mastiff, Warhorse, Scout · Elves Giant Owl, Giant Eagle, Giant Elk ·
+Orcs Worg, Dire Wolf, Giant Boar · Gnomes Giant Badger, Giant Goat, Brown Bear · Tieflings
+Imp, Hell Hound · Goblinkind Giant Hyena, Worg, Gnoll Warrior · the tower Mastiff, Giant
+Owl, Brown Bear. **A seat with no Force asset** fights as the ruler's court: Noble, Spy,
+Tough, Guard, Knight, Guard Captain, tier 3.
+
+**Seen and hidden.** Force and Wealth assets are open. Another faction's Cunning asset is
+shown only where the tower has Informers, where Morten has been, or once it has attacked
+the tower or been attacked by it. The realms see the tower's Cunning assets only where they
+have Informers, or once those assets have attacked.
+
+## 5. The domain turn
+
+Every month, after Morten's month, the script runs:
+
+1. **Morten's month lands:** the mission's result, deposit and withdraw, Give (section 6).
+2. **Income and upkeep:** hex income (none from a hex with another faction's Force asset
+   in it: it's occupied), asset income, then upkeep (assets that have it, and 100 for each
+   asset over a limit). A faction that can't pay loses its cheapest charged asset until it
+   can.
+3. **Each faction takes one action,** in order of Cunning, highest first; ties by d10, the
+   tower first on its own tie.
+4. **Goals:** a goal done gives XP (section 8); a faction without one picks one by its tag.
+5. **Clean-up:** seizes resolve, hostility and disorder count down, a realm with no hexes
+   is gone, a faction at 0 HP falls (section 7), the month advances.
+
+**Actions** (one per faction per month):
+
+| Action | What it does |
+|---|---|
+| **Attack** | Its assets in one hex each attack once (section 6). Seditionists attack from anywhere in their realm. |
+| **Move** | Any number of its assets one hex each (Smugglers, Caravans two). Walls, Farms, Mine, Treasury, Toll road, Court mage can't move. |
+| **Buy** | One asset, in a hex it holds where it has its seat or a Force asset. Seditionists: in the hex of the Contact. |
+| **Raise** | One attribute +1: 200 GP to rating 2, 400 → 3, 600 → 4, 900 → 5, 1,200 → 6, 1,600 → 7, 2,000 → 8. Max HP rises with it. |
+| **Repair** | One asset back to full for a quarter of its cost, or the faction 1d6 HP for 100 GP. |
+| **Seize** | A hex where it has a Force asset and the holder has none (and no Walls). It changes hands at clean-up if that still holds. |
+
+**Give** (the tower only): GP to any realm, free, not an action. The gold is theirs to spend.
+
+## 6. Attacks, seats, hexes, hostility
+
+- **An attack:** d10 + attacker's X vs d10 + defender's Y. Higher wins: the target takes
+  the attack's damage. Defence higher: the attacker takes the target's counter. **A tie:
+  both.** An asset at 0 HP is destroyed.
+- **Modifiers:** +1 claim (attacker, its own people's hex) · +1 river (defender, the
+  attacker came in over a river edge) · +1 Walls (defender, its Walls stand in the hex).
+- **The seat under attack:** damage to a Force asset in its owner's seat is also done to
+  the owner's HP. With no Force asset left at the seat, assets in the hex attack the seat
+  itself: the defence rolls the attack's Y, the damage goes to HP, the counter is 1d4.
+- **Hexes:** a hex seized from a faction costs it 1d4 HP; its seat, 1d6, and the seat moves
+  to its deepest hex left.
+- **Hostility:** a faction whose asset the tower or Morten attacks (a Strike, a Rob, a tower
+  Attack) turns **hostile for 3 months** (this one and the next two); its seat, **6**. A
+  hostile faction's action goes against the tower's assets, marching toward them, or
+  against the tower itself when it has none it can see. Any fall ends it.
+- **Allies** are good rulers not hostile to the tower.
+- **The tower at 0 HP is sacked:** whoever brought it down carries off half its treasury;
+  its HP is restored and every hostility is spent. The wards hold the hex.
+
+## 7. Morten's month
+
+Travel as in section 1. Then **one mission in the hex he is in, or none.** Strike, Rob and a
+Contact that turns into a fight are D&D fights built from the target's Fight list by
+`encounter --asset ID`: **tier 1 a Low encounter for his level, tier 2 Moderate, tier 3
+High** (`Combat Encounters.md`), at most 4 monsters of at most two kinds, coins a tenth of
+their XP. The hex level scales only wandering monsters and the dungeon floor.
+
+| Mission | Against | On a win |
 |---|---|---|
-| **Force** | the army: battles, attack and defence | none |
-| **Cunning** | defends against coups; sets the order of action | attempts coups |
-| **Treasury** | GP: income in, upkeep and purchases out | GP: its skim, plus anything Morten gives it |
+| **Strike** | any asset in the hex, or a realm's seat with no Force asset in it | the asset takes **2d6**; the seat, 2d6 to the realm's HP. Hostile 3 months (seat 6) |
+| **Rob** | a Wealth asset | it takes 1d6, and Morten takes **tier × 100 GP** from the owner's treasury (× 2 at a Treasury), at most what it holds. Hostile 3 months |
+| **Contact** | the people of a realm's hex | Persuasion (CHA) **DC 10 + the ruler's Cunning** (−4 under a Tyrant), or, if that realm's Informers are in the hex, a fight with them. A win names a **dissident** and lets the tower buy **Seditionists** there. No hostility |
+| **Delve** | the floor under the hex | as in the dungeon game; no domain effect |
 
-### Leader tags
+Success means Morten wins the fight (every foe dead, fled or surrendered) or the check.
+Pass a mission to `turn` only when it succeeded. **Death** ends the month: the mission
+fails, he loses the coins he carried, he wakes at the tower; the tower's action stands.
+**The trader** is at the tower.
 
-**Vicious:**
+**Regime change.** When a realm's HP reaches 0, its ruler falls at clean-up (a regime at 0
+takes no action meanwhile):
+- If the tower has **Seditionists** in that realm, their dissident takes the throne with a
+  good tag (Steward or Liberator), full HP; the Seditionists become the new court (the
+  asset is gone). The realm is an ally.
+- Otherwise a new ruler from the people's names, bad two times in three, with a random tag;
+  full HP; **disorder for 1 month** (no action).
+- Either way the old ruler is gone, the goal and hostility end.
 
-| Tag | What it does |
-|---|---|
-| **Greedy** | Conquers: attacks the deepest hex it can reach. |
-| **Rapacious** | Raids: takes gold from the richest neighbour it can. |
-| **Brutal** | Enslaves: takes people as soldiers from the weakest neighbour. |
-| **Cruel** | Exploits its own people: **+50% income**, but its mirror gets **+1 on coups**. Stays home and builds. |
+So the road to a friendly throne: **Contact** a dissident, **Raise** Cunning to 2, **Buy**
+Seditionists, keep them out of the hostile realm's reach, and **Attack** its HP with them
+each month while Morten Strikes the seat's guards.
 
-**Good** (no mechanical edge, only different behaviour):
+## 8. Leaders, goals and the AI
 
-| Tag | What it does |
-|---|---|
-| **Neutral** | Builds and defends. Attacks only to retake hexes of its own people. |
-| **Altruistic** | Conquers only from vicious rulers it outmatches. Never raids or enslaves. |
+Every leader is shown as **label: verb**, everywhere.
 
-- **At the start, 4 rulers are vicious and 2 are good.** Which realms are good is random;
-  each tag is rolled from its side's list.
-- **A vicious ruler's mirror is good, and a good ruler's mirror is vicious** (tag rolled
-  from that side).
-- Every leader has a name and a title from their people's list; names are unique in the
-  world.
+| Label | Tag | Shown as | Goal it picks |
+|---|---|---|---|
+| bad | Conqueror | bad: takes land | **take** the best border hex: deep ley, few defenders near, not a seat |
+| bad | Raider | bad: robs its neighbours | **rob** the richest neighbour's nearest Wealth asset (or raid its seat if it has none); each win takes tier × 100 GP, a seat 200 |
+| bad | Slaver | bad: takes people for soldiers | **take** the weakest neighbour's (lowest Force) nearest Force asset, or its seat if it has none; a destroyed one, or a won seat, becomes its own Thugs (within its Force limit) |
+| bad | Tyrant | bad: squeezes its own people | **buy** the dearest asset it can field and lacks, else raise its lowest attribute; hex income × 1.5; Contact in its land −4 DC |
+| good | Steward | good: keeps the peace | **take back** its own people's hexes; else Walls at the seat, two Farms, then raise its lowest attribute |
+| good | Liberator | good: fights tyrants | **break** a bad neighbour's Force asset next door when its Force is higher; else as a Steward |
 
-### Starting stats
+- **Goal done:** XP (take a hex 2; break, rob, buy 1; raise 0). When its XP reaches the bonus
+  of the goal's attribute's next rating (2, 4, 6, 9, 12, 16, 20), it spends it and the
+  attribute rises. A goal against a faction leaves that faction alone for 3 months after.
+  A goal not done in 6 months, or whose target is gone or out of reach, is dropped.
+- **Each realm's action**, in order: in disorder, nothing · at 0 HP, nothing · below half
+  HP, Repair itself (**recover**) · an enemy Force asset in one of its hexes: attack it, or
+  bring Force in (**defend**) · hostile: **punish the tower** · 1,200 GP or more: buy (over
+  its limits if it must) or raise · **its goal** · otherwise buy within its limits, raise,
+  or save.
+- **Marching:** the army (Force assets, Mercenaries, Saboteurs, Assassins) moves toward the
+  target; a realm buys first while its army is under 2, and never moves the seat's last
+  Force asset away.
 
-S = the sum of a realm's hex levels.
-
-- **Ruler:** Force = Cunning = S ÷ 10, rounded, minimum 1. Treasury S × 10 GP.
-- **Mirror:** Cunning = ruler's Cunning − 2, minimum 1. Treasury 0.
-- **Tower:** Force 1, Treasury 100 GP, 1 officer (section 6). No Cunning, no mirror.
-
-## 4. The month
-
-A month is 30 days, in two parts: **Morten's month**, then the **domain turn**.
-
-### Part 1: Morten's month
-
-**1. Travel.**
-- The month starts on **Day 1**. Entering a hex takes 1 day (Day +1).
-- Each day he enters a hex other than the tower hex, roll `1d6`: on a **1**, a wandering
-  encounter for that hex's level, fought with the normal crunch rules.
-- Rest, rations and time follow the normal rules.
-- His position carries over to the next month. Going home is travel too.
-
-**2. One mission, in the hex he is in. Or none.**
-
-- **Strike:** pick the **ruler or the mirror** of the realm that holds the hex.
-  - The fight is an `encounter` for the hex's level: random monsters standing in for the
-    target's guards.
-  - **Success:** **+3** to every roll made against that faction this month (section 4,
-    Strike bonus).
-  - Striking a **ruler** puts the tower **at war** with that realm. Striking a mirror
-    doesn't.
-- **Rob:** only against a **vicious ruler**, in one of its hexes. The same kind of
-  encounter.
-  - **Success:** take **hex level × 50 GP** from that ruler's treasury, at most what it has.
-    It goes to the tower's treasury (the familiar flies it home), or Morten keeps it on him.
-  - Rob doesn't cause war.
-- **Delve:** run the hex's dungeon floor with the normal crunch rules. A floor's rooms stay
-  cleared, and its gold pays out once.
-- **Success** in a Strike or Rob means Morten wins the fight: every foe dead, fled or
-  surrendered. If he flees or dies, it fails.
-- The tower hex and tower-held hexes have no ruler to Strike or Rob; Morten can Delve
-  anywhere.
-
-**3. The month ends after the mission** (or when he decides to take none).
-- Gold he carries can go to the tower treasury (**deposit**), and he can take gold out of
-  it (**withdraw**, at most what it holds). The familiar carries it either way.
-
-**4. Death ends Morten's month.**
-- The mission fails, and he loses the coins and gems he was carrying.
-- He revives **at the tower** (not a dungeon camp), with the usual respawn effects: full HP,
-  all spells back, conditions and Exhaustion cleared.
-- The domain turn goes ahead with the tower's declared orders.
-
-**The trader is at the tower,** with the same stock and prices as the dungeon camps. Morten
-must be in the tower hex to trade.
-
-### Part 2: the domain turn
-
-The script runs it, in this order:
-
-0. **Morten's month lands:** a successful Strike sets its +3; a successful Rob moves the
-   gold; deposit and withdraw happen.
-1. **Income.**
-   - Each ruler gets its hexes' levels × 10 GP (Cruel: × 1.5, rounded down).
-   - Its mirror skims **20%** of that (rounded down), taken out of the ruler's share.
-   - The tower gets its own hexes' income (the tower hex pays 10 GP).
-2. **Upkeep.**
-   - Rulers and the tower pay **Force² × 7 GP** (Force 4: 112 GP, Force 10: 700 GP); the
-     tower also pays **5 GP per officer**. Mirrors pay nothing. The starting tower pays 12
-     GP a month against its 10 GP of income.
-   - A faction that can't pay **disbands Force**, 1 at a time, until it can, then pays. (The
-     tower at Force 0 still short for its officers pays what it has.)
-3. **The tower acts,** on orders declared at the start of the month, in this order:
-   - **Fund:** any GP from the tower treasury to any ruler or mirror.
-   - **Recruit** (section 6).
-   - Then one action: **Conquer** or **Build**.
-   - An order the script can't carry out is **rejected**: one the treasury can't cover at
-     that point (Withdraw, Fund, Recruit, Build) or an illegal one (Conquer at Force 0, a hex
-     not next to the tower's). The script prints a one-line error, exits and saves nothing;
-     the GM fixes the order and reruns `turn`.
-4. **Rulers act** in order of Cunning, highest first; ties by d10, rerolling ties. Each takes
-   one action by section 5.
-5. **Mirrors act,** in the same order as their rulers: a coup or a build (section 5).
-6. **Clean up.**
-   - A realm with no hexes is gone: both factions disappear and its wars end. Its people
-     stay.
-   - Rumours update (section 8). The month number goes up by 1.
-
-### Actions
-
-| Action | Who | How it works |
-|---|---|---|
-| **Conquer** | rulers, tower | Battle for a hex next to one of yours. Win: you take the hex. |
-| **Raid** | rulers | Battle a neighbour over its hex next to yours (the deepest such hex). Win: take **that hex's level × 30 GP** from the neighbour, at most what it has. |
-| **Enslave** | rulers | Battle a neighbour over its hex next to yours (die roll among them). Win: **+1 Force** to you, **−2 Force** to the loser. |
-| **Build** | everyone | +1 Force (rulers, tower) or +1 Cunning (rulers, mirrors). Costs **the new value × 100 GP**. The tower builds Force only. |
-| **Fund** | tower | Give GP to any ruler or mirror. Free. |
-| **Recruit** | tower | Section 6. Free. |
-| **Coup** | mirrors | Section 5. |
-
-- A **neighbour** of a ruler is any other realm, or the tower, holding a hex next to one of
-  the ruler's hexes.
-- The tower can only Conquer, Build, Fund and Recruit. It has **no claim** anywhere.
-- **The tower hex is warded:** it can be raided or enslaved, never conquered. A raid on the
-  tower takes from the tower treasury; an enslave takes tower Force.
-- A conquered hex keeps its people.
-
-### Battle
-
-- **Roll:** each side rolls **d10 + Force + modifiers**. Higher total wins; **a tie goes to
-  the defender**.
-- **The loser loses 1 Force** (minimum 0). An Enslave the attacker wins takes 1 more.
-- **Origin:** the attacker attacks from one of its hexes next to the target. If that edge
-  is a river, the defender gets +1. The script picks a river-free origin when one exists
-  (die roll among equals).
-- **Force 0:** a ruler or tower with Force 0 can't attack, and defends at d10 + 0.
-
-| Modifier | Size |
-|---|---|
-| River edge (defender) | +1 |
-| Claim: the target hex is the attacker's people (attacker) | +1 |
-| Strike: Morten struck the other side this month | +3 |
-| Court points (tower only) | section 6 |
-
-**Strike bonus.** A struck faction has +3 against it on every roll this month:
-- **Struck ruler:** whoever battles it (attacking or defending) gets +3, and its mirror gets
-  +3 on a coup.
-- **Struck mirror:** its ruler gets +3 on the defence roll against its coup.
-
-## 5. How rival factions decide
-
-The script follows these rules; no GM judgement is needed. Ties between targets are broken by
-a die roll.
-
-**"Can beat"** compares Force only: own Force ≥ the defender's Force.
-
-### A ruler's action, in priority order
-
-1. **Guard the throne.** If the mirror's Cunning (+1 if the ruler is Cruel) is at least the
-   ruler's Cunning, and the ruler can afford it, it builds Cunning.
-2. **Arm.** If it can afford the next point of Force, it builds Force.
-3. **Act on its tag:**
-   - **Greedy:** conquers the deepest hex it can beat, next to its own. Targets can be any
-     realm's hexes or tower-held hexes (never the tower hex).
-   - **Rapacious:** raids the neighbour it can beat with the largest treasury, skipping
-     neighbours with 0 GP. The tower can be that neighbour.
-   - **Brutal:** enslaves the neighbour it can beat with the lowest Force, skipping
-     neighbours at Force 0. The tower can be that neighbour.
-   - **Cruel:** no tag action (it stays home; step 2 already builds its Force).
-   - **Neutral:** conquers the deepest hex of its own people whose holder it can beat. It
-     attacks the tower only when at war with it.
-   - **Altruistic:** conquers the deepest hex of a vicious ruler whose Force is strictly
-     lower than its own. When at war with the tower, the tower's hexes are targets too, also
-     only if the tower's Force is strictly lower.
-4. **Otherwise it saves.**
-
-A ruler that can't afford what a rule calls for, or has no target, falls through to the next
-rule. A ruler at Force 0 can't attack.
-
-### A mirror's action
-
-- **Coup**, if its Cunning + bonuses is at least the ruler's Cunning.
-  - **Bonuses:** +1 against a Cruel ruler, +3 if Morten struck the ruler this month, and
-    court points the tower put behind it (section 6). Court points count in this test, so
-    backing can make an attempt happen.
-  - **Roll:** d10 + mirror's Cunning + bonuses vs d10 + ruler's Cunning (+3 if Morten struck
-    the mirror). The mirror must roll **higher**.
-  - **Win:** the leaders swap. The mirror's leader rules, with its tag and its Cunning, and
-    takes the realm's Force and treasury; its own purse goes into that treasury. The old
-    ruler becomes the mirror, with its Cunning **halved** (rounded down) and Treasury 0. The
-    tower's war with that realm ends.
-  - **Loss:** the mirror loses 1 Cunning (minimum 0).
-- **Otherwise it builds Cunning** if it can afford it, or saves. A mirror at Cunning 0 can
-  still build.
-
-## 6. Morten's court
-
-Named officers who run the domain while Morten is in the field.
-
-- **The start:** 1 officer, a human, with a name.
-- **Recruit** (free, in the domain turn):
-  - Pay **100 GP × the new court size** (the 2nd officer costs 200 GP, the 5th 500) to an
-    **ally** (section 7), into its ruler's treasury. At most one recruit per realm a month.
-  - The officer is of that realm's people and gets a generated name.
-- **The court pool:** points refreshed every month, **1 per officer for the first 4, then 2
-  per officer after that** (4 officers: 4 points; 6 officers: 8).
-- **Spending points,** declared at the start of the month, total at most the pool:
-  - **conquer:** added to the tower's Conquer roll.
-  - **defend:** added to the first battle the tower defends this month. Unused points are
-    lost.
-  - **coup:REALM:** added to that realm's mirror's coup, only if the tower funded that
-    mirror this month and the mirror attempts a coup.
-- **Losses:** each roll the court backs and loses: `1d6`, on a 1 a random officer dies
-  (logged).
-- **Upkeep:** 5 GP per officer per month.
-- **In replies:** a **Court** line lists the officers by name and people, and shows the pool.
-
-## 7. War and allies
-
-- **At war:** the tower is at war with a realm when that realm's current ruler fought a
-  battle against a tower hex, or the tower attacked it (Conquer, win or lose) or struck its
-  ruler.
-  - War ends when a coup changes the realm's ruler, or when the realm is gone.
-- **Allies:** realms with a **good ruler** not at war with the tower. Only allies supply
-  recruits.
-- Realms have no wars or alliances with each other; their behaviour comes from their tags.
-
-## 8. Open information and rumours
-
-- **Everything is open:** the map, every hex's level, people and holder, every faction's
-  stats, leader and tag, the wars and the court. It's all in `world.md`.
-- **Hidden:** dungeon rooms Morten hasn't explored and monsters that haven't shown up, as in
-  the dungeon game.
-- **Rumours:** when Morten is in or next to a realm's hex, the field reply shows a rumour
-  line for its ruler and its mirror. The tag in plain words, plus last month's real events:
-  - "Rumour (Orcs): Warlord Grukk took C3 from the Elves last month (Greedy). His rival
-    Shaya (Altruistic) gathers support, Cunning 2 vs his 4."
-  - The script writes them: `show --at HEX`.
+The goal line always says what's coming, e.g. "Humans · Reeve Galen (bad: takes people for
+soldiers) · goal: take people from the tower's seat in C4 (month 1 of it)".
 
 ## 9. Running a month
 
-The script is `python3 dnd-crunch/tools/realms.py`; DIR is the campaign folder,
-`dnd-crunch/campaigns/<name>`.
+The script is `python3 dnd-crunch/tools/realms.py`; DIR is the campaign folder.
 
 | Command | What it does |
 |---|---|
-| `new --seed N --campaign DIR` | Generates the world: writes `realms.json`, `world.md`, and the 20 floors into `gm-secrets.md`. |
-| `show --campaign DIR [--at HEX]` | The world summary; with `--at`, the rumours visible from that hex. |
-| `encounter --campaign DIR --hex HEX` | Rolls a wandering or mission encounter for the hex's level. |
-| `turn --campaign DIR [tower options] [--dry-run]` | Runs the domain turn, prints the log, saves `realms.json` and `world.md`. `--dry-run` only prints. |
-| `sim --seed N --months M` | Runs months with a passive tower, for tuning. |
+| `new --seed N --campaign DIR [--level 4]` | The world: `realms.json`, `world.md`, `map.json`, and the 20 floors in `gm-secrets.md`. |
+| `show --campaign DIR [--at HEX] [--gm]` | The world as the tower knows it; `--at`, the rumours from a hex; `--gm`, the hidden assets too (never in chat). |
+| `encounter --campaign DIR --asset ID` | The fight for a Strike or Rob on that asset (or `--asset REALM` for its unguarded seat). |
+| `encounter --campaign DIR --contact HEX` | The Contact DC, or the Informers fight (GM only: it can reveal them). |
+| `encounter --campaign DIR --hex HEX` | A wandering encounter for the hex's level. |
+| `turn --campaign DIR [options] [--dry-run]` | The domain turn: prints the report, saves `realms.json`, `world.md`, `map.json`. |
+| `sim [--seeds 1-10] [--months 24]` | Passive-tower months for tuning; `--seed N --verbose` prints every month. |
 
-**Tower options** for `turn`:
+**`turn` options:**
 
 | Option | Meaning |
 |---|---|
-| `--at HEX` | Where Morten ends the month (default: where he was). `--rob HEX` moves him to HEX; `--strike` must name the realm holding his hex. |
-| `--strike REALM:ruler` / `REALM:mirror` | Morten's Strike succeeded against that faction. |
-| `--rob HEX` | Morten's Rob in HEX succeeded. |
-| `--keep-loot` | The Rob gold stays on Morten instead of going to the tower. |
-| `--deposit GP` / `--withdraw GP` | Gold to or from the tower treasury. |
-| `--fund REALM:ruler=GP` / `REALM:mirror=GP` | Fund; repeatable. |
-| `--recruit REALM` | Recruit from that ally; repeatable. |
-| `--action conquer:HEX` / `--action build` | The tower's one action. |
-| `--court conquer=N,defend=N,coup:REALM=N` | Court points. |
+| `--at HEX` · `--level N` | where Morten ends the month · his level now |
+| `--strike ID` / `--strike REALM` | a won Strike on that asset / that realm's unguarded seat, in his hex |
+| `--rob ID` [`--keep-loot`] | a won Rob on that Wealth asset in his hex (the gold goes to the tower unless he keeps it) |
+| `--contact` · `--delve` | a won Contact in his hex · he delved |
+| `--deposit GP` · `--withdraw GP` · `--give REALM=GP` | gold moved (Give repeatable) |
+| `--action buy:KIND[@HEX]` | e.g. `buy:militia`, `buy:seditionists@B3` |
+| `--action raise:force` · `repair:ID` · `repair:tower` | |
+| `--action move:ID>HEX[,ID>HEX]` | |
+| `--action attack:ID>ID[,ID>ID]` · `attack:ID>REALM` | assets in one hex; `>REALM` hits its seat (Seditionists: its HP from anywhere in it) |
+| `--action seize:HEX` | |
+| `--plan "why"` | a line for The plan (repeatable) |
+| `--gm` | the hidden events too (never in chat or the transcript) |
 
-Pass `--strike` and `--rob` only for a mission that succeeded.
+The tower's action is checked before anything happens; one the treasury can't cover when
+the tower acts is rejected too. A rejected order prints one line and saves nothing: fix it
+and rerun. **Always `--dry-run` first.**
 
 ### Steps
 
-1. **Start of the month: choices.** The GM stops and offers that month's choices: travel,
-   mission, tower action, Fund, Recruit, court points. The human decides, or says "you
-   decide" and the GM chooses as Morten (shown as **Morten (GM):** lines with one line of
-   reasoning). In AI player mode, the player agent chooses. Tower orders are fixed from
-   here.
-2. **Travel,** one hex per day. Each day outside the tower hex: `python3
-   dnd-crunch/tools/roll.py 1d6`; on a 1, `encounter --hex HEX` and fight it with the
-   normal crunch rules. Run `show --at HEX` when he arrives and put its rumours in the
-   reply.
-3. **The mission.** Strike or Rob: `encounter --hex HEX`, then the fight as usual. Delve:
-   the hex's floor from `gm-secrets.md`. The fights play on as before (CLAUDE.md: Who plays
-   Morten).
-4. **The domain turn.** Run `turn` with the month's tower options. A `--dry-run` first
-   catches typos and rejected orders (a rejected order saves nothing). Update
-   `character.md` for gold moved (Rob with `--keep-loot`, deposit, withdraw), then reply in
-   the domain-turn format.
-5. Update `state.md` and `transcript.md`, commit and push the campaign folder, as in
-   CLAUDE.md.
+1. **Start of the month: choices.** The human (or the GM as Morten) picks travel, the
+   mission, the tower's action, Give. The orders are fixed from here.
+2. **Travel**, one hex a day, wandering checks; `show --at HEX` for the rumours.
+3. **The mission:** `encounter --asset ID` (or `--contact HEX`), then the fight as usual.
+   Delve: the floor from `gm-secrets.md`.
+4. **The domain turn:** `turn` with the month's options, `--dry-run` first. Update
+   `character.md` for gold moved, then reply in the domain-turn format below.
+5. **The map page:** `python3 dnd-crunch/tools/realms_page.py dnd-crunch/campaigns/<name>`
+   and republish the page (`ui/README.md`); its link is in `state.md`.
+6. Update `state.md` and `transcript.md`, commit and push, as in CLAUDE.md.
+
+### The domain-turn reply
+
+The script prints it in this order; the chat reply keeps it (plain Markdown, no code blocks):
+
+1. **The plan:** Morten's mission and the tower's action, and what they were for (`--plan`).
+2. **What happened:** one bullet per event that touched the tower, an ally, or a realm
+   Morten is in or next to, each with who (label: verb), what (the goal it served), the
+   roll in short and the result. Everything else in one **Elsewhere** line.
+3. **The tower now:** HP, attributes, gold, assets by hex, hexes, hostile, allies,
+   dissidents.
+4. **Next month:** `Threat:` lines (hostile assets within a move, goals aimed at the tower),
+   `Chance:` lines (unguarded seats, regimes under 5 HP, caravans near Morten), `Open:`
+   lines (where Morten is, the missions there, the tower's actions with prices).
+
+Then the realms (one line each, with the goal), the income lines and the full log, which
+go to `transcript.md`. The report holds only what the tower can know; hidden events are
+counted, not shown.
 
 ### Campaign files
 
-Each realms campaign lives in `dnd-crunch/campaigns/<name>/`:
-
 | File | What's in it |
 |---|---|
-| `realms.json` | The domain state: map, factions, court, wars, month, last events, the dice seed. **The script owns it**; never edit it by hand. |
-| `world.md` | Rendered from `realms.json` after every turn. Open; the human reads it. |
-| `character.md` | Morten's sheet, as before. |
-| `state.md` | Morten's live state as before, plus **month, day and hex**. |
-| `transcript.md` | Every reply, as before. |
-| `gm-secrets.md` | The dungeon floors, keyed by hex (floor N in the level-N hex). Mark rooms explored as he reaches them. |
+| `realms.json` | The domain state, hidden assets included. **The script owns it**; never edit it. |
+| `world.md` | Rendered after every turn; open (the tower's view). |
+| `map.json` | The tower's view for the map page (`ui/realms-map.html`, built by `tools/realms_page.py`). |
+| `character.md`, `state.md`, `transcript.md` | as before; `state.md` adds month, day, hex and the page's link |
+| `gm-secrets.md` | The dungeon floors by hex. Mark rooms explored. |
 
-### Reply formats
+**In the field** the header adds month, day and hex: "Month 3 · Day 4 · C2 (L9, forest,
+Elves)", and a **Rumours** section appears in or next to a realm's hex (`show --at`).
 
-Plain Markdown for the phone, no code blocks or ASCII maps.
+## 10. Constants
 
-**In the field** (travel, missions, dungeons): the normal crunch format, plus:
-- The header adds month, day and hex: "Month 3 · Day 4 · C2 (L9, forest, Elves)" (level,
-  biome, holder).
-- A **Rumours** section when there are any.
-
-**The domain turn:**
-- **Month 3 · Domain turn**
-- **Income:** one line per faction.
-- **Log:** one line per action or roll, e.g.
-  - "Orcs (Grukk, Greedy): Conquer C3 (Elves, L9) from B3 → d10 7 + F5 = 12 vs d10 4 + F3
-    + 1 river = 8, WIN. C3 → Orcs. Elves F3 → 2."
-- **Realms:** one line each, e.g.
-  - "Orcs · Grukk (Greedy) F5 C4 820 GP · B2 B3 C3 · mirror Shaya (Altruistic) C2 40 GP"
-- **Tower:** Force, treasury, hexes, wars.
-- **Court:** officers and pool.
-- **Next month:** Morten's position, then the open choices: travel, mission, tower action,
-  Fund, Recruit, court points.
-
-## 10. Constants (current values)
-
-The script's constants block holds the same numbers; change both together.
-
-| Constant | Value |
-|---|---|
-| Income | hex level × 10 GP a month |
-| Cruel income | × 1.5 (rounded down) |
-| Mirror skim | 20% of its ruler's income (rounded down) |
-| Upkeep | Force² × 7 GP; officers 5 GP each |
-| Upkeep short | disband Force until the rest can be paid |
-| Can beat | own Force ≥ the defender's Force |
-| Build | new value × 100 GP |
-| Raid | target hex level × 30 GP |
-| Rob (Morten) | hex level × 50 GP |
-| Strike bonus | +3 |
-| Claim / river | +1 / +1 |
-| Cruel ruler's mirror | +1 on coups |
-| Failed coup | mirror Cunning −1 |
-| Successful coup | the old ruler's Cunning halved |
-| Recruit | 100 GP × new court size |
-| Court pool | 1 per officer up to 4, then 2 per officer |
-| Officer loss | 1d6, 1 on a lost backed roll |
-| Starting ruler | Force = Cunning = S ÷ 10 (rounded, minimum 1), Treasury S × 10 |
-| Starting mirror | Cunning = ruler's − 2 (minimum 1) |
-| Starting tower | Force 1, 100 GP, 1 officer |
-
-For scale: dungeon floor N pays about (XP for level N → N+1) ÷ 10 in gold: floor 4 about
-380 GP, floor 10 about 2,100. A typical realm (S ≈ 35) earns about 350 GP a month.
+| Constant | Value | Source |
+|---|---|---|
+| Hex income | level × 10 GP (none while occupied) | v1 (occupation ours) |
+| Faction HP | 4 + 1/2/4/6/9/12/16/20 per attribute 1–8 | WWN/SWN |
+| Raise | the new rating's bonus × 100 GP | ours (the book raises with XP at the same costs) |
+| Goal XP | take 2 · break, rob, buy 1 · raise 0; spent at the bonus of the next rating | book's XP, our amounts |
+| Attack | d10 + attribute vs d10 + attribute; tie: both take damage | WWN/SWN |
+| Asset limit | as many of a type as the attribute; 100 GP a month each over | WWN/SWN (from memory) |
+| Claim · river · Walls | +1 · +1 · +1 | v1, ours |
+| Seat | damage to a Force asset at the seat also hits HP; unguarded seat counter 1d4 | after the book's Base of Influence |
+| Hex lost · seat lost | 1d4 · 1d6 HP | ours |
+| Repair | asset ¼ cost; faction 1d6 HP for 100 GP | ours |
+| Strike · Rob | 2d6 · 1d6 and tier × 100 GP (× 2 Treasury) | ours |
+| Contact | DC 10 + ruler's Cunning (−4 Tyrant) | ours |
+| Hostility | 3 months; 6 for a seat | ours |
+| Raider on a seat | 200 GP | ours |
+| Disorder | 1 month | ours |
+| Tyrant income | × 1.5 | v1 |
+| Mission fights | tier 1/2/3 = Low/Moderate/High for his level; ≤ 4 monsters | ours |
+| Start | attributes S ÷ 10 (min 1), treasury S × 10, 2 Force + 1 Cunning + 1 Wealth asset | v1 shape |
+| Tower start | F1 C1 W1, HP 7, 100 GP | ours |
+| AI | rich at 1,200 GP · buys first while its army is under 2 · rests 3 months from a beaten faction · drops a goal after 6 months · a Conqueror counts each defender near a hex as −5 levels | ours (tuning) |
 
 ## 11. Left for later
 
-- Clocks, unrest and reputation.
-- Racial bonuses and biome effects.
-- Alliances between realms.
-- Fallen realms coming back.
-- Morten in person on the battlefield (Fireball on an army).
-- Ley crystals as a wizard's resource.
-- The km scale of a hex.
+- **Morten on the battlefield** (Fireball on a Warband): not in this build. His missions
+  hit one asset; mass combat waits.
+- Alliances between realms, realms coming back, racial bonuses and biome effects.
+- Ley crystals as a wizard's resource; the km scale of a hex.
+
+## 12. The sim (passive tower)
+
+`sim`, seeds 1–10, 24 months each, the tower taking no action:
+
+- **Regimes fall sometimes, not every year:** 7 falls in 10 worlds (0.35 a world a year;
+  over 60 months and 30 seeds, 0.6 a world a year, 3 realms gone).
+- **Conquerors grow:** 8 of 14 end bigger than they started (3 → 4 or 5 hexes in two
+  years; up to 10 hexes in five).
+- **Stewards hold:** every Steward kept its land in 24 months.
+- **Upkeep bites:** a quarter of the realms' income goes to upkeep in two years (45% over
+  five, when 1.5 assets a world are disbanded for want of pay).
+- **The tower at rest** is attacked about twice a year by a Slaver or Raider next door and
+  sacked about once in 18 months (half its gold), never loses a hex and is never wiped out.

@@ -1,0 +1,848 @@
+<title>Morten's War Table</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: phone first, one column: the tower strip, the map bleeding to the screen's edges,
+   the tapped hex's entry under it, a bottom bar (Map, Realms, Month). From 900 px the map
+   stays pinned on the left and the bar's view opens on the right. A slate war table: cool
+   survey paper by day, a lamp-lit slate at night; each realm a pigment, brass for Morten. */
+:root {
+  --bg: #e1e6e4; --panel: #eef1ef; --panel-2: #d5dcd9; --table: #c7d0cd;
+  --ink: #18232a; --ink-2: #44525a; --ink-3: #66737a; --rule: #b3bdbc; --track: #c4ccca;
+  --land: #ebe9df; --water: #4f86ad; --halo: #eef1ef;
+  --accent: #8a5a10; --on-accent: #fff8ea;
+  --good: #2b6d43; --warn: #8f6200; --bad: #ad3528;
+  --f-humans: #2c5eb3; --f-gnomes: #0d7f7e; --f-tieflings: #ad2d69; --f-orcs: #557719;
+  --f-goblinkind: #bd600c; --f-elves: #7145b3; --f-tower: #33384f; --f-other: #66737a;
+  --on-fc: #ffffff; --mix: 30%;
+  --display: "Alegreya SC", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --body: "Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12171a; --panel: #1a2125; --panel-2: #232c31; --table: #0c1012;
+    --ink: #e2e8e6; --ink-2: #a9b4b6; --ink-3: #7e8a8d; --rule: #34404a; --track: #2e3a41;
+    --land: #283035; --water: #5b93bb; --halo: #12171a;
+    --accent: #e0a94e; --on-accent: #1c1406;
+    --good: #6cc28a; --warn: #e3b54f; --bad: #f07a6a;
+    --f-humans: #6f9df0; --f-gnomes: #3cc0bb; --f-tieflings: #ea6aa2; --f-orcs: #9bc44c;
+    --f-goblinkind: #f0954a; --f-elves: #ad8ae8; --f-tower: #c3c8de; --f-other: #8a9599;
+    --on-fc: #0f1417; --mix: 34%;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12171a; --panel: #1a2125; --panel-2: #232c31; --table: #0c1012;
+  --ink: #e2e8e6; --ink-2: #a9b4b6; --ink-3: #7e8a8d; --rule: #34404a; --track: #2e3a41;
+  --land: #283035; --water: #5b93bb; --halo: #12171a;
+  --accent: #e0a94e; --on-accent: #1c1406;
+  --good: #6cc28a; --warn: #e3b54f; --bad: #f07a6a;
+  --f-humans: #6f9df0; --f-gnomes: #3cc0bb; --f-tieflings: #ea6aa2; --f-orcs: #9bc44c;
+  --f-goblinkind: #f0954a; --f-elves: #ad8ae8; --f-tower: #c3c8de; --f-other: #8a9599;
+  --on-fc: #0f1417; --mix: 34%;
+  color-scheme: dark;
+}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.5 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  overflow-x: hidden;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; line-height: 1.1; text-wrap: balance; }
+p, ul, ol, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.label { font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* the realms' pigments: a class sets --fc, everything inside draws with it */
+.fac-humans { --fc: var(--f-humans); }
+.fac-gnomes { --fc: var(--f-gnomes); }
+.fac-tieflings { --fc: var(--f-tieflings); }
+.fac-orcs { --fc: var(--f-orcs); }
+.fac-goblinkind { --fc: var(--f-goblinkind); }
+.fac-elves { --fc: var(--f-elves); }
+.fac-tower { --fc: var(--f-tower); }
+.fac-other { --fc: var(--f-other); }
+.fac-none { --fc: var(--land); }
+.sw { display: inline-block; flex: none; width: 12px; height: 12px; border-radius: 3px; background: var(--fc); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--ink) 25%, transparent); }
+
+/* ---------- the header and the tower strip ---------- */
+.app { max-width: 1280px; margin: 0 auto; padding-block: 14px calc(80px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 14px; }
+.top { display: flex; align-items: end; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.head { min-width: 0; display: grid; gap: 2px; }
+.head h1 { font-size: 1.85rem; letter-spacing: .01em; }
+.head .sub { color: var(--ink-2); font-size: .92rem; }
+.strip { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 2px 9px;
+  border: 1px solid var(--rule); border-radius: 999px; background: var(--panel);
+  font: 500 .76rem/1.2 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2);
+}
+.chip strong { color: var(--ink); font-weight: 600; }
+.chip.bad { color: var(--bad); border-color: var(--bad); background: color-mix(in oklab, var(--bad) 9%, var(--panel)); }
+.chip.good { color: var(--good); border-color: var(--good); background: color-mix(in oklab, var(--good) 9%, var(--panel)); }
+.chip.warn { color: var(--warn); border-color: var(--warn); background: color-mix(in oklab, var(--warn) 9%, var(--panel)); }
+.chip.brass { color: var(--accent); border-color: var(--accent); }
+.chip .bar { width: 46px; }
+
+.bar { height: 8px; border-radius: 4px; background: var(--track); overflow: hidden; flex: 1 1 auto; min-width: 40px; }
+.bar > i { display: block; height: 100%; background: var(--good); border-radius: 4px; }
+.bar.mid > i { background: var(--warn); }
+.bar.low > i { background: var(--bad); }
+.hp { display: flex; align-items: center; gap: 8px; }
+.hp .num { font-size: .8rem; color: var(--ink-2); white-space: nowrap; }
+
+/* ---------- the tabs: a bottom bar on the phone ---------- */
+.tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex;
+  background: var(--panel); border-top: 1px solid var(--rule);
+  padding: 2px max(16px, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(16px, env(safe-area-inset-left, 0px));
+}
+.tabs button {
+  flex: 1 1 0; min-width: 0; min-height: 58px; border: 0; background: none; padding: 6px 0 8px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  font: 500 .74rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3);
+}
+.tabs svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+.tabs button[aria-current="true"] { color: var(--accent); }
+.tabs button[aria-current="true"] svg { stroke-width: 2.1; }
+
+/* ---------- the board ---------- */
+.board { display: grid; gap: 14px; min-width: 0; }
+.chart { display: grid; gap: 8px; min-width: 0; }
+.chart-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.chart-bar .hint { color: var(--ink-3); font-size: .85rem; }
+.toggle {
+  min-height: 44px; padding: 0 14px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel);
+  display: inline-flex; align-items: center; gap: 8px; font: 500 .8rem/1 var(--mono); color: var(--ink-2);
+}
+.toggle .box { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid var(--ink-3); display: grid; place-items: center; }
+.toggle[aria-pressed="true"] { border-color: var(--ink-2); color: var(--ink); }
+.toggle[aria-pressed="true"] .box { background: var(--ink); border-color: var(--ink); }
+.toggle[aria-pressed="true"] .box::after { content: ""; width: 8px; height: 4px; border: 2px solid var(--bg); border-top: 0; border-right: 0; transform: translateY(-1px) rotate(-45deg); }
+.frame {
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  background: var(--table);
+}
+.frame svg { display: block; width: 100%; height: auto; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+
+/* the map's marks, all from the tokens */
+.map text { font-family: var(--mono); }
+.map .land { fill: color-mix(in oklab, var(--fc) var(--mix), var(--land)); stroke: color-mix(in oklab, var(--ink) 18%, transparent); stroke-width: 1; }
+.map .border { fill: none; stroke: var(--ink-2); stroke-width: 2.2; stroke-linecap: round; opacity: .75; }
+.map .river { fill: none; stroke: var(--water); stroke-width: 6; stroke-linecap: round; }
+.map .lake { fill: var(--water); stroke: color-mix(in oklab, var(--water) 60%, var(--ink)); stroke-width: .8; }
+.map .hid { fill: var(--ink-2); font-size: 10px; font-weight: 500; letter-spacing: .04em; }
+.map .lvl { fill: var(--ink); font-family: var(--display); font-size: 23px; font-weight: 700; }
+.map .biome { fill: var(--ink-2); font-family: var(--body); font-style: italic; font-size: 10.5px; }
+.map .seat { fill: var(--fc); stroke: var(--ink); stroke-width: 1; stroke-linejoin: round; }
+.map .chip-r { fill: var(--fc); stroke: color-mix(in oklab, var(--ink) 35%, transparent); stroke-width: .6; }
+.map .chip-r.hostile { stroke: var(--bad); stroke-width: 1.6; stroke-dasharray: 2.5 1.5; }
+.map .chip-t { fill: var(--on-fc); font-size: 9px; font-weight: 600; }
+.map .pip { fill: var(--on-fc); }
+.map .chip-hp { fill: var(--track); }
+.map .chip-hp.on { fill: var(--good); }
+.map .chip-hp.on.mid { fill: var(--warn); }
+.map .chip-hp.on.low { fill: var(--bad); }
+.map .more { fill: var(--panel); stroke: var(--ink-3); stroke-width: .8; }
+.map .more-t { fill: var(--ink-2); font-size: 8.5px; font-weight: 600; }
+.map .morten-ring { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 7 4; }
+.map .morten-pin { fill: var(--accent); stroke: var(--halo); stroke-width: 1.5; }
+.map .morten-t { fill: var(--on-accent); font-size: 10px; font-weight: 600; }
+.map .picked { fill: none; stroke: var(--ink); stroke-width: 3.5; stroke-linejoin: round; }
+.map .arrow { fill: none; stroke: var(--fc); stroke-width: 3; stroke-linecap: round; }
+.map .arrow-halo { fill: none; stroke: var(--halo); stroke-width: 7; stroke-linecap: round; opacity: .85; }
+.map .head-a { fill: var(--fc); stroke: var(--halo); stroke-width: 1.2; stroke-linejoin: round; }
+.map .badge { fill: var(--fc); stroke: var(--halo); stroke-width: 1.8; }
+.map .badge-t { fill: var(--on-fc); font-size: 10px; font-weight: 600; }
+.map .hit { fill: transparent; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; }
+.map .hit:focus-visible { stroke: var(--accent); stroke-width: 4; }
+
+.key { border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); }
+.key summary { min-height: 44px; display: flex; align-items: center; padding: 0 14px; cursor: pointer; font: 500 .8rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.key ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px 14px; padding: 4px 14px 14px; }
+.key li { display: flex; align-items: center; gap: 10px; font-size: .88rem; color: var(--ink-2); min-width: 0; }
+.key svg { flex: none; width: 34px; height: 22px; }
+.key .realms { display: flex; flex-wrap: wrap; gap: 6px 12px; padding: 0 14px 14px; font-size: .88rem; }
+.key .realms span { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ---------- panels ---------- */
+.panel { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.panel > h2, .sec h2 { font-size: 1.45rem; }
+.sec { display: grid; gap: 8px; min-width: 0; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.muted { color: var(--ink-3); font-size: .92rem; }
+
+/* the hex's entry */
+.entry-head { display: grid; gap: 6px; }
+.entry-head h2 { font-size: 1.7rem; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.entry-head h2 .id { font-family: var(--mono); font-size: 1.1rem; font-weight: 600; color: var(--ink-2); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.assets { display: grid; gap: 8px; }
+.asset { background: var(--panel); border: 1px solid var(--rule); border-left: 5px solid var(--fc); border-radius: 6px; padding: 10px 12px; display: grid; gap: 6px; min-width: 0; }
+.asset-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+.asset-top strong { font-size: 1.05rem; }
+.asset-top .owner { color: var(--ink-2); font-size: .9rem; }
+.asset-top .tier { margin-left: auto; font: 500 .75rem/1 var(--mono); color: var(--ink-3); }
+.mchip { display: inline-flex; align-items: center; gap: 2px; height: 20px; padding: 0 6px; border-radius: 4px; background: var(--fc); color: var(--on-fc); font: 600 .72rem/1 var(--mono); }
+.mchip i { width: 5px; height: 5px; border-radius: 50%; background: var(--on-fc); }
+.mchip b { margin-right: 2px; font-weight: 600; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 4px 12px; font-size: .9rem; }
+.stats div { display: flex; gap: 6px; min-width: 0; }
+.stats dt { color: var(--ink-3); }
+.stats dd { font-family: var(--mono); font-size: .82rem; font-variant-numeric: tabular-nums; padding-top: 1px; }
+.special { color: var(--ink-2); font-size: .9rem; }
+.leader-line { font-size: .9rem; color: var(--ink-2); }
+
+.hexbtns { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 6px; }
+.hexbtn {
+  min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 4px 10px;
+  border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); text-align: left; min-width: 0;
+}
+.hexbtn:hover { border-color: var(--ink-3); }
+.hexbtn .num { font-weight: 600; }
+.hexbtn small { color: var(--ink-3); font-size: .78rem; font-family: var(--mono); }
+
+/* events, numbered as on the map */
+.events { display: grid; gap: 8px; }
+.event { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 4px 10px; padding: 10px 12px; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; }
+.event .n { grid-row: span 3; width: 26px; height: 26px; border-radius: 50%; background: var(--fc); color: var(--on-fc); display: grid; place-items: center; font: 600 .78rem/1 var(--mono); }
+.event .who { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 500; }
+.act { font: 500 .72rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; border: 1px solid var(--rule); color: var(--ink-2); }
+.event .res { color: var(--ink-2); font-size: .92rem; }
+.event .where { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.event .where .hexbtn { min-width: 64px; }
+.event .where .to { color: var(--ink-3); font-family: var(--mono); }
+
+/* the realms */
+.realm-list { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); }
+.standings { display: grid; gap: 4px; }
+.stand {
+  min-height: 48px; width: 100%; display: grid; grid-template-columns: 12px minmax(0, 1fr) 84px auto; align-items: center; gap: 10px;
+  padding: 6px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); text-align: left;
+}
+.stand .nm { display: grid; min-width: 0; }
+.stand .nm b { font-weight: 700; }
+.stand .nm small { color: var(--ink-3); font-size: .8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stand .fcw { font: 500 .76rem/1 var(--mono); color: var(--ink-2); white-space: nowrap; }
+.stand .bar { min-width: 0; }
+.stand.hostile { border-color: var(--bad); }
+.stand.ally { border-color: var(--good); }
+.realm { scroll-margin-top: 12px; background: var(--panel); border: 1px solid var(--rule); border-top: 6px solid var(--fc); border-radius: 8px; padding: 12px 14px 14px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.realm-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.realm-head h3 { font-size: 1.45rem; }
+.realm-head .leader { color: var(--ink-2); }
+.pill { display: inline-flex; align-items: center; min-height: 26px; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--rule); font: 500 .78rem/1.2 var(--mono); }
+.pill.bad { color: var(--bad); border-color: var(--bad); background: color-mix(in oklab, var(--bad) 9%, var(--panel)); }
+.pill.good { color: var(--good); border-color: var(--good); background: color-mix(in oklab, var(--good) 9%, var(--panel)); }
+.goal { display: grid; gap: 2px; padding: 8px 10px; border-radius: 6px; background: var(--panel-2); }
+.goal p { font-size: .98rem; }
+.attrs { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; }
+.attr { border: 1px solid var(--rule); border-radius: 6px; padding: 5px 8px; display: grid; gap: 0; min-width: 0; }
+.attr .v { font: 600 1.15rem/1.2 var(--mono); font-variant-numeric: tabular-nums; }
+.attr .label { font-size: .62rem; }
+.realm .row { display: grid; gap: 6px; }
+.alist { display: grid; gap: 4px; }
+.arow {
+  min-height: 44px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: 8px;
+  padding: 4px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); text-align: left; width: 100%;
+}
+.arow .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.arow .num { font-size: .8rem; color: var(--ink-2); }
+.arow .at { font: 600 .8rem/1 var(--mono); color: var(--ink-2); }
+
+/* the month's report */
+.report { display: grid; gap: 18px; }
+.report ul { display: grid; gap: 8px; }
+.report li { position: relative; padding-left: 18px; line-height: 1.45; }
+.report li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 2px; background: var(--ink-3); transform: rotate(45deg); }
+.report li.k-threat::before { background: var(--bad); }
+.report li.k-chance::before { background: var(--good); }
+.report li.k-open::before { background: var(--accent); }
+.report .k { font: 600 .72rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; margin-right: 6px; }
+.report .k-threat .k { color: var(--bad); }
+.report .k-chance .k { color: var(--good); }
+.report .k-open .k { color: var(--accent); }
+.part { display: grid; gap: 8px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.part h3 { font-size: 1.2rem; }
+
+.empty { padding-block: 48px; max-width: 60ch; display: grid; gap: 10px; }
+.empty code { font-family: var(--mono); font-size: .9rem; overflow-wrap: anywhere; }
+
+/* ---------- views ---------- */
+@media (max-width: 899px) {
+  .app[data-view="map"] #realms, .app[data-view="map"] #month { display: none; }
+  .app[data-view="realms"] .chart, .app[data-view="realms"] #entry, .app[data-view="realms"] #month { display: none; }
+  .app[data-view="month"] .chart, .app[data-view="month"] #entry, .app[data-view="month"] #realms { display: none; }
+}
+@media (min-width: 900px) {
+  .app { padding-block: 22px 40px; gap: 18px; }
+  .tabs {
+    position: static; display: inline-flex; padding: 0; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden;
+    background: var(--panel);
+  }
+  .tabs button { flex-direction: row; min-height: 44px; padding: 0 18px; gap: 8px; }
+  .tabs button + button { border-left: 1px solid var(--rule); }
+  .tabs button[aria-current="true"] { background: var(--ink); color: var(--bg); }
+  .tabs svg { width: 18px; height: 18px; }
+  .board { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .chart { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+  .frame { margin: 0; border-radius: 10px; padding: 8px; }
+  .frame svg { max-height: calc(100dvh - 250px); }
+  .app[data-view="map"] #realms, .app[data-view="map"] #month { display: none; }
+  .app[data-view="realms"] #entry, .app[data-view="realms"] #month { display: none; }
+  .app[data-view="month"] #entry, .app[data-view="month"] #realms { display: none; }
+  .realm-list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (min-width: 1200px) {
+  .realm-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bar > i { transition: width .3s ease; }
+}
+</style>
+
+<div class="empty" id="empty" hidden>
+  <h1>No map yet</h1>
+  <p>This page carries no map data. Build it from a campaign with <code>python3 dnd-crunch/tools/realms_page.py dnd-crunch/campaigns/&lt;name&gt;</code>.</p>
+</div>
+
+<div class="app" id="app" data-view="map">
+  <header class="top">
+    <div class="head">
+      <p class="label" id="eyebrow">The six realms</p>
+      <h1 id="title">Month</h1>
+      <p class="sub" id="sub"></p>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Views">
+      <button type="button" data-view="map" aria-current="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h5l2.5 4.3L12 12H7L4.5 7.8z"/><path d="M14.5 7.8h5L22 12l-2.5 4.3h-5L12 12"/><path d="M7 12h5l2.5 4.3L12 20.5H7l-2.5-4.2z"/></svg>
+        <span>Map</span>
+      </button>
+      <button type="button" data-view="realms" aria-current="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v18"/><path d="M6 4h12l-3 4 3 4H6"/></svg>
+        <span>Realms</span>
+      </button>
+      <button type="button" data-view="month" aria-current="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4M8 14h3M8 17h6"/></svg>
+        <span>Month</span>
+      </button>
+    </nav>
+  </header>
+
+  <section class="strip" id="strip" aria-label="The tower at a glance"></section>
+
+  <main class="board">
+    <section class="chart" aria-label="Map">
+      <div class="chart-bar">
+        <button type="button" class="toggle" id="arrows" aria-pressed="true"><span class="box" aria-hidden="true"></span><span id="arrows-label">Last month's moves</span></button>
+        <span class="hint">Tap a hex for its entry</span>
+      </div>
+      <div class="frame" id="frame"></div>
+      <details class="key" id="key">
+        <summary>Key</summary>
+        <ul>
+          <li><svg viewBox="0 0 34 22" aria-hidden="true"><g class="map fac-humans"><rect class="chip-r" x="5" y="3" width="24" height="13" rx="3"/><text class="chip-t" x="11" y="12.5" text-anchor="middle">F</text><circle class="pip" cx="19" cy="9.5" r="1.7"/><circle class="pip" cx="23.5" cy="9.5" r="1.7"/><rect class="chip-hp on mid" x="5" y="17.5" width="16" height="2.4"/><rect class="chip-hp" x="21" y="17.5" width="8" height="2.4"/></g></svg>An asset: F, C or W, tier as dots, HP under it</li>
+          <li><svg viewBox="0 0 34 22" aria-hidden="true"><g class="map fac-elves"><rect class="chip-r hostile" x="5" y="4" width="24" height="13" rx="3"/><text class="chip-t" x="12" y="13.5" text-anchor="middle">F</text><circle class="pip" cx="20" cy="10.5" r="1.7"/></g></svg>Dashed red edge: its realm is hostile to the tower</li>
+          <li><svg viewBox="0 0 34 22" aria-hidden="true"><g class="map fac-gnomes"><path class="seat" d="M12 4v15M12 4h11l-3 4 3 4H12"/></g></svg>A ruler's seat</li>
+          <li><svg viewBox="0 0 34 22" aria-hidden="true"><g class="map fac-tower"><path class="seat" d="M11 19V7h2.5V4.5H16V7h2V4.5h2.5V7H23v12z"/></g></svg>The tower</li>
+          <li><svg viewBox="0 0 34 22" aria-hidden="true"><g class="map"><circle class="morten-pin" cx="17" cy="11" r="8.5"/><text class="morten-t" x="17" y="14.5" text-anchor="middle">M</text></g></svg>Morten's hex (brass dashed ring)</li>
+          <li><svg viewBox="0 0 34 22" aria-hidden="true"><g class="map"><path class="river" d="M4 16 L30 6"/></g></svg>River along a hex edge</li>
+          <li><svg viewBox="0 0 34 22" aria-hidden="true"><g class="map"><ellipse class="lake" cx="17" cy="11" rx="10" ry="6"/></g></svg>Lake</li>
+          <li><svg viewBox="0 0 34 22" aria-hidden="true"><g class="map fac-orcs"><path class="arrow" d="M3 15 Q14 4 26 11"/><polygon class="head-a" points="31,13.5 23.5,14.8 26.5,7.6"/></g></svg>Last month's move, numbered as in Month</li>
+        </ul>
+        <div class="realms" id="key-realms"></div>
+      </details>
+    </section>
+
+    <section class="side">
+      <article class="panel" id="entry" aria-live="polite"></article>
+      <section class="panel" id="realms" aria-labelledby="realms-h"></section>
+      <section class="panel" id="month" aria-labelledby="month-h"></section>
+    </section>
+  </main>
+</div>
+
+<script id="map-data" type="application/json">{"version":2,"campaign":"realms2","month":1,"layout":{"cols":4,"rows":5,"orientation":"flat-top","shift":"odd"},"hexes":[{"id":"A1","col":0,"row":0,"level":20,"biome":"tundra","people":"Elves","holder":"Elves","lake":true,"seat_of":"Elves","income":200,"neighbours":["A2","B1"],"assets":[{"id":"a9","owner":"Elves","name":"Militia","type":"Force","tier":1,"hp":4,"max_hp":4,"leader":null,"attack":"F vs F, 1d6","counter":"1d4+1","special":""}]},{"id":"A2","col":0,"row":1,"level":15,"biome":"taiga","people":"Elves","holder":"Elves","lake":false,"seat_of":null,"income":150,"neighbours":["A1","A3","B1","B2"],"assets":[]},{"id":"A3","col":0,"row":2,"level":18,"biome":"forest","people":"Orcs","holder":"Orcs","lake":false,"seat_of":"Orcs","income":180,"neighbours":["A2","A4","B2","B3"],"assets":[{"id":"a1","owner":"Orcs","name":"Beast pack","type":"Force","tier":2,"hp":5,"max_hp":5,"leader":null,"attack":"F vs F, 2d4","counter":"1d4+1","special":"the people's beasts"},{"id":"a2","owner":"Orcs","name":"Knights","type":"Force","tier":3,"hp":12,"max_hp":12,"leader":null,"attack":"F vs F, 1d8","counter":"1d8","special":"upkeep 100"},{"id":"a4","owner":"Orcs","name":"Caravans","type":"Wealth","tier":1,"hp":4,"max_hp":4,"leader":null,"attack":"W vs W, 1d4","counter":"1d4-1","special":"income +100; moves 2 hexes"}]},{"id":"A4","col":0,"row":3,"level":17,"biome":"savanna","people":"Orcs","holder":"Orcs","lake":false,"seat_of":null,"income":170,"neighbours":["A3","A5","B3","B4"],"assets":[]},{"id":"A5","col":0,"row":4,"level":10,"biome":"jungle","people":"Orcs","holder":"Orcs","lake":false,"seat_of":null,"income":100,"neighbours":["A4","B4","B5"],"assets":[]},{"id":"B1","col":1,"row":0,"level":14,"biome":"tundra","people":"Goblinkind","holder":"Goblinkind","lake":false,"seat_of":"Goblinkind","income":140,"neighbours":["A1","A2","B2","C1","C2"],"assets":[{"id":"a13","owner":"Goblinkind","name":"Militia","type":"Force","tier":1,"hp":4,"max_hp":4,"leader":null,"attack":"F vs F, 1d6","counter":"1d4+1","special":""}]},{"id":"B2","col":1,"row":1,"level":6,"biome":"forest","people":"Elves","holder":"Elves","lake":false,"seat_of":null,"income":60,"neighbours":["A2","A3","B1","B3","C2","C3"],"assets":[{"id":"a10","owner":"Elves","name":"Thugs","type":"Force","tier":1,"hp":3,"max_hp":3,"leader":null,"attack":"F vs F, 1d3+1","counter":"1d4","special":""},{"id":"a12","owner":"Elves","name":"Mercenaries","type":"Wealth","tier":2,"hp":6,"max_hp":6,"leader":null,"attack":"W vs F, 2d4+2","counter":"1d6","special":"upkeep 100"}]},{"id":"B3","col":1,"row":2,"level":16,"biome":"plains","people":"Tieflings","holder":"Tieflings","lake":false,"seat_of":"Tieflings","income":160,"neighbours":["A3","A4","B2","B4","C3","C4"],"assets":[{"id":"a17","owner":"Tieflings","name":"Thugs","type":"Force","tier":1,"hp":3,"max_hp":3,"leader":null,"attack":"F vs F, 1d3+1","counter":"1d4","special":""}]},{"id":"B4","col":1,"row":3,"level":11,"biome":"savanna","people":"Gnomes","holder":"Gnomes","lake":false,"seat_of":null,"income":110,"neighbours":["A4","A5","B3","B5","C4","C5"],"assets":[]},{"id":"B5","col":1,"row":4,"level":9,"biome":"desert","people":"Gnomes","holder":"Gnomes","lake":false,"seat_of":null,"income":90,"neighbours":["A5","B4","C5"],"assets":[{"id":"a6","owner":"Gnomes","name":"Militia","type":"Force","tier":1,"hp":4,"max_hp":4,"leader":null,"attack":"F vs F, 1d6","counter":"1d4+1","special":""}]},{"id":"C1","col":2,"row":0,"level":4,"biome":"tundra","people":"Goblinkind","holder":"Goblinkind","lake":false,"seat_of":null,"income":40,"neighbours":["B1","C2","D1"],"assets":[{"id":"a14","owner":"Goblinkind","name":"Militia","type":"Force","tier":1,"hp":4,"max_hp":4,"leader":null,"attack":"F vs F, 1d6","counter":"1d4+1","special":""}]},{"id":"C2","col":2,"row":1,"level":3,"biome":"taiga","people":"Tieflings","holder":"Tieflings","lake":true,"seat_of":null,"income":30,"neighbours":["B1","B2","C1","C3","D1","D2"],"assets":[{"id":"a18","owner":"Tieflings","name":"Militia","type":"Force","tier":1,"hp":4,"max_hp":4,"leader":null,"attack":"F vs F, 1d6","counter":"1d4+1","special":""},{"id":"a20","owner":"Tieflings","name":"Caravans","type":"Wealth","tier":1,"hp":4,"max_hp":4,"leader":null,"attack":"W vs W, 1d4","counter":"1d4-1","special":"income +100; moves 2 hexes"}]},{"id":"C3","col":2,"row":2,"level":2,"biome":"plains","people":"Tieflings","holder":"Tieflings","lake":false,"seat_of":null,"income":20,"neighbours":["B2","B3","C2","C4","D2","D3"],"assets":[]},{"id":"C4","col":2,"row":3,"level":1,"biome":"swamp","people":"tower folk","holder":"tower","lake":false,"seat_of":"tower","income":10,"neighbours":["B3","B4","C3","C5","D3","D4"],"assets":[]},{"id":"C5","col":2,"row":4,"level":19,"biome":"mountains","people":"Gnomes","holder":"Gnomes","lake":false,"seat_of":"Gnomes","income":190,"neighbours":["B4","B5","C4","D4","D5"],"assets":[{"id":"a5","owner":"Gnomes","name":"Beast pack","type":"Force","tier":2,"hp":5,"max_hp":5,"leader":null,"attack":"F vs F, 2d4","counter":"1d4+1","special":"the people's beasts"},{"id":"a8","owner":"Gnomes","name":"Treasury","type":"Wealth","tier":3,"hp":8,"max_hp":8,"leader":null,"attack":null,"counter":"1d6","special":"income +100; a Rob here takes double"}]},{"id":"D1","col":3,"row":0,"level":7,"biome":"mountains","people":"Goblinkind","holder":"Goblinkind","lake":false,"seat_of":null,"income":70,"neighbours":["C1","C2","D2"],"assets":[{"id":"a16","owner":"Goblinkind","name":"Mine","type":"Wealth","tier":2,"hp":4,"max_hp":4,"leader":null,"attack":null,"counter":"1d4","special":"income +150; hills or mountains only"}]},{"id":"D2","col":3,"row":1,"level":5,"biome":"taiga","people":"Goblinkind","holder":"Goblinkind","lake":false,"seat_of":null,"income":50,"neighbours":["C2","C3","D1","D3"],"assets":[]},{"id":"D3","col":3,"row":2,"level":13,"biome":"hills","people":"Humans","holder":"Humans","lake":false,"seat_of":"Humans","income":130,"neighbours":["C3","C4","D2","D4"],"assets":[{"id":"a21","owner":"Humans","name":"Militia","type":"Force","tier":1,"hp":4,"max_hp":4,"leader":null,"attack":"F vs F, 1d6","counter":"1d4+1","special":""},{"id":"a24","owner":"Humans","name":"Mine","type":"Wealth","tier":2,"hp":4,"max_hp":4,"leader":null,"attack":null,"counter":"1d4","special":"income +150; hills or mountains only"}]},{"id":"D4","col":3,"row":3,"level":12,"biome":"swamp","people":"Humans","holder":"Humans","lake":false,"seat_of":null,"income":120,"neighbours":["C4","C5","D3","D5"],"assets":[{"id":"a22","owner":"Humans","name":"Beast pack","type":"Force","tier":2,"hp":5,"max_hp":5,"leader":null,"attack":"F vs F, 2d4","counter":"1d4+1","special":"the people's beasts"}]},{"id":"D5","col":3,"row":4,"level":8,"biome":"jungle","people":"Humans","holder":"Humans","lake":false,"seat_of":null,"income":80,"neighbours":["C5","D4"],"assets":[]}],"rivers":[["C1","C2"],["B1","C2"],["B1","B2"],["A2","B1"],["A1","A2"],["C1","D1"],["C2","D1"],["D1","D2"]],"factions":[{"name":"Orcs","tower":false,"leader":{"name":"Kragga","title":"Warlord","label":"bad","tag":"Slaver","verb":"takes people for soldiers"},"income":450,"goal":"take Tieflings' Thugs a17 in B3 for soldiers (month 1 of it)","hp":31,"max_hp":31,"force":5,"cunning":5,"wealth":5,"treasury":450,"seat":"A3","hexes":["A3","A4","A5"],"hostile":0,"ally":false,"disorder":0},{"name":"Gnomes","tower":false,"leader":{"name":"Pockle","title":"Tinker-General","label":"bad","tag":"Conqueror","verb":"takes land"},"income":490,"goal":"take A5 (L10, Orcs') (month 1 of it)","hp":22,"max_hp":22,"force":4,"cunning":4,"wealth":4,"treasury":390,"seat":"C5","hexes":["B4","B5","C5"],"hostile":0,"ally":false,"disorder":0},{"name":"Elves","tower":false,"leader":{"name":"Sariel","title":"Speaker","label":"bad","tag":"Raider","verb":"robs its neighbours"},"income":310,"goal":"rob Orcs' Caravans a4 in A3 (month 1 of it)","hp":22,"max_hp":22,"force":4,"cunning":4,"wealth":4,"treasury":410,"seat":"A1","hexes":["A1","A2","B2"],"hostile":0,"ally":false,"disorder":0},{"name":"Goblinkind","tower":false,"leader":{"name":"Krell","title":"Overlord","label":"good","tag":"Liberator","verb":"fights tyrants"},"income":450,"goal":"build Walls at B1 (month 1 of it)","hp":16,"max_hp":16,"force":3,"cunning":3,"wealth":3,"treasury":300,"seat":"B1","hexes":["B1","C1","D1","D2"],"hostile":0,"ally":true,"disorder":0},{"name":"Tieflings","tower":false,"leader":{"name":"Orianna","title":"Magister","label":"good","tag":"Liberator","verb":"fights tyrants"},"income":360,"goal":"buy Farms (month 1 of it)","hp":10,"max_hp":10,"force":2,"cunning":2,"wealth":2,"treasury":210,"seat":"B3","hexes":["B3","C2","C3"],"hostile":0,"ally":true,"disorder":0},{"name":"Humans","tower":false,"leader":{"name":"Galen","title":"Reeve","label":"bad","tag":"Slaver","verb":"takes people for soldiers"},"income":530,"goal":"take people from the tower's seat in C4 (month 1 of it)","hp":16,"max_hp":16,"force":3,"cunning":3,"wealth":3,"treasury":330,"seat":"D3","hexes":["D3","D4","D5"],"hostile":0,"ally":false,"disorder":0},{"name":"tower","tower":true,"leader":{"name":"Morten","title":"Wizard","label":null,"tag":null,"verb":null},"income":10,"goal":null,"hp":7,"max_hp":7,"force":1,"cunning":1,"wealth":1,"treasury":100,"seat":"C4","hexes":["C4"],"hostile":0,"ally":false,"disorder":0}],"morten":{"hex":"C4","level":4},"events":[],"report":{"month":0,"plan":[],"happened":["Month 1: the world begins."],"tower":["HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 100 GP · Morten level 4","Assets: none","Hexes: C4","Hostile: nobody","Allies: Goblinkind, Tieflings"],"next":["Threat: the Humans (bad: takes people for soldiers) goal: take people from the tower's seat in C4.","Open: Morten is in C4 (L1, swamp, tower); travel 1 day a hex, d6 each day outside C4 (1 = encounter).","Open: missions here: Delve floor 1.","Open: the tower's one action (100 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free."]}}</script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const num = (v) => (typeof v === 'number' && isFinite(v) ? v : null);
+  const arr = (v) => (Array.isArray(v) ? v : []);
+  const str = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null);
+  const fmt = (v) => (num(v) === null ? '—' : v.toLocaleString('en-GB'));
+  const store = {
+    get(k) { try { return localStorage.getItem('realms-map.' + k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem('realms-map.' + k, v); } catch (e) { /* a convenience only */ } },
+  };
+  const reduced = (() => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return true; } })();
+
+  // ---------- the data, read defensively ----------
+  let data = null;
+  try { data = JSON.parse($('#map-data').textContent); } catch (e) { data = null; }
+  if (!data || typeof data !== 'object' || !Array.isArray(data.hexes) || !data.hexes.length) {
+    $('#app').hidden = true;
+    $('#empty').hidden = false;
+    return;
+  }
+  const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const hexes = arr(data.hexes).filter((h) => h && str(h.id)).map((h) => {
+    const id = str(h.id);
+    let col = num(h.col);
+    let row = num(h.row);
+    if (col === null) col = Math.max(0, LETTERS.indexOf(id[0].toUpperCase()));
+    if (row === null) row = Math.max(0, (parseInt(id.slice(1), 10) || 1) - 1);
+    return {
+      id, col, row, level: num(h.level), biome: str(h.biome), people: str(h.people), holder: str(h.holder),
+      lake: h.lake === true, seat: str(h.seat_of), income: num(h.income),
+      neighbours: arr(h.neighbours).map(str).filter(Boolean),
+      assets: arr(h.assets).filter((a) => a && typeof a === 'object'),
+    };
+  });
+  const byId = new Map(hexes.map((h) => [h.id, h]));
+  const factions = arr(data.factions).filter((f) => f && str(f.name));
+  const facBy = new Map(factions.map((f) => [f.name, f]));
+  const events = arr(data.events).filter((e) => e && typeof e === 'object').map((e, i) => ({ ...e, n: i + 1 }));
+  const report = data.report && typeof data.report === 'object' ? data.report : {};
+  const morten = data.morten && typeof data.morten === 'object' ? data.morten : {};
+  const mortenHex = str(morten.hex);
+  const month = num(data.month);
+
+  const isTower = (n) => n === 'tower' || facBy.get(n)?.tower === true;
+  const KNOWN = ['humans', 'gnomes', 'tieflings', 'orcs', 'goblinkind', 'elves'];
+  const slug = (n) => {
+    if (!n) return 'none';
+    if (isTower(n)) return 'tower';
+    const s = String(n).toLowerCase().replace(/[^a-z]/g, '');
+    return KNOWN.includes(s) ? s : 'other';
+  };
+  const fname = (n, cap) => (!n ? (cap ? 'Nobody' : 'nobody') : isTower(n) ? (cap ? 'The tower' : 'the tower') : n);
+  const poss = (n) => (isTower(n) ? "the tower's" : `${n}'`.replace(/([^s])'$/, "$1's"));
+  const hostileTo = (n) => (num(facBy.get(n)?.hostile) || 0) > 0;
+  const letter = (t) => (str(t) ? t.trim()[0].toUpperCase() : '?');
+  const ratio = (hp, max) => (num(hp) !== null && num(max) ? Math.max(0, Math.min(1, hp / max)) : null);
+  const band = (r) => (r === null ? '' : r > 0.5 ? '' : r > 0.25 ? 'mid' : 'low');
+  const bar = (hp, max) => {
+    const r = ratio(hp, max);
+    if (r === null) return '';
+    return `<div class="hp"><div class="bar ${band(r)}" role="img" aria-label="${esc(hp)} of ${esc(max)} HP"><i style="width:${(r * 100).toFixed(0)}%"></i></div><span class="num">${esc(hp)}/${esc(max)} HP</span></div>`;
+  };
+  const mchip = (a) => {
+    const tier = Math.max(0, Math.min(3, num(a.tier) || 0));
+    return `<span class="mchip fac-${slug(a.owner)}" aria-hidden="true"><b>${esc(letter(a.type))}</b>${'<i></i>'.repeat(tier)}</span>`;
+  };
+  const hexBtn = (id, extra = '') => {
+    const h = byId.get(id);
+    if (!h) return `<span class="num">${esc(id)}</span>`;
+    return `<button type="button" class="hexbtn fac-${slug(h.holder)}" data-hex="${esc(id)}" aria-label="Hex ${esc(id)}${h.level !== null ? ', level ' + h.level : ''}${h.holder ? ', held by ' + esc(fname(h.holder)) : ''}"><span class="sw"></span><span class="num">${esc(id)}</span>${extra || (h.level !== null ? `<small>L${h.level}</small>` : '')}</button>`;
+  };
+
+  // ---------- the header and the tower strip ----------
+  const tower = factions.find((f) => f.tower === true || f.name === 'tower') || null;
+  const campaign = str(data.campaign);
+  $('#eyebrow').textContent = campaign ? `The six realms · ${campaign}` : 'The six realms';
+  $('#title').textContent = month !== null ? `Month ${month}` : 'The realms';
+  const lastMonth = num((data.report || {}).month) !== null && num((data.report || {}).month) > 0 ? num(data.report.month) : events.length ? num(events[events.length - 1].month) : month !== null ? month - 1 : null;
+  $('#sub').textContent = events.length
+    ? `The map after month ${lastMonth ?? '?'}'s domain turn · ${events.length} ${events.length === 1 ? 'move' : 'moves'} the tower saw`
+    : month !== null && month > 1 ? 'No moves seen last month' : 'Before the first domain turn';
+
+  function renderStrip() {
+    const out = [];
+    if (tower) {
+      out.push(`<span class="chip fac-tower"><span class="sw"></span><strong>Tower</strong>${ratio(tower.hp, tower.max_hp) !== null ? `<span class="bar ${band(ratio(tower.hp, tower.max_hp))}"><i style="width:${(ratio(tower.hp, tower.max_hp) * 100).toFixed(0)}%"></i></span>${esc(tower.hp)}/${esc(tower.max_hp)}` : ''}</span>`);
+      out.push(`<span class="chip">F<strong>${esc(tower.force ?? '—')}</strong> C<strong>${esc(tower.cunning ?? '—')}</strong> W<strong>${esc(tower.wealth ?? '—')}</strong> · <strong>${fmt(tower.treasury)}</strong> GP${num(tower.income) !== null ? ` · ${num(tower.income) >= 0 ? '+' : ''}${fmt(tower.income)}/mo` : ''}</span>`);
+    }
+    if (mortenHex) out.push(`<span class="chip brass">Morten <strong>${esc(mortenHex)}</strong>${num(morten.level) !== null ? ` · L${esc(morten.level)}` : ''}</span>`);
+    for (const f of factions) {
+      if (isTower(f.name)) continue;
+      if ((num(f.hostile) || 0) > 0) out.push(`<span class="chip bad fac-${slug(f.name)}"><span class="sw"></span>${esc(f.name)} hostile · ${esc(f.hostile)} mo</span>`);
+    }
+    const allies = factions.filter((f) => !isTower(f.name) && f.ally === true);
+    if (allies.length) out.push(`<span class="chip good">Allies ${allies.map((f) => `<span class="fac-${slug(f.name)}" style="display:inline-flex;align-items:center;gap:4px"><span class="sw"></span>${esc(f.name)}</span>`).join(' ')}</span>`);
+    $('#strip').innerHTML = out.join('');
+    $('#strip').hidden = !out.length;
+  }
+
+  // ---------- the map ----------
+  const S = 58; // a hex's corner radius, in map units
+  const HH = (Math.sqrt(3) / 2) * S; // half a hex's height
+  const PAD = 10;
+  const layout = data.layout && typeof data.layout === 'object' ? data.layout : {};
+  const cols = Math.max(num(layout.cols) || 0, ...hexes.map((h) => h.col + 1));
+  const rows = Math.max(num(layout.rows) || 0, ...hexes.map((h) => h.row + 1));
+  const shiftOdd = layout.shift !== 'even';
+  const shifted = (c) => (shiftOdd ? c % 2 === 1 : c % 2 === 0);
+  const W = PAD * 2 + 2 * S + (cols - 1) * 1.5 * S;
+  const H = PAD * 2 + rows * 2 * HH + (cols > 1 ? HH : 0);
+  const centre = (h) => [PAD + S + h.col * 1.5 * S, PAD + HH + h.row * 2 * HH + (shifted(h.col) ? HH : 0)];
+  const f1 = (n) => n.toFixed(1);
+  const corners = (x, y, s = S) => [0, 1, 2, 3, 4, 5].map((i) => [x + s * Math.cos((Math.PI / 3) * i), y + s * Math.sin((Math.PI / 3) * i)]);
+  const pts = (x, y, s) => corners(x, y, s).map((p) => `${f1(p[0])},${f1(p[1])}`).join(' ');
+  function sharedEdge(a, b) {
+    const ca = corners(...centre(a));
+    const cb = corners(...centre(b));
+    const same = ca.filter((p) => cb.some((q) => Math.hypot(p[0] - q[0], p[1] - q[1]) < 0.5));
+    return same.length === 2 ? same : null;
+  }
+
+  const seatGlyph = (x, y, who) => (isTower(who)
+    ? `<g class="fac-tower"><path class="seat" d="M${f1(x - 6)} ${f1(y + 7)}V${f1(y - 5)}h2.5V${f1(y - 8)}H${f1(x - 1)}V${f1(y - 5)}h2V${f1(y - 8)}h2.5V${f1(y - 5)}H${f1(x + 6)}V${f1(y + 7)}z"/></g>`
+    : `<g class="fac-${slug(who)}"><path class="seat" d="M${f1(x - 5)} ${f1(y + 8)}V${f1(y - 8)}M${f1(x - 5)} ${f1(y - 8)}h11l-3 4 3 4H${f1(x - 5)}"/></g>`);
+
+  function chipsFor(h, x, y) {
+    const list = h.assets;
+    if (!list.length) return '';
+    const shown = list.length > 6 ? list.slice(0, 5) : list;
+    const extra = list.length - shown.length;
+    const cells = shown.map((a) => ({ a }));
+    if (extra) cells.push({ more: extra });
+    const perRow = cells.length <= 3 ? cells.length : Math.ceil(cells.length / 2);
+    const cw = 21; const ch = 12; const gap = 2.5;
+    let out = '';
+    cells.forEach((c, i) => {
+      const r = Math.floor(i / perRow);
+      const inRow = Math.min(perRow, cells.length - r * perRow);
+      const k = i - r * perRow;
+      const x0 = x - (inRow * cw + (inRow - 1) * gap) / 2 + k * (cw + gap);
+      const y0 = y + 6 + r * 17;
+      if (c.more) {
+        out += `<rect class="more" x="${f1(x0)}" y="${f1(y0)}" width="${cw}" height="${ch}" rx="3"/><text class="more-t" x="${f1(x0 + cw / 2)}" y="${f1(y0 + 8.8)}" text-anchor="middle">+${c.more}</text>`;
+        return;
+      }
+      const a = c.a;
+      const tier = Math.max(0, Math.min(3, num(a.tier) || 0));
+      const r2 = ratio(a.hp, a.max_hp);
+      let g = `<g class="fac-${slug(a.owner)}"><rect class="chip-r${hostileTo(a.owner) ? ' hostile' : ''}" x="${f1(x0)}" y="${f1(y0)}" width="${cw}" height="${ch}" rx="3"/>` +
+        `<text class="chip-t" x="${f1(x0 + 5.5)}" y="${f1(y0 + 9)}" text-anchor="middle">${esc(letter(a.type))}</text>`;
+      for (let p = 0; p < tier; p++) g += `<circle class="pip" cx="${f1(x0 + 11.5 + p * 3.6)}" cy="${f1(y0 + ch / 2)}" r="1.45"/>`;
+      if (r2 !== null) {
+        g += `<rect class="chip-hp" x="${f1(x0)}" y="${f1(y0 + ch + 1.2)}" width="${cw}" height="2.2"/>` +
+          `<rect class="chip-hp on ${band(r2)}" x="${f1(x0)}" y="${f1(y0 + ch + 1.2)}" width="${f1(cw * r2)}" height="2.2"/>`;
+      }
+      out += g + '</g>';
+    });
+    return out;
+  }
+
+  function hexAria(h) {
+    const bits = [`Hex ${h.id}`];
+    if (h.level !== null || h.biome) bits.push(`level ${h.level ?? '?'} ${h.biome || ''}`.trim());
+    bits.push(h.holder ? `held by ${fname(h.holder)}` : 'held by nobody');
+    if (h.seat) bits.push(`seat of ${fname(h.seat)}`);
+    if (h.id === mortenHex) bits.push('Morten is here');
+    bits.push(`${h.assets.length} ${h.assets.length === 1 ? 'asset' : 'assets'} seen`);
+    return bits.join(', ');
+  }
+
+  function drawArrows() {
+    let out = '';
+    const inPlace = new Map();
+    for (const e of events) {
+      const a = byId.get(str(e.from_hex));
+      const b = byId.get(str(e.to_hex));
+      const cls = `fac-${slug(e.actor)}`;
+      if (a && b && a !== b) {
+        const [x1, y1] = centre(a);
+        const [x2, y2] = centre(b);
+        const dx = x2 - x1; const dy = y2 - y1; const len = Math.hypot(dx, dy);
+        const ux = dx / len; const uy = dy / len;
+        const sx = x1 + ux * 18; const sy = y1 + uy * 18;
+        const ex = x2 - ux * 30; const ey = y2 - uy * 30;
+        const bend = 0.22 * len * (e.n % 2 ? 1 : -1);
+        const cx = (sx + ex) / 2 - uy * bend; const cy = (sy + ey) / 2 + ux * bend;
+        const tx = ex - cx; const ty = ey - cy; const tl = Math.hypot(tx, ty) || 1;
+        const hx = tx / tl; const hy = ty / tl;
+        const tipx = ex + hx * 6; const tipy = ey + hy * 6;
+        const head = `${f1(tipx)},${f1(tipy)} ${f1(ex - hx * 6 - hy * 6)},${f1(ey - hy * 6 + hx * 6)} ${f1(ex - hx * 6 + hy * 6)},${f1(ey - hy * 6 - hx * 6)}`;
+        const mx = 0.25 * sx + 0.5 * cx + 0.25 * ex; const my = 0.25 * sy + 0.5 * cy + 0.25 * ey;
+        const d = `M${f1(sx)} ${f1(sy)}Q${f1(cx)} ${f1(cy)} ${f1(ex)} ${f1(ey)}`;
+        out += `<g class="${cls}"><path class="arrow-halo" d="${d}"/><path class="arrow" d="${d}"/><polygon class="head-a" points="${head}"/>` +
+          `<circle class="badge" cx="${f1(mx)}" cy="${f1(my)}" r="8.5"/><text class="badge-t" x="${f1(mx)}" y="${f1(my + 3.5)}" text-anchor="middle">${e.n}</text></g>`;
+      } else if (b || a) {
+        const h = b || a;
+        const k = inPlace.get(h.id) || 0;
+        inPlace.set(h.id, k + 1);
+        const [x, y] = centre(h);
+        const side = k % 2 ? 1 : -1;
+        const bx = x + side * (S * 0.75);
+        const by = y - 20 + Math.floor(k / 2) * 20;
+        out += `<g class="${cls}"><circle class="badge" cx="${f1(bx)}" cy="${f1(by)}" r="8.5"/><text class="badge-t" x="${f1(bx)}" y="${f1(by + 3.5)}" text-anchor="middle">${e.n}</text></g>`;
+      }
+    }
+    return out;
+  }
+
+  function drawMap() {
+    const land = []; const marks = []; const hits = []; const borders = []; const rivers = [];
+    for (const h of hexes) {
+      const [x, y] = centre(h);
+      land.push(`<polygon class="land fac-${slug(h.holder)}" points="${pts(x, y, S)}"/>`);
+      if (h.lake) marks.push(`<ellipse class="lake" cx="${f1(x + 22)}" cy="${f1(y - HH + 11)}" rx="9" ry="5"/>`);
+      marks.push(`<text class="hid" x="${f1(x)}" y="${f1(y - HH + 14)}" text-anchor="middle">${esc(h.id)}</text>`);
+      if (h.level !== null) marks.push(`<text class="lvl" x="${f1(x)}" y="${f1(y - 9)}" text-anchor="middle">${h.level}</text>`);
+      if (h.biome) marks.push(`<text class="biome" x="${f1(x)}" y="${f1(y + 3)}" text-anchor="middle">${esc(h.biome)}</text>`);
+      if (h.seat) marks.push(seatGlyph(x - 25, y - 21, h.seat));
+      marks.push(chipsFor(h, x, y));
+      hits.push(`<polygon class="hit" data-hex="${esc(h.id)}" points="${pts(x, y, S)}" tabindex="0" role="button" aria-label="${esc(hexAria(h))}"/>`);
+    }
+    // realm borders: an edge between two hexes held by different hands
+    const seen = new Set();
+    for (const h of hexes) {
+      for (const nid of h.neighbours) {
+        const n = byId.get(nid);
+        if (!n) continue;
+        const key = [h.id, n.id].sort().join('|');
+        if (seen.has(key)) continue;
+        seen.add(key);
+        if ((h.holder || '') === (n.holder || '')) continue;
+        const e = sharedEdge(h, n);
+        if (e) borders.push(`M${f1(e[0][0])} ${f1(e[0][1])}L${f1(e[1][0])} ${f1(e[1][1])}`);
+      }
+    }
+    for (const r of arr(data.rivers)) {
+      const pair = Array.isArray(r) ? r : typeof r === 'string' ? r.split('|') : [];
+      const a = byId.get(str(pair[0])); const b = byId.get(str(pair[1]));
+      if (!a || !b) continue;
+      const e = sharedEdge(a, b);
+      if (e) rivers.push(`M${f1(e[0][0])} ${f1(e[0][1])}L${f1(e[1][0])} ${f1(e[1][1])}`);
+    }
+    let mort = '';
+    const mh = byId.get(mortenHex);
+    if (mh) {
+      const [x, y] = centre(mh);
+      mort = `<polygon class="morten-ring" points="${pts(x, y, S - 6)}"/>` +
+        `<circle class="morten-pin" cx="${f1(x - 22)}" cy="${f1(y - HH + 11)}" r="9"/><text class="morten-t" x="${f1(x - 22)}" y="${f1(y - HH + 14.5)}" text-anchor="middle">M</text>`;
+    }
+    $('#frame').innerHTML =
+      `<svg class="map" id="map" viewBox="0 0 ${f1(W)} ${f1(H)}" role="group" aria-label="The realms' map: ${hexes.length} hexes">` +
+      `<g>${land.join('')}</g>` +
+      `<path class="border" d="${borders.join('')}"/>` +
+      `<path class="river" d="${rivers.join('')}"/>` +
+      `<g pointer-events="none">${marks.join('')}</g>` +
+      `<g pointer-events="none">${mort}</g>` +
+      `<polygon class="picked" id="picked" points="" pointer-events="none"/>` +
+      `<g id="arrow-layer" pointer-events="none">${drawArrows()}</g>` +
+      `<g>${hits.join('')}</g></svg>`;
+  }
+
+  // ---------- the hex's entry ----------
+  const touches = (e, id) => str(e.from_hex) === id || str(e.to_hex) === id;
+  const eventLi = (e) => {
+    const from = str(e.from_hex); const to = str(e.to_hex);
+    let where = '';
+    if (from && to && from !== to) where = `${hexBtn(from)}<span class="to" aria-hidden="true">→</span><span class="vh">to</span>${hexBtn(to)}`;
+    else if (to || from) where = hexBtn(to || from);
+    return `<li class="event fac-${slug(e.actor)}"><span class="n" aria-label="Move ${e.n}">${e.n}</span>` +
+      `<div class="who"><span>${esc(fname(str(e.actor), true))}</span>${str(e.action) ? `<span class="act">${esc(e.action)}</span>` : ''}${str(e.target) ? `<span>${esc(e.target)}</span>` : ''}</div>` +
+      (str(e.result) ? `<p class="res">${esc(e.result)}</p>` : '') +
+      (where ? `<div class="where">${where}</div>` : '') + '</li>';
+  };
+  const assetCard = (a) => {
+    const stats = [['Attack', a.attack], ['Counter', a.counter]].filter(([, v]) => str(v));
+    return `<li class="asset fac-${slug(a.owner)}"><div class="asset-top">${mchip(a)}<strong>${esc(str(a.name) || 'Asset')}</strong><span class="owner">${esc(fname(str(a.owner), true))}</span>` +
+      `<span class="tier">${esc(str(a.type) || '')}${num(a.tier) !== null ? ` · tier ${a.tier}` : ''}</span></div>` +
+      bar(a.hp, a.max_hp) +
+      (stats.length ? `<dl class="stats">${stats.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : '') +
+      (str(a.special) ? `<p class="special">${esc(a.special)}</p>` : '') +
+      (str(a.leader) ? `<p class="leader-line">Led by ${esc(a.leader)}</p>` : '') +
+      (str(a.seen) ? `<p class="leader-line">Seen: ${esc(a.seen)}</p>` : '') + '</li>';
+  };
+
+  function renderEntry(id) {
+    const h = byId.get(id);
+    const el = $('#entry');
+    if (!h) { el.innerHTML = '<p class="muted">Tap a hex on the map to see who holds it and what stands there.</p>'; return; }
+    const chips = [];
+    chips.push(`<span class="chip fac-${slug(h.holder)}"><span class="sw"></span>Held by <strong>${esc(fname(h.holder))}</strong></span>`);
+    if (h.people) chips.push(`<span class="chip">People <strong>${esc(h.people)}</strong></span>`);
+    if (h.seat) chips.push(`<span class="chip fac-${slug(h.seat)}"><span class="sw"></span>${isTower(h.seat) ? 'The tower stands here' : `Seat of <strong>${esc(h.seat)}</strong>`}</span>`);
+    if (h.income !== null) chips.push(`<span class="chip"><strong>${fmt(h.income)}</strong> GP a month${h.holder ? ` to ${esc(fname(h.holder))}` : ''}</span>`);
+    if (h.lake) chips.push('<span class="chip">Lake</span>');
+    const riv = arr(data.rivers).map((r) => (Array.isArray(r) ? r : typeof r === 'string' ? r.split('|') : [])).filter((p) => p.includes(h.id)).map((p) => (p[0] === h.id ? p[1] : p[0]));
+    if (riv.length) chips.push(`<span class="chip">River to <strong>${riv.map(esc).join(' ')}</strong></span>`);
+    if (h.id === mortenHex) chips.push('<span class="chip brass"><strong>Morten is here</strong></span>');
+    const evs = events.filter((e) => touches(e, h.id));
+    el.innerHTML =
+      `<header class="entry-head"><p class="label">Hex entry</p><h2><span class="id">${esc(h.id)}</span>${h.level !== null ? `Level ${h.level}` : ''} ${esc(h.biome || '')}</h2><div class="chips">${chips.join('')}</div></header>` +
+      `<section class="sec"><div class="sec-head"><h2>Assets</h2><span class="label">${h.assets.length} seen</span></div>` +
+      (h.assets.length ? `<ul class="assets">${h.assets.map(assetCard).join('')}</ul>` : '<p class="muted">No asset the tower can see stands here.</p>') + '</section>' +
+      (evs.length ? `<section class="sec"><div class="sec-head"><h2>Last month here</h2><span class="label">${evs.length}</span></div><ol class="events">${evs.map(eventLi).join('')}</ol></section>` : '') +
+      (h.neighbours.length ? `<section class="sec"><h2>Next to</h2><div class="hexbtns">${h.neighbours.map((n) => hexBtn(n)).join('')}</div></section>` : '');
+  }
+
+  // ---------- the realms ----------
+  function renderRealms() {
+    const list = [...factions].sort((a, b) => (isTower(b.name) ? 1 : 0) - (isTower(a.name) ? 1 : 0));
+    const assetsOf = (name) => hexes.flatMap((h) => h.assets.filter((a) => a.owner === name).map((a) => ({ a, h })));
+    const card = (f, i) => {
+      const tw = isTower(f.name);
+      const L = f.leader && typeof f.leader === 'object' ? f.leader : {};
+      const who = [str(L.title), str(L.name)].filter(Boolean).join(' ');
+      const pill = str(L.label) ? `<span class="pill ${L.label === 'bad' ? 'bad' : L.label === 'good' ? 'good' : ''}">${esc(L.label)}${str(L.verb) ? ': ' + esc(L.verb) : ''}</span>` : '';
+      const states = [];
+      if ((num(f.hostile) || 0) > 0) states.push(`<span class="chip bad">Hostile to the tower · ${esc(f.hostile)} ${f.hostile === 1 ? 'month' : 'months'} left</span>`);
+      if (f.ally === true) states.push('<span class="chip good">Ally of the tower</span>');
+      if ((num(f.disorder) || 0) > 0) states.push(`<span class="chip warn">Disorder · ${esc(f.disorder)} ${f.disorder === 1 ? 'month' : 'months'}</span>`);
+      if (!tw && !states.length) states.push('<span class="chip">At peace with the tower</span>');
+      const attrs = [['Force', f.force], ['Cunning', f.cunning], ['Wealth', f.wealth]].map(([k, v]) => `<div class="attr"><span class="label">${k}</span><span class="v">${esc(num(v) ?? '—')}</span></div>`).join('') +
+        `<div class="attr"><span class="label">Treasury</span><span class="v">${fmt(f.treasury)}</span></div>` +
+        (num(f.income) !== null ? `<div class="attr"><span class="label">Income</span><span class="v">${num(f.income) >= 0 ? '+' : ''}${fmt(f.income)}</span></div>` : '');
+      const own = assetsOf(f.name);
+      const hexesHeld = arr(f.hexes).map(str).filter(Boolean);
+      return `<article class="realm fac-${slug(f.name)}" id="realm-${i}">` +
+        `<div class="realm-head"><h3>${esc(fname(f.name, true))}</h3>${who ? `<span class="leader">${esc(who)}${str(L.tag) ? ` · ${esc(L.tag)}` : ''}</span>` : ''}</div>` +
+        (pill ? `<div>${pill}</div>` : '') +
+        `<div class="goal"><span class="label">Goal</span><p>${str(f.goal) ? esc(f.goal) : '<span class="muted">No goal this month</span>'}</p></div>` +
+        bar(f.hp, f.max_hp) +
+        `<div class="attrs">${attrs}</div>` +
+        `<div class="chips">${states.join('')}</div>` +
+        (str(f.seat) || hexesHeld.length ? `<div class="row"><span class="label">${str(f.seat) ? 'Seat ' + esc(f.seat) + ' · ' : ''}${hexesHeld.length} ${hexesHeld.length === 1 ? 'hex' : 'hexes'}</span><div class="hexbtns">${hexesHeld.map((id) => hexBtn(id, id === str(f.seat) ? '<small>seat</small>' : '')).join('')}</div></div>` : '') +
+        `<div class="row"><span class="label">Assets the tower can see · ${own.length}</span>` +
+        (own.length ? `<div class="alist">${own.map(({ a, h }) => `<button type="button" class="arow" data-hex="${esc(h.id)}" aria-label="${esc(a.name)} in ${esc(h.id)}, ${esc(a.hp)} of ${esc(a.max_hp)} HP">${mchip(a)}<span class="nm">${esc(a.name)}</span><span class="num">${esc(a.hp ?? '?')}/${esc(a.max_hp ?? '?')}</span><span class="at">${esc(h.id)}</span></button>`).join('')}</div>` : '<p class="muted">None seen.</p>') +
+        '</div></article>';
+    };
+    const stand = (f, i) => {
+      const L = f.leader && typeof f.leader === 'object' ? f.leader : {};
+      const state = (num(f.hostile) || 0) > 0 ? 'hostile' : f.ally === true ? 'ally' : (num(f.disorder) || 0) > 0 ? 'disorder' : '';
+      const sub = isTower(f.name) ? (str(L.name) ? `${L.name}'s` : 'yours') : [str(L.label) && str(L.verb) ? `${L.label}: ${L.verb}` : null, state === 'hostile' ? 'hostile' : state === 'ally' ? 'ally' : state === 'disorder' ? 'in disorder' : null].filter(Boolean).join(' · ');
+      const r = ratio(f.hp, f.max_hp);
+      return `<button type="button" class="stand fac-${slug(f.name)} ${state}" data-realm="${i}"><span class="sw"></span>` +
+        `<span class="nm"><b>${esc(fname(f.name, true))}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span>` +
+        (r !== null ? `<span class="bar ${band(r)}" role="img" aria-label="${esc(f.hp)} of ${esc(f.max_hp)} HP"><i style="width:${(r * 100).toFixed(0)}%"></i></span>` : '<span></span>') +
+        `<span class="fcw">F${esc(f.force ?? '–')} C${esc(f.cunning ?? '–')} W${esc(f.wealth ?? '–')}</span></button>`;
+    };
+    $('#realms').innerHTML = `<h2 id="realms-h">Realms</h2>` + (list.length
+      ? `<div class="standings">${list.map(stand).join('')}</div><div class="realm-list">${list.map(card).join('')}</div>`
+      : '<p class="muted">No factions in the data.</p>');
+  }
+
+  // ---------- the month ----------
+  function renderMonth() {
+    const kind = (line) => {
+      const m = /^(Threat|Chance|Open)\s*:\s*/i.exec(line);
+      return m ? [m[1].toLowerCase(), line.slice(m[0].length), m[1]] : [null, line, null];
+    };
+    const part = (title, lines) => {
+      const ls = arr(lines).map(str).filter(Boolean);
+      return `<section class="part"><h3>${title}</h3>` + (ls.length
+        ? `<ul>${ls.map((l) => { const [k, rest, word] = kind(l); return `<li class="${k ? 'k-' + k : ''}">${k ? `<span class="k">${esc(word)}</span>` : ''}${esc(rest)}</li>`; }).join('')}</ul>`
+        : '<p class="muted">Nothing here this month.</p>') + '</section>';
+    };
+    $('#month').innerHTML =
+      `<h2 id="month-h">${lastMonth !== null ? `Month ${esc(lastMonth)}'s report` : 'The report'}</h2>` +
+      `<div class="report">${part('The plan', report.plan)}${part('What happened', report.happened)}${part('The tower now', report.tower)}${part('Next month', report.next)}</div>` +
+      `<section class="sec part"><div class="sec-head"><h3>Every move, in order</h3><span class="label">${events.length}</span></div>` +
+      (events.length ? `<ol class="events">${events.map(eventLi).join('')}</ol>` : '<p class="muted">The tower saw no moves last month.</p>') + '</section>';
+  }
+
+  // ---------- the key's realm swatches ----------
+  $('#key-realms').innerHTML = factions.map((f) => `<span class="fac-${slug(f.name)}"><span class="sw"></span>${esc(fname(f.name, true))}</span>`).join('');
+
+  // ---------- state: view, picked hex, arrows ----------
+  const app = $('#app');
+  const VIEWS = ['map', 'realms', 'month'];
+  let picked = byId.has(mortenHex) ? mortenHex : (tower && byId.has(str(tower.seat)) ? str(tower.seat) : hexes[0].id);
+
+  function setView(v, remember = true) {
+    if (!VIEWS.includes(v)) v = 'map';
+    app.dataset.view = v;
+    for (const b of document.querySelectorAll('#tabs button')) b.setAttribute('aria-current', String(b.dataset.view === v));
+    if (remember) {
+      store.set('view', v);
+      try { history.replaceState(null, '', '#' + v); } catch (e) { /* the frame may refuse */ }
+    }
+  }
+
+  function pick(id, how) {
+    if (!byId.has(id)) return;
+    picked = id;
+    const [x, y] = centre(byId.get(id));
+    $('#picked').setAttribute('points', pts(x, y, S - 2));
+    for (const h of document.querySelectorAll('#map .hit')) h.setAttribute('aria-pressed', String(h.dataset.hex === id));
+    renderEntry(id);
+    const entry = $('#entry');
+    const phone = !matchMedia('(min-width: 900px)').matches;
+    const behavior = reduced ? 'auto' : 'smooth';
+    if (how === 'map' && phone) {
+      const top = entry.getBoundingClientRect().top;
+      if (top > innerHeight - 140) window.scrollBy({ top: top - innerHeight * 0.55, behavior });
+    } else if (how === 'jump') {
+      if (phone) entry.scrollIntoView({ block: 'start', behavior });
+      else window.scrollTo({ top: 0, behavior });
+    }
+  }
+
+  function setArrows(on) {
+    $('#arrow-layer').hidden = !on;
+    $('#arrows').setAttribute('aria-pressed', String(on));
+    store.set('arrows', on ? '1' : '0');
+  }
+
+  renderStrip();
+  drawMap();
+  renderRealms();
+  renderMonth();
+  pick(picked);
+  if (!events.some((e) => byId.has(str(e.from_hex)) || byId.has(str(e.to_hex)))) {
+    $('#arrows').hidden = true;
+  }
+  setArrows(store.get('arrows') !== '0');
+
+  const fromHash = (location.hash || '').replace('#', '');
+  setView(VIEWS.includes(fromHash) ? fromHash : (store.get('view') || 'map'), VIEWS.includes(fromHash));
+
+  // ---------- events ----------
+  $('#tabs').addEventListener('click', (ev) => {
+    const b = ev.target.closest('button[data-view]');
+    if (!b) return;
+    setView(b.dataset.view);
+    if (!matchMedia('(min-width: 900px)').matches) window.scrollTo({ top: 0 });
+  });
+  $('#arrows').addEventListener('click', () => setArrows($('#arrows').getAttribute('aria-pressed') !== 'true'));
+  $('#frame').addEventListener('click', (ev) => {
+    const h = ev.target.closest('[data-hex]');
+    if (h) pick(h.dataset.hex, 'map');
+  });
+  $('#frame').addEventListener('keydown', (ev) => {
+    if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    const h = ev.target.closest('[data-hex]');
+    if (!h) return;
+    ev.preventDefault();
+    pick(h.dataset.hex, 'map');
+  });
+  // a standing opens its realm's card
+  $('#realms').addEventListener('click', (ev) => {
+    const b = ev.target.closest('button[data-realm]');
+    if (!b) return;
+    const card = document.getElementById('realm-' + b.dataset.realm);
+    if (card) card.scrollIntoView({ block: 'start', behavior: reduced ? 'auto' : 'smooth' });
+  });
+  // any hex button outside the map opens that hex's entry on the map view
+  document.addEventListener('click', (ev) => {
+    const b = ev.target.closest('button[data-hex]');
+    if (!b || b.closest('#frame')) return;
+    setView('map');
+    pick(b.dataset.hex, 'jump');
+  });
+  addEventListener('hashchange', () => {
+    const v = (location.hash || '').replace('#', '');
+    if (VIEWS.includes(v)) setView(v, false);
+  });
+})();
+</script>

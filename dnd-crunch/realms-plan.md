@@ -1,7 +1,8 @@
 # Realms: the overworld plan
 
-**Implemented.** The rules now live in `realms.md` and `tools/realms.py`; this plan is kept
-as the design record.
+**Implemented as Realms v1.** The rules live in `realms-v1.md` and `tools/realms_v1.py`
+(renamed when v2 took `realms.md` and `tools/realms.py`); this plan is kept as the design
+record.
 
 An overworld for D&D Crunch: a small hex map of six realms, played as monthly domain turns
 on top of the existing dungeon game. It keeps the same feel: minimal narration, open
