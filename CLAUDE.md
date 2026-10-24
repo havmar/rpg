@@ -29,3 +29,9 @@ Rulebooks are large. Never read one whole; use the game's own index and `grep -n
 
 This is a cloud session and the container is wiped when it ends, so commit and push work as
 you go.
+
+**Heads-up: PRs are squash-merged.** A merged PR lands on `main` as one new commit titled
+after the PR (often its first commit), so the session branch's own commits never show up
+in `main`'s history. To check whether work reached `main`, compare content
+(`git diff origin/main <branch>`, empty means it's all there), not commit hashes or
+`git log main..<branch>`. Fetch `origin/main` first; the local `main` can be stale.
