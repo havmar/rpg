@@ -1,6 +1,6 @@
 # Morten — Wizard 4 (Evoker)
 
-Human (Medium), male (he/him). Background: Sage. XP 3,750 (level 5 at 6,500).
+Human (Medium), male (he/him). Background: Sage. XP 4,250 (level 5 at 6,500).
 
 ## Core
 
@@ -103,8 +103,7 @@ no casting check: Detect Magic, Find Familiar.
 | Oil ×5 spare (+1 in the lamp) | 2.3 | fuel, or thrown / poured for fire |
 | Tinderbox | 0.5 | light a torch or lamp: Bonus action |
 | Torch ×7 | 3.2 | 1 h, 6 m bright + 6 m dim |
-| Rations ×6 | 2.7 | 1 per day; buy at the tower's trader |
-| Potion of Healing ×1 | 0.5 | Bonus action: regain 2d4+2 HP |
+| Rations ×5 | 2.3 | 1 per day; buy at the tower's trader |
 | Waterskin (full) | 2.3 | |
 | Rope, 15 m | 2.3 | |
 | Bedroll | 3.2 | |
@@ -112,6 +111,6 @@ no casting check: Detect Magic, Find Familiar.
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
 | Spell Scroll: Ice Knife (L1) | — | cast once with no check, or copy into the spellbook (2 h, 50 GP) |
 
-**Coins:** 5 SP. Month 1: spent 115 GP at the tower's trader (2 Potions of Healing, incense, 10 rations); the Strike on Nazha paid 45 GP, deposited. Month 2: worgs in A5 paid 40 GP and the Strike on Kallista 20 GP; 61 GP deposited.
+**Coins:** 0 on him. His purse, **50 GP 5 SP**, lies on the floor of room 3.2 (floor 3, under A5), dropped before he died in Month 3. Month 1: spent 115 GP at the tower's trader; the Strike on Nazha paid 45 GP, deposited. Month 2: 60 GP of worg loot, 61 GP deposited.
 
 **Familiar:** owl (Fey), summoned Month 1 Day 1; the tower's courier.

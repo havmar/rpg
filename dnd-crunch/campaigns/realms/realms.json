@@ -1,7 +1,7 @@
 {
  "seed": 101,
- "month": 3,
- "rng": 481366276,
+ "month": 4,
+ "rng": 4129891070,
  "hexes": {
   "A1": {
    "level": 13,
@@ -171,20 +171,20 @@
     "leader": "Galen",
     "title": "Marshal",
     "tag": "Brutal",
-    "force": 6,
+    "force": 7,
     "cunning": 4,
-    "gp": 305
+    "gp": 389
    },
    "mirror": {
     "leader": "Mirela",
     "title": "Lord",
     "tag": "Neutral",
     "cunning": 2,
-    "gp": 168
+    "gp": 252
    },
    "war": false,
    "events": [
-    "enslaved Orcs's people as soldiers"
+    "enslaved Gnomes's people as soldiers"
    ]
   },
   "Elves": {
@@ -192,20 +192,20 @@
     "leader": "Faelar",
     "title": "Speaker",
     "tag": "Greedy",
-    "force": 4,
+    "force": 5,
     "cunning": 4,
-    "gp": 357
+    "gp": 97
    },
    "mirror": {
     "leader": "Erevan",
     "title": "Archon",
     "tag": "Neutral",
     "cunning": 2,
-    "gp": 176
+    "gp": 264
    },
    "war": false,
    "events": [
-    "failed to conquer Goblinkind at D2"
+    "built Force to 5"
    ]
   },
   "Gnomes": {
@@ -213,40 +213,41 @@
     "leader": "Quillon",
     "title": "Mayor",
     "tag": "Neutral",
-    "force": 4,
+    "force": 2,
     "cunning": 3,
-    "gp": 179
+    "gp": 299
    },
    "mirror": {
     "leader": "Pockle",
     "title": "Mayor",
     "tag": "Cruel",
     "cunning": 1,
-    "gp": 116
+    "gp": 174
    },
    "war": false,
-   "events": []
+   "events": [
+    "lost people to Humans's slavers"
+   ]
   },
   "Orcs": {
    "ruler": {
     "leader": "Mogra",
     "title": "Chief",
     "tag": "Neutral",
-    "force": 0,
+    "force": 1,
     "cunning": 2,
-    "gp": 177
+    "gp": 229
    },
    "mirror": {
     "leader": "Nazha",
     "title": "Boss",
     "tag": "Brutal",
     "cunning": 1,
-    "gp": 38
+    "gp": 76
    },
    "war": false,
    "events": [
-    "lost people to Humans's slavers",
-    "built Cunning to 2"
+    "built Force to 1"
    ]
   },
   "Tieflings": {
@@ -256,21 +257,18 @@
     "tag": "Brutal",
     "force": 5,
     "cunning": 3,
-    "gp": 309
+    "gp": 406
    },
    "mirror": {
     "leader": "Iados",
     "title": "Magister",
     "tag": "Altruistic",
-    "cunning": 0,
-    "gp": 137
+    "cunning": 1,
+    "gp": 105
    },
    "war": true,
    "events": [
-    "the wizard struck ruler Kallista",
-    "the tower sent 1 GP to Iados",
-    "enslaved Tower's people as soldiers",
-    "rival Iados's coup failed"
+    "rival built Cunning to 1"
    ]
   },
   "Goblinkind": {
@@ -280,35 +278,31 @@
     "tag": "Neutral",
     "force": 5,
     "cunning": 4,
-    "gp": 149
+    "gp": 262
    },
    "mirror": {
     "leader": "Skreek",
     "title": "Big Boss",
     "tag": "Cruel",
     "cunning": 2,
-    "gp": 144
+    "gp": 216
    },
    "war": false,
-   "events": [
-    "beat off Elves at D2"
-   ]
+   "events": []
   }
  },
  "fallen": [],
  "tower": {
   "hex": "C5",
   "force": 0,
-  "gp": 50,
+  "gp": 105,
   "officers": [
    {
     "name": "Doran",
     "people": "Humans"
    }
   ],
-  "morten": "A5",
-  "events": [
-   "lost people to Tieflings's slavers"
-  ]
+  "morten": "C5",
+  "events": []
  }
 }

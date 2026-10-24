@@ -202,3 +202,51 @@ Choose Morten's month, or say "you decide".
 - R10 Morten: Scorching Ray → d20 8 +6 = 14, CAST, hit → 5+4 = 9. H1 dead.
 - Result: Morten 1/26. XP 3,850 → 4,250. +40 GP (50 GP 5 SP). Lost: Sleep, Web, Misty Step, Thunderwave, Magic Missile. No potions left.
 - Long Rest in 3.2 (no wanderers on a floor). Ration 6 → 5. All back.
+
+**Month 3 · Day 2 · A5 · Floor 3**
+
+**Room 3.3 · 3 Blink Dogs** (Low, 150 XP) · 18×18 m, thick fog (heavily obscured beyond 3 m); door to 3.2 on its west wall
+- Blink Dog: AC 13 · HP 22 · speed 8 sq · Bite +5, 1d4+3 piercing · Teleport 12 m (bonus, recharge 4–6). Lawful Good Fey; understand Elvish. WIS +1, DEX +3, CON +1.
+- Morten (GM): he speaks Elvish; try talking. Arcana d20 11 +6 = 17 vs DC 10: he knows them (good-aligned, understand Elvish). Persuasion with Advantage (a ration as a treat) → d20 2, 10 keep 10 +0 = 10 vs DC 15, FAIL. They attack.
+- Init: Morten d20 11 +4 = 15 › Dogs d20 9 +3 = 12.
+- R1 Morten (GM): back 3 sq into 3.2 (clear air), ready Scorching Ray for the first dog through the door. Released: d20 2 +6 = 8, FIZZLE, lost (reaction spent).
+- R1 Dogs: A runs in, B and C Teleport beside him. Bites → d20 10 +5 = 15 vs AC 15, hit → 1d4+3: 1+3 = 4; d20 6 +5 = 11, miss; d20 7 +5 = 12, miss. Morten 26 → 22.
+- R2 Morten: Thunderwave at level 2 on the three in a row → d20 2 +6 = 8, FIZZLE, lost.
+- R2 Dogs: bites → 20, 22, 24, all hit (Shield can't turn any) → 4, 6, 7. Morten 22 → 5.
+- R3 Morten (GM): Sleep on A and B → d20 6 +6 = 12, CAST. A WIS d20 7 +1 = 8, FAIL, Incapacitated; B NAT 20, saves. Misty Step → d20 8 +6 = 14, CAST, then walks: 12 sq.
+- R3 Dogs: Teleport recharge d6 2, 3: none. B and C Dash, adjacent, no bite. A's second save → d20 2 +1 = 3: **Unconscious.**
+- R4 Morten (GM): drops his purse (50 GP 5 SP) in 3.2: coins not carried survive a death. Magic Missile at level 2 on B → d20 15 +6 = 21, CAST → 4d4+4: 3+4+4+1+4 = 16. B 22 → 6. Misty Step → d20 2 +6 = 8, FIZZLE, lost.
+- R4 Dogs: recharge B 6 (ready), C 2. B bite → d20 17 +5 = 22, hit → 3+3 = 6. **Morten 5 → 0, dying.** Sleep ends; A wakes. C bite on the Unconscious wizard, Advantage → d20 15, 1 keep 15 +5 = 20, hit, automatic crit: 2 failed death saves.
+- The dogs are Lawful Good guardians: they stop biting a downed intruder (GM ruling).
+- Death saves: d20 16 ✓, 19 ✓, 8 ✗ → 3 failures. **Morten dies.**
+
+**Death:** the Delve ends and so does Morten's month. He revives at the tower (C5) on full HP, all spells back. Carried coins lost: none (the purse lies in room 3.2). Deaths: 1. The dogs are back at full HP after 8 hours.
+
+## Month 3 · Domain turn
+
+**Log**
+- Income: tower L6 × 10 = 60, upkeep −5 (F0, 1 officer) → 105 GP. Court: defend 1 (unused).
+- Order: Elves · Humans · Goblinkind · Tieflings · Gnomes · Orcs.
+- Elves (Faelar, Greedy): Build Force 4 → 5, −500 GP.
+- Humans (Galen, Brutal): Enslave Gnomes at B1 from B2 → d10 8 + F6 = 14 vs d10 3 + F4 = 7, WIN. Humans F6 → 7. Gnomes F4 → 2.
+- Goblinkind, Tieflings, Gnomes: save. Orcs (Mogra): Build Force 0 → 1.
+- Tieflings mirror Iados: Build Cunning 0 → 1. Other mirrors save.
+- Nobody touched the tower: at F0 no Brutal ruler targets it.
+
+**Realms**
+- Elves · Faelar (Greedy) F5 C4 97 GP · D3 D4 D5 · mirror Erevan (Neutral) C2 264 GP
+- Gnomes · Quillon (Neutral) F2 C3 299 GP · A1 B1 C1 C2 · mirror Pockle (Cruel) C1 174 GP
+- Goblinkind · Nagra (Neutral) F5 C4 262 GP · C3 D1 D2 · mirror Skreek (Cruel) C2 216 GP
+- Humans · Galen (Brutal) F7 C4 389 GP · A2 A3 B2 · mirror Mirela (Neutral) C2 252 GP
+- Orcs · Mogra (Neutral) F1 C2 229 GP · B3 C4 · mirror Nazha (Brutal) C1 76 GP
+- Tieflings · Kallista (Brutal) F5 C3 406 GP · A4 A5 B5 · mirror Iados (Altruistic) C1 105 GP · at war with the tower
+
+**Tower:** F0 · 105 GP · hexes B4 C5 · wars: Tieflings
+**Court:** Doran (Humans) · pool 1
+
+**Month 4 choices**
+- Morten: C5 (tower), rested. Trade here (Potion of Healing 50 GP, rations, oil, anything in the SRD equipment list), but he carries 0 GP (his purse is in floor 3, room 3.2).
+- Travel: 1 day per hex; d6 each day outside C5, 1 = encounter. A5 is 2 days (C5 → B4 → A5).
+- Mission: Strike, Rob (a vicious ruler: Elves, Humans, Tieflings), or Delve (floor 1 here; floor 3 in A5, where rooms 3.1–3.2 are cleared, 3.3's Blink Dogs wait, and his purse lies in 3.2).
+- Tower action: Build F1 for 100 GP (treasury 105), or nothing (F0: the Brutal rulers skip the tower).
+- Fund, Recruit (2nd officer 200 GP: Gnomes, Goblinkind, Orcs), court point (1).
