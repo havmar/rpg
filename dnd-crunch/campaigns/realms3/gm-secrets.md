@@ -2,17 +2,17 @@
 
 Floor N lies under the level-N hex (seed 53, the same floors as `gen_dungeon.py --seed 53`). Mark rooms explored as Morten reaches them. The realms' hidden Cunning assets are in `realms.json` (`realms.py show --gm`).
 
-## Floor 1 · B5 (desert, tower)
+## Floor 1 · B5 (desert, tower) · CLEARED Month 1 Day 1
 
 XP needed for level 2: 300 · floor total: 375 · 5 encounters
 
 | Room | Encounter | CR | XP | Difficulty | Room size | Feature | Coins |
 |---|---|---|---|---|---|---|---|
-| 1.1 ✦ entered M1 D1 | 1× Giant Badger | 1/4 | 50 | Moderate | 6×12 sq (9×18 m) | an open, empty floor | 5 GP |
-| 1.2 | 1× Swarm of Ravens | 1/4 | 50 | Moderate | 4×12 sq (6×18 m) | a chasm crossed by a 1.5 m-wide bridge | 5 GP |
-| 1.3 | 3× Venomous Snake | 1/8 | 75 | Moderate | 6×6 sq (9×9 m) | pillars (full cover) | 7 GP |
-| 1.4 | 4× Mastiff | 1/8 | 100 | High | 8×8 sq (12×12 m) | magical darkness in half the room | 10 GP |
-| 1.5 | 2× Boar | 1/4 | 100 | High | 8×8 sq (12×12 m) | pillars (full cover) | 10 GP |
+| 1.1 ✓ | 1× Giant Badger | 1/4 | 50 | Moderate | 6×12 sq (9×18 m) | an open, empty floor | 5 GP |
+| 1.2 ✓ | 1× Swarm of Ravens | 1/4 | 50 | Moderate | 4×12 sq (6×18 m) | a chasm crossed by a 1.5 m-wide bridge | 5 GP |
+| 1.3 ✓ | 3× Venomous Snake | 1/8 | 75 | Moderate | 6×6 sq (9×9 m) | pillars (full cover) | 7 GP |
+| 1.4 ✓ (2 Mastiffs fled, morale) | 4× Mastiff | 1/8 | 100 | High | 8×8 sq (12×12 m) | magical darkness in half the room | 10 GP |
+| 1.5 ✓ | 2× Boar | 1/4 | 100 | High | 8×8 sq (12×12 m) | pillars (full cover) | 10 GP |
 
 ## Floor 2 · A5 (savanna, Humans)
 

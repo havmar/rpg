@@ -1,8 +1,8 @@
 {
  "version": 2,
  "seed": 53,
- "month": 1,
- "rng": 2707130170,
+ "month": 2,
+ "rng": 3977838224,
  "level": 3,
  "hexes": {
   "A1": {
@@ -189,7 +189,7 @@
    "force": 4,
    "cunning": 4,
    "wealth": 4,
-   "gp": 430,
+   "gp": 910,
    "seat": "D1",
    "hostile": 0,
    "disorder": 0,
@@ -217,7 +217,7 @@
    "force": 3,
    "cunning": 3,
    "wealth": 3,
-   "gp": 320,
+   "gp": 790,
    "seat": "D2",
    "hostile": 0,
    "disorder": 0,
@@ -245,7 +245,7 @@
    "force": 3,
    "cunning": 3,
    "wealth": 3,
-   "gp": 250,
+   "gp": 400,
    "seat": "A4",
    "hostile": 0,
    "disorder": 0,
@@ -273,7 +273,7 @@
    "force": 5,
    "cunning": 5,
    "wealth": 5,
-   "gp": 450,
+   "gp": 975,
    "seat": "D5",
    "hostile": 0,
    "disorder": 0,
@@ -301,7 +301,7 @@
    "force": 3,
    "cunning": 3,
    "wealth": 3,
-   "gp": 270,
+   "gp": 640,
    "seat": "A2",
    "hostile": 0,
    "disorder": 0,
@@ -329,7 +329,7 @@
    "force": 4,
    "cunning": 4,
    "wealth": 4,
-   "gp": 370,
+   "gp": 690,
    "seat": "D3",
    "hostile": 0,
    "disorder": 0,
@@ -347,7 +347,7 @@
     "tag": "Tower"
    },
    "goal": null,
-   "gp": 100,
+   "gp": 7,
    "seat": "B5",
    "hostile": 0,
    "disorder": 0,
@@ -360,23 +360,13 @@
   }
  },
  "assets": {
-  "a1": {
-   "id": "a1",
-   "owner": "Orcs",
-   "kind": "thugs",
-   "hex": "D1",
-   "hp": 3,
-   "from": null,
-   "seen": false,
-   "leader": null
-  },
   "a2": {
    "id": "a2",
    "owner": "Orcs",
    "kind": "thugs",
-   "hex": "D1",
+   "hex": "C2",
    "hp": 3,
-   "from": null,
+   "from": "D1",
    "seen": false,
    "leader": null
   },
@@ -435,7 +425,7 @@
    "owner": "Goblinkind",
    "kind": "caravans",
    "hex": "C2",
-   "hp": 4,
+   "hp": 2,
    "from": null,
    "seen": false,
    "leader": null
@@ -524,9 +514,9 @@
    "id": "a17",
    "owner": "Elves",
    "kind": "militia",
-   "hex": "A2",
+   "hex": "B1",
    "hp": 4,
-   "from": null,
+   "from": "A2",
    "seen": false,
    "leader": null
   },
@@ -534,9 +524,9 @@
    "id": "a18",
    "owner": "Elves",
    "kind": "militia",
-   "hex": "A2",
+   "hex": "B1",
    "hp": 4,
-   "from": null,
+   "from": "A2",
    "seen": false,
    "leader": null
   },
@@ -564,9 +554,9 @@
    "id": "a21",
    "owner": "Gnomes",
    "kind": "thugs",
-   "hex": "D3",
+   "hex": "C4",
    "hp": 3,
-   "from": null,
+   "from": "D3",
    "seen": false,
    "leader": null
   },
@@ -574,9 +564,9 @@
    "id": "a22",
    "owner": "Gnomes",
    "kind": "knights",
-   "hex": "D3",
+   "hex": "C4",
    "hp": 12,
-   "from": null,
+   "from": "D3",
    "seen": false,
    "leader": null
   },
@@ -584,9 +574,9 @@
    "id": "a23",
    "owner": "Gnomes",
    "kind": "saboteurs",
-   "hex": "B4",
+   "hex": "C5",
    "hp": 6,
-   "from": null,
+   "from": "B4",
    "seen": false,
    "leader": null
   },
@@ -599,9 +589,19 @@
    "from": null,
    "seen": false,
    "leader": null
+  },
+  "a25": {
+   "id": "a25",
+   "owner": "tower",
+   "kind": "farms",
+   "hex": "B5",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
   }
  },
- "next_id": 25,
+ "next_id": 26,
  "names": [
   "Morten",
   "Hruma",
@@ -613,25 +613,130 @@
  ],
  "fallen": [],
  "morten": "B5",
- "events": [],
+ "events": [
+  {
+   "month": 1,
+   "actor": "tower",
+   "action": "Mission",
+   "from_hex": "B5",
+   "to_hex": "B5",
+   "target": "floor 1",
+   "result": "delved"
+  },
+  {
+   "month": 1,
+   "actor": "Gnomes",
+   "action": "Move",
+   "from_hex": "D3",
+   "to_hex": "C4",
+   "target": "Gnomes' Thugs a21",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Gnomes",
+   "action": "Move",
+   "from_hex": "D3",
+   "to_hex": "C4",
+   "target": "Gnomes' Knights a22",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Orcs",
+   "action": "Move",
+   "from_hex": "D1",
+   "to_hex": "C2",
+   "target": "Orcs' Thugs a1",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Orcs",
+   "action": "Move",
+   "from_hex": "D1",
+   "to_hex": "C2",
+   "target": "Orcs' Thugs a2",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Elves",
+   "action": "Move",
+   "from_hex": "A2",
+   "to_hex": "B1",
+   "target": "Elves' Militia a17",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Elves",
+   "action": "Move",
+   "from_hex": "A2",
+   "to_hex": "B1",
+   "target": "Elves' Militia a18",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Goblinkind",
+   "action": "Attack",
+   "from_hex": "C2",
+   "to_hex": "C2",
+   "target": "Orcs' Thugs a2",
+   "result": "lost: counter 2"
+  },
+  {
+   "month": 1,
+   "actor": "tower",
+   "action": "Buy",
+   "from_hex": "B5",
+   "to_hex": "B5",
+   "target": "the tower's Farms a25",
+   "result": "200 GP"
+  }
+ ],
  "report": {
-  "month": 0,
-  "plan": [],
+  "month": 1,
+  "plan": [
+   "Morten: Delve floor 1 under B5.",
+   "Morten delves floor 1 under the tower: safe XP and coin in the home hex, no travel.",
+   "He deposits his purse (97 GP) so the tower can buy Farms in B5: +50 GP a month, in the warded hex.",
+   "Tower: Buy Farms in B5."
+  ],
   "happened": [
-   "Month 1: the world begins."
+   "Morten: Delve floor 1 under B5 (the dungeon game; no domain effect).",
+   "Gnomes (Tinker-General Ellywick, bad: robs its neighbours): Move Thugs a21 D3 → C4, Knights a22 D3 → C4 (goal: rob Tieflings' Mercenaries a16 in C5).",
+   "Orcs (Boss Hruma, bad: robs its neighbours): Move Thugs a1 D1 → C2, Thugs a2 D1 → C2 (goal: rob Goblinkind's Caravans a8 in C2).",
+   "Goblinkind (Big Boss Zarga, good: keeps the peace): Caravans a8 attacks Orcs' Thugs a2 in C2 → d10 1 + W3 + 1 claim = 5 vs d10 9 + W4 = 13, LOSS. Counter 1d4 2 = 2: Caravans 4 → 2 HP.",
+   "Tower (Morten): Buy Farms a25 in B5, −200 GP → 7 GP."
   ],
   "tower": [
-   "HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 100 GP · Morten level 3",
-   "Assets: none",
+   "HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 7 GP · Morten level 3",
+   "Assets: a25 the tower's Farms in B5 · T1 · HP 4/4 · no attack · counter 1d4",
    "Hexes: B5",
    "Hostile: nobody",
    "Allies: Goblinkind, Humans"
   ],
   "next": [
+   "Chance: the Orcs' seat D1 has no Force asset (Strike it for 2d6 to their HP 22/22).",
+   "Chance: the Elves' seat A2 has no Force asset (Strike it for 2d6 to their HP 16/16).",
+   "Chance: the Gnomes' seat D3 has no Force asset (Strike it for 2d6 to their HP 22/22).",
    "Open: Morten is in B5 (L1, desert, tower); travel 1 day a hex, d6 each day outside B5 (1 = encounter).",
    "Open: missions here: Delve floor 1.",
-   "Open: the tower's one action (100 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free."
+   "Open: the tower's one action (7 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free."
   ]
  },
- "log": []
+ "log": [
+  "Morten: Delve floor 1 under B5 (the dungeon game; no domain effect).",
+  "Morten: deposit 97 GP → tower 197 GP.",
+  "Order: Tieflings C5 (d10 10) · Gnomes C4 (d10 2) · Orcs C4 (d10 1) · Elves C3 (d10 7) · Goblinkind C3 (d10 7) · Humans C3 (d10 7) · Tower C1 (d10 2).",
+  "Tieflings (Exarch Iados, bad: squeezes its own people): saves for Treasury (975/1,200 GP).",
+  "Gnomes (Tinker-General Ellywick, bad: robs its neighbours): Move Thugs a21 D3 → C4, Knights a22 D3 → C4 (goal: rob Tieflings' Mercenaries a16 in C5).",
+  "Orcs (Boss Hruma, bad: robs its neighbours): Move Thugs a1 D1 → C2, Thugs a2 D1 → C2 (goal: rob Goblinkind's Caravans a8 in C2).",
+  "Elves (Warden Valanthe, bad: takes land): Move Militia a17 A2 → B1, Militia a18 A2 → B1 (goal: take B1 (L14, Orcs')).",
+  "Goblinkind (Big Boss Zarga, good: keeps the peace): Caravans a8 attacks Orcs' Thugs a2 in C2 → d10 1 + W3 + 1 claim = 5 vs d10 9 + W4 = 13, LOSS. Counter 1d4 2 = 2: Caravans 4 → 2 HP.",
+  "Humans (Reeve Leopold, good: keeps the peace): saves for Walls (400/600 GP).",
+  "Tower (Morten): Buy Farms a25 in B5, −200 GP → 7 GP."
+ ]
 }

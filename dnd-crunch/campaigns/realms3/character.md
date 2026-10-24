@@ -1,6 +1,6 @@
 # Morten — Wizard 3 (Evoker)
 
-Human (Medium), male (he/him). Background: Sage. XP 900 (level 4 at 2,700).
+Human (Medium), male (he/him). Background: Sage. XP 1,275 (level 4 at 2,700).
 
 ## Core
 
@@ -14,7 +14,7 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 - **AC** 12 unarmoured · **15 with Mage Armor**
 - **Speed** 9 m (6 squares) · **Initiative** +4 (DEX +2, Alert +2)
 - **Proficiency bonus** +2 · **Passive Perception** 13
-- **Carrying capacity** 54 kg (carrying ≈ 34 kg)
+- **Carrying capacity** 54 kg (carrying ≈ 31 kg)
 
 **Saving throws:** STR −1 · DEX +2 · CON +2 · **INT +5** · **WIS +3** · CHA +0
 
@@ -94,10 +94,9 @@ no casting check: Detect Magic, Find Familiar.
 | Dagger ×2 | 0.9 | |
 | Robe (worn) | 1.8 | |
 | Backpack | 2.3 | |
-| Book (Sage) | 2.3 | the trader buys it for 12 GP 5 SP |
 | Ink, ink pen, 10 parchment | — | |
 | Lamp | 0.5 | 4.5 m bright + 9 m dim; 6 h per oil flask |
-| Oil ×10 | 4.5 | fuel, or thrown / poured for fire |
+| Oil ×9 spare (+1 in the lamp, about 1.5 h left) | 4.5 | fuel, or thrown / poured for fire |
 | Tinderbox | 0.5 | light a torch or lamp: Bonus action |
 | Torch ×7 | 3.2 | 1 h, 6 m bright + 6 m dim |
 | Rations ×4 | 3.6 | 1 per day |
@@ -106,6 +105,5 @@ no casting check: Detect Magic, Find Familiar.
 | Bedroll | 3.2 | |
 | Caltrops (bag) | 0.9 | cover a 1.5 m square |
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
-| Potion of Healing | 0.2 | Bonus action: regain 2d4+2 HP |
 
-**Coins:** 47 GP 7 SP 5 CP (starting gold). The tower's treasury (100 GP) is separate.
+**Coins:** 2 SP 5 CP. Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); floor 1 loot +37 GP; deposited 97 GP in the tower's treasury. The treasury is separate.
