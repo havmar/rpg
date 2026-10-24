@@ -31,7 +31,7 @@ OPTIONS
 
 ---
 
-**Human:** I am on a phone and the code block lines don't wrap, just normal text please. I'll ask you to play my character as well, so please take a turn.
+**Human:** I'm on a phone and the code block lines don't wrap, just normal text please. I'll ask you to play my character as well, so please take a turn.
 
 **Morten (AI):**
 - Shop: incense (10 GP), Acid ×1 (25 GP). Coins left: 12 GP 7 SP 5 CP.
