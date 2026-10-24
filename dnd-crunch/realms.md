@@ -103,7 +103,7 @@ them, the tags go with them.
 | **Greedy** | Conquers: attacks the deepest hex it can reach. |
 | **Rapacious** | Raids: takes gold from the richest neighbour it can. |
 | **Brutal** | Enslaves: takes people as soldiers from the weakest neighbour. |
-| **Cruel** | Exploits its own people: **+50% income**, but its mirror gets **+2 on coups**. Stays home and builds. |
+| **Cruel** | Exploits its own people: **+50% income**, but its mirror gets **+1 on coups**. Stays home and builds. |
 
 **Good** (no mechanical edge, only different behaviour):
 
@@ -125,7 +125,7 @@ S = the sum of a realm's hex levels.
 
 - **Ruler:** Force = Cunning = S ÷ 10, rounded, minimum 1. Treasury S × 10 GP.
 - **Mirror:** Cunning = ruler's Cunning − 2, minimum 1. Treasury 0.
-- **Tower:** Force 1, Treasury 0, 1 officer (section 6). No Cunning, no mirror.
+- **Tower:** Force 1, Treasury 100 GP, 1 officer (section 6). No Cunning, no mirror.
 
 ## 4. The month
 
@@ -181,18 +181,23 @@ The script runs it, in this order:
 0. **Morten's month lands:** a successful Strike sets its +3; a successful Rob moves the
    gold; deposit and withdraw happen.
 1. **Income.**
-   - Each ruler gets its hexes' levels × 10 GP (Cruel: × 1.5).
-   - Its mirror skims **10%** of that, taken out of the ruler's share.
+   - Each ruler gets its hexes' levels × 10 GP (Cruel: × 1.5, rounded down).
+   - Its mirror skims **20%** of that (rounded down), taken out of the ruler's share.
    - The tower gets its own hexes' income (the tower hex pays 10 GP).
 2. **Upkeep.**
-   - Rulers and the tower pay **Force × 10 GP**; the tower also pays **10 GP per officer**.
-     Mirrors pay nothing.
-   - A faction that can't pay loses 1 Force, and its treasury goes to 0.
+   - Rulers and the tower pay **Force² × 7 GP** (Force 4: 112 GP, Force 10: 700 GP); the
+     tower also pays **5 GP per officer**. Mirrors pay nothing. The starting tower pays 12
+     GP a month against its 10 GP of income.
+   - A faction that can't pay **disbands Force**, 1 at a time, until it can, then pays. (The
+     tower at Force 0 still short for its officers pays what it has.)
 3. **The tower acts,** on orders declared at the start of the month, in this order:
    - **Fund:** any GP from the tower treasury to any ruler or mirror.
    - **Recruit** (section 6).
    - Then one action: **Conquer** or **Build**.
-   - An order the treasury can't cover at that point doesn't happen; the log says so.
+   - An order the script can't carry out is **rejected**: one the treasury can't cover at
+     that point (Withdraw, Fund, Recruit, Build) or an illegal one (Conquer at Force 0, a hex
+     not next to the tower's). The script prints a one-line error, exits and saves nothing;
+     the GM fixes the order and reruns `turn`.
 4. **Rulers act** in order of Cunning, highest first; ties by d10, rerolling ties. Each takes
    one action by section 5.
 5. **Mirrors act,** in the same order as their rulers: a coup or a build (section 5).
@@ -247,25 +252,27 @@ The script runs it, in this order:
 The script follows these rules; no GM judgement is needed. Ties between targets are broken by
 a die roll.
 
-**"Can beat"** compares Force only: own Force ≥ the defender's Force − 1.
+**"Can beat"** compares Force only: own Force ≥ the defender's Force.
 
 ### A ruler's action, in priority order
 
-1. **Guard the throne.** If the mirror's Cunning (+2 if the ruler is Cruel) is at least the
+1. **Guard the throne.** If the mirror's Cunning (+1 if the ruler is Cruel) is at least the
    ruler's Cunning, and the ruler can afford it, it builds Cunning.
-2. **Act on its tag:**
+2. **Arm.** If it can afford the next point of Force, it builds Force.
+3. **Act on its tag:**
    - **Greedy:** conquers the deepest hex it can beat, next to its own. Targets can be any
      realm's hexes or tower-held hexes (never the tower hex).
-   - **Rapacious:** raids the neighbour it can beat with the largest treasury. The tower can
-     be that neighbour.
-   - **Brutal:** enslaves the neighbour it can beat with the lowest Force. The tower can be
-     that neighbour.
-   - **Cruel:** builds Force.
-   - **Neutral:** conquers a hex of its own people if it can beat the holder. It attacks
-     the tower only when at war with it.
+   - **Rapacious:** raids the neighbour it can beat with the largest treasury, skipping
+     neighbours with 0 GP. The tower can be that neighbour.
+   - **Brutal:** enslaves the neighbour it can beat with the lowest Force, skipping
+     neighbours at Force 0. The tower can be that neighbour.
+   - **Cruel:** no tag action (it stays home; step 2 already builds its Force).
+   - **Neutral:** conquers the deepest hex of its own people whose holder it can beat. It
+     attacks the tower only when at war with it.
    - **Altruistic:** conquers the deepest hex of a vicious ruler whose Force is strictly
-     lower than its own. When at war with the tower, the tower's hexes are targets too.
-3. **Otherwise it builds Force** if it can afford it, or saves.
+     lower than its own. When at war with the tower, the tower's hexes are targets too, also
+     only if the tower's Force is strictly lower.
+4. **Otherwise it saves.**
 
 A ruler that can't afford what a rule calls for, or has no target, falls through to the next
 rule. A ruler at Force 0 can't attack.
@@ -273,14 +280,15 @@ rule. A ruler at Force 0 can't attack.
 ### A mirror's action
 
 - **Coup**, if its Cunning + bonuses is at least the ruler's Cunning.
-  - **Bonuses:** +2 against a Cruel ruler, +3 if Morten struck the ruler this month, and
+  - **Bonuses:** +1 against a Cruel ruler, +3 if Morten struck the ruler this month, and
     court points the tower put behind it (section 6). Court points count in this test, so
     backing can make an attempt happen.
   - **Roll:** d10 + mirror's Cunning + bonuses vs d10 + ruler's Cunning (+3 if Morten struck
     the mirror). The mirror must roll **higher**.
   - **Win:** the leaders swap. The mirror's leader rules, with its tag and its Cunning, and
-    takes the realm's Force and treasury. The old ruler becomes the mirror, with its
-    Cunning **halved** (rounded down) and Treasury 0. The tower's war with that realm ends.
+    takes the realm's Force and treasury; its own purse goes into that treasury. The old
+    ruler becomes the mirror, with its Cunning **halved** (rounded down) and Treasury 0. The
+    tower's war with that realm ends.
   - **Loss:** the mirror loses 1 Cunning (minimum 0).
 - **Otherwise it builds Cunning** if it can afford it, or saves. A mirror at Cunning 0 can
   still build.
@@ -304,7 +312,7 @@ Named officers who run the domain while Morten is in the field.
     mirror this month and the mirror attempts a coup.
 - **Losses:** each roll the court backs and loses: `1d6`, on a 1 a random officer dies
   (logged).
-- **Upkeep:** 10 GP per officer per month.
+- **Upkeep:** 5 GP per officer per month.
 - **In replies:** a **Court** line lists the officers by name and people, and shows the pool.
 
 ## 7. War and allies
@@ -346,6 +354,7 @@ The script is `python3 dnd-crunch/tools/realms.py`; DIR is the campaign folder,
 
 | Option | Meaning |
 |---|---|
+| `--at HEX` | Where Morten ends the month (default: where he was). `--rob HEX` moves him to HEX; `--strike` must name the realm holding his hex. |
 | `--strike REALM:ruler` / `REALM:mirror` | Morten's Strike succeeded against that faction. |
 | `--rob HEX` | Morten's Rob in HEX succeeded. |
 | `--keep-loot` | The Rob gold stays on Morten instead of going to the tower. |
@@ -372,8 +381,9 @@ Pass `--strike` and `--rob` only for a mission that succeeded.
    the hex's floor from `gm-secrets.md`. The fights play on as before (CLAUDE.md: Who plays
    Morten).
 4. **The domain turn.** Run `turn` with the month's tower options. A `--dry-run` first
-   catches typos. Update `character.md` for gold moved (Rob with `--keep-loot`, deposit,
-   withdraw), then reply in the domain-turn format.
+   catches typos and rejected orders (a rejected order saves nothing). Update
+   `character.md` for gold moved (Rob with `--keep-loot`, deposit, withdraw), then reply in
+   the domain-turn format.
 5. Update `state.md` and `transcript.md`, commit and push the campaign folder, as in
    CLAUDE.md.
 
@@ -419,15 +429,17 @@ The script's constants block holds the same numbers; change both together.
 | Constant | Value |
 |---|---|
 | Income | hex level × 10 GP a month |
-| Cruel income | × 1.5 |
-| Mirror skim | 10% of its ruler's income |
-| Upkeep | Force × 10 GP; officers 10 GP each |
+| Cruel income | × 1.5 (rounded down) |
+| Mirror skim | 20% of its ruler's income (rounded down) |
+| Upkeep | Force² × 7 GP; officers 5 GP each |
+| Upkeep short | disband Force until the rest can be paid |
+| Can beat | own Force ≥ the defender's Force |
 | Build | new value × 100 GP |
 | Raid | target hex level × 30 GP |
 | Rob (Morten) | hex level × 50 GP |
 | Strike bonus | +3 |
 | Claim / river | +1 / +1 |
-| Cruel ruler's mirror | +2 on coups |
+| Cruel ruler's mirror | +1 on coups |
 | Failed coup | mirror Cunning −1 |
 | Successful coup | the old ruler's Cunning halved |
 | Recruit | 100 GP × new court size |
@@ -435,7 +447,7 @@ The script's constants block holds the same numbers; change both together.
 | Officer loss | 1d6, 1 on a lost backed roll |
 | Starting ruler | Force = Cunning = S ÷ 10 (rounded, minimum 1), Treasury S × 10 |
 | Starting mirror | Cunning = ruler's − 2 (minimum 1) |
-| Starting tower | Force 1, 0 GP, 1 officer |
+| Starting tower | Force 1, 100 GP, 1 officer |
 
 For scale: dungeon floor N pays about (XP for level N → N+1) ÷ 10 in gold: floor 4 about
 380 GP, floor 10 about 2,100. A typical realm (S ≈ 35) earns about 350 GP a month.

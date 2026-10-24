@@ -31,18 +31,19 @@ N_REALMS, REALM_SIZE, N_VICIOUS = 6, 3, 4
 N_RIVERS, RIVER_LEN, N_LAKES = 2, (3, 6), 2
 INCOME = 10            # GP per hex level per month
 CRUEL_INCOME = 1.5     # Cruel ruler's income multiplier
-SKIM = 0.10            # mirror's cut of its ruler's income, taken out of the ruler's share
-UPKEEP_FORCE = 10      # GP per Force per month (rulers, tower)
-UPKEEP_OFFICER = 10    # GP per court officer per month
+SKIM = 0.20            # mirror's cut of its ruler's income, taken out of the ruler's share
+UPKEEP_FORCE = 7       # upkeep is Force² × this, GP per month (rulers, tower)
+UPKEEP_OFFICER = 5     # GP per court officer per month
 BUILD = 100            # Build costs new value × BUILD
 RAID = 30              # Raid takes target hex level × RAID GP
 ROB = 50               # Morten's Rob takes hex level × ROB GP
 STRIKE = 3             # bonus to every roll against a struck faction this month
 CLAIM, RIVER = 1, 1    # attacker on a hex of its people / defender across a river edge
+BEAT = 0               # "can beat": own Force ≥ the defender's Force + BEAT
 DIE = 10               # battle and coup die
 BATTLE_LOSS = 1        # Force the loser of a battle loses
 ENSLAVE_EXTRA = 1      # and 1 more when an Enslave wins
-CRUEL_COUP = 2         # mirror's coup bonus against a Cruel ruler
+CRUEL_COUP = 1         # mirror's coup bonus against a Cruel ruler
 COUP_FAIL = 1          # failed coup: mirror loses this much Cunning
 COUP_DEMOTE = 2        # deposed ruler's Cunning is divided by this (round down)
 RECRUIT = 100          # recruit costs new court size × RECRUIT
@@ -51,7 +52,7 @@ OFFICER_DEATH = 1      # a lost backed roll kills an officer on d6 ≤ this
 START_DIV = 10         # ruler Force = Cunning = S ÷ START_DIV (rounded, min 1)
 START_GP = 10          # ruler Treasury = S × START_GP
 MIRROR_GAP = 2         # mirror Cunning = ruler's − MIRROR_GAP (min 1)
-TOWER_FORCE, TOWER_GP, TOWER_OFFICERS = 1, 0, 1
+TOWER_FORCE, TOWER_GP, TOWER_OFFICERS = 1, 100, 1
 
 BIOMES = {1: ["tundra", "taiga", "mountains"],
           2: ["taiga", "hills", "mountains", "forest"],
@@ -704,6 +705,18 @@ class Turn:
             T["gp"] -= o.withdraw
             self.log.append(f"Morten: withdraw {o.withdraw:,} GP → tower {T['gp']:,} GP.")
 
+    def upkeep(self, f, extra=0):
+        """Pay Force² × UPKEEP_FORCE (+ extra); short of gold, disband Force until it can."""
+        cost = lambda: f["force"] ** 2 * UPKEEP_FORCE + extra
+        old, up = f["force"], cost()
+        while f["force"] and f["gp"] < cost():
+            f["force"] -= 1
+        paid = min(cost(), f["gp"])
+        f["gp"] -= paid
+        if f["force"] == old and paid == up:
+            return f" → {f['gp']:,} GP", False
+        return f": can't pay, F{old} → {f['force']}, pays {paid:,} → {f['gp']:,} GP", True
+
     def economy(self):
         st, T = self.st, self.st["tower"]
         for n in sorted(st["realms"]):
@@ -714,33 +727,25 @@ class Turn:
             skim = int(inc * SKIM)
             r["gp"] += inc - skim
             m["gp"] += skim
-            up = r["force"] * UPKEEP_FORCE
             line = (f"{n} · {r['leader']}: L{lv} × {INCOME}{f' × {CRUEL_INCOME:g} Cruel' if cruel else ''}"
-                    f" = {inc:,}, skim −{skim:,}, upkeep −{up:,} (F{r['force']})")
-            if r["gp"] >= up:
-                r["gp"] -= up
-                line += f" → {r['gp']:,} GP"
-            else:
-                r["gp"] = 0
-                r["force"] = max(0, r["force"] - 1)
-                line += f": can't pay, F → {r['force']}, 0 GP"
+                    f" = {inc:,}, skim −{skim:,}, upkeep −{r['force'] ** 2 * UPKEEP_FORCE:,}"
+                    f" (F{r['force']}²)")
+            paid, short = self.upkeep(r)
+            if short:
                 self.event(n, "couldn't pay the army")
                 self.stats["upkeep_fail"] += 1
-            self.income.append(line)
+            self.income.append(line + paid)
             self.income.append(f"{n} mirror · {m['leader']}: skim +{skim:,} → {m['gp']:,} GP")
         lv = sum(st["hexes"][h]["level"] for h in hexes_of(st, "tower"))
         T["gp"] += lv * INCOME
-        up = T["force"] * UPKEEP_FORCE + len(T["officers"]) * UPKEEP_OFFICER
-        line = (f"Tower: L{lv} × {INCOME} = {lv * INCOME:,}, upkeep −{up:,}"
-                f" (F{T['force']}, officers {len(T['officers'])})")
-        if T["gp"] >= up:
-            T["gp"] -= up
-            line += f" → {T['gp']:,} GP"
-        else:
-            T["gp"], T["force"] = 0, max(0, T["force"] - 1)
-            line += f": can't pay, F → {T['force']}, 0 GP"
+        offs = len(T["officers"]) * UPKEEP_OFFICER
+        line = (f"Tower: L{lv} × {INCOME} = {lv * INCOME:,}, upkeep"
+                f" −{T['force'] ** 2 * UPKEEP_FORCE + offs:,} (F{T['force']}²,"
+                f" officers {len(T['officers'])})")
+        paid, short = self.upkeep(T, offs)
+        if short:
             self.stats["tower_upkeep_fail"] += 1
-        self.income.append(line)
+        self.income.append(line + paid)
 
     def tower(self, o):
         T = self.st["tower"]
@@ -862,7 +867,7 @@ class Turn:
         war = st["realms"][name]["war"]
         mine = hexes_of(st, name)
         border = sorted({n for h in mine for n in nbrs(h) if self.holder(n) != name}, key=hkey)
-        beat = lambda s: F >= self.force(s) - 1
+        beat = lambda s: F >= self.force(s) + BEAT
         lvl = lambda h: st["hexes"][h]["level"]
         cands = []
         if tag == "Greedy":
@@ -882,7 +887,8 @@ class Turn:
             return "conquer", self.holder(h), h, ""
         if tag in ("Rapacious", "Brutal"):
             nb = sorted({self.holder(h) for h in border})
-            nb = [s for s in nb if beat(s) and (tag == "Brutal" or self.gp(s) > 0)]
+            has = lambda s: self.force(s) if tag == "Brutal" else self.gp(s)  # skip empty targets
+            nb = [s for s in nb if beat(s) and has(s) > 0]
             if not nb:
                 return None
             if tag == "Rapacious":
@@ -902,6 +908,8 @@ class Turn:
         threat = m["cunning"] + (CRUEL_COUP if r["tag"] == "Cruel" else 0)
         if threat >= r["cunning"] and self.build(name, "ruler", "cunning",
                                                   f"{head}: guards the throne,"):
+            return
+        if self.build(name, "ruler", "force", head):  # arms first whenever it can afford to
             return
         t = self.target(name)
         if t:
