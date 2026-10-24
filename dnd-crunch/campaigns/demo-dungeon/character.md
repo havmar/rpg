@@ -1,24 +1,25 @@
-# Morten — Wizard 3 (Evoker)
+# Morten — Wizard 4 (Evoker)
 
-Human (Medium), male (he/him). Background: Sage. XP 1,150 (level 4 at 2,700).
+Human (Medium), male (he/him). Background: Sage. XP 2,700 (level 5 at 6,500).
 
 ## Core
 
 | STR | DEX | CON | INT | WIS | CHA |
 |---|---|---|---|---|---|
-| 8 (−1) | 14 (+2) | 14 (+2) | 17 (+3) | 12 (+1) | 10 (+0) |
+| 8 (−1) | 14 (+2) | 14 (+2) | 19 (+4) | 12 (+1) | 10 (+0) |
 
 Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +1 CON).
+Level 4: Ability Score Improvement, INT 17 → 19.
 
-- **HP** 20 (8 + 2 × 6) · **Hit Dice** 3d6 (+2 each)
+- **HP** 26 (8 + 3 × 6) · **Hit Dice** 4d6 (+2 each)
 - **AC** 12 unarmoured · **15 with Mage Armor**
 - **Speed** 9 m (6 squares) · **Initiative** +4 (DEX +2, Alert +2)
 - **Proficiency bonus** +2 · **Passive Perception** 13
 - **Carrying capacity** 54 kg (carrying ≈ 33 kg)
 
-**Saving throws:** STR −1 · DEX +2 · CON +2 · **INT +5** · **WIS +3** · CHA +0
+**Saving throws:** STR −1 · DEX +2 · CON +2 · **INT +6** · **WIS +3** · CHA +0
 
-**Skills (proficient):** Arcana +5 · History +5 · Insight +3 · **Investigation +7**
+**Skills (proficient):** Arcana +6 · History +6 · Insight +3 · **Investigation +8**
 (Expertise) · Perception +3. All others use the ability modifier.
 
 **Tools:** Calligrapher's Supplies. **Languages:** Common, Draconic, Elvish.
@@ -34,12 +35,12 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 
 ## Spellcasting (house rule: roll to cast, no slots)
 
-- **Casting check:** d20 **+5** vs DC 10 + spell level (cantrip 10, L1 11, L2 12).
+- **Casting check:** d20 **+6** vs DC 10 + spell level (cantrip 10, L1 11, L2 12).
   Fail = spell lost until Long Rest. Nat 1 = mishap. Nat 20 = double one numeric effect.
-- **Spell save DC 13** · **Spell attack +5** (one roll = cast + attack).
+- **Spell save DC 14** · **Spell attack +6** (one roll = cast + attack).
 - **Highest castable level:** 2 · **Focus:** quarterstaff (arcane focus) or spellbook.
 
-### Cantrips (5)
+### Cantrips (6)
 
 | Cantrip | Time | Range | Effect |
 |---|---|---|---|
@@ -48,11 +49,14 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 | Shocking Grasp | Action | touch | melee spell attack, 1d8 lightning, target can't make Opportunity Attacks until its next turn |
 | Light *(Magic Initiate)* | Action | touch | object sheds 6 m bright + 6 m dim, 1 hour |
 | Mage Hand *(Magic Initiate)* | Action | 9 m (6 sq) | spectral hand, 1 min, 4.5 kg, Magic action to use again |
+| Minor Illusion *(level 4)* | Action | 9 m | a sound, or an image of an object up to a 1.5 m cube, for 1 min; Investigation vs DC 14 sees through it |
 
 **Potent Cantrip (Evoker):** a damaging cantrip that misses (or is saved against) still deals
 half damage, no other effect.
 
-### Prepared spells (6) + Mage Armor
+### Prepared spells (7) + Mage Armor
+
+Chosen at each Long Rest from the spellbook; the table shows the usual ones.
 
 | Spell | Lvl | DC | Time | Range | Effect |
 |---|---|---|---|---|---|
@@ -64,11 +68,11 @@ half damage, no other effect.
 | Misty Step | 2 | 12 | Bonus action | self | teleport 9 m to a space you can see |
 | Scorching Ray | 2 | 12 | Action | 36 m | 3 rays, each a spell attack, 2d6 fire |
 
-### Spellbook (12)
+### Spellbook (14)
 
 - **Level 1:** Detect Magic (R), Feather Fall, Find Familiar (R, needs 10 GP incense),
   Grease, Magic Missile, Shield, Sleep, Thunderwave
-- **Level 2:** Misty Step, Scorching Ray (Evocation Savant), Shatter (Evocation Savant), Web
+- **Level 2:** Invisibility (level 4), Mirror Image (level 4), Misty Step, Scorching Ray (Evocation Savant), Shatter (Evocation Savant), Web
 
 Rituals (Ritual Adept) can be cast from the book without preparing them, +10 minutes,
 no casting check: Detect Magic, Find Familiar.
@@ -99,16 +103,14 @@ no casting check: Detect Magic, Find Familiar.
 | Oil ×6 spare (+1 in the lamp) | 2.7 | fuel, or thrown / poured for fire |
 | Tinderbox | 0.5 | light a torch or lamp: Bonus action |
 | Torch ×7 | 3.2 | 1 h, 6 m bright + 6 m dim |
-| Rations ×3 | 2.7 | 1 per day |
+| Rations ×0 | — | 1 per day; he's gone 3 days without (5 allowed before Exhaustion) |
 | Waterskin (full) | 2.3 | |
 | Rope, 15 m | 2.3 | |
 | Bedroll | 3.2 | |
 | Caltrops (bag) | 0.9 | cover a 1.5 m square |
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
-| Acid (vial) | 0.5 | Attack action: target within 6 m, DEX save DC 12 or 2d6 acid |
 | Spell Scroll: Ice Knife (L1) | — | cast once with no check, or copy into the spellbook (2 h, 50 GP) |
-| Garnet | — | gem, 50 GP |
 
-**Coins:** 26 GP 5 SP, plus the garnet (50 GP). Day 1: spent 10 GP on incense, 25 GP on
-acid, 10 GP on more incense; found 6 GP; died at 12:02 and lost 8 GP 7 SP 5 CP. At 20:02 sold
-the Book for 12 GP 5 SP and bought incense (10 GP). Found 24 GP in the library lectern.
+**Coins:** 116 GP 5 SP. Demo dungeon floor 3: room coins 3.1 (15), 3.3 (20), 3.4 (15),
+3.5 (15), 3.7 (20), 3.8 (40); 15 GP bribe to the satyr; garnet sold for a Potion of Healing
+(drunk). Kept his purse through two deaths by dropping it on the floor before the fight.

@@ -9,7 +9,7 @@ room, E to the next), and reveal the stat block summary.
 
 | Floor | Status |
 |---|---|
-| 3 | 3.1, 3.3, 3.4, 3.5, 3.7 cleared. 3.2 octopus alive (bypassed). 3.6 satyr bribed, friendly. 3.8 dogs alive at full HP. 3.9 not reached. |
+| 3 | 3.1, 3.3, 3.4, 3.5, 3.7, 3.8 cleared. 3.2 octopus alive (bypassed). 3.6 satyr bribed, friendly. 3.9 not entered. |
 
 ## Floor 1 (for level 1)
 

@@ -17,7 +17,8 @@ These add to `dnd-crunch/CLAUDE.md` and win where they differ.
   to any camp he's reached; each room crossed costs 1 exploration turn.
 - **Death:** he revives at the camp of the floor he died on, as in the house rule (full
   HP, all spells, 8 hours pass, all coins and gems carried are lost).
-  Dead monsters stay dead. Survivors are back at full HP in their room after those 8 hours.
+  Dead monsters stay dead. Survivors are back at full HP in their room after any 8 hours
+  he spends away, whether he died or rested.
 - **No wandering monsters** anywhere in the demo dungeon.
 - **Loot:** each room's monsters drop coins worth a tenth of their XP. No magic items unless
   the GM adds them.

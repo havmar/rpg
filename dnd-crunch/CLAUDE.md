@@ -99,7 +99,11 @@ likes, but every cast needs a **casting check**:
 - **Arcane Recovery:** once per Long Rest, when he finishes a Short Rest, he regains lost
   spells whose levels add up to no more than half his Wizard level (round up). A cantrip
   counts as level 1.
-- **Heroic Inspiration** (Human) may reroll a casting check.
+- **Heroic Inspiration** (Human) may reroll a casting check. With Advantage or
+  Disadvantage, it rerolls one of the two dice.
+- **The casting check is an ability check**, so anything that affects ability checks
+  affects it (Poisoned gives Disadvantage). Advantage on a spell attack (a Restrained or
+  Unconscious target) also helps that same roll, since the attack roll is the casting check.
 - **Magic items and scrolls** cast their spells with no casting check.
 - Concentration works as written.
 
