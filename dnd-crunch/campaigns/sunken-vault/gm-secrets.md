@@ -231,7 +231,7 @@ Update as rooms are entered, cleared or reset. After a death, note what moved.
 
 | Room | Status |
 |---|---|
-| R1 | Day 1 09:20: 2 rats killed (one in camp, one on the stair). Rat 3 (7/7) fled north through the arch: it knows the dart plate and doesn't trigger it, now lurks in R4 and joins the next fight there or in R3. Corpse and its loot still untouched. |
+| R1 | Day 1: 2 rats killed; rat 3 (7/7) fled to R4. Corpse looted (6 GP, torches, note taken; shield left). 12:01: 3 stirges (wandering) killed Morten here; 1 stirge dead. The 2 survivors (3/5 and 5/5 HP), sated, roost in the R3 corridor ceiling until they're hungry again: back on the wandering table from Day 2 06:00. W door still closed. |
 | R2 | unexplored |
 | R3 | unexplored |
 | R4 | unexplored |

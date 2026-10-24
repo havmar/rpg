@@ -1,32 +1,33 @@
 # State
 
 - **Table mode:** open
-- **Morten played by:** AI player (agent a8644abb2ba5132a6); the human can step in anytime
-- **Day 1 · 09:21 · Exploration turn (after the rat fight)**
-- **Location:** Camp (surface), top of the stair (D11)
-- **Deaths:** 0 · **XP:** 975
+- **Morten played by:** the GM (human's request); the human can step in anytime
+- **Day 1 · 20:02 · Camp (surface)**, just revived
+- **Deaths:** 1 (Day 1 12:02, R1 Gatehouse, stirges) · **XP:** 1,000
 
 ## Morten
 
-- HP 10/20 · Hit Dice 3/3 d6 · AC 15 (Mage Armor, until 17:10)
-- Lost spells: Thunderwave
-- Mage Armor free cast: used · Arcane Recovery: ✓ · Heroic Inspiration: used
+- HP 20/20 · Hit Dice 3/3 d6 · AC 12 (Mage Armor not cast)
+- Lost spells: none (revival counts as a Long Rest)
+- Mage Armor free cast: ✓ · Arcane Recovery: ✓ · Heroic Inspiration: ✓
 - Concentration: none · Conditions: none · Exhaustion 0
-- Light: lamp lit, held (flask 1 of 10, lit 09:10, out 15:10). 4.5 m bright, +9 m dim. 5 torches.
-- Rations 4 · Water full · Coins 12 GP 7 SP 5 CP · Gems none · Acid ×1 · Potion of Healing: used
-- Familiar: owl (Fey), dropped to 0 HP in R1. Gone until Find Familiar is cast again (10 GP incense).
+- Light: lamp unlit (flask 1 has about 3 h left; 9 more flasks), 7 torches
+- Rations 3 (one eaten at the revival rest) · Water full · Coins none · Gems none · Acid ×1
+- Familiar: none (the second owl died at 12:01; incense costs 10 GP)
 
-## Standing orders from Morten's player
+## Standing orders (from the earlier AI player, kept as Morten's habits)
 
 - Shield: cast as a reaction when a hit would become a miss at AC 20 and deals 4+ damage
   (any damage at 8 HP or less), if Shield isn't lost and the reaction is free.
 - Heroic Inspiration: reroll a failed cast of Shield, Misty Step, Scorching Ray,
-  Thunderwave or Sleep; not cantrips or Mage Armor. At 8 HP or less, any roll that keeps
-  him alive.
-- Failed cast: the action is spent, the rest of the turn goes as declared; at 8 HP or less
-  and adjacent to enemies, back up the stair toward camp.
+  Thunderwave or Sleep.
+
+## Known dungeon (what Morten has seen)
+
+- R1 Gatehouse: 9×6 m. Exits N arch (corridor north; the note says "step over the fifth
+  flagstone" there), W door (closed, unopened), S stair to camp. Dead adventurer searched.
+  Two dead rats; one rat and two stirges (one wounded) still somewhere below.
 
 ## Combat
 
-None. Last fight: R1 rats, 4 rounds. 2 rats dead (one on the stair at D6, one at the top
-at C10); 1 rat (7/7 HP) fled down the stair and north through the gatehouse arch.
+None.

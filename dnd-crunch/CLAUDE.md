@@ -188,8 +188,15 @@ Leave out a section only when it's empty.
 
 ## Who plays Morten
 
-Morten is the human's character, but the human can hand him to an AI player (the default
-since the human asked for it; note the mode in `state.md`):
+Morten is the human's character, but the human can hand him over. Note the mode in
+`state.md`. The current mode is **GM plays Morten**, which the human asked for because
+it's fastest:
+
+- **GM plays Morten.** The GM decides Morten's turns as well as the world's, using only what
+  Morten has seen (the transcript), never what's in `gm-secrets.md`. Choose what a careful,
+  clever wizard would do and keep moving: play on until something matters (a new room or
+  monster, a real choice such as loot or parley, Morten at half HP or dying, or a death),
+  then stop and report. Show his choices as **Morten (GM):** lines with one line of reasoning.
 
 - **AI player mode.** Morten is played by a `general-purpose` subagent following
   `dnd-crunch/agents/player.md`, so the GM's secrets never leak into his decisions. Spawn it

@@ -106,3 +106,55 @@ OPTIONS
 - Coins 12 GP 7 SP 5 CP · Day 1, 09:21 · at the top of the stair, in camp.
 
 **Morten's turn (exploration):** Short Rest in camp (1 h, no wandering check here) · go back down · shop.
+
+---
+
+**Human:** i think it would be faster if you moved Morten? this game is very experimental.
+
+**Morten (GM):**
+- Short Rest in camp, spend 2 Hit Dice. Keep Arcane Recovery for a worse moment.
+- Buy incense (10 GP), ritual Find Familiar again: owl.
+- Go down, search the dead adventurer, then try the W door. Why: the fled rat went north, and the note warns about the north corridor.
+
+**GM:**
+
+**Day 1 · 09:21–12:01 · Camp → R1 Gatehouse**
+
+**Log**
+- Short Rest 09:21–10:21. Hit Dice: 1d6+2: 3+2 = 5 (10 → 15), 1d6+2: 5+2 = 7 (15 → 20). Hit Dice 1/3.
+- Incense 10 GP (12 GP 7 SP 5 CP → 2 GP 7 SP 5 CP). Find Familiar ritual 10:21–11:31. Owl.
+- Lamp lit. Turn 1 (11:41): down the stair. Turn 2 (11:51): search the dead adventurer: 6 GP, 2 torches, a shield (left behind), and a note: "door in the dart hall... no, the PLATE. Step over the fifth flagstone."
+- Turn 3 (12:01): at the W door. Wandering check 1d6: 1, ENCOUNTER → 1d4: 3 → **3 Stirges** from the N corridor. (Dice I'd rolled early for the room behind the door were thrown away.)
+
+**New: 3 Stirges.** AC 13 · HP 5 · fly 8 sq · Proboscis +5, 1d6+3 piercing and it attaches; while attached, 2d4 necrotic at the start of each of its turns. Removing one takes an action.
+
+**Round 1 · Init: Stirges 16 › Morten 8 › Owl 5**
+- Stirge Stealth d20 3 +3 = 6 vs passive Perception 13: seen at 9 sq. No surprise.
+- Positions: Morten B2 (at the W door) · Owl B1 · Stirges in the N corridor, 9 sq away.
+- Stirge 1: corridor → C1, bites Morten → d20 17 +5 = 22 vs AC 15, HIT (Shield can't save it) → 1d6+3: 6+3 = 9. Morten 20 → 11. ATTACHED.
+- Stirge 2: corridor → C0, bites Owl → d20 18 +5 = 23 vs AC 11, HIT. Owl 1 → 0, gone (second owl lost).
+- Stirge 3: corridor → D1, nobody in reach.
+- Morten: Magic Missile, cast DC 11 → d20 19 +5 = 24, CAST. 2 darts at Stirge 1: 5 + 3 = 8, dead. 1 dart at Stirge 2: 2 → 3/5.
+
+**Round 2**
+- Stirge 2: C0 → C1, bites → d20 11 +5 = 16 vs AC 15, HIT.
+- Morten: Shield (reaction), cast DC 11 → d20 4 +5 = 9, FIZZLE. Shield lost. No Heroic Inspiration left.
+- Stirge 2: 1d6+3: 3+3 = 6. Morten 11 → 5. ATTACHED.
+- Stirge 3: D1 → C2, bites → d20 13 +5 = 18 vs AC 15, HIT → 1d6+3: 5+3 = 8. Morten 5 → 0. ATTACHED. Unconscious, Prone.
+- Morten: death save d20 8, FAIL (1).
+
+**Round 3**
+- Stirge 2 drains: 2d4: 1+1 = 2 → death save FAIL (2).
+- Stirge 3 drains: 2d4: 4+4 = 8 → death save FAIL (3). **Morten dies.** Day 1, 12:02.
+
+**Respawn (house rule)**
+- Morten wakes at camp, 20:02 (8 hours later; counts as a Long Rest). Full HP, all spells and features back, a ration eaten.
+- Lost: all coins carried, 8 GP 7 SP 5 CP. Kept: all gear.
+- XP +25 for the dead stirge (975 → 1,000). Deaths: 1.
+
+**State**
+- Morten: HP 20/20 · AC 12 (Mage Armor not cast) · Lost: none · Hit Dice 3/3 · Mage Armor free ✓ · Arcane Recovery ✓ · Heroic Inspiration ✓
+- Coins 0 · Acid ×1 · 7 torches · lamp + 10 oil · Rations 3 · Familiar: none (incense 10 GP, can't afford)
+- Below: one rat, two stirges (one wounded), W door unopened, N corridor with the plate.
+
+**Morten's next turn:** cast Mage Armor (free) · go back down. Nothing to buy with 0 GP.

@@ -1,6 +1,6 @@
 # Morten — Wizard 3 (Evoker)
 
-Human (Medium), male (he/him). Background: Sage. XP 975 (level 4 at 2,700).
+Human (Medium), male (he/him). Background: Sage. XP 1,000 (level 4 at 2,700).
 
 ## Core
 
@@ -99,8 +99,8 @@ no casting check: Detect Magic, Find Familiar.
 | Lamp | 0.5 | 4.5 m bright + 9 m dim; 6 h per oil flask |
 | Oil ×10 | 4.5 | fuel, or thrown / poured for fire |
 | Tinderbox | 0.5 | light a torch or lamp: Bonus action |
-| Torch ×5 | 2.3 | 1 h, 6 m bright + 6 m dim |
-| Rations ×4 | 3.6 | 1 per day |
+| Torch ×7 | 3.2 | 1 h, 6 m bright + 6 m dim |
+| Rations ×3 | 2.7 | 1 per day |
 | Waterskin (full) | 2.3 | |
 | Rope, 15 m | 2.3 | |
 | Bedroll | 3.2 | |
@@ -108,7 +108,5 @@ no casting check: Detect Magic, Find Familiar.
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
 | Acid (vial) | 0.5 | Attack action: target within 6 m, DEX save DC 12 or 2d6 acid |
 
-**Coins:** 12 GP, 7 SP, 5 CP (Day 1: spent 10 GP on incense, 25 GP on acid; potion drunk).
-
-Starting coins were 47 GP, 7 SP, 5 CP. (55 GP start: Wizard pack A + Sage option B; spent 7 GP 2 SP
-5 CP on rations, waterskin, rope, bedroll, caltrops, crowbar, torches.)
+**Coins:** none. Day 1: spent 10 GP on incense, 25 GP on acid, then 10 GP on more incense.
+Found 6 GP on the dead adventurer. Died at 12:02 and lost the 8 GP 7 SP 5 CP he was carrying.
