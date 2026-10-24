@@ -2,11 +2,11 @@
 """Dice roller for table play. Every roll is printed with its individual dice.
 
 Usage:
-  python3 tools/roll.py 1d20+3          # sum of dice plus modifier
-  python3 tools/roll.py 4d6kh3          # keep highest 3 (attribute generation)
-  python3 tools/roll.py 5d6+2 --gb      # Godbound damage: each die read on the
-                                        # damage chart, modifier on the best die
-  python3 tools/roll.py 1d20 1d8 2d6    # several rolls at once
+  python3 godbound/tools/roll.py 1d20+3        # sum of dice plus modifier
+  python3 godbound/tools/roll.py 4d6kh3        # keep highest 3 (attribute generation)
+  python3 godbound/tools/roll.py 5d6+2 --gb    # Godbound damage: each die read on the
+                                               # damage chart, modifier on the best die
+  python3 godbound/tools/roll.py 1d20 1d8 2d6  # several rolls at once
 
 --gb applies to every roll in the call, so roll damage separately from hit rolls.
 """
