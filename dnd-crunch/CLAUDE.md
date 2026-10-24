@@ -12,6 +12,8 @@ self-contained. Paths in this file are relative to the repo root (where the sess
 dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
   realms.md              overworld rules (Realms), for campaigns with a realms.json
+  realms-plan.md         the design record of Realms v1
+  realms-v2-plan.md      the plan for Realms v2 (WWN-style factions with assets); not built yet
   agents/player.md       instructions for the AI player who runs Morten
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
   tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
@@ -262,6 +264,19 @@ file (and wins where they differ): a hex map of six realms, monthly domain turns
 
 - The header adds month, day and hex, e.g. **Month 3 · Day 4 · C2 (L9, forest, Elves)**.
 - A **Rumours** section appears when Morten is in or next to a realm's hex.
+
+**Heads-up: the human enjoys the dungeon fight reports but finds the domain turns hard to
+follow.** The bare roll log of a domain turn isn't enough. In chat, lead with the domain:
+- **The plan:** what Morten's mission and the tower's orders are meant to do in the domain,
+  and why.
+- **What happened,** in plain words, one bullet per event that matters: who did what, why
+  their tag made them do it, the roll in short, and the result.
+- **What changed for the tower:** Force, gold, hexes, wars, allies, court, and the threats
+  and chances for next month.
+
+When the human asks for **outcome-only fights**, report each fight in chat in one or two
+lines (foes, result, HP and spells lost, XP and gold). Keep the full roll-by-roll log in
+`transcript.md` as usual, so it can be checked.
 
 ## Campaign files
 

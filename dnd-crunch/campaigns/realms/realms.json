@@ -1,7 +1,7 @@
 {
  "seed": 101,
- "month": 4,
- "rng": 4129891070,
+ "month": 6,
+ "rng": 1548192363,
  "hexes": {
   "A1": {
    "level": 13,
@@ -171,20 +171,20 @@
     "leader": "Galen",
     "title": "Marshal",
     "tag": "Brutal",
-    "force": 7,
+    "force": 9,
     "cunning": 4,
-    "gp": 389
+    "gp": 270
    },
    "mirror": {
     "leader": "Mirela",
     "title": "Lord",
     "tag": "Neutral",
-    "cunning": 2,
-    "gp": 252
+    "cunning": 3,
+    "gp": 120
    },
    "war": false,
    "events": [
-    "enslaved Gnomes's people as soldiers"
+    "enslaved Orcs's people as soldiers"
    ]
   },
   "Elves": {
@@ -194,14 +194,14 @@
     "tag": "Greedy",
     "force": 5,
     "cunning": 4,
-    "gp": 97
+    "gp": 14
    },
    "mirror": {
     "leader": "Erevan",
     "title": "Archon",
     "tag": "Neutral",
-    "cunning": 2,
-    "gp": 264
+    "cunning": 3,
+    "gp": 140
    },
    "war": false,
    "events": [
@@ -213,21 +213,19 @@
     "leader": "Quillon",
     "title": "Mayor",
     "tag": "Neutral",
-    "force": 2,
+    "force": 3,
     "cunning": 3,
-    "gp": 299
+    "gp": 372
    },
    "mirror": {
     "leader": "Pockle",
     "title": "Mayor",
     "tag": "Cruel",
-    "cunning": 1,
-    "gp": 174
+    "cunning": 2,
+    "gp": 90
    },
    "war": false,
-   "events": [
-    "lost people to Humans's slavers"
-   ]
+   "events": []
   },
   "Orcs": {
    "ruler": {
@@ -236,39 +234,44 @@
     "tag": "Neutral",
     "force": 1,
     "cunning": 2,
-    "gp": 229
+    "gp": 519
    },
    "mirror": {
     "leader": "Nazha",
     "title": "Boss",
     "tag": "Brutal",
     "cunning": 1,
-    "gp": 76
+    "gp": 152
    },
    "war": false,
    "events": [
+    "Hruma joined the wizard's court",
+    "lost people to Humans's slavers",
     "built Force to 1"
    ]
   },
   "Tieflings": {
    "ruler": {
-    "leader": "Kallista",
-    "title": "Exarch",
-    "tag": "Brutal",
-    "force": 5,
-    "cunning": 3,
-    "gp": 406
-   },
-   "mirror": {
     "leader": "Iados",
     "title": "Magister",
     "tag": "Altruistic",
+    "force": 6,
     "cunning": 1,
-    "gp": 105
+    "gp": 243
    },
-   "war": true,
+   "mirror": {
+    "leader": "Kallista",
+    "title": "Exarch",
+    "tag": "Brutal",
+    "cunning": 1,
+    "gp": 0
+   },
+   "war": false,
    "events": [
-    "rival built Cunning to 1"
+    "the wizard struck ruler Kallista",
+    "the tower sent 1 GP to Iados",
+    "built Force to 6",
+    "Iados overthrew Kallista"
    ]
   },
   "Goblinkind": {
@@ -278,31 +281,37 @@
     "tag": "Neutral",
     "force": 5,
     "cunning": 4,
-    "gp": 262
+    "gp": 488
    },
    "mirror": {
     "leader": "Skreek",
     "title": "Big Boss",
     "tag": "Cruel",
-    "cunning": 2,
-    "gp": 216
+    "cunning": 3,
+    "gp": 60
    },
    "war": false,
-   "events": []
+   "events": [
+    "rival built Cunning to 3"
+   ]
   }
  },
  "fallen": [],
  "tower": {
   "hex": "C5",
   "force": 0,
-  "gp": 105,
+  "gp": 103,
   "officers": [
    {
     "name": "Doran",
     "people": "Humans"
+   },
+   {
+    "name": "Hruma",
+    "people": "Orcs"
    }
   ],
-  "morten": "C5",
+  "morten": "A5",
   "events": []
  }
 }
