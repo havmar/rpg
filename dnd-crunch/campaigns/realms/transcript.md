@@ -161,3 +161,44 @@ Choose Morten's month, or say "you decide".
 
 **Tower:** F0 · 50 GP · hexes B4 C5 · wars: Tieflings
 **Court:** Doran (Humans) · pool 1
+
+## Month 3 · Morten's month
+
+**Morten (GM):** At Force 0 the tower is invisible to the Brutal rulers (they never enslave a Force 0 neighbour), so the tower stays at F0 and saves its gold. Morten delves floor 3 under A5 for XP and coins.
+
+**Month 3 orders:** no tower action · court defend = 1.
+
+**Month 3 · Day 1 · A5 · Floor 3** · Mage Armor (free cast): AC 15.
+
+**Room 3.1 · 1 Satyr** (Low, 100 XP) · 15×18 m (A–J × 1–12), burning braziers (bright light)
+- Satyr: AC 13 · HP 31 · speed 8 sq · Magic Resistance (Advantage on saves against spells) · Hooves +5, 1d4+3 and push 3 m · Mockery WIS DC 12, 1d6+2 psychic, 27 m.
+- Init: Morten d20 17 +4 = 21 › Satyr d20 3 +3 = 6.
+- R1 Morten (GM): attack rolls, not saves. Scorching Ray, DC 12 → d20 17 +6 = 23, CAST, hit 2d6: 6+1 = 7. Ray 2 d20 4 +6 = 10, miss. Ray 3 d20 11 +6 = 17, hit: 6+4 = 10. Satyr 31 → 14.
+- R1 Satyr: Mockery → Morten WIS d20 16 +3 = 19, saves.
+- R2 Morten: Scorching Ray → d20 8 +6 = 14, CAST, hit: 4+5 = 9. Ray 2 NAT 1, miss. Ray 3 d20 13 +6 = 19, hit: 5+5 = 10. Satyr dead.
+- Result: 0 damage. XP 3,750 → 3,850. +10 GP.
+
+**Room 3.2 · 2 Giant Hyenas** (High, 400 XP) · 18×18 m (A–L × 1–12), statues (half cover); door from 3.1 at A6, 1.5 m wide
+- Giant Hyena: AC 12 · HP 45 · Large · speed 10 sq · Bite +5, 2d6+3 piercing · Rampage (1/day: after damaging a Bloodied creature, move half speed and bite again). WIS +1, CON +2, DEX +2.
+- Morten at A6, hyenas H1 B4, H2 B6 after their move.
+- Init: Hyenas d20 5 +2 = 7 › Morten NAT 1 +4 = 5.
+- R1 Hyenas: charge. H1 bite → d20 2 +5 = 7, miss. H2 bite → d20 13 +5 = 18 vs AC 15 → Shield DC 11 → d20 3 +6 = 9, FIZZLE → Heroic Inspiration reroll → d20 6 +6 = 12, CAST: AC 20, MISS.
+- R1 Morten (GM): Sleep on the corner between them. Cast DC 11 → **NAT 1**, FIZZLE, Sleep lost. Mishap 1d12: 5, Thunderclap (no wandering monsters on a floor: nothing comes). (CORRECTION: saves were rolled before the cast was read; thrown away.) Misty Step DC 12 → d20 12 +6 = 18, CAST: back through the door into 3.1, then 6 sq: 12 sq off. The hyenas must squeeze through the 1.5 m door.
+- R2 Hyenas: squeeze through and Dash, adjacent, no bite.
+- R2 Morten: Web → d20 3 +6 = 9, FIZZLE, Web lost. (CORRECTION: saves rolled early, thrown away.) Misty Step → d20 17 +6 = 23, then walks: 12 sq.
+- R3 Hyenas: Dash, adjacent.
+- R3 Morten: Thunderwave at level 2 → d20 8 +6 = 14, CAST. H1 CON d20 16 +2 = 18, saves; H2 d20 5 +2 = 7, FAIL → 3d8: 3+8+7 = 18. H1 45 → 36, H2 45 → 27. Misty Step → d20 16 +6 = 22.
+- R4 Morten: Thunderwave → d20 14 +6 = 20, CAST. H1 d20 17 +2 = 19, saves; H2 d20 5 +2 = 7, FAIL → 4+5+1 = 10. H1 36 → 31, H2 27 → 17. Misty Step → d20 7 +6 = 13.
+- R5 Morten: Thunderwave → d20 14 +6 = 20, CAST. H1 d20 19 +2 = 21, saves; H2 d20 10 +2 = 12, FAIL → 2+5+1 = 8. H1 31 → 27, H2 17 → 9. Misty Step → d20 14 +6 = 20.
+- R6 Morten: Thunderwave → d20 7 +6 = 13, CAST. H1 NAT 20, H2 d20 13 +2 = 15: both save → 1+1+5 = 7, 3 each. H1 27 → 24, H2 9 → 6. Misty Step → d20 4 +6 = 10, FIZZLE, lost. Both still adjacent.
+- R6 Hyenas: H1 bite **NAT 20** → 4d6+3: 5+2+1+1+3 = 12 (26 → 14). H2 bite → d20 15 +5 = 20, hit even at AC 20 → 2d6+3: 2+6+3 = 11 (14 → 3).
+- R7 Morten: Potion of Healing (bonus) → 2d4+2: 2+3+2 = 7 (3 → 10). Thunderwave → d20 2 +6 = 8, FIZZLE, lost.
+- R7 Hyenas: H1 bite → d20 19 +5 = 24, hit → 1+1+3 = 5 (10 → 5). Rampage → d20 9 +5 = 14, miss. H2 bite → d20 13 +5 = 18 → Shield → d20 13 +6 = 19, CAST, MISS.
+- R8 Morten: Magic Missile at H2 → d20 4 +6 = 10, FIZZLE, lost. (CORRECTION: damage and a morale roll were rolled early; thrown away.)
+- R8 Hyenas: H1 bite → d20 10 +5 = 15 → Shield → d20 17 +6 = 23, MISS. H2 bite → d20 18 +5 = 23, hit → 2+5+3 = 10. **Morten 5 → 0, dying.**
+- R9 Morten: death save → **NAT 20**: 1 HP, conscious. Stands (3 sq). Scorching Ray → d20 12 +6 = 18, CAST, ray 1 at H2: 3+4 = 7, dead. Rays 2–3 at H1: d20 15 +6 = 21, d20 12 +6 = 18, both hit → 4d6: 5+5+3+5 = 18. H1 24 → 6.
+- Morale (H1 alone): WIS d20 NAT 20 +1 = 21, holds.
+- R9 H1: bite NAT 1, miss.
+- R10 Morten: Scorching Ray → d20 8 +6 = 14, CAST, hit → 5+4 = 9. H1 dead.
+- Result: Morten 1/26. XP 3,850 → 4,250. +40 GP (50 GP 5 SP). Lost: Sleep, Web, Misty Step, Thunderwave, Magic Missile. No potions left.
+- Long Rest in 3.2 (no wanderers on a floor). Ration 6 → 5. All back.
