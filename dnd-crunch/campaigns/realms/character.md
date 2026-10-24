@@ -1,6 +1,6 @@
 # Morten — Wizard 4 (Evoker)
 
-Human (Medium), male (he/him). Background: Sage. XP 2,700 (level 5 at 6,500).
+Human (Medium), male (he/him). Background: Sage. XP 3,150 (level 5 at 6,500).
 
 ## Core
 
@@ -103,7 +103,8 @@ no casting check: Detect Magic, Find Familiar.
 | Oil ×6 spare (+1 in the lamp) | 2.7 | fuel, or thrown / poured for fire |
 | Tinderbox | 0.5 | light a torch or lamp: Bonus action |
 | Torch ×7 | 3.2 | 1 h, 6 m bright + 6 m dim |
-| Rations ×0 | — | 1 per day; buy at the tower's trader |
+| Rations ×8 | 3.6 | 1 per day; buy at the tower's trader |
+| Potion of Healing ×1 | 0.5 | Bonus action: regain 2d4+2 HP |
 | Waterskin (full) | 2.3 | |
 | Rope, 15 m | 2.3 | |
 | Bedroll | 3.2 | |
@@ -111,6 +112,6 @@ no casting check: Detect Magic, Find Familiar.
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
 | Spell Scroll: Ice Knife (L1) | — | cast once with no check, or copy into the spellbook (2 h, 50 GP) |
 
-**Coins:** 116 GP 5 SP, brought from the demo dungeon (`campaigns/demo-dungeon/`). There, floor 3: room coins 3.1 (15), 3.3 (20), 3.4 (15),
-3.5 (15), 3.7 (20), 3.8 (40); 15 GP bribe to the satyr; garnet sold for a Potion of Healing
-(drunk). Kept his purse through two deaths by dropping it on the floor before the fight.
+**Coins:** 1 GP 5 SP. Month 1: spent 115 GP at the tower's trader (2 Potions of Healing, incense, 10 rations); the Strike on Nazha paid 45 GP, deposited in the tower.
+
+**Familiar:** owl (Fey), summoned Month 1 Day 1; the tower's courier.
