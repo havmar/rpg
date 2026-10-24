@@ -3,8 +3,8 @@
 - **Table mode:** open
 - **Morten played by:** the GM (human's request: "play for a while, cheesing all around");
   the human can step in anytime
-- **Month 5 · Day 1 · C5** (L1, jungle, tower) · start of the month, choices pending
-- **Deaths:** 2 here (Month 3, floor 3 room 3.3, Blink Dogs; Month 4, A5, Kallista's Spies) · **XP:** 4,650 · **level 4** (level 5 at 6,500)
+- **Month 6 · Day 1 · A5** (L3, desert, Tieflings) · start of the month, choices pending
+- **Deaths:** 2 here (Month 3, floor 3 room 3.3, Blink Dogs; Month 4, A5, Kallista's Spies) · **XP:** 5,050 · **level 4** (level 5 at 6,500)
 
 ## Morten
 
@@ -13,7 +13,7 @@
 - Mage Armor free cast: ✓ · Arcane Recovery: ✓ · Heroic Inspiration: ✓
 - Concentration: none · Conditions: none · Exhaustion 0 · fed
 - Light: lamp (1 flask in it); 4 spare oil; 7 torches
-- Rations 2 · Coins 0 (purse with 50 GP 5 SP buried at his camp in A5)
+- Rations 0 · Coins 5 SP
 - Potions: none · Ice Knife scroll
 - Familiar: owl (Fey), the tower's courier
 
@@ -29,12 +29,12 @@
   purse before a risky fight. Kite with Thunderwave + Misty Step (chargers Dash and can't
   bite). In the domain: Strike a ruler so the tower's battle and the rival's coup both get
   +3; fund the rival 1 GP so the court can back the coup; keep the tower at F0 while a
-  Brutal ruler is next door (they never enslave a Force 0 neighbour).
+  Brutal ruler is next door; Specters: strike at noon, Magic Missile (they never enslave a Force 0 neighbour).
 
 ## Domain
 
-- Tower F0 · 159 GP · hexes B4 C5 · war: Tieflings (Kallista) · court: Doran (Humans), pool 1
-- Month 5 orders: not declared yet
+- Tower F0 · 103 GP · hexes B4 C5 · wars: none · court: Doran (Humans), Hruma (Orcs), pool 2
+- Month 6 orders: not declared yet
 - Full state: `world.md` (open) and `realms.json` (the script's)
 
 ## Known dungeon

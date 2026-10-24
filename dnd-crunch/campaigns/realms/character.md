@@ -1,6 +1,6 @@
 # Morten — Wizard 4 (Evoker)
 
-Human (Medium), male (he/him). Background: Sage. XP 4,650 (level 5 at 6,500).
+Human (Medium), male (he/him). Background: Sage. XP 5,050 (level 5 at 6,500).
 
 ## Core
 
@@ -103,7 +103,7 @@ no casting check: Detect Magic, Find Familiar.
 | Oil ×4 spare (+1 in the lamp) | 1.8 | fuel, or thrown / poured for fire |
 | Tinderbox | 0.5 | light a torch or lamp: Bonus action |
 | Torch ×7 | 3.2 | 1 h, 6 m bright + 6 m dim |
-| Rations ×2 | 0.9 | 1 per day; buy at the tower's trader |
+| Rations ×0 | 0 | 1 per day; buy at the tower's trader |
 | Waterskin (full) | 2.3 | |
 | Rope, 15 m | 2.3 | |
 | Bedroll | 3.2 | |
@@ -111,6 +111,6 @@ no casting check: Detect Magic, Find Familiar.
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
 | Spell Scroll: Ice Knife (L1) | — | cast once with no check, or copy into the spellbook (2 h, 50 GP) |
 
-**Coins:** 0 on him. His purse, **50 GP 5 SP**, is buried at his camp in A5 (Month 4, before the Strike he died in). Month 1: spent 115 GP at the tower's trader; the Strike on Nazha paid 45 GP, deposited. Month 2: 60 GP of worg loot, 61 GP deposited.
+**Coins:** 5 SP on him. Month 5: dug up his purse (50 GP 5 SP), +40 GP from the Strike, deposited 90 GP. Month 1: spent 115 GP at the tower's trader; the Strike on Nazha paid 45 GP, deposited. Month 2: 60 GP of worg loot, 61 GP deposited.
 
 **Familiar:** owl (Fey), summoned Month 1 Day 1; the tower's courier.

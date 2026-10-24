@@ -1,4 +1,4 @@
-# World · Month 5
+# World · Month 6
 
 Seed 101. Rendered by `realms.py` from `realms.json` after every turn; don't edit by hand.
 
@@ -52,69 +52,70 @@ Seed 101. Rendered by `realms.py` from `realms.json` after every turn; don't edi
 
 ## Realms
 
-- Elves · Faelar (Greedy) F4 C4 274 GP · D3 D4 D5 · mirror Erevan (Neutral) C3 52 GP
-- Gnomes · Quillon (Neutral) F3 C3 203 GP · A1 B1 C1 C2 · mirror Pockle (Cruel) C2 32 GP
-- Goblinkind · Nagra (Neutral) F5 C4 375 GP · C3 D1 D2 · mirror Skreek (Cruel) C2 288 GP
-- Humans · Galen (Brutal) F8 C4 382 GP · A2 A3 B2 · mirror Mirela (Neutral) C3 36 GP
-- Orcs · Mogra (Neutral) F1 C2 274 GP · B3 C4 · mirror Nazha (Brutal) C1 114 GP
-- Tieflings · Kallista (Brutal) F5 C3 503 GP · A4 A5 B5 · mirror Iados (Altruistic) C1 174 GP · at war with the tower
+- Elves · Faelar (Greedy) F5 C4 14 GP · D3 D4 D5 · mirror Erevan (Neutral) C3 140 GP
+- Gnomes · Quillon (Neutral) F3 C3 372 GP · A1 B1 C1 C2 · mirror Pockle (Cruel) C2 90 GP
+- Goblinkind · Nagra (Neutral) F5 C4 488 GP · C3 D1 D2 · mirror Skreek (Cruel) C3 60 GP
+- Humans · Galen (Brutal) F9 C4 270 GP · A2 A3 B2 · mirror Mirela (Neutral) C3 120 GP
+- Orcs · Mogra (Neutral) F1 C2 519 GP · B3 C4 · mirror Nazha (Brutal) C1 152 GP
+- Tieflings · Iados (Altruistic) F6 C1 243 GP · A4 A5 B5 · mirror Kallista (Brutal) C1 0 GP
 
 ## Factions
 
 ### Elves
 
-- **Ruler:** Speaker Faelar · Greedy · Force 4 · Cunning 4 · 274 GP
-- **Mirror:** Archon Erevan · Neutral · Cunning 3 · 52 GP
+- **Ruler:** Speaker Faelar · Greedy · Force 5 · Cunning 4 · 14 GP
+- **Mirror:** Archon Erevan · Neutral · Cunning 3 · 140 GP
 - **Hexes:** D3 D4 D5 · levels 44
 - **At war with the tower:** no
 
 ### Gnomes
 
-- **Ruler:** Mayor Quillon · Neutral · Force 3 · Cunning 3 · 203 GP
-- **Mirror:** Mayor Pockle · Cruel · Cunning 2 · 32 GP
+- **Ruler:** Mayor Quillon · Neutral · Force 3 · Cunning 3 · 372 GP
+- **Mirror:** Mayor Pockle · Cruel · Cunning 2 · 90 GP
 - **Hexes:** A1 B1 C1 C2 · levels 29
 - **At war with the tower:** no
 
 ### Goblinkind
 
-- **Ruler:** Big Boss Nagra · Neutral · Force 5 · Cunning 4 · 375 GP
-- **Mirror:** Big Boss Skreek · Cruel · Cunning 2 · 288 GP
+- **Ruler:** Big Boss Nagra · Neutral · Force 5 · Cunning 4 · 488 GP
+- **Mirror:** Big Boss Skreek · Cruel · Cunning 3 · 60 GP
 - **Hexes:** C3 D1 D2 · levels 36
 - **At war with the tower:** no
 
 ### Humans
 
-- **Ruler:** Marshal Galen · Brutal · Force 8 · Cunning 4 · 382 GP
-- **Mirror:** Lord Mirela · Neutral · Cunning 3 · 36 GP
+- **Ruler:** Marshal Galen · Brutal · Force 9 · Cunning 4 · 270 GP
+- **Mirror:** Lord Mirela · Neutral · Cunning 3 · 120 GP
 - **Hexes:** A2 A3 B2 · levels 42
 - **At war with the tower:** no
 
 ### Orcs
 
-- **Ruler:** Chief Mogra · Neutral · Force 1 · Cunning 2 · 274 GP
-- **Mirror:** Boss Nazha · Brutal · Cunning 1 · 114 GP
+- **Ruler:** Chief Mogra · Neutral · Force 1 · Cunning 2 · 519 GP
+- **Mirror:** Boss Nazha · Brutal · Cunning 1 · 152 GP
 - **Hexes:** B3 C4 · levels 19
 - **At war with the tower:** no
 
 ### Tieflings
 
-- **Ruler:** Exarch Kallista · Brutal · Force 5 · Cunning 3 · 503 GP
-- **Mirror:** Magister Iados · Altruistic · Cunning 1 · 174 GP
+- **Ruler:** Magister Iados · Altruistic · Force 6 · Cunning 1 · 243 GP
+- **Mirror:** Exarch Kallista · Brutal · Cunning 1 · 0 GP
 - **Hexes:** A4 A5 B5 · levels 34
-- **At war with the tower:** yes
+- **At war with the tower:** no
 
 ## Tower
 
-- **Force** 0 · **Treasury** 159 GP
+- **Force** 0 · **Treasury** 103 GP
 - **Hexes:** B4 C5
-- **Wars:** Tieflings
-- **Morten:** C5 (L1, jungle, tower)
+- **Wars:** none
+- **Morten:** A5 (L3, desert, Tieflings)
 
 ## Court
 
 - Doran (Humans)
-- **Pool:** 1
+- Hruma (Orcs)
+- **Pool:** 2
 
 ## Month
 
-- **Next domain turn:** month 5
+- **Next domain turn:** month 6

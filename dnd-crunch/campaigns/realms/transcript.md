@@ -319,3 +319,73 @@ Choose Morten's month, or say "you decide".
 - Mission: Strike, Rob (a vicious ruler: Elves, Humans, Tieflings), or Delve (floor 1 here; floor 3 in A5, Blink Dogs next).
 - Tower action: Build F1 for 100 GP, or nothing.
 - Fund, Recruit (2nd officer 200 GP: Gnomes, Goblinkind, Orcs), court point (1).
+
+## Month 5 · Morten's month
+
+**Human:** "another month please" (fights reported as outcomes in chat; full log here).
+
+**Morten (GM):** Recruit a 2nd officer from the Orcs (200 GP), so the court has 2 points. Fund Iados 1 GP and put both points on his coup: d10 + 1 + 2 vs d10 + 3 is about 45% even without a Strike. Strike Kallista again for +3, about 72%; death costs little, since his purse is buried. The tower stays at F0. Kallista will have exactly 600 GP and build Force rather than enslave.
+
+**Month 5 orders:** Fund Iados 1 GP · Recruit from the Orcs · court coup:Tieflings = 2 · no tower action. (The script counts this month's recruit in this month's pool.)
+
+**Month 5 · Day 2 · B4 (L5, hills, tower)** · Mage Armor (free cast) on leaving: AC 15. Wandering d6 **1** → 1 Guard Captain (High, 1,100 XP).
+- Guard Captain: AC 18 · HP 75 · speed 6 sq · Multiattack: 2 × Longsword +6, 2d10+4, or Javelin +6, 3d6+4, 9/36 m. WIS +2.
+- Morten (GM): he's the lord of this hex; talk first, from 12 sq. Persuasion d20 4 +0 = 4 vs DC 15, FAIL. He attacks.
+- Init: Morten d20 7 +4 = 11 › Captain d20 6 +4 = 10.
+- R1 Morten: Sleep → d20 17 +6 = 23, CAST. Captain WIS d20 16 +2 = 18, saves.
+- R1 Captain: moves 6 sq (6 sq off), two javelins → NAT 1, miss; **NAT 20**, crit → 6d6+4: 1+6+1+2+4+2+4 = 20. **Morten 26 → 6.**
+- R2 Morten (GM): Sleep → d20 5 +6 = 11, CAST. WIS d20 2 +2 = 4, FAIL, Incapacitated. He walks 6 sq; Misty Step → d20 14 +6 = 20, CAST: 18 sq off, behind a hill.
+- R2 Captain: second save → **NAT 20**, shakes it off.
+- R3 Morten: Dash over the hills, out of sight. The captain, unhurt and with nothing to gain, gives up the chase (GM call).
+- Result: escaped, no XP (fleeing isn't bypassing). Ration 2 → 1. Long Rest in B4 (no check: wanderers come on entering a hex): HP 26/26, all back.
+
+**Month 5 · Day 3 · A5 (L3, desert, Tieflings)** · wandering d6 4, none. Ration 1 → 0. He digs up his purse (50 GP 5 SP). Mage Armor (free cast): AC 15.
+
+**Strike on Kallista · A5 · 2 Specters** (High, 400 XP) · her guard
+- Specter: AC 12 · HP 22 · fly 10 sq (hover) · Life Drain +4, 2d6 necrotic and max HP drops by as much · resists acid, bludgeoning, cold, fire, lightning, piercing, slashing, thunder · immune to Unconscious and Exhaustion (Sleep can't work) · **Sunlight Sensitivity** (Disadvantage on attacks in sunlight).
+- Morten (GM): he strikes at noon (their attacks at Disadvantage) and uses Magic Missile (force, not resisted). The purse is buried again first.
+- Init: Morten d20 9 +4 = 13 › Specters d20 9 +2 = 11. They start 12 sq off.
+- R1 Morten: Magic Missile at level 2 → d20 10 +6 = 16, CAST → 4d4+4: 3+4+2+1+4 = 14 on S1. S1 22 → 8.
+- R1 Specters: Dash, adjacent, no attack.
+- R2 Morten: Magic Missile at level 2 → d20 13 +6 = 19, CAST. 3 darts on S1 → 3d4+3: 4+4+3+3 = 14, **S1 dead**. 1 dart on S2 → 2+1 = 3, S2 22 → 19. Misty Step → d20 10 +6 = 16, CAST, and walks: 12 sq.
+- R2 S2: Dash, adjacent, no attack.
+- R3 Morten: Magic Missile → **NAT 1**, FIZZLE, lost. Mishap d12 10: **Unravel**, Mage Armor ends (AC 12). Misty Step → d20 6 +6 = 12, CAST, and walks: 12 sq.
+- R3 S2: Dash, adjacent.
+- R4 Morten (GM): Misty Step first → d20 14 +6 = 20, CAST (6 sq, no Disadvantage on the rays). Scorching Ray → **NAT 20**: he doubles the rays to 6. Ray 1 hits (26); rays 2–6 → 10 miss, 21 hit, NAT 20 crit, 11 miss, 20 hit. Damage 2d6 2 · 2d6 10 · 4d6 13 · 2d6 2, halved (fire resistance) → 1 + 5 + 6 + 1 = 13. S2 19 → 6. Walks: 12 sq.
+- R4 S2: Dash, adjacent.
+- R5 Morten: Misty Step → d20 6 +6 = 12, CAST. Scorching Ray → d20 3 +6 = 9, FIZZLE → Heroic Inspiration reroll → d20 9 +6 = 15, CAST, hit → 3+5 = 8, halved 4. S2 6 → 2. Rays 2–3 → 8, 9, miss. Walks: 12 sq.
+- R5 S2: Dash, adjacent.
+- R6 Morten: Misty Step → d20 14 +6 = 20, CAST. Scorching Ray → d20 18 +6 = 24, hit → 5+4 = 9, halved 4. **S2 dead.**
+- Result: **Strike succeeded.** 0 damage. XP 4,650 → 5,050. +40 GP: purse 90 GP 5 SP.
+- End of month: deposit 90 GP to the tower (he keeps 5 SP). Morten stays in A5 for the downtime (Long Rest: all back).
+
+## Month 5 · Domain turn
+
+**Log**
+- Morten: Strike on Kallista: +3 to every roll against her this month. Deposit 90 GP → tower 249.
+- Income: tower L6 × 10 = 60, upkeep −5 → 304 GP. Fund Iados 1 GP → 303. Recruit **Hruma (Orcs)** for 200 GP, paid to Mogra → 103. Court 2, pool 2: coup Tieflings 2.
+- Order: Elves · Humans · Goblinkind · Tieflings · Gnomes · Orcs.
+- Elves (Faelar, Greedy): Build Force 4 → 5, −500 GP.
+- Humans (Galen, Brutal): Enslave Orcs at B3 from A3 → d10 8 + F8 = 16 vs d10 3 + F1 = 4, WIN. Humans F8 → 9. Orcs F1 → 0.
+- Goblinkind (Nagra), Gnomes (Quillon): save.
+- Tieflings (Kallista, Brutal): Build Force 5 → 6, −600 GP (600 → 0).
+- Orcs (Mogra): Build Force 0 → 1 (with the recruit's 200 GP in the treasury).
+- Goblinkind mirror Skreek: Build Cunning 2 → 3. Erevan, Mirela, Pockle, Nazha save.
+- **Tieflings mirror Iados: Coup vs Kallista → d10 3 + C1 + 3 strike + 2 court = 9 vs d10 5 + C3 = 8, WIN.** Iados (Altruistic) rules the Tieflings; his purse (243 GP) goes into the treasury. Kallista becomes the rival, Cunning 3 → 1. **The war with the tower ends.** (A won roll: no officer-loss check.)
+
+**Realms**
+- Elves · Faelar (Greedy) F5 C4 14 GP · D3 D4 D5 · mirror Erevan (Neutral) C3 140 GP
+- Gnomes · Quillon (Neutral) F3 C3 372 GP · A1 B1 C1 C2 · mirror Pockle (Cruel) C2 90 GP
+- Goblinkind · Nagra (Neutral) F5 C4 488 GP · C3 D1 D2 · mirror Skreek (Cruel) C3 60 GP
+- Humans · Galen (Brutal) F9 C4 270 GP · A2 A3 B2 · mirror Mirela (Neutral) C3 120 GP
+- Orcs · Mogra (Neutral) F1 C2 519 GP · B3 C4 · mirror Nazha (Brutal) C1 152 GP
+- Tieflings · Iados (Altruistic) F6 C1 243 GP · A4 A5 B5 · mirror Kallista (Brutal) C1 0 GP
+
+**Tower:** F0 · 103 GP · hexes B4 C5 · wars: none
+**Court:** Doran (Humans), Hruma (Orcs) · pool 2
+
+**Month 6 choices**
+- Morten: A5, rested, 5 SP on him, **0 rations** (the trader is at the tower, 2 days away).
+- Mission here: Strike (Iados or Kallista), Delve floor 3 (Blink Dogs next). Rob needs a vicious ruler: Elves, Humans.
+- Tower action: Build F1 for 100 GP, or nothing.
+- Fund, Recruit (3rd officer 300 GP: Gnomes, Goblinkind, Orcs, Tieflings), court points (2).
