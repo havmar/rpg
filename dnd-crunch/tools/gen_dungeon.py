@@ -7,6 +7,8 @@ is one random monster type from reference/srd/Monsters/, in a number (1–4) tha
 Low, Moderate or High budget from the 2024 encounter table (one character). Themes are
 fully random on purpose: the point is to see what each monster can do.
 
+realms.py imports encounter(), floor() and floor_md() from here, so keep their RNG call order.
+
 Usage:
   python3 dnd-crunch/tools/gen_dungeon.py --seed 7 > out.md
   python3 dnd-crunch/tools/gen_dungeon.py --seed 7 --floors 3-5
@@ -64,23 +66,49 @@ def load_monsters():
     return monsters
 
 
+_MONSTERS = []
+
+
+def encounter(level, rng, monsters=None):
+    """One random encounter for a level-N character: rolls difficulty, then monster."""
+    if monsters is None:
+        if not _MONSTERS:
+            _MONSTERS.extend(load_monsters())
+        monsters = _MONSTERS
+    diff = rng.choices([d for d, _ in DIFFICULTY], [w for _, w in DIFFICULTY])[0]
+    budget = BUDGET[level][[d for d, _ in DIFFICULTY].index(diff)]
+    pool = [m for m in monsters if m[2] <= budget and m[2] * MAX_COUNT >= budget]
+    name, cr, xp, aquatic = rng.choice(pool)
+    count = min(MAX_COUNT, budget // xp)
+    return {"diff": diff, "name": name, "cr": cr, "xp": xp, "count": count,
+            "total": xp * count, "aquatic": aquatic}
+
+
 def floor(level, monsters, rng):
     need = THRESHOLD[min(level + 1, 20)] - THRESHOLD[level] if level < 20 else 50000
     encounters, total = [], 0
     while total < need:
-        diff = rng.choices([d for d, _ in DIFFICULTY], [w for _, w in DIFFICULTY])[0]
-        budget = BUDGET[level][[d for d, _ in DIFFICULTY].index(diff)]
-        pool = [m for m in monsters if m[2] <= budget and m[2] * MAX_COUNT >= budget]
-        name, cr, xp, aquatic = rng.choice(pool)
-        count = min(MAX_COUNT, budget // xp)
+        e = encounter(level, rng, monsters)
         w, h = rng.choice(SIZES)
-        encounters.append({
-            "diff": diff, "name": name, "cr": cr, "xp": xp, "count": count,
-            "total": xp * count, "room": f"{w}×{h} sq ({w * 1.5:g}×{h * 1.5:g} m)",
-            "feature": FLOODED if aquatic else rng.choice(FEATURES), "gp": xp * count // 10,
-        })
-        total += xp * count
+        e["room"] = f"{w}×{h} sq ({w * 1.5:g}×{h * 1.5:g} m)"
+        e["feature"] = FLOODED if e.pop("aquatic") else rng.choice(FEATURES)
+        e["gp"] = e["total"] // 10
+        encounters.append(e)
+        total += e["total"]
     return need, total, encounters
+
+
+def floor_md(level, need, total, encs, title=None):
+    """A floor as Markdown: heading, totals line, room table, trailing blank line."""
+    goal = f"XP needed for level {level + 1}" if level < 20 else "Final floor, XP target"
+    out = [f"## {title or f'Floor {level} (for level {level})'}\n",
+           f"{goal}: {need:,} · floor total: {total:,} · {len(encs)} encounters\n",
+           "| Room | Encounter | CR | XP | Difficulty | Room size | Feature | Coins |",
+           "|---|---|---|---|---|---|---|---|"]
+    for i, e in enumerate(encs, 1):
+        out.append(f"| {level}.{i} | {e['count']}× {e['name']} | {e['cr']} | {e['total']:,} "
+                   f"| {e['diff']} | {e['room']} | {e['feature']} | {e['gp']:,} GP |")
+    return "\n".join(out) + "\n"
 
 
 def main():
@@ -97,15 +125,7 @@ def main():
         need, total, encs = floor(level, monsters, rng)  # always roll every floor
         if not lo <= level <= hi:
             continue
-        print(f"## Floor {level} (for level {level})\n")
-        goal = f"XP needed for level {level + 1}" if level < 20 else "Final floor, XP target"
-        print(f"{goal}: {need:,} · floor total: {total:,} · {len(encs)} encounters\n")
-        print("| Room | Encounter | CR | XP | Difficulty | Room size | Feature | Coins |")
-        print("|---|---|---|---|---|---|---|---|")
-        for i, e in enumerate(encs, 1):
-            print(f"| {level}.{i} | {e['count']}× {e['name']} | {e['cr']} | {e['total']:,} "
-                  f"| {e['diff']} | {e['room']} | {e['feature']} | {e['gp']:,} GP |")
-        print()
+        print(floor_md(level, need, total, encs))
 
 
 if __name__ == "__main__":
