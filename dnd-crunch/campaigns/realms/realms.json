@@ -1,7 +1,7 @@
 {
  "seed": 101,
- "month": 4,
- "rng": 4129891070,
+ "month": 5,
+ "rng": 996732345,
  "hexes": {
   "A1": {
    "level": 13,
@@ -171,20 +171,21 @@
     "leader": "Galen",
     "title": "Marshal",
     "tag": "Brutal",
-    "force": 7,
+    "force": 8,
     "cunning": 4,
-    "gp": 389
+    "gp": 382
    },
    "mirror": {
     "leader": "Mirela",
     "title": "Lord",
     "tag": "Neutral",
-    "cunning": 2,
-    "gp": 252
+    "cunning": 3,
+    "gp": 36
    },
    "war": false,
    "events": [
-    "enslaved Gnomes's people as soldiers"
+    "enslaved Orcs's people as soldiers",
+    "rival built Cunning to 3"
    ]
   },
   "Elves": {
@@ -192,20 +193,21 @@
     "leader": "Faelar",
     "title": "Speaker",
     "tag": "Greedy",
-    "force": 5,
+    "force": 4,
     "cunning": 4,
-    "gp": 97
+    "gp": 274
    },
    "mirror": {
     "leader": "Erevan",
     "title": "Archon",
     "tag": "Neutral",
-    "cunning": 2,
-    "gp": 264
+    "cunning": 3,
+    "gp": 52
    },
    "war": false,
    "events": [
-    "built Force to 5"
+    "failed to conquer Goblinkind at D2",
+    "rival built Cunning to 3"
    ]
   },
   "Gnomes": {
@@ -213,20 +215,21 @@
     "leader": "Quillon",
     "title": "Mayor",
     "tag": "Neutral",
-    "force": 2,
+    "force": 3,
     "cunning": 3,
-    "gp": 299
+    "gp": 203
    },
    "mirror": {
     "leader": "Pockle",
     "title": "Mayor",
     "tag": "Cruel",
-    "cunning": 1,
-    "gp": 174
+    "cunning": 2,
+    "gp": 32
    },
    "war": false,
    "events": [
-    "lost people to Humans's slavers"
+    "built Force to 3",
+    "rival built Cunning to 2"
    ]
   },
   "Orcs": {
@@ -236,17 +239,18 @@
     "tag": "Neutral",
     "force": 1,
     "cunning": 2,
-    "gp": 229
+    "gp": 274
    },
    "mirror": {
     "leader": "Nazha",
     "title": "Boss",
     "tag": "Brutal",
     "cunning": 1,
-    "gp": 76
+    "gp": 114
    },
    "war": false,
    "events": [
+    "lost people to Humans's slavers",
     "built Force to 1"
    ]
   },
@@ -257,18 +261,18 @@
     "tag": "Brutal",
     "force": 5,
     "cunning": 3,
-    "gp": 406
+    "gp": 503
    },
    "mirror": {
     "leader": "Iados",
     "title": "Magister",
     "tag": "Altruistic",
     "cunning": 1,
-    "gp": 105
+    "gp": 174
    },
    "war": true,
    "events": [
-    "rival built Cunning to 1"
+    "the tower sent 1 GP to Iados"
    ]
   },
   "Goblinkind": {
@@ -278,24 +282,26 @@
     "tag": "Neutral",
     "force": 5,
     "cunning": 4,
-    "gp": 262
+    "gp": 375
    },
    "mirror": {
     "leader": "Skreek",
     "title": "Big Boss",
     "tag": "Cruel",
     "cunning": 2,
-    "gp": 216
+    "gp": 288
    },
    "war": false,
-   "events": []
+   "events": [
+    "beat off Elves at D2"
+   ]
   }
  },
  "fallen": [],
  "tower": {
   "hex": "C5",
   "force": 0,
-  "gp": 105,
+  "gp": 159,
   "officers": [
    {
     "name": "Doran",

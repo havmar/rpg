@@ -250,3 +250,72 @@ Choose Morten's month, or say "you decide".
 - Mission: Strike, Rob (a vicious ruler: Elves, Humans, Tieflings), or Delve (floor 1 here; floor 3 in A5, where rooms 3.1–3.2 are cleared, 3.3's Blink Dogs wait, and his purse lies in 3.2).
 - Tower action: Build F1 for 100 GP (treasury 105), or nothing (F0: the Brutal rulers skip the tower).
 - Fund, Recruit (2nd officer 200 GP: Gnomes, Goblinkind, Orcs), court point (1).
+
+## Month 4 · Morten's month
+
+**Human:** "please play a month but do not report fight details, only outcome, and emphasize the domain play info." (Chat got outcome-only fights; the full log is here.)
+
+**Morten (GM):** Kallista (Tieflings, Brutal, F5, C3) is still at war with the tower. Her rival Iados (Altruistic, C1) needs +3 from a Strike, plus the court's point, to reach her Cunning and try a coup: d10 + 1 + 3 + 1 vs d10 + 3, about a 64% chance. A win puts a good ruler in the Tieflings, ends the war and makes them an ally. The tower stays at F0, where no Brutal ruler targets it. On the way, he picks up his purse on floor 3.
+
+**Month 4 orders:** Fund Iados 1 GP · court coup:Tieflings = 1 · no tower action.
+
+**Month 4 · Day 2 · B4 (L5, hills, tower)** · wandering d6 4, none. Ration 5 → 4.
+
+**Month 4 · Day 3 · A5 (L3, desert, Tieflings)** · wandering d6 **1** → 2 Copper Dragon Wyrmlings (High, 400 XP).
+- Copper Dragon Wyrmling: AC 16 · HP 22 · fly 12 sq · Rend +4, 1d10+2 · Acid Breath DC 11 (recharge 5–6) · Slowing Breath DC 11. Chaotic Good; speak Draconic.
+- Morten (GM): they're Chaotic Good and he speaks Draconic: talk. Arcana d20 17 +6 = 23 vs DC 10: copper dragons love jokes and riddles. Persuasion with Advantage (a riddle in Draconic) → d20 18, 7 keep 18 +0 = 18 vs DC 10, SUCCESS. They laugh, trade a riddle back and fly off.
+- Result: bypassed, 400 XP (4,250 → 4,650). No coins. Ration 4 → 3.
+- **Floor 3 walk (GM ruling):** walking the cleared rooms 3.1–3.2 to pick up what he dropped is not a mission (no fight, nothing new). He takes the purse from 3.2 (50 GP 5 SP) and leaves; the Blink Dogs in 3.3 stay in their room.
+- Long Rest at camp in A5. All spells, Heroic Inspiration and the free Mage Armor back.
+
+**Month 4 · Day 4 · A5 · Strike on Kallista · 2 Spies** (High, 400 XP) · her guard
+- Spy: AC 12 · HP 27 · speed 6 sq, climb · Shortsword +4, 1d6+2 piercing + 2d6 poison · Hand Crossbow +4, 9/36 m, same damage · Cunning Action (Dash, Disengage, Hide). WIS +2.
+- Before the fight: Mage Armor (free cast), AC 15. He buries the purse (50 GP 5 SP) at his camp: coins not carried survive a death.
+- Open desert with low dunes. Spies A and B side by side, 12 sq off.
+- Init: Morten d20 17 +4 = 21 · Spies d20 17 +4 = 21; tie roll-off d20 16 vs 7, Morten first.
+- R1 Morten (GM): Sleep on both → d20 18 +6 = 24, CAST. A WIS NAT 20, B d20 19 +2 = 21: both save.
+- R1 Spies: move 6 sq (6 sq off, normal range), crossbows. A → d20 10 +4 = 14 vs AC 15, miss. B → d20 19 +4 = 23, hit (Shield can't turn it) → 1d6+2: 6+2 = 8 + 2d6: 6+6 = 12 poison = 20. **Morten 26 → 6.**
+- R2 Morten (GM): Sleep again → d20 11 +6 = 17, CAST. A d20 9 +2 = 11, B d20 5 +2 = 7: both FAIL, Incapacitated.
+- R2 Spies: second saves → A d20 4 +2 = 6, B d20 10 +2 = 12: both FAIL, **Unconscious**.
+- R3 Morten: walks 6 sq, adjacent to both.
+- R4 Morten (GM): Attack action, Oil on A: Unconscious, auto-fails the DEX save, covered. Spare oil 5 → 4.
+- R5 Morten: Scorching Ray, ray 1 at A → d20 14 +6 = 20, CAST, hit, crit (Unconscious within 1.5 m) → 4d6: 2+2+1+2 = 7 + 5 burning oil = 12. A 27 → 15, wakes. (CORRECTION: ray 1 should have had Advantage; it hit and crit anyway, so nothing changes.) Rays 2–3 at A, now awake and adjacent, with Disadvantage → d20 1, 18 keep NAT 1, miss; d20 2, 3 keep 2 +6 = 8, miss.
+- R5 Spy A: Shortsword → d20 12 +4 = 16 vs AC 15, hit → Shield DC 11 → d20 7 +6 = 13, CAST: AC 20, MISS. (B sleeps on.)
+- R6 Morten (GM): Misty Step → d20 18 +6 = 24, CAST: 6 sq away. Scorching Ray at A → d20 18 +6 = 24, CAST, hit → 1+1 = 2. Ray 2 d20 9 +6 = 15, hit; ray 3 d20 7 +6 = 13, hit → 4d6: 5+3+1+1 = 10. A 15 → 3.
+- Morale (A): WIS d20 12 +2 = 14 vs DC 10, holds.
+- R6 Spy A: Hand Crossbow → d20 19 +4 = 23, hit (Shield can't turn it) → 1d6+2: 2+2 = 4 + 2d6: 2+4 = 6 poison = 10. **Morten 6 → 0, dying.** Concentration on Sleep ends: B wakes, prone.
+- R6 Spy B: stands, Hand Crossbow at the downed wizard with Advantage → d20 4, 8 keep 8 +4 = 12 vs AC 15, miss.
+- R7 Morten: death save d20 10, success (1 ✓).
+- R7 Spy A: walks to him, Shortsword with Advantage → d20 5, 19 keep 19 +4 = 23, hit, automatic crit on an Unconscious target within 1.5 m: 2 failed death saves (2 ✗). Spy B: Shortsword with Advantage → d20 8, 8 keep 8 +4 = 12, miss.
+- R8 Morten: death save d20 8, fail → Heroic Inspiration reroll → d20 2, fail. **3 ✗: Morten dies.**
+
+**Death:** the Strike fails and Morten's month ends. He revives at the tower (C5) on full HP, all spells back. Carried coins lost: none (the purse, 50 GP 5 SP, is buried at his A5 camp). Deaths: 2. XP 4,650 (no XP for the spies). Ration for Day 4: 3 → 2.
+
+## Month 4 · Domain turn
+
+**Log**
+- Income: tower L6 × 10 = 60, upkeep −5 (F0, 1 officer) → 160 GP. Fund Iados 1 GP → 159. Court: coup Tieflings 1, but with no Strike, Iados (C1 + 1 court = 2) is short of Kallista's C3 and doesn't try.
+- Order: Humans · Elves · Goblinkind · Tieflings · Gnomes · Orcs.
+- Humans (Galen, Brutal): Enslave Orcs at B3 from A3 → d10 8 + F7 = 15 vs d10 5 + F1 = 6, WIN. Humans F7 → 8. Orcs F1 → 0.
+- Elves (Faelar, Greedy): Conquer D2 (Goblinkind, L12) from D3 → d10 5 + F5 = 10 vs d10 5 + F5 = 10, tie to the defender, LOSS. Elves F5 → 4.
+- Goblinkind, Tieflings: save (Force 6 costs 600; Nagra has 375, Kallista 503). Kallista had no one to enslave: the Orcs were already at F0 and the tower is at F0.
+- Gnomes (Quillon): Build Force 2 → 3. Orcs (Mogra): Build Force 0 → 1.
+- Mirrors: Mirela (Humans) and Erevan (Elves) build Cunning 2 → 3; Pockle (Gnomes) 1 → 2. Skreek, Iados and Nazha save.
+
+**Realms**
+- Elves · Faelar (Greedy) F4 C4 274 GP · D3 D4 D5 · mirror Erevan (Neutral) C3 52 GP
+- Gnomes · Quillon (Neutral) F3 C3 203 GP · A1 B1 C1 C2 · mirror Pockle (Cruel) C2 32 GP
+- Goblinkind · Nagra (Neutral) F5 C4 375 GP · C3 D1 D2 · mirror Skreek (Cruel) C2 288 GP
+- Humans · Galen (Brutal) F8 C4 382 GP · A2 A3 B2 · mirror Mirela (Neutral) C3 36 GP
+- Orcs · Mogra (Neutral) F1 C2 274 GP · B3 C4 · mirror Nazha (Brutal) C1 114 GP
+- Tieflings · Kallista (Brutal) F5 C3 503 GP · A4 A5 B5 · mirror Iados (Altruistic) C1 174 GP · at war with the tower
+
+**Tower:** F0 · 159 GP · hexes B4 C5 · wars: Tieflings
+**Court:** Doran (Humans) · pool 1
+
+**Month 5 choices**
+- Morten: C5 (tower), rested, 0 GP on him. His purse (50 GP 5 SP) is buried at his A5 camp.
+- Travel: 1 day per hex; d6 each day outside C5, 1 = encounter.
+- Mission: Strike, Rob (a vicious ruler: Elves, Humans, Tieflings), or Delve (floor 1 here; floor 3 in A5, Blink Dogs next).
+- Tower action: Build F1 for 100 GP, or nothing.
+- Fund, Recruit (2nd officer 200 GP: Gnomes, Goblinkind, Orcs), court point (1).

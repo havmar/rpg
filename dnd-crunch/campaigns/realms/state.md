@@ -3,8 +3,8 @@
 - **Table mode:** open
 - **Morten played by:** the GM (human's request: "play for a while, cheesing all around");
   the human can step in anytime
-- **Month 4 · Day 1 · C5** (L1, jungle, tower) · start of the month, choices pending
-- **Deaths:** 1 here (Month 3, floor 3 room 3.3, Blink Dogs) · **XP:** 4,250 · **level 4** (level 5 at 6,500)
+- **Month 5 · Day 1 · C5** (L1, jungle, tower) · start of the month, choices pending
+- **Deaths:** 2 here (Month 3, floor 3 room 3.3, Blink Dogs; Month 4, A5, Kallista's Spies) · **XP:** 4,650 · **level 4** (level 5 at 6,500)
 
 ## Morten
 
@@ -12,8 +12,8 @@
 - Lost spells: none
 - Mage Armor free cast: ✓ · Arcane Recovery: ✓ · Heroic Inspiration: ✓
 - Concentration: none · Conditions: none · Exhaustion 0 · fed
-- Light: lamp (1 flask in it); 5 spare oil; 7 torches
-- Rations 5 · Coins 0 (purse with 50 GP 5 SP on the floor of room 3.2, floor 3 under A5)
+- Light: lamp (1 flask in it); 4 spare oil; 7 torches
+- Rations 2 · Coins 0 (purse with 50 GP 5 SP buried at his camp in A5)
 - Potions: none · Ice Knife scroll
 - Familiar: owl (Fey), the tower's courier
 
@@ -23,6 +23,7 @@
   (any damage at 8 HP or less), if Shield isn't lost and the reaction is free.
 - Heroic Inspiration: reroll a failed cast of Shield, Misty Step, Scorching Ray,
   Thunderwave or Sleep.
+- Retrieving things he dropped in cleared dungeon rooms is a walk, not a mission (GM ruling, Month 4).
 - Cheese everything (the human's request): scout, rituals, Mage Hand, oil, Sleep then
   point-blank crits, chokepoints, retreat to reset, Long Rest before a Strike, drop the
   purse before a risky fight. Kite with Thunderwave + Misty Step (chargers Dash and can't
@@ -32,13 +33,13 @@
 
 ## Domain
 
-- Tower F0 · 105 GP · hexes B4 C5 · war: Tieflings (Kallista) · court: Doran (Humans), pool 1
-- Month 4 orders: not declared yet
+- Tower F0 · 159 GP · hexes B4 C5 · war: Tieflings (Kallista) · court: Doran (Humans), pool 1
+- Month 5 orders: not declared yet
 - Full state: `world.md` (open) and `realms.json` (the script's)
 
 ## Known dungeon
 
-- Floor 3 (A5): 3.1 Satyr dead · 3.2 Giant Hyenas dead, purse on the floor · 3.3 three
+- Floor 3 (A5): 3.1 Satyr dead · 3.2 Giant Hyenas dead (purse taken back) · 3.3 three
   Blink Dogs (Lawful Good, understand Elvish), alive, fog room; he died there.
 
 ## Combat
