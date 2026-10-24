@@ -11,9 +11,11 @@ self-contained. Paths in this file are relative to the repo root (where the sess
 ```
 dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
+  realms.md              overworld rules (Realms), for campaigns with a realms.json
   agents/player.md       instructions for the AI player who runs Morten
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
   tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
+  tools/realms.py        overworld engine: world generator, domain turns, encounters
   campaigns/<name>/      one folder per campaign (see Campaign files)
   sessions/              per-session notes and full transcripts
 ```
@@ -251,6 +253,15 @@ it's fastest:
   table. Show the roll in the LOG; the result stays hidden until something arrives.
 - XP: award monster XP for defeated or bypassed foes, and track it toward the next level in
   `Level Advancement.md`.
+
+## Realms (overworld)
+
+A campaign with a `realms.json` is played by `dnd-crunch/realms.md`, which adds to this
+file (and wins where they differ): a hex map of six realms, monthly domain turns run by
+`tools/realms.py`, Morten's tower and court. Field replies change in two ways:
+
+- The header adds month, day and hex, e.g. **Month 3 · Day 4 · C2 (L9, forest, Elves)**.
+- A **Rumours** section appears when Morten is in or next to a realm's hex.
 
 ## Campaign files
 
