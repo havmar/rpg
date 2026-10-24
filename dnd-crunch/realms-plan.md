@@ -1,5 +1,8 @@
 # Realms: the overworld plan
 
+**Implemented.** The rules now live in `realms.md` and `tools/realms.py`; this plan is kept
+as the design record.
+
 An overworld for D&D Crunch: a small hex map of six realms, played as monthly domain turns
 on top of the existing dungeon game. It keeps the same feel: minimal narration, open
 numbers, every roll in the log. Morten is a wizard-lord in his tower. He can dispense

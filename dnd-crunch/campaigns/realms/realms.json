@@ -1,0 +1,298 @@
+{
+ "seed": 101,
+ "month": 1,
+ "rng": 213091204,
+ "hexes": {
+  "A1": {
+   "level": 13,
+   "biome": "taiga",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false
+  },
+  "A2": {
+   "level": 20,
+   "biome": "forest",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": true
+  },
+  "A3": {
+   "level": 16,
+   "biome": "plains",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false
+  },
+  "A4": {
+   "level": 14,
+   "biome": "hills",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false
+  },
+  "A5": {
+   "level": 3,
+   "biome": "desert",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false
+  },
+  "B1": {
+   "level": 2,
+   "biome": "taiga",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false
+  },
+  "B2": {
+   "level": 6,
+   "biome": "forest",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false
+  },
+  "B3": {
+   "level": 8,
+   "biome": "forest",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false
+  },
+  "B4": {
+   "level": 5,
+   "biome": "hills",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false
+  },
+  "B5": {
+   "level": 17,
+   "biome": "savanna",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false
+  },
+  "C1": {
+   "level": 10,
+   "biome": "mountains",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false
+  },
+  "C2": {
+   "level": 4,
+   "biome": "taiga",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false
+  },
+  "C3": {
+   "level": 9,
+   "biome": "hills",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false
+  },
+  "C4": {
+   "level": 11,
+   "biome": "plains",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": true
+  },
+  "C5": {
+   "level": 1,
+   "biome": "jungle",
+   "people": "tower folk",
+   "holder": "tower",
+   "lake": false
+  },
+  "D1": {
+   "level": 15,
+   "biome": "mountains",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false
+  },
+  "D2": {
+   "level": 12,
+   "biome": "mountains",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false
+  },
+  "D3": {
+   "level": 18,
+   "biome": "forest",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false
+  },
+  "D4": {
+   "level": 7,
+   "biome": "swamp",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false
+  },
+  "D5": {
+   "level": 19,
+   "biome": "savanna",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false
+  }
+ },
+ "rivers": [
+  {
+   "from": "C4",
+   "edges": [
+    "C4|D3",
+    "C3|C4",
+    "B3|C3",
+    "B2|B3",
+    "A3|B2",
+    "A2|A3"
+   ]
+  },
+  {
+   "from": "edge",
+   "edges": [
+    "A5|B5",
+    "A5|B4",
+    "A4|A5"
+   ]
+  }
+ ],
+ "realms": {
+  "Humans": {
+   "ruler": {
+    "leader": "Galen",
+    "title": "Marshal",
+    "tag": "Brutal",
+    "force": 4,
+    "cunning": 4,
+    "gp": 420
+   },
+   "mirror": {
+    "leader": "Mirela",
+    "title": "Lord",
+    "tag": "Neutral",
+    "cunning": 2,
+    "gp": 0
+   },
+   "war": false,
+   "events": []
+  },
+  "Elves": {
+   "ruler": {
+    "leader": "Faelar",
+    "title": "Speaker",
+    "tag": "Greedy",
+    "force": 4,
+    "cunning": 4,
+    "gp": 440
+   },
+   "mirror": {
+    "leader": "Erevan",
+    "title": "Archon",
+    "tag": "Neutral",
+    "cunning": 2,
+    "gp": 0
+   },
+   "war": false,
+   "events": []
+  },
+  "Gnomes": {
+   "ruler": {
+    "leader": "Quillon",
+    "title": "Mayor",
+    "tag": "Neutral",
+    "force": 3,
+    "cunning": 3,
+    "gp": 290
+   },
+   "mirror": {
+    "leader": "Pockle",
+    "title": "Mayor",
+    "tag": "Cruel",
+    "cunning": 1,
+    "gp": 0
+   },
+   "war": false,
+   "events": []
+  },
+  "Orcs": {
+   "ruler": {
+    "leader": "Nazha",
+    "title": "Boss",
+    "tag": "Brutal",
+    "force": 2,
+    "cunning": 2,
+    "gp": 240
+   },
+   "mirror": {
+    "leader": "Mogra",
+    "title": "Chief",
+    "tag": "Neutral",
+    "cunning": 1,
+    "gp": 0
+   },
+   "war": false,
+   "events": []
+  },
+  "Tieflings": {
+   "ruler": {
+    "leader": "Kallista",
+    "title": "Exarch",
+    "tag": "Brutal",
+    "force": 3,
+    "cunning": 3,
+    "gp": 340
+   },
+   "mirror": {
+    "leader": "Iados",
+    "title": "Magister",
+    "tag": "Altruistic",
+    "cunning": 1,
+    "gp": 0
+   },
+   "war": false,
+   "events": []
+  },
+  "Goblinkind": {
+   "ruler": {
+    "leader": "Nagra",
+    "title": "Big Boss",
+    "tag": "Neutral",
+    "force": 4,
+    "cunning": 4,
+    "gp": 360
+   },
+   "mirror": {
+    "leader": "Skreek",
+    "title": "Big Boss",
+    "tag": "Cruel",
+    "cunning": 2,
+    "gp": 0
+   },
+   "war": false,
+   "events": []
+  }
+ },
+ "fallen": [],
+ "tower": {
+  "hex": "C5",
+  "force": 1,
+  "gp": 100,
+  "officers": [
+   {
+    "name": "Doran",
+    "people": "Humans"
+   }
+  ],
+  "morten": "C5",
+  "events": []
+ }
+}
