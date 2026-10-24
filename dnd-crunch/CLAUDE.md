@@ -13,6 +13,7 @@ dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
   agents/player.md       instructions for the AI player who runs Morten
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
+  tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
   campaigns/<name>/      one folder per campaign (see Campaign files)
 ```
 
@@ -258,6 +259,7 @@ Each campaign lives in `dnd-crunch/campaigns/<name>/`:
   reads it.
 - `transcript.md`: every GM reply word for word, with the action before it (the human's
   words, or Morten (AI)'s turn), in order. Never put GM secrets in it.
+- `rules.md` (optional): rules for this campaign only, public. They win over this file.
 - `gm-secrets.md`: the dungeon or adventure: full map, room keys, monster placement, trap
   DCs, treasure. Only the GM reads it. Write it before the first scene and mark rooms
   explored as the wizard reaches them.

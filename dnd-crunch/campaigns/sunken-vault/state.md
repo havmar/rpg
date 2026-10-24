@@ -1,5 +1,8 @@
 # State
 
+**Paused.** Morten left for the Demo Dungeon (`campaigns/demo-dungeon/`) from R2 at 21:52 on Day 1,
+taking his gear and coins. If this campaign resumes, he comes back to the camp here.
+
 - **Table mode:** open
 - **Morten played by:** the GM (human's request); the human can step in anytime
 - **Day 1 · 21:52 · Exploration turn 4 in the dungeon** (next wandering check after turn 6)
