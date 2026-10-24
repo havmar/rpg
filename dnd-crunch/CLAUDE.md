@@ -2,7 +2,7 @@
 
 An experimental way to play D&D (the 2024 rules, SRD 5.2.1): **minimal narration, maximum
 mechanics**. The game reads like a tactics game's combat log, not a novel. Every roll, DC,
-modifier, range, slot and square is on the table; description is cut to the facts the
+modifier, range, spell and square is on the table; description is cut to the facts the
 mechanics need. The party is **one wizard (he/him)**, played by the human. This folder is
 self-contained. Paths in this file are relative to the repo root (where the session runs).
 
@@ -22,7 +22,7 @@ name and `grep -n`; never read a big file whole.
 
 | Need | File |
 |---|---|
-| Wizard features, slots table, Evoker | `reference/srd/Classes/Wizard/Wizard.md` |
+| Wizard features, level table, Evoker | `reference/srd/Classes/Wizard/Wizard.md` |
 | Wizard spell list | `reference/srd/Classes/Wizard/Wizard Spell List.md` |
 | A spell | `reference/srd/Spells/<Cantrip or Level N>/<Name>.md` |
 | Casting rules (components, concentration, rituals) | `reference/srd/Spells/Spells.md` |
@@ -61,34 +61,105 @@ name and `grep -n`; never read a big file whole.
 - **Time is counted.** Combat in 6-second rounds. Exploration in 10-minute turns: each turn
   is one room searched, one corridor walked carefully, a ritual cast, and so on. Track torch
   and spell durations, rests, rations and the day.
-- **Resources are the game.** HP, hit dice, spell slots, Arcane Recovery, concentration,
+- **Resources are the game.** HP, hit dice, lost spells, Arcane Recovery, concentration,
   reaction, gold, ammunition, rations, torches. Show the relevant ones every reply.
+
+## House rules
+
+These replace the SRD where they differ.
+
+### Roll to cast (Shadowdark-style)
+
+There are **no spell slots**. Morten can cast any spell he has prepared, as often as he
+likes, but every cast needs a **casting check**:
+
+- **Roll:** d20 + INT mod + proficiency bonus (his spell attack bonus) vs **DC 10 + the
+  spell's level**. Cantrips are DC 10.
+- **Success:** the spell works as written.
+- **Failure:** the spell fizzles (the action is spent) and that spell is **lost until he
+  finishes a Long Rest**: it can't be cast again, cantrips included.
+- **Natural 20:** it works, and he doubles one numeric effect of his choice (damage dice,
+  duration, number of targets, area), or for a spell attack it is a critical hit instead.
+- **Natural 1:** it fails, the spell is lost, and he rolls `1d12` on the **mishap table**
+  below.
+- **Spell attacks** use one roll for both. The total must meet the DC to cast and beat the
+  target's AC to hit. Total < DC: fizzle, lost. DC ≤ total < AC: cast but missed (Potent
+  Cantrip still applies). Total ≥ AC: hit. With several attacks (*Scorching Ray*), the
+  first attack roll is the casting check; the rest are plain attack rolls.
+- **Save spells:** cast first, then targets save against his spell save DC as normal.
+- **Casting at a higher level:** he may cast a spell as if from a higher-level slot, up to
+  the highest slot level his Wizard level would give (level 2 at Wizard 3). The DC uses
+  that higher level.
+- **Rituals:** casting a Ritual spell as a Ritual (the +10 minutes) needs no check.
+- **Mage Armor from Magic Initiate:** once per Long Rest he may cast it with no check.
+  Otherwise it follows the normal roll.
+- **Arcane Recovery:** once per Long Rest, when he finishes a Short Rest, he regains lost
+  spells whose levels add up to no more than half his Wizard level (round up). A cantrip
+  counts as level 1.
+- **Heroic Inspiration** (Human) may reroll a casting check.
+- **Magic items and scrolls** cast their spells with no casting check.
+- Concentration works as written.
+
+**Wizard mishap table (1d12)**
+
+| d12 | Mishap |
+|---|---|
+| 1 | **Backlash.** Morten takes 2d6 force damage. |
+| 2 | **Wild target.** The spell goes off anyway, but at a random creature in range (Morten included). Roll the target. |
+| 3 | **Burnout.** Every other prepared spell of the same level (or every cantrip) is also lost until Long Rest. |
+| 4 | **Snuffed.** All light within 9 m goes out: torches, lamps, *Light* ends. Relighting a torch takes an action and a tinderbox. |
+| 5 | **Thunderclap.** A crack heard 90 m away. The GM rolls a wandering monster check right away, with a 1–3 on d6 meaning an encounter. |
+| 6 | **Drained.** 1 level of Exhaustion. |
+| 7 | **Glow.** He sheds bright violet light in 3 m for 1 minute, can't Hide, and attack rolls against him have Advantage until the end of his next turn. |
+| 8 | **Slipped grip.** He drops everything he's holding, focus included. |
+| 9 | **Tongue-tied.** He can't cast spells with a Verbal component until the end of his next turn. |
+| 10 | **Unravel.** Every spell he is maintaining (concentration, Mage Armor, *Light*) ends. |
+| 11 | **Spell worm.** One random other prepared spell is lost until Long Rest. |
+| 12 | **Fizzle.** Nothing else happens. |
+
+### Death is a respawn (roguelike)
+
+- Dying works as written: at 0 HP he makes Death Saving Throws, and he dies on three
+  failures, on massive damage, or from an effect that kills outright (a Shadow taking his
+  Strength to 0).
+- When he dies, he **revives at the dungeon's entrance camp**, at full HP, with all spells
+  restored and all conditions and Exhaustion removed. It counts as a Long Rest; 8 hours pass.
+- He **loses all coins and gems he was carrying**. He keeps everything else: gear, magic
+  items, spellbook, XP. Gold stored nowhere is safe; there is no bank.
+- The dungeon stays as he left it: dead monsters stay dead, looted rooms stay looted, but
+  living monsters have 8 hours to move, regroup and reset their traps (GM's call, logged in
+  `gm-secrets.md`).
+- Track deaths in `state.md` (`Deaths: N`).
+- The camp has a trader who sells anything in `reference/srd/Equipment/` at listed price,
+  plus Potions of Healing (50 GP), and buys gear at half price, gems at full value. That's
+  where gold matters.
 
 ## Reply format
 
 Every GM reply follows this shape. Leave out a section only when it's empty.
 
 ```
-── R2 · Init: Wizard 18 › Goblin A 12 › Goblin B 7 ──     (exploration: ── Turn 4 · 00:40 ──)
+── R2 · Init: Morten 18 › Goblin A 12 › Goblin B 7 ──     (exploration: ── Turn 4 · 00:40 ──)
 
 AREA  Room 3: 6×9 m, stone, dim light. Exits N (door, closed), S (corridor).
 
 MAP   1 sq = 1.5 m
       . . . . # #
-      . W . . . #        W = Wizard   A, B = Goblins   # = wall
+      . M . . . #        M = Morten   A, B = Goblins   # = wall
       . . . A . .        + = door     ~ = difficult terrain
       . . . . . B
 
 LOG
-- Goblin A: Scimitar vs AC 12 → d20 14 +4 = 18 HIT → 1d6+2: 3+2 = 5 slashing
-- Wizard HP 8 → 3.
+- Goblin A: Scimitar vs AC 15 → d20 14 +4 = 18 HIT → 1d6+2: 3+2 = 5 slashing
+- Morten: Shield (reaction) → cast DC 11: d20 4 +5 = 9 FIZZLE. Shield lost until Long Rest.
+- Morten HP 8 → 3.
 
 STATE
-  Wizard  HP 3/8 · AC 12 · Slots L1 1/2 · Conc — · Cond — · Reaction ✓
-  Goblin A  HP 7/7 · AC 15 · 2 sq from W
-  Goblin B  HP 4/7 · AC 15 · 4 sq from W, Prone
+  Morten  HP 3/20 · AC 15 · Lost: Shield, Fire Bolt · Conc — · Cond — · Reaction ✗
+  Goblin A  HP 7/7 · AC 15 · 2 sq from M
+  Goblin B  HP 4/7 · AC 15 · 4 sq from M, Prone
 
-YOUR TURN  Move 6 sq · Action · Bonus action · Reaction ✓ (Shield available)
+YOUR TURN  Move 6 sq · Action · Bonus action · Reaction ✗
 ```
 
 - The LOG is one line per event, in order: who, what, the roll, the result, the effect.
@@ -117,10 +188,9 @@ YOUR TURN  Move 6 sq · Action · Bonus action · Reaction ✓ (Shield available
 ## The wizard
 
 - One PC: a male wizard, built by the 2024 character creation rules (class, background,
-  species, standard array 15/14/13/12/10/8 or `4d6kh3` ×6, origin feat, starting gear).
-  Build him with the human, step by step, and write his full sheet to `character.md`.
-- Start at the level the human picks. A solo level 1 wizard has about 8 HP and dies to one
-  unlucky goblin turn, so offer level 3 (Evoker, 2nd-level slots) as the sturdier default.
+  species, standard array 15/14/13/12/10/8, origin feat, starting gear).
+- He is **Morten**, Wizard 3 (Evoker), pre-built. His sheet is in the campaign's
+  `character.md`. Spells follow the roll-to-cast house rule (no slots).
 - Track the spellbook separately from prepared spells. Copying a found spell costs 2 hours
   and 50 GP per spell level (`Wizard.md: Expanding and Replacing a Spellbook`).
 
@@ -133,6 +203,9 @@ YOUR TURN  Move 6 sq · Action · Bonus action · Reaction ✓ (Shield available
   cover, doors, elevation, light and darkness.
 - Mix in non-combat mechanics: traps with DCs, locks, puzzles solved with spells or checks,
   hazards, resource drains (a cold night, a long climb). Not every room is a fight.
+- Wandering monsters: roll `1d6` every 3 exploration turns and once per Short Rest (two
+  rolls per Long Rest in the dungeon); a 1 means an encounter from the dungeon's wandering
+  table. Show the roll in the LOG; the result stays hidden until something arrives.
 - XP: award monster XP for defeated or bypassed foes, and track it toward the next level in
   `Level Advancement.md`.
 
@@ -143,8 +216,9 @@ Each campaign lives in `dnd-crunch/campaigns/<name>/`:
 - `character.md`: the wizard's full sheet: abilities, saves, skills, HP, AC, speed, feats,
   features, spellbook, prepared spells, inventory with weights, gold, XP.
 - `state.md`: the live state, rewritten (not appended) after every reply: location, time,
-  HP, hit dice, slots, Arcane Recovery, concentration, conditions, light sources, rations,
-  and in combat the initiative order, positions and every monster's HP. A fresh GM must be
+  HP, hit dice, lost spells, Arcane Recovery, Heroic Inspiration, deaths, concentration,
+  conditions, light sources, rations, and in combat the initiative order, positions and
+  every monster's HP. A fresh GM must be
   able to resume from this file alone. Also notes the table mode (open/closed).
 - `transcript.md`: every GM reply word for word, with the human's action before it, in
   order. Never put GM secrets in it.
@@ -161,7 +235,7 @@ session.
 
 1. Agree on the campaign name, starting level and adventure type with the human (a dungeon
    crawl is the natural fit: rooms are discrete and mechanical).
-2. Build the wizard together and write `character.md`.
+2. Build the wizard (or use the pre-built Morten) and write `character.md`.
 3. Write `gm-secrets.md` (a 5–10 room dungeon is a good one-session size, with encounters
    budgeted for one character and at least one short-rest opportunity), then `state.md`.
 4. Open with the first reply in the format above, and play one reply per human action.
