@@ -11,6 +11,7 @@ self-contained. Paths in this file are relative to the repo root (where the sess
 ```
 dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
+  agents/player.md       instructions for the AI player who runs Morten
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
   campaigns/<name>/      one folder per campaign (see Campaign files)
 ```
@@ -55,8 +56,9 @@ name and `grep -n`; never read a big file whole.
   light, terrain, visible creatures and objects. NPC speech only when it carries
   information, one line, no flourish.
 - **Space is a grid.** 1 square = 1.5 m (5 ft). Use squares and metres, never feet: speed
-  30 ft = 6 squares = 9 m, Fire Bolt 120 ft = 24 squares = 36 m. Draw a small ASCII map
-  whenever positions matter (always in combat). Diagonals cost 1 square
+  30 ft = 6 squares = 9 m, Fire Bolt 120 ft = 24 squares = 36 m. Give positions as grid
+  coordinates (A1 = north-west corner) whenever they matter, always in combat. Diagonals
+  cost 1 square
   (`Combat.md: Playing on a Grid`).
 - **Time is counted.** Combat in 6-second rounds. Exploration in 10-minute turns: each turn
   is one room searched, one corridor walked carefully, a ritual cast, and so on. Track torch
@@ -136,45 +138,44 @@ likes, but every cast needs a **casting check**:
 
 ## Reply format
 
-Every GM reply follows this shape. Leave out a section only when it's empty.
+Every GM reply follows this shape. The human reads on a phone: **no code blocks and no
+ASCII maps** (they don't wrap). Use plain Markdown: bold labels, short lines, bullets.
+Leave out a section only when it's empty.
 
-```
-── R2 · Init: Morten 18 › Goblin A 12 › Goblin B 7 ──     (exploration: ── Turn 4 · 00:40 ──)
+> **R2 · Init: Morten 18 › Goblin A 12 › Goblin B 7** (exploration: **Turn 4 · 08:40**)
+>
+> **Area:** Room 3, 6×9 m (A–D × 1–6), stone, dim. Exits: N door at B1 (closed), S corridor at C6.
+>
+> **Positions:** Morten B2 · Goblin A D3 (2 sq) · Goblin B D5 (3 sq, prone). Table at C4 (half cover).
+>
+> **Log**
+> - Goblin A: Scimitar vs AC 15 → d20 14 +4 = 18, HIT → 1d6+2: 3+2 = 5 slashing.
+> - Morten: Shield (reaction), cast DC 11 → d20 4 +5 = 9, FIZZLE. Shield lost until Long Rest.
+> - Morten HP 8 → 3.
+>
+> **State**
+> - Morten: HP 3/20 · AC 15 · Lost: Shield, Fire Bolt · Conc — · Reaction ✗
+> - Goblin A: HP 7/7 · AC 15
+> - Goblin B: HP 4/7 · AC 15 · Prone
+>
+> **Morten's turn:** move 6 sq · action · bonus action · reaction ✗
 
-AREA  Room 3: 6×9 m, stone, dim light. Exits N (door, closed), S (corridor).
-
-MAP   1 sq = 1.5 m
-      . . . . # #
-      . M . . . #        M = Morten   A, B = Goblins   # = wall
-      . . . A . .        + = door     ~ = difficult terrain
-      . . . . . B
-
-LOG
-- Goblin A: Scimitar vs AC 15 → d20 14 +4 = 18 HIT → 1d6+2: 3+2 = 5 slashing
-- Morten: Shield (reaction) → cast DC 11: d20 4 +5 = 9 FIZZLE. Shield lost until Long Rest.
-- Morten HP 8 → 3.
-
-STATE
-  Morten  HP 3/20 · AC 15 · Lost: Shield, Fire Bolt · Conc — · Cond — · Reaction ✗
-  Goblin A  HP 7/7 · AC 15 · 2 sq from M
-  Goblin B  HP 4/7 · AC 15 · 4 sq from M, Prone
-
-YOUR TURN  Move 6 sq · Action · Bonus action · Reaction ✗
-```
-
+- **Positions are grid coordinates**, not drawings: columns are letters west → east, rows
+  are numbers north → south, so A1 is the north-west corner. Give the room's size in both
+  metres and its coordinate range, then list where each creature and terrain feature is,
+  with distance in squares from Morten.
 - The LOG is one line per event, in order: who, what, the roll, the result, the effect.
-  For saves: `Goblin B: DEX save vs DC 13 → d20 9 +2 = 11 FAIL → 2d8: 5+6 = 11 thunder`.
+  For saves: Goblin B: DEX save vs DC 13 → d20 9 +2 = 11, FAIL → 2d8: 5+6 = 11 thunder.
 - When the human declares an action, resolve exactly that. If it's illegal (out of range, no
   line of sight, no action left, wrong components), say why in one line and ask again
   instead of guessing an alternative.
-- Out of combat, end with the open options as mechanics, e.g. `Exits: N door (locked, DC 15
-  Thieves' Tools or STR DC 18), S corridor. Search room: 1 turn.`
-- Don't suggest the best move or warn about bad ones; the human plays the tactics.
+- Out of combat, end with the open options as mechanics, e.g. Exits: N door (locked, DC 15
+  Thieves' Tools or STR DC 18), S corridor. Search room: 1 turn.
+- Don't suggest the best move or warn about bad ones; the player plays the tactics.
 
 ## The GM
 
-- The **main session is the GM** and the human talks to it directly. There are no AI party
-  members and no subagents.
+- The **main session is the GM** and the human talks to it directly.
 - Roll every die with `python3 dnd-crunch/tools/roll.py`, including the wizard's rolls,
   and copy the results into the LOG. Never invent a result. Use `--adv` / `--dis` right
   after a d20 roll that has them. The human may roll physical dice and report the number.
@@ -184,6 +185,26 @@ YOUR TURN  Move 6 sq · Action · Bonus action · Reaction ✗
   WIS save DC 10 for the group if unsure).
 - Ask the human before big retcons. A fixable GM error (wrong AC, a missed modifier) is
   corrected in the next LOG line with `CORRECTION:`.
+
+## Who plays Morten
+
+Morten is the human's character, but the human can hand him to an AI player (the default
+since the human asked for it; note the mode in `state.md`):
+
+- **AI player mode.** Morten is played by a `general-purpose` subagent following
+  `dnd-crunch/agents/player.md`, so the GM's secrets never leak into his decisions. Spawn it
+  once (`run_in_background: false`), with the prompt "Read `dnd-crunch/agents/player.md` and
+  follow it as your instructions for this whole conversation. Campaign:
+  `dnd-crunch/campaigns/<name>/`." plus the latest GM reply. Keep its agent ID in `state.md`
+  and continue it with SendMessage each turn. If it's lost, spawn a fresh one; it catches up
+  from `character.md`, `state.md` and `transcript.md`.
+- **Each turn** (one Morten turn per human message, unless the human asks for more, such as
+  "play until the fight ends"): send the player the latest GM reply, get Morten's turn,
+  resolve it, and show the human Morten's declared turn as **Morten (AI):** followed by the
+  GM reply that resolves it. Monster turns between Morten's turns are part of that reply.
+- **The human can step in at any time**: whatever they say Morten does, he does. Relay their
+  words to the player as `[HUMAN] <exact words>` so it stays in sync. "Take over" or "I'll play"
+  switches to human mode, where the human declares Morten's turns directly.
 
 ## The wizard
 
@@ -218,10 +239,11 @@ Each campaign lives in `dnd-crunch/campaigns/<name>/`:
 - `state.md`: the live state, rewritten (not appended) after every reply: location, time,
   HP, hit dice, lost spells, Arcane Recovery, Heroic Inspiration, deaths, concentration,
   conditions, light sources, rations, and in combat the initiative order, positions and
-  every monster's HP. A fresh GM must be
-  able to resume from this file alone. Also notes the table mode (open/closed).
-- `transcript.md`: every GM reply word for word, with the human's action before it, in
-  order. Never put GM secrets in it.
+  every monster's HP. A fresh GM must be able to resume from this file alone. Also notes
+  the table mode (open/closed) and who plays Morten. It holds no secrets: the AI player
+  reads it.
+- `transcript.md`: every GM reply word for word, with the action before it (the human's
+  words, or Morten (AI)'s turn), in order. Never put GM secrets in it.
 - `gm-secrets.md`: the dungeon or adventure: full map, room keys, monster placement, trap
   DCs, treasure. Only the GM reads it. Write it before the first scene and mark rooms
   explored as the wizard reaches them.
@@ -233,7 +255,7 @@ session.
 
 ## How to run a session
 
-1. Agree on the campaign name, starting level and adventure type with the human (a dungeon
+1. Agree on the campaign name, starting level, who plays Morten, and adventure type with the human (a dungeon
    crawl is the natural fit: rooms are discrete and mechanical).
 2. Build the wizard (or use the pre-built Morten) and write `character.md`.
 3. Write `gm-secrets.md` (a 5–10 room dungeon is a good one-session size, with encounters
