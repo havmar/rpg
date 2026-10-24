@@ -1,4 +1,4 @@
-# World · Month 1
+# World · Month 4
 
 Seed 101. Rendered by `realms.py` from `realms.json` after every turn; don't edit by hand.
 
@@ -20,7 +20,7 @@ Seed 101. Rendered by `realms.py` from `realms.json` after every turn; don't edi
   - next to: A2 A3 B1 B3 C2 C3
 - **B3** · L8 · forest · Orcs · held by Orcs · river B2|B3, B3|C3
   - next to: A3 A4 B2 B4 C3 C4
-- **B4** · L5 · hills · Orcs · held by Orcs · river A5|B4
+- **B4** · L5 · hills · Orcs · held by tower · river A5|B4
   - next to: A4 A5 B3 B5 C4 C5
 - **B5** · L17 · savanna · Tieflings · held by Tieflings · river A5|B5
   - next to: A5 B4 C5
@@ -52,62 +52,62 @@ Seed 101. Rendered by `realms.py` from `realms.json` after every turn; don't edi
 
 ## Realms
 
-- Elves · Faelar (Greedy) F4 C4 440 GP · D3 D4 D5 · mirror Erevan (Neutral) C2 0 GP
-- Gnomes · Quillon (Neutral) F3 C3 290 GP · A1 B1 C1 C2 · mirror Pockle (Cruel) C1 0 GP
-- Goblinkind · Nagra (Neutral) F4 C4 360 GP · C3 D1 D2 · mirror Skreek (Cruel) C2 0 GP
-- Humans · Galen (Brutal) F4 C4 420 GP · A2 A3 B2 · mirror Mirela (Neutral) C2 0 GP
-- Orcs · Nazha (Brutal) F2 C2 240 GP · B3 B4 C4 · mirror Mogra (Neutral) C1 0 GP
-- Tieflings · Kallista (Brutal) F3 C3 340 GP · A4 A5 B5 · mirror Iados (Altruistic) C1 0 GP
+- Elves · Faelar (Greedy) F5 C4 97 GP · D3 D4 D5 · mirror Erevan (Neutral) C2 264 GP
+- Gnomes · Quillon (Neutral) F2 C3 299 GP · A1 B1 C1 C2 · mirror Pockle (Cruel) C1 174 GP
+- Goblinkind · Nagra (Neutral) F5 C4 262 GP · C3 D1 D2 · mirror Skreek (Cruel) C2 216 GP
+- Humans · Galen (Brutal) F7 C4 389 GP · A2 A3 B2 · mirror Mirela (Neutral) C2 252 GP
+- Orcs · Mogra (Neutral) F1 C2 229 GP · B3 C4 · mirror Nazha (Brutal) C1 76 GP
+- Tieflings · Kallista (Brutal) F5 C3 406 GP · A4 A5 B5 · mirror Iados (Altruistic) C1 105 GP · at war with the tower
 
 ## Factions
 
 ### Elves
 
-- **Ruler:** Speaker Faelar · Greedy · Force 4 · Cunning 4 · 440 GP
-- **Mirror:** Archon Erevan · Neutral · Cunning 2 · 0 GP
+- **Ruler:** Speaker Faelar · Greedy · Force 5 · Cunning 4 · 97 GP
+- **Mirror:** Archon Erevan · Neutral · Cunning 2 · 264 GP
 - **Hexes:** D3 D4 D5 · levels 44
 - **At war with the tower:** no
 
 ### Gnomes
 
-- **Ruler:** Mayor Quillon · Neutral · Force 3 · Cunning 3 · 290 GP
-- **Mirror:** Mayor Pockle · Cruel · Cunning 1 · 0 GP
+- **Ruler:** Mayor Quillon · Neutral · Force 2 · Cunning 3 · 299 GP
+- **Mirror:** Mayor Pockle · Cruel · Cunning 1 · 174 GP
 - **Hexes:** A1 B1 C1 C2 · levels 29
 - **At war with the tower:** no
 
 ### Goblinkind
 
-- **Ruler:** Big Boss Nagra · Neutral · Force 4 · Cunning 4 · 360 GP
-- **Mirror:** Big Boss Skreek · Cruel · Cunning 2 · 0 GP
+- **Ruler:** Big Boss Nagra · Neutral · Force 5 · Cunning 4 · 262 GP
+- **Mirror:** Big Boss Skreek · Cruel · Cunning 2 · 216 GP
 - **Hexes:** C3 D1 D2 · levels 36
 - **At war with the tower:** no
 
 ### Humans
 
-- **Ruler:** Marshal Galen · Brutal · Force 4 · Cunning 4 · 420 GP
-- **Mirror:** Lord Mirela · Neutral · Cunning 2 · 0 GP
+- **Ruler:** Marshal Galen · Brutal · Force 7 · Cunning 4 · 389 GP
+- **Mirror:** Lord Mirela · Neutral · Cunning 2 · 252 GP
 - **Hexes:** A2 A3 B2 · levels 42
 - **At war with the tower:** no
 
 ### Orcs
 
-- **Ruler:** Boss Nazha · Brutal · Force 2 · Cunning 2 · 240 GP
-- **Mirror:** Chief Mogra · Neutral · Cunning 1 · 0 GP
-- **Hexes:** B3 B4 C4 · levels 24
+- **Ruler:** Chief Mogra · Neutral · Force 1 · Cunning 2 · 229 GP
+- **Mirror:** Boss Nazha · Brutal · Cunning 1 · 76 GP
+- **Hexes:** B3 C4 · levels 19
 - **At war with the tower:** no
 
 ### Tieflings
 
-- **Ruler:** Exarch Kallista · Brutal · Force 3 · Cunning 3 · 340 GP
-- **Mirror:** Magister Iados · Altruistic · Cunning 1 · 0 GP
+- **Ruler:** Exarch Kallista · Brutal · Force 5 · Cunning 3 · 406 GP
+- **Mirror:** Magister Iados · Altruistic · Cunning 1 · 105 GP
 - **Hexes:** A4 A5 B5 · levels 34
-- **At war with the tower:** no
+- **At war with the tower:** yes
 
 ## Tower
 
-- **Force** 1 · **Treasury** 100 GP
-- **Hexes:** C5
-- **Wars:** none
+- **Force** 0 · **Treasury** 105 GP
+- **Hexes:** B4 C5
+- **Wars:** Tieflings
 - **Morten:** C5 (L1, jungle, tower)
 
 ## Court
@@ -117,4 +117,4 @@ Seed 101. Rendered by `realms.py` from `realms.json` after every turn; don't edi
 
 ## Month
 
-- **Next domain turn:** month 1
+- **Next domain turn:** month 4

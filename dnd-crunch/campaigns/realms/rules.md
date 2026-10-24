@@ -19,3 +19,7 @@ Public: Morten may know all of this. These add to `dnd-crunch/CLAUDE.md` and
   - Dead monsters stay dead. Survivors are back at full HP in their room after any 8 hours
     he spends away.
 - **Death** sends him back to the tower (realms.md), not to a camp.
+- **Downtime (GM ruling, Month 1).** After the month's mission the rest of the month
+  passes: Morten finishes a Long Rest where he is (full HP, spells, Heroic Inspiration and
+  the free Mage Armor back) and lives off his own land. Rations count only on travel and
+  mission days.

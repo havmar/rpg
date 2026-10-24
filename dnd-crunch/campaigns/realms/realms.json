@@ -1,7 +1,7 @@
 {
  "seed": 101,
- "month": 1,
- "rng": 213091204,
+ "month": 4,
+ "rng": 4129891070,
  "hexes": {
   "A1": {
    "level": 13,
@@ -63,7 +63,7 @@
    "level": 5,
    "biome": "hills",
    "people": "Orcs",
-   "holder": "Orcs",
+   "holder": "tower",
    "lake": false
   },
   "B5": {
@@ -171,111 +171,121 @@
     "leader": "Galen",
     "title": "Marshal",
     "tag": "Brutal",
-    "force": 4,
+    "force": 7,
     "cunning": 4,
-    "gp": 420
+    "gp": 389
    },
    "mirror": {
     "leader": "Mirela",
     "title": "Lord",
     "tag": "Neutral",
     "cunning": 2,
-    "gp": 0
+    "gp": 252
    },
    "war": false,
-   "events": []
+   "events": [
+    "enslaved Gnomes's people as soldiers"
+   ]
   },
   "Elves": {
    "ruler": {
     "leader": "Faelar",
     "title": "Speaker",
     "tag": "Greedy",
-    "force": 4,
+    "force": 5,
     "cunning": 4,
-    "gp": 440
+    "gp": 97
    },
    "mirror": {
     "leader": "Erevan",
     "title": "Archon",
     "tag": "Neutral",
     "cunning": 2,
-    "gp": 0
+    "gp": 264
    },
    "war": false,
-   "events": []
+   "events": [
+    "built Force to 5"
+   ]
   },
   "Gnomes": {
    "ruler": {
     "leader": "Quillon",
     "title": "Mayor",
     "tag": "Neutral",
-    "force": 3,
+    "force": 2,
     "cunning": 3,
-    "gp": 290
+    "gp": 299
    },
    "mirror": {
     "leader": "Pockle",
     "title": "Mayor",
     "tag": "Cruel",
     "cunning": 1,
-    "gp": 0
+    "gp": 174
    },
    "war": false,
-   "events": []
+   "events": [
+    "lost people to Humans's slavers"
+   ]
   },
   "Orcs": {
    "ruler": {
-    "leader": "Nazha",
-    "title": "Boss",
-    "tag": "Brutal",
-    "force": 2,
-    "cunning": 2,
-    "gp": 240
-   },
-   "mirror": {
     "leader": "Mogra",
     "title": "Chief",
     "tag": "Neutral",
+    "force": 1,
+    "cunning": 2,
+    "gp": 229
+   },
+   "mirror": {
+    "leader": "Nazha",
+    "title": "Boss",
+    "tag": "Brutal",
     "cunning": 1,
-    "gp": 0
+    "gp": 76
    },
    "war": false,
-   "events": []
+   "events": [
+    "built Force to 1"
+   ]
   },
   "Tieflings": {
    "ruler": {
     "leader": "Kallista",
     "title": "Exarch",
     "tag": "Brutal",
-    "force": 3,
+    "force": 5,
     "cunning": 3,
-    "gp": 340
+    "gp": 406
    },
    "mirror": {
     "leader": "Iados",
     "title": "Magister",
     "tag": "Altruistic",
     "cunning": 1,
-    "gp": 0
+    "gp": 105
    },
-   "war": false,
-   "events": []
+   "war": true,
+   "events": [
+    "rival built Cunning to 1"
+   ]
   },
   "Goblinkind": {
    "ruler": {
     "leader": "Nagra",
     "title": "Big Boss",
     "tag": "Neutral",
-    "force": 4,
+    "force": 5,
     "cunning": 4,
-    "gp": 360
+    "gp": 262
    },
    "mirror": {
     "leader": "Skreek",
     "title": "Big Boss",
     "tag": "Cruel",
     "cunning": 2,
-    "gp": 0
+    "gp": 216
    },
    "war": false,
    "events": []
@@ -284,8 +294,8 @@
  "fallen": [],
  "tower": {
   "hex": "C5",
-  "force": 1,
-  "gp": 100,
+  "force": 0,
+  "gp": 105,
   "officers": [
    {
     "name": "Doran",

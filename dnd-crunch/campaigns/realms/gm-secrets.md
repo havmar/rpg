@@ -40,6 +40,8 @@ XP needed for level 4: 1,800 · floor total: 1,950 · 9 encounters
 | 3.8 | 1× Swarm of Insects | 1/2 | 100 | Low | 8×8 sq (12×12 m) | statues (half cover) | 10 GP |
 | 3.9 | 2× Swarm of Insects | 1/2 | 200 | Moderate | 10×12 sq (15×18 m) | burning braziers (bright light, fire) | 20 GP |
 
+**Explored (Month 3):** 3.1 Satyr dead. 3.2 Giant Hyenas dead; Morten's purse (50 GP 5 SP) on the floor. 3.3 Blink Dogs met, all three alive (B reset to full after 8 h); Morten died there.
+
 ## Floor 4 · C2 (taiga, Gnomes)
 
 XP needed for level 5: 3,800 · floor total: 3,950 · 14 encounters
