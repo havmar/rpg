@@ -158,3 +158,66 @@ OPTIONS
 - Below: one rat, two stirges (one wounded), W door unopened, N corridor with the plate.
 
 **Morten's next turn:** cast Mage Armor (free) · go back down. Nothing to buy with 0 GP.
+
+---
+
+**Human:** going for a dark souls feel, so dying shouldn't be loss of max hp or xp. the spectacle might be seeing these cheeses. please do another encounter, cheese as much as possible. thank you.
+
+**Morten (GM):** cheese wherever he can find it.
+- Cheese 1, sell what he doesn't need: the blank Book goes to Hesk for 12 GP 5 SP, and that buys incense. The owl is back, and this time it stays out of fights.
+- Cheese 2, a ritual with no roll: Detect Magic before touching anything.
+- Cheese 3, Mage Hand as a burglar. Inert skeletons around a lectern smell like a trap, so he never goes near it; the hand does.
+- Cheese 4, Sleep then a point-blank crit. Anything Unconscious takes an automatic critical from within 1.5 m.
+- Cheese 5, oil. An inert guard can't dodge a flask poured on it by a floating hand, and oil adds +5 to the first fire hit.
+
+**GM:**
+
+**Day 1 · 20:02–21:52 · Camp → R1 → R2 Library**
+
+**Log**
+- Sold the Book: +12 GP 5 SP. Incense −10 GP → 2 GP 5 SP.
+- Find Familiar ritual 20:02–21:12 (no roll): owl. Mage Armor (free) 21:12: AC 15 until 05:12. Lamp lit.
+- Turn 1 (21:22): down the stair. Owl perches on the stair at C5, out of the way.
+- Turn 2 (21:32): opens the W door, stays in the doorway.
+
+**Area:** Collapsed Library. 12×7.5 m (A–H × 1–5), dark, lamplit from the door. Rubble across F–H (difficult terrain, half cover). Lectern at D2. Only exit: the E door, which has a bar on this side.
+- Two skeletons stand against the W wall at A1 and A4, motionless.
+
+**New: 2 Skeletons.** AC 14 · HP 13 · Shortsword +5, 1d6+3 · Shortbow +5, 1d6+3, range 24/96 m · vulnerable to bludgeoning · immune to poison and Exhaustion (Sleep does nothing to them).
+
+- Detect Magic ritual (no roll): one aura, conjuration, inside the lectern's drawer. The skeletons show nothing.
+- Turn 3 (21:42): Mage Hand, cast DC 10 → d20 12 +5 = 17, CAST. The hand floats to D2, slides the drawer out and carries the whole drawer back to the door. The skeletons don't move.
+- Drawer: 24 GP and a **Spell Scroll of Ice Knife**. Investigation on the drawer → d20 19 +7 = 26 vs DC 12: false bottom, a **garnet** (gem, 50 GP).
+- Wandering check (turn 3): 1, ENCOUNTER → 1d4: 2 → **Swarm of Rats**, from the N arch.
+
+**New: Swarm of Rats.** AC 10 · HP 14 · speed 6 sq · Bites +2, 2d4 (1d4 when Bloodied) · resists bludgeoning, piercing and slashing · doesn't fall Prone or get Restrained, but can be put to Sleep.
+
+**Round 1 · Init: Owl 15 › Swarm 13 › Morten 6**
+- Owl: stays on the stair.
+- Swarm: N corridor → C−1 (3 sq north of the arch, 3 sq from Morten).
+- Morten: Sleep on the swarm, cast DC 11 → d20 20 +5 = 25, NAT 20: duration doubled to 2 minutes. Swarm WIS save → d20 6 vs DC 13, FAIL. Incapacitated.
+
+**Round 2**
+- Swarm: incapacitated. End of its turn, WIS save → d20 9, FAIL. **Unconscious.**
+- Morten: A2 → C0 (2 sq), next to it. Attack action: throws oil at it. It's unconscious, so it automatically fails the save: coated in oil.
+
+**Round 3**
+- Morten: Fire Bolt from 1.5 m away. It's Unconscious, so: Advantage, no penalty for a ranged attack in melee, and a hit is a crit. → d20 5/19, keeps 19, +5 = 24 vs DC 10 and AC 10, CAST + CRIT → 2d10: 10+4 = 14, +5 burning oil = 19 fire. Swarm (14) dead.
+
+**Turn 4 (21:52): the skeletons**
+- Morten steps into the rubble at H3: half cover, and 4 sq from the lectern.
+- Mage Hand again, cast DC 10 → d20 13 +5 = 18, CAST. The hand carries a flask to A1 and pours it over Skeleton A, then fetches a second and soaks Skeleton B at A4. They stay inert.
+- Morten opens fire. Initiative: Morten d20 20 +4 = 24 · Skeletons d20 15/4, keeps 4 (surprised, Disadvantage), +3 = 7.
+- Scorching Ray, cast DC 12. Ray 1 at A → d20 12 +5 = 17 vs DC 12 and AC 14, CAST + HIT → 2d6: 4+6 = 10, +5 oil = 15. Skeleton A destroyed.
+- Ray 2 at B → d20 20, CRIT → 4d6: 3+1+6+2 = 12, +5 oil = 17. Skeleton B destroyed.
+- Ray 3: nothing left to hit.
+
+**Result:** the library is cleared, and nothing ever touched Morten. XP +150 (2 skeletons 100, swarm 50): 1,000 → 1,150.
+
+**State**
+- Morten: HP 20/20 · AC 15 · Lost: none · Hit Dice 3/3 · Arcane Recovery ✓ · Heroic Inspiration ✓
+- Coins 26 GP 5 SP · garnet (50 GP) · Ice Knife scroll · Acid ×1 · 6 spare oil · lamp lit (out around 00:10)
+- Owl alive, on the stair. Day 1, 21:52.
+- He's carrying 76 GP of value, and all of it is lost if he dies.
+
+**Morten's next turn:** walk 2 turns back to camp and spend it (a Potion of Healing is 50 GP; copying Ice Knife costs 50 GP and 2 h) · rest here with the door barred · push on north to the corridor with the plate.

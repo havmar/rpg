@@ -1,6 +1,6 @@
 # Morten — Wizard 3 (Evoker)
 
-Human (Medium), male (he/him). Background: Sage. XP 1,000 (level 4 at 2,700).
+Human (Medium), male (he/him). Background: Sage. XP 1,150 (level 4 at 2,700).
 
 ## Core
 
@@ -94,10 +94,9 @@ no casting check: Detect Magic, Find Familiar.
 | Dagger ×2 | 0.9 | |
 | Robe (worn) | 1.8 | |
 | Backpack | 2.3 | |
-| Book (blank notes) | 2.3 | |
 | Ink, ink pen, 10 parchment | — | |
 | Lamp | 0.5 | 4.5 m bright + 9 m dim; 6 h per oil flask |
-| Oil ×10 | 4.5 | fuel, or thrown / poured for fire |
+| Oil ×6 spare (+1 in the lamp) | 2.7 | fuel, or thrown / poured for fire |
 | Tinderbox | 0.5 | light a torch or lamp: Bonus action |
 | Torch ×7 | 3.2 | 1 h, 6 m bright + 6 m dim |
 | Rations ×3 | 2.7 | 1 per day |
@@ -107,6 +106,9 @@ no casting check: Detect Magic, Find Familiar.
 | Caltrops (bag) | 0.9 | cover a 1.5 m square |
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
 | Acid (vial) | 0.5 | Attack action: target within 6 m, DEX save DC 12 or 2d6 acid |
+| Spell Scroll: Ice Knife (L1) | — | cast once with no check, or copy into the spellbook (2 h, 50 GP) |
+| Garnet | — | gem, 50 GP |
 
-**Coins:** none. Day 1: spent 10 GP on incense, 25 GP on acid, then 10 GP on more incense.
-Found 6 GP on the dead adventurer. Died at 12:02 and lost the 8 GP 7 SP 5 CP he was carrying.
+**Coins:** 26 GP 5 SP, plus the garnet (50 GP). Day 1: spent 10 GP on incense, 25 GP on
+acid, 10 GP on more incense; found 6 GP; died at 12:02 and lost 8 GP 7 SP 5 CP. At 20:02 sold
+the Book for 12 GP 5 SP and bought incense (10 GP). Found 24 GP in the library lectern.

@@ -232,7 +232,7 @@ Update as rooms are entered, cleared or reset. After a death, note what moved.
 | Room | Status |
 |---|---|
 | R1 | Day 1: 2 rats killed; rat 3 (7/7) fled to R4. Corpse looted (6 GP, torches, note taken; shield left). 12:01: 3 stirges (wandering) killed Morten here; 1 stirge dead. The 2 survivors (3/5 and 5/5 HP), sated, roost in the R3 corridor ceiling until they're hungry again: back on the wandering table from Day 2 06:00. W door still closed. |
-| R2 | unexplored |
+| R2 | Day 1 21:42–21:52: lectern looted by Mage Hand (24 GP, Ice Knife scroll, garnet). Both skeletons destroyed. Cleared. E door open. |
 | R3 | unexplored |
 | R4 | unexplored |
 | R5 | unexplored |
