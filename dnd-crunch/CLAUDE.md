@@ -22,6 +22,7 @@ dnd-crunch/
   tools/realms.py        Realms v2 engine: world, domain turns, mission fights, sim, map.json
   tools/realms_v1.py     Realms v1 engine, for the `realms` campaign
   tools/realms_page.py   builds a campaign's map page (page.html) from its map.json
+  templates/             a new game's starting sheet and campaign rules (New game defaults)
   campaigns/<name>/      one folder per campaign (see Campaign files)
   sessions/              per-session notes and full transcripts
 ```
@@ -205,7 +206,7 @@ Leave out a section only when it's empty.
 ## Who plays Morten
 
 Morten is the human's character, but the human can hand him over. Note the mode in
-`state.md`. The current mode is **GM plays Morten**, which the human asked for because
+`state.md`. The default mode is **GM plays Morten**, which the human asked for because
 it's fastest:
 
 - **GM plays Morten.** The GM decides Morten's turns as well as the world's, using only what
@@ -318,13 +319,38 @@ reply**, update `state.md`, append to `transcript.md`, then commit and push the 
 folder (`git add dnd-crunch/campaigns/<name>`). Also commit and push at the end of every
 session.
 
+## New game defaults
+
+When the human asks for a new game, start it with these defaults without asking. The
+human can change any of them, before or during play.
+
+- **Adventure:** a Realms v2 overworld campaign (`realms.md`), with a new world from
+  `realms.py new --seed N --campaign dnd-crunch/campaigns/<name> --level 3`. Roll the seed
+  with `roll.py 1d100`.
+- **Name:** the next free `realmsN` (`realms3` was the first game started this way).
+- **Morten:** a fresh pre-built Wizard 3 (Evoker) with 900 XP, his starting gear and
+  47 GP 7 SP 5 CP. Copy `templates/character-wizard3.md` as his sheet.
+- **Who plays Morten:** the GM.
+- **Style:** cheese everything. Scout, use rituals and Mage Hand, use oil, Sleep then
+  point-blank crits, hold chokepoints, retreat to reset, and leave the purse in the tower
+  before a risky fight.
+- **Table mode:** open.
+- **Campaign rules:** copy `templates/realms-rules.md` and fill in the name, seed and the
+  tower's hex. It holds the Delve, mission-fight, death, purse and downtime rules.
+- **Start:** Month 1 · Day 1 · 08:00, in the tower, rested.
+
 ## How to run a session
 
-1. Agree on the campaign name, starting level, who plays Morten, and adventure type with the human (a dungeon
-   crawl is the natural fit: rooms are discrete and mechanical).
-2. Build the wizard (or use the pre-built Morten) and write `character.md`.
-3. Write `gm-secrets.md` (a 5–10 room dungeon is a good one-session size, with encounters
-   budgeted for one character and at least one short-rest opportunity), then `state.md`.
-4. Open with the first reply in the format above, and play one reply per human action.
-5. If the session is resumed by a fresh GM, read `state.md`, `character.md`,
+1. For a new game, use the defaults above, or what the human asked for instead. A
+   hand-made dungeon crawl (rooms are discrete and mechanical) is the other option the
+   human may pick.
+2. Write `character.md`, `rules.md`, `state.md` and `transcript.md`. For a Realms game,
+   `realms.py new` writes `realms.json`, `world.md`, `map.json` and the floors in
+   `gm-secrets.md`. Build the map page and publish it (`ui/README.md`), and put its link in
+   `state.md`. For a hand-made dungeon, write `gm-secrets.md` yourself. A 5–10 room dungeon
+   is a good one-session size, with encounters budgeted for one character and at least one
+   short-rest opportunity.
+3. Open with the first reply: the world, Rumours, the Month 1 orders as **Morten (GM):**
+   lines, then the first scene in the format above. Play one reply per human action.
+4. If the session is resumed by a fresh GM, read `state.md`, `character.md`,
    `gm-secrets.md` and the end of `transcript.md`, then continue.
