@@ -16,5 +16,16 @@ Games so far: `godbound/` (Godbound).
 
 Rulebooks are large. Never read one whole; use the game's own index and `grep -n`.
 
+## Shared reference
+
+`reference/` holds sources that belong to no game. A game uses one only when its own
+`CLAUDE.md` says so, and can point at it there rather than copying it.
+
+- `reference/srd/` is the D&D SRD 5.2.1 (the 2024 rules) as markdown, one file per entry:
+  monsters, spells, magic items, equipment, the rules glossary and the GM's toolbox. Its
+  README says where things are and how to refresh it; find an entry by its file name
+  (`Monsters/Wolf.md`) and grep for the rest. `Monsters by CR.md` is the table for picking
+  a fight's monsters.
+
 This is a cloud session and the container is wiped when it ends, so commit and push work as
 you go.
