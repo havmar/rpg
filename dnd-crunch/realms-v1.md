@@ -1,4 +1,9 @@
-# Realms: the overworld
+# Realms v1: the overworld
+
+**Version 1, kept for the `realms` campaign**, which plays on it to its end. New campaigns use
+Realms v2 (`realms.md`, `tools/realms.py`). The engine is `tools/realms_v1.py`; its reports
+now show each leader as *label: verb* ("bad: takes land") and the month's orders as **The
+plan** before the log, but its rules and `realms.json` are unchanged.
 
 An overworld for D&D Crunch: a small hex map of six realms, played as monthly domain turns on
 top of the dungeon game. Same feel: minimal narration, open numbers, every roll in the log.
@@ -6,7 +11,7 @@ Morten is a wizard-lord in his tower. He can play the vigilante (rob the vicious
 their leaders, fund the rebels who will overthrow them) or simply conquer.
 
 A campaign with a `realms.json` is played by this file, which adds to `dnd-crunch/CLAUDE.md`.
-Where the two differ, this file wins. The script `dnd-crunch/tools/realms.py` runs the world:
+Where the two differ, this file wins. The script `dnd-crunch/tools/realms_v1.py` runs the world:
 it generates the map, rolls the domain turn and keeps `realms.json`. The numbers below are
 in one table (Constants) and in the script's constants block; keep the two the same.
 
@@ -339,7 +344,7 @@ Named officers who run the domain while Morten is in the field.
 
 ## 9. Running a month
 
-The script is `python3 dnd-crunch/tools/realms.py`; DIR is the campaign folder,
+The script is `python3 dnd-crunch/tools/realms_v1.py`; DIR is the campaign folder,
 `dnd-crunch/campaigns/<name>`.
 
 | Command | What it does |

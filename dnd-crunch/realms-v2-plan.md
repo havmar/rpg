@@ -1,9 +1,11 @@
 # Realms v2: factions with assets (a plan)
 
-**Status: plan, not implemented.** Version one lives in `realms.md` and `tools/realms.py`
-and is still what the `realms` campaign plays. This document is the design for the next
-version, agreed in discussion (Month 5 of the `realms` campaign) and written up for a
-separate implementation session. Nothing in it is in force until it's built.
+**Status: implemented 2026-10-24.** The rules are `realms.md` (v2) and the engine
+`tools/realms.py`; v1 moved to `realms-v1.md` and `tools/realms_v1.py`, where the `realms`
+campaign still plays. The new campaign is `campaigns/realms2` (seed 8). Where the build
+differs from this plan, `realms.md` wins; the main differences are listed in section 14,
+the sim numbers are in `realms.md` section 12, and section 11 below now says what was
+checked against the book. This document stays as the design record.
 
 ## 1. Why a second version
 
@@ -301,26 +303,54 @@ beside it.
 | Build is the only growth | Buy, Raise, Repair, Seize, Move |
 | Strike is abstract (+3 somewhere) | Strike damages a thing you can see; at the seat, the regime's HP |
 
-## 11. Constants (first guesses; "check" = verify against WWN before coding)
+## 11. Constants (checked 2026-10-24)
 
-| Constant | Value | Note |
+The book itself (WWN, SWN) couldn't be fetched from the session (its sites are outside the
+network allowlist). What was checked, against open-source implementations of the SWN
+Revised faction rules (the same engine) on GitHub:
+[thatguy14/faction_manager](https://github.com/thatguy14/faction_manager) (`faction.py`:
+the rating table and HP = 4 + the table's value per attribute),
+[orffen/swn](https://github.com/orffen/swn) (`faction.js`: the sample factions' HP 15, 29
+and 49 for ratings 4/3/1, 6/5/3 and 8/7/5, which the table reproduces; the asset names by
+attribute and rating), [David-Dodge/SWN-faction-turn-sim](https://github.com/David-Dodge/SWN-faction-turn-sim)
+(`CombatFunctions.php`: the tie) and
+[Zer0-Vector/swn-faction-tracker](https://github.com/Zer0-Vector/swn-faction-tracker)
+(`Assets.ts`: HP, cost, attack and counter of the rating-1 to 3 assets). WWN's own asset
+names are not verified.
+
+| Constant | Value | Check |
 |---|---|---|
 | 1 FacCred | 100 GP | ours |
-| Faction HP | 4 + bonus per attribute: rating 1→1, 2→2, 3→4, 4→6, 5→9, 6→12, 7→16, 8→20 | check |
-| Raise an attribute | the new rating's price: 2→200 GP, 3→400, 4→600, 5→900, 6→1,200, 7→1,600, 8→2,000 | check (the book uses one progression for both; ours × 100) |
-| Attack roll | d10 + attribute vs d10 + attribute; tie: both take damage | check the tie |
+| Faction HP | 4 + 1, 2, 4, 6, 9, 12, 16, 20 for ratings 1–8 | **verified** (faction_manager, orffen/swn) |
+| Raise an attribute | the new rating's value × 100 GP | the progression **verified** (faction_manager's one table serves HP and XP); paying it in GP instead of XP is ours |
+| Attack roll | d10 + attribute vs d10 + attribute; **tie: both take damage** | **verified** (SWN-faction-turn-sim) |
+| Actions | one a turn | from memory (as the book); the Attack action lets every asset in one hex attack once, from memory of the book |
+| Asset limit | assets of a type up to the attribute; each over costs upkeep | from memory (SWN: 1 FacCred each; ours 100 GP) |
+| Income | hex level × 10 GP + asset income | ours (v1), not the book's attribute-based income, which was not checked |
+| Goals | XP, spent on attributes at the table's costs | the book's shape (XP), our amounts (2 for a hex, 1 for the rest) |
+| Base of Influence | damage to it also hits faction HP | from memory; ours: the seat, and every Force asset at the seat |
 | Asset tiers | 1 / 2 / 3 = Low / Moderate / High encounter for Morten's level | ours |
 | Strike damage | 2d6 to the asset, or to HP at an unguarded seat | ours |
 | Rob | tier × 100 GP, × 2 at a Treasury | ours |
 | Contact DC | 10 + ruler's Cunning (−4 under a Tyrant) | ours |
 | Hostility | 3 months; 6 for a Strike on the seat | ours |
 | Repair | asset: ¼ cost; faction: 1d6 HP for 100 GP | ours |
-| Completed goal | +1 to the attribute it used | ours (the book awards XP) |
-| Hex income | level × 10 GP | v1 |
+| Hex income | level × 10 GP; nothing while another faction's Force asset stands in it | v1; occupation ours |
 | River / claim / Walls | +1 / +1 / +1 | v1 + Walls |
-| Starting attributes | S ÷ 10 each, min 1; treasury S × 10; one asset per type | v1 shape |
+| Hex lost / seat lost | 1d4 / 1d6 HP | ours |
+| Starting attributes | S ÷ 10 each, min 1; treasury S × 10; 2 Force + 1 Cunning + 1 Wealth asset | v1 shape; the second Force asset ours |
 | Tower start | F1 C1 W1, HP 7, 100 GP | ours |
 | Disorder after a fall with no dissident | 1 month, no action | ours |
+
+Asset stats checked against the SWN rating-1 to 3 entries (FacCreds × 100 GP): Thugs =
+Security Personnel (2, HP 3, F v F 1d3+1, counter 1d4); Militia = Militia Unit (4, HP 4, F v
+F 1d6, counter 1d4+1); Informers (2, HP 3); Smugglers (2, HP 4, C v W 1d4); Saboteurs (5,
+HP 6, C v C 2d4); Assassins = Cyberninjas (6, HP 4, C v C 2d6); Farms = Harvesters (2, HP
+4, counter 1d4); Caravans after Franchise (2, HP 3, W v W 1d4, counter 1d4−1); Mine after
+Postech Industry (8, HP 4, counter 1d4). Seditionists are the book's rating-4 asset (12,
+HP 8) refitted as the coup asset (600 GP, HP 6, Cunning 2) so the tower can reach it.
+Beast pack, Knights, Warband, Mercenaries, Treasury, Toll road follow the book's entries
+named in `realms.py` (`book`) from memory; Walls and Court mage are ours.
 
 ## 12. Build steps
 
@@ -351,3 +381,27 @@ beside it.
   slower but visible a month ahead. Fine?
 - **Morten on the battlefield** (Fireball on a Warband) stays "left for later" unless you
   want it in the first build.
+
+## 14. What the build decided (2026-10-24)
+
+The open questions, decided by the main session with the human's leave:
+- **Rivals** only through Contact → Seditionists → regime change; no standing rival line.
+- **Scale:** asset fights by tier only; the hex level scales wandering monsters and floors.
+- **The court** is gone; an asset may carry a named leader (the Seditionists' dissident).
+- **Seizing** is the book's way: stand unopposed, resolve at clean-up.
+- **Morten on the battlefield** is left for later.
+
+Differences from sections 3–8 found in the sim (24 months × 10 seeds; numbers in
+`realms.md` section 12):
+- Asset list refitted toward the book (section 11); about six per type.
+- The seat: damage to *any* Force asset at a seat also hits HP (the book's Base of
+  Influence), not only the last guard; a hex seized costs 1d4 HP, a seat 1d6.
+- An occupied hex (another faction's Force asset in it) pays no income.
+- A regime at 0 HP takes no action before it falls (no Repair out of it).
+- Realms start with two Force assets and a goal; goals give XP, not a free point.
+- The AI: recover, defend, punish, spend when rich (1,200 GP), goal, grow; a faction rests
+  3 months from one it just beat; a Slaver takes from the tower when it is the weakest
+  neighbour (so a passive tower is raided about twice a year).
+- Visibility: another faction's Cunning assets are hidden from the tower unless Informers,
+  Morten or an attack reveal them, and the realms see the tower's the same way.
+- The report and `map.json` follow section 9 and the map page's contract.

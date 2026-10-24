@@ -36,7 +36,7 @@
 
 - Tower F0 · 103 GP · hexes B4 C5 · wars: none · court: Doran (Humans), Hruma (Orcs), pool 2
 - Month 6 orders: not declared yet
-- Full state: `world.md` (open) and `realms.json` (the script's)
+- Full state: `world.md` (open) and `realms.json` (the script's: Realms v1, `tools/realms_v1.py`)
 
 ## Known dungeon
 

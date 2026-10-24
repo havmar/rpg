@@ -1,6 +1,6 @@
 # World · Month 6
 
-Seed 101. Rendered by `realms.py` from `realms.json` after every turn; don't edit by hand.
+Seed 101. Rendered by `realms_v1.py` from `realms.json` after every turn; don't edit by hand.
 
 ## Hexes
 

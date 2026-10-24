@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
-"""Realms: the overworld engine for D&D Crunch (rules: dnd-crunch/realms.md).
+"""Realms v1: the overworld engine for D&D Crunch (rules: dnd-crunch/realms-v1.md).
+
+Kept for the `realms` campaign, which plays on v1. New campaigns use realms.py (v2).
 
 A 4×5 hex map of six realms, played as monthly domain turns. The campaign's realms.json is
 the state and this script owns it; world.md is rendered from it after every change.
 
 Usage:
-  python3 dnd-crunch/tools/realms.py new --seed 7 --campaign DIR [--force]
-  python3 dnd-crunch/tools/realms.py show --campaign DIR [--at C3]
-  python3 dnd-crunch/tools/realms.py encounter --campaign DIR --hex C3 [--seed N]
-  python3 dnd-crunch/tools/realms.py turn --campaign DIR [--at HEX] [--strike Orcs:ruler]
+  python3 dnd-crunch/tools/realms_v1.py new --seed 7 --campaign DIR [--force]
+  python3 dnd-crunch/tools/realms_v1.py show --campaign DIR [--at C3]
+  python3 dnd-crunch/tools/realms_v1.py encounter --campaign DIR --hex C3 [--seed N]
+  python3 dnd-crunch/tools/realms_v1.py turn --campaign DIR [--at HEX] [--strike Orcs:ruler]
       [--rob HEX [--keep-loot]] [--deposit GP] [--withdraw GP] [--fund Orcs:mirror=200]
       [--recruit Elves] [--action conquer:C3|build] [--court conquer=1,defend=1,coup:Orcs=2]
       [--dry-run]
-  python3 dnd-crunch/tools/realms.py sim --seed 7 --months 24 [--quiet]
+  python3 dnd-crunch/tools/realms_v1.py sim --seed 7 --months 24 [--quiet]
 """
 import argparse
 import json
@@ -25,7 +27,7 @@ sys.dont_write_bytecode = True  # no __pycache__ noise in the repo
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from gen_dungeon import encounter, floor, floor_md, load_monsters  # noqa: E402
 
-# ---- Constants (realms.md section 10). Change both together. ----
+# ---- Constants (realms-v1.md section 10). Change both together. ----
 COLS, ROWS = "ABCD", 5
 N_REALMS, REALM_SIZE, N_VICIOUS = 6, 3, 4
 N_RIVERS, RIVER_LEN, N_LAKES = 2, (3, 6), 2
@@ -90,6 +92,17 @@ RUMOUR = {  # the tag in plain words
     "Neutral": "keeps to the realm's own land and builds",
     "Altruistic": "would break vicious neighbours",
 }
+
+
+SHOWN = {  # the tag as the human reads it: label: verb (display only; realms.json keeps the tag)
+    "Greedy": "bad: takes land", "Rapacious": "bad: robs its neighbours",
+    "Brutal": "bad: takes people for soldiers", "Cruel": "bad: squeezes its own people",
+    "Neutral": "good: keeps the peace", "Altruistic": "good: fights tyrants",
+}
+
+
+def lv(tag):
+    return SHOWN[tag]
 
 
 class Bad(Exception):
@@ -358,8 +371,8 @@ def realm_line(st, name):
     R = st["realms"][name]
     r, m = R["ruler"], R["mirror"]
     war = " · at war with the tower" if R["war"] else ""
-    return (f"{name} · {r['leader']} ({r['tag']}) F{r['force']} C{r['cunning']} {r['gp']:,} GP"
-            f" · {' '.join(hexes_of(st, name))} · mirror {m['leader']} ({m['tag']})"
+    return (f"{name} · {r['leader']} ({lv(r['tag'])}) F{r['force']} C{r['cunning']} {r['gp']:,} GP"
+            f" · {' '.join(hexes_of(st, name))} · mirror {m['leader']} ({lv(m['tag'])})"
             f" C{m['cunning']} {m['gp']:,} GP{war}")
 
 
@@ -385,8 +398,8 @@ def rumours(st, at):
         ev = "; ".join(R["events"]) or "quiet"
         threat = m["cunning"] + (CRUEL_COUP if r["tag"] == "Cruel" else 0)
         mood = "plots a coup" if threat >= r["cunning"] else "gathers support"
-        out.append(f"Rumour ({name}): {r['title']} {r['leader']} ({r['tag']}) {RUMOUR[r['tag']]}."
-                   f" Last month: {ev}. Rival {m['title']} {m['leader']} ({m['tag']}) {mood},"
+        out.append(f"Rumour ({name}): {r['title']} {r['leader']} ({lv(r['tag'])}) {RUMOUR[r['tag']]}."
+                   f" Last month: {ev}. Rival {m['title']} {m['leader']} ({lv(m['tag'])}) {mood},"
                    f" Cunning {m['cunning']} vs {r['cunning']}.")
     return out
 
@@ -421,7 +434,7 @@ def world_md(st):
         for e in r["edges"]:
             river_of[e] = i
     out = [f"# World · Month {st['month']}", "",
-           f"Seed {st['seed']}. Rendered by `realms.py` from `realms.json` after every turn;"
+           f"Seed {st['seed']}. Rendered by `realms_v1.py` from `realms.json` after every turn;"
            " don't edit by hand.", "", "## Hexes", ""]
     for h in HEXES:
         x = st["hexes"][h]
@@ -445,9 +458,9 @@ def world_md(st):
     for n, R in sorted(st["realms"].items()):
         r, m = R["ruler"], R["mirror"]
         out += ["", f"### {n}", "",
-                f"- **Ruler:** {r['title']} {r['leader']} · {r['tag']} · Force {r['force']}"
+                f"- **Ruler:** {r['title']} {r['leader']} · {lv(r['tag'])} · Force {r['force']}"
                 f" · Cunning {r['cunning']} · {r['gp']:,} GP",
-                f"- **Mirror:** {m['title']} {m['leader']} · {m['tag']} · Cunning {m['cunning']}"
+                f"- **Mirror:** {m['title']} {m['leader']} · {lv(m['tag'])} · Cunning {m['cunning']}"
                 f" · {m['gp']:,} GP",
                 f"- **Hexes:** {' '.join(hexes_of(st, n))} · levels {realm_s(st, n)}",
                 f"- **At war with the tower:** {'yes' if R['war'] else 'no'}"]
@@ -516,7 +529,7 @@ class Turn:
 
     def head(self, name):
         r = self.ruler(name)
-        return f"{name} ({r['leader']}, {r['tag']})"
+        return f"{name} ({r['leader']}, {lv(r['tag'])})"
 
     def event(self, side, text):
         if side == "tower":
@@ -672,7 +685,7 @@ class Turn:
                 raise Bad(f"{h} is the tower's; no ruler to rob")
             r = self.ruler(name)
             if r["tag"] not in VICIOUS:
-                raise Bad(f"Rob only a vicious ruler: {name} ruler {r['leader']} is {r['tag']}")
+                raise Bad(f"Rob only a vicious ruler: {name} ruler {r['leader']} is {lv(r['tag'])}")
             T["morten"] = h
             amt = min(st["hexes"][h]["level"] * ROB, r["gp"])
             r["gp"] -= amt
@@ -776,7 +789,7 @@ class Turn:
             seen.add(name)
             if name not in allies(self.st):
                 R = self.st["realms"][name]
-                why = "at war with the tower" if R["war"] else f"ruler is {R['ruler']['tag']}"
+                why = "at war with the tower" if R["war"] else f"ruler is {lv(R['ruler']['tag'])}"
                 raise Bad(f"recruit only from allies: {name} is not one ({why})")
             cost = RECRUIT * (len(T["officers"]) + 1)
             if cost > T["gp"]:
@@ -926,7 +939,7 @@ class Turn:
     def mirror_acts(self, name):
         R = self.st["realms"][name]
         r, m = R["ruler"], R["mirror"]
-        head = f"{name} mirror ({m['leader']}, {m['tag']})"
+        head = f"{name} mirror ({m['leader']}, {lv(m['tag'])})"
         bon = []
         if r["tag"] == "Cruel":
             bon.append((CRUEL_COUP, "Cruel"))
@@ -952,7 +965,7 @@ class Turn:
             old = {"leader": r["leader"], "title": r["title"], "tag": r["tag"],
                    "cunning": r["cunning"] // COUP_DEMOTE, "gp": 0}
             purse = f", purse {m['gp']:,} GP into the treasury" if m["gp"] else ""
-            line += (f" {m['leader']} ({m['tag']}) rules {name}{purse}."
+            line += (f" {m['leader']} ({lv(m['tag'])}) rules {name}{purse}."
                      f" {r['leader']} becomes the rival, C{r['cunning']} → {old['cunning']}.")
             if R["war"]:
                 R["war"] = False
@@ -999,9 +1012,12 @@ class Turn:
         self.cleanup()
         return month
 
-    def reply(self, month):
+    def reply(self, month, o=None):
         st, T = self.st, self.st["tower"]
-        out = [f"**Month {month} · Domain turn**", "", "**Income**"]
+        out = [f"**Month {month} · Domain turn**", ""]
+        if o is not None:
+            out += ["**The plan**"] + [f"- {x}" for x in plan_lines(o)] + [""]
+        out += ["**Income**"]
         out += [f"- {x}" for x in self.income]
         out += ["", "**Log**"] + [f"- {x}" for x in self.log or ["Nothing happens."]]
         out += ["", "**Realms**"] + [f"- {realm_line(st, n)}" for n in sorted(st["realms"])]
@@ -1011,6 +1027,28 @@ class Turn:
         out += ["", f"**Tower:** {tower_line(st)}", "", f"**Court:** {court_line(st)}", ""]
         out += ["**Next month**"] + [f"- {x}" for x in next_month(st)]
         return "\n".join(out) + "\n"
+
+
+def plan_lines(o):
+    """The month's orders in words, before the log (display only)."""
+    out = []
+    if o.strike:
+        out.append(f"Morten: Strike {o.strike.replace(':', ' ')} (+{STRIKE} against them this month).")
+    if o.rob:
+        out.append(f"Morten: Rob in {o.rob.upper()}" + (" (he keeps the gold)." if o.keep_loot else "."))
+    if o.deposit:
+        out.append(f"Morten: deposit {o.deposit:,} GP.")
+    if o.withdraw:
+        out.append(f"Morten: withdraw {o.withdraw:,} GP.")
+    for spec in o.fund:
+        out.append(f"Tower: Fund {spec.replace(':', ' ').replace('=', ' ')} GP.")
+    for r in o.recruit:
+        out.append(f"Tower: Recruit from the {r}.")
+    if o.action:
+        out.append(f"Tower: {o.action.replace(':', ' ')}.")
+    if o.court:
+        out.append(f"Court points: {o.court}.")
+    return out or ["No mission, no orders."]
 
 
 def next_month(st):
@@ -1106,7 +1144,7 @@ def cmd_turn(a):
     st = load(a.campaign)
     t = Turn(st)
     month = t.run(a)
-    print(t.reply(month), end="")
+    print(t.reply(month, a), end="")
     if a.dry_run:
         print("\n(dry run: nothing saved)")
     else:
@@ -1115,7 +1153,7 @@ def cmd_turn(a):
 
 def cmd_sim(a):
     st = generate(a.seed)
-    who = lambda r: f"{r['leader']} ({r['tag']})"
+    who = lambda r: f"{r['leader']} ({lv(r['tag'])})"
     start = {n: who(st["realms"][n]["ruler"]) for n in st["realms"]}
     names = sorted(st["realms"])
     coups = {n: [] for n in names}
