@@ -1,6 +1,6 @@
 # Morten — Wizard 3 (Evoker)
 
-Human (Medium), male (he/him). Background: Sage. XP 900 (level 4 at 2,700).
+Human (Medium), male (he/him). Background: Sage. XP 975 (level 4 at 2,700).
 
 ## Core
 
@@ -106,7 +106,9 @@ no casting check: Detect Magic, Find Familiar.
 | Bedroll | 3.2 | |
 | Caltrops (bag) | 0.9 | cover a 1.5 m square |
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
-| Potion of Healing | 0.2 | 2d4+2 HP; drinking is a Bonus action (common magic item, level 3 start) |
+| Acid (vial) | 0.5 | Attack action: target within 6 m, DEX save DC 12 or 2d6 acid |
 
-**Coins:** 47 GP, 7 SP, 5 CP. (55 GP start: Wizard pack A + Sage option B; spent 7 GP 2 SP
+**Coins:** 12 GP, 7 SP, 5 CP (Day 1: spent 10 GP on incense, 25 GP on acid; potion drunk).
+
+Starting coins were 47 GP, 7 SP, 5 CP. (55 GP start: Wizard pack A + Sage option B; spent 7 GP 2 SP
 5 CP on rations, waterskin, rope, bedroll, caltrops, crowbar, torches.)

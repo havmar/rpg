@@ -202,6 +202,13 @@ since the human asked for it; note the mode in `state.md`):
   "play until the fight ends"): send the player the latest GM reply, get Morten's turn,
   resolve it, and show the human Morten's declared turn as **Morten (AI):** followed by the
   GM reply that resolves it. Monster turns between Morten's turns are part of that reply.
+- **Fast fights.** When the human asks for a whole encounter to be played out, the GM may
+  hand it to one fast agent (`model: "haiku"`) that plays both Morten and the monsters.
+  Give it only the fight: grid and positions, Morten's HP, spells, gear and standing orders,
+  the house rules, the monsters' stats and tactics, and the end conditions. It never opens
+  `gm-secrets.md` and doesn't touch files. Running away doesn't end a fight: monsters
+  that can chase him do. The GM checks its log against the rules before accepting it, then
+  does all the bookkeeping.
 - **The human can step in at any time**: whatever they say Morten does, he does. Relay their
   words to the player as `[HUMAN] <exact words>` so it stays in sync. "Take over" or "I'll play"
   switches to human mode, where the human declares Morten's turns directly.

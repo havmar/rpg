@@ -69,3 +69,40 @@ OPTIONS
 - Rat C: HP 7/7 · D6
 
 **Morten's turn:** move 6 sq · action · bonus action · reaction ✗
+
+---
+
+**Human:** right, please have the encounter played out. a fast haiku agent maybe? does it need history for this or just the current fight?
+
+**GM (fight played out by a fast agent, checked by the GM):**
+
+**Round 1 (Morten)**
+- Thunderwave, cast DC 11 → d20 4 +5 = 9, FIZZLE. Thunderwave lost until Long Rest.
+
+**Round 2**
+- Rat A: D4 → C7. Bite (Advantage) → d20 1/10, keeps 10, +5 = 15 vs AC 15, HIT.
+- Shield (reaction), cast DC 11 → d20 20 +5 = 25, NAT 20: +10 AC instead of +5. AC 25. Rat A's bite misses.
+- Rat B: bite (Advantage) → d20 17/16, keeps 17, +5 = 22 vs AC 25, MISS.
+- Rat C: bite (Advantage) → d20 1/12, keeps 12, +5 = 17 vs AC 25, MISS.
+- Morten: Magic Missile, cast DC 11 → d20 7 +5 = 12, CAST. 3 darts at Rat C: 5 + 4 + 5 = 14 force. Rat C dead.
+
+**Round 3**
+- Rat A: bite (Advantage) → d20 6/20, keeps 20, NAT 20, CRIT → 2d4+3: 1+2+3 = 6. Morten 20 → 14.
+- Rat B: bite (Advantage) → d20 19/6, keeps 19, +5 = 24 vs AC 15, HIT → 1d4+3: 3+3 = 6. Morten 14 → 8.
+- Morten: Disengage, retreats up the stair, D7 → D11 (camp).
+
+**Round 4** (the rats chase him)
+- Rat A: C7 → C10. Bite → d20 3 +5 = 8 vs AC 15, MISS.
+- Rat B: C6 → D10. Bite (Advantage) → d20 16/1, keeps 16, +5 = 21 vs AC 15, HIT → 1d4+3: 2+3 = 5. Morten 8 → 3.
+- Morten: Potion of Healing (bonus action) → 2d4+2: 3+2+2 = 7. Morten 3 → 10.
+- Morten: Magic Missile, cast DC 11 → d20 18 +5 = 23, CAST. 3 darts at Rat A: 2 + 4 + 5 = 11 force. Rat A dead.
+- Rat B, the last one standing, flees down the stair and north through the gatehouse arch.
+
+**Result:** 2 rats dead, 1 fled. XP +75 (900 → 975).
+
+**State**
+- Morten: HP 10/20 · AC 15 · Lost: Thunderwave · Hit Dice 3/3 · Arcane Recovery ✓ · Heroic Inspiration ✗
+- Used up: Potion of Healing, owl familiar. Left: Acid ×1, 2 daggers, caltrops, 10 oil, lamp lit.
+- Coins 12 GP 7 SP 5 CP · Day 1, 09:21 · at the top of the stair, in camp.
+
+**Morten's turn (exploration):** Short Rest in camp (1 h, no wandering check here) · go back down · shop.

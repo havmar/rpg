@@ -231,7 +231,7 @@ Update as rooms are entered, cleared or reset. After a death, note what moved.
 
 | Room | Status |
 |---|---|
-| R1 | entered Day 1 09:20; combat with 3 rats in progress |
+| R1 | Day 1 09:20: 2 rats killed (one in camp, one on the stair). Rat 3 (7/7) fled north through the arch: it knows the dart plate and doesn't trigger it, now lurks in R4 and joins the next fight there or in R3. Corpse and its loot still untouched. |
 | R2 | unexplored |
 | R3 | unexplored |
 | R4 | unexplored |
