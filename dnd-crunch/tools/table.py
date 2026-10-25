@@ -455,7 +455,10 @@ def read_page(raw):
 
 
 class Camp:
-    def __init__(self, d, need_page=True):
+    """A campaign's record. undo=True (the verbs that print a batch) snapshots the record
+    first when no batch is pending, for `sent --drop`."""
+
+    def __init__(self, d, need_page=True, undo=False):
         self.d = Path(d).resolve()
         if not self.d.is_dir():
             raise Bad(f"no campaign folder {d}")
