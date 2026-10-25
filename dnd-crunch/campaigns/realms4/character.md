@@ -2,7 +2,7 @@
 
 <!-- Rendered by tools/table.py from morten.json; edit with `table.py morten`. -->
 
-Human (Medium), male (he/him). Background: Sage. XP 1,000 (level 4 at 2,700). Deaths: 0.
+Human (Medium), male (he/him). Background: Sage. XP 1,050 (level 4 at 2,700). Deaths: 0.
 
 ## Core
 
@@ -12,11 +12,11 @@ Human (Medium), male (he/him). Background: Sage. XP 1,000 (level 4 at 2,700). De
 
 Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +1 CON).
 
-- **HP** 12/20 · **Hit Dice** 3/3 d6
+- **HP** 20/20 · **Hit Dice** 1/3 d6
 - **AC** 12 unarmoured · **15 with Mage Armor** (on)
 - **Speed** 6 sq (9 m) · **Initiative** +4
 - **Proficiency bonus** +2 · **Passive Perception** 13
-- **Carrying capacity** 54 kg (carrying ≈ 31.6 kg)
+- **Carrying capacity** 54 kg (carrying ≈ 31.2 kg)
 
 **Saving throws:** STR −1 · DEX +2 · CON +2 · **INT +5** · **WIS +3** · CHA +0
 
@@ -98,7 +98,7 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 | Lamp | 1 | 0.5 | 4.5 m bright + 9 m dim; 6 h per oil flask |
 | Oil flask | 9 | 0.5 | fuel, or thrown / poured for fire |
 | Tinderbox | 1 | 0.5 | light a torch or lamp: Bonus action |
-| Torch | 7 | 0.45 | 1 h, 6 m bright + 6 m dim |
+| Torch | 6 | 0.45 | 1 h, 6 m bright + 6 m dim |
 | Rations | 4 | 0.9 | 1 per day |
 | Waterskin (full) | 1 | 2.3 |  |
 | Rope, 15 m | 1 | 2.3 |  |

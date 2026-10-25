@@ -6,9 +6,9 @@
  "sex": "male",
  "pronouns": "he/him",
  "background": "Sage",
- "hp": 12,
+ "hp": 20,
  "maxHp": 20,
- "hitDice": "3/3 d6",
+ "hitDice": "1/3 d6",
  "ac": 12,
  "acArmor": 15,
  "armorOn": true,
@@ -482,7 +482,7 @@
   },
   {
    "name": "Torch",
-   "count": 7,
+   "count": 6,
    "kg": 0.45,
    "note": "1 h, 6 m bright + 6 m dim"
   },
@@ -530,7 +530,7 @@
   }
  ],
  "load": {
-  "kg": 31.6,
+  "kg": 31.2,
   "max": 54
  },
  "coins": {
@@ -538,7 +538,7 @@
   "purse": "60 GP 2 SP 5 CP"
  },
  "coinsNote": "Starting gold: 47 GP 7 SP 5 CP. The tower's treasury (100 GP) is separate.",
- "xp": 1000,
+ "xp": 1050,
  "nextXp": 2700,
  "level": 3,
  "deaths": 0,

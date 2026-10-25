@@ -1,0 +1,330 @@
+{
+ "v": 1,
+ "seq": 15,
+ "kind": "fight",
+ "month": 1,
+ "day": 1,
+ "clock": "10:20",
+ "hex": "A3",
+ "where": "Floor 1 · room 1.3",
+ "title": "Room 1.3 · Draft Horse (CR 1/4) · Low, 50 XP · bypassed asleep",
+ "headline": "Three Sleeps and a natural 20 put the horse down without a scratch on either of them.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "The plan",
+   "text": "a draft horse kicks hard (+6, 1d4+4) and has 15 HP, but it's a spooked animal, not a guard. Asleep, it can be walked past, and a bypassed monster still gives its XP."
+  },
+  {
+   "label": "The dice",
+   "text": "it shook off the first Sleep on its second save and the second outright. When it charged, the rubble held it 3 sq short. The third Sleep came up a natural 20, so he doubled its duration to 2 minutes, and the horse failed both saves."
+  },
+  {
+   "label": "Result",
+   "text": "20/20 HP, nothing lost. XP 1,000 → 1,050. No coins: there was no time to search the room before the horse woke, and a sleeping horse drops nothing."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Room 1.3, 15×15 m (A–J × 1–10), rubble across rows 4–6 (difficult terrain, half cover). Morten at E10 in the S door; the Draft Horse at E2, 8 sq (12 m), by the N exit.",
+   "who": "gm",
+   "kind": "note",
+   "round": 2,
+   "dice": []
+  },
+  {
+   "text": "Initiative: Horse 16, Morten 9. R1 the Horse stamps and snorts but stays put.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      5
+     ],
+     "kept": [
+      5
+     ],
+     "mod": 4,
+     "total": 9,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20",
+     "faces": [
+      16
+     ],
+     "kept": [
+      16
+     ],
+     "mod": 0,
+     "total": 16,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R1 Sleep on the Horse: 13 vs DC 11, cast.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 5,
+     "total": 13,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "WIS save vs DC 13: 4, fail. Incapacitated.",
+   "who": "foe",
+   "kind": "save",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20",
+     "faces": [
+      4
+     ],
+     "kept": [
+      4
+     ],
+     "mod": 0,
+     "total": 4,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R2 Second save at the end of its turn: 16, success. Sleep ends on it.",
+   "who": "foe",
+   "kind": "save",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20",
+     "faces": [
+      16
+     ],
+     "kept": [
+      16
+     ],
+     "mod": 0,
+     "total": 16,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R2 Sleep again: 20 vs DC 11, cast.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "WIS save: 19, success. No effect.",
+   "who": "foe",
+   "kind": "save",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20",
+     "faces": [
+      19
+     ],
+     "kept": [
+      19
+     ],
+     "mod": 0,
+     "total": 19,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R3 The Horse charges: the rubble rows cost it double, so its 8 sq end at E7, 3 sq from him.",
+   "who": "foe",
+   "kind": "move",
+   "round": 4,
+   "dice": []
+  },
+  {
+   "text": "R3 Sleep a third time: natural 20, cast. He doubles the duration: 2 minutes.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      20
+     ],
+     "kept": [
+      20
+     ],
+     "mod": 5,
+     "total": 25,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": 20
+    }
+   ]
+  },
+  {
+   "text": "WIS save vs DC 13: 12, fail. Incapacitated.",
+   "who": "foe",
+   "kind": "save",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20",
+     "faces": [
+      12
+     ],
+     "kept": [
+      12
+     ],
+     "mod": 0,
+     "total": 12,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R4 Second save at the end of its turn: 7, fail. Unconscious for the duration.",
+   "who": "foe",
+   "kind": "save",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20",
+     "faces": [
+      7
+     ],
+     "kept": [
+      7
+     ],
+     "mod": 0,
+     "total": 7,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R4–R5 He picks his way round it through the rubble (12 sq of movement) and out the N exit at E1. Bypassed.",
+   "who": "morten",
+   "kind": "move",
+   "round": 4,
+   "dice": []
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1050,
+  "coins": "10 GP",
+  "lost": [
+   "Magic Missile"
+  ]
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Draft Horse",
+    "cr": "1/4",
+    "ac": 10,
+    "hp": 15,
+    "maxHp": 15,
+    "speed": "8 sq (12 m)",
+    "attacks": [
+     "Hooves +6, 1d4+4 bludgeoning"
+    ],
+    "notes": "a Large beast, spooked; WIS +0",
+    "count": 1
+   }
+  ],
+  "difficulty": "Low",
+  "budget": 50,
+  "xp": 50,
+  "initiative": [
+   "Horse 16",
+   "Morten 9"
+  ],
+  "rounds": 4,
+  "outcome": "bypassed",
+  "verdict": "the gentle way through",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     20,
+     20,
+     20
+    ]
+   },
+   {
+    "name": "Draft Horse",
+    "max": 15,
+    "hp": [
+     15,
+     15,
+     15,
+     15,
+     15
+    ]
+   }
+  ],
+  "loot": "none",
+  "lost": [],
+  "potion": false,
+  "xpBefore": 1000,
+  "xpAfter": 1050
+ },
+ "domain": null,
+ "words": []
+}

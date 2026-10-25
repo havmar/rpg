@@ -131,3 +131,57 @@ Floor 1 is the safe start: it's under the home hex, so no travel and no wanderin
 *After: 12/20 HP · XP 1,000 · 10 GP · lost: Magic Missile*
 
 ---
+
+## Short Rest in room 1.2
+
+*s0012 · rest · Month 1 · Day 1 · 10:00 · A3 · Floor 1 · room 1.2*
+
+**An hour in room 1.2 with his back to the archway: two Hit Dice bring him back to 20/20 HP.**
+
+- **Hit Dice:** 1d6+2 twice, 4 and 7 HP: 12 → 20/20 HP (the second die capped). One Hit Die left.
+- **Arcane Recovery:** kept. Only Magic Missile is lost; he saves the recovery for something bigger deeper in.
+- **Light:** the thrown torch burned out at 09:50; the lamp's flask runs to 14:10. Six torches left.
+- **Floors have no wanderers,** so the hour passes quietly.
+
+**Trace**
+
+- GM: Dice rolled for this section. (d6 2 +2 = 4; d6 5 +2 = 7)
+
+*After: 20/20 HP · XP 1,000 · 10 GP · lost: Magic Missile*
+
+---
+
+## Room 1.3 · Draft Horse (CR 1/4) · Low, 50 XP · bypassed asleep
+
+*s0015 · fight · Month 1 · Day 1 · 10:20 · A3 · Floor 1 · room 1.3*
+
+**Three Sleeps and a natural 20 put the horse down without a scratch on either of them.**
+
+- **The plan:** a draft horse kicks hard (+6, 1d4+4) and has 15 HP, but it's a spooked animal, not a guard. Asleep, it can be walked past, and a bypassed monster still gives its XP.
+- **The dice:** it shook off the first Sleep on its second save and the second outright. When it charged, the rubble held it 3 sq short. The third Sleep came up a natural 20, so he doubled its duration to 2 minutes, and the horse failed both saves.
+- **Result:** 20/20 HP, nothing lost. XP 1,000 → 1,050. No coins: there was no time to search the room before the horse woke, and a sleeping horse drops nothing.
+
+**Fight:** 1× Draft Horse (CR 1/4, AC 10, 15 HP) · Low, 50 XP · bypassed (the gentle way through)
+**Result:** XP 1,000 → 1,050 · none
+
+- HP track, Morten: 20 → 20 → 20 → 20 → 20 (of 20 HP)
+- HP track, Draft Horse: 15 → 15 → 15 → 15 → 15 (of 15 HP)
+
+**Trace**
+
+- R2 · GM: Room 1.3, 15×15 m (A–J × 1–10), rubble across rows 4–6 (difficult terrain, half cover). Morten at E10 in the S door; the Draft Horse at E2, 8 sq (12 m), by the N exit.
+- R2 · GM: Initiative: Horse 16, Morten 9. R1 the Horse stamps and snorts but stays put. (d20 5 +4 = 9; d20 16)
+- R2 · Morten: R1 Sleep on the Horse: 13 vs DC 11, cast. (d20 8 +5 = 13 vs DC 11, CAST)
+- R2 · Foe: WIS save vs DC 13: 4, fail. Incapacitated. (d20 4 vs DC 13, FAIL)
+- R2 · Foe: R2 Second save at the end of its turn: 16, success. Sleep ends on it. (d20 16 vs DC 13, SAVE)
+- R2 · Morten: R2 Sleep again: 20 vs DC 11, cast. (d20 15 +5 = 20 vs DC 11, CAST)
+- R2 · Foe: WIS save: 19, success. No effect. (d20 19 vs DC 13, SAVE)
+- R4 · Foe: R3 The Horse charges: the rubble rows cost it double, so its 8 sq end at E7, 3 sq from him.
+- R4 · Morten: R3 Sleep a third time: natural 20, cast. He doubles the duration: 2 minutes. (d20 20 +5 = 25 vs DC 11, NAT 20, CAST)
+- R4 · Foe: WIS save vs DC 13: 12, fail. Incapacitated. (d20 12 vs DC 13, FAIL)
+- R4 · Foe: R4 Second save at the end of its turn: 7, fail. Unconscious for the duration. (d20 7 vs DC 13, FAIL)
+- R4 · Morten: R4–R5 He picks his way round it through the rubble (12 sq of movement) and out the N exit at E1. Bypassed.
+
+*After: 20/20 HP · XP 1,050 · 10 GP · lost: Magic Missile*
+
+---

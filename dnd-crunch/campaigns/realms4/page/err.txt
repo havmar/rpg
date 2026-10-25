@@ -1,2 +1,2 @@
-section s0011 (fight): Room 1.2 · Goblin Warrior (CR 1/4) · Moderate, 50 XP · bypassed: it fled on 1 HP
+section s0015 (fight): Room 1.3 · Draft Horse (CR 1/4) · Low, 50 XP · bypassed asleep
 send with ArtifactData batch (url: https://claude.ai/artifact/PAJNBNkpHwFm8D6Jfv27EA), then `table.py sent dnd-crunch/campaigns/realms4`: batch.json

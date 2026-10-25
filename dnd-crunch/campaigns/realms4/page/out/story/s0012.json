@@ -1,0 +1,81 @@
+{
+ "v": 1,
+ "seq": 12,
+ "kind": "rest",
+ "month": 1,
+ "day": 1,
+ "clock": "10:00",
+ "hex": "A3",
+ "where": "Floor 1 · room 1.2",
+ "title": "Short Rest in room 1.2",
+ "headline": "An hour in room 1.2 with his back to the archway: two Hit Dice bring him back to 20/20 HP.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Hit Dice",
+   "text": "1d6+2 twice, 4 and 7 HP: 12 → 20/20 HP (the second die capped). One Hit Die left."
+  },
+  {
+   "label": "Arcane Recovery",
+   "text": "kept. Only Magic Missile is lost; he saves the recovery for something bigger deeper in."
+  },
+  {
+   "label": "Light",
+   "text": "the thrown torch burned out at 09:50; the lamp's flask runs to 14:10. Six torches left."
+  },
+  {
+   "label": "",
+   "text": "**Floors have no wanderers,** so the hour passes quietly."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Dice rolled for this section.",
+   "who": "gm",
+   "kind": "roll",
+   "dice": [
+    {
+     "expr": "1d6+2",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 2,
+     "total": 4,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d6+2",
+     "faces": [
+      5
+     ],
+     "kept": [
+      5
+     ],
+     "mod": 2,
+     "total": 7,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1000,
+  "coins": "10 GP",
+  "lost": [
+   "Magic Missile"
+  ]
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}
