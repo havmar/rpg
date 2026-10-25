@@ -151,7 +151,7 @@ class Case(unittest.TestCase):
                     "difficulty: Moderate\nxp: 100\ninitiative: Darkmantle 21 › Morten 17\nloot: +10 GP\n---\n"
                     "The Darkmantle crit him and Thunderwave blew it off.\n\n- **The dice:** a natural 20.\n")
         out, _ = self.t("section", self.d, "--file", f)
-        return out, json.loads((self.d / "story" / "s0005.json").read_text())
+        return out, json.loads((self.d / "story" / "s0004.json").read_text())
 
 
 class Projections(Case):
@@ -233,13 +233,10 @@ class Story(Case):
         self.new()
         out, sec = self.fight()
         self.shape(sec, SECTION, "section")
-        self.assertEqual(sec["seq"], 5)  # opened at 0 → beat 1, log 2, beat 3, (morten) section… see ids
-        ids = sorted(p.stem for p in (self.d / "page" / "out").rglob("*.json") if p.stem[:1] in "sbl"
-                     and p.stem[1:].isdigit())
-        self.assertEqual(ids, ["b0001", "b0003", "l0002", "s0005"] if False else sorted(ids))
-        seqs = [json.loads(p.read_text())["seq"] for p in sorted((self.d / "page" / "out").rglob("[sbl]0*.json"))]
-        self.assertEqual(sorted(seqs), [1, 2, 3, 5] if 4 not in seqs else sorted(seqs))
-        self.assertEqual(len(set(seqs)), len(seqs))
+        # one counter: beat 1, log 2, beat 3, the section 4 (open and morten take none)
+        seqs = {p.stem: json.loads(p.read_text())["seq"]
+                for p in (self.d / "page" / "out").rglob("*.json") if re.fullmatch(r"[sbl]\d{4}", p.stem)}
+        self.assertEqual(seqs, {"b0001": 1, "l0002": 2, "b0003": 3, "s0004": 4})
         # the trace is the beats' lines, in order, with their rounds and dice
         self.assertEqual([ln["text"][:5] for ln in sec["trace"]], ["Crush", "Magic", "Crush", "Thund"])
         self.assertEqual([ln["round"] for ln in sec["trace"]], [1, 1, 2, 2])
@@ -262,14 +259,14 @@ class Story(Case):
         self.assertEqual(sec["bullets"], [{"label": "The dice", "text": "a natural 20."}])
         # the batch: the section, its beats and the log line deleted (pinned), game/state
         w = {(x["collection"], x["doc_id"]): x for x in self.batches(out)[0]["writes"]}
-        self.assertNotIn("if_version", w[("story", "s0005")])
+        self.assertNotIn("if_version", w[("story", "s0004")])
         self.assertEqual(w[("live", "b0001")], {"op": "delete", "collection": "live", "doc_id": "b0001", "if_version": 1})
         self.assertEqual(w[("live", "b0003")]["op"], "delete")
         self.assertEqual(w[("log", "l0002")]["op"], "delete")
         self.assertEqual(w[("game", "state")]["op"], "set")
         st = self.doc("game", "state")
         self.assertIsNone(st["live"])
-        self.assertEqual((st["latest"], st["lastFight"], st["lastSeq"]), ("s0005", "s0005", 5))
+        self.assertEqual((st["latest"], st["lastFight"], st["lastSeq"]), ("s0004", "s0004", 4))
         self.assertFalse((self.d / "live" / "open.json").exists())
         self.assertEqual(list((self.d / "live").glob("b*.json")), [])
 
@@ -552,6 +549,8 @@ class Secrecy(Case):
             self.assertEqual(check_table.main(args), 0)
 
     def planted(self, mutate):
+        self.tearDown()
+        self.setUp()
         self.new()
         self.t("aside", self.d, "--text", "Nothing to see.")
         p = self.d / "page" / "out" / "story" / "s0001.json"
