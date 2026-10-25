@@ -2,10 +2,9 @@
  "writes": [
   {
    "op": "set",
-   "collection": "game",
-   "doc_id": "state",
-   "file_path": "/home/user/rpg/dnd-crunch/web/dev/fixture-campaign/page/out/game/state.json",
-   "if_version": 38
+   "collection": "live",
+   "doc_id": "b0018",
+   "file_path": "/home/user/rpg/dnd-crunch/web/dev/fixture-campaign/page/out/live/b0018.json"
   }
  ]
 }

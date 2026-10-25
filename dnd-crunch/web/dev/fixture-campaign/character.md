@@ -2,7 +2,7 @@
 
 <!-- Rendered by tools/table.py from morten.json; edit with `table.py morten`. -->
 
-Human (Medium), male (he/him). Background: Sage. XP 2,125 (level 4 at 2,700). Deaths: 0.
+Human (Medium), male (he/him). Background: Sage. XP 1,875 (level 4 at 2,700). Deaths: 0.
 
 ## Core
 
@@ -13,10 +13,10 @@ Human (Medium), male (he/him). Background: Sage. XP 2,125 (level 4 at 2,700). De
 Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +1 CON).
 
 - **HP** 20/20 · **Hit Dice** 3/3 d6
-- **AC** 12 unarmoured · **15 with Mage Armor**
+- **AC** 12 unarmoured · **15 with Mage Armor** (on)
 - **Speed** 6 sq (9 m) · **Initiative** +4
 - **Proficiency bonus** +2 · **Passive Perception** 13
-- **Carrying capacity** 54 kg (carrying ≈ 32 kg)
+- **Carrying capacity** 54 kg (carrying ≈ 28.2 kg)
 
 **Saving throws:** STR −1 · DEX +2 · CON +2 · **INT +5** · **WIS +3** · CHA +0
 
@@ -98,16 +98,13 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 | Oil flask | 8 | 0.5 | fuel, or thrown / poured for fire |
 | Tinderbox | 1 | 0.5 | light a torch or lamp: Bonus action |
 | Torch | 7 | 0.45 | 1 h, 6 m bright + 6 m dim |
-| Rations | 5 | 0.9 | 1 per day |
+| Rations | 1 | 0.9 | 1 per day |
 | Waterskin (full) | 1 | 2.3 |  |
 | Rope, 15 m | 1 | 2.3 |  |
 | Bedroll | 1 | 3.2 |  |
 | Caltrops (bag) | 1 | 0.9 | cover a 1.5 m square |
 | Crowbar | 1 | 2.3 | Advantage on STR checks where leverage helps |
-| Potion of Healing | 1 | 0.2 | Bonus action: regain 2d4+2 HP |
 
-**Coins:** 7 SP 5 CP on him · purse in the tower: none. Month 2: lizards +15 GP, floor 2 +70 GP; bought a Potion of Healing (50 GP), incense (10 GP) and 5 rations (2 GP 5 SP); deposited 22 GP. Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); floor 1 loot +37 GP; deposited 97 GP.
-
-**Familiar:** owl (Fey), summoned Month 2 downtime; scout and Help only.
+**Coins:** 60 GP 2 SP 5 CP on him · purse in the tower: none. Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); floor 1 loot +37 GP; deposited 97 GP in the tower's treasury.
 
 **The trader (at the tower):** Potion of Healing 50 GP · Rations (1 day) 5 SP · Incense for Find Familiar 10 GP · Oil flask 1 SP · Anything in the SRD's equipment list price

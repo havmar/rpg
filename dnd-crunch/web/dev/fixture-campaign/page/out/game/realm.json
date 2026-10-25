@@ -1482,50 +1482,30 @@
     },
     {
      "n": "2.2",
-     "monster": "4 Mastiffs",
-     "cr": "1/8",
-     "state": "cleared",
-     "xp": "100",
-     "difficulty": "Low",
-     "size": "4×12 sq (6×18 m)",
-     "feature": "burning braziers (bright light, fire)",
-     "note": "2 Mastiffs fled, morale"
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
     },
     {
      "n": "2.3",
-     "monster": "2 Shadows",
-     "cr": "1/2",
-     "state": "cleared",
-     "xp": "200",
-     "difficulty": "High",
-     "size": "12×12 sq (18×18 m)",
-     "feature": "pillars (full cover)",
-     "note": null
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
     },
     {
      "n": "2.4",
-     "monster": "Darkmantle",
-     "cr": "1/2",
-     "state": "cleared",
-     "xp": "100",
-     "difficulty": "Moderate",
-     "size": "6×8 sq (9×12 m)",
-     "feature": "burning braziers (bright light, fire)",
-     "note": null
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
     },
     {
      "n": "2.5",
-     "monster": "3 Giant Wolf Spiders",
-     "cr": "1/4",
-     "state": "cleared",
-     "xp": "150",
-     "difficulty": "Moderate",
-     "size": "6×12 sq (9×18 m)",
-     "feature": "a 3 m ledge along one wall (elevation)",
-     "note": null
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
     }
    ],
-   "cleared": true
+   "cleared": false
   },
   "B3": {
    "floor": 3,

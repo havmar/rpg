@@ -2,14 +2,14 @@
  "v": 1,
  "campaign": "realms3",
  "url": null,
- "lastSeq": 33,
+ "lastSeq": 18,
  "lastMove": 2,
  "versions": {
-  "game/morten": 16,
-  "game/realm": 3,
-  "game/rules": 1,
   "story/s0001": 1,
-  "game/state": 39,
+  "game/morten": 10,
+  "game/realm": 2,
+  "game/rules": 1,
+  "game/state": 24,
   "story/s0002": 1,
   "story/s0004": 1,
   "story/s0006": 1,
@@ -21,13 +21,7 @@
   "story/s0015": 1,
   "story/s0016": 1,
   "story/s0017": 1,
-  "story/s0020": 1,
-  "story/s0021": 1,
-  "story/s0029": 1,
-  "story/s0030": 1,
-  "story/s0031": 1,
-  "story/s0032": 1,
-  "story/s0033": 1
+  "live/b0018": 1
  },
  "pending": [],
  "moves": {},
@@ -35,7 +29,7 @@
   "m0001",
   "m0002"
  ],
- "ticks": 17,
+ "ticks": 8,
  "wake": {
   "on": true
  },

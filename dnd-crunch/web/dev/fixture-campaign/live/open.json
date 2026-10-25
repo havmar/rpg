@@ -1,0 +1,31 @@
+{
+ "kind": "fight",
+ "title": "Room 2.4 · Darkmantle (CR 1/2)",
+ "month": 2,
+ "day": 4,
+ "clock": "06:20",
+ "hex": "A5",
+ "where": "Floor 2 · room 2.4",
+ "foes": [
+  {
+   "name": "Darkmantle",
+   "cr": "1/2",
+   "ac": 11,
+   "hp": 22,
+   "maxHp": 22,
+   "speed": "2 sq (3 m), fly 6 sq (9 m)",
+   "attacks": [
+    "Crush +5, 1d6+3 bludgeoning, attaches"
+   ],
+   "notes": "covers its target on Advantage (Blinded, suffocating); DC 13 STR (Athletics) to detach",
+   "count": 1
+  }
+ ],
+ "openedAt": "2026-10-25T09:06:00Z",
+ "morten": {
+  "hp": 20,
+  "maxHp": 20
+ },
+ "lost": [],
+ "xp": 1875
+}

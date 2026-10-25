@@ -12,7 +12,7 @@
  "hitDice": "3/3 d6",
  "ac": 12,
  "acArmor": 15,
- "armorOn": false,
+ "armorOn": true,
  "speed": "6 sq (9 m)",
  "initiative": "+4",
  "passivePerception": 13,
@@ -413,12 +413,12 @@
    "line": "Human, Resourceful: after each Long Rest, reroll any one die."
   }
  ],
- "light": "lamp, about 1 h of oil left in its flask",
+ "light": "lamp, fresh flask until 12:10",
  "conc": null,
  "conditions": [],
  "exhaustion": 0,
  "inspiration": true,
- "freeArmor": true,
+ "freeArmor": false,
  "reaction": true,
  "gear": [
   {
@@ -483,7 +483,7 @@
   },
   {
    "name": "Rations",
-   "count": 5,
+   "count": 1,
    "kg": 0.9,
    "note": "1 per day"
   },
@@ -516,28 +516,22 @@
    "count": 1,
    "kg": 2.3,
    "note": "Advantage on STR checks where leverage helps"
-  },
-  {
-   "name": "Potion of Healing",
-   "count": 1,
-   "kg": 0.2,
-   "note": "Bonus action: regain 2d4+2 HP"
   }
  ],
  "load": {
-  "kg": 32.0,
+  "kg": 28.2,
   "max": 54
  },
  "coins": {
-  "on": "7 SP 5 CP",
+  "on": "60 GP 2 SP 5 CP",
   "purse": "none"
  },
- "coinsNote": "Month 2: lizards +15 GP, floor 2 +70 GP; bought a Potion of Healing (50 GP), incense (10 GP) and 5 rations (2 GP 5 SP); deposited 22 GP. Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); floor 1 loot +37 GP; deposited 97 GP.",
- "xp": 2125,
+ "coinsNote": "Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); floor 1 loot +37 GP; deposited 97 GP in the tower's treasury.",
+ "xp": 1875,
  "nextXp": 2700,
  "level": 3,
  "deaths": 0,
- "familiar": "owl (Fey), summoned Month 2 downtime; scout and Help only",
+ "familiar": null,
  "habits": [
   "Shield: cast as a reaction when a hit would become a miss at AC 20 and deals 4+ damage (any damage at 8 HP or less), if Shield isn't lost and the reaction is free.",
   "Heroic Inspiration: reroll a failed cast of Shield, Misty Step, Scorching Ray, Thunderwave or Sleep.",
