@@ -394,6 +394,7 @@ class Moves(Case):
     def dump(self, moves, versions=None):
         """An out_dir dump as db.mjs moves --out writes it."""
         root = self.tmp / "dump"
+        shutil.rmtree(root, ignore_errors=True)
         for m in moves:
             did = f"m{m['seq']:04d}"
             p = root / "moves" / f"{did}.json"
@@ -419,7 +420,8 @@ class Moves(Case):
         self.assertEqual(self.doc("game", "state")["lastMove"], 3)
         self.t("sent", self.d)
         out, _ = self.t("moves", self.d, "--file", root)  # the same dump again: already answered
-        self.assertIn("m0001: already answered", out)
+        self.assertIn("m0001, m0002, m0003: already answered", out)
+        self.assertIn("nothing new", out)
 
     def test_malformed_moves_refused(self):
         self.new()
@@ -475,7 +477,7 @@ class Versions(Case):
         self.t("sent", self.d, "--drop")
         page = json.loads((self.d / "page.json").read_text())
         self.assertEqual((page["versions"]["game/state"], page["pending"]), (7, []))
-        self.assertTrue((self.d / "page" / "out" / "batch.json").exists())
+        self.assertFalse((self.d / "page" / "out" / "batch.json").exists())  # the dropped batch goes
 
     def test_split_past_50(self):
         self.new()
@@ -511,6 +513,153 @@ class Versions(Case):
         self.assertEqual(got, ["game/morten.json", "game/realm.json", "game/rules.json",
                                "game/state.json", "log/l0001.json"])
         self.assertEqual(json.loads((exp / "log" / "l0001.json").read_text())["text"], "x")
+
+
+    def record(self):
+        return json.loads((self.d / "page.json").read_text())
+
+    def test_order_content_then_state_then_deletes(self):
+        self.new()
+        self.t("moves", self.d, "--file", Moves.dump(self, Moves.GOOD[:1]))
+        self.t("open", self.d, "--kind", "fight", "--title", "Room 2.4", "--foes", json.dumps(FOES["darkmantle"]))
+        self.t("beat", self.d, "--round", 1, "--text", "A miss.")
+        self.t("log", self.d, "rolling round 2")
+        self.t("sent", self.d)
+        out, _ = self.t("section", self.d, "--file", self.md("s.md", "---\ntitle: Room 2.4 · cleared\n---\nDone.\n"))
+        got = [(w["op"], w["collection"], w["doc_id"]) for w in self.batches(out)[0]["writes"]]
+        self.assertEqual(got, [("set", "story", "s0003"), ("set", "game", "state"), ("delete", "live", "b0001"),
+                               ("delete", "log", "l0002"), ("delete", "moves", "m0001")])
+
+    def test_drop_puts_the_record_back(self):
+        self.new()
+        self.t("moves", self.d, "--file", Moves.dump(self, Moves.GOOD[:2]))
+        self.t("open", self.d, "--kind", "fight", "--title", "Room 2.4", "--foes", json.dumps(FOES["darkmantle"]))
+        self.t("beat", self.d, "--round", 1, "--text", "A miss.", "--hp", "15/20")
+        self.t("sent", self.d)
+        before = {f: (self.d / f).read_text() for f in ("page.json", "state.json", "morten.json", "transcript.md")}
+        state_out = self.doc("game", "state")
+        subprocess.run([sys.executable, str(HERE / "roll.py"), "--keep", str(self.d), "1d20+5"],
+                       capture_output=True, check=True)
+        rolls = (self.d / "live" / "rolls.jsonl").read_text()
+        f = self.md("s.md", "---\ntitle: Room 2.4 · cleared\n---\nDone.\n")
+        self.t("section", self.d, "--file", f)  # never sent
+        self.t("morten", self.d, "--xp", "+100")  # nor this
+        self.assertTrue((self.d / "story" / "s0002.json").exists())
+        _, err = self.t("sent", self.d, "--drop")
+        self.assertIn("the record is back", err)
+        for name, text in before.items():
+            self.assertEqual((self.d / name).read_text(), text, name)
+        self.assertFalse((self.d / "story" / "s0002.json").exists())
+        self.assertFalse((self.d / "page" / "out" / "story" / "s0002.json").exists())
+        self.assertTrue((self.d / "live" / "open.json").exists())
+        self.assertTrue((self.d / "live" / "b0001.json").exists())
+        self.assertEqual((self.d / "live" / "rolls.jsonl").read_text(), rolls)
+        self.assertEqual(self.doc("game", "state"), state_out)
+        self.assertEqual(sorted(self.record()["moves"]), ["m0001", "m0002"])  # still to answer
+        self.assertFalse((self.d / "page" / "undo").exists())
+        # redo: the same section, the same id, the moves deleted after all
+        out, _ = self.t("section", self.d, "--file", f)
+        w = {(x["collection"], x["doc_id"]) for x in self.batches(out)[0]["writes"]}
+        self.assertTrue({("story", "s0002"), ("moves", "m0001"), ("moves", "m0002"), ("live", "b0001")} <= w)
+        self.t("sent", self.d)
+        self.assertFalse((self.d / "page" / "undo").exists())
+
+    def test_drop_of_new_unseeds(self):
+        self.t("new", self.d, "--month", 2)
+        self.t("sent", self.d, "--drop")
+        self.assertFalse((self.d / "page.json").exists())
+        self.new()  # and seeds again
+        self.assertEqual(self.record()["versions"]["game/state"], 1)
+
+    def test_landed_part_way(self):
+        self.new()
+        for i in range(55):
+            self.t("log", self.d, f"line {i}")
+        self.t("sent", self.d)
+        out, err = self.t("section", self.d, "--file", self.md("s.md", "---\nkind: rest\ntitle: A rest\n---\nRested.\n"))
+        first, second = self.batches(out)
+        self.assertEqual([(w["collection"], w["doc_id"]) for w in first["writes"][:2]],
+                         [("story", "s0056"), ("game", "state")])  # the page is right after batch 1
+        self.assertIn("batch.json writes 1–50; batch-2.json writes 51–57", err)
+        out, err = self.t("sent", self.d, "--landed", 50)  # batch-2.json was refused
+        v = self.record()["versions"]
+        self.assertEqual((v["story/s0056"], v["game/state"], "log/l0001" in v, "log/l0055" in v), (1, 2, False, True))
+        again = self.batches(out)
+        self.assertEqual(len(again), 1)
+        self.assertEqual(again[0]["writes"], second["writes"])  # the rest, pinned as before
+        self.assertEqual(len(self.record()["pending"]), 1)
+        self.t("sent", self.d)
+        self.assertFalse(any(k.startswith("log/") for k in self.record()["versions"]))
+        with self.assertRaises(SystemExit):
+            self.t("sent", self.d, "--landed", 3)  # nothing pending
+
+    def test_resend_after_a_refused_pin(self):
+        self.new()
+        out, _ = self.t("state", self.d, "--doing", "a")
+        self.assertEqual(self.batches(out)[0]["writes"][0]["if_version"], 1)
+        # refused: "game/state is at version 4" (the record was behind)
+        out, err = self.t("resend", self.d, "--version", "game/state=4")
+        self.assertIn("game/state: version 1 → 4", err)
+        self.assertEqual(self.batches(out)[0]["writes"][0]["if_version"], 4)
+        self.t("sent", self.d)
+        self.assertEqual(self.record()["versions"]["game/state"], 5)
+
+    def test_versions_from_a_listing(self):
+        self.new()
+        dump = self.tmp / "dump.json"  # db.mjs dump
+        dump.write_text(json.dumps([{"collection": "game", "doc_id": "state", "version": 6, "data": {}},
+                                    {"collection": "game", "doc_id": "morten", "version": 3, "data": {}}]))
+        self.t("sent", self.d, "--from", dump)
+        self.assertEqual({k: v for k, v in self.record()["versions"].items() if k in ("game/state", "game/morten")},
+                         {"game/state": 6, "game/morten": 3})
+        od = self.tmp / "od"  # an ArtifactData out_dir: <out_dir>/<collection>/<doc_id>.json
+        (od / "game").mkdir(parents=True)
+        (od / "game" / "state.json").write_text(json.dumps({"version": 9, "data": {"v": 1}}))
+        self.assertEqual(T.read_versions(od), {"game/state": 9})
+        (od / "game" / "state.json").write_text(json.dumps({"v": 1, "status": "awaiting"}))
+        with self.assertRaises(T.Bad):  # no version: say so, never guess
+            T.read_versions(od)
+
+    def test_log_line_lifecycle(self):
+        self.new()
+        self.t("log", self.d, "  reading\n your   move ")
+        self.assertEqual(self.doc("log", "l0001")["text"], "reading your move")
+        _, err = self.t("log", self.d, "x" * 300)
+        self.assertEqual(len(self.doc("log", "l0002")["text"]), T.LOG_MAX)
+        with self.assertRaises(SystemExit):
+            self.t("log", self.d, "   ")
+        self.t("sent", self.d)
+        out, _ = self.t("state", self.d, "--doing", "still playing")  # not a stop: the lines stay
+        self.assertNotIn("delete", out)
+        self.t("sent", self.d)
+        out, _ = self.t("state", self.d, "--awaiting", "word", "--prompt", "Your word")  # a stop
+        dels = {w["doc_id"] for w in self.batches(out)[0]["writes"] if w["op"] == "delete"}
+        self.assertEqual(dels, {"l0001", "l0002"})
+
+    def test_refused_moves_deleted_by_state(self):
+        self.new()
+        with self.assertRaises(SystemExit):
+            self.t("moves", self.d, "--file", Moves.dump(self, [Moves.BAD[0][0]]))
+        out, _ = self.t("state", self.d)
+        self.assertIn({"op": "delete", "collection": "moves", "doc_id": "m0008", "if_version": 1},
+                      self.batches(out)[0]["writes"])
+
+    def test_page_json_read_defensively(self):
+        self.new()
+        pj = self.record()
+        pj.update({"versions": {"game/state": 2, "game/morten": "x", "game/rules": 0}, "wake": True})
+        (self.d / "page.json").write_text(json.dumps(pj))
+        out, _ = self.t("state", self.d)
+        w = {(x["collection"], x["doc_id"]): x for x in self.batches(out)[0]["writes"]}
+        self.assertEqual(w[("game", "state")]["if_version"], 2)
+        self.assertNotIn("if_version", w[("game", "morten")])  # "x" is no version: resent as a create
+        self.assertEqual(self.doc("game", "state")["wake"], {"on": True})
+
+    def test_document_cap(self):
+        self.new()
+        with self.assertRaises(SystemExit):
+            self.t("aside", self.d, "--text", "word " * 60000)
+        self.assertFalse((self.d / "story" / "s0001.json").exists())
 
 
 class Renderers(Case):
@@ -640,6 +789,41 @@ class Secrecy(Case):
         with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
             self.assertEqual(check_table.main([str(self.d)]), 1)
         self.assertIn("room 3.1 is shown but not explored", out.getvalue())
+
+
+    def test_fresh_worlds_leak_nothing(self):
+        """As Dream's test_secrets: worlds the fixture never saw, played a few months, projected
+        and checked. Hidden assets and the --gm lines of each turn must not reach the store."""
+        realms = [sys.executable, str(HERE / "realms.py")]
+        for seed in (11, 23, 37):
+            d = self.tmp / f"w{seed}"
+            subprocess.run(realms + ["new", "--seed", str(seed), "--campaign", str(d), "--level", "3"],
+                           capture_output=True, check=True)
+            shutil.copy(START, d / "morten.json")
+            tower = json.loads((d / "map.json").read_text())["morten"]["hex"]
+            self.t("new", d, "--hex", tower)
+            self.t("sent", d)
+            hidden = []
+            for month in range(3):
+                turn = realms + ["turn", "--campaign", str(d), "--at", tower]
+                gm = subprocess.run(turn + ["--gm", "--dry-run"], capture_output=True, text=True, check=True).stdout
+                pub = subprocess.run(turn, capture_output=True, text=True, check=True).stdout
+                hidden += [ln for ln in gm.splitlines() if ln.strip() and ln not in pub.splitlines()
+                           and re.search(r"\ba\d+\b", ln)]
+                f = self.md("d.md", f"---\nkind: domain\ntitle: Month {month + 1} · the world's turn\n---\nThe world moved.\n")
+                self.t("section", d, "--file", f)
+                self.t("state", d, "--awaiting", "orders", "--prompt", "Orders", "--realm")
+                self.t("sent", d)
+            pats, _ = check_table.secrets(d)
+            self.assertTrue(any(w.startswith("hidden asset") for w, _ in pats), f"seed {seed}: nothing hidden to test")
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+                self.assertEqual(check_table.main([str(d)]), 0, f"seed {seed}: {out.getvalue()}")
+            whole = "\n".join(p.read_text() for p in (d / "page" / "out").rglob("*.json"))
+            self.assertTrue(hidden, f"seed {seed}: no hidden events in three months")
+            for ln in hidden:  # "- Gnomes (…): Move Assassins a15 B1 → C2 (goal: …)": the deed itself
+                deed = ln.split("): ", 1)[-1].split(" (goal")[0]
+                self.assertNotIn(deed, whole, f"seed {seed}: a --gm line reached the store: {ln}")
 
 
 if __name__ == "__main__":

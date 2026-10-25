@@ -17,8 +17,15 @@
 //   POST /api/batch            an ArtifactData batch {writes: [...]}: versions enforced, all or nothing
 //   POST /api/seed             {dir} or {docs: [{collection, doc_id, data}]}: replace the store
 //   POST /api/reset            re-seed from --seed DIR and forget the wakes
-//   POST /api/wake             the page's comments.sendToClaude: {target, text}
-//   GET  /api/wakes            the wakes recorded so far
+//   POST /api/wake             the page's comments.sendToClaude: {target, refused: CODE|null}
+//   POST /api/resolve          the page's comments.resolve: {threadId, resolved}
+//   GET  /api/wakes[?all=1]    the wakes that went through (all=1: every call, the refused too),
+//                              each {n, at, threadId, text, anchor, commentId, resolved}
+//
+// The batch follows the ArtifactData tool's rules: 1-50 writes, each document at most once,
+// the body at most 1 MiB; a create carries no if_version, every write (a delete too) to a
+// document that exists carries its current version; all or nothing; an update's
+// {"__delete__": true} removes that field.
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -42,7 +49,8 @@ const log = (...a) => { if (!QUIET) console.log(...a); };
 /** path "collection/doc_id" -> {data, version} */
 let store = new Map();
 let wakes = [];
-const threads = new Set();
+let calls = [];
+const threads = new Map(); // threadId -> the wake that opened it
 const key = (c, d) => `${c}/${d}`;
 const SEG = /^[A-Za-z0-9_\-.~:@+]{1,200}$/;
 const validSeg = (s) => typeof s === 'string' && SEG.test(s) && s !== '.' && s !== '..';
@@ -84,7 +92,10 @@ function list(collection) {
 
 function merge(base, patch) {
   const out = isObj(base) ? { ...base } : {};
-  for (const [k, v] of Object.entries(patch)) out[k] = isObj(v) && isObj(out[k]) ? merge(out[k], v) : v;
+  for (const [k, v] of Object.entries(patch)) {
+    if (isObj(v) && v.__delete__ === true) delete out[k];
+    else out[k] = isObj(v) && isObj(out[k]) ? merge(out[k], v) : v;
+  }
   return out;
 }
 
@@ -117,6 +128,9 @@ function pageWrite(w) {
 function applyBatch(batch) {
   const writes = isObj(batch) && Array.isArray(batch.writes) ? batch.writes : null;
   if (!writes || !writes.length) throw new StoreError('invalid_argument', 'a batch is {"writes": [...]} with at least one write');
+  if (writes.length > 50) throw new StoreError('invalid_argument', `a batch holds at most 50 writes, not ${writes.length}: split it`);
+  if (JSON.stringify(batch).length > 1024 * 1024) throw new StoreError('invalid_argument', 'a batch body is at most 1 MiB: split it');
+  const seen = new Set();
   const next = new Map(store);
   const results = [];
   writes.forEach((w, i) => {
@@ -126,15 +140,16 @@ function applyBatch(batch) {
     if (!['set', 'update', 'delete'].includes(op)) throw new StoreError('invalid_argument', `${where}: op must be set, update or delete`);
     if (!validSeg(collection) || !validSeg(id)) throw new StoreError('invalid_argument', `${where}: bad collection or doc_id`);
     const k = key(collection, id);
+    if (seen.has(k)) throw new StoreError('invalid_argument', `${where}: ${k} is addressed twice in one batch`);
+    seen.add(k);
     const cur = next.get(k);
     const pinned = w.if_version !== undefined && w.if_version !== null;
-    if (pinned && !Number.isInteger(w.if_version)) throw new StoreError('invalid_argument', `${where}: if_version must be an integer`);
+    if (pinned && !(Number.isInteger(w.if_version) && w.if_version >= 1)) throw new StoreError('invalid_argument', `${where}: if_version must be an integer from 1`);
     if (cur && !pinned) throw new StoreError('failed_precondition', `${where}: ${k} exists (version ${cur.version}); pass if_version`, 409);
     if (!cur && pinned) throw new StoreError('failed_precondition', `${where}: ${k} does not exist; a create carries no if_version`, 409);
     if (cur && pinned && cur.version !== w.if_version) throw new StoreError('failed_precondition', `${where}: ${k} is at version ${cur.version}, not ${w.if_version}`, 409);
     if (op === 'delete') {
-      if (!cur) throw new StoreError('failed_precondition', `${where}: ${k} does not exist`, 409);
-      next.delete(k);
+      next.delete(k); // a delete of a missing document is a no-op (deletes are idempotent)
       results.push({ op, collection, doc_id: id, version: null });
       return;
     }
@@ -212,7 +227,7 @@ const server = http.createServer(async (req, res) => {
       return undefined;
     }
     if (req.method === 'GET' && url.pathname === '/api/docs') return send(res, 200, list(url.searchParams.get('collection')));
-    if (req.method === 'GET' && url.pathname === '/api/wakes') return send(res, 200, wakes);
+    if (req.method === 'GET' && url.pathname === '/api/wakes') return send(res, 200, url.searchParams.get('all') === '1' ? calls : wakes);
     if (req.method === 'POST') {
       const body = await readBody(req);
       if (url.pathname === '/api/write') {
@@ -236,12 +251,19 @@ const server = http.createServer(async (req, res) => {
       if (url.pathname === '/api/reset') {
         seed(SEED ? readTree(SEED) : []);
         wakes = [];
+        calls = [];
         threads.clear();
         return send(res, 200, { ok: true, count: store.size });
       }
       if (url.pathname === '/api/wake') {
         const t = isObj(body.target) ? body.target : {};
         const text = typeof t.text === 'string' ? t.text : '';
+        const call = { n: calls.length + 1, at: new Date().toISOString(), text, anchor: t.anchor || null, threadId: t.threadId || null, refused: body.refused || null };
+        calls.push(call);
+        if (call.refused) {
+          log(`wake refused (${call.refused}): ${text}`);
+          return send(res, 200, { refused: call.refused });
+        }
         if (!text.trim()) throw new StoreError('invalid', 'empty text');
         let threadId = t.threadId;
         if (threadId !== undefined) {
@@ -249,12 +271,20 @@ const server = http.createServer(async (req, res) => {
         } else {
           if (!isObj(t.anchor)) throw new StoreError('invalid', 'a new thread needs an anchor');
           threadId = `th_${threads.size + 1}`;
-          threads.add(threadId);
         }
-        const w = { n: wakes.length + 1, at: new Date().toISOString(), threadId, text, anchor: t.anchor || null, commentId: `c_${wakes.length + 1}` };
+        const w = { n: wakes.length + 1, at: call.at, threadId, text, anchor: t.anchor || null, commentId: `c_${wakes.length + 1}`, resolved: false };
+        if (!threads.has(threadId)) threads.set(threadId, w);
+        call.threadId = threadId;
         wakes.push(w);
         log(`wake ${w.n}: ${text} (${threadId})`);
         return send(res, 200, { threadId, commentId: w.commentId });
+      }
+      if (url.pathname === '/api/resolve') {
+        const opened = threads.get(body.threadId);
+        if (!opened) throw new StoreError('not_found', `no thread ${body.threadId}`, 404);
+        for (const w of wakes) if (w.threadId === body.threadId) w.resolved = body.resolved === true;
+        log(`thread ${body.threadId} ${body.resolved ? 'resolved' : 'reopened'}`);
+        return send(res, 200, { ok: true });
       }
     }
     return send(res, 404, { error: 'not_found', message: `${req.method} ${url.pathname}` });

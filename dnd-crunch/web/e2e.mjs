@@ -17,7 +17,8 @@
 //   t.expect(cond, message)                      -> throws when cond is falsy
 //   t.waitFor(async () => value, what, ms)       -> polls until value is truthy, returns it
 //   t.api.docs(collection?) / t.api.doc(c, id) / t.api.batch(writes) / t.api.write(w)
-//   t.api.wakes() / t.api.reset()                -> the dev store (serve.mjs routes)
+//   t.api.wakes() / t.api.calls() / t.api.reset() -> the dev store (serve.mjs routes);
+//                                                   calls() lists refused wakes too
 //   t.fixture, t.base, t.shots
 import { createRequire } from 'node:module';
 import { spawn } from 'node:child_process';
@@ -87,6 +88,7 @@ async function main() {
     batch: (writes) => call('POST', '/api/batch', { writes }),
     write: (w) => call('POST', '/api/write', w),
     wakes: () => call('GET', '/api/wakes'),
+    calls: () => call('GET', '/api/wakes?all=1'),
     reset: () => call('POST', '/api/reset'),
   };
 

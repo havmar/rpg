@@ -49,6 +49,7 @@ import copy
 import json
 import os
 import re
+import shutil
 import sys
 from collections import deque
 from datetime import datetime, timedelta, timezone
@@ -63,6 +64,9 @@ from gen_dungeon import THRESHOLD  # noqa: E402
 from roll import RESULTS, die as make_die, parse as parse_expr  # noqa: E402
 
 MAX_WRITES = 50   # ArtifactData batch limit
+BODY_MAX = 900 * 1024   # a batch body is at most 1 MiB: split well under it
+DOC_MAX = 256 * 1024    # the store's cap on one document
+LOG_MAX = 200           # a log line, as Dream's: a few words of what the GM is doing
 SECTION_KINDS = ("orders", "travel", "fight", "rest", "shop", "delve", "domain", "death",
                  "wrap", "aside", "opening")
 LINE_WHO = ("morten", "foe", "gm", "world")
@@ -422,23 +426,102 @@ PAGE0 = {"v": 1, "campaign": None, "url": None, "lastSeq": 0, "lastMove": 0, "ve
          "pending": [], "moves": {}, "answered": [], "ticks": 0, "wake": {"on": False},
          "realm": {"rumours": {}, "hexNames": {}}}
 
+# The snapshot taken before the first unsent batch (DIR/page/undo), so `sent --drop` puts
+# the record back as the store still has it: files copied whole, and folders of write-once
+# files listed (a file not in the list was written since, and goes).
+UNDO_COPY = ("page.json", "morten.json", "state.json", "live", "page/out/game", "page/out/live",
+             "page/out/log")
+UNDO_LIST = ("story", "page/out/story")
+
+
+def read_page(raw):
+    """page.json, read defensively (as Dream's read_page): a bad value falls back."""
+    page = copy.deepcopy(PAGE0)
+    page.update(raw if isinstance(raw, dict) else {})
+    vers = page.get("versions")
+    page["versions"] = {k: v for k, v in (vers if isinstance(vers, dict) else {}).items()
+                        if isinstance(v, int) and not isinstance(v, bool) and v > 0}
+    w = page.get("wake")
+    page["wake"] = {"on": (w.get("on") is True) if isinstance(w, dict) else w is True}
+    for k in ("pending", "answered"):
+        if not isinstance(page.get(k), list):
+            page[k] = []
+    if not isinstance(page.get("moves"), dict):
+        page["moves"] = {}
+    for k in ("lastSeq", "lastMove", "ticks"):
+        if not isinstance(page.get(k), int) or isinstance(page.get(k), bool):
+            page[k] = 0
+    return page
+
 
 class Camp:
-    def __init__(self, d, need_page=True):
+    def __init__(self, d, need_page=True, undo=True):
         self.d = Path(d).resolve()
         if not self.d.is_dir():
             raise Bad(f"no campaign folder {d}")
         pj = self.d / "page.json"
         if need_page and not pj.exists():
             raise Bad(f"no {pj}; run `table.py new {d}` first")
-        self.page = copy.deepcopy(PAGE0)
-        self.page.update(jload(pj, {}))
+        self.page = read_page(jload(pj, {}))
         self.out = self.d / "page" / "out"
         self.morten = jload(self.d / "morten.json")
         self.state = jload(self.d / "state.json")
         self.map = jload(self.d / "map.json")
         self.writes = []
         self.mutated = False
+        if undo and pj.exists() and not self.page["pending"]:
+            self.checkpoint()
+
+    # the snapshot: the record as the store has it, before the first unsent batch
+    def checkpoint(self):
+        u = self.d / "page" / "undo"
+        if u.exists():
+            shutil.rmtree(u)
+        idx = {"absent": [], "lists": {}}
+        for f in UNDO_COPY:
+            src, dst = self.d / f, u / "files" / f
+            if not src.exists():
+                idx["absent"].append(f)
+            elif src.is_dir():
+                shutil.copytree(src, dst)
+            else:
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(src, dst)
+        for f in UNDO_LIST:
+            p = self.d / f
+            idx["lists"][f] = sorted(x.name for x in p.glob("*.json")) if p.is_dir() else []
+        jdump(u / "index.json", idx)
+
+    def restore(self):
+        """Put the record back as the snapshot has it; False when there is none."""
+        u = self.d / "page" / "undo"
+        idx = jload(u / "index.json")
+        if not isinstance(idx, dict):
+            return False
+        for f in UNDO_COPY:
+            dst, src = self.d / f, u / "files" / f
+            if dst.is_dir():
+                shutil.rmtree(dst)
+            elif dst.exists():
+                dst.unlink()
+            if f in idx.get("absent", []) or not src.exists():
+                continue
+            if src.is_dir():
+                shutil.copytree(src, dst)
+            else:
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(src, dst)
+        for f, names in idx.get("lists", {}).items():
+            for x in (self.d / f).glob("*.json"):
+                if x.name not in names:
+                    x.unlink()
+        shutil.rmtree(u)
+        return True
+
+    def forget_undo(self):
+        u = self.d / "page" / "undo"
+        if u.exists():
+            shutil.rmtree(u)
 
     # seq and time
     def next_seq(self):
@@ -456,6 +539,10 @@ class Camp:
 
     def put(self, coll, doc_id, body):
         body = {"v": 1, **{k: v for k, v in body.items() if k != "v"}}
+        size = len(json.dumps(body, ensure_ascii=False, separators=(",", ":")).encode())
+        if size > DOC_MAX:
+            raise Bad(f"{coll}/{doc_id} would be {size:,} bytes, over the store's {DOC_MAX:,}-byte "
+                      "cap on a document: cut it (a long trace, a huge prose)")
         jdump(self.out_path(coll, doc_id), body)
         self.writes.append(("set", coll, doc_id))
         return body
@@ -479,14 +566,19 @@ class Camp:
         return v
 
     def flush(self):
-        """Pin the writes, split them into batches of 50, save and print them."""
+        """Pin the writes, order them, split them into batches (50 writes, under 1 MiB), save
+        and print them. The order: new content first (story, live, log), then game/*
+        (game/state last), then the deletes (beats, log lines, moves last), so a batch split
+        in two, or one applied write by write, never leaves a move gone with no answer."""
         vers = self.projected()
+        earlier = len(self.page["pending"])
         last, order = {}, []
         for op, coll, doc_id in self.writes:
             key = (coll, doc_id)
             if key not in last:
                 order.append(key)
             last[key] = op
+        order.sort(key=lambda k: write_rank(last[k], *k))  # stable: in the verb's order within a rank
         entries = []
         for coll, doc_id in order:
             op = last[(coll, doc_id)]
@@ -507,7 +599,16 @@ class Camp:
         if not entries:
             note("nothing to send")
             return []
-        chunks = [entries[i:i + MAX_WRITES] for i in range(0, len(entries), MAX_WRITES)]
+        chunks, cur, size = [], [], 0
+        for e in entries:
+            n = 200 + (self.out_path(e["collection"], e["doc_id"]).stat().st_size if e["op"] == "set" else 0)
+            if cur and (len(cur) == MAX_WRITES or size + n > BODY_MAX):
+                chunks.append(cur)
+                cur, size = [], 0
+            cur.append(e)
+            size += n
+        if cur:
+            chunks.append(cur)
         files = []
         for i, ch in enumerate(chunks):
             f = self.out / ("batch.json" if i == 0 else f"batch-{i + 1}.json")
@@ -516,8 +617,16 @@ class Camp:
             files.append(f)
         self.save()
         if len(chunks) > 1:
+            at, spans = earlier_writes(self.page["pending"][:earlier]), []
+            for f, ch in zip(files, chunks):
+                spans.append(f"{f.name} writes {at + 1}–{at + len(ch)}")
+                at += len(ch)
             note(f"{len(entries)} writes: split into {len(chunks)} batches of at most "
-                 f"{MAX_WRITES} ({', '.join(f.name for f in files)}); send them in order.")
+                 f"{MAX_WRITES} ({'; '.join(spans)}); send them in order. If one is refused, "
+                 "`sent --landed N` records the writes before it.")
+        if earlier:
+            note(f"note: {earlier} earlier batch(es) not yet recorded as sent: send them first, in "
+                 "order (this one is pinned as if they landed); one `sent` then records them all.")
         note(f"send with ArtifactData batch (url: {self.page['url'] or 'the page'}), then "
              f"`table.py sent {self.rel()}`: " + ", ".join(f.name for f in files))
         for ch in chunks:
@@ -570,6 +679,16 @@ class Camp:
         if self.map is None:
             raise Bad(f"no {self.d / 'map.json'}")
         return self.map
+
+
+def write_rank(op, coll, doc_id):
+    if op == "set":
+        return 0 if coll != "game" else (2 if doc_id == "state" else 1)
+    return {"live": 3, "log": 4, "moves": 6}.get(coll, 5)
+
+
+def earlier_writes(batches):
+    return sum(len(b) for b in batches)
 
 
 def apply_version(v, e):
@@ -1106,6 +1225,18 @@ def answer_moves(c, ids):
     return answered, words
 
 
+def refused_moves(c):
+    """The malformed moves read: deleted unanswered by the next verb that answers moves."""
+    return sorted(mid for mid, mv in c.page["moves"].items() if not mv["ok"])
+
+
+def drop_logs(c):
+    """Delete every log line the store holds (or will, once the pending batches land)."""
+    for k in sorted(c.projected()):
+        if k.startswith("log/"):
+            c.drop("log", k[4:])
+
+
 def pick_moves(c, spec):
     if not spec:
         return []
@@ -1217,6 +1348,8 @@ def cmd_new(a):
         raise Bad(f"{c.d / 'page.json'} exists: this campaign has a page (--force to reseed)")
     c.need_morten()
     c.need_map()
+    if not c.page["pending"]:
+        c.checkpoint()  # `sent --drop` then takes the campaign back to no page
     if a.force:
         keep = {k: c.page[k] for k in ("url", "versions", "pending", "lastSeq", "lastMove", "ticks")}
         c.page = copy.deepcopy(PAGE0)
@@ -1428,7 +1561,7 @@ def write_section(c, text, extra_dice, kind_default=None, close=True, answers=No
                              default=None if tl else "Dice rolled for this section.")
     c.take_rolls()
     ids = pick_moves(c, answers) if answers is not None else sorted(c.page["moves"])
-    answered, words = answer_moves(c, ids)
+    answered, words = answer_moves(c, ids + [x for x in refused_moves(c) if x not in ids])
     seq = c.next_seq()
     src = head or {}
     sec = {"seq": seq, "kind": kind,
@@ -1463,9 +1596,7 @@ def write_section(c, text, extra_dice, kind_default=None, close=True, answers=No
         (c.d / "live" / "open.json").unlink()
         s["live"] = None
     if kind != "aside":
-        for k in sorted(c.projected()):
-            if k.startswith("log/"):
-                c.drop("log", k[4:])
+        drop_logs(c)
         for k in sorted(c.projected()):  # beats left from an earlier open section
             if k.startswith("live/") and head is None and not (c.d / "live" / f"{k[5:]}.json").exists():
                 c.drop("live", k[5:])
@@ -1502,8 +1633,11 @@ def cmd_state(a):
         applied.append(mid)
     if applied:
         note(f"applied {', '.join(applied)} to the dials")
-    answer_moves(c, applied + [x for x in pick_moves(c, a.answers) if x not in applied])
+    ids = applied + [x for x in pick_moves(c, a.answers) if x not in applied]
+    answer_moves(c, ids + [x for x in refused_moves(c) if x not in ids])
     apply_state_opts(c, a)
+    if c.state.get("status") in ("awaiting", "ended"):
+        drop_logs(c)  # a stop: the turn is over, so its "what the GM is doing" lines go
     finish(c, realm=a.realm)
 
 
@@ -1691,24 +1825,28 @@ def cmd_aside(a):
 
 
 def cmd_log(a):
+    text = " ".join(str(a.text).split())
+    if not text:
+        raise Bad("a log line takes the words of what the GM is doing")
+    if len(text) > LOG_MAX:
+        text = text[:LOG_MAX - 1].rstrip() + "…"
+        note(f"note: the log line is cut to {LOG_MAX} characters")
     c = Camp(a.dir)
     seq = c.next_seq()
-    c.put("log", sid("l", seq), {"seq": seq, "text": a.text, "at": c.now()})
+    c.put("log", sid("l", seq), {"seq": seq, "text": text, "at": c.now()})
     c.save()
     c.flush()
 
 
 def cmd_moves(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=False)
     mp = c.map
     hexes = {h["id"] for h in mp["hexes"]} if mp else None
     got = read_moves(a.file)
-    bad = 0
-    if not got:
-        print("no moves")
+    bad, new, stale = 0, [], []
     for did, ver, body in sorted(got, key=lambda x: str(x[0])):
         if did in c.page["answered"]:
-            print(f"{did}: already answered; skipped")
+            stale.append(did)
             continue
         errs, warn = validate_move(body, hexes)
         if isinstance(body, dict) and isinstance(body.get("seq"), int) and did != sid("m", body["seq"]):
@@ -1724,6 +1862,7 @@ def cmd_moves(a):
         if re.fullmatch(r"[A-Za-z0-9_\-.~:@+]{1,200}", str(did)):
             c.page["moves"][did] = rec
             c.page["versions"][f"moves/{did}"] = ver
+        new.append(did)
         if ok:
             print(f"{did} (seq {rec['seq']}, {rec['kind']}, v{ver}): {move_words(body, mp)}")
         else:
@@ -1731,50 +1870,139 @@ def cmd_moves(a):
                   f"player in an aside.")
         for w in warn:
             print(f"  {did}: {w}")
+    if stale:
+        print(f"{', '.join(stale)}: already answered; skipped (a stale file of an earlier read)")
+    waiting = sorted(m for m in c.page["moves"] if m not in new)
+    if waiting:
+        print(f"read before and not yet answered: {', '.join(waiting)}")
+    if not new and not waiting:
+        print("nothing new: no move to answer (a wake with nothing new is answered with a line "
+              "and nothing else)")
     c.save()
     if bad:
         note(f"{bad} malformed move(s) refused")
         sys.exit(3)
 
 
-def cmd_sent(a):
-    c = Camp(a.dir)
-    if a.drop:
-        n = sum(len(b) for b in c.page["pending"])
-        c.page["pending"] = []
-        note(f"dropped {n} pending write(s); versions stay as last sent")
-    else:
-        for b in c.page["pending"]:
-            for e in b:
-                apply_version(c.page["versions"], e)
-        n = sum(len(b) for b in c.page["pending"])
-        c.page["pending"] = []
-        note(f"recorded {n} write(s) as sent")
+def read_versions(src):
+    """{"collection/doc_id": version} from a listing of the store: an ArtifactData out_dir
+    folder (<collection>/<doc_id>.json), `db.mjs dump` output (a list of {collection,
+    doc_id, version, data}), or an object {"game/state": 4, ...}."""
+    src = Path(src)
+    out = {}
+
+    def one(obj, coll=None, did=None):
+        if not isinstance(obj, dict):
+            return
+        coll, did = obj.get("collection") or coll, obj.get("doc_id") or obj.get("id") or did
+        v = obj.get("version")
+        if not (coll and did):
+            return
+        if not isinstance(v, int) or isinstance(v, bool) or v < 1:
+            raise Bad(f"{coll}/{did}: the listing has no version; pass --version {coll}/{did}=N")
+        out[f"{coll}/{did}"] = v
+
+    if src.is_dir():
+        for p in sorted(src.rglob("*.json")):
+            rel = p.relative_to(src).parent.as_posix()
+            one(jload(p), rel if rel != "." else None, p.stem)
+        return out
+    obj = jload(src)
+    if obj is None:
+        raise Bad(f"no such file: {src}")
+    if isinstance(obj, dict) and obj and all(isinstance(v, int) and "/" in k for k, v in obj.items()):
+        return {k: v for k, v in obj.items()}
+    items = obj if isinstance(obj, list) else next(
+        (obj[k] for k in ("documents", "docs", "items") if isinstance(obj, dict) and isinstance(obj.get(k), list)), [obj])
+    for it in items:
+        one(it)
+    return out
+
+
+def set_versions(c, a):
+    """--from LISTING and --version collection/doc_id=N (0: gone) into the record."""
+    found = {}
+    for src in getattr(a, "from_", None) or []:
+        found.update(read_versions(src))
     for spec in a.version:
         k, _, v = spec.partition("=")
         if not re.fullmatch(r"[\w\-]+/[\w\-.~:@+]+", k) or not v.isdigit():
             raise Bad(f"--version {spec}: expected collection/doc_id=N")
-        if int(v) == 0:
+        found[k] = int(v)
+    for k, v in sorted(found.items()):
+        old = c.page["versions"].get(k)
+        if v == 0:
             c.page["versions"].pop(k, None)
         else:
-            c.page["versions"][k] = int(v)
+            c.page["versions"][k] = v
+        if old != (v or None):
+            note(f"{k}: version {old or 'none'} → {v or 'gone'}")
+
+
+def cmd_sent(a):
+    c = Camp(a.dir, undo=False)
+    flat = [e for b in c.page["pending"] for e in b]
+    rest = []
+    if a.drop and a.landed is not None:
+        raise Bad("--drop (nothing landed) or --landed N (the first N writes landed), not both")
+    if a.drop:
+        for f in c.out.glob("batch*.json"):
+            f.unlink()
+        if flat and c.restore():
+            note(f"dropped {len(flat)} pending write(s): the record is back as the store has it, "
+                 "before the verbs that printed them; run them again")
+            if not (c.d / "page.json").exists():
+                note("the page was never seeded: run `table.py new` again")
+                if c.morten is not None:
+                    render_all(Camp(a.dir, need_page=False, undo=False))
+                return
+            c = Camp(a.dir, undo=False)
+            render_all(c)
+        else:
+            c.page["pending"] = []
+            note(f"dropped {len(flat)} pending write(s); versions stay as last sent"
+                 + (" (no snapshot: the record keeps their verbs' changes)" if flat else ""))
+    elif a.landed is not None:
+        if not 0 <= a.landed <= len(flat):
+            raise Bad(f"--landed {a.landed}: the pending batches hold {len(flat)} write(s)")
+        for e in flat[:a.landed]:
+            apply_version(c.page["versions"], e)
+        rest = flat[a.landed:]
+        c.page["pending"] = []
+        c.forget_undo()  # the store is part way: no going back from here
+        note(f"recorded {a.landed} of {len(flat)} write(s) as landed; the other {len(rest)} are "
+             "printed again below, pinned as the store now stands: send them")
+    else:
+        if not flat:
+            note("nothing pending: every printed batch is already recorded")
+        for e in flat:
+            apply_version(c.page["versions"], e)
+        c.page["pending"] = []
+        if flat:
+            note(f"recorded {len(flat)} write(s) as sent")
+    set_versions(c, a)
     if a.url:
         c.page["url"] = a.url
         if c.state is not None:
             c.state["url"] = a.url
-    if not c.page["pending"]:  # page/out mirrors the store: drop the files of deleted docs
+    if rest:
+        c.writes = [(e["op"], e["collection"], e["doc_id"]) for e in rest]
+        c.flush()
+    elif not c.page["pending"]:  # page/out mirrors the store: drop the files of deleted docs
         for f in c.out.glob("*/*.json"):
             if f"{f.parent.name}/{f.stem}" not in c.page["versions"]:
                 f.unlink()
+        c.forget_undo()
     c.save()
     if a.url and c.state is not None:
         render_all(c)
 
 
 def cmd_resend(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=False)
     keep = c.page["pending"]
     c.page["pending"] = []
+    set_versions(c, a)
     for b in keep:
         for e in b:
             c.writes.append((e["op"], e["collection"], e["doc_id"]))
@@ -1788,7 +2016,7 @@ def cmd_wake(a, on):
 
 
 def cmd_export(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=False)
     out = Path(a.outdir)
     if c.page["pending"]:
         note(f"note: {sum(len(b) for b in c.page['pending'])} write(s) not yet sent; exporting the "
@@ -1813,7 +2041,7 @@ def cmd_export(a):
 
 
 def cmd_render(a):
-    c = Camp(a.dir, need_page=False)
+    c = Camp(a.dir, need_page=False, undo=False)
     render_all(c)
     c.save()
 
@@ -2235,17 +2463,30 @@ def main(argv=None):
     p.add_argument("--file", required=True)
     p.set_defaults(fn=cmd_moves)
 
-    p = verb("sent", "record the printed batches as sent (versions +1, created 1)",
-             "Record every pending batch as sent: a created document is at version 1, a rewritten "
-             "one +1, a deleted one gone. --version overrides from the batch's result. --drop "
-             "forgets the pending batches instead (a refused batch: re-read and redo).")
+    p = verb("sent", "record the printed batches as landed (versions +1, created 1)",
+             "Record every pending batch as landed: a created document is at version 1, a rewritten "
+             "one +1, a deleted one gone. --version (or --from a listing) overrides with what the "
+             "store says. When a batch was refused (it wrote nothing), either `resend --version "
+             "K=N` with the version the refusal names, or `sent --drop`: the record goes back to "
+             "the snapshot taken before the first unsent batch, so the verbs can be run again. When "
+             "a send stopped part way (a split batch's second half refused, or an unpinned batch "
+             "applied write by write), `--landed N` records the first N writes, in the order "
+             "printed, and prints the rest again.")
     p.add_argument("--url", help="the page's artifact url")
     p.add_argument("--version", action="append", default=[], help="collection/doc_id=N (0: gone)")
-    p.add_argument("--drop", action="store_true")
+    p.add_argument("--from", dest="from_", action="append", default=[],
+                   help="a listing of the store with versions (ArtifactData out_dir, db.mjs dump)")
+    p.add_argument("--drop", action="store_true", help="nothing landed: undo the verbs since")
+    p.add_argument("--landed", type=int, help="only the first N pending writes landed")
     p.set_defaults(fn=cmd_sent)
 
-    p = verb("resend", "print the pending batches again as one (re-pinned)",
-             "Merge every pending batch into new batches pinned against the versions as last sent.")
+    p = verb("resend", "print the pending batches again, re-pinned (after a refused pin)",
+             "Merge every pending batch into new batches pinned against the versions as last "
+             "landed, after setting any --version K=N (the version a refusal names) or --from a "
+             "listing of the store.")
+    p.add_argument("--version", action="append", default=[], help="collection/doc_id=N (0: gone)")
+    p.add_argument("--from", dest="from_", action="append", default=[],
+                   help="a listing of the store with versions (ArtifactData out_dir, db.mjs dump)")
     p.set_defaults(fn=cmd_resend)
 
     p = verb("wake", "turn the wake on (the page calls the GM after a move)", "game/state.wake.on = true.")

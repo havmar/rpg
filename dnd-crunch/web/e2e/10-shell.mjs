@@ -17,6 +17,11 @@ async function noSideScroll(t, page, where) {
   t.expect(w.sw <= w.cw, `${where}: the page scrolls sideways (${w.sw} > ${w.cw} px)`);
 }
 
+async function wakeOn(t) {
+  const d = await t.api.doc('game', 'state');
+  if (!(d && d.data.wake && d.data.wake.on === true)) await t.api.write({ op: 'update', collection: 'game', doc_id: 'state', data: { wake: { on: true } } });
+}
+
 async function state(t) {
   const d = await t.api.doc('game', 'state');
   return d ? d.data : null;
@@ -80,13 +85,15 @@ export const checks = [
     },
   },
   {
-    name: 'a say move lands in moves/ and wakes the GM, twice on one thread',
+    name: 'a say move lands in moves/ and wakes the GM: a new thread per move, each resolved',
     async run(t) {
       const st = await state(t);
       t.expect(st, 'the fixture has game/state');
-      if (!(st.wake && st.wake.on === true)) await t.api.write({ op: 'update', collection: 'game', doc_id: 'state', data: { wake: { on: true } } });
+      await wakeOn(t);
       const page = await t.open();
       await page.waitForFunction(() => T.app.view() && T.app.view().ready && T.app.view().comments === 'ok');
+      t.expect((await page.evaluate(() => T.app.view().wake.reach)) === 'available', 'canSendToClaude is asked once at load');
+      t.expect((await t.api.calls()).length === 0, 'nothing is sent on load');
       const moves0 = await t.api.docs('moves');
       const want = Math.max(st.lastMove || 0, ...moves0.map((d) => d.data.seq || 0)) + 1;
       const id = `m${String(want).padStart(4, '0')}`;
@@ -95,31 +102,159 @@ export const checks = [
       const doc = await t.waitFor(() => t.api.doc('moves', id), `${id} in the store`);
       const d = doc.data;
       t.expect(d.v === 1 && d.kind === 'say' && d.seq === want && d.text === 'Leave the sleeping boar; go round.' && d.ooc === false && typeof d.at === 'string', `the move's body: ${JSON.stringify(d)}`);
-      const wakes = await t.waitFor(async () => { const w = await t.api.wakes(); return w.length ? w : null; }, 'a wake');
+      const wakes = await t.waitFor(async () => { const w = await t.api.wakes(); return w.length && w[0].resolved ? w : null; }, 'a wake, resolved');
       t.expect(wakes[0].text === `Table move ${id} (say).`, `the wake's text: ${wakes[0].text}`);
-      t.expect(wakes[0].anchor, 'the first wake starts a thread at an anchor');
+      t.expect(wakes[0].anchor, 'the wake starts a thread at an anchor');
       await page.waitForFunction(() => T.app.view().wake.state === 'called');
-      t.expect((await page.evaluate(() => T.app.view().pending.length)) === 0, 'nothing pending once the move is in the store');
+      await t.waitFor(() => page.evaluate(() => T.app.view().pending.length === 0), 'nothing pending once the move is in the store');
+      t.expect(await page.evaluate((mid) => T.app.view().moves.some((m) => m.id === mid && m.mine), id), 'the move shows as sent, and mine');
       const r2 = await page.evaluate(() => T.store.send('play', { scope: 'fight', text: '' }));
-      const w2 = await t.waitFor(async () => { const w = await t.api.wakes(); return w.length > 1 ? w : null; }, 'a second wake');
+      const w2 = await t.waitFor(async () => { const w = await t.api.wakes(); return w.length > 1 && w[1].resolved ? w : null; }, 'a second wake, resolved');
       t.expect(r2.id === `m${String(want + 1).padStart(4, '0')}`, `the second move is the next seq, got ${r2.id}`);
-      t.expect(w2[1].threadId === wakes[0].threadId && !w2[1].anchor, 'the second wake replies on the same thread');
+      t.expect(w2[1].anchor && w2[1].threadId !== wakes[0].threadId, 'the second wake is a thread of its own (the GM tells a wake\'s second arrival by its thread)');
+      t.expect(w2.length === 2, `one wake per move: ${w2.length}`);
       await t.shot(page, 'phone-sent');
+    },
+  },
+  {
+    name: 'the wake while a call is in flight: moves that land meanwhile get one more call, naming the newest',
+    async run(t) {
+      await wakeOn(t);
+      const page = await t.open({ query: 'wakedelay=700' });
+      await page.waitForFunction(() => T.app.view() && T.app.view().ready && T.app.view().comments === 'ok');
+      const ids = await page.evaluate(async () => {
+        const a = await T.store.send('say', { text: 'one', ooc: false });
+        const b = await T.store.send('say', { text: 'two', ooc: false });
+        const c = await T.store.send('say', { text: 'three', ooc: false });
+        return [a.id, b.id, c.id];
+      });
+      await page.waitForFunction(() => T.app.view().wake.state === 'called' && T.app.view().wake.move !== null);
+      await page.waitForTimeout(1600);
+      const w = await t.api.calls();
+      t.expect(w.length === 2, `two calls for three quick moves, got ${w.length}: ${w.map((x) => x.text).join(' | ')}`);
+      t.expect(w[0].text.includes(ids[0]) && w[1].text.includes(ids[2]), `the first names ${ids[0]}, the second the newest ${ids[2]}: ${w.map((x) => x.text).join(' | ')}`);
+      t.expect((await page.evaluate(() => T.app.view().wake.move)) === ids[2], 'the status names the newest move');
+      t.expect((await t.api.docs('moves')).length >= 3, 'every move landed: a call in flight holds no write');
     },
   },
   {
     name: 'the wake when the GM is not watching: a reason, one call-again',
     async run(t) {
-      await t.api.write({ op: 'update', collection: 'game', doc_id: 'state', data: { wake: { on: true } } });
+      await wakeOn(t);
       const page = await t.open({ query: 'cansend=no_session' });
       await page.waitForFunction(() => T.app.view() && T.app.view().ready && T.app.view().comments === 'ok');
       await page.evaluate(() => T.store.send('say', { text: 'Anyone there?', ooc: true }));
       await page.waitForFunction(() => T.app.view().wake.state === 'unavailable');
-      const reason = await page.evaluate(() => T.app.view().wake.reason);
-      t.expect(/not watching/.test(reason), `the reason says the GM is not watching: "${reason}"`);
-      t.expect((await t.api.wakes()).length === 0, 'no wake was recorded');
+      const w = await page.evaluate(() => T.app.view().wake);
+      t.expect(/not watching/.test(w.reason), `the reason says the GM is not watching: "${w.reason}"`);
+      t.expect(w.reach === 'no_session' && w.again === true, `reach no_session, a call-again offered: ${JSON.stringify(w)}`);
+      t.expect((await t.api.calls()).length === 0, 'nothing was sent: canSendToClaude said no');
       await page.waitForTimeout(400);
-      t.expect((await t.api.wakes()).length === 0, 'and none is retried in a loop');
+      t.expect((await t.api.calls()).length === 0, 'and none is retried in a loop');
+    },
+  },
+  {
+    name: 'the wake refused for good (forbidden): no more calls this page load',
+    async run(t) {
+      await wakeOn(t);
+      const page = await t.open({ query: 'wakefail=forbidden' });
+      await page.waitForFunction(() => T.app.view() && T.app.view().ready && T.app.view().comments === 'ok');
+      await page.evaluate(() => T.store.send('say', { text: 'first', ooc: false }));
+      await page.waitForFunction(() => T.app.view().wake.state === 'unavailable');
+      const w = await page.evaluate(() => T.app.view().wake);
+      t.expect(w.code === 'forbidden' && w.again === false && /commenting from the page is off/.test(w.reason), `a permanent refusal: ${JSON.stringify(w)}`);
+      await page.evaluate(() => T.store.send('say', { text: 'second', ooc: false }));
+      await page.evaluate(() => T.store.wakeAgain());
+      await page.waitForTimeout(300);
+      t.expect((await t.api.calls()).length === 1, `one call only: ${(await t.api.calls()).length}`);
+      t.expect((await t.api.docs('moves')).length >= 2, 'the moves still land');
+    },
+  },
+  {
+    name: 'the wake refused for now (rate_limited): the next move tries again',
+    async run(t) {
+      await wakeOn(t);
+      const page = await t.open({ query: 'wakefail=rate_limited' });
+      await page.waitForFunction(() => T.app.view() && T.app.view().ready && T.app.view().comments === 'ok');
+      await page.evaluate(() => T.store.send('say', { text: 'first', ooc: false }));
+      await page.waitForFunction(() => T.app.view().wake.state === 'failed');
+      const w = await page.evaluate(() => T.app.view().wake);
+      t.expect(w.code === 'rate_limited' && w.again === true, `a refusal for now: ${JSON.stringify(w)}`);
+      await page.waitForTimeout(300);
+      t.expect((await t.api.calls()).length === 1, 'not retried on its own');
+      await page.evaluate(() => T.store.send('say', { text: 'second', ooc: false }));
+      await t.waitFor(async () => (await t.api.calls()).length === 2, 'the next move calls again');
+    },
+  },
+  {
+    name: 'the wake off in game/state: no call, the status says so',
+    async run(t) {
+      await t.api.write({ op: 'update', collection: 'game', doc_id: 'state', data: { wake: { on: false } } });
+      const page = await t.open();
+      await page.waitForFunction(() => T.app.view() && T.app.view().ready && T.app.view().comments === 'ok');
+      await page.evaluate(() => T.store.send('say', { text: 'quietly', ooc: false }));
+      await page.waitForFunction(() => T.app.view().wake.state === 'off');
+      t.expect((await t.api.calls()).length === 0, 'no call');
+    },
+  },
+  {
+    name: 'a move is pending until the store confirms it (our own write shows at once, unconfirmed)',
+    async run(t) {
+      const page = await t.open({ query: 'delay=500' });
+      await page.waitForFunction(() => T.app.view() && T.app.view().ready);
+      const id = await page.evaluate(() => {
+        const p = T.store.send('say', { text: 'slowly', ooc: false });
+        window.__sent = p;
+        return new Promise((r) => setTimeout(() => r(T.store.raw().pending.map((x) => x.id)[0]), 250));
+      });
+      const early = await page.evaluate((mid) => ({
+        local: T.store.raw().cols.moves.some((d) => d.id === mid && d.pending),
+        pending: T.app.view().pending.some((p) => p.id === mid && p.status === 'sending'),
+        sent: T.app.view().moves.some((m) => m.id === mid),
+      }), id);
+      t.expect(early.local && early.pending && !early.sent, `before the store confirms: ${JSON.stringify(early)}`);
+      await page.evaluate(() => window.__sent);
+      await t.waitFor(() => page.evaluate((mid) => T.app.view().pending.length === 0 && T.app.view().moves.some((m) => m.id === mid && m.mine), id), 'the move confirmed: sent, not pending');
+    },
+  },
+  {
+    name: 'a read-only viewer: the store refuses the write and the page stops offering it',
+    async run(t) {
+      const page = await t.open({ query: 'readonly=quiet' });
+      await page.waitForFunction(() => T.app.view() && T.app.view().ready);
+      t.expect((await page.evaluate(() => T.app.view().canWrite)) === true, 'can("data.write") said nothing: the inputs stay');
+      const code = await page.evaluate(() => T.store.send('say', { text: 'x', ooc: false }).then(() => 'sent', (e) => e.code));
+      t.expect(code === 'invalid_argument', `the write is refused: ${code}`);
+      await page.waitForFunction(() => T.app.view().canWrite === false);
+      const v = await page.evaluate(() => ({ canWrite: T.app.view().canWrite, failed: T.app.view().pending.find((p) => p.status === 'failed') }));
+      t.expect(v.canWrite === false && v.failed && /not write/.test(v.failed.error), `read-only for the rest of the visit: ${JSON.stringify(v)}`);
+      const again = await page.evaluate(() => T.store.send('say', { text: 'y', ooc: false }).then(() => 'sent', (e) => e.code));
+      t.expect(again === 'read_only', `the next send is refused before the store: ${again}`);
+      t.expect((await t.api.docs('moves')).length === 0, 'nothing was written');
+      const page2 = await t.open({ query: 'readonly=1' });
+      await page2.waitForFunction(() => T.app.view() && T.app.view().ready && T.app.view().canWrite === false);
+    },
+  },
+  {
+    name: 'a slow first load: the cache\'s empty snapshot is not "the table is empty"',
+    async run(t) {
+      const page = await t.open({ query: 'cache=1200' });
+      await page.waitForTimeout(400);
+      const early = await page.evaluate(() => ({ ready: T.app.view().ready, opening: T.app.view().opening, notice: document.getElementById('notice').hidden }));
+      t.expect(!early.ready && early.opening && early.notice, `still opening, no notice: ${JSON.stringify(early)}`);
+      await page.waitForFunction(() => T.app.view().ready && T.app.view().state);
+    },
+  },
+  {
+    name: 'a dead bridge (unavailable on a listener): a fresh subscription, and the page stays live',
+    async run(t) {
+      const page = await t.open({ query: 'dbfailonce=unavailable' });
+      await page.waitForFunction(() => T.app.view() && T.app.view().ready);
+      await page.waitForTimeout(2500);
+      t.expect((await page.evaluate(() => T.app.view().db)) === 'ok', 'the store is still ok');
+      const at = new Date().toISOString();
+      await t.api.batch([{ op: 'set', collection: 'log', doc_id: 'l9001', data: { v: 1, seq: 9001, text: 'after the bridge came back', at } }]);
+      await t.waitFor(() => page.evaluate(() => T.app.view().logs.some((l) => l.id === 'l9001')), 'a write after the resubscribe shows live', 8000);
     },
   },
   {

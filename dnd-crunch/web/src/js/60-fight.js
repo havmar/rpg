@@ -157,7 +157,7 @@
     const list = f ? f.hpTrack.filter((t) => t.hp.some(isNum)) : [];
     if (!list.length) return '';
     const series = list.filter((t) => isMorten(t.name)).concat(list.filter((t) => !isMorten(t.name)));
-    const W = 360; const H = 136; const L = 28; const R = 84; const TOP = 10; const B = 22;
+    const W = 360; const H = 140; const L = 28; const R = 84; const TOP = 10; const B = 22;
     const n = Math.max(1, ...series.map((t) => t.hp.length)) - 1;
     const top = Math.max(1, ...series.map((t) => (isNum(t.max) ? t.max : 0)), ...series.flatMap((t) => t.hp.filter(isNum)));
     const x = (i) => (n === 0 ? L + (W - L - R) / 2 : L + (i / n) * (W - L - R));
@@ -185,19 +185,19 @@
       const cls = me ? 'm' : `f f${foeI % 4}`;
       const dash = me ? '' : DASH[foeI % DASH.length];
       if (!me) foeI += 1;
-      return { t, me, cls, dash, pts: real, d: d.trim(), last, dead, label: { x: last.x + 6, y: last.y, text: `${shortName(t.name)} ${dead ? '✝' : last.hp <= 0 ? '0' : fmt.n(last.hp)}` } };
+      // a foe that went down: its line stops there (a red dot), a faint rule runs on at 0
+      const gone = dead && last.i < n ? `M${f1(last.x)},${f1(last.y)} L${f1(x(n))},${f1(last.y)}` : '';
+      return { t, me, cls, dash, pts: real, d: d.trim(), gone, last, dead, label: { x: x(n) + 6, y: last.y, text: `${shortName(t.name)} ${dead ? '✝' : last.hp <= 0 ? '0' : fmt.n(last.hp)}` } };
     });
-    // end labels: pushed apart where two end near each other
+    // end labels, all in the right gutter: pushed apart where two end close together,
+    // then back up off the round ticks when several end low (as Dream's hp-track does)
     const labs = out.map((s) => s.label).sort((a, b) => a.y - b.y);
-    for (let pass = 0; pass < 3; pass++) {
-      for (let i = 0; i < labs.length; i++) {
-        for (let j = 0; j < i; j++) {
-          const a = labs[j]; const b = labs[i];
-          if (Math.abs(a.x - b.x) < 64 && b.y - a.y < 11) b.y = a.y + 11;
-        }
-      }
+    for (let i = 1; i < labs.length; i++) if (labs[i].y - labs[i - 1].y < 11) labs[i].y = labs[i - 1].y + 11;
+    const floor = H - B;
+    for (let i = labs.length - 1; i >= 0; i--) {
+      const below = i === labs.length - 1 ? floor : labs[i + 1].y - 11;
+      labs[i].y = Math.min(labs[i].y, below);
     }
-    for (const lb of labs) lb.y = Math.min(lb.y, H - B + 4);
     const half = Math.round(top / 2);
     const grid = [0, half, top].filter((v, i, a) => a.indexOf(v) === i);
     const every = n <= 10 ? 1 : Math.ceil(n / 8);
@@ -208,6 +208,7 @@
     const svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(aria)}" data-hp-tap="${esc(key)}">`
       + grid.map((v) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${f1(y(v))}" y2="${f1(y(v))}"/><text class="tick" x="${L - 5}" y="${f1(y(v) + 3)}" text-anchor="end">${v}</text>`).join('')
       + ticks.map((k) => `<text class="tick" x="${f1(x(k.i))}" y="${H - 6}" text-anchor="middle">${k.t}</text>`).join('')
+      + out.map((s) => (s.gone ? `<path class="gone" d="${s.gone}"/>` : '')).join('')
       + out.map((s) => `<path class="ln ${s.cls}" d="${s.d}"${s.dash ? ` stroke-dasharray="${s.dash}"` : ''}/>`).join('')
       + out.map((s) => s.pts.map((p) => `<circle class="dot ${s.cls}${!s.me && p.hp <= 0 ? ' dead' : ''}" cx="${f1(p.x)}" cy="${f1(p.y)}" r="${!s.me && p.hp <= 0 ? 3.6 : n > 12 ? 1.8 : 2.6}"><title>${esc(s.t.name)}, ${when(p.i)}: ${esc(isNum(s.t.max) ? `${p.hp}/${s.t.max} HP` : `${p.hp} HP`)}</title></circle>`).join('')
         + `<text class="end ${s.cls}" x="${f1(s.label.x)}" y="${f1(s.label.y)}">${esc(s.label.text)}</text>`).join('')
@@ -219,7 +220,7 @@
     const fold = `${key}:hp`;
     const table = `<details class="numbers" data-fold="${esc(fold)}"${opened.has(fold) ? ' open' : ''}><summary>${icon('chev')}The HP as numbers</summary>`
       + `<div class="scroll"><table><thead><tr><th scope="col"><span class="vh">who</span></th>${cols.map((c) => `<th scope="col">${c}</th>`).join('')}</tr></thead><tbody>`
-      + out.map((s) => `<tr><th scope="row">${esc(s.t.name)}${isNum(s.t.max) ? ` <small>of ${esc(s.t.max)}</small>` : ''}</th>${cols.map((_, i) => {
+      + out.map((s) => `<tr><th scope="row" title="${esc(s.t.name)}">${esc(shortName(s.t.name))}${isNum(s.t.max) ? ` <small>of ${esc(s.t.max)}</small>` : ''}</th>${cols.map((_, i) => {
         const v = s.t.hp[i];
         return `<td class="${isNum(v) && v <= 0 ? 'zero' : ''}">${isNum(v) ? esc(v) : '·'}</td>`;
       }).join('')}</tr>`).join('')

@@ -8,6 +8,14 @@ src/page.html holds two slot lines, `/*@CSS*/` and `/*@JS*/`, each alone on its 
 first becomes one <style> with src/css/*.css in file-name order, the second one <script>
 with src/js/*.js in file-name order. The output has no doctype, <html>, <head> or <body>:
 the artifact host adds that skeleton. Python 3 standard library only.
+
+The checks are the publish gotchas Dream learnt (its build-artifact.mjs and
+tests/test_web_dist.py): no doctype, <html>, <head> or <body> in the page (the host
+supplies them); one self-contained file (no external script, nothing beside it for
+the publish to leave behind, no bundle names to go stale); the size under the Artifact
+tool's 16 MB; and dist/ committed as the build of src/ as it is. Dream stamps its dist
+with a hash of the sources because its build needs node; this build is plain Python and
+deterministic, so --check rebuilds in memory and compares byte for byte.
 """
 
 import argparse
@@ -21,6 +29,9 @@ DIST = WEB / "dist" / "table.html"
 CSS_SLOT = "/*@CSS*/"
 JS_SLOT = "/*@JS*/"
 FONTS_HOST = "https://fonts.googleapis.com/"
+#: The Artifact tool refuses a page over 16 MB; well before that a phone is slow to open it.
+MAX_BYTES = 16 * 1000 * 1000
+WARN_BYTES = 1024 * 1024
 
 
 def fail(msg):
@@ -68,6 +79,11 @@ def check_contract(out):
             fail(f"the page must not contain <{tag}>: the artifact host adds the skeleton")
     if re.search(r"<script[^>]*\ssrc=", out, re.I):
         fail("no external scripts: everything is inline")
+    if re.search(r"<(?:img|source|video|audio|iframe)[^>]*\ssrc=\"(?!data:|https:)", out, re.I):
+        fail("a relative src: the page is published as one file, so nothing beside it is served")
+    size = len(out.encode("utf-8"))
+    if size > MAX_BYTES:
+        fail(f"the page is {size:,} bytes: the Artifact tool takes at most {MAX_BYTES:,}")
     for href in re.findall(r"<link[^>]*rel=\"stylesheet\"[^>]*href=\"([^\"]+)\"", out):
         if not href.startswith(FONTS_HOST):
             fail(f"stylesheets come only from Google Fonts, not {href}")
@@ -79,6 +95,8 @@ def main():
     args = ap.parse_args()
     out, css_files, js_files = build()
     size = len(out.encode("utf-8"))
+    if size > WARN_BYTES:
+        print(f"build.py: note: the page is {size / 1024 / 1024:.1f} MB; a phone opens it slower past 1 MB", file=sys.stderr)
     if args.check:
         current = DIST.read_text(encoding="utf-8") if DIST.exists() else None
         if current != out:

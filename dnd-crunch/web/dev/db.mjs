@@ -5,7 +5,8 @@
 //   node dnd-crunch/web/dev/db.mjs dump [COLLECTION]     print the documents with their versions
 //   node dnd-crunch/web/dev/db.mjs seed DIR              replace the store with a tree <collection>/<doc_id>.json
 //   node dnd-crunch/web/dev/db.mjs reset                 re-seed from serve.mjs's --seed and forget the wakes
-//   node dnd-crunch/web/dev/db.mjs wakes                 list the wakes the page sent (comments.sendToClaude)
+//   node dnd-crunch/web/dev/db.mjs wakes [--all]         list the wakes the page sent (comments.sendToClaude);
+//                                                        --all: every call, the refused ones too
 //   node dnd-crunch/web/dev/db.mjs moves --out DIR       write each move as DIR/moves/<id>.json
 //
 // Options: --url http://localhost:8787 (or TABLE_DEV_URL), --port N (shorthand for the URL).
@@ -33,6 +34,8 @@ function opt(name) {
 const port = opt('port');
 const BASE = (opt('url') || process.env.TABLE_DEV_URL || `http://127.0.0.1:${port || 8787}`).replace(/\/$/, '');
 const out = opt('out');
+const ALL = argv.includes('--all');
+if (ALL) argv.splice(argv.indexOf('--all'), 1);
 const [cmd, ...rest] = argv;
 
 function die(msg, code = 1) {
@@ -103,9 +106,9 @@ async function main() {
       return;
     }
     case 'wakes': {
-      const w = await call('GET', '/api/wakes');
+      const w = await call('GET', `/api/wakes${ALL ? '?all=1' : ''}`);
       if (!w.length) console.log('no wakes yet');
-      for (const x of w) console.log(`${x.n}. ${x.at} ${x.threadId} ${x.text}`);
+      for (const x of w) console.log(`${x.n}. ${x.at} ${x.threadId || '-'} ${x.text}${x.resolved ? ' (resolved)' : ''}${x.refused ? ` (refused: ${x.refused})` : ''}`);
       return;
     }
     case 'moves': {

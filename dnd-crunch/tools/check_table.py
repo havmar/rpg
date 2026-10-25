@@ -98,9 +98,11 @@ def secrets(d):
             if (a["owner"], name) not in shown_ok:
                 pats.append((f"hidden asset {a['id']} by name",
                              re.compile(re.escape(R.poss(a["owner"])) + r"\s+" + re.escape(name), re.I)))
-            if (a["owner"], name, a["hex"]) not in shown_kind:
-                pats.append((f"hidden asset {a['id']} by kind and hex",
-                             re.compile(re.escape(name) + r"\b.{0,30}\b" + re.escape(a["hex"]) + r"\b", re.I | re.S)))
+            kind_hex = re.compile(re.escape(name) + r"\b.{0,30}\b" + re.escape(a["hex"]) + r"\b", re.I | re.S)
+            # the public rules say it anyway (realms.md's table: "Smugglers | 1 | C1", C1 the
+            # tier): such a pattern can't tell a leak from the rules, so the id and name ones do
+            if (a["owner"], name, a["hex"]) not in shown_kind and not kind_hex.search(pub):
+                pats.append((f"hidden asset {a['id']} by kind and hex", kind_hex))
         pats.append(("realms.json's rng", re.compile(r"\b" + str(st.get("rng")) + r"\b")))
     for m in GM_MARKERS:
         pats.append((f"--gm or gm-secrets output ({m})", re.compile(re.escape(m))))

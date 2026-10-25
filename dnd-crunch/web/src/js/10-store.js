@@ -358,7 +358,7 @@
     queue = job.catch(() => {});
     return job
       .then((res) => {
-        wake(res.id, kind);
+        wake(res.id, kind).catch((err) => console.warn('[table] the wake failed:', U.errText(err)));
         return res;
       })
       .finally(() => {

@@ -11,7 +11,11 @@ this file wins (the plan says so in its notes).
   dev harness are written here from the platform's own type definitions. With nothing to
   copy, a framework buys nothing: the page is plain HTML/CSS/JS like `ui/realms-map.html`
   and `ui/table-mockup.html`, split into source files and joined by `build.py`. No npm, no
-  install, no network.
+  install, no network. The bridge, the wake and the dev harness were since checked against
+  Dream's (`store.ts`, `fake-db.js`, `serve.mjs`, `e2e.mjs`, `test_web_dist.py`), and
+  Dream's behaviour adopted where it is proven (the wake's thread per call, its
+  coalescing and refusal codes, a limit on every query, pending writes; see The wake and
+  The page's view model).
 - **One build output**: `web/dist/table.html`, committed, published with the Artifact
   tool as it is. Like the map page it has no doctype, `<html>`, `<head>` or `<body>`
   (the artifact host adds the skeleton).
@@ -47,7 +51,7 @@ web/
 - Escape every string from the store with `T.ui.esc` before it goes into HTML, or set
   `textContent`. Store content is untrusted.
 - No `localStorage` outside `T.ui.local` (try/catch wrapped; per-viewer conveniences only:
-  theme, first-visit notes dismissed, reading position, unread marks, the wake thread id).
+  theme, first-visit notes dismissed, reading position, unread marks).
 - Numbers carry their unit. Icons from the sprite: `T.ui.icon('heart')` returns
   `<svg class="ic"><use href="#i-heart"/></svg>`. The sprite and the tokens are the
   mockup's (`ui/table-mockup.html`), light and dark on `:root`.
@@ -72,6 +76,18 @@ drawer's tabs, `T.app.setTheme`); the Table tab may offer it too by calling that
 (docs) and `story`, `live`, `log`, `moves` (collections), and `T.model.view(raw)` parses
 them into one object. Every field is read with a fallback; nothing is cast.
 
+The subscriptions follow the platform's contract (`db.d.ts`, 0.2.90) and Dream's bridge:
+every query carries a limit of 1000 (`story` ordered by `seq`, newest first, so a very
+long campaign keeps its newest 1000 sections; the others by id), so no default page size
+cuts a collection. A snapshot from the cache that has nothing yet does not count as
+loaded, so a slow first load shows "opening", not "the table is empty". A listener the
+platform ends with `unavailable` (its bridge stopped answering) or a code it does not
+know is dead, and a fresh `onSnapshot` is the only recovery: the store opens it again,
+up to 4 times in a row with no snapshot between (1 s, 2 s, 4 s, 8 s, plus jitter);
+`revoked`, `invalid_argument`, `resource_exhausted` and the lifecycle codes end it for
+the page load (`db: 'error'`, the page keeps what it had). Delivered bodies are frozen:
+nothing in the page mutates them.
+
 ```js
 view = {
   ready: bool,            // false until the first snapshot of game/state (or no db: a notice)
@@ -93,7 +109,10 @@ The shell adds (none of these is in the store; all are always present):
   loaded: {state, morten, realm, rules, story, live, log, moves},  // bools: first snapshot seen
   pending: [{id, seq, kind, at, status: 'sending' | 'failed', error, move}],  // move: parsed like moves/*
   sending: bool,          // a write is queued or in flight
-  wake: {state: 'idle' | 'off' | 'calling' | 'called' | 'unavailable' | 'failed', reason, move, at},
+  wake: {state: 'idle' | 'off' | 'calling' | 'called' | 'unavailable' | 'failed', reason, move, at,
+         reach,           // canSendToClaude's last answer: 'available' · 'writers_only' · 'no_session' · 'off' · 'none'; null until asked
+         again,           // bool: a "Call the GM again" can help (false while calling, after a call, or after a refusal that is final for the page load)
+         code},           // the refusal's code ('forbidden', 'rate_limited', 'no_session', …), '' when none
   comments: 'pending' | 'ok' | 'none',
   canWrite: bool,         // false with no store, a dead store, or a read-only viewer
   activity: '',           // what the GM is doing: state.doing, else the newest log line
@@ -105,7 +124,12 @@ Every parsed shape is in `src/js/20-model.js` (`T.model.parse.*`), one function 
 document type of the contract below, with the same field names.
 
 `T.store.send(kind, fields)` writes one move (below), then wakes the GM. Writes go one at
-a time; a second send waits for the first.
+a time; a second send waits for the first write (never for the first wake).
+
+A move this view sent is in `pending` (`sending`) until the store confirms it: the store
+shows the page's own write at once, marked `hasPendingWrites`, and the view keeps such a
+document out of `moves` until it is confirmed (or rolled back, when the write is refused:
+then it is `failed`).
 
 ## The data contract
 
@@ -307,13 +331,43 @@ the section whose `answered` names it, from `story/*.words`).
 
 ### The wake
 
-After a move lands, when `game/state.wake.on` is true, the page calls
-`comments.sendToClaude`: the first time with `{anchor: await comments.anchorFor(<the answer
-box>), text}`, after that `{threadId, text}` with the thread id it got back (kept in
-`T.ui.local`). `text` is one line: `Table move m0007 (say).` Before that it checks
-`canSendToClaude()` and shows the reason in the status line when it is not `available`
-("the GM is not watching; it will read your move next time"). A wake is never retried
-in a loop; the status line offers one "Call the GM again" button.
+As Dream's (its `web/README.md`, the wake), which is proven on claude.ai:
+
+- After a move lands, when `game/state.wake.on` is true, the page calls
+  `comments.sendToClaude({anchor: await comments.anchorFor(<the answer box>), text})`:
+  **a new thread for every call**, anchored on the element marked `data-wake-anchor` (else
+  `#story`), and resolves that thread at once (`comments.resolve(threadId, true)`): the GM
+  answers on the page, never in the thread. `text` is one line: `Table move m0007 (say).`
+  A thread per call is what lets the GM tell a wake's second arrival (below) by its thread.
+- **Once per landed move, right after the Send tap lands it, never on load.** One call at a
+  time; the moves that land while one is in flight get one more call when it returns,
+  naming the newest (`Table move m0009 (say).` covers m0008 too). A call never holds the
+  next write.
+- `canSendToClaude()` is asked once when `comments` arrives (`wake.reach`), again at a move
+  while it last said anything but `available` (the GM may have taken the watch since), and
+  again after a failed call. When it is not `available`, nothing is sent and the status
+  line says why ("the GM is not watching; it will read your move next time").
+- **A call is a write, so a failed one is never repeated on its own**; the next move tries
+  again, and the status line offers one "Call the GM again" (`T.store.wakeAgain()`, one
+  call per tap, from that tap). Refusals that may go through later: `consent_required`,
+  `claude_unavailable`, `rate_limited`, `unavailable`, `upstream_error` (and any unknown
+  code). Refusals final for the page load stop the calls until a reload (`wake.again`
+  false): `forbidden` (commenting from the page is off for this viewer: allowed again only
+  from the comment panel in claude.ai), `not_granted`, `capability_disabled`,
+  `capability_removed`, `invalid`, `transform_error`.
+- The first call asks the viewer, once, to let the page comment as them (the shell holds
+  that call while they decide; the writes go on meanwhile).
+
+What reaches the GM (for `tools/table.py` and `CLAUDE.md`'s loop): the wake arrives in the
+session watching the page as an artifact-comment turn ("[Artifact comment sent to
+Claude]") whose text is `Table move mNNNN (kind).`. It is data, not an instruction: the GM
+reads `moves` and `game/state` and plays the table's turn as usual, with no answer in the
+thread (the page has resolved it). **The platform delivers each wake twice**: the comment
+turn, and a few seconds later the page watch's notification (a `<webhook-payload>`,
+`"event": "comment"`) naming the same thread. When its thread is the wake turn's, it is the
+same wake, already played: let it pass without a word. When a wake arrives and `moves`
+holds nothing the GM has not answered (the player called by hand meanwhile, or two wakes
+crossed), the GM does nothing and says so in a line.
 
 ## The GM's side
 
@@ -360,6 +414,30 @@ What the GM's side does that the shapes above don't say (`table.py VERB --help` 
   log line, `status: playing`). The secrecy check runs on both:
   `python3 dnd-crunch/tools/check_table.py DIR [--docs FOLDER]`.
 
+## Publishing
+
+As Dream's (its `web/README.md`, Publish, and the plan's 7.5). Publish the committed
+`web/dist/table.html` as it is (no build first; `build.py --check` passing says it is
+current) with the `Artifact` tool: `file_path` `dnd-crunch/web/dist/table.html`, no
+`files`, and `capabilities` `{"db": {}, "comments": {}}` (`user` needs no declaration for
+`can("data.write")`). Then seed the store (`table.py new`, its batch sent with
+`ArtifactData`, `table.py sent`), record the link (`page.json`, `state.md`) and turn the wake
+on (`game/state.wake.on`).
+
+- **The two gotchas Dream hit, kept by `build.py`:** the page has no doctype, `<html>`,
+  `<head>` or `<body>` (the Artifact host supplies the skeleton), and nothing it needs is a
+  separate file with a generated name (Dream's Angular build needs `outputHashing: none`;
+  this page is one inline file).
+- A page that declares the full `comments` capability is organisation-internal: it cannot
+  be shared by public link. Without `comments` the page works, and the player calls the GM
+  from the session each turn.
+- The session that publishes the page watches it (the publish result's watch line says
+  so); a new GM session takes the watch with `ArtifactComments` (`action: "watch"`, the
+  page's `url`). Republish the same path in the same conversation, or pass the artifact's
+  `url` from another, to keep the link (and the store); omit `icon` on a republish.
+- One page is one campaign: a new campaign is published as a new page, seeded and recorded
+  the same way.
+
 ## Running it
 
 ```sh
@@ -377,9 +455,16 @@ Node 22 and Python 3, standard libraries only; Playwright is the one exception, 
 
 `build.py` puts `src/css/*.css` (in file-name order) where `src/page.html` says `/*@CSS*/`,
 as one `<style>`, and `src/js/*.js` where it says `/*@JS*/`, as one `<script>`. It refuses
-a page with a doctype, `<html>`, `<head>` or `<body>`, an external script, a stylesheet from
-anywhere but Google Fonts, a `<title>` outside two to four words, or a `</script` inside the
-JS. The panels' files need no registration: a new `NN-name.js` is picked up by its name.
+a page with a doctype, `<html>`, `<head>` or `<body>`, an external script, a relative `src`
+(nothing is published beside the page), a stylesheet from anywhere but Google Fonts, a
+`<title>` outside two to four words, a `</script` inside the JS, or a page over the Artifact
+tool's 16 MB (it notes one over 1 MB). The panels' files need no registration: a new
+`NN-name.js` is picked up by its name.
+
+`--check` is the committed build's stamp (the plan's `tools/check_web_dist.py`, folded in
+here): the build is deterministic, so it rebuilds in memory and compares with
+`dist/table.html` byte for byte; a change to `src/` without a rebuild fails it. Dream
+stamps a hash of its sources instead because its build needs node and npm.
 
 ### The dev table
 
@@ -390,20 +475,37 @@ the same layout, for when there is no fixture. The page is `dist/table.html` ins
 doctype skeleton with `dev/fake-claude.js`, re-read on every load (rebuild, then reload).
 Store changes reach open pages live over server-sent events.
 
+`fake-claude.js` behaves as the real store does where the page can tell: delivered
+bodies are frozen and reused while unchanged; the page's own write shows at once marked
+`hasPendingWrites` and is replaced by the confirmed document (or rolled back when
+refused); a query's limit is 1-1000; a terminal error reaches the error callback once and
+the listener is dead; `sendToClaude` refuses a target the runtime would (`invalid`: not
+exactly one of `anchor` and `threadId`, empty text, over 4 KiB, control characters).
+What it does not fake: the consent prompt, the "recent gesture" rule, rate limits (use
+`?wakefail=rate_limited`), periodic-refresh delivery, other viewers, and access rules
+(`?readonly` stands in for a view-only viewer).
+
 URL switches for the page: `?nodb=1` (`use("db")` resolves null: the "No table store in
-this view" path), `?nocomments=1`, `?cansend=no_session` (or `writers_only`, `off`: the
-wake's refusal path), `?delay=300` (every call waits 300 ms), `?dbfail=revoked` (every
-subscription ends with that error after its first snapshot), `?noclaude=1` (no
-`window.claude` at all, as in a saved copy of the page).
+this view" path), `?nocomments=1`, `?noclaude=1` (no `window.claude` at all, as in a saved
+copy of the page), `?cansend=no_session` (or `writers_only`, `off`: what
+`canSendToClaude` answers), `?wakefail=CODE` (every `sendToClaude` rejects with that code:
+`forbidden`, `rate_limited`, `consent_required`, …), `?wakedelay=MS` (each `sendToClaude`
+takes that long), `?readonly=1` (every write rejects `invalid_argument` and
+`can("data.write")` is false) or `?readonly=quiet` (the same, with `can` saying null),
+`?delay=300` (every call waits 300 ms; a write shows locally at once and is confirmed
+300 ms later), `?cache=MS` (each listener first gets an empty `fromCache` snapshot, the
+server's answer MS later), `?dbfail=revoked` (every subscription ends with that error after
+its first snapshot), `?dbfailonce=unavailable` (only each path's first listener ends so: a
+dead bridge the page recovers from).
 
 `db.mjs` talks to a running `serve.mjs` (`--port N`, `--url URL` or `TABLE_DEV_URL`):
 
 | Command | Does |
 |---|---|
-| `apply BATCH.json` | an ArtifactData batch (`{"writes": [{op, collection, doc_id, data or file_path, if_version}]}`), with the store's rules: a create has no `if_version`, a write to an existing doc carries its current version, all or nothing. Prints `set story/s0042 v1` per write; a refusal names the write and writes nothing. A `file_path` resolves against the current folder, then the batch's. |
+| `apply BATCH.json` | an ArtifactData batch (`{"writes": [{op, collection, doc_id, data or file_path, if_version}]}`), with the tool's rules: 1-50 writes, each document at most once, the body at most 1 MiB; a create has no `if_version` (an `if_version` is an integer from 1), a write to an existing doc (a delete too) carries its current version, a delete of a missing doc is a no-op, an update's `{"__delete__": true}` removes the field; all or nothing. Prints `set story/s0042 v1` per write; a refusal names the write and writes nothing. A `file_path` resolves against the current folder, then the batch's. |
 | `dump [COLLECTION]` | every document as `{collection, doc_id, version, data}` |
 | `seed DIR` / `reset` | replace the store with a tree / with serve.mjs's `--seed` again (and forget the wakes) |
-| `wakes` | the wakes the page sent: `1. <time> th_1 Table move m0004 (say).` |
+| `wakes [--all]` | the wakes the page sent: `1. <time> th_1 Table move m0004 (say). (resolved)`; `--all` lists every call, the refused ones too (`(refused: forbidden)`) |
 | `moves --out DIR` | each move as `DIR/moves/<doc_id>.json` = `{"collection": "moves", "doc_id", "version", "data"}` (what `table.py moves DIR` reads); stale files there are removed |
 
 ### The shell's API (for the panels)
@@ -423,10 +525,12 @@ The shell is `src/page.html`, `00-tokens.css`, `10-shell.css` and `00-core.js` �
   `T.app.render()` asks for a render; `T.app.view()` is the last view model;
   `T.app.setTheme('dark' | 'light' | null)`, `T.app.theme()`. `#story`, `#realm`, `#months`
   etc. on the link open that place.
-- **The store.** `T.store.send(kind, fields)` → `Promise<{id, seq}>` (rejects
-  `{code, message}`: `no_store`, `read_only`, or the db's code); one write at a time; the
-  wake follows when `game/state.wake.on`. `T.store.wakeAgain()` is the status line's "Call
-  the GM again" (one call per tap). `T.store.retry(id)` / `T.store.dismiss(id)` for a
+- **The store.** `T.store.send(kind, fields)` → `Promise<{id, seq}>`, resolved once the
+  move is stored (rejects `{code, message}`: `no_store`, `read_only`, `too_long` for a body
+  over 64 KiB, or the db's code); one write at a time; the wake follows on its own when
+  `game/state.wake.on` (watch `view.wake`, not the promise). `T.store.wakeAgain()` is the
+  status line's "Call the GM again" (one call per tap); offer it only while
+  `view.wake.again`. `T.store.retry(id)` / `T.store.dismiss(id)` for a
   failed move. `T.store.subscribe(fn)`, `T.store.raw()` exist; panels use the view instead.
   Only `send` writes. Call `send` from the click handler itself: `sendToClaude` needs the
   viewer's own recent gesture, so do not put a confirm step between the tap and the send.
@@ -460,6 +564,30 @@ The shell is `src/page.html`, `00-tokens.css`, `10-shell.css` and `00-core.js` �
   Panel-only rules (the map, the realm rows, the fight rows, the month headers, the live
   card, the world's turn) are the panels' own: copy them from the mockup into your CSS file.
 
+### Hooks from the More panels (`80-more.js`)
+
+- **Opening the Story at a month.** A Months row calls `T.app.go('story')`, sets
+  `T.ui.local` key `goto` to `{month, at}` (ms), and dispatches a cancelable
+  `CustomEvent('table:goto', {detail: {month}})` on `document`. The Story listens for it
+  (and may read `goto` on mount): it unfolds and scrolls to that month itself and calls
+  `ev.preventDefault()`. When nothing cancels it, 80-more scrolls `#story` to the first
+  element with `data-month="N"`, else `.month[data-m="N"]` (the Story's header today; a
+  header with `aria-expanded="false"` gets a click to unfold it), else the first heading or
+  summary whose text starts with "Month N".
+- **First-visit notes.** `T.notes.for(tab)` (`story`, `morten`, `realm`, `fights`, `more`)
+  gives that tab's one-line note as HTML, `''` once dismissed (`T.ui.note` with id
+  `tab.<tab>`); a panel calling it places the note itself. For Morten, Realm and Fights,
+  when the panel has not called it and shows no `.note` of its own, 80-more puts the note
+  just before the pane in the drawer (`.tab-note[data-for]`), shown only while that tab is
+  in view. The Story's note is the Story panel's own.
+- **Unread marks.** 80-more puts a `.dot` (and `data-unread="true"`) on the shell's tab
+  buttons: Story (a section or beat newer than the viewer last saw), Talk and More (a new
+  aside), Fights (a new `state.lastFight`). What was seen is `T.ui.local` key `seen`
+  (`{story, talk, fights}`); a tab is seen while it is in view (the Story always from
+  900 px). It runs after the shell's own Story dot in the same render and wins.
+- `T.more.monthsOf(view)` gives the Months rows' data (month, route, pips, xp, loot,
+  deaths, world) for a panel that wants it.
+
 ### The checks
 
 `node dnd-crunch/web/e2e.mjs [--only TEXT] [--shots DIR] [--fixture DIR] [--fonts]` starts
@@ -490,8 +618,13 @@ export const checks = [{
 
 `t.api` has `docs(collection?)`, `doc(collection, id)` → `{collection, doc_id, version,
 data}`, `batch(writes)`, `write({op, collection, doc_id, data})` (a page write, no
-versions), `wakes()`, `reset()`. The shell's checks (`e2e/10-shell.mjs`) cover the now line
-and HUD, every bottom-bar tab and More chip, 44 px targets, no sideways scroll, a move and
-its wake (twice, one thread), the refused wake, a beat landing live, the two zones at
-1280 px, the page with no store, a revoked store, no `window.claude`, and both themes. `e2e/50-story.mjs` tests the stub answer
+versions), `wakes()`, `calls()` (every wake call, the refused too), `reset()`. The shell's
+checks (`e2e/10-shell.mjs`) cover the now line and HUD, every bottom-bar tab and More chip,
+44 px targets, no sideways scroll, a move and its wake (two moves, two threads, each
+resolved, nothing on load), moves landing during a call (one more call, naming the
+newest), the GM not watching, a final refusal (`forbidden`: no more calls), a passing one
+(`rate_limited`: the next move calls), the wake off, a move pending until the store
+confirms it, a read-only viewer, a slow first load from the cache, a dead bridge
+recovered, a beat landing live, the two zones at 1280 px, the page with no store, a
+revoked store, no `window.claude`, and both themes. `e2e/50-story.mjs` tests the stub answer
 box; the Story replaces it.

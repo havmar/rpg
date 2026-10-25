@@ -82,3 +82,8 @@
 .frow .r .good { color: var(--good); } .frow .r .warn { color: var(--warn); } .frow .r .bad { color: var(--bad); }
 .frow .r .brass { color: var(--accent); } .frow .r .muted { color: var(--ink-3); }
 .fights .hint, .fights .empty { font-size: .86rem; }
+/* grid children shrink to the card (a wide numbers table scrolls inside its own box) */
+.fcard { grid-template-columns: minmax(0, 1fr); }
+.fcard > *, .fcard .track > *, .fights .fitem > * { min-width: 0; }
+.fcard .track { grid-template-columns: minmax(0, 1fr); }
+.fcard .track .gone { fill: none; stroke: var(--bad); stroke-width: 1; stroke-dasharray: 1 3; opacity: .55; }

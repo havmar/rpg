@@ -1,1 +1,167 @@
-/* STUB: 70-realm's own styles go here (owner: see web/README.md, File ownership). The shared atoms are in 10-shell.css. */
+/* The Realm tab: the tower card, the map, the hex entry and the realm rows. Mostly the
+   mockup's rules (ui/table-mockup.html, "the realm"), scoped to #realm. */
+#realm > [data-part]:empty { display: none; }
+#realm .small { font-size: .86rem; }
+#realm .pips { display: inline-flex; gap: 3px; vertical-align: middle; }
+#realm .pips i { width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+#realm .pips i.off { background: var(--track); }
+#realm .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+#realm .chips .chip { max-width: 100%; }
+#realm .code { font: 500 .72rem var(--mono); color: var(--ink-3); }
+
+/* ---------- the tower card ---------- */
+#realm .tower { border-top: 5px solid var(--f-tower); }
+#realm .tower .hpbig .bar { height: 9px; }
+#realm .tower .attrs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-family: var(--mono); font-size: .82rem; }
+#realm .tower .attrs > span { display: inline-flex; align-items: center; gap: 5px; }
+#realm .tower .attrs b { font-weight: 600; font-size: .98rem; }
+#realm .tower .attrs .ic { color: var(--accent); width: 18px; height: 18px; }
+#realm .tower .attrs .dot { color: var(--ink-3); }
+#realm .gold { font-size: .95rem; color: var(--ink-2); }
+#realm .gold b { font-family: var(--mono); font-weight: 600; color: var(--ink); }
+#realm .sub, #realm .nextm { display: grid; gap: 6px; }
+#realm .rel { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 10px; align-items: center; }
+#realm .rel .links { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+#realm .rlink { min-height: var(--tap); display: inline-flex; align-items: center; gap: 7px; padding: 4px 12px; border: 1px solid var(--rule); border-left: 4px solid var(--fc); border-radius: 8px; background: var(--bg); font-weight: 600; }
+#realm .rlink small { font: 500 .68rem var(--mono); color: var(--bad); }
+
+/* ---------- the map ---------- */
+#realm .mapbar { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+#realm .mapbar .hint { color: var(--ink-3); font-size: .82rem; margin-left: auto; }
+#realm .mapbar .toggle .ic { width: 18px; height: 18px; }
+#realm .mapbar .toggle[data-t="key"] { width: var(--tap); padding: 0; justify-content: center; }
+#realm .frame { margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px))); background: var(--table); position: relative; min-width: 0; }
+#realm .frame svg { display: block; width: 100%; height: auto; max-height: 78vh; max-height: 78dvh; user-select: none; -webkit-user-select: none; }
+#realm .map text { font-family: var(--mono); }
+#realm .map .land { fill: color-mix(in oklab, var(--fc) var(--mix), var(--land)); stroke: color-mix(in oklab, var(--ink) 18%, transparent); stroke-width: 1; }
+#realm .map .border { fill: none; stroke: var(--ink-2); stroke-width: 2.2; stroke-linecap: round; opacity: .75; }
+#realm .map .river { fill: none; stroke: var(--water); stroke-width: 6; stroke-linecap: round; }
+#realm .map .lake { fill: var(--water); stroke: color-mix(in oklab, var(--water) 60%, var(--ink)); stroke-width: .8; }
+#realm .map .hid { fill: var(--ink-2); font-size: 8.5px; font-weight: 500; letter-spacing: .04em; }
+#realm .map.nocodes .hid { display: none; }
+#realm .map .lvl { fill: var(--ink); font-family: var(--display); font-size: 24px; font-weight: 700; }
+#realm .map .glyph { fill: none; stroke: var(--ink-2); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+#realm .map .crown { fill: var(--fc); stroke: var(--ink); stroke-width: .9; stroke-linejoin: round; }
+#realm .map .tower-g { fill: var(--fc); stroke: var(--ink); stroke-width: .9; stroke-linejoin: round; }
+#realm .map .tok { fill: var(--fc); stroke: var(--halo); stroke-width: 1.2; }
+#realm .map .fac-none .tok { fill: var(--f-other); }
+#realm .map .tok-g { fill: none; stroke: var(--on-fc); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+#realm .map .ring { fill: none; stroke: var(--track); stroke-width: 2.2; }
+#realm .map .ring.on { stroke: var(--good); }
+#realm .map .ring.on.mid { stroke: var(--warn); }
+#realm .map .ring.on.low { stroke: var(--bad); }
+#realm .map .pip { fill: var(--ink-2); }
+#realm .map .hostile { stroke: var(--bad); stroke-width: 2; stroke-dasharray: 3 2; fill: none; }
+#realm .map .skull-b { fill: var(--bad); stroke: var(--halo); stroke-width: 1; }
+#realm .map .skull-g { fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+#realm .map .more-t { fill: var(--on-fc); font-size: 7.5px; font-weight: 600; }
+#realm .map .tokn.more .tok { fill: var(--ink-3); }
+#realm .map .morten-ring { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 7 4; }
+#realm .map .morten-pin { fill: var(--accent); stroke: var(--halo); stroke-width: 1.5; }
+#realm .map .morten-g { fill: var(--on-accent); }
+#realm .map .picked { fill: none; stroke: var(--ink); stroke-width: 3.5; stroke-linejoin: round; }
+#realm .map .arrow { fill: none; stroke: var(--fc); stroke-width: 3; stroke-linecap: round; }
+#realm .map .arrow-halo { fill: none; stroke: var(--halo); stroke-width: 7; stroke-linecap: round; opacity: .85; }
+#realm .map .head-a { fill: var(--fc); stroke: var(--halo); stroke-width: 1.2; stroke-linejoin: round; }
+#realm .map .badge { fill: var(--fc); stroke: var(--halo); stroke-width: 1.8; }
+#realm .map .fac-none .badge, #realm .map .fac-none .arrow, #realm .map .fac-none .head-a { fill: var(--f-other); }
+#realm .map .mv.on .badge { stroke: var(--ink); stroke-width: 2.4; }
+#realm .map .badge-t { fill: var(--on-fc); font-size: 10px; font-weight: 600; pointer-events: none; }
+#realm .map .mv .arrow, #realm .map .mv .arrow-halo, #realm .map .mv .head-a, #realm .map .mv .badge { pointer-events: none; }
+#realm .map .evhit { fill: transparent; cursor: pointer; pointer-events: all; -webkit-tap-highlight-color: transparent; }
+#realm .map .hit { fill: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+#realm .map .hit:focus-visible, #realm .map .evhit:focus-visible { outline: none; stroke: var(--accent); stroke-width: 3; }
+#realm .keyover { position: absolute; inset: 8px; overflow: auto; overscroll-behavior: contain; background: color-mix(in oklab, var(--panel) 95%, transparent); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: grid; gap: 10px; align-content: start; font-size: .9rem; }
+#realm .keyover ul { display: grid; gap: 8px; }
+#realm .keyover li { display: grid; grid-template-columns: 30px minmax(0, 1fr); align-items: center; gap: 10px; }
+#realm .keyover li .ic { color: var(--accent); width: 18px; height: 18px; }
+#realm .keyover .klvl { font: 700 1.3rem var(--display); text-align: center; }
+#realm .keyover .ktok { width: 26px; height: 26px; border-radius: 50%; background: var(--fc); color: var(--on-fc); display: grid; place-items: center; box-shadow: 0 0 0 2px var(--good); }
+#realm .keyover .ktok .ic { color: var(--on-fc); width: 15px; height: 15px; }
+#realm .keyover .kic { display: grid; place-items: center; }
+#realm .keyover .kic.bad .ic { color: var(--bad); }
+#realm .keyover .kn { width: 22px; height: 22px; border-radius: 50%; background: var(--ink-3); color: var(--bg); display: grid; place-items: center; font: 600 .72rem var(--mono); justify-self: center; }
+#realm .keyover .kriv { height: 5px; border-radius: 3px; background: var(--water); }
+#realm .keyover .kpips { display: grid; place-items: center; }
+#realm .keyover > .toggle { justify-self: start; }
+#realm .evline li { grid-template-columns: 24px minmax(0, 1fr) auto; background: var(--panel); border: 1px solid var(--rule); border-left: 4px solid var(--fc); border-radius: 8px; padding: 4px 4px 4px 10px; align-items: center; }
+#realm .evline .x { min-width: var(--tap); min-height: var(--tap); border: 0; background: none; color: var(--ink-3); font-size: 1.2rem; }
+
+/* ---------- the hex entry ---------- */
+#realm .entry { scroll-margin-top: calc(var(--now-h, 64px) + 10px); }
+#realm .entry h3 { font-size: 1.3rem; display: flex; align-items: baseline; gap: 4px 8px; flex-wrap: wrap; }
+#realm .entry h3 .code { margin-left: 0; }
+#realm .entry .line { color: var(--ink-2); font-size: .95rem; overflow-wrap: anywhere; }
+#realm .entry .line b { color: var(--ink); }
+#realm .entry .line .brass { color: var(--accent); }
+#realm .entry .way { font: .78rem var(--mono); color: var(--ink-3); }
+#realm .entry .lvl-line { font-size: .9rem; color: var(--ink-3); }
+#realm .entry > .label { margin-top: 2px; }
+#realm .pieces { display: grid; gap: 6px; }
+#realm .piece { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 8px; background: var(--bg); border: 1px solid var(--rule); border-left: 5px solid var(--fc); min-width: 0; }
+#realm .piece .body { flex: 1 1 auto; min-width: 0; display: grid; gap: 3px; }
+#realm .piece .tok-big { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--fc); color: var(--on-fc); display: grid; place-items: center; margin-top: 2px; box-shadow: 0 0 0 2px var(--panel), 0 0 0 3.5px var(--good); }
+#realm .piece .tok-big.mid { box-shadow: 0 0 0 2px var(--panel), 0 0 0 3.5px var(--warn); }
+#realm .piece .tok-big.low { box-shadow: 0 0 0 2px var(--panel), 0 0 0 3.5px var(--bad); }
+#realm .piece.hostile .tok-big { box-shadow: 0 0 0 2px var(--panel), 0 0 0 3.5px var(--bad); }
+#realm .piece .tok-big .ic { width: 20px; height: 20px; stroke-width: 1.9; }
+#realm .piece .pn { display: flex; align-items: baseline; gap: 2px 8px; flex-wrap: wrap; }
+#realm .piece .pn b { font-weight: 700; }
+#realm .piece .pn small { font: 500 .7rem var(--mono); color: var(--ink-3); }
+#realm .piece .pn .hos { display: inline-flex; align-items: center; gap: 4px; font: 600 .66rem var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--bad); }
+#realm .piece .hp { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: .74rem; flex-wrap: wrap; }
+#realm .piece .hp .ic { color: var(--bad); }
+#realm .piece .hp .bar { width: 70px; flex: none; }
+#realm .piece .hp .pips { margin-left: 4px; }
+#realm .piece .what { font-size: .88rem; color: var(--ink-2); }
+#realm .piece .at { font: 500 .72rem var(--mono); color: var(--ink-3); }
+#realm .do { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+#realm .do span { font: 500 .7rem var(--mono); color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 3px 8px; }
+#realm .rooms { display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); gap: 4px; }
+#realm .room { min-height: 44px; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); display: grid; align-content: center; gap: 1px; padding: 4px 8px; font-size: .78rem; color: var(--ink-3); min-width: 0; }
+#realm .room b { font: 600 .74rem var(--mono); color: var(--ink-2); }
+#realm .room small { font-size: .74rem; line-height: 1.25; overflow-wrap: anywhere; }
+#realm .room small.nt { font-style: italic; }
+#realm .room.done { border-color: color-mix(in oklab, var(--good) 60%, var(--rule)); }
+#realm .room.done b, #realm .room .ok { color: var(--good); font-style: normal; }
+#realm .room.now { border-color: var(--accent); background: var(--accent-soft); }
+#realm .room.now b { color: var(--accent); }
+#realm .heard { display: grid; gap: 6px; }
+#realm .heard li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; font-size: .9rem; color: var(--ink-2); line-height: 1.45; }
+#realm .heard .ic { color: var(--ink-3); margin-top: 3px; }
+#realm .hexbtn { max-width: 100%; }
+#realm .hexbtn > span:not(.sw) { min-width: 0; }
+#realm .hexbtn .ic { color: var(--ink-2); }
+#realm .hexbtn .hn { display: grid; gap: 0; line-height: 1.25; }
+
+/* ---------- the realm rows ---------- */
+#realm .rrows { display: grid; gap: 6px; }
+#realm .rrow { border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); border-left: 5px solid var(--fc); min-width: 0; scroll-margin-top: calc(var(--now-h, 64px) + 10px); }
+#realm .rhead { width: 100%; min-height: var(--tap); display: grid; grid-template-columns: 11px minmax(0, 1fr) auto; gap: 4px 10px; align-items: start; padding: 8px 10px; border: 0; background: none; text-align: left; }
+#realm .rhead .sw { margin-top: 7px; }
+#realm .rhead .top { display: flex; align-items: baseline; gap: 2px 8px; flex-wrap: wrap; min-width: 0; }
+#realm .rhead .top b { font-size: 1.05rem; font-weight: 700; color: var(--fc); }
+#realm .rhead .top .lv { font-size: .88rem; color: var(--ink-2); }
+#realm .rhead .sts { display: inline-flex; flex-wrap: wrap; gap: 4px 8px; }
+#realm .rhead .st { font: 600 .66rem var(--mono); letter-spacing: .06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 4px; }
+#realm .rhead .nums { grid-column: 2; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); }
+#realm .rhead .nums > span { display: inline-flex; align-items: center; gap: 4px; }
+#realm .rhead .nums .bar { width: 56px; flex: none; }
+#realm .rhead .nums .ic { color: var(--accent); }
+#realm .rhead .nums .reg .ic { color: var(--bad); }
+#realm .rhead .chev { grid-row: 1 / span 2; grid-column: 3; align-self: center; color: var(--ink-3); transition: transform .15s; }
+#realm .rrow[data-open="true"] .rhead .chev { transform: rotate(90deg); }
+#realm .rrow .more { display: grid; gap: 8px; padding: 8px 10px 10px 31px; border-top: 1px solid var(--rule); font-size: .92rem; color: var(--ink-2); min-width: 0; }
+#realm .rrow .goal { display: flex; gap: 6px; align-items: baseline; }
+#realm .rrow .goal .ic { color: var(--accent); flex: none; }
+#realm .rrow .piece { background: var(--panel); }
+
+/* in the drawer (from 900 px): no full bleed, the map in a rounded frame */
+@media (min-width: 900px) {
+  #realm .frame { margin-left: 0; margin-right: 0; border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); }
+  #realm .frame svg { max-height: calc(100vh - var(--now-h, 64px) - 120px); max-height: calc(100dvh - var(--now-h, 64px) - 120px); }
+  #realm .entry, #realm .rrow { scroll-margin-top: 60px; }
+}
+@media (max-width: 420px) {
+  #realm .rrow .more { padding-left: 10px; }
+}

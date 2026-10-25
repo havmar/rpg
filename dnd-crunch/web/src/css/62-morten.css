@@ -1,1 +1,74 @@
-/* STUB: 62-morten's own styles go here (owner: see web/README.md, File ownership). The shared atoms are in 10-shell.css. */
+/* The Morten tab: the sheet's cards. The shared atoms (.card, .hpbig, .stat-row, .stat,
+   .spells, .spell, .inv, .pips, .feat, .chip, .toggle) are the shell's; these are the
+   tab's own. */
+#morten .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+#morten .chip .ic { width: 14px; height: 14px; }
+#morten .chip.quiet { color: var(--ink-3); }
+#morten .chip.glyph.lit { border-color: var(--accent); color: var(--accent); background: color-mix(in oklab, var(--accent) 8%, var(--panel)); }
+#morten .chip.glyph.spent { color: var(--ink-3); border-style: dashed; }
+#morten .chip.glyph.spent span { text-decoration: line-through; }
+#morten .chip.open .k, #morten .chip.threat .k { margin-right: 2px; }
+#morten .chip .k { font: 600 .62rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+#morten .hpbig .ic { color: var(--bad); width: 20px; height: 20px; }
+#morten .hpbig .bar { height: 12px; }
+#morten .hpbig b { font-weight: 600; white-space: nowrap; }
+#morten .hpbig.xp .ic { color: var(--accent); }
+#morten .xp-bar > i { background: var(--accent); }
+#morten .stat .v { min-width: 0; overflow-wrap: anywhere; }
+#morten .stat .sub { overflow-wrap: anywhere; }
+
+/* spells */
+#morten .spells { display: flex; flex-wrap: wrap; gap: 6px; }
+#morten .spell { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 0 6px; min-height: var(--tap); padding: 4px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); font-size: .9rem; text-align: left; line-height: 1.25; align-content: center; }
+#morten .spell[aria-pressed="true"] { box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 45%, transparent); }
+#morten .spell.lost .nm { text-decoration: line-through; }
+#morten .spell.lost { text-decoration: none; color: var(--ink-3); border-style: dashed; border-color: var(--bad); }
+#morten .spell.lost small.back { color: var(--bad); }
+#morten .spell.ritual small { color: var(--ink-2); }
+#morten .sline { border-left: 3px solid var(--accent); background: var(--bg); border-radius: 0 6px 6px 0; padding: 6px 10px; display: grid; gap: 2px; font-size: .92rem; }
+#morten .sline small { font: 500 .7rem var(--mono); color: var(--ink-3); }
+#morten .sline p { line-height: 1.45; }
+#morten .arow { display: flex; flex-wrap: wrap; gap: 6px; }
+#morten button.chip { min-height: var(--tap); font: inherit; font-size: .88rem; }
+#morten .hint { font-size: .82rem; }
+
+/* fighting */
+#morten .atks { display: grid; gap: 0; font-size: .9rem; }
+#morten .atk { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 10px; padding: 5px 0; border-top: 1px solid var(--rule); }
+#morten .atk.head { border-top: 0; padding-top: 0; font: 600 .6rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+#morten .atk.head span:last-child { display: none; }
+#morten .atk b { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+#morten .atk .hit { font: 600 .8rem var(--mono); text-align: right; }
+#morten .atk .dmg { grid-column: 1 / -1; font: .74rem var(--mono); color: var(--ink-2); overflow-wrap: anywhere; }
+#morten .abil { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#morten .abil .stat.prof { border-color: var(--accent); }
+#morten .abil .v small { font-size: .74rem; }
+#morten .skills .chip b { font-weight: 600; }
+
+/* gear */
+#morten .load { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; font-family: var(--mono); font-size: .82rem; }
+#morten .load b { font-weight: 600; white-space: nowrap; }
+#morten .load-bar { height: 10px; }
+#morten .load-bar > i { background: var(--ink-3); }
+#morten .load-bar.mid > i { background: var(--warn); }
+#morten .load-bar.low > i { background: var(--bad); }
+#morten .inv { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 4px 10px; font-size: .9rem; align-items: baseline; }
+#morten .inv .label { grid-column: 1 / -1; padding-top: 6px; font-size: .6rem; display: flex; align-items: center; gap: 6px; }
+#morten .inv .nm { min-width: 0; overflow-wrap: anywhere; }
+#morten .inv .nm small { display: block; font-size: .76rem; color: var(--ink-3); line-height: 1.35; }
+#morten .inv .nm.none { color: var(--ink-3); }
+#morten .inv .kg, #morten .inv .ct { font-family: var(--mono); font-size: .74rem; color: var(--ink-2); text-align: right; white-space: nowrap; }
+#morten .pips { display: inline-flex; flex-wrap: wrap; gap: 3px; vertical-align: middle; margin-left: 2px; }
+#morten .pips i { width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+
+/* habits and features */
+#morten .mhabits .toggle { justify-self: start; }
+#morten details.mfeat > summary { list-style: none; cursor: pointer; min-height: var(--tap); display: flex; align-items: center; gap: 8px; font: 500 1.05rem var(--display); }
+#morten details.mfeat > summary::-webkit-details-marker { display: none; }
+#morten details.mfeat > summary .ic { color: var(--accent); transition: transform .2s; }
+#morten details.mfeat[open] > summary .ic { transform: rotate(90deg); }
+#morten details.mfeat > summary small { margin-left: auto; font: 500 .72rem var(--mono); color: var(--ink-3); }
+#morten .feat { grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; }
+#morten .feat .ic { margin-top: 4px; }
+#morten .feat b { font-weight: 600; }
+#morten .feat .st { font: 500 .7rem var(--mono); color: var(--ink-3); }
