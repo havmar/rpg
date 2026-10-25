@@ -230,7 +230,7 @@
    "name": "Magic Missile",
    "level": 1,
    "dc": 11,
-   "lost": true,
+   "lost": false,
    "conc": false,
    "ritual": false,
    "line": "3 darts, 1d4+1 force each, never miss; +1 dart per level above 1.",
@@ -374,7 +374,7 @@
  "features": [
   {
    "name": "Arcane Recovery",
-   "state": "ready",
+   "state": "used",
    "line": "Once per Long Rest, after a Short Rest: regain lost spells totalling up to 2 levels (a cantrip counts as 1)."
   },
   {
@@ -489,7 +489,7 @@
   },
   {
    "name": "Rations",
-   "count": 4,
+   "count": 3,
    "kg": 0.9,
    "note": "1 per day"
   },
@@ -531,15 +531,15 @@
   }
  ],
  "load": {
-  "kg": 31.2,
+  "kg": 30.3,
   "max": 54
  },
  "coins": {
-  "on": "10 GP",
+  "on": "25 GP",
   "purse": "60 GP 2 SP 5 CP"
  },
- "coinsNote": "Starting gold: 47 GP 7 SP 5 CP. The tower's treasury (100 GP) is separate.",
- "xp": 1050,
+ "coinsNote": "Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); left all 60 GP 2 SP 5 CP in the tower; floor 1 loot 25 GP.",
+ "xp": 1200,
  "nextXp": 2700,
  "level": 3,
  "deaths": 0,

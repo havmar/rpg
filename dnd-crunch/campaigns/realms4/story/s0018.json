@@ -1,0 +1,346 @@
+{
+ "v": 1,
+ "seq": 18,
+ "kind": "fight",
+ "month": 1,
+ "day": 1,
+ "clock": "10:40",
+ "hex": "A3",
+ "where": "Floor 1 · room 1.4",
+ "title": "Room 1.4 · 2 Giant Rats (CR 1/8 each) · Low, 50 XP · cleared, untouched",
+ "headline": "Sleep, a Fire Bolt and a point-blank crit: the rats never reached him.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Scouting",
+   "text": "the rats' Stealth (7) lost to his passive Perception, so he saw both from the door, 8 sq off with the rubble between."
+  },
+  {
+   "label": "Cheese",
+   "text": "one Sleep caught both. One shook it off on exactly 13 and died to a 10 dmg Fire Bolt before it moved. The other fell unconscious, and he Dashed through the rubble to it."
+  },
+  {
+   "label": "How it ended",
+   "text": "Shocking Grasp on a sleeping target, with Advantage, and an automatic crit from 1.5 m: 14 lightning dmg."
+  },
+  {
+   "label": "Result",
+   "text": "20/20 HP, nothing new lost. XP 1,050 → 1,100. +5 GP (15 GP on him). The room's search turn shows one exit, an iron-bound door on the N wall."
+  }
+ ],
+ "trace": [
+  {
+   "text": "The rats' Stealth (7) loses to his passive Perception 13: two Giant Rats at F2 and G2, 8 sq (12 m) away. Room 1.4, 15×15 m (A–J × 1–10), rubble across rows 4–6; Morten at E10 in the S door.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      4
+     ],
+     "kept": [
+      4
+     ],
+     "mod": 3,
+     "total": 7,
+     "vs": "passive Perception 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Initiative: Morten 13, Rats 10.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 4,
+     "total": 13,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+3",
+     "faces": [
+      7
+     ],
+     "kept": [
+      7
+     ],
+     "mod": 3,
+     "total": 10,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R1 Sleep centred between them (1.5 m radius): 12 vs DC 11, cast.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      7
+     ],
+     "kept": [
+      7
+     ],
+     "mod": 5,
+     "total": 12,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "WIS saves vs DC 13: 9 and 8, both fail. Incapacitated.",
+   "who": "foe",
+   "kind": "save",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 0,
+     "total": 9,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "1d20",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 0,
+     "total": 8,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Second saves at the end of their turn: Rat A 13, success, awake; Rat B 12, fail, Unconscious.",
+   "who": "foe",
+   "kind": "save",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": 0,
+     "total": 13,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    },
+    {
+     "expr": "1d20",
+     "faces": [
+      12
+     ],
+     "kept": [
+      12
+     ],
+     "mod": 0,
+     "total": 12,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R2 Fire Bolt on Rat A: 20 vs AC 13, hit, 10 fire dmg. Rat A dead.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "AC 13",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d10",
+     "faces": [
+      10
+     ],
+     "kept": [
+      10
+     ],
+     "mod": 0,
+     "total": 10,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R3 Dash: 11 sq of movement through the rubble to G3, next to the sleeping Rat B.",
+   "who": "morten",
+   "kind": "move",
+   "round": 4,
+   "dice": []
+  },
+  {
+   "text": "R4 Shocking Grasp: Advantage on an Unconscious target, 22 vs AC 13, hit; within 1.5 m it's a Critical Hit: 2d8 = 14 lightning dmg. Rat B dead.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      12,
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 5,
+     "total": 22,
+     "vs": "AC 13",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "2d8",
+     "faces": [
+      8,
+      6
+     ],
+     "kept": [
+      8,
+      6
+     ],
+     "mod": 0,
+     "total": 14,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1100,
+  "coins": "15 GP",
+  "lost": [
+   "Magic Missile"
+  ]
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Giant Rat",
+    "cr": "1/8",
+    "ac": 13,
+    "hp": 7,
+    "maxHp": 7,
+    "speed": "6 sq (9 m), climb 6 sq (9 m)",
+    "attacks": [
+     "Bite +5, 1d4+3 piercing"
+    ],
+    "notes": "Pack Tactics: Advantage when an ally is next to the target; darkvision 18 m",
+    "count": 2
+   }
+  ],
+  "difficulty": "Low",
+  "budget": 50,
+  "xp": 50,
+  "initiative": [
+   "Morten 13",
+   "Rats 10"
+  ],
+  "rounds": 4,
+  "outcome": "cleared",
+  "verdict": "the cheese worked as written",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     20,
+     20,
+     20
+    ]
+   },
+   {
+    "name": "Giant Rat A",
+    "max": 7,
+    "hp": [
+     7,
+     7,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "name": "Giant Rat B",
+    "max": 7,
+    "hp": [
+     7,
+     7,
+     7,
+     7,
+     0
+    ]
+   }
+  ],
+  "loot": "+5 GP",
+  "lost": [],
+  "potion": false,
+  "xpBefore": 1050,
+  "xpAfter": 1100
+ },
+ "domain": null,
+ "words": []
+}

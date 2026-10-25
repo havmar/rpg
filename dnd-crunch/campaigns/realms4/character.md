@@ -2,7 +2,7 @@
 
 <!-- Rendered by tools/table.py from morten.json; edit with `table.py morten`. -->
 
-Human (Medium), male (he/him). Background: Sage. XP 1,050 (level 4 at 2,700). Deaths: 0.
+Human (Medium), male (he/him). Background: Sage. XP 1,200 (level 4 at 2,700). Deaths: 0.
 
 ## Core
 
@@ -16,7 +16,7 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 - **AC** 12 unarmoured · **15 with Mage Armor** (on)
 - **Speed** 6 sq (9 m) · **Initiative** +4
 - **Proficiency bonus** +2 · **Passive Perception** 13
-- **Carrying capacity** 54 kg (carrying ≈ 31.2 kg)
+- **Carrying capacity** 54 kg (carrying ≈ 30.3 kg)
 
 **Saving throws:** STR −1 · DEX +2 · CON +2 · **INT +5** · **WIS +3** · CHA +0
 
@@ -56,7 +56,7 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 |---|---|---|---|---|---|
 | Mage Armor *(Magic Initiate, always prepared)* | 1 | 11 | Action | touch | Base AC 13 + DEX for 8 h. Once per Long Rest with no check. |
 | Shield | 1 | 11 | Reaction | self | Reaction when hit or targeted by Magic Missile: +5 AC until your next turn, the triggering attack included. |
-| ~~Magic Missile~~ (lost) | 1 | 11 | Action | 24 sq (36 m) | 3 darts, 1d4+1 force each, never miss; +1 dart per level above 1. |
+| Magic Missile | 1 | 11 | Action | 24 sq (36 m) | 3 darts, 1d4+1 force each, never miss; +1 dart per level above 1. |
 | Thunderwave | 1 | 11 | Action | self (4.5 m cube) | 4.5 m cube from you, CON save: 2d8 thunder and a push of 3 m, half on a save; heard 90 m away. |
 | Sleep | 1 | 11 | Action, Conc. | 12 sq (18 m) | WIS save or Incapacitated, then a second save or Unconscious; 1.5 m radius; no effect on undead and constructs. |
 | Misty Step | 2 | 12 | Bonus action | self | Teleport 9 m to a space you can see. |
@@ -75,7 +75,7 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 
 ## Features
 
-- **Arcane Recovery** (ready): Once per Long Rest, after a Short Rest: regain lost spells totalling up to 2 levels (a cantrip counts as 1).
+- **Arcane Recovery** (used): Once per Long Rest, after a Short Rest: regain lost spells totalling up to 2 levels (a cantrip counts as 1).
 - **Ritual Adept**: Cast Ritual spells from the spellbook unprepared, +10 minutes, no casting check.
 - **Scholar**: Expertise in Investigation.
 - **Evocation Savant**: Shatter and Scorching Ray copied free.
@@ -99,7 +99,7 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 | Oil flask | 9 | 0.5 | fuel, or thrown / poured for fire |
 | Tinderbox | 1 | 0.5 | light a torch or lamp: Bonus action |
 | Torch | 6 | 0.45 | 1 h, 6 m bright + 6 m dim |
-| Rations | 4 | 0.9 | 1 per day |
+| Rations | 3 | 0.9 | 1 per day |
 | Waterskin (full) | 1 | 2.3 |  |
 | Rope, 15 m | 1 | 2.3 |  |
 | Bedroll | 1 | 3.2 |  |
@@ -107,6 +107,6 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 | Crowbar | 1 | 2.3 | Advantage on STR checks where leverage helps |
 | Potion of Healing | 1 | 0.2 | Bonus action: regain 2d4+2 HP |
 
-**Coins:** 10 GP on him · purse in the tower: 60 GP 2 SP 5 CP. Starting gold: 47 GP 7 SP 5 CP. The tower's treasury (100 GP) is separate.
+**Coins:** 25 GP on him · purse in the tower: 60 GP 2 SP 5 CP. Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); left all 60 GP 2 SP 5 CP in the tower; floor 1 loot 25 GP.
 
 **The trader (at the tower):** Potion of Healing 50 GP · Rations (1 day) 5 SP · Incense for Find Familiar 10 GP · Oil flask 1 SP · Anything in the SRD's equipment list price

@@ -1,15 +1,15 @@
 {
  "campaign": "realms4",
  "status": "playing",
- "lastSeq": 15,
+ "lastSeq": 22,
  "lastMove": 1,
  "month": 1,
  "day": 1,
- "clock": "10:20",
+ "clock": "11:55",
  "hex": "A3",
- "where": "Floor 1 · room 1.3",
+ "where": "Floor 1 · room 1.5",
  "level": 3,
- "xp": 1050,
+ "xp": 1200,
  "deaths": 0,
  "hud": {
   "hp": 20,
@@ -24,10 +24,8 @@
   "reaction": true,
   "inspiration": true,
   "freeArmor": false,
-  "coins": "10 GP",
-  "lost": [
-   "Magic Missile"
-  ]
+  "coins": "25 GP",
+  "lost": []
  },
  "table": {
   "who": "dm",
@@ -661,9 +659,9 @@
   "turn": null
  },
  "live": null,
- "latest": "s0015",
- "lastFight": "s0015",
- "doing": "getting past the horse in room 1.3",
+ "latest": "s0022",
+ "lastFight": "s0022",
+ "doing": "fighting the hobgoblin at room 1.5",
  "checkIn": null,
  "wake": {
   "on": true

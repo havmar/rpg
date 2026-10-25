@@ -185,3 +185,87 @@ Floor 1 is the safe start: it's under the home hex, so no travel and no wanderin
 *After: 20/20 HP · XP 1,050 · 10 GP · lost: Magic Missile*
 
 ---
+
+## Room 1.4 · 2 Giant Rats (CR 1/8 each) · Low, 50 XP · cleared, untouched
+
+*s0018 · fight · Month 1 · Day 1 · 10:40 · A3 · Floor 1 · room 1.4*
+
+**Sleep, a Fire Bolt and a point-blank crit: the rats never reached him.**
+
+- **Scouting:** the rats' Stealth (7) lost to his passive Perception, so he saw both from the door, 8 sq off with the rubble between.
+- **Cheese:** one Sleep caught both. One shook it off on exactly 13 and died to a 10 dmg Fire Bolt before it moved. The other fell unconscious, and he Dashed through the rubble to it.
+- **How it ended:** Shocking Grasp on a sleeping target, with Advantage, and an automatic crit from 1.5 m: 14 lightning dmg.
+- **Result:** 20/20 HP, nothing new lost. XP 1,050 → 1,100. +5 GP (15 GP on him). The room's search turn shows one exit, an iron-bound door on the N wall.
+
+**Fight:** 2× Giant Rat (CR 1/8, AC 13, 7 HP) · Low, 50 XP · cleared (the cheese worked as written)
+**Result:** XP 1,050 → 1,100 · +5 GP
+
+- HP track, Morten: 20 → 20 → 20 → 20 → 20 (of 20 HP)
+- HP track, Giant Rat A: 7 → 7 → 0 → 0 → 0 (of 7 HP)
+- HP track, Giant Rat B: 7 → 7 → 7 → 7 → 0 (of 7 HP)
+
+**Trace**
+
+- R2 · GM: The rats' Stealth (7) loses to his passive Perception 13: two Giant Rats at F2 and G2, 8 sq (12 m) away. Room 1.4, 15×15 m (A–J × 1–10), rubble across rows 4–6; Morten at E10 in the S door. (d20 4 +3 = 7 vs passive Perception 13, FAIL)
+- R2 · GM: Initiative: Morten 13, Rats 10. (d20 9 +4 = 13; d20 7 +3 = 10)
+- R2 · Morten: R1 Sleep centred between them (1.5 m radius): 12 vs DC 11, cast. (d20 7 +5 = 12 vs DC 11, CAST)
+- R2 · Foe: WIS saves vs DC 13: 9 and 8, both fail. Incapacitated. (d20 9 vs DC 13, FAIL; d20 8 vs DC 13, FAIL)
+- R2 · Foe: Second saves at the end of their turn: Rat A 13, success, awake; Rat B 12, fail, Unconscious. (d20 13 vs DC 13, SAVE; d20 12 vs DC 13, FAIL)
+- R2 · Morten: R2 Fire Bolt on Rat A: 20 vs AC 13, hit, 10 fire dmg. Rat A dead. (d20 15 +5 = 20 vs AC 13, HIT; d10 10)
+- R4 · Morten: R3 Dash: 11 sq of movement through the rubble to G3, next to the sleeping Rat B.
+- R4 · Morten: R4 Shocking Grasp: Advantage on an Unconscious target, 22 vs AC 13, hit; within 1.5 m it's a Critical Hit: 2d8 = 14 lightning dmg. Rat B dead. (d20 12, 17 keep 17 +5 = 22 vs AC 13, HIT; 2d8: 8+6 = 14)
+
+*After: 20/20 HP · XP 1,100 · 15 GP · lost: Magic Missile*
+
+---
+
+## Short Rest in room 1.4
+
+*s0019 · rest · Month 1 · Day 1 · 11:40 · A3 · Floor 1 · room 1.4*
+
+**An hour by the S door of room 1.4: Arcane Recovery brings back Magic Missile before the last door.**
+
+- **Why rest at full HP:** the iron-bound N door is the last one on the floor, and whatever is behind it now has a warning from the goblin that fled. Magic Missile never misses, which is what he wants against something armoured.
+- **Arcane Recovery:** used: Magic Missile back (1 level of the 2 he may regain). Hit Dice stay at 1/3.
+- **The purse habit:** the 15 GP from the floor so far go on the floor by the S door of room 1.4, so a death behind the next door costs nothing.
+- **Light:** the lamp's flask runs to 14:10.
+
+*After: 20/20 HP · XP 1,100 · none · lost: nothing*
+
+---
+
+## Room 1.5 · Hobgoblin Warrior (CR 1/2) and the fled Goblin Warrior (CR 1/4) · High, 100 XP · cleared, untouched
+
+*s0022 · fight · Month 1 · Day 1 · 11:55 · A3 · Floor 1 · room 1.5*
+
+**The goblin had run to the hobgoblin, and two Magic Missiles killed them both. Floor 1 is cleared.**
+
+- **Prep:** an hour's Short Rest so Arcane Recovery could bring back Magic Missile, the spell that ignores a hobgoblin's AC 18, and the coins left behind by the S door.
+- **Cheese:** Mage Hand opened the iron door from 6 sq back, across the rubble, so a longsword hit (2d10+1, with Advantage from Pack Tactics while the goblin stood beside it) was two rounds away.
+- **The dice:** the hobgoblin rolled a natural 20 for initiative and got two longbow shots (1d8+1 piercing + 3d4 poison each), missing on 6 and 14. Both Magic Missiles held. One dart killed the 1 HP goblin; the other five darts did 15 force dmg to the hobgoblin, enough to kill it.
+- **A ruling:** the goblin's XP was already given when it fled, so killing it adds none. The floor's loot is the coins rule only (a tenth of the XP); the hobgoblin's half plate and weapons aren't salvage. Ask if you want gear to be sellable.
+- **Result:** 20/20 HP, nothing lost but Arcane Recovery. XP 1,100 → 1,200. +10 GP, and he picks up the 15 GP from room 1.4: 25 GP on him.
+- **Floor 1:** cleared, 300 XP and 25 GP in 3 h 35 min. Level 4 is at 2,700 XP: 1,500 to go.
+
+**Fight:** 1× Hobgoblin Warrior (CR 1/2, AC 18, 11 HP) · 1× Goblin Warrior (CR 1/4, AC 15, 10 HP) · High, 100 XP · cleared (the rest for Magic Missile paid for itself)
+**Result:** XP 1,100 → 1,200 · +10 GP, and the 15 GP back from room 1.4
+
+- HP track, Morten: 20 → 20 → 20 (of 20 HP)
+- HP track, Hobgoblin Warrior: 11 → 6 → 0 (of 11 HP)
+- HP track, Goblin Warrior: 1 → 0 → 0 (of 10 HP)
+
+**Trace**
+
+- R1 · Morten: From E7 in room 1.4 (6 sq, 9 m from the N door at E1), Mage Hand opens the door: 15 vs DC 10, cast. (d20 10 +5 = 15 vs DC 10, CAST)
+- R1 · GM: Room 1.5 behind it, 9×9 m, a 9 m ceiling hung with chains. Initiative: Hobgoblin 23 (natural 20), Morten 10, Goblin 3 (natural 1). (d20 6 +4 = 10; d20 20 +3 = 23, NAT 20; d20 1 +2 = 3, NAT 1)
+- R1 · Foe: Hobgoblin, in the doorway 7 sq away: Longbow vs AC 15, 6, miss. (d20 3 +3 = 6 vs AC 15, MISS)
+- R1 · Morten: Magic Missile: 20 vs DC 11, cast. 3 darts. (d20 15 +5 = 20 vs DC 11, CAST)
+- R1 · Morten: One dart on the Goblin, 2 force dmg: dead. Two on the Hobgoblin, 5 force dmg: 11 → 6 HP. (d4 1 +1 = 2; 2d4: 1+2 +2 = 5)
+- R2 · Foe: Hobgoblin morale (its goblin is dead): WIS save vs DC 10, 12, holds. (d20 12 vs DC 10, SAVE)
+- R2 · Foe: Longbow vs AC 15: 14, miss. (d20 11 +3 = 14 vs AC 15, MISS)
+- R2 · Morten: Magic Missile: 21 vs DC 11, cast. (d20 16 +5 = 21 vs DC 11, CAST)
+- R2 · Morten: 3 darts on the Hobgoblin, 10 force dmg: 6 → 0 HP. Dead. (3d4: 1+3+3 +3 = 10)
+
+*After: 20/20 HP · XP 1,200 · 25 GP · lost: nothing*
+
+---
