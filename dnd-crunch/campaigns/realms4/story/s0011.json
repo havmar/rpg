@@ -1,0 +1,422 @@
+{
+ "v": 1,
+ "seq": 11,
+ "kind": "fight",
+ "month": 1,
+ "day": 1,
+ "clock": "09:00",
+ "hex": "A3",
+ "where": "Floor 1 · room 1.2",
+ "title": "Room 1.2 · Goblin Warrior (CR 1/4) · Moderate, 50 XP · bypassed: it fled on 1 HP",
+ "headline": "The goblin cost him 8 HP and Magic Missile, then ran out the north door on 1 HP.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Scouting",
+   "text": "the goblin's Stealth 17 beat his passive Perception, hidden in the dark past the lamp. The answer was a lit torch thrown into the room: on an open floor in torchlight there was nowhere left for it to hide."
+  },
+  {
+   "label": "Cheese",
+   "text": "Sleep held and it failed the first save by 1, but it made the second save, so it woke before he could close for a point-blank Shocking Grasp."
+  },
+  {
+   "label": "The dice",
+   "text": "Magic Missile fizzled on a 3 and is lost until a Long Rest. The goblin's second arrow hit for 8 piercing dmg. Scorching Ray burned it down to 1 HP, but two of the three rays missed."
+  },
+  {
+   "label": "How it ended",
+   "text": "it failed its morale roll and fled north, out of sight. A goblin that flees counts as bypassed (the table's ruling), so the XP is his, but it is still somewhere ahead of him on 1 HP."
+  },
+  {
+   "label": "Result",
+   "text": "12/20 HP, Magic Missile lost. XP 950 → 1,000. +5 GP from the room (10 GP on him now). He gets the torch back, still burning."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Goblin Stealth 17 beats his passive Perception 13: unseen in the dark past the lamp's 9 sq.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+6",
+     "faces": [
+      11
+     ],
+     "kept": [
+      11
+     ],
+     "mod": 6,
+     "total": 17,
+     "vs": "passive Perception 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "From the archway he lights a torch (bonus action, tinderbox) and throws it 8 sq into the room: bright light to 6 m around it, the rest dim. Room 1.2, 15×18 m (A–J × 1–12), an open empty floor; Morten at E12, the Goblin at H2, 10 sq (15 m).",
+   "who": "morten",
+   "kind": "note",
+   "round": 1,
+   "dice": []
+  },
+  {
+   "text": "Initiative: Goblin 18, Morten 17.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": 4,
+     "total": 17,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+2",
+     "faces": [
+      16
+     ],
+     "kept": [
+      16
+     ],
+     "mod": 2,
+     "total": 18,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Shortbow vs AC 15: miss. Nimble Escape can't hide it in torchlight on an open floor.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      10
+     ],
+     "kept": [
+      10
+     ],
+     "mod": 4,
+     "total": 14,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Sleep on the Goblin (15 m, in range 18 m): the cast holds. Concentration.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      16
+     ],
+     "kept": [
+      16
+     ],
+     "mod": 5,
+     "total": 21,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "WIS save vs DC 13: fail, Incapacitated until the end of its next turn.",
+   "who": "foe",
+   "kind": "save",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20-1",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": -1,
+     "total": 12,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R2 The Goblin's second WIS save: 18 vs DC 13, success. Sleep ends on it, and it is up again at the end of its turn.",
+   "who": "foe",
+   "kind": "save",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20-1",
+     "faces": [
+      19
+     ],
+     "kept": [
+      19
+     ],
+     "mod": -1,
+     "total": 18,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R2 Magic Missile: 8 vs DC 11, FIZZLE. Lost until a Long Rest (his habits keep Heroic Inspiration for Shield, Misty Step, Scorching Ray, Thunderwave and Sleep).",
+   "who": "morten",
+   "kind": "cast",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 5,
+     "total": 8,
+     "vs": "DC 11",
+     "result": "fizzle",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R3 Shortbow: 20 vs AC 15, hit, 8 piercing dmg. Shield would only make it AC 20, still a hit, so he keeps his reaction. Morten 20 → 12 HP.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      16
+     ],
+     "kept": [
+      16
+     ],
+     "mod": 4,
+     "total": 20,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d6+2",
+     "faces": [
+      6
+     ],
+     "kept": [
+      6
+     ],
+     "mod": 2,
+     "total": 8,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R3 Scorching Ray, ray 1 is the casting check: 20 vs DC 12, cast, and vs AC 15, hit: 9 fire dmg. Goblin 10 → 1 HP.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "2d6",
+     "faces": [
+      5,
+      4
+     ],
+     "kept": [
+      5,
+      4
+     ],
+     "mod": 0,
+     "total": 9,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R3 Rays 2 and 3 miss (12 and 9 vs AC 15).",
+   "who": "morten",
+   "kind": "attack",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      7
+     ],
+     "kept": [
+      7
+     ],
+     "mod": 5,
+     "total": 12,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    },
+    {
+     "expr": "1d20+5",
+     "faces": [
+      4
+     ],
+     "kept": [
+      4
+     ],
+     "mod": 5,
+     "total": 9,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Morale, WIS save vs DC 10: 5, fail. The Goblin flees.",
+   "who": "foe",
+   "kind": "save",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20-1",
+     "faces": [
+      6
+     ],
+     "kept": [
+      6
+     ],
+     "mod": -1,
+     "total": 5,
+     "vs": "DC 10",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Nimble Escape (Disengage) and 6 sq north through the door at E1, out of sight and out of the torchlight.",
+   "who": "foe",
+   "kind": "move",
+   "round": 4,
+   "dice": []
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 12,
+  "maxHp": 20,
+  "xp": 1000,
+  "coins": "10 GP",
+  "lost": [
+   "Magic Missile"
+  ]
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Goblin Warrior",
+    "cr": "1/4",
+    "ac": 15,
+    "hp": 10,
+    "maxHp": 10,
+    "speed": "6 sq (9 m)",
+    "attacks": [
+     "Scimitar +4, 1d6+2 slashing (+1d4 with Advantage)",
+     "Shortbow +4, 16/64 sq (24/96 m), 1d6+2 piercing (+1d4 with Advantage)"
+    ],
+    "notes": "Nimble Escape: Disengage or Hide as a bonus action; Stealth +6; darkvision 18 m",
+    "count": 1
+   }
+  ],
+  "difficulty": "Moderate",
+  "budget": 75,
+  "xp": 50,
+  "initiative": [
+   "Goblin 18",
+   "Morten 17"
+  ],
+  "rounds": 4,
+  "outcome": "fled",
+  "verdict": "a cheap win that wasn't cheap",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     20,
+     12,
+     12
+    ]
+   },
+   {
+    "name": "Goblin Warrior",
+    "max": 10,
+    "hp": [
+     10,
+     10,
+     10,
+     1,
+     1
+    ]
+   }
+  ],
+  "loot": "+5 GP",
+  "lost": [
+   "Magic Missile"
+  ],
+  "potion": false,
+  "xpBefore": 950,
+  "xpAfter": 1000
+ },
+ "domain": null,
+ "words": []
+}

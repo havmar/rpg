@@ -9,7 +9,7 @@ XP needed for level 2: 300 · floor total: 300 · 5 encounters
 | Room | Encounter | CR | XP | Difficulty | Room size | Feature | Coins |
 |---|---|---|---|---|---|---|---|
 | 1.1 ✓ | 1× Zombie | 1/4 | 50 | Moderate | 4×12 sq (6×18 m) | rubble (difficult terrain, half cover) | 5 GP |
-| 1.2 | 1× Goblin Warrior | 1/4 | 50 | Moderate | 10×12 sq (15×18 m) | an open, empty floor | 5 GP |
+| 1.2 ✓ (the Goblin fled on 1 HP, Month 1 Day 1: it runs to the Hobgoblin in 1.5 and fights beside it) | 1× Goblin Warrior | 1/4 | 50 | Moderate | 10×12 sq (15×18 m) | an open, empty floor | 5 GP |
 | 1.3 | 1× Draft Horse | 1/4 | 50 | Low | 10×10 sq (15×15 m) | rubble (difficult terrain, half cover) | 5 GP |
 | 1.4 | 2× Giant Rat | 1/8 | 50 | Low | 10×10 sq (15×15 m) | rubble (difficult terrain, half cover) | 5 GP |
 | 1.5 | 1× Hobgoblin Warrior | 1/2 | 100 | High | 6×6 sq (9×9 m) | a high ceiling (9 m) with hanging chains | 10 GP |

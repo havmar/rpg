@@ -1,18 +1,18 @@
 {
  "campaign": "realms4",
  "status": "playing",
- "lastSeq": 7,
+ "lastSeq": 11,
  "lastMove": 1,
  "month": 1,
  "day": 1,
- "clock": "08:40",
+ "clock": "09:00",
  "hex": "A3",
- "where": "Floor 1 · room 1.1",
+ "where": "Floor 1 · room 1.2",
  "level": 3,
- "xp": 950,
+ "xp": 1000,
  "deaths": 0,
  "hud": {
-  "hp": 20,
+  "hp": 12,
   "maxHp": 20,
   "ac": 15,
   "acArmor": 15,
@@ -24,8 +24,10 @@
   "reaction": true,
   "inspiration": true,
   "freeArmor": false,
-  "coins": "5 GP",
-  "lost": []
+  "coins": "10 GP",
+  "lost": [
+   "Magic Missile"
+  ]
  },
  "table": {
   "who": "dm",
@@ -659,9 +661,9 @@
   "turn": null
  },
  "live": null,
- "latest": "s0007",
- "lastFight": "s0007",
- "doing": "fighting the zombie in room 1.1",
+ "latest": "s0011",
+ "lastFight": "s0011",
+ "doing": "fighting the goblin in room 1.2",
  "checkIn": null,
  "wake": {
   "on": true

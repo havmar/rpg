@@ -2,7 +2,7 @@
 
 <!-- Rendered by tools/table.py from morten.json; edit with `table.py morten`. -->
 
-Human (Medium), male (he/him). Background: Sage. XP 950 (level 4 at 2,700). Deaths: 0.
+Human (Medium), male (he/him). Background: Sage. XP 1,000 (level 4 at 2,700). Deaths: 0.
 
 ## Core
 
@@ -12,7 +12,7 @@ Human (Medium), male (he/him). Background: Sage. XP 950 (level 4 at 2,700). Deat
 
 Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +1 CON).
 
-- **HP** 20/20 · **Hit Dice** 3/3 d6
+- **HP** 12/20 · **Hit Dice** 3/3 d6
 - **AC** 12 unarmoured · **15 with Mage Armor** (on)
 - **Speed** 6 sq (9 m) · **Initiative** +4
 - **Proficiency bonus** +2 · **Passive Perception** 13
@@ -56,7 +56,7 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 |---|---|---|---|---|---|
 | Mage Armor *(Magic Initiate, always prepared)* | 1 | 11 | Action | touch | Base AC 13 + DEX for 8 h. Once per Long Rest with no check. |
 | Shield | 1 | 11 | Reaction | self | Reaction when hit or targeted by Magic Missile: +5 AC until your next turn, the triggering attack included. |
-| Magic Missile | 1 | 11 | Action | 24 sq (36 m) | 3 darts, 1d4+1 force each, never miss; +1 dart per level above 1. |
+| ~~Magic Missile~~ (lost) | 1 | 11 | Action | 24 sq (36 m) | 3 darts, 1d4+1 force each, never miss; +1 dart per level above 1. |
 | Thunderwave | 1 | 11 | Action | self (4.5 m cube) | 4.5 m cube from you, CON save: 2d8 thunder and a push of 3 m, half on a save; heard 90 m away. |
 | Sleep | 1 | 11 | Action, Conc. | 12 sq (18 m) | WIS save or Incapacitated, then a second save or Unconscious; 1.5 m radius; no effect on undead and constructs. |
 | Misty Step | 2 | 12 | Bonus action | self | Teleport 9 m to a space you can see. |
@@ -107,6 +107,6 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 | Crowbar | 1 | 2.3 | Advantage on STR checks where leverage helps |
 | Potion of Healing | 1 | 0.2 | Bonus action: regain 2d4+2 HP |
 
-**Coins:** 5 GP on him · purse in the tower: 60 GP 2 SP 5 CP. Starting gold: 47 GP 7 SP 5 CP. The tower's treasury (100 GP) is separate.
+**Coins:** 10 GP on him · purse in the tower: 60 GP 2 SP 5 CP. Starting gold: 47 GP 7 SP 5 CP. The tower's treasury (100 GP) is separate.
 
 **The trader (at the tower):** Potion of Healing 50 GP · Rations (1 day) 5 SP · Incense for Find Familiar 10 GP · Oil flask 1 SP · Anything in the SRD's equipment list price

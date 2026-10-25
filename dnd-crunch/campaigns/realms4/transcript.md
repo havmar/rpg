@@ -93,3 +93,41 @@ Floor 1 is the safe start: it's under the home hex, so no travel and no wanderin
 *After: 20/20 HP · XP 950 · 5 GP · lost: nothing*
 
 ---
+
+## Room 1.2 · Goblin Warrior (CR 1/4) · Moderate, 50 XP · bypassed: it fled on 1 HP
+
+*s0011 · fight · Month 1 · Day 1 · 09:00 · A3 · Floor 1 · room 1.2*
+
+**The goblin cost him 8 HP and Magic Missile, then ran out the north door on 1 HP.**
+
+- **Scouting:** the goblin's Stealth 17 beat his passive Perception, hidden in the dark past the lamp. The answer was a lit torch thrown into the room: on an open floor in torchlight there was nowhere left for it to hide.
+- **Cheese:** Sleep held and it failed the first save by 1, but it made the second save, so it woke before he could close for a point-blank Shocking Grasp.
+- **The dice:** Magic Missile fizzled on a 3 and is lost until a Long Rest. The goblin's second arrow hit for 8 piercing dmg. Scorching Ray burned it down to 1 HP, but two of the three rays missed.
+- **How it ended:** it failed its morale roll and fled north, out of sight. A goblin that flees counts as bypassed (the table's ruling), so the XP is his, but it is still somewhere ahead of him on 1 HP.
+- **Result:** 12/20 HP, Magic Missile lost. XP 950 → 1,000. +5 GP from the room (10 GP on him now). He gets the torch back, still burning.
+
+**Fight:** 1× Goblin Warrior (CR 1/4, AC 15, 10 HP) · Moderate, 50 XP · fled (a cheap win that wasn't cheap)
+**Result:** XP 950 → 1,000 · +5 GP · lost: Magic Missile
+
+- HP track, Morten: 20 → 20 → 20 → 12 → 12 (of 20 HP)
+- HP track, Goblin Warrior: 10 → 10 → 10 → 1 → 1 (of 10 HP)
+
+**Trace**
+
+- R1 · GM: Goblin Stealth 17 beats his passive Perception 13: unseen in the dark past the lamp's 9 sq. (d20 11 +6 = 17 vs passive Perception 13, SAVE)
+- R1 · Morten: From the archway he lights a torch (bonus action, tinderbox) and throws it 8 sq into the room: bright light to 6 m around it, the rest dim. Room 1.2, 15×18 m (A–J × 1–12), an open empty floor; Morten at E12, the Goblin at H2, 10 sq (15 m).
+- R1 · GM: Initiative: Goblin 18, Morten 17. (d20 13 +4 = 17; d20 16 +2 = 18)
+- R1 · Foe: Shortbow vs AC 15: miss. Nimble Escape can't hide it in torchlight on an open floor. (d20 10 +4 = 14 vs AC 15, MISS)
+- R1 · Morten: Sleep on the Goblin (15 m, in range 18 m): the cast holds. Concentration. (d20 16 +5 = 21 vs DC 11, CAST)
+- R1 · Foe: WIS save vs DC 13: fail, Incapacitated until the end of its next turn. (d20 13 −1 = 12 vs DC 13, FAIL)
+- R3 · Foe: R2 The Goblin's second WIS save: 18 vs DC 13, success. Sleep ends on it, and it is up again at the end of its turn. (d20 19 −1 = 18 vs DC 13, SAVE)
+- R3 · Morten: R2 Magic Missile: 8 vs DC 11, FIZZLE. Lost until a Long Rest (his habits keep Heroic Inspiration for Shield, Misty Step, Scorching Ray, Thunderwave and Sleep). (d20 3 +5 = 8 vs DC 11, FIZZLE)
+- R3 · Foe: R3 Shortbow: 20 vs AC 15, hit, 8 piercing dmg. Shield would only make it AC 20, still a hit, so he keeps his reaction. Morten 20 → 12 HP. (d20 16 +4 = 20 vs AC 15, HIT; d6 6 +2 = 8)
+- R3 · Morten: R3 Scorching Ray, ray 1 is the casting check: 20 vs DC 12, cast, and vs AC 15, hit: 9 fire dmg. Goblin 10 → 1 HP. (d20 15 +5 = 20 vs AC 15, HIT; 2d6: 5+4 = 9)
+- R3 · Morten: R3 Rays 2 and 3 miss (12 and 9 vs AC 15). (d20 7 +5 = 12 vs AC 15, MISS; d20 4 +5 = 9 vs AC 15, MISS)
+- R4 · Foe: Morale, WIS save vs DC 10: 5, fail. The Goblin flees. (d20 6 −1 = 5 vs DC 10, FAIL)
+- R4 · Foe: Nimble Escape (Disengage) and 6 sq north through the door at E1, out of sight and out of the torchlight.
+
+*After: 12/20 HP · XP 1,000 · 10 GP · lost: Magic Missile*
+
+---
