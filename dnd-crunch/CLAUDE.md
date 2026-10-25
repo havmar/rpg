@@ -22,6 +22,7 @@ dnd-crunch/
   tools/realms.py        Realms v2 engine: world, domain turns, mission fights, sim, map.json
   tools/realms_v1.py     Realms v1 engine, for the `realms` campaign
   tools/realms_page.py   builds a campaign's map page (page.html) from its map.json
+  templates/             a new game's starting sheet and campaign rules (New game defaults)
   campaigns/<name>/      one folder per campaign (see Campaign files)
   sessions/              per-session notes and full transcripts
 ```
@@ -57,14 +58,16 @@ name and `grep -n`; never read a big file whole.
   beats momentum at this table.
 - **Open table.** Every roll is shown: die faces, modifiers, total, the DC or AC it was
   against, and the result. Monster stat blocks are open too: when the wizard first sees a
-  creature, give its name, AC, HP, speed and attacks (the human can ask for the full block).
+  creature, give its name, CR, AC, HP, speed and attacks (the human can ask for the full
+  block).
   Track monster HP exactly and show it. What stays hidden is only what the character can't
   perceive: unexplored rooms, unseen creatures, undetected traps, a creature's hidden
   abilities that a check hasn't revealed. The human can switch to **closed table** (monster
   HP shown as Healthy/Bloodied/Near death, stats hidden) by asking; note it in `state.md`.
-- **Minimal narration.** No mood, no prose. One terse line per new area: dimensions, exits,
-  light, terrain, visible creatures and objects. NPC speech only when it carries
-  information, one line, no flourish.
+- **Minimal narration.** No mood, no flavour prose. One terse line per new area:
+  dimensions, exits, light, terrain, visible creatures and objects. NPC speech only when it
+  carries information, one line, no flourish. Reports on fights and events are a concise
+  plain-language summary of what happened and why (see **Report style**), not flavour.
 - **Space is a grid.** 1 square = 1.5 m (5 ft). Use squares and metres, never feet: speed
   30 ft = 6 squares = 9 m, Fire Bolt 120 ft = 24 squares = 36 m. Give positions as grid
   coordinates (A1 = north-west corner) whenever they matter, always in combat. Diagonals
@@ -150,11 +153,107 @@ likes, but every cast needs a **casting check**:
   plus Potions of Healing (50 GP), and buys gear at half price, gems at full value. That's
   where gold matters.
 
+## Report style
+
+How the GM reports fights and events in chat. It's a set of dials: the human can turn
+any of them ("fights as outcomes", "domain as log", "more detail on the dice"), and the
+current setting goes in `state.md` (`Report style:`). Whatever the dials say, the full
+roll-by-roll log always goes in `transcript.md` and the dice are rolled as usual, so the
+fights can be checked.
+
+**The dials**
+
+| Dial | Default | Other settings |
+|---|---|---|
+| Fights | **summary** | **log**: the round-by-round Reply format below · **outcome**: one or two lines per fight (foes, result, HP and spells lost, XP and gold) |
+| Domain turns | **summary** | **report**: the script's four-part report as it prints |
+| Events (travel, shopping, rests, rituals, loot) | **summary** | **log**: one line per event with its rolls |
+| Dice in summaries | **key rolls** (nat 20s, nat 1s, fizzles, and the roll that decided the fight) | **none** · **all** |
+| Live updates | **every round** | **turning points** (a fizzle, a crit, a kill, a big hit) · **off** (the report only) |
+
+When the human plays Morten turn by turn, a fight is always shown in the **log** format,
+because the human needs the board to choose Morten's move. The dials matter when the GM
+(or the AI player) plays several turns or fights in one reply.
+
+**Voice.** The model is the first session (`sessions/2026-10-24-transcript.md`, the
+Sunken Vault stirges and library): a GM talking the human through the fight, relaxed, with
+some detail, never a form filled in. In practice:
+
+- **Lead with the headline,** in a full sentence: "Morten cleared the library without
+  taking a single point of damage, and every spell he cast worked. Two natural 20s
+  helped." Then the detail.
+- **Say the plan and why,** in Morten's voice when the GM plays him: "Motionless skeletons
+  around a lectern look like a trap, so he never goes near it; the floating hand does."
+  Number the tricks when there are several (Cheese 1, Cheese 2, …).
+- **Explain a rule when it matters,** in a short aside: "An unconscious target fails the
+  save automatically, so it's coated."
+- **Let the drama of the dice show** in plain words: "Shield just fizzled, so two of them
+  are about to land bites."
+- **Group rounds under a short heading** (Round 1 · Initiative: …) with a few lines each,
+  and fold routine rounds together ("R7–R8: Dash to the sleeping worg").
+- **End with the stakes and a question:** what he carries and could lose, what's still
+  below, the open choices.
+- **Vary it.** Use labels and structure where they help; don't force every fight into
+  the same template.
+
+What makes a report formulaic, and is to be avoided: a fixed set of labels on every
+fight; every line opening with the same prefix ("R3 · Morten (GM):"); fragments like
+"Cast (20). Both fail (3, 12)." instead of sentences; a stream of one-liners, one per die
+call; and bare numbers with no unit.
+
+**Units on every number.** HP, damage, AC, squares and metres always carry their unit or
+word: "Fire Bolt hits for 8 dmg", "Boar B 13 → 9 HP", "Morten 17/20 HP", "AC 15",
+"6 sq (9 m)". Never a bare "B 11 · C 6" or "Morten 20 → 17". Dice shown in a roll keep
+their form (d20 14 +5 = 19 vs AC 15, HIT → 2d6: 3+4 = 7 dmg).
+
+**Live updates.** While the GM plays a fight, it reports as the dice fall instead of
+playing the whole fight and reporting at the end. The updates go out as chat text between
+the dice calls, at a natural pace: a line when Morten tries something that matters and
+why, and a sentence or two when it resolves, with both sides' HP. A quiet round can share
+a line with the next. When the fight ends, a short wrap-up follows: the headline and the
+result, not a replay of rounds the human has just watched.
+
+> Round 2 · Thunderwave on the three snakes lined up beside him. The cast holds (16), two of them fail their saves, and 11 thunder dmg kills all three. Morten is on 11/20 HP.
+
+**Monsters show their CR.** Every time a monster is named in a heading, a stat line or a
+fight report, give its CR next to it, with the fight's difficulty and XP: "3 Venomous
+Snakes (CR 1/8 each) · Moderate, 75 XP". A mixed group gives each kind's CR.
+
+**Fights: summary.** When fights aren't watched live (live updates off, or a fight
+reported afterwards), one block per fight: a heading with the room or place, the foes and
+their CR, the difficulty and XP, and a few words of verdict; then the story in a few
+bullets, using labels such as Prep, Scouting, Cheese, The dice, How it ended and Result
+only where they have something to say. Keep the numbers that matter (HP, the damage that
+nearly killed him, XP, gold) and leave the rest to the transcript.
+
+> **Room 3.1 · 3 Boars (CR 1/4 each) · Low, 150 XP · cleared, but barely**
+> - **Cheese:** Web across the approach to the door. Two boars got stuck in round 1, and the third waded through.
+> - **The dice:** 5 spells fizzled, each lost for the day: Scorching Ray (the Heroic Inspiration reroll still landed 1 short), Magic Missile, Shocking Grasp, Shield and Misty Step.
+> - **How it ended:** Sleep dropped one boar, but a natural 1 on concentration woke it. He finished the last two with a dagger and Ray of Frost while backing up the stair.
+> - **Result:** cleared on **1 HP**, potion used. XP 1,150 → 1,300. +15 GP.
+
+**Domain turns: summary.** Keep the four parts (The plan, What happened, The tower now,
+Next month), but write What happened as one or two plain sentences per event: who
+(*label: verb*), what they did, what goal it served, how it came out, and what it means
+for the tower ("The Gnomes march Thugs and Knights into C4 to rob the Tieflings; that's
+two hexes from the tower, but they aren't after us"). Give an attack's roll in brief only
+when it decided something. Next month says the threats and chances in words, then the
+open choices.
+
+**Events: summary.** A few bullets per day or stop: travel and wandering checks (only
+an encounter gets more than a clause), shopping with the coins left, rests with what came
+back, loot. Fold routine steps into one line.
+
+**After a run of several fights** (a floor, a month), end with a short wrap-up: where
+Morten stands (HP, XP, level, gold, what's lost), what worked and what didn't, any rulings
+made along the way, and what's next.
+
 ## Reply format
 
-Every GM reply follows this shape. The human reads on a phone: **no code blocks and no
-ASCII maps** (they don't wrap). Use plain Markdown: bold labels, short lines, bullets.
-Leave out a section only when it's empty.
+This is the **log** format: a fight shown round by round (see **Report style** for when).
+Every reply, in any style, is read on a phone: **no code blocks and no ASCII maps** (they
+don't wrap). Use plain Markdown: bold labels, short lines, bullets. Leave out a section
+only when it's empty.
 
 > **R2 · Init: Morten 18 › Goblin A 12 › Goblin B 7** (exploration: **Turn 4 · 08:40**)
 >
@@ -205,7 +304,7 @@ Leave out a section only when it's empty.
 ## Who plays Morten
 
 Morten is the human's character, but the human can hand him over. Note the mode in
-`state.md`. The current mode is **GM plays Morten**, which the human asked for because
+`state.md`. The default mode is **GM plays Morten**, which the human asked for because
 it's fastest:
 
 - **GM plays Morten.** The GM decides Morten's turns as well as the world's, using only what
@@ -281,6 +380,9 @@ follow.** The bare roll log of a domain turn isn't enough. The v2 report is buil
   leader as *label: verb* and the goal it served; the rest in one Elsewhere line.
 - **The tower now**, then **Next month:** threats, chances and the open choices.
 
+The **Report style** dials say how plainly to write each part (domain **summary** by
+default).
+
 Leaders are always shown as *label: verb* ("bad: takes land"), never a bare tag. The report
 holds only what the tower can know: never paste `--gm` output or `realms.json` into chat.
 
@@ -288,9 +390,8 @@ holds only what the tower can know: never paste `--gm` output or `realms.json` i
 `python3 dnd-crunch/tools/realms_page.py dnd-crunch/campaigns/<name>` and republish the
 page; its link is in `state.md`.
 
-When the human asks for **outcome-only fights**, report each fight in chat in one or two
-lines (foes, result, HP and spells lost, XP and gold). Keep the full roll-by-roll log in
-`transcript.md` as usual, so it can be checked.
+Fights and domain turns are reported by the **Report style** dials (fights **outcome**
+when the human asks for outcome-only fights).
 
 ## Campaign files
 
@@ -302,7 +403,7 @@ Each campaign lives in `dnd-crunch/campaigns/<name>/`:
   HP, hit dice, lost spells, Arcane Recovery, Heroic Inspiration, deaths, concentration,
   conditions, light sources, rations, and in combat the initiative order, positions and
   every monster's HP. A fresh GM must be able to resume from this file alone. Also notes
-  the table mode (open/closed) and who plays Morten. It holds no secrets: the AI player
+  the table mode (open/closed), the report style and who plays Morten. It holds no secrets: the AI player
   reads it.
 - `transcript.md`: every GM reply word for word, with the action before it (the human's
   words, or Morten (AI)'s turn), in order. Never put GM secrets in it.
@@ -318,13 +419,40 @@ reply**, update `state.md`, append to `transcript.md`, then commit and push the 
 folder (`git add dnd-crunch/campaigns/<name>`). Also commit and push at the end of every
 session.
 
+## New game defaults
+
+When the human asks for a new game, start it with these defaults without asking. The
+human can change any of them, before or during play.
+
+- **Adventure:** a Realms v2 overworld campaign (`realms.md`), with a new world from
+  `realms.py new --seed N --campaign dnd-crunch/campaigns/<name> --level 3`. Roll the seed
+  with `roll.py 1d100`.
+- **Name:** the next free `realmsN` (`realms3` was the first game started this way).
+- **Morten:** a fresh pre-built Wizard 3 (Evoker) with 900 XP, his starting gear and
+  47 GP 7 SP 5 CP. Copy `templates/character-wizard3.md` as his sheet.
+- **Who plays Morten:** the GM.
+- **Style:** cheese everything. Scout, use rituals and Mage Hand, use oil, Sleep then
+  point-blank crits, hold chokepoints, retreat to reset, and leave the purse in the tower
+  before a risky fight.
+- **Table mode:** open.
+- **Report style:** the defaults in **Report style** (summary for fights, domain turns and
+  events, key rolls only, live updates every round).
+- **Campaign rules:** copy `templates/realms-rules.md` and fill in the name, seed and the
+  tower's hex. It holds the Delve, mission-fight, death, purse and downtime rules.
+- **Start:** Month 1 · Day 1 · 08:00, in the tower, rested.
+
 ## How to run a session
 
-1. Agree on the campaign name, starting level, who plays Morten, and adventure type with the human (a dungeon
-   crawl is the natural fit: rooms are discrete and mechanical).
-2. Build the wizard (or use the pre-built Morten) and write `character.md`.
-3. Write `gm-secrets.md` (a 5–10 room dungeon is a good one-session size, with encounters
-   budgeted for one character and at least one short-rest opportunity), then `state.md`.
-4. Open with the first reply in the format above, and play one reply per human action.
-5. If the session is resumed by a fresh GM, read `state.md`, `character.md`,
+1. For a new game, use the defaults above, or what the human asked for instead. A
+   hand-made dungeon crawl (rooms are discrete and mechanical) is the other option the
+   human may pick.
+2. Write `character.md`, `rules.md`, `state.md` and `transcript.md`. For a Realms game,
+   `realms.py new` writes `realms.json`, `world.md`, `map.json` and the floors in
+   `gm-secrets.md`. Build the map page and publish it (`ui/README.md`), and put its link in
+   `state.md`. For a hand-made dungeon, write `gm-secrets.md` yourself. A 5–10 room dungeon
+   is a good one-session size, with encounters budgeted for one character and at least one
+   short-rest opportunity.
+3. Open with the first reply: the world, Rumours, the Month 1 orders as **Morten (GM):**
+   lines, then the first scene in the format above. Play one reply per human action.
+4. If the session is resumed by a fresh GM, read `state.md`, `character.md`,
    `gm-secrets.md` and the end of `transcript.md`, then continue.
