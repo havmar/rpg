@@ -1,0 +1,670 @@
+{
+ "campaign": "realms4",
+ "status": "awaiting",
+ "lastSeq": 1,
+ "lastMove": 0,
+ "month": 1,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "A3",
+ "where": "the tower (A3)",
+ "level": 3,
+ "xp": 900,
+ "deaths": 0,
+ "hud": {
+  "hp": 20,
+  "maxHp": 20,
+  "ac": 12,
+  "acArmor": 15,
+  "armorOn": false,
+  "light": "lamp, unlit (6 h per oil flask)",
+  "conc": null,
+  "conditions": [],
+  "exhaustion": 0,
+  "reaction": true,
+  "inspiration": true,
+  "freeArmor": true,
+  "coins": "47 GP 7 SP 5 CP",
+  "lost": []
+ },
+ "table": {
+  "who": "dm",
+  "stop": "month",
+  "fights": "live",
+  "world": "story",
+  "dice": "key",
+  "mode": "open",
+  "habits": [
+   "Shield: cast as a reaction when a hit would become a miss at AC 20 and deals 4+ damage (any damage at 8 HP or less), if Shield isn't lost and the reaction is free.",
+   "Heroic Inspiration: reroll a failed cast of Shield, Misty Step, Scorching Ray, Thunderwave or Sleep.",
+   "Cheese everything: scout, rituals, Mage Hand, oil, Sleep then point-blank crits, chokepoints, Ready Shocking Grasp for the first through the door, retreat to reset, leave the purse home before a risky fight.",
+   "Rulings: monsters that flee on a morale check count as bypassed (XP given)."
+  ]
+ },
+ "awaiting": {
+  "kind": "orders",
+  "prompt": "Month 1's orders: send the GM's plan above, or pick your own",
+  "orders": {
+   "hexes": [
+    {
+     "id": "A3",
+     "name": "the tower's forest",
+     "days": 0
+    },
+    {
+     "id": "A2",
+     "name": "Goblinkind's taiga",
+     "days": 1
+    },
+    {
+     "id": "A4",
+     "name": "the Tieflings' forest",
+     "days": 1
+    },
+    {
+     "id": "B2",
+     "name": "the Tieflings' forest",
+     "days": 1
+    },
+    {
+     "id": "B3",
+     "name": "the Tieflings' forest",
+     "days": 1
+    },
+    {
+     "id": "A1",
+     "name": "Goblinkind's taiga",
+     "days": 2
+    },
+    {
+     "id": "A5",
+     "name": "the Orcs' jungle",
+     "days": 2
+    },
+    {
+     "id": "B1",
+     "name": "Goblinkind's mountains with its lake",
+     "days": 2
+    },
+    {
+     "id": "B4",
+     "name": "the Humans' hills",
+     "days": 2
+    },
+    {
+     "id": "C2",
+     "name": "the Elves' forest",
+     "days": 2
+    },
+    {
+     "id": "C3",
+     "name": "the Humans' forest",
+     "days": 2
+    },
+    {
+     "id": "C4",
+     "name": "the Humans' forest with its lake",
+     "days": 2
+    },
+    {
+     "id": "B5",
+     "name": "the Orcs' desert",
+     "days": 3
+    },
+    {
+     "id": "C1",
+     "name": "the Elves' taiga",
+     "days": 3
+    },
+    {
+     "id": "C5",
+     "name": "the Orcs' mountains",
+     "days": 3
+    },
+    {
+     "id": "D1",
+     "name": "the Elves' mountains",
+     "days": 3
+    },
+    {
+     "id": "D2",
+     "name": "the Gnomes' mountains",
+     "days": 3
+    },
+    {
+     "id": "D3",
+     "name": "the Gnomes' forest",
+     "days": 3
+    },
+    {
+     "id": "D4",
+     "name": "the Gnomes' plains",
+     "days": 3
+    },
+    {
+     "id": "D5",
+     "name": "the Orcs' savanna",
+     "days": 4
+    }
+   ],
+   "missions": [
+    {
+     "type": "delve",
+     "target": "floor 1",
+     "hex": "A3",
+     "days": 0,
+     "label": "Delve floor 1 under A3"
+    },
+    {
+     "type": "contact",
+     "target": "A2",
+     "hex": "A2",
+     "days": 1,
+     "label": "Contact the Goblinkind of A2 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 8",
+     "hex": "A2",
+     "days": 1,
+     "label": "Delve floor 8 under A2"
+    },
+    {
+     "type": "strike",
+     "target": "a10",
+     "hex": "A4",
+     "days": 1,
+     "label": "Strike the Tieflings' Knights in A4 (High fight, 2d6 to it)"
+    },
+    {
+     "type": "contact",
+     "target": "A4",
+     "hex": "A4",
+     "days": 1,
+     "label": "Contact the Tieflings of A4 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 13",
+     "hex": "A4",
+     "days": 1,
+     "label": "Delve floor 13 under A4"
+    },
+    {
+     "type": "contact",
+     "target": "B2",
+     "hex": "B2",
+     "days": 1,
+     "label": "Contact the Tieflings of B2 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 11",
+     "hex": "B2",
+     "days": 1,
+     "label": "Delve floor 11 under B2"
+    },
+    {
+     "type": "strike",
+     "target": "a9",
+     "hex": "B3",
+     "days": 1,
+     "label": "Strike the Tieflings' Beast pack in B3 (Moderate fight, 2d6 to it)"
+    },
+    {
+     "type": "strike",
+     "target": "a12",
+     "hex": "B3",
+     "days": 1,
+     "label": "Strike the Tieflings' Caravans in B3 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "rob",
+     "target": "a12",
+     "hex": "B3",
+     "days": 1,
+     "label": "Rob the Tieflings' Caravans in B3 (up to 100 GP, Low fight)"
+    },
+    {
+     "type": "contact",
+     "target": "B3",
+     "hex": "B3",
+     "days": 1,
+     "label": "Contact the Tieflings of B3 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 20",
+     "hex": "B3",
+     "days": 1,
+     "label": "Delve floor 20 under B3"
+    },
+    {
+     "type": "contact",
+     "target": "A1",
+     "hex": "A1",
+     "days": 2,
+     "label": "Contact the Goblinkind of A1 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 14",
+     "hex": "A1",
+     "days": 2,
+     "label": "Delve floor 14 under A1"
+    },
+    {
+     "type": "contact",
+     "target": "A5",
+     "hex": "A5",
+     "days": 2,
+     "label": "Contact the Orcs of A5 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 15",
+     "hex": "A5",
+     "days": 2,
+     "label": "Delve floor 15 under A5"
+    },
+    {
+     "type": "strike",
+     "target": "a5",
+     "hex": "B1",
+     "days": 2,
+     "label": "Strike the Goblinkind's Militia in B1 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "strike",
+     "target": "a6",
+     "hex": "B1",
+     "days": 2,
+     "label": "Strike the Goblinkind's Militia in B1 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "strike",
+     "target": "a8",
+     "hex": "B1",
+     "days": 2,
+     "label": "Strike the Goblinkind's Treasury in B1 (High fight, 2d6 to it)"
+    },
+    {
+     "type": "rob",
+     "target": "a8",
+     "hex": "B1",
+     "days": 2,
+     "label": "Rob the Goblinkind's Treasury in B1 (up to 600 GP, High fight)"
+    },
+    {
+     "type": "contact",
+     "target": "B1",
+     "hex": "B1",
+     "days": 2,
+     "label": "Contact the Goblinkind of B1 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 18",
+     "hex": "B1",
+     "days": 2,
+     "label": "Delve floor 18 under B1"
+    },
+    {
+     "type": "strike",
+     "target": "a1",
+     "hex": "B4",
+     "days": 2,
+     "label": "Strike the Humans' Thugs in B4 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "strike",
+     "target": "a2",
+     "hex": "B4",
+     "days": 2,
+     "label": "Strike the Humans' Beast pack in B4 (Moderate fight, 2d6 to it)"
+    },
+    {
+     "type": "strike",
+     "target": "a4",
+     "hex": "B4",
+     "days": 2,
+     "label": "Strike the Humans' Mine in B4 (Moderate fight, 2d6 to it)"
+    },
+    {
+     "type": "rob",
+     "target": "a4",
+     "hex": "B4",
+     "days": 2,
+     "label": "Rob the Humans' Mine in B4 (up to 200 GP, Moderate fight)"
+    },
+    {
+     "type": "contact",
+     "target": "B4",
+     "hex": "B4",
+     "days": 2,
+     "label": "Contact the Humans of B4 (Persuasion DC 13)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 12",
+     "hex": "B4",
+     "days": 2,
+     "label": "Delve floor 12 under B4"
+    },
+    {
+     "type": "strike",
+     "target": "a20",
+     "hex": "C2",
+     "days": 2,
+     "label": "Strike the Elves' Farms in C2 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "rob",
+     "target": "a20",
+     "hex": "C2",
+     "days": 2,
+     "label": "Rob the Elves' Farms in C2 (up to 100 GP, Low fight)"
+    },
+    {
+     "type": "contact",
+     "target": "C2",
+     "hex": "C2",
+     "days": 2,
+     "label": "Contact the Elves of C2 (Persuasion DC 12)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 5",
+     "hex": "C2",
+     "days": 2,
+     "label": "Delve floor 5 under C2"
+    },
+    {
+     "type": "contact",
+     "target": "C3",
+     "hex": "C3",
+     "days": 2,
+     "label": "Contact the Humans of C3 (Persuasion DC 13)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 9",
+     "hex": "C3",
+     "days": 2,
+     "label": "Delve floor 9 under C3"
+    },
+    {
+     "type": "contact",
+     "target": "C4",
+     "hex": "C4",
+     "days": 2,
+     "label": "Contact the Humans of C4 (Persuasion DC 13)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 6",
+     "hex": "C4",
+     "days": 2,
+     "label": "Delve floor 6 under C4"
+    },
+    {
+     "type": "contact",
+     "target": "B5",
+     "hex": "B5",
+     "days": 3,
+     "label": "Contact the Orcs of B5 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 3",
+     "hex": "B5",
+     "days": 3,
+     "label": "Delve floor 3 under B5"
+    },
+    {
+     "type": "strike",
+     "target": "a17",
+     "hex": "C1",
+     "days": 3,
+     "label": "Strike the Elves' Thugs in C1 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "contact",
+     "target": "C1",
+     "hex": "C1",
+     "days": 3,
+     "label": "Contact the Elves of C1 (Persuasion DC 12)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 10",
+     "hex": "C1",
+     "days": 3,
+     "label": "Delve floor 10 under C1"
+    },
+    {
+     "type": "strike",
+     "target": "a21",
+     "hex": "C5",
+     "days": 3,
+     "label": "Strike the Orcs' Beast pack in C5 (Moderate fight, 2d6 to it)"
+    },
+    {
+     "type": "strike",
+     "target": "a24",
+     "hex": "C5",
+     "days": 3,
+     "label": "Strike the Orcs' Treasury in C5 (High fight, 2d6 to it)"
+    },
+    {
+     "type": "rob",
+     "target": "a24",
+     "hex": "C5",
+     "days": 3,
+     "label": "Rob the Orcs' Treasury in C5 (up to 600 GP, High fight)"
+    },
+    {
+     "type": "contact",
+     "target": "C5",
+     "hex": "C5",
+     "days": 3,
+     "label": "Contact the Orcs of C5 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 16",
+     "hex": "C5",
+     "days": 3,
+     "label": "Delve floor 16 under C5"
+    },
+    {
+     "type": "strike",
+     "target": "a18",
+     "hex": "D1",
+     "days": 3,
+     "label": "Strike the Elves' Beast pack in D1 (Moderate fight, 2d6 to it)"
+    },
+    {
+     "type": "contact",
+     "target": "D1",
+     "hex": "D1",
+     "days": 3,
+     "label": "Contact the Elves of D1 (Persuasion DC 12)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 7",
+     "hex": "D1",
+     "days": 3,
+     "label": "Delve floor 7 under D1"
+    },
+    {
+     "type": "strike",
+     "target": "a13",
+     "hex": "D2",
+     "days": 3,
+     "label": "Strike the Gnomes' Thugs in D2 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "strike",
+     "target": "a16",
+     "hex": "D2",
+     "days": 3,
+     "label": "Strike the Gnomes' Mercenaries in D2 (Moderate fight, 2d6 to it)"
+    },
+    {
+     "type": "rob",
+     "target": "a16",
+     "hex": "D2",
+     "days": 3,
+     "label": "Rob the Gnomes' Mercenaries in D2 (up to 200 GP, Moderate fight)"
+    },
+    {
+     "type": "contact",
+     "target": "D2",
+     "hex": "D2",
+     "days": 3,
+     "label": "Contact the Gnomes of D2 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 19",
+     "hex": "D2",
+     "days": 3,
+     "label": "Delve floor 19 under D2"
+    },
+    {
+     "type": "contact",
+     "target": "D3",
+     "hex": "D3",
+     "days": 3,
+     "label": "Contact the Gnomes of D3 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 4",
+     "hex": "D3",
+     "days": 3,
+     "label": "Delve floor 4 under D3"
+    },
+    {
+     "type": "strike",
+     "target": "a14",
+     "hex": "D4",
+     "days": 3,
+     "label": "Strike the Gnomes' Thugs in D4 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "contact",
+     "target": "D4",
+     "hex": "D4",
+     "days": 3,
+     "label": "Contact the Gnomes of D4 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 17",
+     "hex": "D4",
+     "days": 3,
+     "label": "Delve floor 17 under D4"
+    },
+    {
+     "type": "strike",
+     "target": "a22",
+     "hex": "D5",
+     "days": 4,
+     "label": "Strike the Orcs' Militia in D5 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "contact",
+     "target": "D5",
+     "hex": "D5",
+     "days": 4,
+     "label": "Contact the Orcs of D5 (Persuasion DC 14)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 2",
+     "hex": "D5",
+     "days": 4,
+     "label": "Delve floor 2 under D5"
+    }
+   ],
+   "actions": [
+    {
+     "action": "buy:thugs@A3",
+     "label": "Buy Thugs in A3",
+     "cost": 200,
+     "affordable": false
+    },
+    {
+     "action": "buy:militia@A3",
+     "label": "Buy Militia in A3",
+     "cost": 400,
+     "affordable": false
+    },
+    {
+     "action": "buy:informers@A3",
+     "label": "Buy Informers in A3",
+     "cost": 200,
+     "affordable": false
+    },
+    {
+     "action": "buy:smugglers@A3",
+     "label": "Buy Smugglers in A3",
+     "cost": 200,
+     "affordable": false
+    },
+    {
+     "action": "buy:farms@A3",
+     "label": "Buy Farms in A3",
+     "cost": 200,
+     "affordable": false
+    },
+    {
+     "action": "raise:force",
+     "label": "Raise Force to 2",
+     "cost": 200,
+     "affordable": false
+    },
+    {
+     "action": "raise:cunning",
+     "label": "Raise Cunning to 2",
+     "cost": 200,
+     "affordable": false
+    },
+    {
+     "action": "raise:wealth",
+     "label": "Raise Wealth to 2",
+     "cost": 200,
+     "affordable": false
+    }
+   ],
+   "realms": [
+    "Elves",
+    "Tieflings",
+    "Gnomes",
+    "Goblinkind",
+    "Humans",
+    "Orcs"
+   ],
+   "funds": {
+    "treasury": 100,
+    "income": 10,
+    "onMorten": "47 GP 7 SP 5 CP",
+    "text": "100 GP in the treasury, +10 GP income before the tower acts"
+   }
+  },
+  "fight": null,
+  "turn": null
+ },
+ "live": null,
+ "latest": "s0001",
+ "lastFight": null,
+ "doing": null,
+ "checkIn": null,
+ "wake": {
+  "on": true
+ },
+ "url": "https://claude.ai/artifact/PAJNBNkpHwFm8D6Jfv27EA"
+}
