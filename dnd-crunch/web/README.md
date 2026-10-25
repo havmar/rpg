@@ -313,7 +313,7 @@ The page renders `md` with `T.ui.md` (a small, safe Markdown subset: paragraphs,
  "at": "2026-10-25T09:14:00Z"}
 ```
 
-### `log/lNNNN` (written once, deleted at the next section)
+### `log/lNNNN` (written once, deleted at the next section or stop)
 
 `{"v": 1, "seq": 40, "text": "rolling round 3", "at": "…"}`
 
