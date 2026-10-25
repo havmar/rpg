@@ -1,6 +1,6 @@
 # Morten — Wizard 3 (Evoker)
 
-Human (Medium), male (he/him). Background: Sage. XP 1,275 (level 4 at 2,700).
+Human (Medium), male (he/him). Background: Sage. XP 2,125 (level 4 at 2,700).
 
 ## Core
 
@@ -96,14 +96,15 @@ no casting check: Detect Magic, Find Familiar.
 | Backpack | 2.3 | |
 | Ink, ink pen, 10 parchment | — | |
 | Lamp | 0.5 | 4.5 m bright + 9 m dim; 6 h per oil flask |
-| Oil ×9 spare (+1 in the lamp, about 1.5 h left) | 4.5 | fuel, or thrown / poured for fire |
+| Oil ×8 spare (+1 in the lamp, about 1 h left) | 4.0 | fuel, or thrown / poured for fire |
 | Tinderbox | 0.5 | light a torch or lamp: Bonus action |
 | Torch ×7 | 3.2 | 1 h, 6 m bright + 6 m dim |
-| Rations ×4 | 3.6 | 1 per day |
+| Rations ×5 | 4.5 | 1 per day |
 | Waterskin (full) | 2.3 | |
 | Rope, 15 m | 2.3 | |
 | Bedroll | 3.2 | |
 | Caltrops (bag) | 0.9 | cover a 1.5 m square |
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
+| Potion of Healing | 0.2 | Bonus action: regain 2d4+2 HP |
 
-**Coins:** 2 SP 5 CP. Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); floor 1 loot +37 GP; deposited 97 GP in the tower's treasury. The treasury is separate.
+**Coins:** 7 SP 5 CP. Month 2: lizards +15 GP, floor 2 +70 GP; bought a Potion of Healing (50 GP), incense (10 GP) and 5 rations (2 GP 5 SP); deposited 22 GP. Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); floor 1 loot +37 GP; deposited 97 GP in the tower's treasury. The treasury is separate.

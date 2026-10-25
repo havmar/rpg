@@ -1,7 +1,7 @@
 {
  "version": 2,
  "campaign": "realms3",
- "month": 2,
+ "month": 3,
  "layout": {
   "cols": 4,
   "rows": 5,
@@ -148,10 +148,10 @@
    "level": 14,
    "biome": "tundra",
    "people": "Orcs",
-   "holder": "Orcs",
+   "holder": "Elves",
    "lake": false,
    "seat_of": null,
-   "income": 0,
+   "income": 140,
    "neighbours": [
     "A1",
     "A2",
@@ -355,25 +355,12 @@
      "name": "Thugs",
      "type": "Force",
      "tier": 1,
-     "hp": 3,
+     "hp": 1,
      "max_hp": 3,
      "leader": null,
      "attack": "F vs F, 1d3+1",
      "counter": "1d4",
      "special": ""
-    },
-    {
-     "id": "a8",
-     "owner": "Goblinkind",
-     "name": "Caravans",
-     "type": "Wealth",
-     "tier": 1,
-     "hp": 2,
-     "max_hp": 4,
-     "leader": null,
-     "attack": "W vs W, 1d4",
-     "counter": "1d4-1",
-     "special": "income +100; moves 2 hexes"
     }
    ]
   },
@@ -511,7 +498,7 @@
      "name": "Mercenaries",
      "type": "Wealth",
      "tier": 2,
-     "hp": 6,
+     "hp": 1,
      "max_hp": 6,
      "leader": null,
      "attack": "W vs F, 2d4+2",
@@ -536,7 +523,21 @@
     "C2",
     "D2"
    ],
-   "assets": []
+   "assets": [
+    {
+     "id": "a27",
+     "owner": "Orcs",
+     "name": "Knights",
+     "type": "Force",
+     "tier": 3,
+     "hp": 12,
+     "max_hp": 12,
+     "leader": null,
+     "attack": "F vs F, 1d8",
+     "counter": "1d8",
+     "special": "upkeep 100"
+    }
+   ]
   },
   {
    "id": "D2",
@@ -637,6 +638,19 @@
      "attack": "F vs F, 1d6",
      "counter": "1d4+1",
      "special": ""
+    },
+    {
+     "id": "a26",
+     "owner": "Tieflings",
+     "name": "Treasury",
+     "type": "Wealth",
+     "tier": 3,
+     "hp": 8,
+     "max_hp": 8,
+     "leader": null,
+     "attack": null,
+     "counter": "1d6",
+     "special": "income +100; a Rob here takes double"
     }
    ]
   }
@@ -694,18 +708,17 @@
     "tag": "Raider",
     "verb": "robs its neighbours"
    },
-   "income": 340,
-   "goal": "rob Goblinkind's Caravans a8 in C2 (month 2 of it)",
-   "hp": 22,
+   "income": 240,
+   "goal": "rob Goblinkind's Caravans a8 in C2 (month 3 of it)",
+   "hp": 19,
    "max_hp": 22,
    "force": 4,
    "cunning": 4,
    "wealth": 4,
-   "treasury": 910,
+   "treasury": 450,
    "seat": "D1",
    "hexes": [
     "A1",
-    "B1",
     "C1",
     "D1"
    ],
@@ -723,14 +736,14 @@
     "tag": "Steward",
     "verb": "keeps the peace"
    },
-   "income": 410,
-   "goal": "build Walls at D2 (month 2 of it)",
+   "income": 310,
+   "goal": "build Walls at D2 (month 3 of it)",
    "hp": 16,
    "max_hp": 16,
    "force": 3,
    "cunning": 3,
    "wealth": 3,
-   "treasury": 790,
+   "treasury": 1200,
    "seat": "D2",
    "hexes": [
     "C2",
@@ -752,13 +765,13 @@
     "verb": "keeps the peace"
    },
    "income": 150,
-   "goal": "build Walls at A4 (month 2 of it)",
+   "goal": "build Walls at A4 (month 3 of it)",
    "hp": 16,
    "max_hp": 16,
    "force": 3,
    "cunning": 3,
    "wealth": 3,
-   "treasury": 400,
+   "treasury": 550,
    "seat": "A4",
    "hexes": [
     "A3",
@@ -779,14 +792,14 @@
     "tag": "Tyrant",
     "verb": "squeezes its own people"
    },
-   "income": 525,
-   "goal": "buy Treasury (1,200 GP) (month 2 of it)",
+   "income": 625,
+   "goal": null,
    "hp": 31,
    "max_hp": 31,
    "force": 5,
    "cunning": 5,
    "wealth": 5,
-   "treasury": 975,
+   "treasury": 100,
    "seat": "D5",
    "hexes": [
     "C5",
@@ -807,17 +820,18 @@
     "tag": "Conqueror",
     "verb": "takes land"
    },
-   "income": 370,
-   "goal": "take B1 (L14, Orcs') (month 2 of it)",
+   "income": 510,
+   "goal": "take B1 (L14, Orcs') (month 3 of it)",
    "hp": 16,
    "max_hp": 16,
    "force": 3,
    "cunning": 3,
    "wealth": 3,
-   "treasury": 640,
+   "treasury": 1010,
    "seat": "A2",
    "hexes": [
     "A2",
+    "B1",
     "B2",
     "B3"
    ],
@@ -836,13 +850,13 @@
     "verb": "robs its neighbours"
    },
    "income": 320,
-   "goal": "rob Tieflings' Mercenaries a16 in C5 (month 2 of it)",
+   "goal": null,
    "hp": 22,
    "max_hp": 22,
    "force": 4,
    "cunning": 4,
    "wealth": 4,
-   "treasury": 690,
+   "treasury": 1210,
    "seat": "D3",
    "hexes": [
     "B4",
@@ -870,7 +884,7 @@
    "force": 1,
    "cunning": 1,
    "wealth": 1,
-   "treasury": 7,
+   "treasury": 89,
    "seat": "B5",
    "hexes": [
     "B5"
@@ -886,7 +900,7 @@
  },
  "events": [
   {
-   "month": 1,
+   "month": 2,
    "actor": "tower",
    "action": "Mission",
    "from_hex": "B5",
@@ -895,107 +909,98 @@
    "result": "delved"
   },
   {
-   "month": 1,
-   "actor": "Gnomes",
-   "action": "Move",
-   "from_hex": "D3",
-   "to_hex": "C4",
-   "target": "Gnomes' Thugs a21",
-   "result": "moved"
+   "month": 2,
+   "actor": "Tieflings",
+   "action": "Buy",
+   "from_hex": "D5",
+   "to_hex": "D5",
+   "target": "Tieflings' Treasury a26",
+   "result": "1,200 GP"
   },
   {
-   "month": 1,
-   "actor": "Gnomes",
-   "action": "Move",
-   "from_hex": "D3",
-   "to_hex": "C4",
-   "target": "Gnomes' Knights a22",
-   "result": "moved"
-  },
-  {
-   "month": 1,
+   "month": 2,
    "actor": "Orcs",
-   "action": "Move",
+   "action": "Buy",
    "from_hex": "D1",
-   "to_hex": "C2",
-   "target": "Orcs' Thugs a1",
-   "result": "moved"
+   "to_hex": "D1",
+   "target": "Orcs' Knights a27",
+   "result": "800 GP"
   },
   {
-   "month": 1,
-   "actor": "Orcs",
-   "action": "Move",
-   "from_hex": "D1",
-   "to_hex": "C2",
-   "target": "Orcs' Thugs a2",
-   "result": "moved"
-  },
-  {
-   "month": 1,
-   "actor": "Elves",
-   "action": "Move",
-   "from_hex": "A2",
-   "to_hex": "B1",
-   "target": "Elves' Militia a17",
-   "result": "moved"
-  },
-  {
-   "month": 1,
-   "actor": "Elves",
-   "action": "Move",
-   "from_hex": "A2",
-   "to_hex": "B1",
-   "target": "Elves' Militia a18",
-   "result": "moved"
-  },
-  {
-   "month": 1,
+   "month": 2,
    "actor": "Goblinkind",
    "action": "Attack",
    "from_hex": "C2",
    "to_hex": "C2",
    "target": "Orcs' Thugs a2",
-   "result": "lost: counter 2"
+   "result": "lost: counter 3, attacker destroyed"
   },
   {
-   "month": 1,
-   "actor": "tower",
-   "action": "Buy",
-   "from_hex": "B5",
-   "to_hex": "B5",
-   "target": "the tower's Farms a25",
-   "result": "200 GP"
+   "month": 2,
+   "actor": "Elves",
+   "action": "Seize",
+   "from_hex": "B1",
+   "to_hex": "B1",
+   "target": "B1 (Orcs')",
+   "result": "resolves at clean-up"
+  },
+  {
+   "month": 2,
+   "actor": "Tieflings",
+   "action": "Goal",
+   "from_hex": null,
+   "to_hex": null,
+   "target": "buy Treasury (1,200 GP)",
+   "result": "done: +1 XP (1)"
+  },
+  {
+   "month": 2,
+   "actor": "Gnomes",
+   "action": "Goal",
+   "from_hex": null,
+   "to_hex": null,
+   "target": "rob Tieflings' Mercenaries a16 in C5",
+   "result": "done: +1 XP (1)"
+  },
+  {
+   "month": 2,
+   "actor": "Elves",
+   "action": "Seize",
+   "from_hex": "B1",
+   "to_hex": "B1",
+   "target": "B1 (Orcs')",
+   "result": "taken"
   }
  ],
  "report": {
-  "month": 1,
+  "month": 2,
   "plan": [
    "Morten: Delve floor 1 under B5.",
-   "Morten delves floor 1 under the tower: safe XP and coin in the home hex, no travel.",
-   "He deposits his purse (97 GP) so the tower can buy Farms in B5: +50 GP a month, in the warded hex.",
-   "Tower: Buy Farms in B5."
+   "Morten delves floor 2 under the Humans' A5, next door: XP toward level 4 at low risk (floor 3 lies past B4, an L10 hex).",
+   "He spends 62 GP 5 SP at the tower's trader (a Potion of Healing, incense for an owl, rations) and deposits the rest, 22 GP.",
+   "Tower: no action; 89 GP buys nothing, so it saves toward 200."
   ],
   "happened": [
    "Morten: Delve floor 1 under B5 (the dungeon game; no domain effect).",
-   "Gnomes (Tinker-General Ellywick, bad: robs its neighbours): Move Thugs a21 D3 → C4, Knights a22 D3 → C4 (goal: rob Tieflings' Mercenaries a16 in C5).",
-   "Orcs (Boss Hruma, bad: robs its neighbours): Move Thugs a1 D1 → C2, Thugs a2 D1 → C2 (goal: rob Goblinkind's Caravans a8 in C2).",
-   "Goblinkind (Big Boss Zarga, good: keeps the peace): Caravans a8 attacks Orcs' Thugs a2 in C2 → d10 1 + W3 + 1 claim = 5 vs d10 9 + W4 = 13, LOSS. Counter 1d4 2 = 2: Caravans 4 → 2 HP.",
-   "Tower (Morten): Buy Farms a25 in B5, −200 GP → 7 GP."
+   "Tieflings (Exarch Iados, bad: squeezes its own people): Buy Treasury a26 in D5 (it has the gold), −1,200 GP → 300 GP.",
+   "Goblinkind (Big Boss Zarga, good: keeps the peace): Caravans a8 attacks Orcs' Thugs a2 in C2 → d10 1 + W3 + 1 claim = 5 vs d10 4 + W4 = 8, LOSS. Counter 1d4 3 = 3: Caravans 2 → 0 HP. Caravans a8 destroyed.",
+   "Tieflings (Exarch Iados, bad: squeezes its own people): goal done (buy Treasury (1,200 GP)): +1 XP (1).",
+   "Gnomes (Tinker-General Ellywick, bad: robs its neighbours): goal done (rob Tieflings' Mercenaries a16 in C5): +1 XP (1).",
+   "Elsewhere: Orcs bought Knights a27 in D1; Elves seized B1 (Orcs') (resolves at clean-up); Elves seized B1 (Orcs') (taken)."
   ],
   "tower": [
-   "HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 7 GP · Morten level 3",
+   "HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 89 GP · Morten level 3",
    "Assets: a25 the tower's Farms in B5 · T1 · HP 4/4 · no attack · counter 1d4",
    "Hexes: B5",
    "Hostile: nobody",
    "Allies: Goblinkind, Humans"
   ],
   "next": [
-   "Chance: the Orcs' seat D1 has no Force asset (Strike it for 2d6 to their HP 22/22).",
    "Chance: the Elves' seat A2 has no Force asset (Strike it for 2d6 to their HP 16/16).",
    "Chance: the Gnomes' seat D3 has no Force asset (Strike it for 2d6 to their HP 22/22).",
    "Open: Morten is in B5 (L1, desert, tower); travel 1 day a hex, d6 each day outside B5 (1 = encounter).",
    "Open: missions here: Delve floor 1.",
-   "Open: the tower's one action (7 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free."
+   "Open: the tower's one action (89 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free."
   ]
  }
 }

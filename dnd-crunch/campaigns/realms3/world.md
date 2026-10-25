@@ -1,16 +1,16 @@
-# World · Month 2
+# World · Month 3
 
 Seed 53. Realms v2. Rendered by `realms.py` from `realms.json` after every turn; don't edit by hand. Open: what the tower knows (other factions' Cunning assets show only where the tower has Informers or Morten has been, or once they act against the tower).
 
 ## Factions
 
-- Orcs · Boss Hruma (bad: robs its neighbours) · HP 22/22 · F4 C4 W4 · 910 GP · seat D1 · hexes A1 B1 C1 D1 · goal: rob Goblinkind's Caravans a8 in C2 (month 2 of it)
-- Goblinkind · Big Boss Zarga (good: keeps the peace) · HP 16/16 · F3 C3 W3 · 790 GP · seat D2 · hexes C2 C3 D2 · goal: build Walls at D2 (month 2 of it) · ally
-- Humans · Reeve Leopold (good: keeps the peace) · HP 16/16 · F3 C3 W3 · 400 GP · seat A4 · hexes A3 A4 A5 · goal: build Walls at A4 (month 2 of it) · ally
-- Tieflings · Exarch Iados (bad: squeezes its own people) · HP 31/31 · F5 C5 W5 · 975 GP · seat D5 · hexes C5 D4 D5 · goal: buy Treasury (1,200 GP) (month 2 of it)
-- Elves · Warden Valanthe (bad: takes land) · HP 16/16 · F3 C3 W3 · 640 GP · seat A2 · hexes A2 B2 B3 · goal: take B1 (L14, Orcs') (month 2 of it)
-- Gnomes · Tinker-General Ellywick (bad: robs its neighbours) · HP 22/22 · F4 C4 W4 · 690 GP · seat D3 · hexes B4 C4 D3 · goal: rob Tieflings' Mercenaries a16 in C5 (month 2 of it)
-- Tower · HP 7/7 · F1 C1 W1 · 7 GP · hexes B5
+- Orcs · Boss Hruma (bad: robs its neighbours) · HP 19/22 · F4 C4 W4 · 450 GP · seat D1 · hexes A1 C1 D1 · goal: rob Goblinkind's Caravans a8 in C2 (month 3 of it)
+- Goblinkind · Big Boss Zarga (good: keeps the peace) · HP 16/16 · F3 C3 W3 · 1,200 GP · seat D2 · hexes C2 C3 D2 · goal: build Walls at D2 (month 3 of it) · ally
+- Humans · Reeve Leopold (good: keeps the peace) · HP 16/16 · F3 C3 W3 · 550 GP · seat A4 · hexes A3 A4 A5 · goal: build Walls at A4 (month 3 of it) · ally
+- Tieflings · Exarch Iados (bad: squeezes its own people) · HP 31/31 · F5 C5 W5 · 100 GP · seat D5 · hexes C5 D4 D5
+- Elves · Warden Valanthe (bad: takes land) · HP 16/16 · F3 C3 W3 · 1,010 GP · seat A2 · hexes A2 B1 B2 B3 · goal: take B1 (L14, Orcs') (month 3 of it)
+- Gnomes · Tinker-General Ellywick (bad: robs its neighbours) · HP 22/22 · F4 C4 W4 · 1,210 GP · seat D3 · hexes B4 C4 D3
+- Tower · HP 7/7 · F1 C1 W1 · 89 GP · hexes B5
 
 ## Hexes
 
@@ -27,7 +27,7 @@ Seed 53. Realms v2. Rendered by `realms.py` from `realms.json` after every turn;
   - a12 Humans' Mercenaries · T2 · HP 6/6 · W vs F 2d4+2 · counter 1d6
 - **A5** · L2 · savanna · Humans · held by Humans · 20 GP
   - next to: A4 B4 B5
-- **B1** · L14 · tundra · Orcs · held by Orcs · 0 GP
+- **B1** · L14 · tundra · Orcs · held by Elves · 140 GP
   - next to: A1 A2 B2 C1 C2
   - a17 Elves' Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
   - a18 Elves' Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
@@ -46,8 +46,7 @@ Seed 53. Realms v2. Rendered by `realms.py` from `realms.json` after every turn;
   - a4 Orcs' Farms · T1 · HP 4/4 · no attack · counter 1d4
 - **C2** · L6 · forest · Goblinkind · held by Goblinkind · 0 GP · river C2|D1, C2|D2
   - next to: B1 B2 C1 C3 D1 D2
-  - a2 Orcs' Thugs · T1 · HP 3/3 · F vs F 1d3+1 · counter 1d4
-  - a8 Goblinkind's Caravans · T1 · HP 2/4 · W vs W 1d4 · counter 1d4-1
+  - a2 Orcs' Thugs · T1 · HP 1/3 · F vs F 1d3+1 · counter 1d4
 - **C3** · L9 · hills · Goblinkind · held by Goblinkind · 90 GP · river B2|C3, C3|D2, C3|D3
   - next to: B2 B3 C2 C4 D2 D3
   - a6 Goblinkind's Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
@@ -59,9 +58,10 @@ Seed 53. Realms v2. Rendered by `realms.py` from `realms.json` after every turn;
 - **C5** · L18 · savanna · Tieflings · held by Tieflings · 270 GP
   - next to: B4 B5 C4 D4 D5
   - a14 Tieflings' Knights · T3 · HP 12/12 · F vs F 1d8 · counter 1d8
-  - a16 Tieflings' Mercenaries · T2 · HP 6/6 · W vs F 2d4+2 · counter 1d6
+  - a16 Tieflings' Mercenaries · T2 · HP 1/6 · W vs F 2d4+2 · counter 1d6
 - **D1** · L16 · tundra · Orcs · held by Orcs · 160 GP · seat of the Orcs · river C1|D1, C2|D1
   - next to: C1 C2 D2
+  - a27 Orcs' Knights · T3 · HP 12/12 · F vs F 1d8 · counter 1d8
 - **D2** · L17 · forest · Goblinkind · held by Goblinkind · 170 GP · seat of the Goblinkind · river C2|D2, C3|D2
   - next to: C2 C3 D1 D3
   - a5 Goblinkind's Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
@@ -72,6 +72,7 @@ Seed 53. Realms v2. Rendered by `realms.py` from `realms.json` after every turn;
 - **D5** · L20 · savanna · Tieflings · held by Tieflings · 300 GP · seat of the Tieflings
   - next to: C5 D4
   - a13 Tieflings' Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
+  - a26 Tieflings' Treasury · T3 · HP 8/8 · no attack · counter 1d6
 
 ## Rivers
 
@@ -104,16 +105,18 @@ Seed 53. Realms v2. Rendered by `realms.py` from `realms.json` after every turn;
 ## Last month
 
 - Morten: Delve floor 1 under B5 (the dungeon game; no domain effect).
-- Morten: deposit 97 GP → tower 197 GP.
-- Order: Tieflings C5 (d10 10) · Gnomes C4 (d10 2) · Orcs C4 (d10 1) · Elves C3 (d10 7) · Goblinkind C3 (d10 7) · Humans C3 (d10 7) · Tower C1 (d10 2).
-- Tieflings (Exarch Iados, bad: squeezes its own people): saves for Treasury (975/1,200 GP).
-- Gnomes (Tinker-General Ellywick, bad: robs its neighbours): Move Thugs a21 D3 → C4, Knights a22 D3 → C4 (goal: rob Tieflings' Mercenaries a16 in C5).
-- Orcs (Boss Hruma, bad: robs its neighbours): Move Thugs a1 D1 → C2, Thugs a2 D1 → C2 (goal: rob Goblinkind's Caravans a8 in C2).
-- Elves (Warden Valanthe, bad: takes land): Move Militia a17 A2 → B1, Militia a18 A2 → B1 (goal: take B1 (L14, Orcs')).
-- Goblinkind (Big Boss Zarga, good: keeps the peace): Caravans a8 attacks Orcs' Thugs a2 in C2 → d10 1 + W3 + 1 claim = 5 vs d10 9 + W4 = 13, LOSS. Counter 1d4 2 = 2: Caravans 4 → 2 HP.
-- Humans (Reeve Leopold, good: keeps the peace): saves for Walls (400/600 GP).
-- Tower (Morten): Buy Farms a25 in B5, −200 GP → 7 GP.
+- Morten: deposit 22 GP → tower 29 GP.
+- Order: Tieflings C5 (d10 3) · Gnomes C4 (d10 8) · Orcs C4 (d10 2) · Goblinkind C3 (d10 8) · Elves C3 (d10 2) · Humans C3 (d10 2) · Tower C1 (d10 7).
+- Tieflings (Exarch Iados, bad: squeezes its own people): Buy Treasury a26 in D5 (it has the gold), −1,200 GP → 300 GP.
+- Orcs (Boss Hruma, bad: robs its neighbours): Buy Knights a27 in D1 (to drive the Elves out of B1), −800 GP → 450 GP.
+- Goblinkind (Big Boss Zarga, good: keeps the peace): Caravans a8 attacks Orcs' Thugs a2 in C2 → d10 1 + W3 + 1 claim = 5 vs d10 4 + W4 = 8, LOSS. Counter 1d4 3 = 3: Caravans 2 → 0 HP. Caravans a8 destroyed.
+- Elves (Warden Valanthe, bad: takes land): Seize B1 (L14, Orcs') (goal: take B1 (L14, Orcs')): no defender there; it changes hands at clean-up unless contested.
+- Humans (Reeve Leopold, good: keeps the peace): saves for Walls (550/600 GP).
+- Tower: no action.
+- Tieflings (Exarch Iados, bad: squeezes its own people): goal done (buy Treasury (1,200 GP)): +1 XP (1).
+- Gnomes (Tinker-General Ellywick, bad: robs its neighbours): goal done (rob Tieflings' Mercenaries a16 in C5): +1 XP (1).
+- Elves (Warden Valanthe, bad: takes land): takes B1 (L14) from the Orcs. The regime loses face: 1d4 3 = 3: Orcs HP 22 → 19.
 
 ## Month
 
-- **Next domain turn:** month 2
+- **Next domain turn:** month 3
