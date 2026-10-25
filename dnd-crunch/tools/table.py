@@ -1241,10 +1241,21 @@ def refused_moves(c):
 
 
 def drop_logs(c):
-    """Delete every log line the store holds (or will, once the pending batches land)."""
+    """Delete the log lines the store holds. A line whose batch was never recorded as sent
+    is dropped from the pending batches instead, and never deleted (Dream's lesson: a
+    delete of a line that never landed gets the whole batch refused)."""
     for k in sorted(c.projected()):
-        if k.startswith("log/"):
+        if not k.startswith("log/"):
+            continue
+        if k in c.page["versions"]:
             c.drop("log", k[4:])
+            continue
+        for b in c.page["pending"]:
+            b[:] = [e for e in b if f"{e['collection']}/{e['doc_id']}" != k]
+        c.page["pending"] = [b for b in c.page["pending"] if b]
+        note(f"{k} was never confirmed sent (`table.py sent` after its batch): dropped, and no "
+             f"batch deletes it. If it did land, `table.py sent DIR --version {k}=1` and the "
+             "next section or stop deletes it.")
 
 
 def pick_moves(c, spec):

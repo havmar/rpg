@@ -636,6 +636,21 @@ class Versions(Case):
         dels = {w["doc_id"] for w in self.batches(out)[0]["writes"] if w["op"] == "delete"}
         self.assertEqual(dels, {"l0001", "l0002"})
 
+    def test_unconfirmed_log_line_dropped_not_deleted(self):
+        self.new()
+        self.t("log", self.d, "sent and confirmed")
+        self.t("sent", self.d)
+        self.t("log", self.d, "never confirmed")  # its batch is never recorded
+        out, err = self.t("state", self.d, "--awaiting", "word", "--prompt", "Your word")
+        self.assertIn("log/l0002 was never confirmed sent", err)
+        dels = [w["doc_id"] for w in self.batches(out)[0]["writes"] if w["op"] == "delete"]
+        self.assertEqual(dels, ["l0001"])
+        pend = [e["doc_id"] for b in self.record()["pending"] for e in b]
+        self.assertNotIn("l0002", pend)
+        self.t("sent", self.d)
+        self.assertNotIn("log/l0002", self.record()["versions"])
+        self.assertFalse((self.d / "page" / "out" / "log" / "l0002.json").exists())
+
     def test_refused_moves_deleted_by_state(self):
         self.new()
         with self.assertRaises(SystemExit):
