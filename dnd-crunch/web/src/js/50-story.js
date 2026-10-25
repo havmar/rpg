@@ -82,7 +82,6 @@
   }
 
   const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
-  const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 
   // ---------- the trace ----------
   function lineHtml(l) {
@@ -808,14 +807,23 @@
       + '</div></div>');
     // the tower's action
     const gold = treasury(view);
+    const actBtn = (a, i, ok) => {
+      const g = kindGlyph(view, a.label);
+      return `<button type="button" data-act="pick" data-f="action" data-v="${i}"${pressed(picks.action === i)}${ok ? '' : ' disabled title="the tower cannot afford it"'}>${g ? icon(g) : ''}<span>${esc(a.label)}${a.cost !== null ? ` <small>${esc(fmt.gp(a.cost))}</small>` : ''}</span></button>`;
+    };
+    const can = [];
+    const cannot = [];
+    o.actions.forEach((a, i) => {
+      const ok = a.affordable !== null ? a.affordable : gold !== null && a.cost !== null ? a.cost <= gold : true;
+      (ok ? can : cannot).push(actBtn(a, i, ok));
+    });
+    const least = o.actions.filter((a, i) => a.cost !== null).reduce((m, a) => (m === null || a.cost < m ? a.cost : m), null);
     rows.push(`<div class="row" data-row="action"><span class="label">The tower's action${gold !== null ? ` <small class="muted">· ${esc(fmt.gp(gold))} in the treasury</small>` : ''}</span><div class="pick">`
       + `<button type="button" data-act="pick" data-f="action" data-v=""${pressed(picks.action === null)}>save <small>no action</small></button>`
-      + o.actions.map((a, i) => {
-        const ok = a.affordable !== null ? a.affordable : gold !== null && a.cost !== null ? a.cost <= gold : true;
-        const g = kindGlyph(view, a.label);
-        return `<button type="button" data-act="pick" data-f="action" data-v="${i}"${pressed(picks.action === i)}${ok ? '' : ' disabled title="the tower cannot afford it"'}>${g ? icon(g) : ''}<span>${esc(a.label)}${a.cost !== null ? ` <small>${esc(fmt.gp(a.cost))}</small>` : ''}</span></button>`;
-      }).join('')
-      + '</div></div>');
+      + can.join('')
+      + '</div>'
+      + (cannot.length ? foldHtml('orders-cannot', `${fmt.plural(cannot.length, 'action')} the tower cannot afford yet${least !== null ? ` (from ${fmt.gp(least)})` : ''}`, `<div class="pick">${cannot.join('')}</div>`) : '')
+      + '</div>');
     // give
     rows.push(`<div class="row" data-row="give"><span class="label">Give</span><div class="pick">`
       + `<button type="button" data-act="pick" data-f="give" data-v=""${pressed(picks.give === null)}>nothing</button>`
@@ -947,7 +955,7 @@
     else if (sending) parts.push(`<span>sending ${esc(sending.id)}…</span>`);
     else if (open) {
       const since = open.at ? ui.ago(open.at, view.now) : '';
-      parts.push(`<span>sent ${esc(open.id)}${since ? ` ${esc(since)}` : ''}</span>`);
+      parts.push(`<span title="${esc(open.id)}">your move was sent${since ? ` ${esc(since)}` : ''}</span>`);
       if (w.state === 'calling') parts.push('<span>calling the GM…</span>');
       else if (w.state === 'called') parts.push('<span class="good">the GM has been called</span>');
       else if (w.state === 'off') parts.push('<span>the GM reads it when it is next called</span>');
@@ -974,6 +982,7 @@
     A.box.hidden = mode === 'closed';
     if (mode === 'closed') return;
     if (ui.put(A.form, formHtml(view, mode))) {
+      restoreFolds(A.form);
       const gp = A.form.querySelector('[data-a="gp"]');
       if (gp) gp.value = picks.gp;
     }
@@ -1213,7 +1222,7 @@
           m.click();
         }
       });
-      stream.addEventListener('toggle', (ev) => {
+      el.addEventListener('toggle', (ev) => {
         const d = ev.target;
         if (d && d.dataset && d.dataset.fold) folds.set(d.dataset.fold, d.open);
       }, true);
@@ -1222,6 +1231,13 @@
       for (const e of ['wheel', 'touchmove']) window.addEventListener(e, stopFollowing, { passive: true });
       window.addEventListener('keydown', (ev) => { if (['ArrowUp', 'PageUp', 'Home'].includes(ev.key)) stopFollowing(); });
       window.addEventListener('pagehide', () => { if (reading) ui.local.set('story.reading', reading); });
+      // More → Months asks for a month (80-more.js): open it here and bring its header up
+      document.addEventListener('table:goto', (ev) => {
+        const m = ev.detail ? ev.detail.month : undefined;
+        if (!(Number.isInteger(m) || m === null)) return;
+        ev.preventDefault();
+        T.panels.story.showMonth(m);
+      });
     },
     render,
     tick(view) {

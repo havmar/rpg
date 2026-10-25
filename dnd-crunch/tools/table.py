@@ -20,6 +20,12 @@ create), also saved as DIR/page/out/batch.json (batch-2.json, ... past 50 writes
 with ArtifactData action "batch", then run `sent`. Notes go to stderr. game/realm reads
 only map.json and the explored rooms of gm-secrets.md, never realms.json's hidden data.
 
+A batch goes content first (story, live, log), then game/* (game/state last), then the
+deletes (beats, log lines, moves last). Before the first unsent batch the record is
+snapshotted (DIR/page/undo): `sent --drop` (nothing landed) puts it back, so the verbs can
+be run again; `resend --version K=N` re-pins after a refused pin instead; `sent --landed N`
+records a send that stopped part way. `sent` with nothing pending removes the snapshot.
+
 Usage:
   table.py new DIR [--file opening.md] [--month N --day N --clock HH:MM --hex B5 --where TEXT]
   table.py open DIR --kind fight --title TEXT [--where TEXT] [--foes FILE|JSON]
@@ -35,8 +41,9 @@ Usage:
   table.py aside DIR (--file msg.md | --text TEXT) [--ooc] [--answers m0007|all]
   table.py log DIR TEXT
   table.py moves DIR --file DUMP_DIR|moves.json
-  table.py sent DIR [--url URL] [--version game/state=4 ...] [--drop]
-  table.py resend DIR
+  table.py sent DIR [--url URL] [--version game/state=4 ...] [--from LISTING]
+                [--drop | --landed N]
+  table.py resend DIR [--version game/state=4 ...] [--from LISTING]
   table.py wake DIR  ·  table.py no-wake DIR
   table.py export DIR OUTDIR
   table.py render DIR

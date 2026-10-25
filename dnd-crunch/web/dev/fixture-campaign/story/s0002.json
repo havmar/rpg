@@ -1,0 +1,37 @@
+{
+ "v": 1,
+ "seq": 2,
+ "kind": "aside",
+ "month": 2,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "B5",
+ "where": "the tower (B5)",
+ "title": "Aside (out of game)",
+ "headline": "",
+ "prose": [
+  "Yes to both. From now on every monster named in a heading, a stat line or a report carries its CR, next to the fight's difficulty and XP (\"3 Grimlocks (CR 1/4 each) · Moderate, 150 XP\").",
+  "Fights are reported live: a line when Morten tries something that matters, and a sentence or two when it resolves, with both sides' HP, round by round. On the page that is the live card; the fight lands as a section when it ends."
+ ],
+ "bullets": [],
+ "trace": [],
+ "answered": [
+  "m0001"
+ ],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1275,
+  "coins": "2 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": [
+  {
+   "move": "m0001",
+   "text": "I'm also interested in seeing the challenge rating of monsters along with difficulty. And for fights, would it be possible to get reporting as the fight and rolling is happening?"
+  }
+ ],
+ "ooc": true
+}

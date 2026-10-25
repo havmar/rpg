@@ -486,7 +486,7 @@ details.trace[open] > summary .ic { transform: rotate(90deg); }
 .fcard .track .legend { display: flex; flex-wrap: wrap; gap: 2px 12px; font: .7rem var(--mono); color: var(--ink-2); }
 .fcard .track .legend > span { display: inline-flex; align-items: center; gap: 5px; }
 .fcard .track .legend svg { width: 18px; height: 6px; overflow: visible; }
-.fcard .track > svg { width: 100%; max-width: 560px; height: auto; display: block; overflow: visible; cursor: pointer; justify-self: center; }
+.fcard .track > svg { width: 100%; max-width: 440px; height: auto; display: block; overflow: visible; cursor: pointer; justify-self: center; }
 .fcard .track .grid { stroke: var(--rule); stroke-width: 1; }
 .fcard .track .tick { font: 9px var(--mono); fill: var(--ink-3); }
 .fcard .track .ln { fill: none; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
@@ -533,6 +533,10 @@ details.trace[open] > summary .ic { transform: rotate(90deg); }
 .fcard > *, .fcard .track > *, .fights .fitem > * { min-width: 0; }
 .fcard .track { grid-template-columns: minmax(0, 1fr); }
 .fcard .track .gone { fill: none; stroke: var(--bad); stroke-width: 1; stroke-dasharray: 1 3; opacity: .55; }
+/* inside a .card (the Fights tab) the shell's .card h3 is a flex row; the card's own head is text */
+.fcard .sec-head h3 { display: block; }
+.fcard .sec-head h3 small { margin-left: 6px; white-space: nowrap; }
+.fights .fcard { padding: 10px 10px 12px; }
 /* ---- css/62-morten.css ---- */
 /* The Morten tab: the sheet's cards. The shared atoms (.card, .hpbig, .stat-row, .stat,
    .spells, .spell, .inv, .pips, .feat, .chip, .toggle) are the shell's; these are the
@@ -2831,7 +2835,6 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
   }
 
   const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
-  const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 
   // ---------- the trace ----------
   function lineHtml(l) {
@@ -3557,14 +3560,23 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       + '</div></div>');
     // the tower's action
     const gold = treasury(view);
+    const actBtn = (a, i, ok) => {
+      const g = kindGlyph(view, a.label);
+      return `<button type="button" data-act="pick" data-f="action" data-v="${i}"${pressed(picks.action === i)}${ok ? '' : ' disabled title="the tower cannot afford it"'}>${g ? icon(g) : ''}<span>${esc(a.label)}${a.cost !== null ? ` <small>${esc(fmt.gp(a.cost))}</small>` : ''}</span></button>`;
+    };
+    const can = [];
+    const cannot = [];
+    o.actions.forEach((a, i) => {
+      const ok = a.affordable !== null ? a.affordable : gold !== null && a.cost !== null ? a.cost <= gold : true;
+      (ok ? can : cannot).push(actBtn(a, i, ok));
+    });
+    const least = o.actions.filter((a, i) => a.cost !== null).reduce((m, a) => (m === null || a.cost < m ? a.cost : m), null);
     rows.push(`<div class="row" data-row="action"><span class="label">The tower's action${gold !== null ? ` <small class="muted">· ${esc(fmt.gp(gold))} in the treasury</small>` : ''}</span><div class="pick">`
       + `<button type="button" data-act="pick" data-f="action" data-v=""${pressed(picks.action === null)}>save <small>no action</small></button>`
-      + o.actions.map((a, i) => {
-        const ok = a.affordable !== null ? a.affordable : gold !== null && a.cost !== null ? a.cost <= gold : true;
-        const g = kindGlyph(view, a.label);
-        return `<button type="button" data-act="pick" data-f="action" data-v="${i}"${pressed(picks.action === i)}${ok ? '' : ' disabled title="the tower cannot afford it"'}>${g ? icon(g) : ''}<span>${esc(a.label)}${a.cost !== null ? ` <small>${esc(fmt.gp(a.cost))}</small>` : ''}</span></button>`;
-      }).join('')
-      + '</div></div>');
+      + can.join('')
+      + '</div>'
+      + (cannot.length ? foldHtml('orders-cannot', `${fmt.plural(cannot.length, 'action')} the tower cannot afford yet${least !== null ? ` (from ${fmt.gp(least)})` : ''}`, `<div class="pick">${cannot.join('')}</div>`) : '')
+      + '</div>');
     // give
     rows.push(`<div class="row" data-row="give"><span class="label">Give</span><div class="pick">`
       + `<button type="button" data-act="pick" data-f="give" data-v=""${pressed(picks.give === null)}>nothing</button>`
@@ -3696,7 +3708,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     else if (sending) parts.push(`<span>sending ${esc(sending.id)}…</span>`);
     else if (open) {
       const since = open.at ? ui.ago(open.at, view.now) : '';
-      parts.push(`<span>sent ${esc(open.id)}${since ? ` ${esc(since)}` : ''}</span>`);
+      parts.push(`<span title="${esc(open.id)}">your move was sent${since ? ` ${esc(since)}` : ''}</span>`);
       if (w.state === 'calling') parts.push('<span>calling the GM…</span>');
       else if (w.state === 'called') parts.push('<span class="good">the GM has been called</span>');
       else if (w.state === 'off') parts.push('<span>the GM reads it when it is next called</span>');
@@ -3723,6 +3735,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     A.box.hidden = mode === 'closed';
     if (mode === 'closed') return;
     if (ui.put(A.form, formHtml(view, mode))) {
+      restoreFolds(A.form);
       const gp = A.form.querySelector('[data-a="gp"]');
       if (gp) gp.value = picks.gp;
     }
@@ -3962,7 +3975,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
           m.click();
         }
       });
-      stream.addEventListener('toggle', (ev) => {
+      el.addEventListener('toggle', (ev) => {
         const d = ev.target;
         if (d && d.dataset && d.dataset.fold) folds.set(d.dataset.fold, d.open);
       }, true);
@@ -3971,6 +3984,13 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       for (const e of ['wheel', 'touchmove']) window.addEventListener(e, stopFollowing, { passive: true });
       window.addEventListener('keydown', (ev) => { if (['ArrowUp', 'PageUp', 'Home'].includes(ev.key)) stopFollowing(); });
       window.addEventListener('pagehide', () => { if (reading) ui.local.set('story.reading', reading); });
+      // More → Months asks for a month (80-more.js): open it here and bring its header up
+      document.addEventListener('table:goto', (ev) => {
+        const m = ev.detail ? ev.detail.month : undefined;
+        if (!(Number.isInteger(m) || m === null)) return;
+        ev.preventDefault();
+        T.panels.story.showMonth(m);
+      });
     },
     render,
     tick(view) {
@@ -4141,10 +4161,10 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     if (!rows.length) return '';
     return `<div class="hprow" aria-label="HP now">${rows.map((r) => {
       if (!isNum(r.hp) && r.state) {
-        return `<div class="hp${r.me ? ' me' : ''}"><span class="nm">${esc(r.name)}</span><span class="bar ${r.state === 'healthy' ? '' : r.state === 'bloodied' ? 'mid' : 'low'}" role="img" aria-label="${esc(r.state)}"><i style="width:${STATE_PCT[r.state] || 0}%"></i></span><b class="${STATE_CLS[r.state] || ''}">${esc(cap(r.state))}</b></div>`;
+        return `<div class="hp${r.me ? ' me' : ''}"><span class="nm" title="${esc(r.name)}">${esc(shortName(r.name))}</span><span class="bar ${r.state === 'healthy' ? '' : r.state === 'bloodied' ? 'mid' : 'low'}" role="img" aria-label="${esc(r.state)}"><i style="width:${STATE_PCT[r.state] || 0}%"></i></span><b class="${STATE_CLS[r.state] || ''}">${esc(cap(r.state))}</b></div>`;
       }
       const down = isNum(r.hp) && r.hp <= 0;
-      return `<div class="hp${r.me ? ' me' : ''}${down ? ' down' : ''}"><span class="nm">${esc(r.name)}</span>${bar(r.hp, r.max)}<b>${down && !r.me ? 'down' : esc(isNum(r.max) ? `${fmt.n(r.hp)}/${fmt.n(r.max)} HP` : fmt.hp(r.hp, r.max))}</b></div>`;
+      return `<div class="hp${r.me ? ' me' : ''}${down ? ' down' : ''}"><span class="nm" title="${esc(r.name)}">${esc(shortName(r.name))}</span>${bar(r.hp, r.max)}<b>${down && !r.me ? 'down' : esc(isNum(r.max) ? `${fmt.n(r.hp)}/${fmt.n(r.max)} HP` : fmt.hp(r.hp, r.max))}</b></div>`;
     }).join('')}</div>`;
   }
 
@@ -4172,7 +4192,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     const list = f ? f.hpTrack.filter((t) => t.hp.some(isNum)) : [];
     if (!list.length) return '';
     const series = list.filter((t) => isMorten(t.name)).concat(list.filter((t) => !isMorten(t.name)));
-    const W = 360; const H = 140; const L = 28; const R = 84; const TOP = 10; const B = 22;
+    const W = 300; const H = 132; const L = 24; const R = 76; const TOP = 10; const B = 22;
     const n = Math.max(1, ...series.map((t) => t.hp.length)) - 1;
     const top = Math.max(1, ...series.map((t) => (isNum(t.max) ? t.max : 0)), ...series.flatMap((t) => t.hp.filter(isNum)));
     const x = (i) => (n === 0 ? L + (W - L - R) / 2 : L + (i / n) * (W - L - R));
@@ -4350,7 +4370,14 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
           texts.get(r).push(b.text);
         }
       }
-      const blocks = group(lines);
+      // live lines are merged by round (beats may split one round)
+      const blocks = [];
+      for (const l of lines) {
+        const r = isNum(l.round) ? l.round : null;
+        let blk = blocks.find((x) => x.n === r);
+        if (!blk) { blk = { n: r, lines: [], texts: [] }; blocks.push(blk); }
+        blk.lines.push(l);
+      }
       for (const [r, t] of texts) {
         let blk = blocks.find((b) => b.n === r);
         if (!blk) { blk = { n: r, lines: [], texts: [] }; blocks.push(blk); }
@@ -4400,7 +4427,10 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
 
   /** The live fight, when one is going on: {section, beats}. */
   function liveFight(view) {
-    const beats = view.beats.filter((b) => b.section && b.section.kind === 'fight');
+    const all = view.beats.filter((b) => b.section && b.section.kind === 'fight');
+    // the newest fight's beats only (an older fight's beats are gone once it settles)
+    const newest = all.length ? all[all.length - 1].section.title : '';
+    const beats = all.filter((b) => b.section.title === newest);
     const head = view.state && view.state.live && view.state.live.kind === 'fight' ? view.state.live : null;
     if (!beats.length && !head) return null;
     const last = beats[beats.length - 1];

@@ -45,15 +45,21 @@ export const checks = [
     name: 'fights: every fight is a row, newest first, with the right count',
     async run(t) {
       const fights = await fightDocs(t);
+      const st = (await t.api.doc('game', 'state'))?.data;
+      const beats = (await t.api.docs('live')).filter((d) => d.data && d.data.section && d.data.section.kind === 'fight');
+      const live = beats.length > 0 || !!(st && st.live && st.live.kind === 'fight');
+      const want = fights.length + (live ? 1 : 0);
       const page = await openFights(t);
       const rows = page.locator('#fights .frow');
-      await t.waitFor(async () => (await rows.count()) === fights.length, `${fights.length} rows`);
-      if (fights.length) {
+      await t.waitFor(async () => (await rows.count()) === want, `${want} rows`);
+      if (want) {
         const sub = await page.locator('#fights .card.fights > h3 small').innerText();
-        t.expect(sub.includes(`${fights.length} fight`), `the count in the heading, got "${sub}"`);
+        t.expect(sub.includes(`${want} fight`), `the count in the heading, got "${sub}"`);
         const first = await page.locator('#fights .frow').first().getAttribute('data-frow');
-        t.expect(first === fights[0].doc_id, `the newest fight first (${fights[0].doc_id}), got ${first}`);
-        const months = [...new Set(fights.map((d) => d.data.month))];
+        const newest = live ? 'live' : fights[0].doc_id;
+        t.expect(first === newest, `the newest fight first (${newest}), got ${first}`);
+        const liveMonth = beats.length ? beats[beats.length - 1].data.section.month : st && st.live ? st.live.month : null;
+        const months = [...new Set(fights.map((d) => d.data.month).concat(live && Number.isInteger(liveMonth) ? [liveMonth] : []))];
         if (months.length > 1) t.expect(await page.locator('#fights [data-fmonth]').count() === months.length + 1, 'a month filter: all and each month');
       } else {
         t.expect(await page.locator('#fights .empty').isVisible(), 'the empty note');
@@ -107,7 +113,7 @@ export const checks = [
       const [b1, b2] = liveBeats();
       const sec = b1.data.section;
       await t.api.write({ op: 'update', collection: 'game', doc_id: 'state', data: { live: { kind: 'fight', title: sec.title, month: sec.month, day: sec.day, openedAt: new Date().toISOString() } } });
-      await t.api.batch([{ op: 'set', collection: 'live', doc_id: b1.id, data: b1.data }]);
+      await t.api.write({ op: 'set', collection: 'live', doc_id: b1.id, data: b1.data });
       const page = await openFights(t);
       const row = page.locator('#fights .frow[data-frow="live"]');
       await row.waitFor();
@@ -118,7 +124,7 @@ export const checks = [
       const bars = card.locator('.hprow .hp');
       const want = 1 + (b1.data.state.foes || []).length;
       t.expect(await bars.count() === want, `${want} HP bars`);
-      await t.api.batch([{ op: 'set', collection: 'live', doc_id: b2.id, data: b2.data }]);
+      await t.api.write({ op: 'set', collection: 'live', doc_id: b2.id, data: b2.data });
       const m2 = b2.data.state.morten;
       await t.waitFor(() => card.locator('.hprow .hp.me b').innerText().then((s) => s.includes(`${m2.hp}/${m2.maxHp} HP`)), `Morten's bar at ${m2.hp}/${m2.maxHp} HP`);
       await t.waitFor(async () => (await card.locator('.round h5').count()) >= 2, 'the second round appended');

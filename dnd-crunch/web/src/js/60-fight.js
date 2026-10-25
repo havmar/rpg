@@ -126,10 +126,10 @@
     if (!rows.length) return '';
     return `<div class="hprow" aria-label="HP now">${rows.map((r) => {
       if (!isNum(r.hp) && r.state) {
-        return `<div class="hp${r.me ? ' me' : ''}"><span class="nm">${esc(r.name)}</span><span class="bar ${r.state === 'healthy' ? '' : r.state === 'bloodied' ? 'mid' : 'low'}" role="img" aria-label="${esc(r.state)}"><i style="width:${STATE_PCT[r.state] || 0}%"></i></span><b class="${STATE_CLS[r.state] || ''}">${esc(cap(r.state))}</b></div>`;
+        return `<div class="hp${r.me ? ' me' : ''}"><span class="nm" title="${esc(r.name)}">${esc(shortName(r.name))}</span><span class="bar ${r.state === 'healthy' ? '' : r.state === 'bloodied' ? 'mid' : 'low'}" role="img" aria-label="${esc(r.state)}"><i style="width:${STATE_PCT[r.state] || 0}%"></i></span><b class="${STATE_CLS[r.state] || ''}">${esc(cap(r.state))}</b></div>`;
       }
       const down = isNum(r.hp) && r.hp <= 0;
-      return `<div class="hp${r.me ? ' me' : ''}${down ? ' down' : ''}"><span class="nm">${esc(r.name)}</span>${bar(r.hp, r.max)}<b>${down && !r.me ? 'down' : esc(isNum(r.max) ? `${fmt.n(r.hp)}/${fmt.n(r.max)} HP` : fmt.hp(r.hp, r.max))}</b></div>`;
+      return `<div class="hp${r.me ? ' me' : ''}${down ? ' down' : ''}"><span class="nm" title="${esc(r.name)}">${esc(shortName(r.name))}</span>${bar(r.hp, r.max)}<b>${down && !r.me ? 'down' : esc(isNum(r.max) ? `${fmt.n(r.hp)}/${fmt.n(r.max)} HP` : fmt.hp(r.hp, r.max))}</b></div>`;
     }).join('')}</div>`;
   }
 
@@ -157,7 +157,7 @@
     const list = f ? f.hpTrack.filter((t) => t.hp.some(isNum)) : [];
     if (!list.length) return '';
     const series = list.filter((t) => isMorten(t.name)).concat(list.filter((t) => !isMorten(t.name)));
-    const W = 360; const H = 140; const L = 28; const R = 84; const TOP = 10; const B = 22;
+    const W = 300; const H = 132; const L = 24; const R = 76; const TOP = 10; const B = 22;
     const n = Math.max(1, ...series.map((t) => t.hp.length)) - 1;
     const top = Math.max(1, ...series.map((t) => (isNum(t.max) ? t.max : 0)), ...series.flatMap((t) => t.hp.filter(isNum)));
     const x = (i) => (n === 0 ? L + (W - L - R) / 2 : L + (i / n) * (W - L - R));
@@ -335,7 +335,14 @@
           texts.get(r).push(b.text);
         }
       }
-      const blocks = group(lines);
+      // live lines are merged by round (beats may split one round)
+      const blocks = [];
+      for (const l of lines) {
+        const r = isNum(l.round) ? l.round : null;
+        let blk = blocks.find((x) => x.n === r);
+        if (!blk) { blk = { n: r, lines: [], texts: [] }; blocks.push(blk); }
+        blk.lines.push(l);
+      }
       for (const [r, t] of texts) {
         let blk = blocks.find((b) => b.n === r);
         if (!blk) { blk = { n: r, lines: [], texts: [] }; blocks.push(blk); }
@@ -385,7 +392,10 @@
 
   /** The live fight, when one is going on: {section, beats}. */
   function liveFight(view) {
-    const beats = view.beats.filter((b) => b.section && b.section.kind === 'fight');
+    const all = view.beats.filter((b) => b.section && b.section.kind === 'fight');
+    // the newest fight's beats only (an older fight's beats are gone once it settles)
+    const newest = all.length ? all[all.length - 1].section.title : '';
+    const beats = all.filter((b) => b.section.title === newest);
     const head = view.state && view.state.live && view.state.live.kind === 'fight' ? view.state.live : null;
     if (!beats.length && !head) return null;
     const last = beats[beats.length - 1];

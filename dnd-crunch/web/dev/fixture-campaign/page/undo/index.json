@@ -1,0 +1,31 @@
+{
+ "absent": [],
+ "lists": {
+  "story": [
+   "s0001.json",
+   "s0002.json",
+   "s0004.json",
+   "s0006.json",
+   "s0007.json",
+   "s0008.json",
+   "s0009.json",
+   "s0013.json",
+   "s0014.json",
+   "s0015.json",
+   "s0016.json"
+  ],
+  "page/out/story": [
+   "s0001.json",
+   "s0002.json",
+   "s0004.json",
+   "s0006.json",
+   "s0007.json",
+   "s0008.json",
+   "s0009.json",
+   "s0013.json",
+   "s0014.json",
+   "s0015.json",
+   "s0016.json"
+  ]
+ }
+}
