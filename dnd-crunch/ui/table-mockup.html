@@ -1,0 +1,1089 @@
+<title>Morten's Table</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* The table: a mockup of the page D&D Crunch is played from (dnd-crunch/table-plan.md).
+   Phone first (412 px), five views on a bottom bar; two zones from 900 px. The war table's
+   palette: survey paper by day, a lamp-lit slate by night, a pigment a realm, brass for
+   Morten. Every colour is a token on :root; the dark theme redefines them. The data is the
+   realms3 campaign's month 2, typed in by hand. */
+:root {
+  --bg: #e1e6e4; --panel: #eef1ef; --panel-2: #d5dcd9; --table: #c7d0cd;
+  --ink: #18232a; --ink-2: #44525a; --ink-3: #66737a; --rule: #b3bdbc; --track: #c4ccca;
+  --land: #ebe9df; --water: #4f86ad; --halo: #eef1ef;
+  --accent: #8a5a10; --on-accent: #fff8ea; --accent-soft: #efe3c6;
+  --good: #2b6d43; --warn: #8f6200; --bad: #ad3528; --world: #e4e2ee; --world-rule: #8c84b8;
+  --f-humans: #2c5eb3; --f-gnomes: #0d7f7e; --f-tieflings: #ad2d69; --f-orcs: #557719;
+  --f-goblinkind: #bd600c; --f-elves: #7145b3; --f-tower: #33384f; --f-other: #66737a;
+  --on-fc: #ffffff; --mix: 30%;
+  --display: "Alegreya SC", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --body: "Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12171a; --panel: #1a2125; --panel-2: #232c31; --table: #0c1012;
+    --ink: #e2e8e6; --ink-2: #a9b4b6; --ink-3: #7e8a8d; --rule: #34404a; --track: #2e3a41;
+    --land: #283035; --water: #5b93bb; --halo: #12171a;
+    --accent: #e0a94e; --on-accent: #1c1406; --accent-soft: #3a2e14;
+    --good: #6cc28a; --warn: #e3b54f; --bad: #f07a6a; --world: #201e2c; --world-rule: #8c84b8;
+    --f-humans: #6f9df0; --f-gnomes: #3cc0bb; --f-tieflings: #ea6aa2; --f-orcs: #9bc44c;
+    --f-goblinkind: #f0954a; --f-elves: #ad8ae8; --f-tower: #c3c8de; --f-other: #8a9599;
+    --on-fc: #0f1417; --mix: 34%;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12171a; --panel: #1a2125; --panel-2: #232c31; --table: #0c1012;
+  --ink: #e2e8e6; --ink-2: #a9b4b6; --ink-3: #7e8a8d; --rule: #34404a; --track: #2e3a41;
+  --land: #283035; --water: #5b93bb; --halo: #12171a;
+  --accent: #e0a94e; --on-accent: #1c1406; --accent-soft: #3a2e14;
+  --good: #6cc28a; --warn: #e3b54f; --bad: #f07a6a; --world: #201e2c; --world-rule: #8c84b8;
+  --f-humans: #6f9df0; --f-gnomes: #3cc0bb; --f-tieflings: #ea6aa2; --f-orcs: #9bc44c;
+  --f-goblinkind: #f0954a; --f-elves: #ad8ae8; --f-tower: #c3c8de; --f-other: #8a9599;
+  --on-fc: #0f1417; --mix: 34%;
+  color-scheme: dark;
+}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 var(--body); overflow-x: hidden; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 500; margin: 0; line-height: 1.15; text-wrap: balance; }
+p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.label { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+.muted { color: var(--ink-3); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ic { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; vertical-align: -.15em; flex: none; }
+.fac-humans { --fc: var(--f-humans); } .fac-gnomes { --fc: var(--f-gnomes); } .fac-tieflings { --fc: var(--f-tieflings); }
+.fac-orcs { --fc: var(--f-orcs); } .fac-goblinkind { --fc: var(--f-goblinkind); } .fac-elves { --fc: var(--f-elves); }
+.fac-tower { --fc: var(--f-tower); } .fac-none { --fc: var(--land); }
+.sw { display: inline-block; flex: none; width: 11px; height: 11px; border-radius: 3px; background: var(--fc); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--ink) 25%, transparent); vertical-align: -1px; }
+.who { color: var(--fc); font-weight: 700; }
+.good { color: var(--good); } .warn { color: var(--warn); } .bad { color: var(--bad); } .brass { color: var(--accent); }
+
+/* ---------- the now line and the HUD ---------- */
+.now { position: sticky; top: 0; z-index: 5; background: var(--panel); border-bottom: 1px solid var(--rule); padding: 6px max(16px, env(safe-area-inset-right, 0px)) 6px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 4px; }
+.now .where { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; font-family: var(--mono); font-size: .76rem; color: var(--ink-2); }
+.now .where b { color: var(--ink); font-weight: 600; }
+.now .doing { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
+.pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 50%, transparent); animation: pulse 1.6s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 50%, transparent); } 100% { box-shadow: 0 0 0 7px transparent; } }
+.hud { display: flex; align-items: center; gap: 6px 12px; flex-wrap: wrap; font-family: var(--mono); font-size: .76rem; color: var(--ink-2); }
+.hud > span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.hud b { color: var(--ink); font-weight: 600; }
+.bar { height: 7px; border-radius: 4px; background: var(--track); overflow: hidden; flex: 1 1 auto; min-width: 36px; }
+.bar > i { display: block; height: 100%; background: var(--good); border-radius: 4px; }
+.bar.mid > i { background: var(--warn); } .bar.low > i { background: var(--bad); }
+.hud .bar { width: 64px; flex: none; }
+
+/* ---------- views and the bottom bar ---------- */
+.app { max-width: 1280px; margin: 0 auto; padding: 14px max(16px, env(safe-area-inset-right, 0px)) calc(84px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.view { display: none; }
+.app[data-view="story"] #story, .app[data-view="morten"] #morten, .app[data-view="realm"] #realm, .app[data-view="fights"] #fights, .app[data-view="more"] #more { display: grid; gap: 14px; align-content: start; }
+.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; display: flex; background: var(--panel); border-top: 1px solid var(--rule); padding: 2px max(8px, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(8px, env(safe-area-inset-left, 0px)); }
+.tabs button { position: relative; flex: 1 1 0; min-width: 0; min-height: 58px; border: 0; background: none; padding: 6px 0 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font: 500 .7rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.tabs .ic { width: 22px; height: 22px; stroke-width: 1.6; }
+.tabs button[aria-current="true"] { color: var(--accent); }
+.tabs .dot { position: absolute; top: 8px; left: calc(50% + 10px); width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+/* ---------- the first-visit note ---------- */
+.note { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: start; padding: 10px 12px; border: 1px dashed var(--accent); border-radius: 8px; background: var(--accent-soft); font-size: .92rem; }
+.note .ic { color: var(--accent); margin-top: 3px; }
+.note button { border: 0; background: none; color: var(--accent); font-family: var(--mono); font-size: .72rem; min-height: 32px; }
+
+/* ---------- the story ---------- */
+.older { justify-self: center; min-height: 40px; padding: 0 18px; border: 1px dashed var(--rule); border-radius: 20px; background: var(--panel); font: 500 .74rem var(--mono); color: var(--ink-2); }
+.month { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; padding-top: 10px; border-top: 3px solid var(--ink-2); margin-top: 6px; }
+.month h2 { font-size: 1.6rem; }
+.month .orders { color: var(--ink-2); font-size: .92rem; }
+.month .sum { margin-left: auto; font: 500 .72rem var(--mono); color: var(--ink-3); }
+.month.folded { cursor: pointer; }
+.day { display: flex; align-items: center; gap: 8px; font: 500 .8rem/1.35 var(--mono); color: var(--ink-2); padding-top: 6px; border-top: 1px solid var(--rule); }
+.day > span { flex: 1 1 auto; min-width: 0; }
+.day b { font-weight: 600; color: var(--ink); }
+.day .ic { color: var(--accent); width: 16px; height: 16px; }
+.day .fold { margin-left: auto; color: var(--accent); border: 0; background: none; min-height: 32px; flex: none; }
+.sec { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.sec-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; }
+.sec-head .ic { width: 22px; height: 22px; color: var(--accent); margin-top: 3px; }
+.sec-head h3 { font-size: 1.25rem; }
+.sec-head h3 small { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); font-weight: 500; letter-spacing: 0; margin-left: 6px; }
+.meta { display: flex; flex-wrap: wrap; gap: 4px 10px; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); }
+.out { font-weight: 600; }
+.story p { font-size: 1.02rem; line-height: 1.6; }
+.story .head { font-weight: 500; }
+.bullets { display: grid; gap: 6px; }
+.bullets li { position: relative; padding-left: 14px; line-height: 1.5; font-size: .98rem; }
+.bullets li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); transform: rotate(45deg); }
+.bullets b { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); margin-right: 4px; }
+.foes { display: grid; gap: 4px; }
+.foe { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; align-items: baseline; font-size: .9rem; padding: 6px 10px; border-radius: 6px; background: var(--bg); }
+.foe b { font-weight: 700; }
+.foe .stats { grid-column: 1 / -1; font-family: var(--mono); font-size: .72rem; color: var(--ink-2); }
+.foe .hp { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: .74rem; white-space: nowrap; }
+.foe .hp .bar { width: 54px; flex: none; }
+.hprow { display: grid; gap: 6px; }
+.hprow .hp { display: grid; grid-template-columns: 6.5em minmax(0, 1fr) auto; align-items: center; gap: 8px; font-family: var(--mono); font-size: .76rem; }
+.hprow .hp .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+details.trace { border-top: 1px solid var(--rule); padding-top: 6px; }
+details.trace > summary { list-style: none; cursor: pointer; min-height: 40px; display: flex; align-items: center; gap: 8px; font: 500 .74rem var(--mono); color: var(--accent); }
+details.trace > summary::-webkit-details-marker { display: none; }
+details.trace > summary .ic { transition: transform .2s; }
+details.trace[open] > summary .ic { transform: rotate(90deg); }
+.round { display: grid; gap: 3px; padding: 4px 0; }
+.round h5 { margin: 0; font: 500 .68rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); display: flex; gap: 8px; align-items: center; }
+.round h5::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.ln { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 6px; font-family: var(--mono); font-size: .76rem; line-height: 1.55; }
+.ln .mk { text-align: center; color: var(--accent); }
+.ln.them .mk { color: var(--ink-3); }
+.ln.them { padding-left: 12px; }
+.ln .tx { overflow-wrap: anywhere; }
+.die { display: inline-flex; align-items: center; gap: 4px; margin: 1px 2px 1px 0; padding: 0 6px; border-radius: 4px; border: 1px solid var(--rule); background: var(--bg); font-size: .7rem; white-space: nowrap; }
+.die b { font-weight: 600; } .die i { font-style: normal; color: var(--ink-3); }
+.die .r { font-weight: 600; } .die .r.hit, .die .r.ok { color: var(--good); } .die .r.miss { color: var(--ink-3); } .die .r.fizz, .die .r.fail { color: var(--bad); }
+.die.nat20 { border-color: var(--accent); background: var(--accent-soft); } .die.nat1 { border-color: var(--bad); }
+.result { display: flex; flex-wrap: wrap; gap: 4px 12px; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 8px; }
+.result b { color: var(--ink); font-weight: 600; }
+.sec.fight.live { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent); }
+.live-tag { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; }
+.activity { display: grid; gap: 4px; font-family: var(--mono); font-size: .72rem; color: var(--ink-3); padding-left: 14px; }
+.activity li + li::before { content: "↳ "; }
+.wait { height: 2px; background: var(--rule); border-radius: 1px; overflow: hidden; margin: 2px 0 2px 14px; }
+.wait i { display: block; width: 35%; height: 100%; background: var(--accent); opacity: .7; }
+.you { justify-self: end; max-width: 88%; background: var(--panel-2); border: 1px solid var(--rule); border-radius: 14px 14px 4px 14px; padding: 8px 14px; display: grid; gap: 2px; }
+.you .label { font-size: .62rem; }
+.you p { line-height: 1.5; }
+.sec.aside { background: transparent; border: 0; border-left: 2px dashed var(--accent); border-radius: 0; padding: 4px 0 4px 14px; }
+.sec.aside .sec-head .ic { color: var(--accent); }
+.sec.aside p { color: var(--ink-2); font-size: .95rem; line-height: 1.5; }
+.sec.plain { background: transparent; border: 0; padding: 2px 0; }
+.sec.plain .sec-head h3 { font-size: 1.05rem; }
+.sec.plain .meta { margin-top: 2px; }
+
+/* the world's turn */
+.sec.world { background: var(--world); border-color: var(--world-rule); border-left-width: 5px; }
+.sec.world .sec-head .ic { color: var(--world-rule); }
+.part { display: grid; gap: 6px; padding-top: 8px; border-top: 1px solid color-mix(in oklab, var(--world-rule) 40%, transparent); }
+.part h4 { font-size: 1.05rem; }
+.events { display: grid; gap: 8px; counter-reset: ev; }
+.events li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; align-items: start; line-height: 1.5; font-size: .98rem; }
+.events .n { width: 22px; height: 22px; border-radius: 50%; background: var(--fc, var(--ink-3)); color: var(--on-fc); display: grid; place-items: center; font: 600 .72rem/1 var(--mono); margin-top: 2px; }
+.delta { display: flex; flex-wrap: wrap; gap: 6px; }
+.delta span { display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 2px 9px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); font: 500 .74rem var(--mono); }
+.delta span b { font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 3px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); font-size: .88rem; line-height: 1.3; }
+.chip.threat { border-color: var(--bad); color: var(--bad); background: color-mix(in oklab, var(--bad) 8%, var(--panel)); }
+.chip.chance { border-color: var(--good); color: var(--good); background: color-mix(in oklab, var(--good) 8%, var(--panel)); }
+.chip.open { border-color: var(--accent); color: var(--accent); background: color-mix(in oklab, var(--accent) 8%, var(--panel)); }
+.chip .k { font: 600 .64rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.trace-lines { display: grid; gap: 2px; font-family: var(--mono); font-size: .72rem; color: var(--ink-2); line-height: 1.5; }
+
+/* the answer box */
+.answer { display: grid; gap: 8px; margin-top: 4px; }
+.status { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); }
+.status .sep { color: var(--ink-3); }
+.mockbar { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; font: 500 .66rem var(--mono); color: var(--ink-3); }
+.mockbar button { min-height: 28px; padding: 0 8px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); font: inherit; }
+.mockbar button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.box { border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); display: grid; }
+.box .form { display: grid; gap: 10px; padding: 12px 14px; }
+.box .form .row { display: grid; gap: 4px; }
+.box .form .row > .label { font-size: .64rem; }
+.seg { display: flex; flex-wrap: wrap; gap: 4px; }
+.seg button { min-height: 40px; padding: 4px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); font-size: .9rem; display: inline-flex; align-items: center; gap: 6px; }
+.seg button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--ink); }
+.seg button small { font-family: var(--mono); font-size: .68rem; color: var(--ink-3); }
+.seg button.stop { border-color: var(--bad); color: var(--bad); }
+.box textarea { border: 0; border-top: 1px solid var(--rule); background: transparent; resize: vertical; min-height: 64px; padding: 10px 14px; font: 1rem/1.5 var(--body); color: var(--ink); }
+.box textarea::placeholder { color: var(--ink-3); }
+.box .send { display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid var(--rule); padding: 8px 10px 8px 14px; }
+.box .send .hint { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); }
+.box .send button { min-height: 44px; min-width: 88px; border: 0; background: var(--accent); color: var(--on-accent); border-radius: 6px; font: 600 .8rem var(--mono); padding: 0 16px; }
+.form .pick { display: flex; flex-wrap: wrap; gap: 6px; }
+.form .pick button { min-height: 44px; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); display: inline-flex; align-items: center; gap: 8px; text-align: left; font-size: .9rem; }
+.form .pick button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.form .pick small { font-family: var(--mono); font-size: .68rem; color: var(--ink-3); }
+.form .pick button.spell { font-family: var(--mono); font-size: .76rem; min-height: 36px; }
+
+/* ---------- Morten ---------- */
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.card h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 4px 8px; flex-wrap: wrap; }
+.card h3 .ic { color: var(--accent); width: 20px; height: 20px; }
+.card h3 small { margin-left: auto; font: 500 .72rem var(--mono); color: var(--ink-3); }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(78px, 1fr)); gap: 6px; }
+.stat { border: 1px solid var(--rule); border-radius: 8px; padding: 6px 8px; display: grid; gap: 1px; background: var(--bg); min-width: 0; }
+.stat .v { font: 600 1.05rem/1.2 var(--mono); display: flex; align-items: center; gap: 6px; }
+.stat .v .ic { color: var(--accent); }
+.stat .label { font-size: .6rem; }
+.stat .sub { font-family: var(--mono); font-size: .66rem; color: var(--ink-3); }
+.hpbig { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; font-family: var(--mono); font-size: .9rem; }
+.hpbig .ic { color: var(--bad); width: 20px; height: 20px; }
+.hpbig .bar { height: 12px; }
+.hpbig b { font-weight: 600; }
+.spells { display: flex; flex-wrap: wrap; gap: 6px; }
+.spell { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 2px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); font-size: .9rem; }
+.spell small { font: 500 .66rem var(--mono); color: var(--ink-3); }
+.spell.lost { text-decoration: line-through; color: var(--ink-3); border-style: dashed; }
+.spell.conc { border-color: var(--accent); }
+.spell.free { border-color: var(--good); }
+.spell .ic { width: 14px; height: 14px; color: var(--accent); }
+.inv { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 2px 10px; font-size: .9rem; }
+.inv .label { grid-column: 1 / -1; padding-top: 6px; font-size: .6rem; }
+.inv .kg, .inv .ct { font-family: var(--mono); font-size: .74rem; color: var(--ink-2); text-align: right; }
+.pips { display: inline-flex; gap: 3px; vertical-align: middle; }
+.pips i { width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+.pips i.off { background: var(--track); }
+.feat { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: .92rem; padding: 6px 0; border-top: 1px solid var(--rule); }
+.feat .ic { color: var(--accent); }
+.feat .st { font: 500 .7rem var(--mono); }
+.feat small { color: var(--ink-3); font-size: .8rem; display: block; }
+.habits li { position: relative; padding-left: 14px; font-size: .92rem; line-height: 1.45; }
+.habits li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* ---------- the realm ---------- */
+.tower { border-top: 5px solid var(--f-tower); }
+.tower .attrs { display: flex; flex-wrap: wrap; gap: 6px 14px; font-family: var(--mono); font-size: .8rem; }
+.tower .attrs span { display: inline-flex; align-items: center; gap: 5px; }
+.tower .attrs b { font-weight: 600; font-size: .95rem; }
+.tower .attrs .ic { color: var(--accent); }
+.frame { margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px))); background: var(--table); position: relative; }
+.frame svg { display: block; width: 100%; height: auto; user-select: none; -webkit-user-select: none; }
+.mapbar { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.mapbar .hint { color: var(--ink-3); font-size: .82rem; margin-left: auto; }
+.toggle { min-height: 40px; padding: 0 12px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); display: inline-flex; align-items: center; gap: 6px; font: 500 .76rem var(--mono); color: var(--ink-2); }
+.toggle[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.map text { font-family: var(--mono); }
+.map .land { fill: color-mix(in oklab, var(--fc) var(--mix), var(--land)); stroke: color-mix(in oklab, var(--ink) 18%, transparent); stroke-width: 1; }
+.map .border { fill: none; stroke: var(--ink-2); stroke-width: 2.2; stroke-linecap: round; opacity: .75; }
+.map .river { fill: none; stroke: var(--water); stroke-width: 6; stroke-linecap: round; }
+.map .lake { fill: var(--water); stroke: color-mix(in oklab, var(--water) 60%, var(--ink)); stroke-width: .8; }
+.map .hid { fill: var(--ink-3); font-size: 8.5px; font-weight: 500; letter-spacing: .04em; }
+.map.nocodes .hid { display: none; }
+.map .lvl { fill: var(--ink); font-family: var(--display); font-size: 24px; font-weight: 700; }
+.map .glyph { fill: none; stroke: var(--ink-2); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .8; }
+.map .crown { fill: var(--fc); stroke: var(--ink); stroke-width: .9; stroke-linejoin: round; }
+.map .tower-g { fill: var(--fc); stroke: var(--ink); stroke-width: .9; stroke-linejoin: round; }
+.map .tok { fill: var(--fc); stroke: var(--halo); stroke-width: 1.4; }
+.map .tok-g { fill: none; stroke: var(--on-fc); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.map .tok-g.fill { fill: var(--on-fc); stroke: none; }
+.map .ring { fill: none; stroke: var(--track); stroke-width: 2.2; }
+.map .ring.on { stroke: var(--good); } .map .ring.on.mid { stroke: var(--warn); } .map .ring.on.low { stroke: var(--bad); }
+.map .pip { fill: var(--on-fc); }
+.map .hostile { stroke: var(--bad); stroke-width: 2.4; stroke-dasharray: 3 2; fill: none; }
+.map .morten-ring { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 7 4; }
+.map .morten-pin { fill: var(--accent); stroke: var(--halo); stroke-width: 1.5; }
+.map .morten-g { fill: var(--on-accent); }
+.map .picked { fill: none; stroke: var(--ink); stroke-width: 3.5; stroke-linejoin: round; }
+.map .arrow { fill: none; stroke: var(--fc); stroke-width: 3; stroke-linecap: round; }
+.map .arrow-halo { fill: none; stroke: var(--halo); stroke-width: 7; stroke-linecap: round; opacity: .85; }
+.map .head-a { fill: var(--fc); stroke: var(--halo); stroke-width: 1.2; stroke-linejoin: round; }
+.map .badge { fill: var(--fc); stroke: var(--halo); stroke-width: 1.8; }
+.map .badge-t { fill: var(--on-fc); font-size: 10px; font-weight: 600; }
+.map .hit { fill: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.keyover { position: absolute; inset: 8px; overflow: auto; background: color-mix(in oklab, var(--panel) 92%, transparent); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: none; gap: 8px; font-size: .88rem; }
+.keyover[data-on="true"] { display: grid; }
+.keyover li { display: flex; align-items: center; gap: 10px; }
+.keyover .ic { color: var(--accent); width: 20px; height: 20px; }
+.entry h3 { font-size: 1.3rem; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.entry h3 .code { font: 500 .78rem var(--mono); color: var(--ink-3); }
+.entry .line { color: var(--ink-2); font-size: .95rem; }
+.piece { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 8px; background: var(--bg); border: 1px solid var(--rule); border-left: 5px solid var(--fc); min-width: 0; }
+.piece .body { flex: 1 1 auto; min-width: 0; display: grid; gap: 3px; }
+.piece .tok-big { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--fc); color: var(--on-fc); display: grid; place-items: center; margin-top: 2px; }
+.piece .tok-big .ic { width: 20px; height: 20px; stroke-width: 1.8; }
+.piece .pn { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.piece .pn b { font-weight: 700; }
+.piece .pn small { font: 500 .7rem var(--mono); color: var(--ink-3); }
+.piece .hp { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: .74rem; }
+.piece .hp .bar { width: 70px; flex: none; }
+.piece .what { font-size: .88rem; color: var(--ink-2); }
+.piece .do { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.piece .do span { font: 500 .7rem var(--mono); color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 3px 8px; }
+.hexbtns { display: flex; flex-wrap: wrap; gap: 6px; }
+.hexbtn { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); text-align: left; font-size: .88rem; }
+.hexbtn small { font: 500 .68rem var(--mono); color: var(--ink-3); }
+.hexbtn .ic { width: 14px; height: 14px; color: var(--accent); }
+.rooms { display: flex; gap: 4px; flex-wrap: wrap; }
+.room { min-width: 44px; min-height: 44px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); display: grid; place-items: center; font: 500 .7rem var(--mono); color: var(--ink-3); padding: 2px 6px; text-align: center; }
+.room.done { border-color: var(--good); color: var(--good); }
+.room.now { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.realms { display: grid; gap: 6px; }
+.rrow { display: grid; grid-template-columns: 11px minmax(0, 1fr); gap: 4px 10px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); border-left: 5px solid var(--fc); }
+.rrow .top { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.rrow .top b { font-size: 1.02rem; font-weight: 700; color: var(--fc); }
+.rrow .top .lv { font-size: .9rem; color: var(--ink-2); }
+.rrow .top .st { margin-left: auto; font: 600 .68rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.rrow .nums { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); }
+.rrow .nums span { display: inline-flex; align-items: center; gap: 4px; }
+.rrow .nums .bar { width: 56px; flex: none; }
+.rrow .nums .ic { color: var(--accent); }
+.rrow .more { grid-column: 2; display: none; gap: 6px; padding-top: 6px; border-top: 1px solid var(--rule); font-size: .9rem; color: var(--ink-2); }
+.rrow[data-open="true"] .more { display: grid; }
+.rrow .goal { display: flex; gap: 6px; align-items: baseline; }
+.rrow .goal .ic { color: var(--accent); flex: none; }
+
+/* ---------- fights ---------- */
+.frow { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; gap: 2px 10px; align-items: center; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); text-align: left; width: 100%; }
+.frow .pip { width: 12px; height: 12px; border-radius: 50%; background: var(--good); grid-row: span 2; }
+.frow .pip.hurt { background: var(--warn); } .frow .pip.dead { background: var(--bad); } .frow .pip.going { background: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent); }
+.frow .t { font-weight: 600; }
+.frow .m { font-family: var(--mono); font-size: .72rem; color: var(--ink-2); grid-column: 2; }
+.frow .r { font-family: var(--mono); font-size: .74rem; color: var(--ink-2); grid-row: span 2; text-align: right; white-space: nowrap; }
+
+/* ---------- more ---------- */
+.subtabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.subtabs button { min-height: 40px; padding: 0 14px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); font: 500 .78rem var(--mono); color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; }
+.subtabs button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.mrow { display: grid; grid-template-columns: 5.2em minmax(0, 1fr); gap: 8px; }
+.mrow .n b { font-size: 1.1rem; }
+.mrow .n small { display: block; font: 500 .6rem var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.mrow .cell { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; min-height: 44px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); padding: 6px 10px; font-size: .88rem; text-align: left; }
+.mrow .cell .pips i { width: 9px; height: 9px; border-radius: 50%; }
+.mrow .cell .pips i.won { background: var(--good); } .mrow .cell .pips i.going { background: var(--accent); }
+.mrow .cell small { font-family: var(--mono); font-size: .7rem; color: var(--ink-3); }
+.dial { display: grid; gap: 6px; padding: 8px 0; border-top: 1px solid var(--rule); }
+.dial .d { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.dial .d b { font-weight: 600; }
+.dial .d small { color: var(--ink-3); font-size: .8rem; }
+.dial .pending { font: 500 .66rem var(--mono); color: var(--warn); margin-left: auto; }
+
+/* ---------- wide screens ---------- */
+@media (min-width: 900px) {
+  .app { padding-top: 20px; padding-bottom: 40px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); grid-template-rows: auto auto 1fr; gap: 28px; align-items: start; }
+  .now { grid-column: 1 / -1; margin: 0 -16px; }
+  .tabs { position: static; grid-column: 2; grid-row: 2; justify-self: end; display: inline-flex; padding: 0; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
+  .tabs button { flex-direction: row; min-height: 44px; padding: 0 16px; gap: 8px; }
+  .tabs button + button { border-left: 1px solid var(--rule); }
+  .tabs button[aria-current="true"] { background: var(--ink); color: var(--bg); }
+  .tabs .ic { width: 18px; height: 18px; }
+  .tabs .dot { display: none; }
+  #story { display: grid !important; grid-column: 1; grid-row: 2 / span 2; }
+  .app[data-view="story"] #morten { display: grid; }
+  .view { grid-column: 2; grid-row: 3; }
+  .frame { margin: 0; border-radius: 10px; padding: 8px; }
+  .keyover { inset: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .pulse { animation: none; } * { transition: none !important; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.3A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.2c0 5.7-7.5 10.3-7.5 10.3z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/></symbol>
+  <symbol id="i-sword" viewBox="0 0 24 24"><path d="M20 4l-9 9M13 15l-3-3M8 16l-4 4M6 18l2 2M19 4h1v1"/></symbol>
+  <symbol id="i-mask" viewBox="0 0 24 24"><path d="M3 9c0-2 2-3 4-3h10c2 0 4 1 4 3v2c0 4-3 6-6 6-2 0-2-2-3-2s-1 2-3 2c-3 0-6-2-6-6zM8 11h2M14 11h2"/></symbol>
+  <symbol id="i-coins" viewBox="0 0 24 24"><path d="M5 8a7 3 0 1 0 14 0a7 3 0 1 0-14 0M5 8v8c0 1.7 3.1 3 7 3s7-1.3 7-3V8M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 24 24"><path d="M4 18h16M4 18l-1-10 5 4 4-6 4 6 5-4-1 10"/></symbol>
+  <symbol id="i-tower" viewBox="0 0 24 24"><path d="M7 20V8h2V5h2v3h2V5h2v3h2v12zM10 20v-4h4v4"/></symbol>
+  <symbol id="i-skull" viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-7 7c0 3 2 4 3 5v3h8v-3c1-1 3-2 3-5a7 7 0 0 0-7-7zM9 11h.01M15 11h.01M10 18v2M14 18v2"/></symbol>
+  <symbol id="i-d20" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7zM12 2v20M3 7l9 5 9-5M12 12l-9 5M12 12l9 5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6-6-6-11a6 6 0 0 1 12 0c0 5-6 11-6 11zM12 10m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0"/></symbol>
+  <symbol id="i-boots" viewBox="0 0 24 24"><path d="M6 3h5v8l6 3v3H6zM6 17v3h11"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24"><path d="M5 3h14v18H5zM15 12h.01M9 21V3"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18v-8h18v8M3 14h18M6 10V7h5v3"/></symbol>
+  <symbol id="i-lantern" viewBox="0 0 24 24"><path d="M9 2h6M10 5h4l2 3v8l-2 3h-4l-2-3V8zM12 9v5M12 19v3"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8h12l1 13H5zM9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+  <symbol id="i-speech" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h12l-3 4 3 4H5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 12V5a1.5 1.5 0 0 1 3 0v6M11 11V4a1.5 1.5 0 0 1 3 0v7M14 11V5a1.5 1.5 0 0 1 3 0v8c0 4-2 7-6 7s-6-3-6-7v-2a1.5 1.5 0 0 1 3 0"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-hex" viewBox="0 0 24 24"><path d="M7 3.5h5l2.5 4.3L12 12H7L4.5 7.8z"/><path d="M14.5 7.8h5L22 12l-2.5 4.3h-5L12 12"/><path d="M7 12h5l2.5 4.3L12 20.5H7l-2.5-4.2z"/></symbol>
+  <symbol id="i-fight" viewBox="0 0 24 24"><path d="M5 19L19 5M14 5h5v5M5 5l14 14M5 14v5h5"/></symbol>
+  <symbol id="i-story" viewBox="0 0 24 24"><path d="M4 5h11a4 4 0 0 1 4 4v10H8a4 4 0 0 1-4-4z"/><path d="M8 9h7M8 13h7"/></symbol>
+  <symbol id="i-hat" viewBox="0 0 24 24"><path d="M12 3l4 9H8zM5 14h14l1 3H4zM10 9l2-1 2 1"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><path d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0M11 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0M18 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><path d="M4 5h16v15H4zM4 10h16M9 3v4M15 3v4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h3l2 11h11l2-7H7M9 20a1 1 0 1 0 2 0a1 1 0 1 0-2 0M16 20a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/></symbol>
+  <symbol id="i-q" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/></symbol>
+</svg>
+
+<div class="app" id="app" data-view="story">
+
+  <!-- ===================== the now line and the HUD ===================== -->
+  <header class="now" aria-label="Now">
+    <p class="where"><b>Month 2 · Day 4 · 09:40</b><span>Floor 2, room 2.4 · under the Humans' A5</span><span class="doing"><i class="pulse" aria-hidden="true"></i>the GM: rolling round 2</span></p>
+    <p class="hud" aria-label="Morten at a glance">
+      <span><svg class="ic bad"><use href="#i-heart"/></svg><span class="bar mid"><i style="width:50%"></i></span><b>10/20 HP</b></span>
+      <span><svg class="ic"><use href="#i-shield"/></svg><b>AC 15</b> Mage Armor</span>
+      <span><svg class="ic"><use href="#i-lantern"/></svg>lamp <b>5 h</b></span>
+      <span><svg class="ic"><use href="#i-spark"/></svg>lost <b>none</b></span>
+      <span><svg class="ic"><use href="#i-coins"/></svg><b>0 GP</b> on him</span>
+    </p>
+  </header>
+
+  <!-- ===================== STORY ===================== -->
+  <main class="view" id="story" aria-label="The story">
+    <div class="note" id="note-story">
+      <svg class="ic"><use href="#i-q"/></svg>
+      <span>The story runs top to bottom: a thick rule starts a month, a thin one a day, each card one thing that happened. The GM's words come first; the dice are under <b>the rounds</b>. The card with the pulse is being played now.</span>
+      <button type="button" onclick="this.parentNode.remove()">Got it</button>
+    </div>
+
+    <div class="month folded" role="button" tabindex="0" aria-expanded="false">
+      <h2>Month 1</h2><span class="orders">Delve floor 1 under the tower · the purse into the treasury</span><span class="sum">+375 XP · +37 GP · floor 1 cleared</span>
+    </div>
+    <div class="day"><svg class="ic"><use href="#i-door"/></svg><span><b>Day 1</b> · floor 1 under the tower <span class="muted">· 5 fights, 2 rests</span></span><button type="button" class="fold">show</button></div>
+
+    <!-- the world's turn -->
+    <article class="sec world" aria-label="The world's turn, month 1">
+      <div class="sec-head">
+        <svg class="ic"><use href="#i-globe"/></svg>
+        <div><h3>The world's turn <small>end of month 1</small></h3>
+          <p class="meta"><span>7 realms moved</span><span>·</span><span>2 moves the tower could not see</span></p></div>
+      </div>
+      <div class="part"><h4>The plan</h4>
+        <p>Morten took the safe XP under his own tower and put all his coins, 97 GP, into the treasury, so the tower could reach 200 GP and buy Farms.</p></div>
+      <div class="part"><h4>What happened</h4>
+        <ol class="events">
+          <li class="fac-tower"><span class="n">1</span><span><span class="who">The tower</span> bought Farms at home: 60 GP a month from now on, 10 from the hex and 50 from the fields. The treasury is down to 7 GP.</span></li>
+          <li class="fac-gnomes"><span class="n">2</span><span><span class="who">The Gnomes</span> (bad: robs its neighbours) marched Thugs and Knights from their seat into C4 to rob the Tieflings' Mercenaries next door in C5. That army is two hexes from the tower, and not after us.</span></li>
+          <li class="fac-orcs"><span class="n">3</span><span><span class="who">The Orcs</span> (bad: robs its neighbours) sent two Thugs into C2 after the Goblinkind Caravans. <span class="who fac-goblinkind" style="--fc: var(--f-goblinkind)">Goblinkind</span> (good: keeps the peace, our ally) struck first with the Caravans and lost badly, 5 against 13: the Caravans are down to 2/4 HP.</span></li>
+          <li class="fac-elves"><span class="n">4</span><span><span class="who">The Elves</span> (bad: takes land) moved both Militias into the Orcs' B1 to take it next month.</span></li>
+          <li><span class="n">·</span><span class="muted">Elsewhere: the Humans (ally) and the Tieflings saved their gold. Two Cunning moves the tower could not see.</span></li>
+        </ol></div>
+      <div class="part"><h4>The tower now</h4>
+        <div class="delta">
+          <span><svg class="ic bad"><use href="#i-heart"/></svg>regime <b>7/7</b></span>
+          <span><svg class="ic"><use href="#i-coins"/></svg>197 → <b>7 GP</b></span>
+          <span><svg class="ic"><use href="#i-coins"/></svg>income +10 → <b>+60</b> a month</span>
+          <span>pieces: <b>Farms</b> at home</span>
+          <span>allies <b>Goblinkind, Humans</b></span>
+          <span>hostile <b>nobody</b></span>
+        </div></div>
+      <div class="part"><h4>Next month</h4>
+        <div class="chips">
+          <span class="chip chance"><span class="k">chance</span>three seats are unguarded: the Gnomes' D3 (3 days), the Orcs' D1, the Elves' A2. A Strike there is 2d6 to the regime, a High fight, and 6 months of hostility.</span>
+          <span class="chip open"><span class="k">open</span>67 GP next month; everything costs 200 or more.</span>
+          <span class="chip open"><span class="k">open</span>floor 2 lies under the Humans' A5, next door; floor 3 under the Elves' B3.</span>
+        </div></div>
+      <details class="trace"><summary><svg class="ic"><use href="#i-chev"/></svg>The script's log and the income, as it printed them</summary>
+        <div class="trace-lines">
+          <span>Order: Tieflings C5 (d10 10) · Gnomes C4 (d10 2) · Orcs C4 (d10 1) · Elves C3 (d10 7) · Goblinkind C3 (d10 7) · Humans C3 (d10 7) · Tower C1 (d10 2).</span>
+          <span>Gnomes (Tinker-General Ellywick, bad: robs its neighbours): Move Thugs a21 D3 → C4, Knights a22 D3 → C4 (goal: rob Tieflings' Mercenaries a16 in C5).</span>
+          <span>Orcs (Boss Hruma, bad: robs its neighbours): Move Thugs a1 D1 → C2, Thugs a2 D1 → C2 (goal: rob Goblinkind's Caravans a8 in C2).</span>
+          <span>Elves (Warden Valanthe, bad: takes land): Move Militia a17 A2 → B1, Militia a18 A2 → B1 (goal: take B1 (L14, Orcs')).</span>
+          <span>Goblinkind (Big Boss Zarga, good: keeps the peace): Caravans a8 attacks Orcs' Thugs a2 in C2 → d10 1 + W3 + 1 claim = 5 vs d10 9 + W4 = 13, LOSS. Counter 1d4 2 = 2: Caravans 4 → 2 HP.</span>
+          <span>Tower (Morten): Buy Farms a25 in B5, −200 GP → 7 GP.</span>
+          <span>Income: Orcs +480 → 910 · Goblinkind +470 → 790 · Humans +150 → 400 · Tieflings +525 → 975 · Elves +370 → 640 · Gnomes +320 → 690 · Tower +10 → 207.</span>
+        </div>
+      </details>
+    </article>
+
+    <!-- month 2 -->
+    <div class="month"><h2>Month 2</h2><span class="orders">Delve floor 2 under the Humans' A5 · the tower saves · no gifts</span><span class="sum">in play</span></div>
+
+    <article class="sec plain" aria-label="Orders">
+      <div class="sec-head"><svg class="ic"><use href="#i-flag"/></svg>
+        <div><h3>Morten's orders</h3>
+          <p class="story">Floor 2 is next door under the Humans' A5: XP toward level 4 at low risk, since floor 3 lies past the Gnomes' B4, a level-10 hex. The tower has 67 GP and nothing costs less than 200, so it saves. No gifts.</p></div>
+      </div>
+    </article>
+
+    <div class="day"><svg class="ic"><use href="#i-boots"/></svg><span><b>Day 2</b> · the road, B5 → A5 <span class="muted">· 1 day · ration 4 → 3</span></span></div>
+
+    <article class="sec fight" aria-label="A fight: 3 Giant Lizards">
+      <div class="sec-head"><svg class="ic"><use href="#i-fight"/></svg>
+        <div><h3>On the road · 3 Giant Lizards <small>CR 1/4 each</small></h3>
+          <p class="meta"><span>Moderate · 150 XP</span><span>·</span><span class="out good">cleared</span><span>·</span><span>7 rounds</span><span>·</span><span>the wandering roll came up 1</span></p></div>
+      </div>
+      <div class="foes"><div class="foe"><b>Giant Lizard ×3</b><span class="hp"><svg class="ic bad"><use href="#i-heart"/></svg>19 HP each</span><span class="stats">AC 12 · 12 m · Bite +4, 1d8+2 · Large · WIS +0</span></div></div>
+      <div class="story">
+        <p class="head">Met 12 squares off on the savanna, seen first. Sleep on the opening roll came up a natural 20, which doubled its reach to all three; one went down and stayed down.</p>
+        <ul class="bullets">
+          <li><b>The dice</b>Thunderwave fizzled in round 3 and the Heroic Inspiration reroll saved it. Magic Missile fizzled in round 5 and is lost for the day.</li>
+          <li><b>How it ended</b>Thunderwave killed the second lizard; he walked up to the sleeper and a point-blank Scorching Ray crit for 13 finished it.</li>
+        </ul></div>
+      <details class="trace"><summary><svg class="ic"><use href="#i-chev"/></svg>The rounds and the dice (7 rounds)</summary>
+        <div class="round"><h5>Round 1 · init Morten 24 › Lizards 16</h5>
+          <div class="ln"><span class="mk">✦</span><span class="tx">Sleep, cast DC 11 <span class="die nat20"><b>d20</b> 20 <i>+5</i> = 25 <span class="r ok">nat 20</span></span> radius doubled to 3 m, all three in it. WIS saves DC 13: A <span class="die"><b>d20</b> 8 <span class="r fail">fail</span></span> B <span class="die"><b>d20</b> 17 <span class="r ok">save</span></span> C <span class="die"><b>d20</b> 19 <span class="r ok">save</span></span></span></div>
+          <div class="ln them"><span class="mk">·</span><span class="tx">B and C Dash, adjacent. A's second save <span class="die"><b>d20</b> 3 <span class="r fail">fail</span></span> unconscious.</span></div></div>
+        <div class="round"><h5>Round 2</h5>
+          <div class="ln"><span class="mk">✦</span><span class="tx">Thunderwave <span class="die"><b>d20</b> 13 <i>+5</i> = 18 <span class="r ok">cast</span></span> CON: B <span class="die"><b>d20</b> 17 <i>+1</i> = 18 <span class="r ok">save</span></span> C <span class="die"><b>d20</b> 8 <i>+1</i> = 9 <span class="r fail">fail</span></span> <span class="die"><b>2d8</b> 6+4 = 10 thunder</span> B 19 → 14, C 19 → 9, both pushed 3 m.</span></div>
+          <div class="ln them"><span class="mk">·</span><span class="tx">B bites <span class="die"><b>d20</b> 9 <i>+4</i> = 13 <u>vs AC 15</u> <span class="r miss">miss</span></span> C bites <span class="die"><b>d20</b> 3 <i>+4</i> = 7 <span class="r miss">miss</span></span></span></div></div>
+        <div class="round"><h5>Round 3</h5>
+          <div class="ln"><span class="mk">✦</span><span class="tx">Thunderwave <span class="die"><b>d20</b> 5 <i>+5</i> = 10 <span class="r fizz">fizzle</span></span> Heroic Inspiration <span class="die"><b>d20</b> 8 <i>+5</i> = 13 <span class="r ok">cast</span></span> both save, half of 7: B 14 → 11, C 9 → 6.</span></div>
+          <div class="ln them"><span class="mk">·</span><span class="tx">B bites <span class="die"><b>d20</b> 15 <i>+4</i> = 19 <span class="r hit">hit</span></span> Shield <span class="die"><b>d20</b> 10 <i>+5</i> = 15 <span class="r ok">cast</span></span> AC 20, a miss after all.</span></div></div>
+        <p class="muted" style="font: .74rem var(--mono); padding: 4px 0 0 20px">… rounds 4 to 7 fold the same way: Magic Missile kills C, fizzles once (lost), a bite for 3, Thunderwave kills B, the crit on the sleeper.</p>
+      </details>
+      <p class="result"><span>+150 XP → <b>1,425</b></span><span>+15 GP</span><span>HP <b>17/20</b></span><span>lost <b>Magic Missile</b></span><span>Heroic Inspiration spent</span></p>
+    </article>
+    <article class="sec plain"><div class="sec-head"><svg class="ic"><use href="#i-bed"/></svg><div><h3>Camp in A5</h3><p class="meta"><span>Long Rest · everything back · Mage Armor free at dawn</span></p></div></div></article>
+
+    <div class="day"><svg class="ic"><use href="#i-door"/></svg><span><b>Day 3</b> · floor 2 under the Humans' A5 <span class="muted">· 06:00 · ration 3 → 2</span></span></div>
+
+    <article class="sec fight" aria-label="A fight: 3 Grimlocks">
+      <div class="sec-head"><svg class="ic"><use href="#i-door"/></svg>
+        <div><h3>Room 2.1 · 3 Grimlocks <small>CR 1/4 each</small></h3>
+          <p class="meta"><span>Moderate · 150 XP</span><span>·</span><span class="out good">cleared, untouched</span><span>·</span><span>2 rounds</span></p></div>
+      </div>
+      <div class="story"><p class="head">A 12 × 15 m hall with a 3 m ledge. They came at him in a bunch from the dark and never landed a blow: Sleep took two, Thunderwave caught all three, and the one left ran onto his dagger.</p>
+        <ul class="bullets"><li><b>The dice</b>Thunderwave fizzled and Heroic Inspiration rerolled it to a 14. One Grimlock saved with a natural 20.</li></ul></div>
+      <details class="trace"><summary><svg class="ic"><use href="#i-chev"/></svg>The rounds and the dice (2 rounds)</summary><p class="muted" style="font: .74rem var(--mono); padding: 4px 0 0 20px">as above</p></details>
+      <p class="result"><span>+150 XP → <b>1,575</b></span><span>+15 GP</span><span>HP <b>20/20</b></span><span>nothing lost</span></p>
+    </article>
+
+    <article class="sec fight" aria-label="A fight: 4 Mastiffs">
+      <div class="sec-head"><svg class="ic"><use href="#i-door"/></svg>
+        <div><h3>Room 2.2 · 4 Mastiffs <small>CR 1/8 each</small></h3>
+          <p class="meta"><span>Low · 100 XP</span><span>·</span><span class="out good">cleared</span><span>·</span><span>4 rounds · 2 fled</span></p></div>
+      </div>
+      <div class="story"><p class="head">The doorway trick again: one dog at a time. Fire Bolt killed the first, a bite for 3 knocked him prone, then Shocking Grasp and Magic Missile both fizzled before Thunderwave killed the second. The last two broke and cowered.</p></div>
+      <details class="trace"><summary><svg class="ic"><use href="#i-chev"/></svg>The rounds and the dice (4 rounds)</summary><p class="muted" style="font: .74rem var(--mono); padding: 4px 0 0 20px">as above</p></details>
+      <p class="result"><span>+100 XP → <b>1,675</b></span><span>+10 GP</span><span>HP <b>17/20</b></span><span>lost <b>Shocking Grasp, Magic Missile</b></span></p>
+    </article>
+    <article class="sec plain"><div class="sec-head"><svg class="ic"><use href="#i-bed"/></svg><div><h3>Short rest</h3><p class="meta"><span>Arcane Recovery: Shocking Grasp and Magic Missile back · 1 Hit Die → 20/20 HP · Hit Dice 2/3</span></p></div></div></article>
+
+    <div class="you"><span class="label">You, to the GM</span><p>From 2.3 on, drop the purse behind before each new door.</p></div>
+    <aside class="sec aside"><div class="sec-head"><svg class="ic"><use href="#i-speech"/></svg><div><h3>The GM, out of game</h3><p>Done: a habit from here on, and on his sheet. One ruling to note for the next room: a Shadow's Strength drain has no end in the SRD text, so it lasts until he finishes a Long Rest.</p></div></div></aside>
+
+    <article class="sec fight" aria-label="A fight: 2 Shadows">
+      <div class="sec-head"><svg class="ic"><use href="#i-door"/></svg>
+        <div><h3>Room 2.3 · 2 Shadows <small>CR 1/2 each</small></h3>
+          <p class="meta"><span>High · 200 XP</span><span>·</span><span class="out warn">cleared, the one that hurt</span><span>·</span><span>5 rounds</span></p></div>
+      </div>
+      <div class="foes"><div class="foe"><b>Shadow ×2</b><span class="hp"><svg class="ic bad"><use href="#i-heart"/></svg>27 HP each</span><span class="stats">AC 12 · 12 m · Draining Swipe +4, 1d6+2 necrotic and STR −1d4 · resists fire, cold, lightning, thunder, acid · immune to Unconscious</span></div></div>
+      <figure class="track" aria-label="HP across the fight">
+        <svg viewBox="0 0 360 110" style="width:100%;height:auto;display:block">
+          <g font-family="IBM Plex Mono, monospace" font-size="8" fill="var(--ink-3)">
+            <line x1="30" x2="300" y1="12" y2="12" stroke="var(--rule)"/><text x="24" y="15" text-anchor="end">27</text>
+            <line x1="30" x2="300" y1="52" y2="52" stroke="var(--rule)"/><text x="24" y="55" text-anchor="end">13</text>
+            <line x1="30" x2="300" y1="92" y2="92" stroke="var(--rule)"/><text x="24" y="95" text-anchor="end">0</text>
+            <text x="30" y="106" text-anchor="middle">start</text><text x="84" y="106" text-anchor="middle">R1</text><text x="138" y="106" text-anchor="middle">R2</text><text x="192" y="106" text-anchor="middle">R3</text><text x="246" y="106" text-anchor="middle">R4</text><text x="300" y="106" text-anchor="middle">R5</text>
+          </g>
+          <polyline fill="none" stroke="var(--accent)" stroke-width="2.2" points="30,32.7 84,32.7 138,47.6 192,47.6 246,59.4 300,59.4"/>
+          <polyline fill="none" stroke="var(--ink-3)" stroke-width="1.6" stroke-dasharray="4 3" points="30,12 84,41.6 138,77.2 192,92"/>
+          <polyline fill="none" stroke="var(--ink-2)" stroke-width="1.6" stroke-dasharray="2 3" points="30,12 84,12 138,12 192,53.5 246,89 300,92"/>
+          <circle cx="192" cy="92" r="3" fill="var(--bad)"/><circle cx="300" cy="92" r="3" fill="var(--bad)"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="8"><text x="305" y="62" fill="var(--accent)">Morten 11</text><text x="196" y="88" fill="var(--ink-3)">A ✝</text><text x="305" y="96" fill="var(--ink-2)">B ✝</text></g>
+        </svg>
+      </figure>
+      <div class="story">
+        <p class="head">Magic Missile five times in a row, one of them a natural 20 for six darts, and nothing resisted force. Both shadows still reached him across the dark room, and two swipes landed.</p>
+        <ul class="bullets">
+          <li><b>The dice</b>Every cast held. The second Shadow hit twice: 5 and 4 necrotic, and 3 then 2 off his Strength.</li>
+          <li><b>How it ended</b>The last dart volley for 13 took the second Shadow down from 1 HP. Strength 3 means a 20 kg load, so the bedroll, torches, rope and crowbar stay by the door until morning.</li>
+        </ul></div>
+      <details class="trace" open><summary><svg class="ic"><use href="#i-chev"/></svg>The rounds and the dice (5 rounds)</summary>
+        <div class="round"><h5>Round 1 · init Morten 15 › Shadows 15</h5>
+          <div class="ln"><span class="mk">·</span><span class="tx">Stealth: A <span class="die"><b>d20</b> 7 <i>+6</i> = 13 <u>vs passive 13</u> <span class="r miss">seen</span></span> B <span class="die"><b>d20</b> 16 <i>+6</i> = 22 <span class="r ok">hidden</span></span></span></div>
+          <div class="ln"><span class="mk">✦</span><span class="tx">Magic Missile at A <span class="die"><b>d20</b> 8 <i>+5</i> = 13 <span class="r ok">cast</span></span> <span class="die"><b>3d4</b> 2+2+3 <i>+3</i> = 10 force</span> A 27 → 17. Steps out to the doorway.</span></div>
+          <div class="ln them"><span class="mk">·</span><span class="tx">Both close in; B steps into the lamplight and is seen. No reach yet.</span></div></div>
+        <div class="round"><h5>Round 2</h5>
+          <div class="ln"><span class="mk">✦</span><span class="tx">Magic Missile <span class="die"><b>d20</b> 12 <i>+5</i> = 17 <span class="r ok">cast</span></span> <span class="die"><b>3d4</b> 1+4+4 <i>+3</i> = 12</span> A 17 → 5.</span></div>
+          <div class="ln them"><span class="mk">·</span><span class="tx">A swipes <span class="die"><b>d20</b> 17 <i>+4</i> = 21 <u>vs AC 15</u> <span class="r hit">hit</span></span> too high for Shield. <span class="die"><b>1d6+2</b> 3+2 = 5 necrotic</span> <span class="die"><b>1d4</b> 3 STR</span> Morten 20 → 15 HP, STR 8 → 5.</span></div></div>
+        <div class="round"><h5>Round 3</h5>
+          <div class="ln"><span class="mk">✦</span><span class="tx">Magic Missile <span class="die nat20"><b>d20</b> 20 <span class="r ok">nat 20</span></span> six darts: 3 on A <span class="die"><b>3d4</b> 2+2+3 <i>+3</i> = 10</span> <b>A dead</b>; 3 on B <span class="die"><b>3d4</b> 4+3+4 <i>+3</i> = 14</span> B 27 → 13.</span></div>
+          <div class="ln them"><span class="mk">·</span><span class="tx">B swipes <span class="die"><b>d20</b> 14 <i>+4</i> = 18 <span class="r hit">hit</span></span> Shield <span class="die"><b>d20</b> 14 <i>+5</i> = 19 <span class="r ok">cast</span></span> AC 20: a miss.</span></div></div>
+        <div class="round"><h5>Round 4</h5>
+          <div class="ln"><span class="mk">✦</span><span class="tx">Magic Missile <span class="die"><b>d20</b> 19 <i>+5</i> = 24 <span class="r ok">cast</span></span> <span class="die"><b>3d4</b> 1+4+4 <i>+3</i> = 12</span> B 13 → 1.</span></div>
+          <div class="ln them"><span class="mk">·</span><span class="tx">B swipes <span class="die"><b>d20</b> 17 <i>+4</i> = 21 <span class="r hit">hit</span></span> no reaction left. <span class="die"><b>1d6+2</b> 2+2 = 4</span> <span class="die"><b>1d4</b> 2 STR</span> Morten 15 → 11, STR 5 → 3.</span></div></div>
+        <div class="round"><h5>Round 5</h5>
+          <div class="ln"><span class="mk">✦</span><span class="tx">Magic Missile <span class="die"><b>d20</b> 14 <i>+5</i> = 19 <span class="r ok">cast</span></span> <span class="die"><b>3d4</b> 3+4+3 <i>+3</i> = 13</span> <b>B dead.</b></span></div></div>
+      </details>
+      <p class="result"><span>+200 XP → <b>1,875</b></span><span>+20 GP</span><span>HP <b>11/20</b></span><span>STR <b>3</b> until a Long Rest</span><span>11 kg left by the door</span></p>
+    </article>
+    <article class="sec plain"><div class="sec-head"><svg class="ic"><use href="#i-bed"/></svg><div><h3>Night in room 2.3</h3><p class="meta"><span>Long Rest · HP 20/20 · Strength 8 · Hit Dice 3/3 · Heroic Inspiration back · ration 2 → 1</span></p></div></div></article>
+
+    <div class="day"><svg class="ic"><use href="#i-door"/></svg><span><b>Day 4</b> · floor 2, on <span class="muted">· 08:00 · gear picked up</span></span></div>
+
+    <article class="sec fight live" aria-label="A fight going on: Darkmantle" id="live">
+      <div class="sec-head"><svg class="ic"><use href="#i-door"/></svg>
+        <div><h3>Room 2.4 · Darkmantle <small>CR 1/2</small></h3>
+          <p class="meta"><span>Moderate · 100 XP</span><span>·</span><span class="live-tag"><i class="pulse" aria-hidden="true"></i>in progress · round 2</span></p></div>
+      </div>
+      <div class="foes"><div class="foe"><b>Darkmantle</b><span class="hp"><svg class="ic bad"><use href="#i-heart"/></svg>22 HP</span><span class="stats">AC 11 · 3 m, fly 9 m · Crush +5, 1d6+3, attaches; blinds when it covers · DC 13 STR to pull off · seen on the ceiling, 9 × 12 m room, braziers</span></div></div>
+      <div class="hprow">
+        <div class="hp"><span class="nm">Morten</span><span class="bar mid"><i style="width:50%"></i></span><b>10/20</b></div>
+        <div class="hp"><span class="nm">Darkmantle</span><span class="bar"><i style="width:59%"></i></span><b>13/22</b></div>
+      </div>
+      <div class="round"><h5>Round 1 · init Darkmantle 21 › Morten 17</h5>
+        <div class="ln them"><span class="mk">·</span><span class="tx">It drops from the ceiling: Crush <span class="die"><b>d20</b> 2 <i>+5</i> = 7 <u>vs AC 15</u> <span class="r miss">miss</span></span></span></div>
+        <div class="ln"><span class="mk">✦</span><span class="tx">Magic Missile <span class="die"><b>d20</b> 10 <i>+5</i> = 15 <span class="r ok">cast</span></span> <span class="die"><b>3d4</b> 1+3+2 <i>+3</i> = 9 force</span> Darkmantle 22 → 13.</span></div></div>
+      <div class="round"><h5>Round 2</h5>
+        <div class="ln them"><span class="mk">·</span><span class="tx">Crush <span class="die nat20"><b>d20</b> 20 <span class="r hit">crit</span></span> <span class="die"><b>2d6+3</b> 3+4+3 = 10</span> and it is on him, attached. <b>Morten 20 → 10.</b> Not covered: he can still see.</span></div></div>
+      <ol class="activity" aria-label="What the GM is doing">
+        <li>the GM: rolling Morten's Thunderwave to shake it off</li>
+        <li>12 s since the last line</li>
+      </ol>
+      <div class="wait" aria-hidden="true"><i></i></div>
+    </article>
+
+    <!-- the answer box -->
+    <section class="answer" aria-label="Your word">
+      <p class="mockbar">mockup: show the box as <button type="button" aria-pressed="true" data-box="playing">while the GM plays</button><button type="button" aria-pressed="false" data-box="orders">month orders</button><button type="button" aria-pressed="false" data-box="fight">before a fight</button><button type="button" aria-pressed="false" data-box="turn">Morten's turn</button></p>
+
+      <div class="box" data-box="playing">
+        <p class="status" style="padding: 10px 14px 0"><span>The GM is playing Morten</span><span class="sep">·</span><span>stops at the next month's orders</span><span class="sep">·</span><span>fights live, every round</span></p>
+        <div class="form">
+          <div class="row"><span class="label">A word now</span>
+            <div class="seg"><button type="button" class="stop"><svg class="ic"><use href="#i-stop"/></svg>Stop after this fight</button><button type="button"><svg class="ic"><use href="#i-hand"/></svg>Take over Morten</button></div></div>
+        </div>
+        <textarea rows="2" placeholder="A steer for the GM, or a question out of game. It takes effect at the next stop point."></textarea>
+        <div class="send"><span class="hint">read at the next fight, day or world's turn</span><button type="button">Send</button></div>
+      </div>
+
+      <div class="box" data-box="orders" hidden>
+        <p class="status" style="padding: 10px 14px 0"><span>Your move</span><span class="sep">·</span><span>Month 3: the orders</span><span class="sep">·</span><span>the GM looks as soon as you send</span></p>
+        <div class="form">
+          <div class="row"><span class="label">Travel: end the month in</span>
+            <div class="pick"><button type="button" aria-pressed="true"><span class="sw fac-tower" style="--fc: var(--f-tower)"></span>home, the tower <small>B5 · 0 days</small></button><button type="button"><span class="sw" style="--fc: var(--f-humans)"></span>the Humans' savanna <small>A5 · 1 day</small></button><button type="button"><span class="sw" style="--fc: var(--f-tieflings)"></span>the Tieflings' savanna <small>C5 · 1 day</small></button><button type="button"><span class="sw" style="--fc: var(--f-gnomes)"></span>the Gnomes' plains <small>B4 · 1 day</small></button><button type="button"><svg class="ic"><use href="#i-hex"/></svg>pick on the map</button></div></div>
+          <div class="row"><span class="label">Mission there</span>
+            <div class="pick"><button type="button" aria-pressed="true"><svg class="ic"><use href="#i-door"/></svg>Delve floor 1 <small>cleared; 2 Mastiffs left in 1.4</small></button><button type="button">none</button></div></div>
+          <div class="row"><span class="label">The tower's action <small class="muted">· 89 GP</small></span>
+            <div class="pick"><button type="button" aria-pressed="true">save</button><button type="button"><svg class="ic"><use href="#i-sword"/></svg>buy Thugs at home <small>200</small></button><button type="button"><svg class="ic"><use href="#i-mask"/></svg>buy Informers at home <small>200</small></button><button type="button"><svg class="ic"><use href="#i-coins"/></svg>buy Farms at home <small>200</small></button><button type="button">raise Cunning to 2 <small>200</small></button><button type="button">move · attack · seize · repair …</button></div></div>
+          <div class="row"><span class="label">Give</span><div class="pick"><button type="button" aria-pressed="true">nothing</button><button type="button"><span class="sw" style="--fc: var(--f-goblinkind)"></span>Goblinkind …</button><button type="button"><span class="sw" style="--fc: var(--f-humans)"></span>Humans …</button></div></div>
+        </div>
+        <textarea rows="2" placeholder="Why, in a line (goes in The plan), or the orders in your own words instead."></textarea>
+        <div class="send"><span class="hint">checked by the engine before anything moves</span><button type="button">Send the orders</button></div>
+      </div>
+
+      <div class="box" data-box="fight" hidden>
+        <p class="status" style="padding: 10px 14px 0"><span>Your move</span><span class="sep">·</span><span>Room 2.5: 3 Giant Wolf Spiders, CR 1/4 each, Moderate</span></p>
+        <div class="form"><div class="row"><span class="label">Seen from the door: three spiders on the ledge and the floor, 9 × 18 m, dark</span>
+          <div class="seg"><button type="button" aria-pressed="true"><svg class="ic"><use href="#i-fight"/></svg>Fight it</button><button type="button"><svg class="ic"><use href="#i-boots"/></svg>Avoid it</button><button type="button"><svg class="ic"><use href="#i-spark"/></svg>Plan…</button></div></div></div>
+        <textarea rows="2" placeholder="The plan: 'Web across the door first, then Sleep whatever is stuck.'"></textarea>
+        <div class="send"><span class="hint">the GM plays the fight from your plan</span><button type="button">Send</button></div>
+      </div>
+
+      <div class="box" data-box="turn" hidden>
+        <p class="status" style="padding: 10px 14px 0"><span>Morten's turn</span><span class="sep">·</span><span>round 3</span><span class="sep">·</span><span>move 6 sq · action · bonus action · reaction ✓</span></p>
+        <div class="form">
+          <div class="row"><span class="label">Positions: Morten C13 (the doorway) · Spider A C12 asleep (1 sq) · Spider B E11 (3 sq, half cover) · Spider C B9 (4 sq, out of sight)</span></div>
+          <div class="row"><span class="label">Drop a spell in</span>
+            <div class="pick"><button type="button" class="spell">Fire Bolt <small>DC 10</small></button><button type="button" class="spell">Ray of Frost</button><button type="button" class="spell">Shocking Grasp</button><button type="button" class="spell">Magic Missile <small>DC 11</small></button><button type="button" class="spell">Thunderwave</button><button type="button" class="spell">Sleep</button><button type="button" class="spell">Misty Step <small>DC 12</small></button><button type="button" class="spell">Scorching Ray</button><button type="button" class="spell">dagger</button><button type="button" class="spell">oil</button></div></div>
+        </div>
+        <textarea rows="2">Scorching Ray at Spider B, all three rays. Stay in the doorway. Shield if a bite would land.</textarea>
+        <div class="send"><span class="hint">an illegal move comes back with why</span><button type="button">Send the turn</button></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== MORTEN ===================== -->
+  <section class="view" id="morten" aria-label="Morten">
+    <div class="card">
+      <h3><svg class="ic"><use href="#i-hat"/></svg>Morten <small>human wizard 3 · Evoker · Sage</small></h3>
+      <div class="hpbig"><svg class="ic"><use href="#i-heart"/></svg><span class="bar mid"><i style="width:50%"></i></span><b>10 / 20 HP</b></div>
+      <div class="stat-row">
+        <div class="stat"><span class="v"><svg class="ic"><use href="#i-shield"/></svg>15</span><span class="label">AC</span><span class="sub">12 bare · Mage Armor until 14:00</span></div>
+        <div class="stat"><span class="v"><svg class="ic"><use href="#i-d20"/></svg>3/3</span><span class="label">Hit Dice</span><span class="sub">d6 +2 each</span></div>
+        <div class="stat"><span class="v"><svg class="ic"><use href="#i-lantern"/></svg>5 h</span><span class="label">Light</span><span class="sub">lamp · 8 flasks spare</span></div>
+        <div class="stat"><span class="v"><svg class="ic"><use href="#i-boots"/></svg>9 m</span><span class="label">Speed</span><span class="sub">6 squares · init +4</span></div>
+      </div>
+      <div class="chips"><span class="chip">concentration: none</span><span class="chip">conditions: none</span><span class="chip">exhaustion 0</span><span class="chip">fed</span><span class="chip good"><svg class="ic"><use href="#i-spark"/></svg>Heroic Inspiration ready</span><span class="chip good">Arcane Recovery ready</span><span class="chip muted">free Mage Armor used today</span></div>
+    </div>
+
+    <div class="card">
+      <h3><svg class="ic"><use href="#i-spark"/></svg>Spells <small>cast d20 +5 vs DC 10 + level · save DC 13</small></h3>
+      <span class="label">Cantrips · DC 10</span>
+      <div class="spells"><span class="spell">Fire Bolt <small>36 m · 1d10</small></span><span class="spell">Ray of Frost <small>18 m · 1d8</small></span><span class="spell">Shocking Grasp <small>touch · 1d8</small></span><span class="spell">Light</span><span class="spell">Mage Hand</span></div>
+      <span class="label">Prepared · lost ones come back after a Long Rest</span>
+      <div class="spells"><span class="spell free">Mage Armor <small>L1 · free once a day</small></span><span class="spell">Shield <small>L1 · reaction</small></span><span class="spell">Magic Missile <small>L1 · 3d4+3</small></span><span class="spell">Thunderwave <small>L1 · 2d8</small></span><span class="spell conc">Sleep <small>L1 · conc.</small></span><span class="spell">Misty Step <small>L2 · bonus</small></span><span class="spell">Scorching Ray <small>L2 · 3 × 2d6</small></span></div>
+      <p class="muted" style="font-size:.84rem">In the book, unprepared: Detect Magic (ritual), Feather Fall, Find Familiar (ritual), Grease, Shatter, Web. Rituals need no roll.</p>
+    </div>
+
+    <div class="card">
+      <h3><svg class="ic"><use href="#i-sword"/></svg>Fighting</h3>
+      <div class="inv"><span>Dagger ×2</span><span class="kg">+4 · 1d4+2</span><span class="ct">melee, thrown 6/18 m</span><span>Quarterstaff</span><span class="kg">+1 · 1d6−1</span><span class="ct">melee</span><span>Oil flask, thrown</span><span class="kg">DEX DC 12</span><span class="ct">+5 fire for 1 min</span></div>
+      <div class="stat-row">
+        <div class="stat"><span class="v">8 <small class="muted">−1</small></span><span class="label">STR</span></div><div class="stat"><span class="v">14 <small class="muted">+2</small></span><span class="label">DEX</span></div><div class="stat"><span class="v">14 <small class="muted">+2</small></span><span class="label">CON</span></div><div class="stat"><span class="v">17 <small class="muted">+3</small></span><span class="label">INT</span></div><div class="stat"><span class="v">12 <small class="muted">+1</small></span><span class="label">WIS</span></div><div class="stat"><span class="v">10 <small class="muted">+0</small></span><span class="label">CHA</span></div>
+      </div>
+      <p class="muted" style="font-size:.86rem">Saves: INT +5, WIS +3, the rest their modifier. Skills: Investigation +7, Arcana +5, History +5, Insight +3, Perception +3 (passive 13).</p>
+    </div>
+
+    <div class="card">
+      <h3><svg class="ic"><use href="#i-bag"/></svg>Gear <small>31 of 54 kg</small></h3>
+      <div class="inv">
+        <span>Oil <span class="pips"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="off"></i><i class="off"></i></span></span><span class="kg">3.6 kg</span><span class="ct">8 flasks</span>
+        <span>Torches <span class="pips"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></span><span class="kg">3.2 kg</span><span class="ct">7</span>
+        <span>Rations <span class="pips"><i></i><i class="off"></i><i class="off"></i><i class="off"></i></span></span><span class="kg">0.9 kg</span><span class="ct">1 · buy more at home</span>
+        <span>Potion of Healing</span><span class="kg">—</span><span class="ct">none left</span>
+        <span>Lamp, tinderbox, rope 15 m, bedroll, crowbar, caltrops, spellbook, ink and parchment</span><span class="kg">16 kg</span><span class="ct"></span>
+        <span class="label">Coins</span>
+        <span>On him</span><span class="kg"></span><span class="ct">0 (lost if he dies)</span>
+        <span>Left by the door of 2.3</span><span class="kg"></span><span class="ct">70 GP 2 SP 5 CP</span>
+        <span>In the tower</span><span class="kg"></span><span class="ct">nothing · treasury 7 GP</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3><svg class="ic"><use href="#i-flag"/></svg>Progress</h3>
+      <div class="hpbig"><svg class="ic" style="color: var(--accent)"><use href="#i-spark"/></svg><span class="bar"><i style="width:69%; background: var(--accent)"></i></span><b>1,875 / 2,700 XP</b></div>
+      <div class="chips"><span class="chip">level 4 in 825 XP</span><span class="chip"><svg class="ic"><use href="#i-skull"/></svg>deaths 0</span><span class="chip">no familiar yet</span></div>
+      <h3 style="font-size:1rem; margin-top:4px">Habits <small>yours to change on the Table tab</small></h3>
+      <ul class="habits">
+        <li>Shield as a reaction when a hit would miss at AC 20 and deals 4 or more (any damage at 8 HP or less), if it is not lost and the reaction is free.</li>
+        <li>Heroic Inspiration rerolls a failed cast of Shield, Misty Step, Scorching Ray, Thunderwave or Sleep.</li>
+        <li>Cheese everything: scout, rituals, Mage Hand, oil, Sleep then point-blank crits, doorways, retreat to reset.</li>
+        <li>Drop the purse behind before each new door, from 2.3 on.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== REALM ===================== -->
+  <section class="view" id="realm" aria-label="The realm">
+    <div class="note" id="note-realm">
+      <svg class="ic"><use href="#i-q"/></svg>
+      <span>Colours are realms. The big number is a hex's <b>level</b>: the floor under it, how bad its wanderers are, and its income (level × 10 GP a month). The round tokens are <b>pieces</b> a realm put there: a sword is soldiers, a mask spies, coins income; the ring round a token is its health. A crown is a ruler's seat. Tap a hex.</span>
+      <button type="button" onclick="this.parentNode.remove()">Got it</button>
+    </div>
+
+    <div class="card tower">
+      <h3><svg class="ic"><use href="#i-tower"/></svg>The tower <small>yours · at B5, the level-1 desert</small></h3>
+      <div class="hpbig"><svg class="ic"><use href="#i-heart"/></svg><span class="bar"><i style="width:100%"></i></span><b>regime 7 / 7</b></div>
+      <div class="attrs"><span><svg class="ic"><use href="#i-sword"/></svg>Force <b>1</b></span><span><svg class="ic"><use href="#i-mask"/></svg>Cunning <b>1</b></span><span><svg class="ic"><use href="#i-coins"/></svg>Wealth <b>1</b></span><span><b>7 GP</b> · +60 a month</span></div>
+      <div class="chips"><span class="chip"><svg class="ic"><use href="#i-coins"/></svg>Farms at home, 4/4</span><span class="chip good">allies: Goblinkind, Humans</span><span class="chip">hostile: nobody</span><span class="chip">dissidents found: none</span></div>
+      <div class="chips"><span class="chip chance"><span class="k">chance</span>the Gnomes' seat D3 is unguarded, 3 days away</span><span class="chip open"><span class="k">open</span>67 GP next month</span></div>
+    </div>
+
+    <div class="mapbar"><button type="button" class="toggle" id="t-codes" aria-pressed="false">Codes</button><button type="button" class="toggle" id="t-moves" aria-pressed="true">Last month's moves</button><button type="button" class="toggle" id="t-key" aria-pressed="false">?</button><span class="hint">Tap a hex for its entry</span></div>
+    <div class="frame" id="frame">
+      <ul class="keyover" id="keyover" data-on="false">
+        <li><svg class="ic"><use href="#i-sword"/></svg>Soldiers (Force): they take land and break pieces</li>
+        <li><svg class="ic"><use href="#i-mask"/></svg>Spies (Cunning): they see, sabotage and chip at a regime</li>
+        <li><svg class="ic"><use href="#i-coins"/></svg>Income (Wealth): farms, caravans, mines, a treasury</li>
+        <li><span class="pips"><i></i><i></i><i></i></span>Pips under a token: its tier, 1 to 3. The ring: its health</li>
+        <li><svg class="ic"><use href="#i-crown"/></svg>A ruler's seat. <svg class="ic"><use href="#i-tower"/></svg> The tower</li>
+        <li><svg class="ic"><use href="#i-skull"/></svg>A red ring: its realm is hostile to the tower</li>
+        <li><svg class="ic"><use href="#i-pin"/></svg>Morten. Numbered arrows: last month's moves, as told in the story</li>
+      </ul>
+    </div>
+
+    <article class="card entry" id="entry" aria-live="polite"></article>
+
+    <div class="card">
+      <h3><svg class="ic"><use href="#i-crown"/></svg>The realms <small>allies first, then the rest</small></h3>
+      <div class="realms" id="realms"></div>
+    </div>
+  </section>
+
+  <!-- ===================== FIGHTS ===================== -->
+  <section class="view" id="fights" aria-label="Fights">
+    <div class="card">
+      <h3><svg class="ic"><use href="#i-fight"/></svg>Every fight <small>10 · newest first</small></h3>
+      <div class="subtabs"><button type="button" aria-pressed="true">all</button><button type="button">month 2</button><button type="button">month 1</button></div>
+      <div class="realms">
+        <button type="button" class="frow"><i class="pip going"></i><span class="t">Room 2.4 · Darkmantle <small class="muted">CR 1/2</small></span><span class="r">going on<br>HP 20 → 10</span><span class="m">Month 2 · Day 4 · floor 2 · Moderate, 100 XP</span></button>
+        <button type="button" class="frow"><i class="pip hurt"></i><span class="t">Room 2.3 · 2 Shadows</span><span class="r">cleared<br>HP 20 → 11</span><span class="m">Month 2 · Day 3 · High, 200 XP · STR 8 → 3</span></button>
+        <button type="button" class="frow"><i class="pip"></i><span class="t">Room 2.2 · 4 Mastiffs</span><span class="r">cleared<br>HP 20 → 17</span><span class="m">Month 2 · Day 3 · Low, 100 XP · 2 spells lost · 2 fled</span></button>
+        <button type="button" class="frow"><i class="pip"></i><span class="t">Room 2.1 · 3 Grimlocks</span><span class="r">cleared<br>untouched</span><span class="m">Month 2 · Day 3 · Moderate, 150 XP</span></button>
+        <button type="button" class="frow"><i class="pip"></i><span class="t">The road · 3 Giant Lizards</span><span class="r">cleared<br>HP 20 → 17</span><span class="m">Month 2 · Day 2 · A5 · Moderate, 150 XP · Magic Missile lost</span></button>
+        <button type="button" class="frow"><i class="pip"></i><span class="t">Room 1.5 · 2 Boars</span><span class="r">cleared<br>HP 17 → 17</span><span class="m">Month 1 · Day 1 · High, 100 XP · two natural 20s</span></button>
+        <button type="button" class="frow"><i class="pip hurt"></i><span class="t">Room 1.4 · 4 Mastiffs</span><span class="r">cleared<br>HP 20 → 11</span><span class="m">Month 1 · Day 1 · High, 100 XP · 2 fled</span></button>
+        <button type="button" class="frow"><i class="pip hurt"></i><span class="t">Room 1.3 · 3 Venomous Snakes</span><span class="r">cleared<br>HP 16 → 11</span><span class="m">Month 1 · Day 1 · Moderate, 75 XP · potion used · down to 5 HP</span></button>
+        <button type="button" class="frow"><i class="pip"></i><span class="t">Room 1.2 · Swarm of Ravens</span><span class="r">cleared<br>HP 20 → 16</span><span class="m">Month 1 · Day 1 · Moderate, 50 XP</span></button>
+        <button type="button" class="frow"><i class="pip"></i><span class="t">Room 1.1 · Giant Badger</span><span class="r">cleared<br>untouched</span><span class="m">Month 1 · Day 1 · Moderate, 50 XP · kited up the stair</span></button>
+      </div>
+      <p class="muted" style="font-size:.84rem">A row opens the fight's card as the story shows it: the foes, the HP track, the GM's summary and the rounds with their dice.</p>
+    </div>
+  </section>
+
+  <!-- ===================== MORE ===================== -->
+  <section class="view" id="more" aria-label="More">
+    <div class="subtabs"><button type="button" aria-pressed="true" data-more="months"><svg class="ic"><use href="#i-cal"/></svg>Months</button><button type="button" aria-pressed="false" data-more="table"><svg class="ic"><use href="#i-gear"/></svg>Table</button><button type="button" aria-pressed="false" data-more="talk"><svg class="ic"><use href="#i-speech"/></svg>Talk</button><button type="button" aria-pressed="false" data-more="rules"><svg class="ic"><use href="#i-book"/></svg>Rules</button><button type="button" id="t-theme"><svg class="ic"><use href="#i-moon"/></svg>Dark</button></div>
+
+    <div class="card" data-more="months">
+      <h3><svg class="ic"><use href="#i-cal"/></svg>The months <small>a row opens the story there</small></h3>
+      <div class="realms">
+        <div class="mrow"><div class="n"><b>Month 1</b><small>Day 1</small></div><button type="button" class="cell"><span>at home · floor 1</span><span class="pips"><i class="won"></i><i class="won"></i><i class="won"></i><i class="won"></i><i class="won"></i></span><small>+375 XP · +37 GP</small><small>Farms bought · the Gnomes march on C4</small></button></div>
+        <div class="mrow"><div class="n"><b>Month 2</b><small>in play</small></div><button type="button" class="cell"><span>B5 → A5 · floor 2</span><span class="pips"><i class="won"></i><i class="won"></i><i class="won"></i><i class="won"></i><i class="going"></i></span><small>+600 XP so far · +60 GP</small></button></div>
+      </div>
+    </div>
+
+    <div class="card" data-more="table" hidden>
+      <h3><svg class="ic"><use href="#i-gear"/></svg>The table <small>a change is sent to the GM</small></h3>
+      <div class="dial"><div class="d"><b>Who moves Morten</b><small>the human can take over any time</small><span class="pending"></span></div><div class="seg"><button type="button" aria-pressed="true">the GM</button><button type="button">you</button></div></div>
+      <div class="dial"><div class="d"><b>Stop for your word</b><small>where a run ends</small></div><div class="seg"><button type="button" aria-pressed="true">never in the month</button><button type="button">each month's orders</button><button type="button">before each fight</button><button type="button">each round</button><button type="button">when something matters</button></div></div>
+      <div class="dial"><div class="d"><b>Fights</b><small>how they reach the page</small><span class="pending">pending: turning points</span></div><div class="seg"><button type="button">live, every round</button><button type="button" aria-pressed="true">turning points</button><button type="button">summary after</button><button type="button">one line</button></div></div>
+      <div class="dial"><div class="d"><b>The world's turn</b></div><div class="seg"><button type="button" aria-pressed="true">as a story</button><button type="button">the full report</button></div></div>
+      <div class="dial"><div class="d"><b>Dice in the story</b><small>the trace keeps every die</small></div><div class="seg"><button type="button" aria-pressed="true">key rolls</button><button type="button">all</button><button type="button">none</button></div></div>
+      <div class="dial"><div class="d"><b>Table</b></div><div class="seg"><button type="button" aria-pressed="true">open: foes' numbers shown</button><button type="button">closed: Bloodied, Near death</button></div></div>
+      <div class="dial"><div class="d"><b>Habits</b><small>standing orders, in words</small></div><textarea rows="3" style="border:1px solid var(--rule); border-radius:8px; background: var(--bg); color: var(--ink); padding: 8px 10px; font: .95rem/1.5 var(--body)">Shield when a hit would miss at AC 20 and deals 4+. Reroll a failed Shield, Misty Step, Scorching Ray, Thunderwave or Sleep. Cheese everything. Drop the purse before each new door.</textarea></div>
+    </div>
+
+    <div class="card" data-more="talk" hidden>
+      <h3><svg class="ic"><use href="#i-speech"/></svg>Table talk <small>every aside, in order</small></h3>
+      <aside class="sec aside"><div class="sec-head"><svg class="ic"><use href="#i-speech"/></svg><div><h3>Month 2 · Day 3</h3><p>Done: a habit from here on, and on his sheet. One ruling to note for the next room: a Shadow's Strength drain has no end in the SRD text, so it lasts until he finishes a Long Rest.</p></div></div></aside>
+      <aside class="sec aside"><div class="sec-head"><svg class="ic"><use href="#i-speech"/></svg><div><h3>Month 1 · the world's turn</h3><p>Ruling: monsters that flee on a morale check count as bypassed, so they give their XP. Noted in the campaign's rules.</p></div></div></aside>
+      <div class="box"><textarea rows="2" placeholder="Ask the GM something out of game."></textarea><div class="send"><span class="hint">answered here and in the chat</span><button type="button">Send</button></div></div>
+    </div>
+
+    <div class="card" data-more="rules" hidden>
+      <h3><svg class="ic"><use href="#i-book"/></svg>Rules <small>cut from CLAUDE.md and realms.md at publish</small></h3>
+      <p class="muted" style="font-size:.9rem">Roll to cast and the mishap table · death is a respawn · the pieces, in words · the missions and what they do · the tower's actions and their prices · the leaders' labels · the report style. Folded sections, searchable.</p>
+    </div>
+  </section>
+
+  <!-- ===================== the bottom bar ===================== -->
+  <nav class="tabs" id="tabs" aria-label="Views">
+    <button type="button" data-view="story" aria-current="true"><svg class="ic"><use href="#i-story"/></svg>Story<i class="dot" aria-hidden="true"></i></button>
+    <button type="button" data-view="morten" aria-current="false"><svg class="ic"><use href="#i-hat"/></svg>Morten</button>
+    <button type="button" data-view="realm" aria-current="false"><svg class="ic"><use href="#i-hex"/></svg>Realm</button>
+    <button type="button" data-view="fights" aria-current="false"><svg class="ic"><use href="#i-fight"/></svg>Fights</button>
+    <button type="button" data-view="more" aria-current="false"><svg class="ic"><use href="#i-more"/></svg>More</button>
+  </nav>
+</div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // ---------- views ----------
+  const app = $('#app');
+  function setView(v) {
+    app.dataset.view = v;
+    for (const b of document.querySelectorAll('#tabs button')) b.setAttribute('aria-current', String(b.dataset.view === v));
+    if (!matchMedia('(min-width: 900px)').matches) window.scrollTo({ top: 0 });
+  }
+  $('#tabs').addEventListener('click', (ev) => { const b = ev.target.closest('button[data-view]'); if (b) setView(b.dataset.view); });
+  document.querySelectorAll('#more .subtabs button[data-more]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('#more .subtabs button[data-more]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    document.querySelectorAll('#more .card[data-more]').forEach((c) => (c.hidden = c.dataset.more !== b.dataset.more));
+  }));
+  document.querySelectorAll('.mockbar button[data-box]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.mockbar button[data-box]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    document.querySelectorAll('.box[data-box]').forEach((c) => (c.hidden = c.dataset.box !== b.dataset.box));
+  }));
+  $('#t-theme').addEventListener('click', () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+    root.dataset.theme = dark ? 'light' : 'dark';
+  });
+
+  // ---------- the realm's data: realms3 at the end of month 1, by hand ----------
+  const FAC = {
+    Orcs: { leader: 'Boss Hruma', lv: 'bad: robs its neighbours', hp: 22, max: 22, f: 4, c: 4, w: 4, gp: 910, inc: 480, seat: 'D1', hexes: ['A1', 'B1', 'C1', 'D1'], goal: 'rob the Goblinkind Caravans in C2, month 2 of it', state: '' },
+    Goblinkind: { leader: 'Big Boss Zarga', lv: 'good: keeps the peace', hp: 16, max: 16, f: 3, c: 3, w: 3, gp: 790, inc: 470, seat: 'D2', hexes: ['C2', 'C3', 'D2'], goal: 'build Walls at its seat D2, month 2 of it', state: 'ally' },
+    Humans: { leader: 'Reeve Leopold', lv: 'good: keeps the peace', hp: 16, max: 16, f: 3, c: 3, w: 3, gp: 400, inc: 150, seat: 'A4', hexes: ['A3', 'A4', 'A5'], goal: 'build Walls at its seat A4, month 2 of it', state: 'ally' },
+    Tieflings: { leader: 'Exarch Iados', lv: 'bad: squeezes its own people', hp: 31, max: 31, f: 5, c: 5, w: 5, gp: 975, inc: 525, seat: 'D5', hexes: ['C5', 'D4', 'D5'], goal: 'buy a Treasury (1,200 GP), month 2 of it', state: '' },
+    Elves: { leader: 'Warden Valanthe', lv: 'bad: takes land', hp: 16, max: 16, f: 3, c: 3, w: 3, gp: 640, inc: 370, seat: 'A2', hexes: ['A2', 'B2', 'B3'], goal: "take the Orcs' B1, level 14, month 2 of it", state: '' },
+    Gnomes: { leader: 'Tinker-General Ellywick', lv: 'bad: robs its neighbours', hp: 22, max: 22, f: 4, c: 4, w: 4, gp: 690, inc: 320, seat: 'D3', hexes: ['B4', 'C4', 'D3'], goal: "rob the Tieflings' Mercenaries in C5, month 2 of it", state: '' },
+  };
+  const KIND = {
+    Thugs: ['sword', 1, 'hired muscle', 'hits with Force against Force for 1d3+1; hits back 1d4'],
+    Militia: ['sword', 1, 'foot soldiers', 'hits with Force against Force for 1d6; hits back 1d4+1'],
+    Knights: ['sword', 3, 'mounted soldiers', 'hits with Force against Force for 1d8; hits back 1d8; upkeep 100 a month'],
+    Mercenaries: ['coins', 2, 'hired swords', 'hits with Wealth against Force for 2d4+2; hits back 1d6; upkeep 100 a month'],
+    Farms: ['coins', 1, 'fields and herds', 'no attack; hits back 1d4; +50 GP a month; cannot move'],
+    Caravans: ['coins', 1, 'wagons on the road', 'hits with Wealth against Wealth for 1d4; hits back 1d4−1; +100 GP a month; moves 2 hexes'],
+  };
+  const HEX = [
+    ['A1', 5, 'mountains', 'Orcs', 'Orcs'], ['A2', 13, 'forest', 'Elves', 'Elves', 'Elves'], ['A3', 4, 'plains', 'Humans', 'Humans'], ['A4', 19, 'swamp', 'Humans', 'Humans', 'Humans'], ['A5', 2, 'savanna', 'Humans', 'Humans'],
+    ['B1', 14, 'tundra', 'Orcs', 'Orcs'], ['B2', 11, 'taiga', 'Elves', 'Elves', null, 'lake'], ['B3', 3, 'forest', 'Elves', 'Elves'], ['B4', 10, 'plains', 'Gnomes', 'Gnomes'], ['B5', 1, 'desert', 'tower folk', 'tower', 'tower'],
+    ['C1', 8, 'taiga', 'Orcs', 'Orcs'], ['C2', 6, 'forest', 'Goblinkind', 'Goblinkind'], ['C3', 9, 'hills', 'Goblinkind', 'Goblinkind'], ['C4', 12, 'swamp', 'Gnomes', 'Gnomes'], ['C5', 18, 'savanna', 'Tieflings', 'Tieflings'],
+    ['D1', 16, 'tundra', 'Orcs', 'Orcs', 'Orcs'], ['D2', 17, 'forest', 'Goblinkind', 'Goblinkind', 'Goblinkind'], ['D3', 15, 'swamp', 'Gnomes', 'Gnomes', 'Gnomes', 'lake'], ['D4', 7, 'forest', 'Tieflings', 'Tieflings'], ['D5', 20, 'savanna', 'Tieflings', 'Tieflings', 'Tieflings'],
+  ].map(([id, level, biome, people, holder, seat, lake]) => ({ id, col: 'ABCD'.indexOf(id[0]), row: +id[1] - 1, level, biome, people, holder, seat: seat || null, lake: lake === 'lake', pieces: [] }));
+  const byId = new Map(HEX.map((h) => [h.id, h]));
+  const PIECES = [
+    ['A4', 'Humans', 'Thugs', 3, 3], ['A4', 'Humans', 'Militia', 4, 4], ['A4', 'Humans', 'Mercenaries', 6, 6],
+    ['B1', 'Elves', 'Militia', 4, 4], ['B1', 'Elves', 'Militia', 4, 4], ['B2', 'Elves', 'Farms', 4, 4], ['B5', 'tower', 'Farms', 4, 4],
+    ['C1', 'Orcs', 'Farms', 4, 4], ['C2', 'Orcs', 'Thugs', 3, 3], ['C2', 'Orcs', 'Thugs', 3, 3], ['C2', 'Goblinkind', 'Caravans', 2, 4],
+    ['C3', 'Goblinkind', 'Militia', 4, 4], ['C4', 'Gnomes', 'Thugs', 3, 3], ['C4', 'Gnomes', 'Knights', 12, 12], ['C4', 'Gnomes', 'Farms', 4, 4],
+    ['C5', 'Tieflings', 'Knights', 12, 12], ['C5', 'Tieflings', 'Mercenaries', 6, 6], ['D2', 'Goblinkind', 'Militia', 4, 4], ['D5', 'Tieflings', 'Militia', 4, 4],
+  ];
+  for (const [h, owner, kind, hp, max] of PIECES) byId.get(h).pieces.push({ owner, kind, hp, max });
+  const RIVERS = [['C4', 'D3'], ['C3', 'D3'], ['C3', 'D2'], ['C2', 'D2'], ['C2', 'D1'], ['C1', 'D1'], ['B2', 'C3'], ['B2', 'B3'], ['A3', 'B3'], ['A3', 'A4']];
+  const EVENTS = [
+    { n: 1, actor: 'tower', from: 'B5', to: 'B5', text: 'The tower bought Farms at home.' },
+    { n: 2, actor: 'Gnomes', from: 'D3', to: 'C4', text: "The Gnomes marched Thugs and Knights into C4, after the Tieflings' Mercenaries in C5." },
+    { n: 3, actor: 'Orcs', from: 'D1', to: 'C2', text: 'The Orcs sent two Thugs into C2; the Goblinkind Caravans struck first and lost.' },
+    { n: 4, actor: 'Elves', from: 'A2', to: 'B1', text: "The Elves moved both Militias into the Orcs' B1 to take it." },
+  ];
+  const MORTEN = 'A5';
+  const HOSTILE = new Set();
+  const slug = (n) => (n === 'tower' ? 'tower' : (FAC[n] ? n.toLowerCase() : 'none'));
+  const fname = (n, cap) => (n === 'tower' ? (cap ? 'The tower' : 'the tower') : `${cap ? 'The' : 'the'} ${n}`);
+  const poss = (n) => (n === 'tower' ? "the tower's" : `the ${n}'`.replace(/([^s])'$/, "$1's"));
+  const ratio = (a, b) => Math.max(0, Math.min(1, a / b));
+  const band = (r) => (r > 0.5 ? '' : r > 0.25 ? 'mid' : 'low');
+
+  // ---------- neighbours and days from Morten ----------
+  const S = 58, HH = (Math.sqrt(3) / 2) * S, PAD = 10;
+  const shifted = (c) => c % 2 === 1;
+  const centre = (h) => [PAD + S + h.col * 1.5 * S, PAD + HH + h.row * 2 * HH + (shifted(h.col) ? HH : 0)];
+  const corners = (x, y, s = S) => [0, 1, 2, 3, 4, 5].map((i) => [x + s * Math.cos((Math.PI / 3) * i), y + s * Math.sin((Math.PI / 3) * i)]);
+  const f1 = (n) => n.toFixed(1);
+  const pts = (x, y, s) => corners(x, y, s).map((p) => `${f1(p[0])},${f1(p[1])}`).join(' ');
+  function sharedEdge(a, b) {
+    const ca = corners(...centre(a)), cb = corners(...centre(b));
+    const same = ca.filter((p) => cb.some((q) => Math.hypot(p[0] - q[0], p[1] - q[1]) < 0.5));
+    return same.length === 2 ? same : null;
+  }
+  for (const h of HEX) h.nbrs = HEX.filter((n) => n !== h && sharedEdge(h, n)).map((n) => n.id);
+  const days = new Map([[MORTEN, 0]]);
+  const ways = new Map([[MORTEN, [MORTEN]]]);
+  const q = [MORTEN];
+  while (q.length) { const id = q.shift(); for (const n of byId.get(id).nbrs) if (!days.has(n)) { days.set(n, days.get(id) + 1); ways.set(n, [...ways.get(id), n]); q.push(n); } }
+
+  // ---------- glyphs for the map ----------
+  const LAND = {
+    mountains: 'M-9 6l5-9 3 5 2-3 5 7', hills: 'M-9 5q5-8 9-3q4-5 9 3', forest: 'M0-7l5 8h-3v4h-4v-4h-3z', taiga: 'M0-8l4 5h-2l3 4h-2l3 4h-12l3-4h-2l3-4h-2z',
+    tundra: 'M-8 4h16M-5 0h10M-2-4h4', plains: 'M-9 4q3-6 5 0q3-6 5 0q3-6 5 0', savanna: 'M-8 5h16M0 5v-6M0-1l-6-3M0-1l6-3M0-4l-4-3M0-4l4-3', swamp: 'M-9 2q3-4 6 0t6 0t6 0M-4 2v-6M0 1v-7M3 2v-5', desert: 'M-9 5q5-7 9-2q4-5 9 2M3-6a2.5 2.5 0 1 0 .1 0',
+  };
+  const TOK = {
+    sword: '<path class="tok-g" d="M3.6-3.6l-5.2 5.2M-1 1.4l-1.4-1.4M-3 2.8l-1.8 1.8M-3.8 3.4l1 1"/>',
+    mask: '<path class="tok-g" d="M-4.5-1.5c0-1.4 1-2 2.3-2h4.4c1.3 0 2.3.6 2.3 2v1c0 2.6-1.8 3.8-3.4 3.8-1 0-1-1-1.6-1s-.6 1-1.6 1c-1.6 0-3.4-1.2-3.4-3.8z"/><circle class="tok-g fill" cx="-1.8" cy="-.4" r=".7"/><circle class="tok-g fill" cx="1.8" cy="-.4" r=".7"/>',
+    coins: '<ellipse class="tok-g" cx="0" cy="-2" rx="3.6" ry="1.5"/><path class="tok-g" d="M-3.6-2v4c0 .8 1.6 1.5 3.6 1.5s3.6-.7 3.6-1.5v-4"/>',
+  };
+  const crownG = (x, y) => `<g class="fac-${slug(byId.get(x).seat)}" transform="translate(${f1(y[0])} ${f1(y[1])})"><path class="crown" d="M-6 5h12M-6 5l-1-8 4 3 3-5 3 5 4-3-1 8z"/></g>`;
+  const towerG = (x, y) => `<g class="fac-tower" transform="translate(${f1(x)} ${f1(y)})"><path class="tower-g" d="M-6 7V-4h2.4v-3h2.2v3h2.8v-3h2.2v3H6V7zM-1.6 7V3h3.2v4"/></g>`;
+
+  function tokens(h, x, y) {
+    const list = h.pieces;
+    if (!list.length) return '';
+    const n = list.length, r = 8.2, gap = 5.5;
+    const row1 = Math.min(n, 3), row2 = n - row1;
+    let out = '';
+    list.forEach((p, i) => {
+      const inRow = i < 3 ? row1 : row2, k = i < 3 ? i : i - 3, rowY = y + 14 + (i < 3 ? 0 : 20);
+      const cx = x - ((inRow - 1) * (2 * r + gap)) / 2 + k * (2 * r + gap), cy = rowY;
+      const [g, tier] = KIND[p.kind];
+      const rt = ratio(p.hp, p.max), circ = 2 * Math.PI * (r + 2.4);
+      out += `<g class="fac-${slug(p.owner)}">` +
+        `<circle class="ring" cx="${f1(cx)}" cy="${f1(cy)}" r="${r + 2.4}"/>` +
+        `<circle class="ring on ${band(rt)}" cx="${f1(cx)}" cy="${f1(cy)}" r="${r + 2.4}" stroke-dasharray="${f1(circ * rt)} ${f1(circ)}" transform="rotate(-90 ${f1(cx)} ${f1(cy)})"/>` +
+        `<circle class="tok" cx="${f1(cx)}" cy="${f1(cy)}" r="${r}"/>` +
+        `<g transform="translate(${f1(cx)} ${f1(cy)})">${TOK[g]}</g>` +
+        (HOSTILE.has(p.owner) ? `<circle class="hostile" cx="${f1(cx)}" cy="${f1(cy)}" r="${r + 4.5}"/>` : '');
+      for (let t = 0; t < tier; t++) out += `<circle class="pip" cx="${f1(cx - (tier - 1) * 2 + t * 4)}" cy="${f1(cy + r + 5.5)}" r="1.3" style="fill: var(--ink-2)"/>`;
+      out += '</g>';
+    });
+    return out;
+  }
+
+  function drawArrows() {
+    let out = '';
+    for (const e of EVENTS) {
+      const a = byId.get(e.from), b = byId.get(e.to), cls = `fac-${slug(e.actor)}`;
+      if (a !== b) {
+        const [x1, y1] = centre(a), [x2, y2] = centre(b);
+        const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy), ux = dx / len, uy = dy / len;
+        const sx = x1 + ux * 18, sy = y1 + uy * 18, ex = x2 - ux * 32, ey = y2 - uy * 32;
+        const bend = 0.22 * len * (e.n % 2 ? 1 : -1);
+        const cx = (sx + ex) / 2 - uy * bend, cy = (sy + ey) / 2 + ux * bend;
+        const tx = ex - cx, ty = ey - cy, tl = Math.hypot(tx, ty) || 1, hx = tx / tl, hy = ty / tl;
+        const head = `${f1(ex + hx * 6)},${f1(ey + hy * 6)} ${f1(ex - hx * 6 - hy * 6)},${f1(ey - hy * 6 + hx * 6)} ${f1(ex - hx * 6 + hy * 6)},${f1(ey - hy * 6 - hx * 6)}`;
+        const mx = 0.25 * sx + 0.5 * cx + 0.25 * ex, my = 0.25 * sy + 0.5 * cy + 0.25 * ey;
+        const d = `M${f1(sx)} ${f1(sy)}Q${f1(cx)} ${f1(cy)} ${f1(ex)} ${f1(ey)}`;
+        out += `<g class="${cls}"><path class="arrow-halo" d="${d}"/><path class="arrow" d="${d}"/><polygon class="head-a" points="${head}"/><circle class="badge" cx="${f1(mx)}" cy="${f1(my)}" r="8.5"/><text class="badge-t" x="${f1(mx)}" y="${f1(my + 3.5)}" text-anchor="middle">${e.n}</text></g>`;
+      } else {
+        const [x, y] = centre(a);
+        out += `<g class="${cls}"><circle class="badge" cx="${f1(x + S * 0.62)}" cy="${f1(y - 22)}" r="8.5"/><text class="badge-t" x="${f1(x + S * 0.62)}" y="${f1(y - 18.5)}" text-anchor="middle">${e.n}</text></g>`;
+      }
+    }
+    return out;
+  }
+
+  const cols = 4, rows = 5;
+  const W = PAD * 2 + 2 * S + (cols - 1) * 1.5 * S, H = PAD * 2 + rows * 2 * HH + HH;
+  function drawMap() {
+    const land = [], marks = [], hits = [], borders = [], rivers = [];
+    for (const h of HEX) {
+      const [x, y] = centre(h);
+      land.push(`<polygon class="land fac-${slug(h.holder)}" points="${pts(x, y, S)}"/>`);
+      if (h.lake) marks.push(`<ellipse class="lake" cx="${f1(x + 24)}" cy="${f1(y - HH + 12)}" rx="9" ry="5"/>`);
+      marks.push(`<text class="hid" x="${f1(x - S + 14)}" y="${f1(y - 2)}" text-anchor="middle">${h.id}</text>`);
+      marks.push(`<text class="lvl" x="${f1(x)}" y="${f1(y - 6)}" text-anchor="middle">${h.level}</text>`);
+      marks.push(`<path class="glyph" transform="translate(${f1(x + 22)} ${f1(y - 12)})" d="${LAND[h.biome]}"/>`);
+      if (h.seat) marks.push(h.seat === 'tower' ? towerG(x - 24, y - HH + 16) : crownG(h.id, [x - 24, y - HH + 14]));
+      marks.push(tokens(h, x, y));
+      hits.push(`<polygon class="hit" data-hex="${h.id}" points="${pts(x, y, S)}" tabindex="0" role="button" aria-label="${esc(fname(h.holder))}' ${h.biome}, level ${h.level}, ${h.id}"/>`);
+    }
+    const seen = new Set();
+    for (const h of HEX) for (const nid of h.nbrs) {
+      const n = byId.get(nid), key = [h.id, n.id].sort().join('|');
+      if (seen.has(key)) continue; seen.add(key);
+      if (h.holder === n.holder) continue;
+      const e = sharedEdge(h, n); if (e) borders.push(`M${f1(e[0][0])} ${f1(e[0][1])}L${f1(e[1][0])} ${f1(e[1][1])}`);
+    }
+    for (const [a, b] of RIVERS) { const e = sharedEdge(byId.get(a), byId.get(b)); if (e) rivers.push(`M${f1(e[0][0])} ${f1(e[0][1])}L${f1(e[1][0])} ${f1(e[1][1])}`); }
+    const [mx, my] = centre(byId.get(MORTEN));
+    const mort = `<polygon class="morten-ring" points="${pts(mx, my, S - 6)}"/><g transform="translate(${f1(mx + 22)} ${f1(my - HH + 14)})"><circle class="morten-pin" r="9.5"/><path class="morten-g" d="M0-6l3.6 7.5H-3.6zM-4.5 3h9l.8 2.2h-10.6z"/></g>`;
+    $('#frame').insertAdjacentHTML('afterbegin',
+      `<svg class="map nocodes" id="map" viewBox="0 0 ${f1(W)} ${f1(H)}" role="group" aria-label="The realms' map"><g>${land.join('')}</g><path class="border" d="${borders.join('')}"/><path class="river" d="${rivers.join('')}"/><g pointer-events="none">${marks.join('')}</g><g pointer-events="none">${mort}</g><polygon class="picked" id="picked" points="" pointer-events="none"/><g id="arrow-layer" pointer-events="none">${drawArrows()}</g><g>${hits.join('')}</g></svg>`);
+  }
+
+  // ---------- the entry ----------
+  const ic = (n) => `<svg class="ic"><use href="#i-${n}"/></svg>`;
+  const hexBtn = (id) => { const h = byId.get(id); return `<button type="button" class="hexbtn fac-${slug(h.holder)}" data-hex="${id}"><span class="sw"></span>${esc(poss(h.holder))} ${h.biome}<small>L${h.level} · ${id} · ${days.get(id)} d</small></button>`; };
+  const pieceRow = (p, h) => {
+    const [g, tier, what, line] = KIND[p.kind];
+    const r = ratio(p.hp, p.max);
+    const diff = ['Low', 'Moderate', 'High'][tier - 1];
+    const can = p.owner === 'tower' ? '' : `<div class="do"><span>Strike: a ${diff} fight, 2d6 to it</span>${g === 'coins' ? `<span>Rob: up to ${tier * 100} GP</span>` : ''}</div>`;
+    return `<div class="piece fac-${slug(p.owner)}"><span class="tok-big">${ic(g)}</span><div class="body"><div class="pn"><b>${esc(p.kind)}</b><span>${esc(poss(p.owner))}</span><small>tier ${tier} · ${esc(what)}</small></div><div class="hp">${ic('heart')}<span class="bar ${band(r)}"><i style="width:${(r * 100).toFixed(0)}%"></i></span>${p.hp}/${p.max} HP</div><p class="what">${esc(line)}</p>${can}</div></div>`;
+  };
+  function renderEntry(id) {
+    const h = byId.get(id);
+    const own = h.holder === h.people || (h.holder === 'tower' && h.people === 'tower folk');
+    const d = days.get(id), way = ways.get(id).join(' → ');
+    const evs = EVENTS.filter((e) => e.from === id || e.to === id);
+    const riv = RIVERS.filter((p) => p.includes(id)).map((p) => (p[0] === id ? p[1] : p[0]));
+    const isHome = h.holder === 'tower';
+    $('#entry').innerHTML =
+      `<h3>${esc(poss(h.holder).replace(/^the/, 'The'))} ${esc(h.biome)}, level ${h.level}${isHome ? ' (home)' : ''}<span class="code">${h.id}</span></h3>` +
+      `<p class="line">${isHome ? 'Yours, warded: it can never be seized' : `Held by ${esc(fname(h.holder))}${own ? ', their own people' : `, the ${esc(h.people)}' land`}`} · ${h.level * 10} GP a month to ${isHome ? 'the tower' : 'them'}` +
+      ` · ${d === 0 ? '<b class="brass">Morten is here</b>' : `<b>${d} day${d > 1 ? 's' : ''} from Morten</b> (${way})`}` +
+      (riv.length ? ` · a river edge against ${riv.join(', ')}: defenders +1 from there` : '') + `.</p>` +
+      `<p class="line">Level ${h.level}: floor ${h.level} lies under it, its wanderers are level-${h.level} trouble.${h.seat ? ` ${h.seat === 'tower' ? 'The tower stands here.' : `The seat of ${esc(FAC[h.seat].leader)}.`}` : ''}</p>` +
+      `<span class="label">Pieces here · ${h.pieces.length}</span>` +
+      (h.pieces.length ? `<div class="realms">${h.pieces.map((p) => pieceRow(p, h)).join('')}</div>` : '<p class="muted">Nothing the tower can see stands here.</p>') +
+      `<span class="label">The floor under it</span><div class="rooms">${h.id === 'B5' ? '<span class="room done">1.1 ✓</span><span class="room done">1.2 ✓</span><span class="room done">1.3 ✓</span><span class="room done">1.4 ✓ 2 fled</span><span class="room done">1.5 ✓</span><span class="room">end</span>' : h.id === 'A5' ? '<span class="room done">2.1 ✓</span><span class="room done">2.2 ✓ 2 fled</span><span class="room done">2.3 ✓</span><span class="room now">2.4 ·</span><span class="room">?</span>' : `<span class="room">${h.level}.1 ?</span><span class="room">?</span>`}</div>` +
+      (evs.length ? `<span class="label">Last month here</span><ol class="events">${evs.map((e) => `<li class="fac-${slug(e.actor)}"><span class="n">${e.n}</span><span>${esc(e.text)}</span></li>`).join('')}</ol>` : '') +
+      (h.id === 'C5' ? `<span class="label">Heard</span><p class="line">The Tieflings are saving for a Treasury (1,200 GP); the Gnomes' army in C4 is after the Mercenaries here.</p>` : '') +
+      `<span class="label">Next to</span><div class="hexbtns">${h.nbrs.map(hexBtn).join('')}</div>`;
+  }
+  function pick(id, scroll) {
+    const [x, y] = centre(byId.get(id));
+    $('#picked').setAttribute('points', pts(x, y, S - 2));
+    renderEntry(id);
+    if (scroll) $('#entry').scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+
+  // ---------- the realm rows ----------
+  function renderRealms() {
+    const order = Object.keys(FAC).sort((a, b) => (FAC[b].state === 'ally') - (FAC[a].state === 'ally'));
+    $('#realms').innerHTML = order.map((n) => {
+      const f = FAC[n], r = ratio(f.hp, f.max);
+      const pieces = HEX.flatMap((h) => h.pieces.filter((p) => p.owner === n).map((p) => ({ p, h })));
+      const st = f.state === 'ally' ? '<span class="st good">ally</span>' : HOSTILE.has(n) ? '<span class="st bad">hostile</span>' : '<span class="st muted">at peace with you</span>';
+      return `<div class="rrow fac-${slug(n)}" data-open="false" role="button" tabindex="0"><span class="sw" style="margin-top:6px"></span>` +
+        `<div class="top"><b>${n}</b><span class="lv">${esc(f.leader)} · ${esc(f.lv)}</span>${st}</div>` +
+        `<div class="nums" style="grid-column:2"><span>${ic('heart')}<span class="bar ${band(r)}"><i style="width:${(r * 100).toFixed(0)}%"></i></span>regime ${f.hp}/${f.max}</span><span>${ic('sword')}${f.f}</span><span>${ic('mask')}${f.c}</span><span>${ic('coins')}${f.w}</span><span>${f.gp.toLocaleString('en-GB')} GP, +${f.inc}/mo</span></div>` +
+        `<div class="more"><p class="goal">${ic('flag')}<span>Goal: ${esc(f.goal)}.</span></p>` +
+        `<span class="label">Hexes · seat ${f.seat}</span><div class="hexbtns">${f.hexes.map(hexBtn).join('')}</div>` +
+        `<span class="label">Pieces the tower can see · ${pieces.length}</span>${pieces.length ? `<div class="realms">${pieces.map(({ p, h }) => `<div class="piece fac-${slug(n)}" style="padding:6px 10px"><span class="tok-big" style="width:28px;height:28px">${ic(KIND[p.kind][0])}</span><div class="body"><div class="pn"><b>${p.kind}</b><small>in ${h.id}, ${days.get(h.id)} d away</small></div><div class="hp">${ic('heart')}<span class="bar ${band(ratio(p.hp, p.max))}"><i style="width:${(ratio(p.hp, p.max) * 100).toFixed(0)}%"></i></span>${p.hp}/${p.max}</div></div></div>`).join('')}</div>` : '<p class="muted">none seen</p>'}</div></div>`;
+    }).join('');
+  }
+
+  drawMap();
+  renderRealms();
+  pick('C5', false);
+
+  $('#frame').addEventListener('click', (ev) => { const h = ev.target.closest('[data-hex]'); if (h) pick(h.dataset.hex, true); });
+  document.addEventListener('click', (ev) => {
+    const b = ev.target.closest('button.hexbtn[data-hex]');
+    if (b) { setView('realm'); pick(b.dataset.hex, true); return; }
+    const r = ev.target.closest('.rrow');
+    if (r && !ev.target.closest('button')) r.dataset.open = String(r.dataset.open !== 'true');
+  });
+  $('#t-codes').addEventListener('click', (ev) => { const on = ev.currentTarget.getAttribute('aria-pressed') !== 'true'; ev.currentTarget.setAttribute('aria-pressed', String(on)); $('#map').classList.toggle('nocodes', !on); });
+  $('#t-moves').addEventListener('click', (ev) => { const on = ev.currentTarget.getAttribute('aria-pressed') !== 'true'; ev.currentTarget.setAttribute('aria-pressed', String(on)); $('#arrow-layer').style.display = on ? '' : 'none'; });
+  $('#t-key').addEventListener('click', (ev) => { const on = ev.currentTarget.getAttribute('aria-pressed') !== 'true'; ev.currentTarget.setAttribute('aria-pressed', String(on)); $('#keyover').dataset.on = String(on); });
+})();
+</script>
