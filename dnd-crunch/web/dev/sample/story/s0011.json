@@ -1,0 +1,20 @@
+{
+ "v": 1,
+ "seq": 11,
+ "kind": "travel",
+ "month": 3,
+ "day": 2,
+ "clock": "18:00",
+ "hex": "A5",
+ "where": "the road, B5 → A5",
+ "title": "The road to A5 again",
+ "headline": "A quiet day; the wandering roll was a 4.",
+ "prose": [],
+ "bullets": [],
+ "trace": [],
+ "answered": [],
+ "after": null,
+ "fight": null,
+ "domain": null,
+ "words": []
+}

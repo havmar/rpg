@@ -1,0 +1,26 @@
+{
+ "v": 1,
+ "seq": 12,
+ "kind": "rest",
+ "month": 3,
+ "day": 3,
+ "clock": "22:00",
+ "hex": "A5",
+ "where": "Floor 2 · room 2.3",
+ "title": "A Long Rest in room 2.3",
+ "headline": "Everything came back; two wandering rolls, both quiet.",
+ "prose": [],
+ "bullets": [],
+ "trace": [],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 2125,
+  "coins": "7 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}

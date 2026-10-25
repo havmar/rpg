@@ -1,0 +1,633 @@
+{
+ "v": 1,
+ "seq": 29,
+ "kind": "fight",
+ "month": 2,
+ "day": 4,
+ "clock": "07:50",
+ "hex": "A5",
+ "where": "Floor 2 · room 2.5",
+ "title": "Room 2.5 · 3 Giant Wolf Spiders (CR 1/4 each) · Moderate, 150 XP · cleared",
+ "headline": "The unseen third spider bit for 10 dmg, but floor 2 is cleared.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Cheese",
+   "text": "he held the south door. The second Sleep rolled a natural 20 (radius 3 m) and put the spider in the doorway out, so it plugged the door for him."
+  },
+  {
+   "label": "The dice",
+   "text": "Scorching Ray killed the spider on the half-covered ledge with two rays of three; the sleeper took an auto-crit for 18 fire dmg."
+  },
+  {
+   "label": "How it ended",
+   "text": "the third spider held its nerve, came back unseen and bit for 10 dmg (half poison); two Magic Missiles finished it."
+  },
+  {
+   "label": "Result",
+   "text": "10/20 HP. XP 1,975 → 2,125. +15 GP. Floor 2 cleared: +700 XP and +70 GP on the floor."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Spider Stealth 10 vs passive Perception 13: seen at F3, A1 and D7. Initiative: Spiders 19, Morten 13.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+7",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 7,
+     "total": 10,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+3",
+     "faces": [
+      16
+     ],
+     "kept": [
+      16
+     ],
+     "mod": 3,
+     "total": 19,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+4",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 4,
+     "total": 13,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Spider A runs from D7 to C12 and bites: miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 5,
+     "total": 13,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Sleep on C12 holds; Spider A saves (13 vs DC 13).",
+   "who": "morten",
+   "kind": "cast",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      18
+     ],
+     "kept": [
+      18
+     ],
+     "mod": 5,
+     "total": 23,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      12
+     ],
+     "kept": [
+      12
+     ],
+     "mod": 1,
+     "total": 13,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Spider A bites: miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 5,
+     "total": 8,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Sleep, a natural 20: 3 m radius over C12 and E11. A fails (Incapacitated), C saves.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      20
+     ],
+     "kept": [
+      20
+     ],
+     "mod": 5,
+     "total": 25,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": 20
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      6
+     ],
+     "kept": [
+      6
+     ],
+     "mod": 1,
+     "total": 7,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 1,
+     "total": 18,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Spider A's second save fails: Unconscious, plugging the door.",
+   "who": "foe",
+   "kind": "save",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+1",
+     "faces": [
+      5
+     ],
+     "kept": [
+      5
+     ],
+     "mod": 1,
+     "total": 6,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Scorching Ray at C on the ledge (half cover, AC 15): rays 1 and 3 hit for 7 and 10 fire dmg, ray 2 misses. C dead.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      16
+     ],
+     "kept": [
+      16
+     ],
+     "mod": 5,
+     "total": 21,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "2d6",
+     "faces": [
+      4,
+      3
+     ],
+     "kept": [
+      4,
+      3
+     ],
+     "mod": 0,
+     "total": 7,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+5",
+     "faces": [
+      5
+     ],
+     "kept": [
+      5
+     ],
+     "mod": 5,
+     "total": 10,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    },
+    {
+     "expr": "1d20+5",
+     "faces": [
+      12
+     ],
+     "kept": [
+      12
+     ],
+     "mod": 5,
+     "total": 17,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "2d6",
+     "faces": [
+      5,
+      5
+     ],
+     "kept": [
+      5,
+      5
+     ],
+     "mod": 0,
+     "total": 10,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Spider B's morale holds; it backs out of sight of the door.",
+   "who": "foe",
+   "kind": "save",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+1",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 1,
+     "total": 16,
+     "vs": "DC 10",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Scorching Ray on the sleeper with Advantage: hit, auto-crit, 18 fire dmg. A dead; rays 2 and 3 have no target in sight.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      7,
+      10
+     ],
+     "kept": [
+      10
+     ],
+     "mod": 5,
+     "total": 15,
+     "vs": "AC 13",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "4d6",
+     "faces": [
+      5,
+      5,
+      4,
+      4
+     ],
+     "kept": [
+      5,
+      5,
+      4,
+      4
+     ],
+     "mod": 0,
+     "total": 18,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Spider B, unseen, to C12, bites with Advantage: hit, 5 piercing + 5 poison dmg. Morten 20 → 10 HP.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      8,
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 5,
+     "total": 22,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d4+3",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 3,
+     "total": 5,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "2d4",
+     "faces": [
+      3,
+      2
+     ],
+     "kept": [
+      3,
+      2
+     ],
+     "mod": 0,
+     "total": 5,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Magic Missile holds: 8 force dmg. Spider B 11 → 3 HP.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 5,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "3d4+3",
+     "faces": [
+      2,
+      1,
+      2
+     ],
+     "kept": [
+      2,
+      1,
+      2
+     ],
+     "mod": 3,
+     "total": 8,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Spider B bites: miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 5,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      7
+     ],
+     "kept": [
+      7
+     ],
+     "mod": 5,
+     "total": 12,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Magic Missile holds on exactly 11: 11 force dmg. Spider B dead.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 6,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      6
+     ],
+     "kept": [
+      6
+     ],
+     "mod": 5,
+     "total": 11,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "3d4+3",
+     "faces": [
+      3,
+      1,
+      4
+     ],
+     "kept": [
+      3,
+      1,
+      4
+     ],
+     "mod": 3,
+     "total": 11,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 10,
+  "maxHp": 20,
+  "xp": 2125,
+  "coins": "85 GP 2 SP 5 CP",
+  "lost": []
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Giant Wolf Spider",
+    "cr": "1/4",
+    "ac": 13,
+    "hp": 11,
+    "maxHp": 11,
+    "speed": "8 sq (12 m), climb 8 sq (12 m)",
+    "attacks": [
+     "Bite +5, 1d4+3 piercing + 2d4 poison"
+    ],
+    "notes": "WIS +1",
+    "count": 3
+   }
+  ],
+  "difficulty": "Moderate",
+  "budget": 225,
+  "xp": 150,
+  "initiative": [
+   "Spiders 19",
+   "Morten 13"
+  ],
+  "rounds": 6,
+  "outcome": "cleared",
+  "verdict": "floor 2 done",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     20,
+     20,
+     10,
+     10,
+     10
+    ]
+   },
+   {
+    "name": "Giant Wolf Spider A",
+    "max": 11,
+    "hp": [
+     11,
+     11,
+     11,
+     11,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "name": "Giant Wolf Spider B",
+    "max": 11,
+    "hp": [
+     11,
+     11,
+     11,
+     11,
+     11,
+     3,
+     0
+    ]
+   },
+   {
+    "name": "Giant Wolf Spider C",
+    "max": 11,
+    "hp": [
+     11,
+     11,
+     11,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  "loot": "+15 GP",
+  "lost": [],
+  "potion": false,
+  "xpBefore": 1975,
+  "xpAfter": 2125
+ },
+ "domain": null,
+ "words": []
+}

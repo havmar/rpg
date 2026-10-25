@@ -1,0 +1,20 @@
+{
+ "v": 1,
+ "sections": [
+  {
+   "id": "cast",
+   "title": "Roll to cast",
+   "md": "Every cast is a **casting check**: d20 + 5 vs **DC 10 + the spell's level** (cantrips DC 10).\n\n- Success: the spell works.\n- Failure: it *fizzles* and is lost until a Long Rest.\n- Natural 20: double one numeric effect.\n- Natural 1: lost, and roll `1d12` on the mishap table.\n\n### The mishap table\n\n| d12 | Mishap |\n|---|---|\n| 1 | **Backlash.** 2d6 force damage. |\n| 4 | **Snuffed.** Light within 9 m goes out. |\n| 12 | **Fizzle.** Nothing else happens. |"
+  },
+  {
+   "id": "death",
+   "title": "Death is a respawn",
+   "md": "He revives at the entrance camp at full HP, with every spell back. He **loses the coins he carried**; everything else stays."
+  },
+  {
+   "id": "pieces",
+   "title": "The pieces",
+   "md": "A piece is something a realm put on the map: soldiers (Force), spies (Cunning) or income (Wealth). The ring round a token is its health."
+  }
+ ]
+}

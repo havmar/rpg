@@ -1,0 +1,31 @@
+{
+ "v": 1,
+ "seq": 30,
+ "kind": "travel",
+ "month": 2,
+ "day": 5,
+ "clock": "12:00",
+ "hex": "B5",
+ "where": "the tower (B5)",
+ "title": "Day 5 · A5 → B5, home",
+ "headline": "Back home in a day; no wandering check entering the tower's hex.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Supplies",
+   "text": "the last ration eaten (1 → 0)."
+  }
+ ],
+ "trace": [],
+ "answered": [],
+ "after": {
+  "hp": 10,
+  "maxHp": 20,
+  "xp": 2125,
+  "coins": "85 GP 2 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}

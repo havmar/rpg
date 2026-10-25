@@ -80,8 +80,10 @@ a page with no data shows how to build it.
 
 ## The table's mockup
 
-`table-mockup.html` is the look of the page that is to replace this one: the whole game
-played from a page, as [../table-plan.md](../table-plan.md) plans it. One vanilla file in
+`table-mockup.html` is the look of the table as first sketched: the whole game played
+from a page, as [../table-plan.md](../table-plan.md) plans it. The table itself is built in
+[../web/](../web/README.md); new campaigns are played there, and this map page stays for
+the campaigns played in chat. One vanilla file in
 the same artifact format as the map page, filled by hand with the `realms3` campaign's
 second month (the Story with a live fight, the world's turn, an aside and the answer box
 in its four states; Morten; the Realm with the map redrawn; Fights; More with the months

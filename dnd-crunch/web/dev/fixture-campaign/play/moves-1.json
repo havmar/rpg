@@ -1,0 +1,5 @@
+[
+ {"v": 1, "seq": 1, "at": "2026-10-25T09:03:00Z", "kind": "say", "ooc": true,
+  "text": "I'm also interested in seeing the challenge rating of monsters along with difficulty. And for fights, would it be possible to get reporting as the fight and rolling is happening?"},
+ {"v": 1, "seq": 2, "at": "2026-10-25T09:03:30Z", "kind": "play", "scope": "month", "text": "play another month"}
+]

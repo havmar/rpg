@@ -1,0 +1,162 @@
+{
+ "v": 1,
+ "seq": 22,
+ "section": {
+  "kind": "fight",
+  "title": "Room 2.5 · 3 Giant Wolf Spiders (CR 1/4 each)",
+  "month": 2,
+  "day": 4,
+  "where": "Floor 2 · room 2.5",
+  "foes": [
+   {
+    "name": "Giant Wolf Spider",
+    "cr": "1/4",
+    "ac": 13,
+    "hp": 11,
+    "maxHp": 11,
+    "speed": "8 sq (12 m), climb 8 sq (12 m)",
+    "attacks": [
+     "Bite +5, 1d4+3 piercing + 2d4 poison"
+    ],
+    "notes": "WIS +1",
+    "count": 3
+   }
+  ]
+ },
+ "round": 1,
+ "text": "One spider rushed the door and missed; Sleep held but it saved. Morten is on 20/20 HP, all three spiders on 11/11.",
+ "lines": [
+  {
+   "text": "Spider Stealth 10 vs passive Perception 13: seen at F3, A1 and D7. Initiative: Spiders 19, Morten 13.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+7",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 7,
+     "total": 10,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+3",
+     "faces": [
+      16
+     ],
+     "kept": [
+      16
+     ],
+     "mod": 3,
+     "total": 19,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+4",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 4,
+     "total": 13,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Spider A runs from D7 to C12 and bites: miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 5,
+     "total": 13,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Sleep on C12 holds; Spider A saves (13 vs DC 13).",
+   "who": "morten",
+   "kind": "cast",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      18
+     ],
+     "kept": [
+      18
+     ],
+     "mod": 5,
+     "total": 23,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      12
+     ],
+     "kept": [
+      12
+     ],
+     "mod": 1,
+     "total": 13,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "state": {
+  "morten": {
+   "hp": 20,
+   "maxHp": 20
+  },
+  "foes": [
+   {
+    "name": "Giant Wolf Spider A",
+    "hp": 11,
+    "maxHp": 11
+   },
+   {
+    "name": "Giant Wolf Spider B",
+    "hp": 11,
+    "maxHp": 11
+   },
+   {
+    "name": "Giant Wolf Spider C",
+    "hp": 11,
+    "maxHp": 11
+   }
+  ]
+ },
+ "at": "2026-10-25T09:10:00Z"
+}

@@ -1,0 +1,8 @@
+{
+ "lizards": [{"name": "Giant Lizard", "cr": "1/4", "ac": 12, "hp": 19, "maxHp": 19, "speed": "8 sq (12 m)", "attacks": ["Bite +4, 1d8+2 piercing"], "notes": "Large; WIS +0", "count": 3}],
+ "grimlocks": [{"name": "Grimlock", "cr": "1/4", "ac": 11, "hp": 11, "maxHp": 11, "speed": "6 sq (9 m), climb 6 sq (9 m)", "attacks": ["Bone Cudgel +5, 1d6+3 bludgeoning + 1d4 psychic"], "notes": "blindsight 9 m; WIS −1", "count": 3}],
+ "mastiffs": [{"name": "Mastiff", "cr": "1/8", "ac": 12, "hp": 5, "maxHp": 5, "speed": "8 sq (12 m)", "attacks": ["Bite +3, 1d6+1 piercing, knocks prone"], "notes": "", "count": 4}],
+ "shadows": [{"name": "Shadow", "cr": "1/2", "ac": 12, "hp": 27, "maxHp": 27, "speed": "8 sq (12 m)", "attacks": ["Draining Swipe +4, 1d6+2 necrotic, STR −1d4"], "notes": "resists fire, cold, lightning, thunder, acid; immune to Unconscious; Shadow Stealth", "count": 2}],
+ "darkmantle": [{"name": "Darkmantle", "cr": "1/2", "ac": 11, "hp": 22, "maxHp": 22, "speed": "2 sq (3 m), fly 6 sq (9 m)", "attacks": ["Crush +5, 1d6+3 bludgeoning, attaches"], "notes": "covers its target on Advantage (Blinded, suffocating); DC 13 STR (Athletics) to detach", "count": 1}],
+ "spiders": [{"name": "Giant Wolf Spider", "cr": "1/4", "ac": 13, "hp": 11, "maxHp": 11, "speed": "8 sq (12 m), climb 8 sq (12 m)", "attacks": ["Bite +5, 1d4+3 piercing + 2d4 poison"], "notes": "WIS +1", "count": 3}]
+}

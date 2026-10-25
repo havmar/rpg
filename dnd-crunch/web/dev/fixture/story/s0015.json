@@ -1,0 +1,57 @@
+{
+ "v": 1,
+ "seq": 15,
+ "kind": "rest",
+ "month": 2,
+ "day": 3,
+ "clock": "07:50",
+ "hex": "A5",
+ "where": "Floor 2 · room 2.2",
+ "title": "Short Rest after room 2.2",
+ "headline": "A Short Rest and Arcane Recovery bring back both lost spells and his HP.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Arcane Recovery",
+   "text": "Shocking Grasp and Magic Missile (2 levels: a cantrip counts as 1)."
+  },
+  {
+   "label": "Hit Dice",
+   "text": "one, 7 HP: 20/20 HP. Hit Dice 2/3."
+  }
+ ],
+ "trace": [
+  {
+   "text": "A Hit Die: 1d6+2.",
+   "who": "morten",
+   "kind": "roll",
+   "dice": [
+    {
+     "expr": "1d6+2",
+     "faces": [
+      5
+     ],
+     "kept": [
+      5
+     ],
+     "mod": 2,
+     "total": 7,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1675,
+  "coins": "40 GP 2 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}

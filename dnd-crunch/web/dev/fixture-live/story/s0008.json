@@ -1,0 +1,31 @@
+{
+ "v": 1,
+ "seq": 8,
+ "kind": "rest",
+ "month": 2,
+ "day": 3,
+ "clock": "06:00",
+ "hex": "A5",
+ "where": "the Humans' savanna (A5), by the floor's entrance",
+ "title": "Day 2 night · A5 · Long Rest in camp",
+ "headline": "A Long Rest in camp brings everything back.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Back",
+   "text": "20/20 HP, Magic Missile, Heroic Inspiration and the free Mage Armor."
+  }
+ ],
+ "trace": [],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1425,
+  "coins": "15 GP 2 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}

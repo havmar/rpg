@@ -1,0 +1,138 @@
+/* The Story (owner: Story; web/README.md, File ownership): the stream, month headers and
+   day rows, sections by kind, the world's turn, asides, the live card and the activity
+   line, the player's bubbles, the answer box's own parts and the "live" button. The shared
+   atoms (.sec, .story, .bullets, .ln, .die, .events, .chip, .box, .seg, .pick) are the
+   shell's. Most rules are the mockup's (ui/table-mockup.html). */
+
+#story { overflow-anchor: none; }
+.stream { display: grid; gap: 12px; min-width: 0; }
+.stream > .it { display: grid; gap: 8px; min-width: 0; }
+.stream > .it:empty { display: none; }
+.stream .empty { color: var(--ink-3); font: 500 .84rem/1.5 var(--mono); padding: 10px 0; }
+.sec, .month, .day, .you { scroll-margin-top: calc(var(--now-h) + 8px); }
+
+/* ---------- months and days ---------- */
+.older { justify-self: center; min-height: var(--tap); padding: 0 18px; border: 1px dashed var(--rule); border-radius: 22px; background: var(--panel); font: 500 .76rem var(--mono); color: var(--ink-2); }
+.month { display: flex; align-items: baseline; gap: 4px 10px; flex-wrap: wrap; padding-top: 10px; border-top: 3px solid var(--ink-2); margin-top: 6px; cursor: pointer; min-height: var(--tap); position: relative; padding-right: 36px; }
+.month h2 { font-size: 1.6rem; }
+.month .orders { color: var(--ink-2); font-size: .95rem; flex: 1 1 14em; min-width: 0; }
+.month .sum { margin-left: auto; font: 500 .72rem var(--mono); color: var(--ink-3); }
+.month .fold { position: absolute; right: 0; top: 10px; width: 32px; height: 32px; display: grid; place-items: center; color: var(--accent); }
+.month .fold .ic { transform: rotate(90deg); transition: transform .2s; width: 18px; height: 18px; }
+.month.folded .fold .ic { transform: none; }
+.month.folded { opacity: .85; }
+.month:focus-visible { outline-offset: 4px; }
+.day { display: flex; align-items: center; gap: 8px; font: 500 .8rem/1.35 var(--mono); color: var(--ink-2); padding-top: 6px; border-top: 1px solid var(--rule); }
+.day > span { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.day b { font-weight: 600; color: var(--ink); }
+.day .ic { color: var(--accent); width: 16px; height: 16px; }
+
+/* ---------- sections by kind ---------- */
+.sec h3 { overflow-wrap: anywhere; }
+.sec .story { display: grid; gap: 8px; }
+.sec .meta .num { color: var(--ink); }
+.sec.death { border-left: 4px solid var(--bad); }
+.sec.death .sec-head .ic { color: var(--bad); }
+.sec.opening .sec-head .ic, .sec.wrap .sec-head .ic { color: var(--accent); }
+.sec.plain .story p { font-size: .98rem; }
+.sec.plain details.trace { border-top-style: dashed; }
+.sec.aside.ooc { border-left-color: var(--ink-3); }
+.sec.aside h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.sec.aside h3 small { font: 500 .7rem var(--mono); color: var(--ink-3); margin-left: 6px; }
+.sec.aside .sec-head > div { display: grid; gap: 6px; }
+.foe b small.cr { font: 500 .7rem var(--mono); color: var(--ink-3); margin-left: 4px; }
+.lines { display: grid; gap: 3px; padding: 2px 0 4px; }
+.ln.me .mk { color: var(--accent); }
+.ln.gm .mk { color: var(--ink-3); }
+.ln.gm .tx { color: var(--ink-2); }
+.ln .dice { display: inline; }
+.out.muted { color: var(--ink-3); }
+
+/* ---------- the world's turn ---------- */
+.sec.world { background: var(--world); border-color: var(--world-rule); border-left-width: 5px; }
+.sec.world .sec-head .ic { color: var(--world-rule); }
+.sec.world .chip { background: color-mix(in oklab, var(--panel) 70%, var(--world)); }
+.part { display: grid; gap: 6px; padding-top: 8px; border-top: 1px solid color-mix(in oklab, var(--world-rule) 40%, transparent); }
+.part h4 { font-size: 1.05rem; }
+.part p { line-height: 1.55; }
+.sec.world .events li { scroll-margin-top: calc(var(--now-h) + 8px); }
+.sec.world .events li:target { background: color-mix(in oklab, var(--fc, var(--accent)) 14%, transparent); border-radius: 6px; }
+.events .hexes { font: 500 .68rem var(--mono); color: var(--ink-3); white-space: nowrap; }
+.events li.else .n { background: none; color: var(--ink-3); }
+.delta-rows { display: grid; gap: 4px; }
+.delta-rows li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 10px; padding: 4px 0; border-bottom: 1px dashed color-mix(in oklab, var(--world-rule) 35%, transparent); font-size: .94rem; }
+.delta-rows li:last-child { border-bottom: 0; }
+.delta-rows .ba { font-size: .8rem; color: var(--ink-2); }
+.delta-rows .ba b { color: var(--ink); font-weight: 600; }
+.delta-rows .arr { color: var(--accent); }
+.delta-rows li.same .what { color: var(--ink-2); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips .chip { max-width: 100%; }
+.trace-lines .label { margin-top: 6px; font-size: .6rem; }
+.trace-lines span { overflow-wrap: anywhere; }
+
+/* ---------- the live card and the activity line ---------- */
+.sec.live { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent); }
+.live-tag { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; }
+.live-tag.paused { color: var(--ink-3); }
+.sec.live .beat { display: grid; gap: 3px; padding: 2px 0; }
+.sec.live .beat .bt { font-size: .98rem; line-height: 1.5; }
+.sec.live .beat:last-child { animation: grow .5s ease-out; }
+@keyframes grow { from { opacity: .3; } to { opacity: 1; } }
+.activity { display: grid; gap: 4px; font-family: var(--mono); font-size: .72rem; color: var(--ink-3); padding-left: 14px; }
+.activity li { overflow-wrap: anywhere; }
+.activity li + li::before { content: "↳ "; }
+
+/* ---------- the player's words ---------- */
+.you p { overflow-wrap: anywhere; }
+.you.ooc { border-style: dashed; }
+.you.ooc p { font-style: italic; color: var(--ink-2); }
+.you.sent, .you.sending { border-color: var(--accent); }
+.you.sending { opacity: .8; }
+.you.failed { border-color: var(--bad); }
+.you .st { font: 500 .66rem var(--mono); color: var(--ink-3); }
+.you .acts { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.you .acts button { min-height: var(--tap); padding: 0 12px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); font: 500 .72rem var(--mono); }
+
+/* ---------- the answer box ---------- */
+.answer { scroll-margin-bottom: 80px; }
+.answer .status { min-height: 24px; }
+.answer .status .who-move { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--ink); }
+.answer .status .who-move.mine { color: var(--good); }
+.answer .status button { min-height: var(--tap); }
+.wait { height: 2px; background: var(--rule); border-radius: 1px; overflow: hidden; }
+.wait i { display: block; width: 0; height: 100%; background: var(--accent); opacity: .7; animation: wait 120s linear infinite alternate; }
+@keyframes wait { from { width: 0; } to { width: 100%; } }
+.box:focus-within { border-color: var(--accent); }
+.box .form:empty, .box .form[hidden] { display: none; }
+.box .form .row > .label small { text-transform: none; letter-spacing: 0; }
+.box .foes { margin-top: 4px; }
+.form .pick button { max-width: 100%; }
+.form .pick button > span { min-width: 0; overflow-wrap: anywhere; }
+.form .pick button:disabled { opacity: .5; border-style: dashed; }
+.form .pick .small { font-size: .82rem; align-self: center; }
+.form .pick .sw { width: 12px; height: 12px; }
+.form .gp { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; font-size: .9rem; }
+.form .gp input { width: 7em; min-height: var(--tap); padding: 0 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); font-family: var(--mono); }
+.seg button { max-width: 100%; }
+.board { display: grid; gap: 2px; padding: 8px 10px; border-radius: 6px; background: var(--bg); font: .76rem/1.5 var(--mono); color: var(--ink-2); }
+.board p { overflow-wrap: anywhere; }
+.box .send { flex-wrap: wrap; }
+.box .send .hint { flex: 1 1 8em; }
+.box .send .btns { display: flex; gap: 6px; margin-left: auto; }
+.box .send button.second { background: var(--panel); color: var(--accent); border: 1px solid var(--accent); min-width: 0; }
+.box .send button.toggle.ooc { min-height: var(--tap); min-width: 0; padding: 0 12px; background: var(--panel); color: var(--ink-2); border: 1px solid var(--rule); border-radius: 999px; font: 500 .74rem var(--mono); }
+.box .send button.toggle.ooc[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.closed-why { grid-template-columns: 1fr; }
+
+/* ---------- the "live" button ---------- */
+.jump { position: sticky; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); justify-self: end; z-index: 4; min-height: var(--tap); padding: 0 16px; border: 1px solid var(--accent); border-radius: 999px; background: var(--panel); color: var(--accent); font: 600 .78rem var(--mono); display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 10px color-mix(in oklab, var(--ink) 18%, transparent); margin-top: -44px; }
+.jump .ic.down { transform: rotate(90deg); }
+@media (min-width: 900px) { .jump { bottom: 16px; } }
+@media (prefers-reduced-motion: reduce) { .wait i { animation: none; width: 35%; } .sec.live .beat:last-child { animation: none; } }
+.live-wrap { display: grid; min-width: 0; }
+/* the answer sent, with the GM: the player's words and a way to change them */
+.box .form .sent-row > .label { display: inline-flex; align-items: center; gap: 6px; color: var(--good); }
+.box .form .sent-row .sent-words { margin: 0; font-size: .95rem; color: var(--ink-2); }
+.box .form .sent-row .seg { justify-content: flex-start; }
+.answer .stop[aria-pressed="true"] { opacity: .7; }

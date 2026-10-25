@@ -1,0 +1,28 @@
+{
+ "v": 1,
+ "seq": 1,
+ "kind": "opening",
+ "month": 1,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "B5",
+ "where": "the tower, B5",
+ "title": "The tower on the desert's edge",
+ "headline": "Morten starts at home, rested, with 47 GP 7 SP 5 CP and floor 1 under his feet.",
+ "prose": [
+  "Six realms share the map; two are friendly, none hostile. The tower is small: Force 1, Cunning 1, Wealth 1."
+ ],
+ "bullets": [],
+ "trace": [],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 900,
+  "coins": "47 GP 7 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}

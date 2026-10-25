@@ -1,0 +1,30 @@
+{
+ "v": 1,
+ "seq": 8,
+ "kind": "aside",
+ "ooc": true,
+ "month": 2,
+ "day": 3,
+ "clock": "",
+ "hex": "A5",
+ "where": "",
+ "title": "",
+ "headline": "",
+ "prose": [
+  "Ruling: a Shadow's Strength drain has no end in the SRD text, so it lasts until he finishes a Long Rest."
+ ],
+ "bullets": [],
+ "trace": [],
+ "answered": [
+  "m0002"
+ ],
+ "after": null,
+ "fight": null,
+ "domain": null,
+ "words": [
+  {
+   "move": "m0002",
+   "text": "How long does the Strength drain last?"
+  }
+ ]
+}

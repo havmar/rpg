@@ -1,0 +1,1719 @@
+{
+ "v": 1,
+ "version": 2,
+ "campaign": "realms3",
+ "month": 3,
+ "layout": {
+  "cols": 4,
+  "rows": 5,
+  "orientation": "flat-top",
+  "shift": "odd"
+ },
+ "hexes": [
+  {
+   "id": "A1",
+   "col": 0,
+   "row": 0,
+   "level": 5,
+   "biome": "mountains",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": null,
+   "income": 50,
+   "neighbours": [
+    "A2",
+    "B1"
+   ],
+   "assets": []
+  },
+  {
+   "id": "A2",
+   "col": 0,
+   "row": 1,
+   "level": 13,
+   "biome": "forest",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": "Elves",
+   "income": 130,
+   "neighbours": [
+    "A1",
+    "A3",
+    "B1",
+    "B2"
+   ],
+   "assets": []
+  },
+  {
+   "id": "A3",
+   "col": 0,
+   "row": 2,
+   "level": 4,
+   "biome": "plains",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "income": 40,
+   "neighbours": [
+    "A2",
+    "A4",
+    "B2",
+    "B3"
+   ],
+   "assets": []
+  },
+  {
+   "id": "A4",
+   "col": 0,
+   "row": 3,
+   "level": 19,
+   "biome": "swamp",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": "Humans",
+   "income": 190,
+   "neighbours": [
+    "A3",
+    "A5",
+    "B3",
+    "B4"
+   ],
+   "assets": [
+    {
+     "id": "a9",
+     "owner": "Humans",
+     "name": "Thugs",
+     "type": "Force",
+     "tier": 1,
+     "hp": 3,
+     "max_hp": 3,
+     "leader": null,
+     "attack": "F vs F, 1d3+1",
+     "counter": "1d4",
+     "special": ""
+    },
+    {
+     "id": "a10",
+     "owner": "Humans",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4+1",
+     "special": ""
+    },
+    {
+     "id": "a12",
+     "owner": "Humans",
+     "name": "Mercenaries",
+     "type": "Wealth",
+     "tier": 2,
+     "hp": 6,
+     "max_hp": 6,
+     "leader": null,
+     "attack": "W vs F, 2d4+2",
+     "counter": "1d6",
+     "special": "upkeep 100"
+    }
+   ]
+  },
+  {
+   "id": "A5",
+   "col": 0,
+   "row": 4,
+   "level": 2,
+   "biome": "savanna",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "income": 20,
+   "neighbours": [
+    "A4",
+    "B4",
+    "B5"
+   ],
+   "assets": []
+  },
+  {
+   "id": "B1",
+   "col": 1,
+   "row": 0,
+   "level": 14,
+   "biome": "tundra",
+   "people": "Orcs",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "income": 140,
+   "neighbours": [
+    "A1",
+    "A2",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "assets": [
+    {
+     "id": "a17",
+     "owner": "Elves",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4+1",
+     "special": ""
+    },
+    {
+     "id": "a18",
+     "owner": "Elves",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4+1",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "B2",
+   "col": 1,
+   "row": 1,
+   "level": 11,
+   "biome": "taiga",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": true,
+   "seat_of": null,
+   "income": 110,
+   "neighbours": [
+    "A2",
+    "A3",
+    "B1",
+    "B3",
+    "C2",
+    "C3"
+   ],
+   "assets": [
+    {
+     "id": "a20",
+     "owner": "Elves",
+     "name": "Farms",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": null,
+     "counter": "1d4",
+     "special": "income +50"
+    }
+   ]
+  },
+  {
+   "id": "B3",
+   "col": 1,
+   "row": 2,
+   "level": 3,
+   "biome": "forest",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "income": 30,
+   "neighbours": [
+    "A3",
+    "A4",
+    "B2",
+    "B4",
+    "C3",
+    "C4"
+   ],
+   "assets": []
+  },
+  {
+   "id": "B4",
+   "col": 1,
+   "row": 3,
+   "level": 10,
+   "biome": "plains",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "income": 100,
+   "neighbours": [
+    "A4",
+    "A5",
+    "B3",
+    "B5",
+    "C4",
+    "C5"
+   ],
+   "assets": []
+  },
+  {
+   "id": "B5",
+   "col": 1,
+   "row": 4,
+   "level": 1,
+   "biome": "desert",
+   "people": "tower folk",
+   "holder": "tower",
+   "lake": false,
+   "seat_of": "tower",
+   "income": 10,
+   "neighbours": [
+    "A5",
+    "B4",
+    "C5"
+   ],
+   "assets": [
+    {
+     "id": "a25",
+     "owner": "tower",
+     "name": "Farms",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": null,
+     "counter": "1d4",
+     "special": "income +50"
+    }
+   ]
+  },
+  {
+   "id": "C1",
+   "col": 2,
+   "row": 0,
+   "level": 8,
+   "biome": "taiga",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": null,
+   "income": 80,
+   "neighbours": [
+    "B1",
+    "C2",
+    "D1"
+   ],
+   "assets": [
+    {
+     "id": "a4",
+     "owner": "Orcs",
+     "name": "Farms",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": null,
+     "counter": "1d4",
+     "special": "income +50"
+    }
+   ]
+  },
+  {
+   "id": "C2",
+   "col": 2,
+   "row": 1,
+   "level": 6,
+   "biome": "forest",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": null,
+   "income": 0,
+   "neighbours": [
+    "B1",
+    "B2",
+    "C1",
+    "C3",
+    "D1",
+    "D2"
+   ],
+   "assets": [
+    {
+     "id": "a2",
+     "owner": "Orcs",
+     "name": "Thugs",
+     "type": "Force",
+     "tier": 1,
+     "hp": 1,
+     "max_hp": 3,
+     "leader": null,
+     "attack": "F vs F, 1d3+1",
+     "counter": "1d4",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "C3",
+   "col": 2,
+   "row": 2,
+   "level": 9,
+   "biome": "hills",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": null,
+   "income": 90,
+   "neighbours": [
+    "B2",
+    "B3",
+    "C2",
+    "C4",
+    "D2",
+    "D3"
+   ],
+   "assets": [
+    {
+     "id": "a6",
+     "owner": "Goblinkind",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4+1",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "C4",
+   "col": 2,
+   "row": 3,
+   "level": 12,
+   "biome": "swamp",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "income": 120,
+   "neighbours": [
+    "B3",
+    "B4",
+    "C3",
+    "C5",
+    "D3",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "a21",
+     "owner": "Gnomes",
+     "name": "Thugs",
+     "type": "Force",
+     "tier": 1,
+     "hp": 3,
+     "max_hp": 3,
+     "leader": null,
+     "attack": "F vs F, 1d3+1",
+     "counter": "1d4",
+     "special": ""
+    },
+    {
+     "id": "a22",
+     "owner": "Gnomes",
+     "name": "Knights",
+     "type": "Force",
+     "tier": 3,
+     "hp": 12,
+     "max_hp": 12,
+     "leader": null,
+     "attack": "F vs F, 1d8",
+     "counter": "1d8",
+     "special": "upkeep 100"
+    },
+    {
+     "id": "a24",
+     "owner": "Gnomes",
+     "name": "Farms",
+     "type": "Wealth",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": null,
+     "counter": "1d4",
+     "special": "income +50"
+    }
+   ]
+  },
+  {
+   "id": "C5",
+   "col": 2,
+   "row": 4,
+   "level": 18,
+   "biome": "savanna",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "income": 270,
+   "neighbours": [
+    "B4",
+    "B5",
+    "C4",
+    "D4",
+    "D5"
+   ],
+   "assets": [
+    {
+     "id": "a14",
+     "owner": "Tieflings",
+     "name": "Knights",
+     "type": "Force",
+     "tier": 3,
+     "hp": 12,
+     "max_hp": 12,
+     "leader": null,
+     "attack": "F vs F, 1d8",
+     "counter": "1d8",
+     "special": "upkeep 100"
+    },
+    {
+     "id": "a16",
+     "owner": "Tieflings",
+     "name": "Mercenaries",
+     "type": "Wealth",
+     "tier": 2,
+     "hp": 1,
+     "max_hp": 6,
+     "leader": null,
+     "attack": "W vs F, 2d4+2",
+     "counter": "1d6",
+     "special": "upkeep 100"
+    }
+   ]
+  },
+  {
+   "id": "D1",
+   "col": 3,
+   "row": 0,
+   "level": 16,
+   "biome": "tundra",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": "Orcs",
+   "income": 160,
+   "neighbours": [
+    "C1",
+    "C2",
+    "D2"
+   ],
+   "assets": [
+    {
+     "id": "a27",
+     "owner": "Orcs",
+     "name": "Knights",
+     "type": "Force",
+     "tier": 3,
+     "hp": 12,
+     "max_hp": 12,
+     "leader": null,
+     "attack": "F vs F, 1d8",
+     "counter": "1d8",
+     "special": "upkeep 100"
+    }
+   ]
+  },
+  {
+   "id": "D2",
+   "col": 3,
+   "row": 1,
+   "level": 17,
+   "biome": "forest",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": "Goblinkind",
+   "income": 170,
+   "neighbours": [
+    "C2",
+    "C3",
+    "D1",
+    "D3"
+   ],
+   "assets": [
+    {
+     "id": "a5",
+     "owner": "Goblinkind",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4+1",
+     "special": ""
+    }
+   ]
+  },
+  {
+   "id": "D3",
+   "col": 3,
+   "row": 2,
+   "level": 15,
+   "biome": "swamp",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": true,
+   "seat_of": "Gnomes",
+   "income": 150,
+   "neighbours": [
+    "C3",
+    "C4",
+    "D2",
+    "D4"
+   ],
+   "assets": []
+  },
+  {
+   "id": "D4",
+   "col": 3,
+   "row": 3,
+   "level": 7,
+   "biome": "forest",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "income": 105,
+   "neighbours": [
+    "C4",
+    "C5",
+    "D3",
+    "D5"
+   ],
+   "assets": []
+  },
+  {
+   "id": "D5",
+   "col": 3,
+   "row": 4,
+   "level": 20,
+   "biome": "savanna",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": "Tieflings",
+   "income": 300,
+   "neighbours": [
+    "C5",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "a13",
+     "owner": "Tieflings",
+     "name": "Militia",
+     "type": "Force",
+     "tier": 1,
+     "hp": 4,
+     "max_hp": 4,
+     "leader": null,
+     "attack": "F vs F, 1d6",
+     "counter": "1d4+1",
+     "special": ""
+    },
+    {
+     "id": "a26",
+     "owner": "Tieflings",
+     "name": "Treasury",
+     "type": "Wealth",
+     "tier": 3,
+     "hp": 8,
+     "max_hp": 8,
+     "leader": null,
+     "attack": null,
+     "counter": "1d6",
+     "special": "income +100; a Rob here takes double"
+    }
+   ]
+  }
+ ],
+ "rivers": [
+  [
+   "C4",
+   "D3"
+  ],
+  [
+   "C3",
+   "D3"
+  ],
+  [
+   "C3",
+   "D2"
+  ],
+  [
+   "C2",
+   "D2"
+  ],
+  [
+   "C2",
+   "D1"
+  ],
+  [
+   "C1",
+   "D1"
+  ],
+  [
+   "B2",
+   "C3"
+  ],
+  [
+   "B2",
+   "B3"
+  ],
+  [
+   "A3",
+   "B3"
+  ],
+  [
+   "A3",
+   "A4"
+  ]
+ ],
+ "factions": [
+  {
+   "name": "Orcs",
+   "tower": false,
+   "leader": {
+    "name": "Hruma",
+    "title": "Boss",
+    "label": "bad",
+    "tag": "Raider",
+    "verb": "robs its neighbours"
+   },
+   "income": 240,
+   "goal": "rob Goblinkind's Caravans a8 in C2 (month 3 of it)",
+   "hp": 19,
+   "max_hp": 22,
+   "force": 4,
+   "cunning": 4,
+   "wealth": 4,
+   "treasury": 450,
+   "seat": "D1",
+   "hexes": [
+    "A1",
+    "C1",
+    "D1"
+   ],
+   "hostile": 0,
+   "ally": false,
+   "disorder": 0
+  },
+  {
+   "name": "Goblinkind",
+   "tower": false,
+   "leader": {
+    "name": "Zarga",
+    "title": "Big Boss",
+    "label": "good",
+    "tag": "Steward",
+    "verb": "keeps the peace"
+   },
+   "income": 310,
+   "goal": "build Walls at D2 (month 3 of it)",
+   "hp": 16,
+   "max_hp": 16,
+   "force": 3,
+   "cunning": 3,
+   "wealth": 3,
+   "treasury": 1200,
+   "seat": "D2",
+   "hexes": [
+    "C2",
+    "C3",
+    "D2"
+   ],
+   "hostile": 0,
+   "ally": true,
+   "disorder": 0
+  },
+  {
+   "name": "Humans",
+   "tower": false,
+   "leader": {
+    "name": "Leopold",
+    "title": "Reeve",
+    "label": "good",
+    "tag": "Steward",
+    "verb": "keeps the peace"
+   },
+   "income": 150,
+   "goal": "build Walls at A4 (month 3 of it)",
+   "hp": 16,
+   "max_hp": 16,
+   "force": 3,
+   "cunning": 3,
+   "wealth": 3,
+   "treasury": 550,
+   "seat": "A4",
+   "hexes": [
+    "A3",
+    "A4",
+    "A5"
+   ],
+   "hostile": 0,
+   "ally": true,
+   "disorder": 0
+  },
+  {
+   "name": "Tieflings",
+   "tower": false,
+   "leader": {
+    "name": "Iados",
+    "title": "Exarch",
+    "label": "bad",
+    "tag": "Tyrant",
+    "verb": "squeezes its own people"
+   },
+   "income": 625,
+   "goal": null,
+   "hp": 31,
+   "max_hp": 31,
+   "force": 5,
+   "cunning": 5,
+   "wealth": 5,
+   "treasury": 100,
+   "seat": "D5",
+   "hexes": [
+    "C5",
+    "D4",
+    "D5"
+   ],
+   "hostile": 0,
+   "ally": false,
+   "disorder": 0
+  },
+  {
+   "name": "Elves",
+   "tower": false,
+   "leader": {
+    "name": "Valanthe",
+    "title": "Warden",
+    "label": "bad",
+    "tag": "Conqueror",
+    "verb": "takes land"
+   },
+   "income": 510,
+   "goal": "take B1 (L14, Orcs') (month 3 of it)",
+   "hp": 16,
+   "max_hp": 16,
+   "force": 3,
+   "cunning": 3,
+   "wealth": 3,
+   "treasury": 1010,
+   "seat": "A2",
+   "hexes": [
+    "A2",
+    "B1",
+    "B2",
+    "B3"
+   ],
+   "hostile": 0,
+   "ally": false,
+   "disorder": 0
+  },
+  {
+   "name": "Gnomes",
+   "tower": false,
+   "leader": {
+    "name": "Ellywick",
+    "title": "Tinker-General",
+    "label": "bad",
+    "tag": "Raider",
+    "verb": "robs its neighbours"
+   },
+   "income": 320,
+   "goal": null,
+   "hp": 22,
+   "max_hp": 22,
+   "force": 4,
+   "cunning": 4,
+   "wealth": 4,
+   "treasury": 1210,
+   "seat": "D3",
+   "hexes": [
+    "B4",
+    "C4",
+    "D3"
+   ],
+   "hostile": 0,
+   "ally": false,
+   "disorder": 0
+  },
+  {
+   "name": "tower",
+   "tower": true,
+   "leader": {
+    "name": "Morten",
+    "title": "Wizard",
+    "label": null,
+    "tag": null,
+    "verb": null
+   },
+   "income": 60,
+   "goal": null,
+   "hp": 7,
+   "max_hp": 7,
+   "force": 1,
+   "cunning": 1,
+   "wealth": 1,
+   "treasury": 89,
+   "seat": "B5",
+   "hexes": [
+    "B5"
+   ],
+   "hostile": 0,
+   "ally": false,
+   "disorder": 0
+  }
+ ],
+ "morten": {
+  "hex": "B5",
+  "level": 3
+ },
+ "events": [
+  {
+   "month": 2,
+   "actor": "tower",
+   "action": "Mission",
+   "from_hex": "B5",
+   "to_hex": "B5",
+   "target": "floor 1",
+   "result": "delved"
+  },
+  {
+   "month": 2,
+   "actor": "Tieflings",
+   "action": "Buy",
+   "from_hex": "D5",
+   "to_hex": "D5",
+   "target": "Tieflings' Treasury a26",
+   "result": "1,200 GP"
+  },
+  {
+   "month": 2,
+   "actor": "Orcs",
+   "action": "Buy",
+   "from_hex": "D1",
+   "to_hex": "D1",
+   "target": "Orcs' Knights a27",
+   "result": "800 GP"
+  },
+  {
+   "month": 2,
+   "actor": "Goblinkind",
+   "action": "Attack",
+   "from_hex": "C2",
+   "to_hex": "C2",
+   "target": "Orcs' Thugs a2",
+   "result": "lost: counter 3, attacker destroyed"
+  },
+  {
+   "month": 2,
+   "actor": "Elves",
+   "action": "Seize",
+   "from_hex": "B1",
+   "to_hex": "B1",
+   "target": "B1 (Orcs')",
+   "result": "resolves at clean-up"
+  },
+  {
+   "month": 2,
+   "actor": "Tieflings",
+   "action": "Goal",
+   "from_hex": null,
+   "to_hex": null,
+   "target": "buy Treasury (1,200 GP)",
+   "result": "done: +1 XP (1)"
+  },
+  {
+   "month": 2,
+   "actor": "Gnomes",
+   "action": "Goal",
+   "from_hex": null,
+   "to_hex": null,
+   "target": "rob Tieflings' Mercenaries a16 in C5",
+   "result": "done: +1 XP (1)"
+  },
+  {
+   "month": 2,
+   "actor": "Elves",
+   "action": "Seize",
+   "from_hex": "B1",
+   "to_hex": "B1",
+   "target": "B1 (Orcs')",
+   "result": "taken"
+  }
+ ],
+ "report": {
+  "month": 2,
+  "plan": [
+   "Morten: Delve floor 1 under B5.",
+   "Morten delves floor 2 under the Humans' A5, next door: XP toward level 4 at low risk (floor 3 lies past B4, an L10 hex).",
+   "He spends 62 GP 5 SP at the tower's trader (a Potion of Healing, incense for an owl, rations) and deposits the rest, 22 GP.",
+   "Tower: no action; 89 GP buys nothing, so it saves toward 200."
+  ],
+  "happened": [
+   "Morten: Delve floor 1 under B5 (the dungeon game; no domain effect).",
+   "Tieflings (Exarch Iados, bad: squeezes its own people): Buy Treasury a26 in D5 (it has the gold), −1,200 GP → 300 GP.",
+   "Goblinkind (Big Boss Zarga, good: keeps the peace): Caravans a8 attacks Orcs' Thugs a2 in C2 → d10 1 + W3 + 1 claim = 5 vs d10 4 + W4 = 8, LOSS. Counter 1d4 3 = 3: Caravans 2 → 0 HP. Caravans a8 destroyed.",
+   "Tieflings (Exarch Iados, bad: squeezes its own people): goal done (buy Treasury (1,200 GP)): +1 XP (1).",
+   "Gnomes (Tinker-General Ellywick, bad: robs its neighbours): goal done (rob Tieflings' Mercenaries a16 in C5): +1 XP (1).",
+   "Elsewhere: Orcs bought Knights a27 in D1; Elves seized B1 (Orcs') (resolves at clean-up); Elves seized B1 (Orcs') (taken)."
+  ],
+  "tower": [
+   "HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 89 GP · Morten level 3",
+   "Assets: a25 the tower's Farms in B5 · T1 · HP 4/4 · no attack · counter 1d4",
+   "Hexes: B5",
+   "Hostile: nobody",
+   "Allies: Goblinkind, Humans"
+  ],
+  "next": [
+   "Chance: the Elves' seat A2 has no Force asset (Strike it for 2d6 to their HP 16/16).",
+   "Chance: the Gnomes' seat D3 has no Force asset (Strike it for 2d6 to their HP 22/22).",
+   "Open: Morten is in B5 (L1, desert, tower); travel 1 day a hex, d6 each day outside B5 (1 = encounter).",
+   "Open: missions here: Delve floor 1.",
+   "Open: the tower's one action (89 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free."
+  ]
+ },
+ "words": {
+  "force": "Force: soldiers, and the strength to take and hold land.",
+  "cunning": "Cunning: spies, informers and friends in the right places.",
+  "wealth": "Wealth: trade, land and coffers.",
+  "piece": "A piece is something a realm has put on the map: soldiers, spies or income.",
+  "regime": "The realm's health as a power; at 0 it falls.",
+  "level": "Level N: floor N lies under it, its wanderers are level-N trouble, and it pays N×10 GP a month.",
+  "seat": "The hex the ruler sits in; with no soldiers left there, the court itself fights.",
+  "hostile": "A hostile realm spends its month punishing the tower, for 3 months (6 for a seat).",
+  "ally": "An ally is a good ruler not hostile to the tower.",
+  "tier": "Tier 1, 2 or 3: how big a fight it is when Morten goes after it (Low, Moderate, High).",
+  "occupied": "A hex with another realm's soldiers in it pays its holder nothing."
+ },
+ "kinds": {
+  "Thugs": {
+   "glyph": "fight",
+   "type": "F",
+   "tier": 1,
+   "needs": "F1",
+   "what": "hired toughs",
+   "cost": 200,
+   "hp": 3,
+   "hits": "hits with Force against Force for 1d3+1",
+   "counter": "hits back 1d4",
+   "upkeep": 0,
+   "income": 0,
+   "moves": 1,
+   "special": "",
+   "fight": "Low fight"
+  },
+  "Militia": {
+   "glyph": "shield",
+   "type": "F",
+   "tier": 1,
+   "needs": "F1",
+   "what": "armed townsfolk",
+   "cost": 400,
+   "hp": 4,
+   "hits": "hits with Force against Force for 1d6",
+   "counter": "hits back 1d4+1",
+   "upkeep": 0,
+   "income": 0,
+   "moves": 1,
+   "special": "",
+   "fight": "Low fight"
+  },
+  "Beast pack": {
+   "glyph": "skull",
+   "type": "F",
+   "tier": 2,
+   "needs": "F2",
+   "what": "the people's beasts of war",
+   "cost": 500,
+   "hp": 5,
+   "hits": "hits with Force against Force for 2d4",
+   "counter": "hits back 1d4+1",
+   "upkeep": 0,
+   "income": 0,
+   "moves": 1,
+   "special": "the people's beasts",
+   "fight": "Moderate fight"
+  },
+  "Walls": {
+   "glyph": "door",
+   "type": "F",
+   "tier": 2,
+   "needs": "F3",
+   "what": "stone walls and a garrison",
+   "cost": 600,
+   "hp": 10,
+   "hits": "doesn't attack",
+   "counter": "hits back 1d6",
+   "upkeep": 0,
+   "income": 0,
+   "moves": 0,
+   "special": "can't move; +1 to its owner's defence in its hex; the hex can't be seized",
+   "fight": "Moderate fight"
+  },
+  "Knights": {
+   "glyph": "sword",
+   "type": "F",
+   "tier": 3,
+   "needs": "F4",
+   "what": "mounted soldiers",
+   "cost": 800,
+   "hp": 12,
+   "hits": "hits with Force against Force for 1d8",
+   "counter": "hits back 1d8",
+   "upkeep": 100,
+   "income": 0,
+   "moves": 1,
+   "special": "upkeep 100",
+   "fight": "High fight"
+  },
+  "Warband": {
+   "glyph": "flag",
+   "type": "F",
+   "tier": 3,
+   "needs": "F6",
+   "what": "a host of veteran warriors",
+   "cost": 1600,
+   "hp": 16,
+   "hits": "hits with Force against Force for 2d8",
+   "counter": "hits back 2d6",
+   "upkeep": 200,
+   "income": 0,
+   "moves": 1,
+   "special": "upkeep 200",
+   "fight": "High fight"
+  },
+  "Informers": {
+   "glyph": "eye",
+   "type": "C",
+   "tier": 1,
+   "needs": "C1",
+   "what": "eyes and ears in the hex",
+   "cost": 200,
+   "hp": 3,
+   "hits": "doesn't attack",
+   "counter": "doesn't hit back",
+   "upkeep": 0,
+   "income": 0,
+   "moves": 1,
+   "special": "its owner sees every asset in its hex",
+   "fight": "Low fight"
+  },
+  "Smugglers": {
+   "glyph": "bag",
+   "type": "C",
+   "tier": 1,
+   "needs": "C1",
+   "what": "a smuggling ring",
+   "cost": 200,
+   "hp": 4,
+   "hits": "hits with Cunning against Wealth for 1d4",
+   "counter": "doesn't hit back",
+   "upkeep": 0,
+   "income": 50,
+   "moves": 2,
+   "special": "income +50; moves 2 hexes",
+   "fight": "Low fight"
+  },
+  "Saboteurs": {
+   "glyph": "spark",
+   "type": "C",
+   "tier": 2,
+   "needs": "C2",
+   "what": "wreckers and arsonists",
+   "cost": 500,
+   "hp": 6,
+   "hits": "hits with Cunning against Cunning for 2d4",
+   "counter": "doesn't hit back",
+   "upkeep": 0,
+   "income": 0,
+   "moves": 1,
+   "special": "",
+   "fight": "Moderate fight"
+  },
+  "Seditionists": {
+   "glyph": "speech",
+   "type": "C",
+   "tier": 2,
+   "needs": "C2",
+   "what": "a plot against the throne",
+   "cost": 600,
+   "hp": 6,
+   "hits": "hits with Cunning against Cunning for 1d6",
+   "counter": "doesn't hit back",
+   "upkeep": 0,
+   "income": 0,
+   "moves": 1,
+   "special": "coup: attacks the realm's HP from any of its hexes; bought only after a Contact; led by the dissident",
+   "fight": "Moderate fight"
+  },
+  "Assassins": {
+   "glyph": "mask",
+   "type": "C",
+   "tier": 3,
+   "needs": "C3",
+   "what": "killers for hire",
+   "cost": 600,
+   "hp": 4,
+   "hits": "hits with Cunning against Cunning for 2d6",
+   "counter": "doesn't hit back",
+   "upkeep": 0,
+   "income": 0,
+   "moves": 1,
+   "special": "a win also does 1d4 to the target faction's HP",
+   "fight": "High fight"
+  },
+  "Court mage": {
+   "glyph": "hat",
+   "type": "C",
+   "tier": 3,
+   "needs": "C5",
+   "what": "a mage at court",
+   "cost": 1000,
+   "hp": 6,
+   "hits": "hits with Cunning against Cunning for 1d8",
+   "counter": "hits back 1d6",
+   "upkeep": 0,
+   "income": 0,
+   "moves": 0,
+   "special": "once a month cancels an attack on its owner's asset in its hex (C vs C)",
+   "fight": "High fight"
+  },
+  "Farms": {
+   "glyph": "globe",
+   "type": "W",
+   "tier": 1,
+   "needs": "W1",
+   "what": "farmland and its folk",
+   "cost": 200,
+   "hp": 4,
+   "hits": "doesn't attack",
+   "counter": "hits back 1d4",
+   "upkeep": 0,
+   "income": 50,
+   "moves": 0,
+   "special": "income +50",
+   "fight": "Low fight"
+  },
+  "Caravans": {
+   "glyph": "cart",
+   "type": "W",
+   "tier": 1,
+   "needs": "W2",
+   "what": "traders on the road",
+   "cost": 400,
+   "hp": 4,
+   "hits": "hits with Wealth against Wealth for 1d4",
+   "counter": "hits back 1d4-1",
+   "upkeep": 0,
+   "income": 100,
+   "moves": 2,
+   "special": "income +100; moves 2 hexes",
+   "fight": "Low fight"
+  },
+  "Mine": {
+   "glyph": "gear",
+   "type": "W",
+   "tier": 2,
+   "needs": "W3",
+   "what": "a working mine",
+   "cost": 800,
+   "hp": 4,
+   "hits": "doesn't attack",
+   "counter": "hits back 1d4",
+   "upkeep": 0,
+   "income": 150,
+   "moves": 0,
+   "special": "income +150; hills or mountains only",
+   "fight": "Moderate fight"
+  },
+  "Mercenaries": {
+   "glyph": "hand",
+   "type": "W",
+   "tier": 2,
+   "needs": "W3",
+   "what": "paid soldiers",
+   "cost": 800,
+   "hp": 6,
+   "hits": "hits with Wealth against Force for 2d4+2",
+   "counter": "hits back 1d6",
+   "upkeep": 100,
+   "income": 0,
+   "moves": 1,
+   "special": "upkeep 100",
+   "fight": "Moderate fight"
+  },
+  "Treasury": {
+   "glyph": "coins",
+   "type": "W",
+   "tier": 3,
+   "needs": "W4",
+   "what": "a strongroom of gold",
+   "cost": 1200,
+   "hp": 8,
+   "hits": "doesn't attack",
+   "counter": "hits back 1d6",
+   "upkeep": 0,
+   "income": 100,
+   "moves": 0,
+   "special": "income +100; a Rob here takes double",
+   "fight": "High fight"
+  },
+  "Toll road": {
+   "glyph": "boots",
+   "type": "W",
+   "tier": 3,
+   "needs": "W5",
+   "what": "a road that pays its owner",
+   "cost": 1000,
+   "hp": 8,
+   "hits": "hits with Wealth against Wealth for 1d6",
+   "counter": "doesn't hit back",
+   "upkeep": 0,
+   "income": 250,
+   "moves": 0,
+   "special": "income +250",
+   "fight": "High fight"
+  }
+ },
+ "rumours": {
+  "A1": [
+   "Boss Hruma of the Orcs (bad: robs its neighbours) is after: rob Goblinkind's Caravans in C2 (month 3 of it). Last month: buy Orcs' Knights (800 GP). The regime stands at 19/22 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP."
+  ],
+  "A2": [
+   "Boss Hruma of the Orcs (bad: robs its neighbours) is after: rob Goblinkind's Caravans in C2 (month 3 of it). Last month: buy Orcs' Knights (800 GP). The regime stands at 19/22 HP.",
+   "Reeve Leopold of the Humans (good: keeps the peace) is after: build Walls at A4 (month 3 of it). Last month: quiet. The regime stands at 16/16 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP."
+  ],
+  "A3": [
+   "Reeve Leopold of the Humans (good: keeps the peace) is after: build Walls at A4 (month 3 of it). Last month: quiet. The regime stands at 16/16 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP."
+  ],
+  "A4": [
+   "Reeve Leopold of the Humans (good: keeps the peace) is after: build Walls at A4 (month 3 of it). Last month: quiet. The regime stands at 16/16 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "A5": [
+   "Reeve Leopold of the Humans (good: keeps the peace) is after: build Walls at A4 (month 3 of it). Last month: quiet. The regime stands at 16/16 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "B1": [
+   "Boss Hruma of the Orcs (bad: robs its neighbours) is after: rob Goblinkind's Caravans in C2 (month 3 of it). Last month: buy Orcs' Knights (800 GP). The regime stands at 19/22 HP.",
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP."
+  ],
+  "B2": [
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP.",
+   "Reeve Leopold of the Humans (good: keeps the peace) is after: build Walls at A4 (month 3 of it). Last month: quiet. The regime stands at 16/16 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP."
+  ],
+  "B3": [
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP.",
+   "Reeve Leopold of the Humans (good: keeps the peace) is after: build Walls at A4 (month 3 of it). Last month: quiet. The regime stands at 16/16 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "B4": [
+   "Reeve Leopold of the Humans (good: keeps the peace) is after: build Walls at A4 (month 3 of it). Last month: quiet. The regime stands at 16/16 HP.",
+   "Exarch Iados of the Tieflings (bad: squeezes its own people) is after: nothing yet. Last month: buy Tieflings' Treasury (1,200 GP); goal buy Treasury (1,200 GP) (done: +1 XP (1)). The regime stands at 31/31 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "B5": [
+   "Reeve Leopold of the Humans (good: keeps the peace) is after: build Walls at A4 (month 3 of it). Last month: quiet. The regime stands at 16/16 HP.",
+   "Exarch Iados of the Tieflings (bad: squeezes its own people) is after: nothing yet. Last month: buy Tieflings' Treasury (1,200 GP); goal buy Treasury (1,200 GP) (done: +1 XP (1)). The regime stands at 31/31 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "C1": [
+   "Boss Hruma of the Orcs (bad: robs its neighbours) is after: rob Goblinkind's Caravans in C2 (month 3 of it). Last month: buy Orcs' Knights (800 GP). The regime stands at 19/22 HP.",
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP."
+  ],
+  "C2": [
+   "Boss Hruma of the Orcs (bad: robs its neighbours) is after: rob Goblinkind's Caravans in C2 (month 3 of it). Last month: buy Orcs' Knights (800 GP). The regime stands at 19/22 HP.",
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP."
+  ],
+  "C3": [
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "C4": [
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP.",
+   "Exarch Iados of the Tieflings (bad: squeezes its own people) is after: nothing yet. Last month: buy Tieflings' Treasury (1,200 GP); goal buy Treasury (1,200 GP) (done: +1 XP (1)). The regime stands at 31/31 HP.",
+   "Warden Valanthe of the Elves (bad: takes land) is after: take B1 (L14, Orcs') (month 3 of it). Last month: seize B1 (Orcs') (resolves at clean-up); seize B1 (Orcs') (taken). The regime stands at 16/16 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "C5": [
+   "Exarch Iados of the Tieflings (bad: squeezes its own people) is after: nothing yet. Last month: buy Tieflings' Treasury (1,200 GP); goal buy Treasury (1,200 GP) (done: +1 XP (1)). The regime stands at 31/31 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "D1": [
+   "Boss Hruma of the Orcs (bad: robs its neighbours) is after: rob Goblinkind's Caravans in C2 (month 3 of it). Last month: buy Orcs' Knights (800 GP). The regime stands at 19/22 HP.",
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP."
+  ],
+  "D2": [
+   "Boss Hruma of the Orcs (bad: robs its neighbours) is after: rob Goblinkind's Caravans in C2 (month 3 of it). Last month: buy Orcs' Knights (800 GP). The regime stands at 19/22 HP.",
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "D3": [
+   "Big Boss Zarga of the Goblinkind (good: keeps the peace) is after: build Walls at D2 (month 3 of it). Last month: attack Orcs' Thugs (lost: counter 3, attacker destroyed). The regime stands at 16/16 HP.",
+   "Exarch Iados of the Tieflings (bad: squeezes its own people) is after: nothing yet. Last month: buy Tieflings' Treasury (1,200 GP); goal buy Treasury (1,200 GP) (done: +1 XP (1)). The regime stands at 31/31 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "D4": [
+   "Exarch Iados of the Tieflings (bad: squeezes its own people) is after: nothing yet. Last month: buy Tieflings' Treasury (1,200 GP); goal buy Treasury (1,200 GP) (done: +1 XP (1)). The regime stands at 31/31 HP.",
+   "Tinker-General Ellywick of the Gnomes (bad: robs its neighbours) is after: nothing yet. Last month: goal rob Tieflings' Mercenaries in C5 (done: +1 XP (1)). The regime stands at 22/22 HP."
+  ],
+  "D5": [
+   "Exarch Iados of the Tieflings (bad: squeezes its own people) is after: nothing yet. Last month: buy Tieflings' Treasury (1,200 GP); goal buy Treasury (1,200 GP) (done: +1 XP (1)). The regime stands at 31/31 HP."
+  ]
+ },
+ "floors": {
+  "B5": {
+   "floor": 1,
+   "rooms": [
+    {
+     "n": "1.1",
+     "monster": "Giant Badger",
+     "cr": "1/4",
+     "state": "cleared",
+     "xp": "50",
+     "difficulty": "Moderate",
+     "size": "6×12 sq (9×18 m)",
+     "feature": "an open, empty floor",
+     "note": null
+    },
+    {
+     "n": "1.2",
+     "monster": "Swarm of Ravens",
+     "cr": "1/4",
+     "state": "cleared",
+     "xp": "50",
+     "difficulty": "Moderate",
+     "size": "4×12 sq (6×18 m)",
+     "feature": "a chasm crossed by a 1.5 m-wide bridge",
+     "note": null
+    },
+    {
+     "n": "1.3",
+     "monster": "3 Venomous Snakes",
+     "cr": "1/8",
+     "state": "cleared",
+     "xp": "75",
+     "difficulty": "Moderate",
+     "size": "6×6 sq (9×9 m)",
+     "feature": "pillars (full cover)",
+     "note": null
+    },
+    {
+     "n": "1.4",
+     "monster": "4 Mastiffs",
+     "cr": "1/8",
+     "state": "cleared",
+     "xp": "100",
+     "difficulty": "High",
+     "size": "8×8 sq (12×12 m)",
+     "feature": "magical darkness in half the room",
+     "note": "2 Mastiffs fled, morale"
+    },
+    {
+     "n": "1.5",
+     "monster": "2 Boars",
+     "cr": "1/4",
+     "state": "cleared",
+     "xp": "100",
+     "difficulty": "High",
+     "size": "8×8 sq (12×12 m)",
+     "feature": "pillars (full cover)",
+     "note": null
+    }
+   ],
+   "cleared": true
+  },
+  "A5": {
+   "floor": 2,
+   "rooms": [
+    {
+     "n": "2.1",
+     "monster": "3 Grimlocks",
+     "cr": "1/4",
+     "state": "cleared",
+     "xp": "150",
+     "difficulty": "Moderate",
+     "size": "8×10 sq (12×15 m)",
+     "feature": "a 3 m ledge along one wall (elevation)",
+     "note": null
+    },
+    {
+     "n": "2.2",
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
+    },
+    {
+     "n": "2.3",
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
+    },
+    {
+     "n": "2.4",
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
+    },
+    {
+     "n": "2.5",
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
+    }
+   ],
+   "cleared": false
+  },
+  "B3": {
+   "floor": 3,
+   "rooms": [],
+   "cleared": false
+  },
+  "A3": {
+   "floor": 4,
+   "rooms": [],
+   "cleared": false
+  },
+  "A1": {
+   "floor": 5,
+   "rooms": [],
+   "cleared": false
+  },
+  "C2": {
+   "floor": 6,
+   "rooms": [],
+   "cleared": false
+  },
+  "D4": {
+   "floor": 7,
+   "rooms": [],
+   "cleared": false
+  },
+  "C1": {
+   "floor": 8,
+   "rooms": [],
+   "cleared": false
+  },
+  "C3": {
+   "floor": 9,
+   "rooms": [],
+   "cleared": false
+  },
+  "B4": {
+   "floor": 10,
+   "rooms": [],
+   "cleared": false
+  },
+  "B2": {
+   "floor": 11,
+   "rooms": [],
+   "cleared": false
+  },
+  "C4": {
+   "floor": 12,
+   "rooms": [],
+   "cleared": false
+  },
+  "A2": {
+   "floor": 13,
+   "rooms": [],
+   "cleared": false
+  },
+  "B1": {
+   "floor": 14,
+   "rooms": [],
+   "cleared": false
+  },
+  "D3": {
+   "floor": 15,
+   "rooms": [],
+   "cleared": false
+  },
+  "D1": {
+   "floor": 16,
+   "rooms": [],
+   "cleared": false
+  },
+  "D2": {
+   "floor": 17,
+   "rooms": [],
+   "cleared": false
+  },
+  "C5": {
+   "floor": 18,
+   "rooms": [],
+   "cleared": false
+  },
+  "A4": {
+   "floor": 19,
+   "rooms": [],
+   "cleared": false
+  },
+  "D5": {
+   "floor": 20,
+   "rooms": [],
+   "cleared": false
+  }
+ },
+ "days": {
+  "A1": 5,
+  "A2": 4,
+  "A3": 3,
+  "A4": 2,
+  "A5": 1,
+  "B1": 4,
+  "B2": 3,
+  "B3": 2,
+  "B4": 1,
+  "B5": 0,
+  "C1": 5,
+  "C2": 4,
+  "C3": 3,
+  "C4": 2,
+  "C5": 1,
+  "D1": 5,
+  "D2": 4,
+  "D3": 3,
+  "D4": 2,
+  "D5": 2
+ },
+ "eventsWords": [
+  {
+   "n": 1,
+   "who": "tower",
+   "from": "B5",
+   "to": "B5",
+   "action": "Mission",
+   "text": "Morten's mission: floor 1 (delved)."
+  },
+  {
+   "n": 2,
+   "who": "Tieflings",
+   "from": "D5",
+   "to": "D5",
+   "action": "Buy",
+   "text": "The Tieflings bought Treasury in D5 (1,200 GP)."
+  },
+  {
+   "n": 3,
+   "who": "Orcs",
+   "from": "D1",
+   "to": "D1",
+   "action": "Buy",
+   "text": "The Orcs bought Knights in D1 (800 GP)."
+  },
+  {
+   "n": 4,
+   "who": "Goblinkind",
+   "from": "C2",
+   "to": "C2",
+   "action": "Attack",
+   "text": "The Goblinkind attacked Orcs' Thugs in C2: lost: counter 3, attacker destroyed."
+  },
+  {
+   "n": 5,
+   "who": "Elves",
+   "from": "B1",
+   "to": "B1",
+   "action": "Seize",
+   "text": "The Elves moved to seize B1 (Orcs'): resolves at clean-up."
+  },
+  {
+   "n": 6,
+   "who": "Tieflings",
+   "from": null,
+   "to": null,
+   "action": "Goal",
+   "text": "The Tieflings reached a goal: buy Treasury (1,200 GP) (done: +1 XP (1))."
+  },
+  {
+   "n": 7,
+   "who": "Gnomes",
+   "from": null,
+   "to": null,
+   "action": "Goal",
+   "text": "The Gnomes reached a goal: rob Tieflings' Mercenaries in C5 (done: +1 XP (1))."
+  },
+  {
+   "n": 8,
+   "who": "Elves",
+   "from": "B1",
+   "to": "B1",
+   "action": "Seize",
+   "text": "The Elves moved to seize B1 (Orcs'): taken."
+  }
+ ],
+ "nextWords": [
+  "Chance: the Elves' seat A2 has no soldiers at home (Strike it for 2d6 to their regime's 16/16 HP).",
+  "Chance: the Gnomes' seat D3 has no soldiers at home (Strike it for 2d6 to their regime's 22/22 HP).",
+  "Open: Morten is in B5 (the tower's level-1 desert); travel 1 day a hex, a 1-in-6 chance of a wandering fight each day outside B5.",
+  "Open: missions here: Delve floor 1.",
+  "Open: the tower's one action (89 GP now): buy Thugs (200 GP) · buy Militia (400 GP) · buy Informers (200 GP) · buy Smugglers (200 GP) · buy Farms (200 GP) · raise Force to 2 (200 GP) · raise Cunning to 2 (200 GP) · raise Wealth to 2 (200 GP) · move · attack · seize · repair. Give is free."
+ ],
+ "dissidents": [],
+ "hexNames": {
+  "A1": "the Orcs' mountains",
+  "A2": "the Elves' forest",
+  "A3": "the Humans' plains",
+  "A4": "the Humans' swamp",
+  "A5": "the Humans' savanna",
+  "B1": "the Elves' tundra",
+  "B2": "the Elves' taiga with its lake",
+  "B3": "the Elves' forest",
+  "B4": "the Gnomes' plains",
+  "B5": "the tower's desert",
+  "C1": "the Orcs' taiga",
+  "C2": "Goblinkind's forest",
+  "C3": "Goblinkind's hills",
+  "C4": "the Gnomes' swamp",
+  "C5": "the Tieflings' savanna",
+  "D1": "the Orcs' tundra",
+  "D2": "Goblinkind's forest",
+  "D3": "the Gnomes' swamp with its lake",
+  "D4": "the Tieflings' forest",
+  "D5": "the Tieflings' savanna"
+ }
+}

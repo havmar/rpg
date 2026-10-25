@@ -1,6 +1,26 @@
 # The table: D&D Crunch played from a page (a plan)
 
-**Status: planned, not built.** This is the design for the page that replaces chat as the
+**Status: built** (`web/`; how it is built, its exact data contract and the GM's turn are
+in [web/README.md](web/README.md), which wins over this plan where they differ). Where the
+build departs from the plan:
+
+- **Plain JS, not Angular.** Dream's bridge, harness and lessons were ported by reading
+  Dream's code (`store.ts`, `publish.py`, the dev store, the e2e), not by copying its
+  Angular app: the page is source files joined by `web/build.py` into one committed
+  `web/dist/table.html`, with no npm and no install. Section 8's file list is therefore
+  `web/src/js/NN-*.js` and `web/src/css/NN-*.css` per panel, not `panels/*.ts`.
+- **One wake thread per move**, resolved by the page at once (Dream's way), rather than a
+  standing thread.
+- **The player's words sit above** the section that answers them (question, then answer,
+  as Dream shows them), not under it.
+- **Two fixtures**: `web/dev/fixture/` (a month played, awaiting orders) and
+  `web/dev/fixture-live/` (a fight open), both projected by `table.py` from a replay of
+  `realms3`'s month 2 (`web/dev/fixture-campaign/`).
+- **More verbs**: `table.py open` (a section opens so beats can stream into it), `resend`,
+  `render`, `export`, and `sent --drop` / `--landed` / `--from` for a send that went wrong.
+- **The theme switch** belongs to the shell; the Table tab calls it.
+
+This is the design for the page that replaces chat as the
 way a Realms campaign is played: the whole game on one claude.ai artifact, read and played
 from a phone, with the GM's play streamed onto it as it happens and the GM reachable from
 it. It takes Dream's page (`havmar/dream`, `web/` and `publish.py`) as the proven transport

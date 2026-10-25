@@ -1,0 +1,49 @@
+/* The table's tokens: the war table's palette from ui/table-mockup.html. Survey paper by
+   day, a lamp-lit slate by night, a pigment a realm, brass (--accent) for Morten and the
+   tower; --good, --warn, --bad only for states. Every colour is defined on bare :root
+   (light), then redefined for dark under prefers-color-scheme (unless the viewer chose
+   light) and under [data-theme="dark"] (the page's own switch). Fonts: Alegreya SC for
+   headings, Alegreya Sans for text, IBM Plex Mono for numbers and dice.
+   Layout: phone first at 412 px, one view at a time over a bottom bar; from 900 px two
+   zones, the Story on the left and a drawer on the right. */
+:root {
+  --bg: #e1e6e4; --panel: #eef1ef; --panel-2: #d5dcd9; --table: #c7d0cd;
+  --ink: #18232a; --ink-2: #44525a; --ink-3: #66737a; --rule: #b3bdbc; --track: #c4ccca;
+  --land: #ebe9df; --water: #4f86ad; --halo: #eef1ef;
+  --accent: #8a5a10; --on-accent: #fff8ea; --accent-soft: #efe3c6;
+  --good: #2b6d43; --warn: #8f6200; --bad: #ad3528; --world: #e4e2ee; --world-rule: #8c84b8;
+  --f-humans: #2c5eb3; --f-gnomes: #0d7f7e; --f-tieflings: #ad2d69; --f-orcs: #557719;
+  --f-goblinkind: #bd600c; --f-elves: #7145b3; --f-tower: #33384f; --f-other: #66737a;
+  --on-fc: #ffffff; --mix: 30%;
+  --display: "Alegreya SC", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --body: "Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12171a; --panel: #1a2125; --panel-2: #232c31; --table: #0c1012;
+    --ink: #e2e8e6; --ink-2: #a9b4b6; --ink-3: #7e8a8d; --rule: #34404a; --track: #2e3a41;
+    --land: #283035; --water: #5b93bb; --halo: #12171a;
+    --accent: #e0a94e; --on-accent: #1c1406; --accent-soft: #3a2e14;
+    --good: #6cc28a; --warn: #e3b54f; --bad: #f07a6a; --world: #201e2c; --world-rule: #8c84b8;
+    --f-humans: #6f9df0; --f-gnomes: #3cc0bb; --f-tieflings: #ea6aa2; --f-orcs: #9bc44c;
+    --f-goblinkind: #f0954a; --f-elves: #ad8ae8; --f-tower: #c3c8de; --f-other: #8a9599;
+    --on-fc: #0f1417; --mix: 34%;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12171a; --panel: #1a2125; --panel-2: #232c31; --table: #0c1012;
+  --ink: #e2e8e6; --ink-2: #a9b4b6; --ink-3: #7e8a8d; --rule: #34404a; --track: #2e3a41;
+  --land: #283035; --water: #5b93bb; --halo: #12171a;
+  --accent: #e0a94e; --on-accent: #1c1406; --accent-soft: #3a2e14;
+  --good: #6cc28a; --warn: #e3b54f; --bad: #f07a6a; --world: #201e2c; --world-rule: #8c84b8;
+  --f-humans: #6f9df0; --f-gnomes: #3cc0bb; --f-tieflings: #ea6aa2; --f-orcs: #9bc44c;
+  --f-goblinkind: #f0954a; --f-elves: #ad8ae8; --f-tower: #c3c8de; --f-other: #8a9599;
+  --on-fc: #0f1417; --mix: 34%;
+  color-scheme: dark;
+}
+:root {
+  --r-card: 10px; --r-ctl: 8px; --tap: 44px;
+  --now-h: 64px;          /* set by the app from the now line's real height */
+}

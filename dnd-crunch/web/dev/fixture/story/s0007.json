@@ -1,0 +1,738 @@
+{
+ "v": 1,
+ "seq": 7,
+ "kind": "fight",
+ "month": 2,
+ "day": 2,
+ "clock": "09:10",
+ "hex": "A5",
+ "where": "the Humans' savanna (A5)",
+ "title": "Wandering · A5 · 3 Giant Lizards (CR 1/4 each) · Moderate, 150 XP · cleared",
+ "headline": "A natural 20 on Sleep caught all three lizards, and Morten picked them apart for 3 HP of damage.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Cheese",
+   "text": "Sleep at 12 sq rolled a natural 20, so its radius doubled to 3 m and caught all three. Only Lizard A failed, and it went down unconscious in round 1."
+  },
+  {
+   "label": "The dice",
+   "text": "Thunderwave fizzled in round 3, and the Heroic Inspiration reroll saved it. Magic Missile fizzled in round 5 and is lost for the day. Shield turned the one bite that would have hurt."
+  },
+  {
+   "label": "How it ended",
+   "text": "Thunderwave and Magic Missile wore down the two awake lizards; then he walked up to the sleeper and fired Scorching Ray point-blank. The first ray auto-crit for 13 dmg and the second finished it."
+  },
+  {
+   "label": "Result",
+   "text": "17/20 HP, Magic Missile lost, Heroic Inspiration used. XP 1,275 → 1,425. +15 GP."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Initiative: Morten 24, the lizards 16.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      20
+     ],
+     "kept": [
+      20
+     ],
+     "mod": 4,
+     "total": 24,
+     "vs": null,
+     "result": null,
+     "nat": 20
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 1,
+     "total": 16,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Sleep, a natural 20: radius doubled to 3 m, all three lizards in it.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      20
+     ],
+     "kept": [
+      20
+     ],
+     "mod": 5,
+     "total": 25,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": 20
+    }
+   ]
+  },
+  {
+   "text": "WIS saves vs DC 13: Lizard A fails (Incapacitated), B and C save.",
+   "who": "foe",
+   "kind": "save",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 0,
+     "total": 8,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "1d20",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 0,
+     "total": 17,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    },
+    {
+     "expr": "1d20",
+     "faces": [
+      19
+     ],
+     "kept": [
+      19
+     ],
+     "mod": 0,
+     "total": 19,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Lizard A's second save fails: Unconscious.",
+   "who": "foe",
+   "kind": "save",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 0,
+     "total": 3,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Thunderwave holds; B saves, C fails: B 19 → 14 HP (half), C 19 → 9 HP, pushed 3 m.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": 5,
+     "total": 18,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 1,
+     "total": 18,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 1,
+     "total": 9,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "2d8",
+     "faces": [
+      6,
+      4
+     ],
+     "kept": [
+      6,
+      4
+     ],
+     "mod": 0,
+     "total": 10,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Lizards B and C bite and miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 4,
+     "total": 13,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    },
+    {
+     "expr": "1d20+4",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 4,
+     "total": 7,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Thunderwave fizzles; the Heroic Inspiration reroll holds. Both save: B 14 → 11 HP, C 9 → 6 HP.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      5
+     ],
+     "kept": [
+      5
+     ],
+     "mod": 5,
+     "total": 10,
+     "vs": "DC 11",
+     "result": "fizzle",
+     "nat": null
+    },
+    {
+     "expr": "1d20+5",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 5,
+     "total": 13,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      14
+     ],
+     "kept": [
+      14
+     ],
+     "mod": 1,
+     "total": 15,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      12
+     ],
+     "kept": [
+      12
+     ],
+     "mod": 1,
+     "total": 13,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    },
+    {
+     "expr": "2d8",
+     "faces": [
+      4,
+      3
+     ],
+     "kept": [
+      4,
+      3
+     ],
+     "mod": 0,
+     "total": 7,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Lizard B bites, a hit, but Shield makes it AC 20: miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 4,
+     "total": 19,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d20+5",
+     "faces": [
+      10
+     ],
+     "kept": [
+      10
+     ],
+     "mod": 5,
+     "total": 15,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Magic Missile holds: 3 darts on C for 14 force dmg. C dead.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      18
+     ],
+     "kept": [
+      18
+     ],
+     "mod": 5,
+     "total": 23,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "3d4+3",
+     "faces": [
+      3,
+      4,
+      4
+     ],
+     "kept": [
+      3,
+      4,
+      4
+     ],
+     "mod": 3,
+     "total": 14,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Magic Missile fizzles: lost until a Long Rest.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 5,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 5,
+     "total": 7,
+     "vs": "DC 11",
+     "result": "fizzle",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Lizard B bites for 3 piercing dmg: Morten 20 → 17 HP.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 5,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      18
+     ],
+     "kept": [
+      18
+     ],
+     "mod": 4,
+     "total": 22,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d8+2",
+     "faces": [
+      1
+     ],
+     "kept": [
+      1
+     ],
+     "mod": 2,
+     "total": 3,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Concentration on Sleep holds.",
+   "who": "morten",
+   "kind": "save",
+   "round": 5,
+   "dice": [
+    {
+     "expr": "1d20+2",
+     "faces": [
+      20
+     ],
+     "kept": [
+      20
+     ],
+     "mod": 2,
+     "total": 22,
+     "vs": "DC 10",
+     "result": "save",
+     "nat": 20
+    }
+   ]
+  },
+  {
+   "text": "Thunderwave holds; B fails its save: 11 thunder dmg. B dead.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 6,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 5,
+     "total": 13,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 1,
+     "total": 9,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "2d8",
+     "faces": [
+      4,
+      7
+     ],
+     "kept": [
+      4,
+      7
+     ],
+     "mod": 0,
+     "total": 11,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Scorching Ray point-blank on the unconscious A, with Advantage: hit, auto-crit, 13 fire dmg; A wakes on 6 HP, prone.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 7,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      14,
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "AC 12",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "4d6",
+     "faces": [
+      5,
+      1,
+      3,
+      4
+     ],
+     "kept": [
+      5,
+      1,
+      3,
+      4
+     ],
+     "mod": 0,
+     "total": 13,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Ray 2 (Advantage and Disadvantage cancel) hits for 6 fire dmg. A dead.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 7,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": 5,
+     "total": 18,
+     "vs": "AC 12",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "2d6",
+     "faces": [
+      1,
+      5
+     ],
+     "kept": [
+      1,
+      5
+     ],
+     "mod": 0,
+     "total": 6,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 17,
+  "maxHp": 20,
+  "xp": 1425,
+  "coins": "15 GP 2 SP 5 CP",
+  "lost": [
+   "Magic Missile"
+  ]
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Giant Lizard",
+    "cr": "1/4",
+    "ac": 12,
+    "hp": 19,
+    "maxHp": 19,
+    "speed": "8 sq (12 m)",
+    "attacks": [
+     "Bite +4, 1d8+2 piercing"
+    ],
+    "notes": "Large; WIS +0",
+    "count": 3
+   }
+  ],
+  "difficulty": "Moderate",
+  "budget": 225,
+  "xp": 150,
+  "initiative": [
+   "Morten 24",
+   "Giant Lizards 16"
+  ],
+  "rounds": 7,
+  "outcome": "cleared",
+  "verdict": "the Sleep crit did it",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     20,
+     20,
+     20,
+     17,
+     17,
+     17
+    ]
+   },
+   {
+    "name": "Giant Lizard A",
+    "max": 19,
+    "hp": [
+     19,
+     19,
+     19,
+     19,
+     19,
+     19,
+     19,
+     0
+    ]
+   },
+   {
+    "name": "Giant Lizard B",
+    "max": 19,
+    "hp": [
+     19,
+     19,
+     14,
+     11,
+     11,
+     11,
+     0,
+     0
+    ]
+   },
+   {
+    "name": "Giant Lizard C",
+    "max": 19,
+    "hp": [
+     19,
+     19,
+     9,
+     6,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  "loot": "+15 GP",
+  "lost": [
+   "Magic Missile"
+  ],
+  "potion": false,
+  "xpBefore": 1275,
+  "xpAfter": 1425
+ },
+ "domain": null,
+ "words": []
+}

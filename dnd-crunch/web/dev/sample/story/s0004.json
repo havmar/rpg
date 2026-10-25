@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "seq": 4,
+ "kind": "domain",
+ "month": 1,
+ "day": 30,
+ "clock": "",
+ "hex": "B5",
+ "where": "the world",
+ "title": "The world's turn · end of month 1",
+ "headline": "The tower bought Farms; the Gnomes march on C4.",
+ "prose": [],
+ "bullets": [],
+ "trace": [],
+ "answered": [],
+ "after": null,
+ "fight": null,
+ "domain": {
+  "plan": [
+   "Morten took the safe XP under his own tower and put all his coins into the treasury."
+  ],
+  "happened": [
+   {
+    "n": 1,
+    "who": "tower",
+    "label": "",
+    "verb": "",
+    "text": "The tower bought Farms at home: 60 GP a month from now on.",
+    "from": "B5",
+    "to": "B5"
+   },
+   {
+    "n": 2,
+    "who": "Gnomes",
+    "label": "bad",
+    "verb": "robs its neighbours",
+    "text": "The Gnomes marched Thugs and Knights into C4 to rob the Tieflings next door.",
+    "from": "D3",
+    "to": "C4"
+   }
+  ],
+  "elsewhere": "The Humans and the Tieflings saved their gold.",
+  "tower": [
+   {
+    "what": "Gold",
+    "before": "197 GP",
+    "after": "7 GP"
+   },
+   {
+    "what": "Income",
+    "before": "+10",
+    "after": "+60 a month"
+   }
+  ],
+  "next": {
+   "threats": [],
+   "chances": [
+    "Three seats are unguarded: D3, D1 and A2."
+   ],
+   "open": [
+    "67 GP next month; everything costs 200 or more."
+   ]
+  },
+  "income": [
+   "Tower +10 → 207"
+  ],
+  "log": [
+   "Tower (Morten): Buy Farms a25 in B5, −200 GP → 7 GP."
+  ]
+ },
+ "words": []
+}

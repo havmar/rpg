@@ -1,0 +1,44 @@
+{
+ "v": 1,
+ "seq": 9,
+ "kind": "domain",
+ "month": 2,
+ "day": 30,
+ "clock": "",
+ "hex": "A5",
+ "where": "the world",
+ "title": "The world's turn · end of month 2",
+ "headline": "The Tieflings bought a Treasury; the Goblinkind Caravans were destroyed.",
+ "prose": [],
+ "bullets": [],
+ "trace": [],
+ "answered": [],
+ "after": null,
+ "fight": null,
+ "domain": {
+  "plan": [
+   "Morten delved floor 2 under the Humans' A5; the tower saved."
+  ],
+  "happened": [],
+  "elsewhere": "The Elves seized B1.",
+  "tower": [
+   {
+    "what": "Gold",
+    "before": "7 GP",
+    "after": "89 GP"
+   }
+  ],
+  "next": {
+   "threats": [],
+   "chances": [
+    "The Elves' seat A2 has no soldiers."
+   ],
+   "open": [
+    "89 GP buys nothing yet."
+   ]
+  },
+  "income": [],
+  "log": []
+ },
+ "words": []
+}

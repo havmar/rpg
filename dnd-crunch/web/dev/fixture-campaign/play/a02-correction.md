@@ -1,0 +1,1 @@
+A note on the script's log: its line "Delve floor 1 under B5" means floor 2 under A5. He delved there and ended the month at home, and the engine names the floor of the hex where he ends the month. The month's result is unchanged.
