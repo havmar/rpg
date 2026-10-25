@@ -455,7 +455,7 @@ def read_page(raw):
 
 
 class Camp:
-    def __init__(self, d, need_page=True, undo=True):
+    def __init__(self, d, need_page=True):
         self.d = Path(d).resolve()
         if not self.d.is_dir():
             raise Bad(f"no campaign folder {d}")
@@ -1365,7 +1365,7 @@ def cmd_new(a):
 
 
 def cmd_open(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=True)
     if c.open_head():
         raise Bad(f"a section is open ({c.open_head()['title']}); settle it with `section` first")
     if a.kind not in SECTION_KINDS or a.kind == "aside":
@@ -1403,7 +1403,7 @@ def foe_names(foes):
 
 
 def cmd_beat(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=True)
     head = c.open_head()
     if not head:
         raise Bad("no open section: `table.py open DIR --kind fight --title …` first")
@@ -1604,7 +1604,7 @@ def write_section(c, text, extra_dice, kind_default=None, close=True, answers=No
 
 
 def cmd_section(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=True)
     keep = c.state, c.morten  # check the state options before anything is written
     c.state, c.morten = copy.deepcopy(keep[0]), copy.deepcopy(keep[1])
     apply_state_opts(c, a)
@@ -1617,7 +1617,7 @@ def cmd_section(a):
 
 
 def cmd_state(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=True)
     applied = []
     for mid, mv in sorted(c.page["moves"].items()):
         if not mv["ok"] or mv["kind"] not in ("table", "take"):
@@ -1642,7 +1642,7 @@ def cmd_state(a):
 
 
 def cmd_morten(a):
-    c = Camp(a.dir, need_page=False)
+    c = Camp(a.dir, need_page=False, undo=True)
     m = c.need_morten()
     changes = apply_morten(m, a)
     note("Morten: " + ("; ".join(changes) if changes else "no change"))
@@ -1791,7 +1791,7 @@ def apply_morten(m, a):
 
 
 def cmd_realm(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=True)
     ex = c.page.setdefault("realm", {"rumours": {}, "hexNames": {}})
     for spec in a.rumour:
         h, _, t = spec.partition("=")
@@ -1805,13 +1805,13 @@ def cmd_realm(a):
 
 
 def cmd_rules(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=True)
     c.sync("game", "rules", proj_rules(c), force=True)
     c.flush()
 
 
 def cmd_aside(a):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=True)
     text = Path(a.file).read_text() if a.file else (a.text or "")
     if not text.strip():
         raise Bad("an aside needs --file or --text")
@@ -1831,7 +1831,7 @@ def cmd_log(a):
     if len(text) > LOG_MAX:
         text = text[:LOG_MAX - 1].rstrip() + "…"
         note(f"note: the log line is cut to {LOG_MAX} characters")
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=True)
     seq = c.next_seq()
     c.put("log", sid("l", seq), {"seq": seq, "text": text, "at": c.now()})
     c.save()
@@ -1839,7 +1839,7 @@ def cmd_log(a):
 
 
 def cmd_moves(a):
-    c = Camp(a.dir, undo=False)
+    c = Camp(a.dir)
     mp = c.map
     hexes = {h["id"] for h in mp["hexes"]} if mp else None
     got = read_moves(a.file)
@@ -1940,7 +1940,7 @@ def set_versions(c, a):
 
 
 def cmd_sent(a):
-    c = Camp(a.dir, undo=False)
+    c = Camp(a.dir)
     flat = [e for b in c.page["pending"] for e in b]
     rest = []
     if a.drop and a.landed is not None:
@@ -1954,9 +1954,9 @@ def cmd_sent(a):
             if not (c.d / "page.json").exists():
                 note("the page was never seeded: run `table.py new` again")
                 if c.morten is not None:
-                    render_all(Camp(a.dir, need_page=False, undo=False))
+                    render_all(Camp(a.dir, need_page=False))
                 return
-            c = Camp(a.dir, undo=False)
+            c = Camp(a.dir)
             render_all(c)
         else:
             c.page["pending"] = []
@@ -1999,7 +1999,7 @@ def cmd_sent(a):
 
 
 def cmd_resend(a):
-    c = Camp(a.dir, undo=False)
+    c = Camp(a.dir)
     keep = c.page["pending"]
     c.page["pending"] = []
     set_versions(c, a)
@@ -2010,13 +2010,13 @@ def cmd_resend(a):
 
 
 def cmd_wake(a, on):
-    c = Camp(a.dir)
+    c = Camp(a.dir, undo=True)
     c.page["wake"] = {"on": on}
     finish(c, morten=False)
 
 
 def cmd_export(a):
-    c = Camp(a.dir, undo=False)
+    c = Camp(a.dir)
     out = Path(a.outdir)
     if c.page["pending"]:
         note(f"note: {sum(len(b) for b in c.page['pending'])} write(s) not yet sent; exporting the "
@@ -2041,7 +2041,7 @@ def cmd_export(a):
 
 
 def cmd_render(a):
-    c = Camp(a.dir, need_page=False, undo=False)
+    c = Camp(a.dir, need_page=False)
     render_all(c)
     c.save()
 
