@@ -1,31 +1,31 @@
 {
  "v": 1,
  "campaign": "realms4",
- "status": "playing",
- "lastSeq": 22,
+ "status": "awaiting",
+ "lastSeq": 24,
  "lastMove": 1,
- "month": 1,
+ "month": 2,
  "day": 1,
- "clock": "11:55",
+ "clock": "08:00",
  "hex": "A3",
- "where": "Floor 1 · room 1.5",
+ "where": "the tower (A3)",
  "level": 3,
  "xp": 1200,
  "deaths": 0,
  "hud": {
   "hp": 20,
   "maxHp": 20,
-  "ac": 15,
+  "ac": 12,
   "acArmor": 15,
-  "armorOn": true,
-  "light": "lamp, lit at 08:10, flask until 14:10",
+  "armorOn": false,
+  "light": "lamp, about 1 h 50 min of oil left in its flask",
   "conc": null,
   "conditions": [],
   "exhaustion": 0,
   "reaction": true,
   "inspiration": true,
-  "freeArmor": false,
-  "coins": "25 GP",
+  "freeArmor": true,
+  "coins": "none",
   "lost": []
  },
  "table": {
@@ -44,7 +44,7 @@
  },
  "awaiting": {
   "kind": "orders",
-  "prompt": "Month 1's orders: send the GM's plan above, or pick your own",
+  "prompt": "Month 2's orders: where Morten goes, his mission, the tower's action, a gift",
   "orders": {
    "hexes": [
     {
@@ -154,7 +154,7 @@
      "target": "floor 1",
      "hex": "A3",
      "days": 0,
-     "label": "Delve floor 1 under A3"
+     "label": "Delve floor 1 under A3 (cleared)"
     },
     {
      "type": "contact",
@@ -190,6 +190,13 @@
      "hex": "A4",
      "days": 1,
      "label": "Delve floor 13 under A4"
+    },
+    {
+     "type": "strike",
+     "target": "a6",
+     "hex": "B2",
+     "days": 1,
+     "label": "Strike the Goblinkind's Militia in B2 (Low fight, 2d6 to it)"
     },
     {
      "type": "contact",
@@ -255,6 +262,20 @@
      "label": "Delve floor 14 under A1"
     },
     {
+     "type": "strike",
+     "target": "a1",
+     "hex": "A5",
+     "days": 2,
+     "label": "Strike the Humans' Thugs in A5 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "strike",
+     "target": "a2",
+     "hex": "A5",
+     "days": 2,
+     "label": "Strike the Humans' Beast pack in A5 (Moderate fight, 2d6 to it)"
+    },
+    {
      "type": "contact",
      "target": "A5",
      "hex": "A5",
@@ -270,20 +291,6 @@
     },
     {
      "type": "strike",
-     "target": "a5",
-     "hex": "B1",
-     "days": 2,
-     "label": "Strike the Goblinkind's Militia in B1 (Low fight, 2d6 to it)"
-    },
-    {
-     "type": "strike",
-     "target": "a6",
-     "hex": "B1",
-     "days": 2,
-     "label": "Strike the Goblinkind's Militia in B1 (Low fight, 2d6 to it)"
-    },
-    {
-     "type": "strike",
      "target": "a8",
      "hex": "B1",
      "days": 2,
@@ -295,6 +302,13 @@
      "hex": "B1",
      "days": 2,
      "label": "Rob the Goblinkind's Treasury in B1 (up to 600 GP, High fight)"
+    },
+    {
+     "type": "strike",
+     "target": "Goblinkind",
+     "hex": "B1",
+     "days": 2,
+     "label": "Strike the Goblinkind's unguarded seat in B1 (High fight, 2d6 to their 18/22 HP)"
     },
     {
      "type": "contact",
@@ -312,20 +326,6 @@
     },
     {
      "type": "strike",
-     "target": "a1",
-     "hex": "B4",
-     "days": 2,
-     "label": "Strike the Humans' Thugs in B4 (Low fight, 2d6 to it)"
-    },
-    {
-     "type": "strike",
-     "target": "a2",
-     "hex": "B4",
-     "days": 2,
-     "label": "Strike the Humans' Beast pack in B4 (Moderate fight, 2d6 to it)"
-    },
-    {
-     "type": "strike",
      "target": "a4",
      "hex": "B4",
      "days": 2,
@@ -337,6 +337,13 @@
      "hex": "B4",
      "days": 2,
      "label": "Rob the Humans' Mine in B4 (up to 200 GP, Moderate fight)"
+    },
+    {
+     "type": "strike",
+     "target": "Humans",
+     "hex": "B4",
+     "days": 2,
+     "label": "Strike the Humans' unguarded seat in B4 (High fight, 2d6 to their 16/16 HP)"
     },
     {
      "type": "contact",
@@ -428,6 +435,20 @@
      "hex": "C1",
      "days": 3,
      "label": "Strike the Elves' Thugs in C1 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "strike",
+     "target": "a25",
+     "hex": "C1",
+     "days": 3,
+     "label": "Strike the Elves' Farms in C1 (Low fight, 2d6 to it)"
+    },
+    {
+     "type": "rob",
+     "target": "a25",
+     "hex": "C1",
+     "days": 3,
+     "label": "Rob the Elves' Farms in C1 (up to 100 GP, Low fight)"
     },
     {
      "type": "contact",
@@ -535,6 +556,13 @@
      "label": "Delve floor 19 under D2"
     },
     {
+     "type": "strike",
+     "target": "a14",
+     "hex": "D3",
+     "days": 3,
+     "label": "Strike the Gnomes' Thugs in D3 (Low fight, 2d6 to it)"
+    },
+    {
      "type": "contact",
      "target": "D3",
      "hex": "D3",
@@ -550,10 +578,10 @@
     },
     {
      "type": "strike",
-     "target": "a14",
+     "target": "a22",
      "hex": "D4",
      "days": 3,
-     "label": "Strike the Gnomes' Thugs in D4 (Low fight, 2d6 to it)"
+     "label": "Strike the Orcs' Militia in D4 (Low fight, 2d6 to it)"
     },
     {
      "type": "contact",
@@ -568,13 +596,6 @@
      "hex": "D4",
      "days": 3,
      "label": "Delve floor 17 under D4"
-    },
-    {
-     "type": "strike",
-     "target": "a22",
-     "hex": "D5",
-     "days": 4,
-     "label": "Strike the Orcs' Militia in D5 (Low fight, 2d6 to it)"
     },
     {
      "type": "contact",
@@ -650,19 +671,19 @@
     "Orcs"
    ],
    "funds": {
-    "treasury": 100,
+    "treasury": 185,
     "income": 10,
-    "onMorten": "47 GP 7 SP 5 CP",
-    "text": "100 GP in the treasury, +10 GP income before the tower acts"
+    "onMorten": "none",
+    "text": "185 GP in the treasury, +10 GP income before the tower acts"
    }
   },
   "fight": null,
   "turn": null
  },
  "live": null,
- "latest": "s0022",
+ "latest": "s0024",
  "lastFight": "s0022",
- "doing": "fighting the hobgoblin at room 1.5",
+ "doing": null,
  "checkIn": null,
  "wake": {
   "on": true

@@ -1,16 +1,16 @@
-# World · Month 1
+# World · Month 2
 
 Seed 19. Realms v2. Rendered by `realms.py` from `realms.json` after every turn; don't edit by hand. Open: what the tower knows (other factions' Cunning assets show only where the tower has Informers or Morten has been, or once they act against the tower).
 
 ## Factions
 
-- Humans · Marshal Aldric (bad: takes land) · HP 16/16 · F3 C3 W3 · 270 GP · seat B4 · hexes B4 C3 C4 · goal: take A5 (L15, Orcs') (month 1 of it)
-- Goblinkind · Overlord Zarga (bad: takes people for soldiers) · HP 22/22 · F4 C4 W4 · 400 GP · seat B1 · hexes A1 A2 B1 · goal: take people from the tower's seat in A3 (month 1 of it)
-- Tieflings · Magister Rieta (good: fights tyrants) · HP 22/22 · F4 C4 W4 · 440 GP · seat B3 · hexes A4 B2 B3 · goal: break Humans' Thugs a1 in B4 (month 1 of it) · ally
-- Gnomes · Tinker-General Orryn (bad: takes land) · HP 22/22 · F4 C4 W4 · 400 GP · seat D2 · hexes D2 D3 D4 · goal: take C3 (L9, Humans') (month 1 of it)
-- Elves · Archon Eilistra (good: fights tyrants) · HP 10/10 · F2 C2 W2 · 220 GP · seat C1 · hexes C1 C2 D1 · goal: buy Farms (month 1 of it) · ally
-- Orcs · Chief Ozgar (bad: takes land) · HP 22/22 · F4 C4 W4 · 360 GP · seat C5 · hexes A5 B5 C5 D5 · goal: take D4 (L17, Gnomes') (month 1 of it)
-- Tower · HP 7/7 · F1 C1 W1 · 100 GP · hexes A3
+- Humans · Marshal Aldric (bad: takes land) · HP 16/16 · F3 C3 W3 · 690 GP · seat B4 · hexes B4 C3 C4 · goal: take A5 (L15, Orcs') (month 2 of it)
+- Goblinkind · Overlord Zarga (bad: takes people for soldiers) · HP 18/22 · F4 C4 W4 · 900 GP · seat B1 · hexes A1 A2 B1 · goal: take people from the tower's seat in A3 (month 2 of it)
+- Tieflings · Magister Rieta (good: fights tyrants) · HP 22/22 · F4 C4 W4 · 880 GP · seat B3 · hexes A4 B2 B3 · goal: break Humans' Thugs a1 in B4 (month 2 of it) · ally
+- Gnomes · Tinker-General Orryn (bad: takes land) · HP 22/22 · F4 C4 W4 · 700 GP · seat D2 · hexes D2 D3 D4 · goal: take C3 (L9, Humans') (month 2 of it)
+- Elves · Archon Eilistra (good: fights tyrants) · HP 10/10 · F2 C2 W2 · 340 GP · seat C1 · hexes C1 C2 D1 · ally
+- Orcs · Chief Ozgar (bad: takes land) · HP 22/22 · F4 C4 W4 · 820 GP · seat C5 · hexes A5 B5 C5 D5 · goal: take D4 (L17, Gnomes') (month 2 of it)
+- Tower · HP 7/7 · F1 C1 W1 · 185 GP · hexes A3
 
 ## Hexes
 
@@ -23,29 +23,29 @@ Seed 19. Realms v2. Rendered by `realms.py` from `realms.json` after every turn;
 - **A4** · L13 · forest · Tieflings · held by Tieflings · 130 GP
   - next to: A3 A5 B3 B4
   - a10 Tieflings' Knights · T3 · HP 12/12 · F vs F 1d8 · counter 1d8
-- **A5** · L15 · jungle · Orcs · held by Orcs · 150 GP
+- **A5** · L15 · jungle · Orcs · held by Orcs · 0 GP
   - next to: A4 B4 B5
+  - a1 Humans' Thugs · T1 · HP 3/3 · F vs F 1d3+1 · counter 1d4
+  - a2 Humans' Beast pack · T2 · HP 5/5 · F vs F 2d4 · counter 1d4+1
 - **B1** · L18 · mountains · Goblinkind · held by Goblinkind · 180 GP · seat of the Goblinkind · lake · river B1|C1, B1|C2
   - next to: A1 A2 B2 C1 C2
-  - a5 Goblinkind's Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
-  - a6 Goblinkind's Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
   - a8 Goblinkind's Treasury · T3 · HP 8/8 · no attack · counter 1d6
-- **B2** · L11 · forest · Tieflings · held by Tieflings · 110 GP · river B2|C2
+- **B2** · L11 · forest · Tieflings · held by Tieflings · 0 GP · river B2|C2
   - next to: A2 A3 B1 B3 C2 C3
+  - a6 Goblinkind's Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
 - **B3** · L20 · forest · Tieflings · held by Tieflings · 200 GP · seat of the Tieflings
   - next to: A3 A4 B2 B4 C3 C4
   - a9 Tieflings' Beast pack · T2 · HP 5/5 · F vs F 2d4 · counter 1d4+1
   - a12 Tieflings' Caravans · T1 · HP 4/4 · W vs W 1d4 · counter 1d4-1
 - **B4** · L12 · hills · Humans · held by Humans · 120 GP · seat of the Humans
   - next to: A4 A5 B3 B5 C4 C5
-  - a1 Humans' Thugs · T1 · HP 3/3 · F vs F 1d3+1 · counter 1d4
-  - a2 Humans' Beast pack · T2 · HP 5/5 · F vs F 2d4 · counter 1d4+1
   - a4 Humans' Mine · T2 · HP 4/4 · no attack · counter 1d4
 - **B5** · L3 · desert · Orcs · held by Orcs · 30 GP
   - next to: A5 B4 C5
 - **C1** · L10 · taiga · Elves · held by Elves · 100 GP · seat of the Elves · river B1|C1
   - next to: B1 C2 D1
   - a17 Elves' Thugs · T1 · HP 3/3 · F vs F 1d3+1 · counter 1d4
+  - a25 Elves' Farms · T1 · HP 4/4 · no attack · counter 1d4
 - **C2** · L5 · forest · Elves · held by Elves · 50 GP · river B1|C2, B2|C2, C2|C3, C2|D2
   - next to: B1 B2 C1 C3 D1 D2
   - a20 Elves' Farms · T1 · HP 4/4 · no attack · counter 1d4
@@ -66,12 +66,12 @@ Seed 19. Realms v2. Rendered by `realms.py` from `realms.json` after every turn;
   - a16 Gnomes' Mercenaries · T2 · HP 6/6 · W vs F 2d4+2 · counter 1d6
 - **D3** · L4 · forest · Gnomes · held by Gnomes · 40 GP · river D3|D4
   - next to: C3 C4 D2 D4
-- **D4** · L17 · plains · Gnomes · held by Gnomes · 170 GP · river C4|D4, D3|D4
-  - next to: C4 C5 D3 D5
   - a14 Gnomes' Thugs · T1 · HP 3/3 · F vs F 1d3+1 · counter 1d4
+- **D4** · L17 · plains · Gnomes · held by Gnomes · 0 GP · river C4|D4, D3|D4
+  - next to: C4 C5 D3 D5
+  - a22 Orcs' Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
 - **D5** · L2 · savanna · Orcs · held by Orcs · 20 GP
   - next to: C5 D4
-  - a22 Orcs' Militia · T1 · HP 4/4 · F vs F 1d6 · counter 1d4+1
 
 ## Rivers
 
@@ -103,8 +103,17 @@ Seed 19. Realms v2. Rendered by `realms.py` from `realms.json` after every turn;
 
 ## Last month
 
-- The world begins.
+- Morten: Delve floor 1 under A3 (the dungeon game; no domain effect).
+- Morten: deposit 75 GP → tower 175 GP.
+- Order: Goblinkind C4 (d10 10) · Tieflings C4 (d10 8) · Gnomes C4 (d10 5) · Orcs C4 (d10 4) · Humans C3 (d10 3) · Elves C2 (d10 6) · Tower C1 (d10 1).
+- Goblinkind (Overlord Zarga, bad: takes people for soldiers): Move Militia a5 B1 → B2, Militia a6 B1 → B2 (goal: take people from the tower's seat in A3).
+- Gnomes (Tinker-General Orryn, bad: takes land): Move Thugs a14 D4 → D3 (goal: take C3 (L9, Humans')).
+- Orcs (Chief Ozgar, bad: takes land): Move Militia a22 D5 → D4 (goal: take D4 (L17, Gnomes')).
+- Humans (Marshal Aldric, bad: takes land): Move Thugs a1 B4 → A5, Beast pack a2 B4 → A5 (goal: take A5 (L15, Orcs')).
+- Elves (Archon Eilistra, good: fights tyrants): Buy Farms a25 in C1 (goal: buy Farms), −200 GP → 340 GP.
+- Tower: no action.
+- Elves (Archon Eilistra, good: fights tyrants): goal done (buy Farms): +1 XP (1).
 
 ## Month
 
-- **Next domain turn:** month 1
+- **Next domain turn:** month 2

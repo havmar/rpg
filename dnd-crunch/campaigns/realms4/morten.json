@@ -8,10 +8,10 @@
  "background": "Sage",
  "hp": 20,
  "maxHp": 20,
- "hitDice": "1/3 d6",
+ "hitDice": "3/3 d6",
  "ac": 12,
  "acArmor": 15,
- "armorOn": true,
+ "armorOn": false,
  "speed": "6 sq (9 m)",
  "initiative": "+4",
  "passivePerception": 13,
@@ -373,7 +373,7 @@
  "features": [
   {
    "name": "Arcane Recovery",
-   "state": "used",
+   "state": "ready",
    "line": "Once per Long Rest, after a Short Rest: regain lost spells totalling up to 2 levels (a cantrip counts as 1)."
   },
   {
@@ -412,12 +412,12 @@
    "line": "Human, Resourceful: after each Long Rest, reroll any one die."
   }
  ],
- "light": "lamp, lit at 08:10, flask until 14:10",
+ "light": "lamp, about 1 h 50 min of oil left in its flask",
  "conc": null,
  "conditions": [],
  "exhaustion": 0,
  "inspiration": true,
- "freeArmor": false,
+ "freeArmor": true,
  "reaction": true,
  "gear": [
   {
@@ -534,15 +534,15 @@
   "max": 54
  },
  "coins": {
-  "on": "25 GP",
-  "purse": "60 GP 2 SP 5 CP"
+  "on": "none",
+  "purse": "2 SP 5 CP"
  },
- "coinsNote": "Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); left all 60 GP 2 SP 5 CP in the tower; floor 1 loot 25 GP.",
+ "coinsNote": "Month 1: started with 47 GP 7 SP 5 CP; sold the Book (+12 GP 5 SP); floor 1 loot +25 GP; incense 10 GP; deposited 75 GP into the treasury; 2 SP 5 CP left in the purse.",
  "xp": 1200,
  "nextXp": 2700,
  "level": 3,
  "deaths": 0,
- "familiar": null,
+ "familiar": "owl (Fey), summoned Month 1 downtime; scouts and Helps only",
  "habits": [
   "Shield: cast as a reaction when a hit would become a miss at AC 20 and deals 4+ damage (any damage at 8 HP or less), if Shield isn't lost and the reaction is free.",
   "Heroic Inspiration: reroll a failed cast of Shield, Misty Step, Scorching Ray, Thunderwave or Sleep.",

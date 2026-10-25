@@ -1,2 +1,1 @@
-section s0022 (fight): Room 1.5 · Hobgoblin Warrior (CR 1/2) and the fled Goblin Warrior (CR 1/4) · High, 100 XP · cleared, untouched
 send with ArtifactData batch (url: https://claude.ai/artifact/PAJNBNkpHwFm8D6Jfv27EA), then `table.py sent dnd-crunch/campaigns/realms4`: batch.json

@@ -269,3 +269,65 @@ Floor 1 is the safe start: it's under the home hex, so no travel and no wanderin
 *After: 20/20 HP · XP 1,200 · 25 GP · lost: nothing*
 
 ---
+
+## Day 1 · back in the tower, and the month's downtime
+
+*s0023 · shop · Month 1 · Day 1 · 12:10 · A3 · the tower (A3)*
+
+**Up the stair by 12:10 with 25 GP; 10 GP buys incense, and an owl familiar joins the tower.**
+
+- **Home:** up the entrance stair to the tower at 12:10. The lamp is snuffed with about 1 h 50 min of oil left in its flask.
+- **The trader:** incense for Find Familiar, 10 GP. 15 GP left on him, 60 GP 2 SP 5 CP in the purse.
+- **Find Familiar:** cast as a Ritual from the spellbook (Ritual Adept: unprepared, +10 minutes, no casting check). An owl, a Fey spirit: it flies 12 m, sees in the dark and can scout rooms ahead and take the Help action. It never attacks.
+- **Downtime:** the rest of the month passes in the tower. A Long Rest puts everything back: 20/20 HP, all 3 Hit Dice, Arcane Recovery, Heroic Inspiration and the free Mage Armor. Mage Armor lapses.
+
+*After: 20/20 HP · XP 1,200 · 15 GP · lost: nothing*
+
+---
+
+## Month 1 · the world's turn
+
+*s0024 · domain · Month 1 · Day 30 · 20:00 · A3 · the tower (A3)*
+
+**The tower ends Month 1 with 185 GP, 15 short of Farms, and the Goblinkind have marched two Militia into B2, right next door, on their way to take people from A3.**
+
+**The plan**
+- Morten delved floor 1 under the tower: the safe start, 300 XP and 25 GP with no travel.
+- He deposited 75 GP (the floor's coins and his purse) and kept 2 SP 5 CP.
+- The tower took no action: 175 GP after the deposit, 185 GP after A3's 10 GP income, and everything costs 200 GP.
+
+**What happened**
+- (2) **Goblinkind** (bad: takes people for soldiers): The Goblinkind (bad: takes people for soldiers) marched two Militia from their seat B1 into B2, the Tieflings' forest beside the tower. Their goal is to take people from A3, so this is aimed straight at us; next they need to step into A3 itself.
+- (3) **Goblinkind** (bad: takes people for soldiers): The second Militia came with it: two Militia, 4 HP each, attacking with Force 4 against the tower's Force 1.
+- (6) **Humans** (bad: takes land): The Humans (bad: takes land) sent their Thugs and Beast pack from B4 into the Orcs' A5, after the land there; it leaves their seat B4 with no soldiers in it, two hexes south of us.
+- (8) **Elves** (good: fights tyrants): Our ally the Elves (good: fights tyrants) bought Farms in their seat C1 and finished their goal.
+- **Elsewhere:** The Gnomes moved Thugs into D3 toward the Humans' C3, and the Orcs moved Militia into the Gnomes' D4. Two hidden Cunning moves; the Goblinkind regime is down to 18/22 HP from something the tower didn't see.
+
+**The tower now**
+- Gold: 100 GP → 185 GP
+- HP: 7/7 → 7/7
+- Morten's XP: 900 → 1,200
+- Familiar: an owl (Fey)
+
+**Next month**
+- Threat: the Goblinkind's two Militia in B2 are one move from A3. Once in A3 they can attack the tower's seat (it has no soldiers), d10 + 4 against d10 + 1 for 1d6 HP each; at 0 HP the tower is sacked and loses half its treasury.
+- Chance: the Militia themselves are a Low fight each (Guards, Scouts, a Guard Captain) once they're in reach; a Strike does 2d6 to one, but makes the Goblinkind hostile for 3 months.
+- Chance: the Humans' seat B4 and the Goblinkind's seat B1 have no soldiers at home (a Strike does 2d6 to the regime).
+- Open: the tower has 185 GP and +10 GP a month; one more good delve pays for Farms (200 GP) or Thugs to guard the seat (200 GP).
+- Open: floor 2 is under the Orcs' D5 (4 days); the closer floors are deep: floor 8 in A2, 11 in B2, 13 in A4.
+
+**Log (script)**
+- Morten: Delve floor 1 under A3 (the dungeon game; no domain effect).
+- Morten: deposit 75 GP → tower 175 GP.
+- Order: Goblinkind C4 (d10 10) · Tieflings C4 (d10 8) · Gnomes C4 (d10 5) · Orcs C4 (d10 4) · Humans C3 (d10 3) · Elves C2 (d10 6) · Tower C1 (d10 1).
+- Goblinkind (Overlord Zarga, bad: takes people for soldiers): Move Militia a5 B1 → B2, Militia a6 B1 → B2 (goal: take people from the tower's seat in A3).
+- Gnomes (Tinker-General Orryn, bad: takes land): Move Thugs a14 D4 → D3 (goal: take C3 (L9, Humans')).
+- Orcs (Chief Ozgar, bad: takes land): Move Militia a22 D5 → D4 (goal: take D4 (L17, Gnomes')).
+- Humans (Marshal Aldric, bad: takes land): Move Thugs a1 B4 → A5, Beast pack a2 B4 → A5 (goal: take A5 (L15, Orcs')).
+- Elves (Archon Eilistra, good: fights tyrants): Buy Farms a25 in C1 (goal: buy Farms), −200 GP → 340 GP.
+- Tower: no action.
+- Elves (Archon Eilistra, good: fights tyrants): goal done (buy Farms): +1 XP (1).
+
+*After: 20/20 HP · XP 1,200 · none · lost: nothing*
+
+---

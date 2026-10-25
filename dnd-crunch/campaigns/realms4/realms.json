@@ -1,8 +1,8 @@
 {
  "version": 2,
  "seed": 19,
- "month": 1,
- "rng": 3491574058,
+ "month": 2,
+ "rng": 523852242,
  "level": 3,
  "hexes": {
   "A1": {
@@ -188,7 +188,7 @@
    "force": 3,
    "cunning": 3,
    "wealth": 3,
-   "gp": 270,
+   "gp": 690,
    "seat": "B4",
    "hostile": 0,
    "disorder": 0,
@@ -216,13 +216,13 @@
    "force": 4,
    "cunning": 4,
    "wealth": 4,
-   "gp": 400,
+   "gp": 900,
    "seat": "B1",
    "hostile": 0,
    "disorder": 0,
    "dissident": null,
    "xp": 0,
-   "hp": 22
+   "hp": 18
   },
   "Tieflings": {
    "name": "Tieflings",
@@ -244,7 +244,7 @@
    "force": 4,
    "cunning": 4,
    "wealth": 4,
-   "gp": 440,
+   "gp": 880,
    "seat": "B3",
    "hostile": 0,
    "disorder": 0,
@@ -272,7 +272,7 @@
    "force": 4,
    "cunning": 4,
    "wealth": 4,
-   "gp": 400,
+   "gp": 700,
    "seat": "D2",
    "hostile": 0,
    "disorder": 0,
@@ -289,23 +289,16 @@
     "label": "good",
     "tag": "Liberator"
    },
-   "goal": {
-    "kind": "buy",
-    "asset": "farms",
-    "attr": "wealth",
-    "text": "buy Farms",
-    "since": 1,
-    "against": null
-   },
+   "goal": null,
    "force": 2,
    "cunning": 2,
    "wealth": 2,
-   "gp": 220,
+   "gp": 340,
    "seat": "C1",
    "hostile": 0,
    "disorder": 0,
    "dissident": null,
-   "xp": 0,
+   "xp": 1,
    "hp": 10
   },
   "Orcs": {
@@ -328,7 +321,7 @@
    "force": 4,
    "cunning": 4,
    "wealth": 4,
-   "gp": 360,
+   "gp": 820,
    "seat": "C5",
    "hostile": 0,
    "disorder": 0,
@@ -346,7 +339,7 @@
     "tag": "Tower"
    },
    "goal": null,
-   "gp": 100,
+   "gp": 185,
    "seat": "A3",
    "hostile": 0,
    "disorder": 0,
@@ -363,9 +356,9 @@
    "id": "a1",
    "owner": "Humans",
    "kind": "thugs",
-   "hex": "B4",
+   "hex": "A5",
    "hp": 3,
-   "from": null,
+   "from": "B4",
    "seen": false,
    "leader": null
   },
@@ -373,9 +366,9 @@
    "id": "a2",
    "owner": "Humans",
    "kind": "beasts",
-   "hex": "B4",
+   "hex": "A5",
    "hp": 5,
-   "from": null,
+   "from": "B4",
    "seen": false,
    "leader": null
   },
@@ -399,23 +392,13 @@
    "seen": false,
    "leader": null
   },
-  "a5": {
-   "id": "a5",
-   "owner": "Goblinkind",
-   "kind": "militia",
-   "hex": "B1",
-   "hp": 4,
-   "from": null,
-   "seen": false,
-   "leader": null
-  },
   "a6": {
    "id": "a6",
    "owner": "Goblinkind",
    "kind": "militia",
-   "hex": "B1",
+   "hex": "B2",
    "hp": 4,
-   "from": null,
+   "from": "B1",
    "seen": false,
    "leader": null
   },
@@ -423,9 +406,9 @@
    "id": "a7",
    "owner": "Goblinkind",
    "kind": "saboteurs",
-   "hex": "B1",
+   "hex": "B2",
    "hp": 6,
-   "from": null,
+   "from": "B1",
    "seen": false,
    "leader": null
   },
@@ -493,9 +476,9 @@
    "id": "a14",
    "owner": "Gnomes",
    "kind": "thugs",
-   "hex": "D4",
+   "hex": "D3",
    "hp": 3,
-   "from": null,
+   "from": "D4",
    "seen": false,
    "leader": null
   },
@@ -573,9 +556,9 @@
    "id": "a22",
    "owner": "Orcs",
    "kind": "militia",
-   "hex": "D5",
+   "hex": "D4",
    "hp": 4,
-   "from": null,
+   "from": "D5",
    "seen": false,
    "leader": null
   },
@@ -598,9 +581,19 @@
    "from": null,
    "seen": false,
    "leader": null
+  },
+  "a25": {
+   "id": "a25",
+   "owner": "Elves",
+   "kind": "farms",
+   "hex": "C1",
+   "hp": 4,
+   "from": null,
+   "seen": false,
+   "leader": null
   }
  },
- "next_id": 25,
+ "next_id": 26,
  "names": [
   "Morten",
   "Aldric",
@@ -612,15 +605,105 @@
  ],
  "fallen": [],
  "morten": "A3",
- "events": [],
+ "events": [
+  {
+   "month": 1,
+   "actor": "tower",
+   "action": "Mission",
+   "from_hex": "A3",
+   "to_hex": "A3",
+   "target": "floor 1",
+   "result": "delved"
+  },
+  {
+   "month": 1,
+   "actor": "Goblinkind",
+   "action": "Move",
+   "from_hex": "B1",
+   "to_hex": "B2",
+   "target": "Goblinkind's Militia a5",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Goblinkind",
+   "action": "Move",
+   "from_hex": "B1",
+   "to_hex": "B2",
+   "target": "Goblinkind's Militia a6",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Gnomes",
+   "action": "Move",
+   "from_hex": "D4",
+   "to_hex": "D3",
+   "target": "Gnomes' Thugs a14",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Orcs",
+   "action": "Move",
+   "from_hex": "D5",
+   "to_hex": "D4",
+   "target": "Orcs' Militia a22",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Humans",
+   "action": "Move",
+   "from_hex": "B4",
+   "to_hex": "A5",
+   "target": "Humans' Thugs a1",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Humans",
+   "action": "Move",
+   "from_hex": "B4",
+   "to_hex": "A5",
+   "target": "Humans' Beast pack a2",
+   "result": "moved"
+  },
+  {
+   "month": 1,
+   "actor": "Elves",
+   "action": "Buy",
+   "from_hex": "C1",
+   "to_hex": "C1",
+   "target": "Elves' Farms a25",
+   "result": "200 GP"
+  },
+  {
+   "month": 1,
+   "actor": "Elves",
+   "action": "Goal",
+   "from_hex": null,
+   "to_hex": null,
+   "target": "buy Farms",
+   "result": "done: +1 XP (1)"
+  }
+ ],
  "report": {
-  "month": 0,
-  "plan": [],
+  "month": 1,
+  "plan": [
+   "Morten: Delve floor 1 under A3.",
+   "Morten delved floor 1 under the tower: the safe start, 300 XP and 25 GP with no travel.",
+   "The tower saves: with the purse deposited it holds 185 GP after income, 15 short of Farms (200 GP), which it buys next month.",
+   "Tower: no action."
+  ],
   "happened": [
-   "Month 1: the world begins."
+   "Morten: Delve floor 1 under A3 (the dungeon game; no domain effect).",
+   "Goblinkind (Overlord Zarga, bad: takes people for soldiers): Move Militia a5 B1 → B2, Militia a6 B1 → B2 (goal: take people from the tower's seat in A3).",
+   "Elves (Archon Eilistra, good: fights tyrants): Buy Farms a25 in C1 (goal: buy Farms), −200 GP → 340 GP.",
+   "Elves (Archon Eilistra, good: fights tyrants): goal done (buy Farms): +1 XP (1)."
   ],
   "tower": [
-   "HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 100 GP · Morten level 3",
+   "HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 185 GP · Morten level 3",
    "Assets: none",
    "Hexes: A3",
    "Hostile: nobody",
@@ -628,11 +711,24 @@
   ],
   "next": [
    "Threat: the Goblinkind (bad: takes people for soldiers) goal: take people from the tower's seat in A3.",
+   "Chance: the Humans' seat B4 has no Force asset (Strike it for 2d6 to their HP 16/16).",
+   "Chance: the Goblinkind's seat B1 has no Force asset (Strike it for 2d6 to their HP 18/22).",
    "Chance: Tieflings' Caravans a12 on the road in B3 (Rob: 1d6 and 100 GP).",
    "Open: Morten is in A3 (L1, forest, tower); travel 1 day a hex, d6 each day outside A3 (1 = encounter).",
    "Open: missions here: Delve floor 1.",
-   "Open: the tower's one action (100 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free."
+   "Open: the tower's one action (185 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free."
   ]
  },
- "log": []
+ "log": [
+  "Morten: Delve floor 1 under A3 (the dungeon game; no domain effect).",
+  "Morten: deposit 75 GP → tower 175 GP.",
+  "Order: Goblinkind C4 (d10 10) · Tieflings C4 (d10 8) · Gnomes C4 (d10 5) · Orcs C4 (d10 4) · Humans C3 (d10 3) · Elves C2 (d10 6) · Tower C1 (d10 1).",
+  "Goblinkind (Overlord Zarga, bad: takes people for soldiers): Move Militia a5 B1 → B2, Militia a6 B1 → B2 (goal: take people from the tower's seat in A3).",
+  "Gnomes (Tinker-General Orryn, bad: takes land): Move Thugs a14 D4 → D3 (goal: take C3 (L9, Humans')).",
+  "Orcs (Chief Ozgar, bad: takes land): Move Militia a22 D5 → D4 (goal: take D4 (L17, Gnomes')).",
+  "Humans (Marshal Aldric, bad: takes land): Move Thugs a1 B4 → A5, Beast pack a2 B4 → A5 (goal: take A5 (L15, Orcs')).",
+  "Elves (Archon Eilistra, good: fights tyrants): Buy Farms a25 in C1 (goal: buy Farms), −200 GP → 340 GP.",
+  "Tower: no action.",
+  "Elves (Archon Eilistra, good: fights tyrants): goal done (buy Farms): +1 XP (1)."
+ ]
 }

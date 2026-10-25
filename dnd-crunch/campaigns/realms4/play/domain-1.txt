@@ -1,0 +1,59 @@
+**Month 1 · Domain turn**
+
+**The plan**
+- Morten: Delve floor 1 under A3.
+- Morten delved floor 1 under the tower: the safe start, 300 XP and 25 GP with no travel.
+- The tower saves: with the purse deposited it holds 185 GP after income, 15 short of Farms (200 GP), which it buys next month.
+- Tower: no action.
+
+**What happened**
+- Morten: Delve floor 1 under A3 (the dungeon game; no domain effect).
+- Goblinkind (Overlord Zarga, bad: takes people for soldiers): Move Militia a5 B1 → B2, Militia a6 B1 → B2 (goal: take people from the tower's seat in A3).
+- Elves (Archon Eilistra, good: fights tyrants): Buy Farms a25 in C1 (goal: buy Farms), −200 GP → 340 GP.
+- Elves (Archon Eilistra, good: fights tyrants): goal done (buy Farms): +1 XP (1).
+
+**The tower now**
+- HP 7/7 · Force 1 · Cunning 1 · Wealth 1 · 185 GP · Morten level 3
+- Assets: none
+- Hexes: A3
+- Hostile: nobody
+- Allies: Tieflings, Elves
+
+**Next month**
+- Threat: the Goblinkind (bad: takes people for soldiers) goal: take people from the tower's seat in A3.
+- Chance: the Humans' seat B4 has no Force asset (Strike it for 2d6 to their HP 16/16).
+- Chance: the Goblinkind's seat B1 has no Force asset (Strike it for 2d6 to their HP 18/22).
+- Chance: Tieflings' Caravans a12 on the road in B3 (Rob: 1d6 and 100 GP).
+- Open: Morten is in A3 (L1, forest, tower); travel 1 day a hex, d6 each day outside A3 (1 = encounter).
+- Open: missions here: Delve floor 1.
+- Open: the tower's one action (185 GP now): buy Thugs (200) · buy Militia (400) · buy Informers (200) · buy Smugglers (200) · buy Farms (200) · raise Force to 2 (200) · raise Cunning to 2 (200) · raise Wealth to 2 (200) · move · attack · seize · repair. Give is free.
+
+**Realms**
+- Humans · Marshal Aldric (bad: takes land) · HP 16/16 · F3 C3 W3 · 690 GP · seat B4 · hexes B4 C3 C4 · goal: take A5 (L15, Orcs') (month 2 of it)
+- Goblinkind · Overlord Zarga (bad: takes people for soldiers) · HP 18/22 · F4 C4 W4 · 900 GP · seat B1 · hexes A1 A2 B1 · goal: take people from the tower's seat in A3 (month 2 of it)
+- Tieflings · Magister Rieta (good: fights tyrants) · HP 22/22 · F4 C4 W4 · 880 GP · seat B3 · hexes A4 B2 B3 · goal: break Humans' Thugs a1 in B4 (month 2 of it) · ally
+- Gnomes · Tinker-General Orryn (bad: takes land) · HP 22/22 · F4 C4 W4 · 700 GP · seat D2 · hexes D2 D3 D4 · goal: take C3 (L9, Humans') (month 2 of it)
+- Elves · Archon Eilistra (good: fights tyrants) · HP 10/10 · F2 C2 W2 · 340 GP · seat C1 · hexes C1 C2 D1 · ally
+- Orcs · Chief Ozgar (bad: takes land) · HP 22/22 · F4 C4 W4 · 820 GP · seat C5 · hexes A5 B5 C5 D5 · goal: take D4 (L17, Gnomes') (month 2 of it)
+
+**Income**
+- Humans: hexes +270, assets +150 → 690 GP
+- Goblinkind: hexes +400, assets +100 → 900 GP
+- Tieflings: hexes +440, assets +100, upkeep −100 → 880 GP
+- Gnomes: hexes +400, upkeep −100 → 700 GP
+- Elves: hexes +220, assets +100 → 540 GP
+- Orcs: hexes +360, assets +100 → 820 GP
+- Tower: hexes +10 → 185 GP
+
+**Log**
+- Morten: Delve floor 1 under A3 (the dungeon game; no domain effect).
+- Morten: deposit 75 GP → tower 175 GP.
+- Order: Goblinkind C4 (d10 10) · Tieflings C4 (d10 8) · Gnomes C4 (d10 5) · Orcs C4 (d10 4) · Humans C3 (d10 3) · Elves C2 (d10 6) · Tower C1 (d10 1).
+- Goblinkind (Overlord Zarga, bad: takes people for soldiers): Move Militia a5 B1 → B2, Militia a6 B1 → B2 (goal: take people from the tower's seat in A3).
+- Gnomes (Tinker-General Orryn, bad: takes land): Move Thugs a14 D4 → D3 (goal: take C3 (L9, Humans')).
+- Orcs (Chief Ozgar, bad: takes land): Move Militia a22 D5 → D4 (goal: take D4 (L17, Gnomes')).
+- Humans (Marshal Aldric, bad: takes land): Move Thugs a1 B4 → A5, Beast pack a2 B4 → A5 (goal: take A5 (L15, Orcs')).
+- Elves (Archon Eilistra, good: fights tyrants): Buy Farms a25 in C1 (goal: buy Farms), −200 GP → 340 GP.
+- Tower: no action.
+- Elves (Archon Eilistra, good: fights tyrants): goal done (buy Farms): +1 XP (1).
+- (2 hidden events: Cunning assets the tower can't see; `--gm` shows them)

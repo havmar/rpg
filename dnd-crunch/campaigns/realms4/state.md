@@ -6,21 +6,20 @@
 - **Morten played by:** the GM
 - **Stop for your word:** never in the month (at the next month's orders)
 - **Report style:** fights live, every round · the world's turn as story · dice: key rolls · CR shown · units on every number
-- **Month 1 · Day 1 · 11:55 · A3** (Floor 1 · room 1.5) · playing: Month 1's orders: send the GM's plan above, or pick your own
+- **Month 2 · Day 1 · 08:00 · A3** (the tower (A3)) · awaiting: Month 2's orders: where Morten goes, his mission, the tower's action, a gift
 - **Deaths:** 0 · **XP:** 1,200 · **level 3** (level 4 at 2,700)
 - **Page:** https://claude.ai/artifact/PAJNBNkpHwFm8D6Jfv27EA
-- **GM doing:** fighting the hobgoblin at room 1.5
 
 ## Morten
 
-- HP 20/20 · Hit Dice 1/3 d6 · AC 15 (Mage Armor on)
+- HP 20/20 · Hit Dice 3/3 d6 · AC 12 (15 with Mage Armor; not cast)
 - Lost spells: none
-- Mage Armor free cast: ✗ · Heroic Inspiration: ✓ · Arcane Recovery: used
+- Mage Armor free cast: ✓ · Heroic Inspiration: ✓ · Arcane Recovery: ready
 - Concentration: none · Conditions: none · Exhaustion 0
-- Light: lamp, lit at 08:10, flask until 14:10
+- Light: lamp, about 1 h 50 min of oil left in its flask
 - Oil flask ×9 · Torch ×6 · Rations ×3 · Waterskin (full) ×1 · Potion of Healing ×1
-- Coins on him: 25 GP · purse in the tower: 60 GP 2 SP 5 CP
-- Familiar: none
+- Coins on him: none · purse in the tower: 2 SP 5 CP
+- Familiar: owl (Fey), summoned Month 1 downtime; scouts and Helps only
 
 ## Habits
 
@@ -31,10 +30,10 @@
 
 ## Domain (Realms v2)
 
-- Tower: HP 7/7 · F1 C1 W1 · 100 GP (+10 GP a month) · hexes A3
+- Tower: HP 7/7 · F1 C1 W1 · 185 GP (+10 GP a month) · hexes A3
 - Assets: none
 - Hostile: nobody · Allies: Tieflings, Elves
-- Month 1 orders: not declared yet (mission, tower action, Give)
+- Month 2 orders: not declared yet (mission, tower action, Give)
 - Full state: `world.md` and `map.json` (open: the tower's view) and `realms.json` (the script's; holds the hidden Cunning assets)
 
 ## Known dungeon
