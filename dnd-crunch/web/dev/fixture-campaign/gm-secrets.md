@@ -14,7 +14,7 @@ XP needed for level 2: 300 · floor total: 375 · 5 encounters
 | 1.4 ✓ (2 Mastiffs fled, morale) | 4× Mastiff | 1/8 | 100 | High | 8×8 sq (12×12 m) | magical darkness in half the room | 10 GP |
 | 1.5 ✓ | 2× Boar | 1/4 | 100 | High | 8×8 sq (12×12 m) | pillars (full cover) | 10 GP |
 
-## Floor 2 · A5 (savanna, Humans)
+## Floor 2 · A5 (savanna, Humans) · CLEARED Month 2 Day 4
 
 XP needed for level 3: 600 · floor total: 700 · 5 encounters
 
@@ -23,8 +23,8 @@ XP needed for level 3: 600 · floor total: 700 · 5 encounters
 | 2.1 ✓ | 3× Grimlock | 1/4 | 150 | Moderate | 8×10 sq (12×15 m) | a 3 m ledge along one wall (elevation) | 15 GP |
 | 2.2 ✓ (2 Mastiffs fled, morale) | 4× Mastiff | 1/8 | 100 | Low | 4×12 sq (6×18 m) | burning braziers (bright light, fire) | 10 GP |
 | 2.3 ✓ | 2× Shadow | 1/2 | 200 | High | 12×12 sq (18×18 m) | pillars (full cover) | 20 GP |
-| 2.4 | 1× Darkmantle | 1/2 | 100 | Moderate | 6×8 sq (9×12 m) | burning braziers (bright light, fire) | 10 GP |
-| 2.5 | 3× Giant Wolf Spider | 1/4 | 150 | Moderate | 6×12 sq (9×18 m) | a 3 m ledge along one wall (elevation) | 15 GP |
+| 2.4 ✓ | 1× Darkmantle | 1/2 | 100 | Moderate | 6×8 sq (9×12 m) | burning braziers (bright light, fire) | 10 GP |
+| 2.5 ✓ | 3× Giant Wolf Spider | 1/4 | 150 | Moderate | 6×12 sq (9×18 m) | a 3 m ledge along one wall (elevation) | 15 GP |
 
 ## Floor 3 · B3 (forest, Elves)
 

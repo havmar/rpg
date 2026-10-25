@@ -2,14 +2,14 @@
  "v": 1,
  "campaign": "realms3",
  "url": null,
- "lastSeq": 17,
+ "lastSeq": 33,
  "lastMove": 2,
  "versions": {
   "story/s0001": 1,
-  "game/morten": 10,
-  "game/realm": 2,
+  "game/morten": 16,
+  "game/realm": 3,
   "game/rules": 1,
-  "game/state": 22,
+  "game/state": 39,
   "story/s0002": 1,
   "story/s0004": 1,
   "story/s0006": 1,
@@ -19,31 +19,23 @@
   "story/s0013": 1,
   "story/s0014": 1,
   "story/s0015": 1,
-  "story/s0016": 1
+  "story/s0016": 1,
+  "story/s0017": 1,
+  "story/s0020": 1,
+  "story/s0021": 1,
+  "story/s0029": 1,
+  "story/s0030": 1,
+  "story/s0031": 1,
+  "story/s0032": 1,
+  "story/s0033": 1
  },
- "pending": [
-  [
-   {
-    "op": "set",
-    "collection": "story",
-    "doc_id": "s0017",
-    "file_path": "/home/user/rpg/dnd-crunch/web/dev/fixture-campaign/page/out/story/s0017.json"
-   },
-   {
-    "op": "set",
-    "collection": "game",
-    "doc_id": "state",
-    "file_path": "/home/user/rpg/dnd-crunch/web/dev/fixture-campaign/page/out/game/state.json",
-    "if_version": 22
-   }
-  ]
- ],
+ "pending": [],
  "moves": {},
  "answered": [
   "m0001",
   "m0002"
  ],
- "ticks": 6,
+ "ticks": 17,
  "wake": {
   "on": true
  },
