@@ -1,0 +1,2 @@
+section s0007 (fight): Room 1.1 · Zombie (CR 1/4) · Moderate, 50 XP · cleared, untouched
+send with ArtifactData batch (url: https://claude.ai/artifact/PAJNBNkpHwFm8D6Jfv27EA), then `table.py sent dnd-crunch/campaigns/realms4`: batch.json

@@ -28,3 +28,68 @@ Send these orders as they are, change them in the form, or ask the GM anything (
 *After: 20/20 HP · XP 900 · 47 GP 7 SP 5 CP · lost: nothing*
 
 ---
+
+## Month 1's orders
+
+*s0003 · orders · Month 1 · Day 1 · 08:00 · A3 · the tower (A3)*
+
+**Player (m0001):** please play a month
+
+**Morten plays the month on the GM's plan: delve floor 1 under the tower, the tower saves.**
+
+Floor 1 is the safe start: it's under the home hex, so no travel and no wandering checks, and its fights are budgeted for a level 1 wizard. Every floor further out is a day or more away and level 4 or deeper, except floor 2 (D5, 4 days).
+
+- **Travel:** none; he stays in A3.
+- **Mission:** Delve floor 1 under A3.
+- **Before going down:** sells the Sage's Book to the trader (+12 GP 5 SP) and leaves all 60 GP 2 SP 5 CP in the tower, so a death costs nothing.
+- **The tower:** saves its 100 GP. If the purse and the floor's coins bring it to 200 GP at the domain turn, it buys Farms in A3.
+- **Give:** none.
+
+*After: 20/20 HP · XP 900 · 60 GP 2 SP 5 CP · lost: nothing*
+
+---
+
+## Day 1 · down into floor 1
+
+*s0004 · delve · Month 1 · Day 1 · 08:20 · A3 · Floor 1, the entrance · under the tower (A3)*
+
+**Morten goes down into floor 1 with Mage Armor up, the lamp lit and nothing in his pockets.**
+
+- **Prep:** the free Mage Armor cast, no check (AC 15 until 16:10); the lamp lit with a fresh flask (4.5 m bright, 9 m more dim, until 14:10). Light stays uncast: the lamp does the job without risking a fizzle.
+- **The purse:** all 60 GP 2 SP 5 CP stay in the tower.
+- **Standing orders:** scout each room from the doorway first; slow things get kited, fast things get Sleep; nothing gets a free swing at him.
+
+*After: 20/20 HP · XP 900 · none · lost: nothing*
+
+---
+
+## Room 1.1 · Zombie (CR 1/4) · Moderate, 50 XP · cleared, untouched
+
+*s0007 · fight · Month 1 · Day 1 · 08:40 · A3 · Floor 1 · room 1.1*
+
+**Three Fire Bolts and a natural 1 on Undead Fortitude: the zombie never got within reach.**
+
+- **The budget:** floor 1 is built for a level 1 wizard, so Moderate here is 75 XP, a third of a level 3 Low fight.
+- **The plan:** a zombie moves 6 m a round and the rubble between rows 5 and 8 halves that, so he stood at the door and shot. Sleep does nothing to undead, so it stayed in the book.
+- **The dice:** the first Fire Bolt rolled a 1 for damage, then 7 and 8. The last one dropped it to 0 HP, and its Undead Fortitude save (DC 13) came up a natural 1.
+- **Result:** 20/20 HP, nothing lost. XP 900 → 950. The room's 5 GP go in his pocket. Searching it took one 10-minute turn: no other exits but the N archway at B1.
+
+**Fight:** 1× Zombie (CR 1/4, AC 8, 15 HP) · Moderate, 50 XP · cleared (kited through the rubble)
+**Result:** XP 900 → 950 · +5 GP
+
+- HP track, Morten: 20 → 20 → 20 → 20 (of 20 HP)
+- HP track, Zombie: 15 → 14 → 14 → 0 (of 15 HP)
+
+**Trace**
+
+- R1 · GM: Room 1.1, 6×18 m (A–D × 1–12), rubble across rows 5–8 (difficult terrain, half cover). Morten at B11 inside the S door; the Zombie at C3. Initiative: Morten 18, Zombie 15. (d20 14 +4 = 18; d20 17 −2 = 15)
+- R1 · Morten: Fire Bolt hits (21 vs AC 8): 1 fire dmg. Zombie 15 → 14 HP. (d20 16 +5 = 21 vs AC 8, HIT; d10 1)
+- R1 · Foe: The Zombie climbs into the rubble: C5, 6 sq away.
+- R3 · Morten: R2 Fire Bolt hits (22 vs AC 8): 7 fire dmg. Zombie 14 → 7 HP. (d20 17 +5 = 22 vs AC 8, HIT; d10 7)
+- R3 · Foe: R2 The Zombie wades on through the rubble to C7, 4 sq away; the rubble gives it half cover (AC 10).
+- R3 · Morten: R3 Fire Bolt hits (23 vs AC 10): 8 fire dmg. Zombie 7 → 0 HP. (d20 18 +5 = 23 vs AC 10, HIT; d10 8)
+- R3 · Foe: Undead Fortitude, CON save vs DC 13 (5 + 8 dmg): natural 1, fail. Zombie dead. (d20 1 +3 = 4 vs DC 13, NAT 1, FAIL)
+
+*After: 20/20 HP · XP 950 · 5 GP · lost: nothing*
+
+---

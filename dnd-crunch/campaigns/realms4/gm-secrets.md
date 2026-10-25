@@ -8,7 +8,7 @@ XP needed for level 2: 300 · floor total: 300 · 5 encounters
 
 | Room | Encounter | CR | XP | Difficulty | Room size | Feature | Coins |
 |---|---|---|---|---|---|---|---|
-| 1.1 | 1× Zombie | 1/4 | 50 | Moderate | 4×12 sq (6×18 m) | rubble (difficult terrain, half cover) | 5 GP |
+| 1.1 ✓ | 1× Zombie | 1/4 | 50 | Moderate | 4×12 sq (6×18 m) | rubble (difficult terrain, half cover) | 5 GP |
 | 1.2 | 1× Goblin Warrior | 1/4 | 50 | Moderate | 10×12 sq (15×18 m) | an open, empty floor | 5 GP |
 | 1.3 | 1× Draft Horse | 1/4 | 50 | Low | 10×10 sq (15×15 m) | rubble (difficult terrain, half cover) | 5 GP |
 | 1.4 | 2× Giant Rat | 1/8 | 50 | Low | 10×10 sq (15×15 m) | rubble (difficult terrain, half cover) | 5 GP |

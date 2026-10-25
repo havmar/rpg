@@ -2,10 +2,28 @@
  "writes": [
   {
    "op": "set",
+   "collection": "story",
+   "doc_id": "s0007",
+   "file_path": "/home/user/rpg/dnd-crunch/campaigns/realms4/page/out/story/s0007.json"
+  },
+  {
+   "op": "set",
    "collection": "game",
    "doc_id": "state",
    "file_path": "/home/user/rpg/dnd-crunch/campaigns/realms4/page/out/game/state.json",
-   "if_version": 2
+   "if_version": 9
+  },
+  {
+   "op": "delete",
+   "collection": "live",
+   "doc_id": "b0005",
+   "if_version": 1
+  },
+  {
+   "op": "delete",
+   "collection": "live",
+   "doc_id": "b0006",
+   "if_version": 1
   }
  ]
 }

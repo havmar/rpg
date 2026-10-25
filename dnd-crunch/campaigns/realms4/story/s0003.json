@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "seq": 3,
+ "kind": "orders",
+ "month": 1,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "A3",
+ "where": "the tower (A3)",
+ "title": "Month 1's orders",
+ "headline": "Morten plays the month on the GM's plan: delve floor 1 under the tower, the tower saves.",
+ "prose": [
+  "Floor 1 is the safe start: it's under the home hex, so no travel and no wandering checks, and its fights are budgeted for a level 1 wizard. Every floor further out is a day or more away and level 4 or deeper, except floor 2 (D5, 4 days)."
+ ],
+ "bullets": [
+  {
+   "label": "Travel",
+   "text": "none; he stays in A3."
+  },
+  {
+   "label": "Mission",
+   "text": "Delve floor 1 under A3."
+  },
+  {
+   "label": "Before going down",
+   "text": "sells the Sage's Book to the trader (+12 GP 5 SP) and leaves all 60 GP 2 SP 5 CP in the tower, so a death costs nothing."
+  },
+  {
+   "label": "The tower",
+   "text": "saves its 100 GP. If the purse and the floor's coins bring it to 200 GP at the domain turn, it buys Farms in A3."
+  },
+  {
+   "label": "Give",
+   "text": "none."
+  }
+ ],
+ "trace": [],
+ "answered": [
+  "m0001"
+ ],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 900,
+  "coins": "60 GP 2 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": [
+  {
+   "move": "m0001",
+   "text": "please play a month"
+  }
+ ]
+}

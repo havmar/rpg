@@ -1,0 +1,277 @@
+{
+ "v": 1,
+ "seq": 7,
+ "kind": "fight",
+ "month": 1,
+ "day": 1,
+ "clock": "08:40",
+ "hex": "A3",
+ "where": "Floor 1 · room 1.1",
+ "title": "Room 1.1 · Zombie (CR 1/4) · Moderate, 50 XP · cleared, untouched",
+ "headline": "Three Fire Bolts and a natural 1 on Undead Fortitude: the zombie never got within reach.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "The budget",
+   "text": "floor 1 is built for a level 1 wizard, so Moderate here is 75 XP, a third of a level 3 Low fight."
+  },
+  {
+   "label": "The plan",
+   "text": "a zombie moves 6 m a round and the rubble between rows 5 and 8 halves that, so he stood at the door and shot. Sleep does nothing to undead, so it stayed in the book."
+  },
+  {
+   "label": "The dice",
+   "text": "the first Fire Bolt rolled a 1 for damage, then 7 and 8. The last one dropped it to 0 HP, and its Undead Fortitude save (DC 13) came up a natural 1."
+  },
+  {
+   "label": "Result",
+   "text": "20/20 HP, nothing lost. XP 900 → 950. The room's 5 GP go in his pocket. Searching it took one 10-minute turn: no other exits but the N archway at B1."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Room 1.1, 6×18 m (A–D × 1–12), rubble across rows 5–8 (difficult terrain, half cover). Morten at B11 inside the S door; the Zombie at C3. Initiative: Morten 18, Zombie 15.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      14
+     ],
+     "kept": [
+      14
+     ],
+     "mod": 4,
+     "total": 18,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20-2",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": -2,
+     "total": 15,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Fire Bolt hits (21 vs AC 8): 1 fire dmg. Zombie 15 → 14 HP.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      16
+     ],
+     "kept": [
+      16
+     ],
+     "mod": 5,
+     "total": 21,
+     "vs": "AC 8",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d10",
+     "faces": [
+      1
+     ],
+     "kept": [
+      1
+     ],
+     "mod": 0,
+     "total": 1,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "The Zombie climbs into the rubble: C5, 6 sq away.",
+   "who": "foe",
+   "kind": "move",
+   "round": 1,
+   "dice": []
+  },
+  {
+   "text": "R2 Fire Bolt hits (22 vs AC 8): 7 fire dmg. Zombie 14 → 7 HP.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 5,
+     "total": 22,
+     "vs": "AC 8",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d10",
+     "faces": [
+      7
+     ],
+     "kept": [
+      7
+     ],
+     "mod": 0,
+     "total": 7,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "R2 The Zombie wades on through the rubble to C7, 4 sq away; the rubble gives it half cover (AC 10).",
+   "who": "foe",
+   "kind": "move",
+   "round": 3,
+   "dice": []
+  },
+  {
+   "text": "R3 Fire Bolt hits (23 vs AC 10): 8 fire dmg. Zombie 7 → 0 HP.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      18
+     ],
+     "kept": [
+      18
+     ],
+     "mod": 5,
+     "total": 23,
+     "vs": "AC 10",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d10",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 0,
+     "total": 8,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Undead Fortitude, CON save vs DC 13 (5 + 8 dmg): natural 1, fail. Zombie dead.",
+   "who": "foe",
+   "kind": "save",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      1
+     ],
+     "kept": [
+      1
+     ],
+     "mod": 3,
+     "total": 4,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": 1
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 950,
+  "coins": "5 GP",
+  "lost": []
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Zombie",
+    "cr": "1/4",
+    "ac": 8,
+    "hp": 15,
+    "maxHp": 15,
+    "speed": "4 sq (6 m)",
+    "attacks": [
+     "Slam +3, 1d8+1 bludgeoning"
+    ],
+    "notes": "Undead Fortitude: at 0 HP, CON save DC 5 + the damage (not radiant or a crit) to drop to 1 HP instead; immune to poison; darkvision 18 m",
+    "count": 1
+   }
+  ],
+  "difficulty": "Moderate",
+  "budget": 75,
+  "xp": 50,
+  "initiative": [
+   "Morten 18",
+   "Zombie 15"
+  ],
+  "rounds": 3,
+  "outcome": "cleared",
+  "verdict": "kited through the rubble",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     20,
+     20
+    ]
+   },
+   {
+    "name": "Zombie",
+    "max": 15,
+    "hp": [
+     15,
+     14,
+     14,
+     0
+    ]
+   }
+  ],
+  "loot": "+5 GP",
+  "lost": [],
+  "potion": false,
+  "xpBefore": 900,
+  "xpAfter": 950
+ },
+ "domain": null,
+ "words": []
+}
