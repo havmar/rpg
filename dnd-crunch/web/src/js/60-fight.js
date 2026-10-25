@@ -173,11 +173,16 @@
       }
       const pts = hp.map((v, i) => (isNum(v) ? { x: x(i), y: y(Math.max(0, v)), hp: v, i } : null));
       let d = '';
+      let gap = '';
       let pen = false;
+      let prev = null;
       for (const p of pts) {
         if (!p) { pen = false; continue; }
+        // rounds the GM did not report (a fight told after): a faint dotted bridge
+        if (!pen && prev) gap += `M${f1(prev.x)},${f1(prev.y)} L${f1(p.x)},${f1(p.y)} `;
         d += `${pen ? 'L' : 'M'}${f1(p.x)},${f1(p.y)} `;
         pen = true;
+        prev = p;
       }
       const real = pts.filter(Boolean);
       const last = real[real.length - 1];
@@ -187,7 +192,7 @@
       if (!me) foeI += 1;
       // a foe that went down: its line stops there (a red dot), a faint rule runs on at 0
       const gone = dead && last.i < n ? `M${f1(last.x)},${f1(last.y)} L${f1(x(n))},${f1(last.y)}` : '';
-      return { t, me, cls, dash, pts: real, d: d.trim(), gone, last, dead, label: { x: x(n) + 6, y: last.y, text: `${shortName(t.name)} ${dead ? '✝' : last.hp <= 0 ? '0' : fmt.n(last.hp)}` } };
+      return { t, me, cls, dash, pts: real, d: d.trim(), gap: gap.trim(), gone, last, dead, label: { x: x(n) + 6, y: last.y, text: `${shortName(t.name)} ${dead ? '✝' : last.hp <= 0 ? '0' : fmt.n(last.hp)}` } };
     });
     // end labels, all in the right gutter: pushed apart where two end close together,
     // then back up off the round ticks when several end low (as Dream's hp-track does)
@@ -209,6 +214,7 @@
       + grid.map((v) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${f1(y(v))}" y2="${f1(y(v))}"/><text class="tick" x="${L - 5}" y="${f1(y(v) + 3)}" text-anchor="end">${v}</text>`).join('')
       + ticks.map((k) => `<text class="tick" x="${f1(x(k.i))}" y="${H - 6}" text-anchor="middle">${k.t}</text>`).join('')
       + out.map((s) => (s.gone ? `<path class="gone" d="${s.gone}"/>` : '')).join('')
+      + out.map((s) => (s.gap ? `<path class="ln gap ${s.cls}" d="${s.gap}"/>` : '')).join('')
       + out.map((s) => `<path class="ln ${s.cls}" d="${s.d}"${s.dash ? ` stroke-dasharray="${s.dash}"` : ''}/>`).join('')
       + out.map((s) => s.pts.map((p) => `<circle class="dot ${s.cls}${!s.me && p.hp <= 0 ? ' dead' : ''}" cx="${f1(p.x)}" cy="${f1(p.y)}" r="${!s.me && p.hp <= 0 ? 3.6 : n > 12 ? 1.8 : 2.6}"><title>${esc(s.t.name)}, ${when(p.i)}: ${esc(isNum(s.t.max) ? `${p.hp}/${s.t.max} HP` : `${p.hp} HP`)}</title></circle>`).join('')
         + `<text class="end ${s.cls}" x="${f1(s.label.x)}" y="${f1(s.label.y)}">${esc(s.label.text)}</text>`).join('')
@@ -232,7 +238,7 @@
   function lineText(text) {
     return esc(text)
       .replace(/((?:\b[A-Z][\w'’]*(?: [A-Z]\b)? )?\d+ → \d+ HP)/g, '<b>$1</b>')
-      .replace(/\b(dead|down|killed)\b/g, '<b>$1</b>');
+      .replace(/\b(dead|killed|destroyed|(?:goes|went|is|falls|fell|drops|dropped) down)\b/g, '<b>$1</b>');
   }
 
   const MARK = { morten: '✦', foe: '›', gm: '·', world: '·' };

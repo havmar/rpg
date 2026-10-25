@@ -81,6 +81,9 @@ ul, ol { padding: 0; list-style: none; }
   #more-tabs { display: none; }
   .app[data-view="more"] #more-tabs { display: flex; }
   .now .doing { margin-left: 0; flex-basis: 100%; }
+  /* one line on a phone: the whole prompt is in the answer box */
+  .now .doing > span:not(.ago) { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .now .doing > .ago { flex: none; }
 }
 
 /* wide: the Story on the left, the drawer on the right */
@@ -158,6 +161,8 @@ details.trace[open] > summary .ic { transform: rotate(90deg); }
 .dice { display: inline; }
 .result { display: flex; flex-wrap: wrap; gap: 4px 12px; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 8px; }
 .result b { color: var(--ink); font-weight: 600; }
+.sec .result > span { display: inline-flex; align-items: center; gap: 4px; }
+.sec .result .ic { width: 13px; height: 13px; color: var(--accent); }
 .you { justify-self: end; max-width: 88%; background: var(--panel-2); border: 1px solid var(--rule); border-radius: 14px 14px 4px 14px; padding: 8px 14px; display: grid; gap: 2px; }
 .you .label { font-size: .62rem; }
 .you p { line-height: 1.5; }

@@ -46,7 +46,8 @@ def public_text(d):
         bits.append((d / "rules.md").read_text())
     names = {m for A in R.ASSETS.values() for m in A["fight"] or []}
     names |= {m for v in R.BEASTS.values() for m in v} | set(R.SEAT_FIGHT)
-    return "\n".join(bits + sorted(names))
+    # unwrapped: the rules are hard-wrapped Markdown ("3 Venomous\nSnakes"), the page's copy is not
+    return re.sub(r"[ \t]*\n[ \t]*(?=\S)", " ", "\n".join(bits)) + "\n" + "\n".join(sorted(names))
 
 
 def monster_name(enc):
@@ -71,7 +72,8 @@ def secrets(d):
                          re.compile(re.escape(r["n"]) + r"\b.{0,60}" + re.escape(mon.split()[-1])
                                     + "|" + re.escape(mon) + r".{0,60}(?<![\d.])" + re.escape(r["n"]) + r"\b",
                                     re.I | re.S)))
-            if mon not in seen_mon and not word(mon).search(pub):
+            plural = re.compile(r"(?<![A-Za-z0-9])" + re.escape(mon) + r"(?:s|es)?(?![a-z0-9])")
+            if mon not in seen_mon and not plural.search(pub):  # the rules name it (an example): public
                 hidden_mon.add(mon)
             if r["feature"] not in seen_feat:
                 hidden_feat.add(r["feature"])

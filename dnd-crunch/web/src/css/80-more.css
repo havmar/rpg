@@ -107,3 +107,12 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
   .app[data-drawer="morten"] .tab-note[data-for="morten"], .app[data-drawer="realm"] .tab-note[data-for="realm"],
   .app[data-drawer="fights"] .tab-note[data-for="fights"] { display: block; }
 }
+/* the Rules' filter box */
+.rsearch { display: flex; align-items: center; gap: 8px; min-height: var(--tap); padding: 0 12px; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); }
+.rsearch[hidden] { display: none; }
+.rsearch .ic { flex: none; color: var(--ink-3); }
+.rsearch input { flex: 1; min-width: 0; min-height: var(--tap); border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 1rem; outline: none; }
+.rsearch:focus-within { border-color: var(--accent); }
+.rfound { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: .88rem; color: var(--ink-2); }
+#rules mark { background: var(--accent-soft); color: var(--ink); border-radius: 3px; padding: 0 1px; }
+#rules [data-r="top"], #rules [data-r="body"] { display: grid; gap: 12px; }

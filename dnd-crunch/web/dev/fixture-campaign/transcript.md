@@ -35,7 +35,7 @@ Fights are reported live: a line when Morten tries something that matters, and a
 
 *s0004 · orders · Month 2 · Day 1 · 08:00 · B5 · the tower (B5)*
 
-**Player (m0002):** month: play another month
+**Player (m0002):** Play a month: play another month
 
 **Morten goes next door to delve floor 2 under the Humans' A5; the tower saves its 67 GP.**
 
@@ -180,6 +180,12 @@ Free Mage Armor before setting out (AC 15). One ration eaten (4 → 3). On arriv
 
 **Fight:** 4× Mastiff (CR 1/8, AC 12, 5 HP) · Low, 100 XP · cleared (two dogs fled)
 **Result:** XP 1,575 → 1,675 · +10 GP · lost: Shocking Grasp, Magic Missile
+
+- HP track, Morten: 20 → None → None → None → 17 (of 20 HP)
+- HP track, Mastiff A: 5 → None → None → None → 0 (of 5 HP)
+- HP track, Mastiff B: 5 → None → None → None → 0 (of 5 HP)
+- HP track, Mastiff C: 5 → None → None → None → 0 (of 5 HP)
+- HP track, Mastiff D: 5 → None → None → None → 0 (of 5 HP)
 
 **Trace**
 

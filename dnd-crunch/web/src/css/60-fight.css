@@ -87,6 +87,7 @@
 .fcard > *, .fcard .track > *, .fights .fitem > * { min-width: 0; }
 .fcard .track { grid-template-columns: minmax(0, 1fr); }
 .fcard .track .gone { fill: none; stroke: var(--bad); stroke-width: 1; stroke-dasharray: 1 3; opacity: .55; }
+.fcard .track path.ln.gap { stroke-dasharray: 1 4 !important; opacity: .5; }
 /* inside a .card (the Fights tab) the shell's .card h3 is a flex row; the card's own head is text */
 .fcard .sec-head h3 { display: block; }
 .fcard .sec-head h3 small { margin-left: 6px; white-space: nowrap; }

@@ -339,6 +339,8 @@
       days: map(d.days, (v) => num(v, null)),
       eventsWords: list(d.eventsWords, (e) => (isObj(e) ? { n: int(e.n, null), who: str(e.who), from: str(e.from), to: str(e.to), action: str(e.action), text: str(e.text) } : null)),
       hexNames: map(d.hexNames, (v) => (typeof v === 'string' ? v : null)),
+      nextWords: strs(d.nextWords),
+      dissidents: list(d.dissidents, (x) => (isObj(x) && x.name ? { realm: str(x.realm), name: str(x.name), hex: strOrNull(x.hex) } : null)),
     };
   }
 

@@ -104,6 +104,31 @@ export const checks = [
     },
   },
   {
+    name: 'more: the Rules filter shows the sections that say the words, marked',
+    async run(t) {
+      const secs = (await t.api.doc('game', 'rules')).data.sections;
+      const page = await openMore(t, 'rules');
+      const box = page.locator('#rules input[type="search"]');
+      t.expect(await box.isVisible(), 'the filter box shows');
+      await box.fill('mishap');
+      const want = secs.filter((s) => /mishap/i.test(s.title) || /mishap/i.test(s.md)).length;
+      t.expect(want > 0, 'the fixture rules mention the mishap table');
+      await t.waitFor(async () => (await page.locator('#rules details.rule').count()) === want, `${want} section(s) left`);
+      t.expect(await page.locator('#rules details.rule[open]').count() === want, 'the matches are open');
+      t.expect(await page.locator('#rules details.rule mark').count() > 0, 'the words are marked');
+      t.expect(/with “mishap”/.test(await page.locator('#rules .rfound').innerText()), 'it says how many sections hold the words');
+      t.expect(await box.evaluate((el) => document.activeElement === el), 'the box keeps the focus while typing');
+      await t.shot(page, 'phone-rules-filter');
+      await box.fill('zzzzqx');
+      await t.waitFor(async () => /Nothing in the rules says/.test(await page.locator('#rules .rfound').innerText()), 'nothing found, said');
+      await page.click('#rules [data-rules-clear]');
+      await t.waitFor(async () => (await page.locator('#rules details.rule').count()) === secs.length, 'every section back');
+      t.expect(await page.locator('#rules details.rule[open]').count() === 0, 'folded again');
+      t.expect(!(await page.locator('#rules mark').count()), 'no marks left');
+      await noSideScroll(t, page, 'rules filter');
+    },
+  },
+  {
     name: 'more: Talk lists the asides and sends an out-of-game say move',
     async run(t) {
       const story = await t.api.docs('story');

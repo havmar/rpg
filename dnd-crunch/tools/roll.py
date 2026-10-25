@@ -20,6 +20,13 @@ DIR/live/rolls.jsonl as one JSON object a line (the table's Die: expr, faces, ke
 total, vs, result, nat); `table.py beat` and `section` pick them up and clear the file.
 --vs TEXT ("AC 15", "DC 11") and --result (hit · miss · cast · fizzle · save · fail) label
 the roll just before them in that log; the printed line is unchanged.
+
+  python3 dnd-crunch/tools/roll.py --keep DIR --label fizzle
+  python3 dnd-crunch/tools/roll.py --keep DIR --label hit --label - --label "miss:AC 15"
+
+--label RESULT[:VS] (no dice on the line) labels a roll already kept, once its result is
+known (a cast that turned out a fizzle): one --label names the last kept roll, several name
+the last few in order, oldest first; `-` leaves one as it is.
 """
 import json
 import random
@@ -87,6 +94,7 @@ def roll(expr, adv=False, dis=False, keep_log=None):
 
 def main(argv):
     rolls = []  # [expr, adv, dis, vs, result]
+    labels = []
     keep_dir = None
     args = list(argv)
     i = 0
@@ -96,6 +104,11 @@ def main(argv):
             if not rolls:
                 sys.exit(f"{a} must follow a roll")
             rolls[-1][1 if a == "--adv" else 2] = True
+        elif a == "--label":
+            if i + 1 >= len(args):
+                sys.exit("--label needs a value")
+            labels.append(args[i + 1])
+            i += 1
         elif a in ("--keep", "--vs", "--result"):
             if i + 1 >= len(args):
                 sys.exit(f"{a} needs a value")
@@ -114,6 +127,13 @@ def main(argv):
         else:
             rolls.append([a, False, False, None, None])
         i += 1
+    if labels:
+        if rolls:
+            sys.exit("--label labels rolls already kept: give it no dice (or use --vs/--result on a new roll)")
+        if keep_dir is None:
+            sys.exit("--label needs --keep DIR (the campaign whose kept rolls to label)")
+        relabel(keep_dir, labels)
+        return
     if not rolls:
         sys.exit(__doc__)
     log = [] if keep_dir is not None else None
@@ -127,6 +147,27 @@ def main(argv):
         with open(live / "rolls.jsonl", "a") as f:
             for d in log:
                 f.write(json.dumps(d, ensure_ascii=False) + "\n")
+
+
+def relabel(keep_dir, labels):
+    p = Path(keep_dir) / "live" / "rolls.jsonl"
+    kept = [json.loads(ln) for ln in p.read_text().splitlines() if ln.strip()] if p.exists() else []
+    if len(labels) > len(kept):
+        sys.exit(f"--label: {len(labels)} label(s) but only {len(kept)} roll(s) kept in {p} "
+                 "(the next table.py beat or section took the earlier ones)")
+    for d, lab in zip(kept[len(kept) - len(labels):], labels):
+        if lab == "-":
+            continue
+        res, _, vs = lab.partition(":")
+        if res.lower() not in RESULTS:
+            sys.exit(f"--label '{lab}': the result must be one of {', '.join(RESULTS)} (or - to skip)")
+        d["result"] = res.lower()
+        if vs:
+            d["vs"] = vs
+    p.write_text("".join(json.dumps(d, ensure_ascii=False) + "\n" for d in kept))
+    for d in kept[len(kept) - len(labels):]:
+        print(f"{d['expr']}: {d['faces']} = {d['total']}" + (f" vs {d['vs']}" if d.get("vs") else "")
+              + (f", {d['result']}" if d.get("result") else ""))
 
 
 if __name__ == "__main__":

@@ -22,7 +22,6 @@
   let current = null;
   let raf = 0;
   let timer = 0;
-  let storySeen = 0;
   let booted = false;
   const el = (id) => document.getElementById(id);
   const isWide = () => window.matchMedia('(min-width: 900px)').matches;
@@ -156,6 +155,9 @@
         html += `<span class="doing" data-now="doing"><i class="pulse" aria-hidden="true"></i><span>the GM: ${esc(view.activity || 'playing')}</span>${since ? `<span class="ago">· ${esc(since)}</span>` : ''}</span>`;
       } else if (st.status === 'ended') {
         html += '<span class="doing ended" data-now="doing">the campaign has ended</span>';
+      } else if (T.panels.story && typeof T.panels.story.withGm === 'function' && T.panels.story.withGm(view)) {
+        const w = T.panels.story.withGm(view);
+        html += `<span class="doing" data-now="doing"><i class="pulse" aria-hidden="true"></i><span>the GM has your ${w.kind === 'orders' ? 'orders' : 'move'}</span></span>`;
       } else {
         const p = st.awaiting.prompt;
         html += `<span class="doing yours" data-now="doing">${icon('hand')}<span>your move${p ? `: ${esc(p)}` : ''}</span>${since ? `<span class="ago">· last beat ${esc(since)}</span>` : ''}</span>`;
@@ -216,15 +218,6 @@
     ui.put(n, html);
   }
 
-  // ---------- the Story tab's dot ----------
-  function renderDot(view) {
-    const newest = Math.max(0, ...view.sections.map((s) => s.seq), ...view.beats.map((b) => b.seq));
-    if (nav.view === 'story' || isWide()) storySeen = Math.max(storySeen, newest);
-    if (!storySeen && newest) storySeen = newest;
-    const dot = U.$('#tabs button[data-view="story"] .dot');
-    if (dot) dot.hidden = !(newest > storySeen);
-  }
-
   // ---------- panels ----------
   function failCard(name, err) {
     return `<div class="panel-error">This part of the page failed (${esc(name)}): ${esc(U.errText(err))}</div>`;
@@ -268,7 +261,6 @@
     current = view;
     U.safe(() => renderNow(view), 'now line');
     U.safe(() => renderNotice(view), 'notice');
-    U.safe(() => renderDot(view), 'dot');
     mountPanels();
     renderPanels(view);
   }

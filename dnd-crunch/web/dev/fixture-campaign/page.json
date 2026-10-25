@@ -6,10 +6,10 @@
  "lastMove": 2,
  "versions": {
   "story/s0001": 1,
-  "game/morten": 16,
+  "game/morten": 18,
   "game/realm": 3,
   "game/rules": 1,
-  "game/state": 39,
+  "game/state": 41,
   "story/s0002": 1,
   "story/s0004": 1,
   "story/s0006": 1,

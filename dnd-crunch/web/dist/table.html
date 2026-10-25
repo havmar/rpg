@@ -140,6 +140,9 @@ ul, ol { padding: 0; list-style: none; }
   #more-tabs { display: none; }
   .app[data-view="more"] #more-tabs { display: flex; }
   .now .doing { margin-left: 0; flex-basis: 100%; }
+  /* one line on a phone: the whole prompt is in the answer box */
+  .now .doing > span:not(.ago) { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .now .doing > .ago { flex: none; }
 }
 
 /* wide: the Story on the left, the drawer on the right */
@@ -217,6 +220,8 @@ details.trace[open] > summary .ic { transform: rotate(90deg); }
 .dice { display: inline; }
 .result { display: flex; flex-wrap: wrap; gap: 4px 12px; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 8px; }
 .result b { color: var(--ink); font-weight: 600; }
+.sec .result > span { display: inline-flex; align-items: center; gap: 4px; }
+.sec .result .ic { width: 13px; height: 13px; color: var(--accent); }
 .you { justify-self: end; max-width: 88%; background: var(--panel-2); border: 1px solid var(--rule); border-radius: 14px 14px 4px 14px; padding: 8px 14px; display: grid; gap: 2px; }
 .you .label { font-size: .62rem; }
 .you p { line-height: 1.5; }
@@ -443,6 +448,11 @@ details.trace[open] > summary .ic { transform: rotate(90deg); }
 @media (min-width: 900px) { .jump { bottom: 16px; } }
 @media (prefers-reduced-motion: reduce) { .wait i { animation: none; width: 35%; } .sec.live .beat:last-child { animation: none; } }
 .live-wrap { display: grid; min-width: 0; }
+/* the answer sent, with the GM: the player's words and a way to change them */
+.box .form .sent-row > .label { display: inline-flex; align-items: center; gap: 6px; color: var(--good); }
+.box .form .sent-row .sent-words { margin: 0; font-size: .95rem; color: var(--ink-2); }
+.box .form .sent-row .seg { justify-content: flex-start; }
+.answer .stop[aria-pressed="true"] { opacity: .7; }
 /* ---- css/60-fight.css ---- */
 /* The fight card (T.panels.fightCard) and the Fights tab. The shared atoms (.sec, .foes,
    .foe, .hprow, details.trace, .round, .ln, .die, .result, .bullets) are the shell's;
@@ -533,6 +543,7 @@ details.trace[open] > summary .ic { transform: rotate(90deg); }
 .fcard > *, .fcard .track > *, .fights .fitem > * { min-width: 0; }
 .fcard .track { grid-template-columns: minmax(0, 1fr); }
 .fcard .track .gone { fill: none; stroke: var(--bad); stroke-width: 1; stroke-dasharray: 1 3; opacity: .55; }
+.fcard .track path.ln.gap { stroke-dasharray: 1 4 !important; opacity: .5; }
 /* inside a .card (the Fights tab) the shell's .card h3 is a flex row; the card's own head is text */
 .fcard .sec-head h3 { display: block; }
 .fcard .sec-head h3 small { margin-left: 6px; white-space: nowrap; }
@@ -780,6 +791,11 @@ details.trace[open] > summary .ic { transform: rotate(90deg); }
 @media (max-width: 420px) {
   #realm .rrow .more { padding-left: 10px; }
 }
+/* the hex entry's "Travel here" (while the month's orders are open) */
+#realm .travel-here { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; }
+#realm .travel-here button { min-height: var(--tap); padding: 6px 14px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+#realm .travel-here button small { font-family: var(--mono); font-size: .7rem; font-weight: 400; opacity: .85; }
+#realm .travel-here button .ic { color: currentColor; }
 /* ---- css/80-more.css ---- */
 /* The More panels: Months, Rules, Talk, Table (owner: see web/README.md, File ownership).
    Rows and dials are the mockup's (ui/table-mockup.html, "more"); the shared atoms
@@ -890,6 +906,15 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
   .app[data-drawer="morten"] .tab-note[data-for="morten"], .app[data-drawer="realm"] .tab-note[data-for="realm"],
   .app[data-drawer="fights"] .tab-note[data-for="fights"] { display: block; }
 }
+/* the Rules' filter box */
+.rsearch { display: flex; align-items: center; gap: 8px; min-height: var(--tap); padding: 0 12px; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); }
+.rsearch[hidden] { display: none; }
+.rsearch .ic { flex: none; color: var(--ink-3); }
+.rsearch input { flex: 1; min-width: 0; min-height: var(--tap); border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 1rem; outline: none; }
+.rsearch:focus-within { border-color: var(--accent); }
+.rfound { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: .88rem; color: var(--ink-2); }
+#rules mark { background: var(--accent-soft); color: var(--ink); border-radius: 3px; padding: 0 1px; }
+#rules [data-r="top"], #rules [data-r="body"] { display: grid; gap: 12px; }
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.3A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.2c0 5.7-7.5 10.3-7.5 10.3z"/></symbol>
@@ -1891,6 +1916,8 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       days: map(d.days, (v) => num(v, null)),
       eventsWords: list(d.eventsWords, (e) => (isObj(e) ? { n: int(e.n, null), who: str(e.who), from: str(e.from), to: str(e.to), action: str(e.action), text: str(e.text) } : null)),
       hexNames: map(d.hexNames, (v) => (typeof v === 'string' ? v : null)),
+      nextWords: strs(d.nextWords),
+      dissidents: list(d.dissidents, (x) => (isObj(x) && x.name ? { realm: str(x.realm), name: str(x.name), hex: strOrNull(x.hex) } : null)),
     };
   }
 
@@ -2413,7 +2440,6 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
   let current = null;
   let raf = 0;
   let timer = 0;
-  let storySeen = 0;
   let booted = false;
   const el = (id) => document.getElementById(id);
   const isWide = () => window.matchMedia('(min-width: 900px)').matches;
@@ -2547,6 +2573,9 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
         html += `<span class="doing" data-now="doing"><i class="pulse" aria-hidden="true"></i><span>the GM: ${esc(view.activity || 'playing')}</span>${since ? `<span class="ago">· ${esc(since)}</span>` : ''}</span>`;
       } else if (st.status === 'ended') {
         html += '<span class="doing ended" data-now="doing">the campaign has ended</span>';
+      } else if (T.panels.story && typeof T.panels.story.withGm === 'function' && T.panels.story.withGm(view)) {
+        const w = T.panels.story.withGm(view);
+        html += `<span class="doing" data-now="doing"><i class="pulse" aria-hidden="true"></i><span>the GM has your ${w.kind === 'orders' ? 'orders' : 'move'}</span></span>`;
       } else {
         const p = st.awaiting.prompt;
         html += `<span class="doing yours" data-now="doing">${icon('hand')}<span>your move${p ? `: ${esc(p)}` : ''}</span>${since ? `<span class="ago">· last beat ${esc(since)}</span>` : ''}</span>`;
@@ -2607,15 +2636,6 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     ui.put(n, html);
   }
 
-  // ---------- the Story tab's dot ----------
-  function renderDot(view) {
-    const newest = Math.max(0, ...view.sections.map((s) => s.seq), ...view.beats.map((b) => b.seq));
-    if (nav.view === 'story' || isWide()) storySeen = Math.max(storySeen, newest);
-    if (!storySeen && newest) storySeen = newest;
-    const dot = U.$('#tabs button[data-view="story"] .dot');
-    if (dot) dot.hidden = !(newest > storySeen);
-  }
-
   // ---------- panels ----------
   function failCard(name, err) {
     return `<div class="panel-error">This part of the page failed (${esc(name)}): ${esc(U.errText(err))}</div>`;
@@ -2659,7 +2679,6 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     current = view;
     U.safe(() => renderNow(view), 'now line');
     U.safe(() => renderNotice(view), 'notice');
-    U.safe(() => renderDot(view), 'dot');
     mountPanels();
     renderPanels(view);
   }
@@ -2822,6 +2841,10 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
   let picksSig = '';
   let allHexes = false;
   let lastMode = '';
+  let revise = ''; // the id of the sent move the player chose to change (the form shows again)
+  // the box's answer to the question showing now: {sig, kind, id} (id null while the write is
+  // in flight); kept per viewer so a reload still says the move is with the GM
+  let sentFor = (() => { const v = ui.local.get('story.sent', null); return v && typeof v === 'object' && typeof v.sig === 'string' ? v : null; })();
 
   const saved = ui.local.get('story.reading', null);
   if (U.isObj(saved)) {
@@ -2908,9 +2931,9 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     const a = s.after;
     if (!a) return '';
     const bits = [];
-    if (isNum(a.hp)) bits.push(`<span>HP <b>${esc(fmt.hp(a.hp, a.maxHp))}</b></span>`);
-    if (isNum(a.xp)) bits.push(`<span><b>${esc(fmt.xp(a.xp))}</b></span>`);
-    if (a.coins) bits.push(`<span>on him <b>${esc(a.coins)}</b></span>`);
+    if (isNum(a.hp)) bits.push(`<span>${icon('heart')}<b>${esc(fmt.hp(a.hp, a.maxHp))}</b></span>`);
+    if (isNum(a.xp)) bits.push(`<span>${icon('spark')}<b>${esc(fmt.xp(a.xp))}</b></span>`);
+    if (a.coins) bits.push(/^(none|0( GP)?)$/i.test(a.coins) ? '<span>no coins on him</span>' : `<span>${icon('coins')}<b>${esc(a.coins)}</b> on him</span>`);
     if (a.lost.length) bits.push(`<span>lost <b>${esc(a.lost.join(', '))}</b></span>`);
     return bits.length ? `<p class="result">${bits.join('')}</p>` : '';
   }
@@ -3075,8 +3098,11 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       case 'orders': {
         const bits = [];
         if (m.travel) bits.push(`to ${hexName(view, m.travel)}`);
-        if (m.mission) bits.push(`${m.mission.type} ${m.mission.target}`);
-        bits.push(m.action ? `the tower: ${m.action}` : 'the tower saves');
+        const form = view.state && view.state.awaiting.orders;
+        const mi = m.mission && form ? form.missions.find((x) => x.type === m.mission.type && x.target === m.mission.target) : null;
+        const ac = m.action && form ? form.actions.find((x) => x.action === m.action) : null;
+        if (m.mission) bits.push(mi ? mi.label : `${m.mission.type} ${m.mission.target}`);
+        bits.push(m.action ? `the tower: ${ac ? ac.label : m.action.replace(/^(\w+):([^@]*)(?:@(.+))?$/, (x, v, k, h) => `${v} ${k}${h ? ` in ${h}` : ''}`)}` : 'the tower saves');
         if (m.give) bits.push(`give ${fmt.gp(m.give.gp)} to the ${m.give.realm}`);
         return `Orders: ${bits.join(' · ')}${m.plan ? `. ${m.plan}` : ''}`;
       }
@@ -3478,6 +3504,64 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
   }
 
   // ---------- the answer box ----------
+  /** The box's face: the GM's question, or 'sent' while the player's answer to it is with
+   * the GM (unless they chose to change it). */
+  /** What the GM is asking now, as a key: a new question (or the same asked again later in
+   * the month) gets a fresh form. */
+  function sigOf(view, mode) {
+    const st = view.state;
+    const a = st ? st.awaiting : null;
+    return [mode, a && a.kind, a && a.prompt, st && st.month, st && st.day, a && a.fight && a.fight.title].join('|');
+  }
+
+  /** The player's answer to the question showing now while it waits for the GM (in moves,
+   * or being written), else null. */
+  function withGm(view, mode = modeOf(view)) {
+    if (!sentFor || mode === 'closed' || mode === 'playing' || sentFor.sig !== sigOf(view, mode)) return null;
+    if (!sentFor.id) {
+      const p = view.pending.filter((x) => x.status === 'sending' && x.move && x.move.kind === sentFor.kind).pop();
+      return p ? p.move : null;
+    }
+    const m = view.moves.find((x) => x.id === sentFor.id);
+    if (m) return m;
+    const p = view.pending.find((x) => x.id === sentFor.id && x.status === 'sending');
+    return p ? p.move : null;
+  }
+
+  function faceOf(view, mode) {
+    const w = withGm(view, mode);
+    if (!w || revise === w.id) return mode;
+    return 'sent';
+  }
+
+  /** A send from the box that answers the question showing now. */
+  function sendAnswer(view, mode, kind, fields) {
+    const sig = sigOf(view, mode);
+    sentFor = { sig, kind, id: null };
+    revise = '';
+    const p = sendMove(kind, fields);
+    p.then((res) => {
+      if (sentFor && sentFor.sig === sig && !sentFor.id) {
+        sentFor = { sig, kind, id: res.id };
+        ui.local.set('story.sent', sentFor);
+      }
+      T.app.render();
+    }, () => {
+      if (sentFor && sentFor.sig === sig) sentFor = null;
+      T.app.render();
+    });
+    return p;
+  }
+
+  const CHANGE_WORD = { orders: 'Change the orders', fight: 'Change your call', turn: 'Change the turn', word: 'Something else' };
+
+  function sentForm(view, mode) {
+    const w = withGm(view, mode);
+    return `<div class="row sent-row" data-row="sent"><span class="label">${icon('hand')}With the GM</span>`
+      + `<p class="sent-words">${esc(w.kind === 'orders' ? 'Your orders are sent (above): the GM plays the month from them.' : w.kind === 'fight' ? 'Your call is sent (above): the GM plays the fight from it.' : w.kind === 'turn' ? "Morten's turn is sent (above): the GM resolves it." : 'Your word is sent (above): the GM plays on from it.')}</p>`
+      + `<div class="seg"><button type="button" data-act="revise" data-id="${esc(w.id)}">${esc(CHANGE_WORD[mode] || 'Something else')}</button></div></div>`;
+  }
+
   function modeOf(view) {
     const st = view.state;
     if (view.db !== 'ok' || !view.canWrite || !st || st.status === 'ended') return 'closed';
@@ -3632,10 +3716,16 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     const take = st.table.who === 'you'
       ? `<button type="button" data-act="take" data-who="dm">${icon('hand')}Hand Morten back</button>`
       : `<button type="button" data-act="take" data-who="you">${icon('hand')}Take over Morten</button>`;
-    return `<div class="row" data-row="playing"><span class="label">A word now</span><div class="seg"><button type="button" class="stop" data-act="stop">${icon('stop')}${fight ? 'Stop after this fight' : 'Stop at the next stop'}</button>${take}</div></div>`;
+    const isStop = (m) => !!m && m.kind === 'play' && m.scope === 'stop';
+    const asked = view.moves.some(isStop) || view.pending.some((x) => x.status === 'sending' && isStop(x.move));
+    const stop = asked
+      ? `<button type="button" class="stop" data-act="stop" aria-pressed="true" disabled title="the GM reads it at the next stop point">${icon('stop')}${fight ? 'Stopping after this fight' : 'Stopping at the next stop'}</button>`
+      : `<button type="button" class="stop" data-act="stop">${icon('stop')}${fight ? 'Stop after this fight' : 'Stop at the next stop'}</button>`;
+    return `<div class="row" data-row="playing"><span class="label">A word now</span><div class="seg">${stop}${take}</div></div>`;
   }
 
-  function formHtml(view, mode) {
+  function formHtml(view, mode, face) {
+    if (face === 'sent') return sentForm(view, mode);
     if (mode === 'orders') return ordersForm(view);
     if (mode === 'fight') return fightForm(view) + playRow('Or let the GM play');
     if (mode === 'turn') return turnForm(view);
@@ -3650,6 +3740,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     turn: "Morten's turn: tap a spell above, then say at whom and where he moves.",
     playing: "A steer for the GM ('leave the sleeping boar, go round'), read at the next stop point.",
     word: "Morten's words, or a question for the GM.",
+    sent: 'More words for the GM, read with your move.',
     closed: '',
   };
   const HINT = {
@@ -3658,6 +3749,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     turn: 'an illegal move comes back with why',
     playing: 'read at the next fight, day or world\'s turn',
     word: "sent as Morten's words",
+    sent: 'read with your move',
   };
 
   function sendHtml(view, mode) {
@@ -3696,6 +3788,9 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       parts.push(`<span class="who-move gm"><i class="pulse" aria-hidden="true"></i>${st.table.who === 'you' ? 'The GM is playing; Morten is yours' : 'The GM is playing Morten'}</span>`);
       parts.push(`<span>${esc(STOP_WORD[st.table.stop] || '')}</span>`);
       parts.push(`<span>${esc(FIGHTS_WORD[st.table.fights] || '')}</span>`);
+    } else if (withGm(view) && revise !== withGm(view).id) {
+      parts.push(`<span class="who-move gm"><i class="pulse" aria-hidden="true"></i>The GM's move</span>`);
+      parts.push(`<span>${esc(withGm(view).kind === 'orders' ? 'your orders are with the GM' : 'your word is with the GM')}</span>`);
     } else {
       parts.push(`<span class="who-move mine">${icon('hand')}Your move</span>`);
       if (st.awaiting.prompt) parts.push(`<span>${esc(st.awaiting.prompt)}</span>`);
@@ -3721,6 +3816,8 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     if (!A.box) return;
     const mode = modeOf(view);
     if (mode !== 'closed') ensurePicks(view, mode);
+    if (revise && !(withGm(view, mode) && withGm(view, mode).id === revise)) revise = '';
+    const face = faceOf(view, mode);
     ui.put(A.status, statusHtml(view));
     const open = myOpenMove(view);
     const waitKey = open && !view.pending.some((p) => p.status === 'failed') ? open.id : '';
@@ -3734,20 +3831,20 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     ui.put(A.closed, why ? esc(why) : '');
     A.box.hidden = mode === 'closed';
     if (mode === 'closed') return;
-    if (ui.put(A.form, formHtml(view, mode))) {
+    if (ui.put(A.form, formHtml(view, mode, face))) {
       restoreFolds(A.form);
       const gp = A.form.querySelector('[data-a="gp"]');
       if (gp) gp.value = picks.gp;
     }
     A.form.hidden = !A.form.innerHTML;
-    const ph = ooc ? 'A question for the GM, out of game.' : PLACEHOLDER[mode];
+    const ph = ooc ? 'A question for the GM, out of game.' : PLACEHOLDER[face];
     if (A.text.placeholder !== ph) A.text.placeholder = ph;
-    if (lastMode !== mode) {
-      lastMode = mode;
-      A.text.setAttribute('aria-label', mode === 'orders' ? 'Why, for the orders' : mode === 'turn' ? "Morten's turn" : 'Your words to the GM');
+    if (lastMode !== face) {
+      lastMode = face;
+      A.text.setAttribute('aria-label', face === 'orders' ? 'Why, for the orders' : face === 'turn' ? "Morten's turn" : 'Your words to the GM');
     }
     if (A.text.value !== draft && document.activeElement !== A.text) A.text.value = draft;
-    ui.put(A.send, sendHtml(view, mode));
+    ui.put(A.send, sendHtml(view, face));
   }
 
   function setDraft(v) {
@@ -3776,24 +3873,26 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
   }
 
   function sendPrimary(view) {
-    const mode = modeOf(view);
+    const base = modeOf(view);
+    const mode = faceOf(view, base);
     const text = draft.trim();
     if (mode === 'orders') {
       const o = view.state.awaiting.orders;
       const m = picks.mission !== null ? o.missions[picks.mission] : null;
       const a = picks.action !== null ? o.actions[picks.action] : null;
       const gp = parseInt(picks.gp, 10);
-      sendMove('orders', {
+      sendAnswer(view, base, 'orders', {
         travel: picks.travel,
         mission: m ? { type: m.type, target: m.target } : null,
         action: a ? a.action : null,
         give: picks.give && Number.isFinite(gp) && gp > 0 ? { realm: picks.give, gp } : null,
         plan: text,
       });
-    } else if (mode === 'fight') sendMove('fight', { choice: picks.choice, text });
+    } else if (mode === 'fight') sendAnswer(view, base, 'fight', { choice: picks.choice, text });
     else if (mode === 'turn') {
-      if (text) sendMove('turn', { text });
-    } else if (text) sendMove('say', { text, ooc });
+      if (text) sendAnswer(view, base, 'turn', { text });
+    } else if (text && !ooc && mode === 'word') sendAnswer(view, base, 'say', { text, ooc });
+    else if (text) sendMove('say', { text, ooc });
   }
 
   function insertText(v) {
@@ -3882,13 +3981,18 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       case 'send':
         if (view) sendPrimary(view);
         break;
+      case 'revise':
+        revise = b.dataset.id || '';
+        T.app.render();
+        break;
       case 'say': {
         const text = draft.trim();
         if (text) sendMove('say', { text, ooc });
         break;
       }
       case 'play':
-        sendMove('play', { scope: b.dataset.scope, text: draft.trim() });
+        if (view && modeOf(view) !== 'playing') sendAnswer(view, modeOf(view), 'play', { scope: b.dataset.scope, text: draft.trim() });
+        else sendMove('play', { scope: b.dataset.scope, text: draft.trim() });
         break;
       case 'stop':
         sendMove('play', { scope: 'stop', text: draft.trim() });
@@ -4020,14 +4124,32 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       if (el) scrollToEl(el);
       remember();
     },
+    /** The player's answer to the GM's question now, while it waits for the GM (the now line). */
+    withGm(view) {
+      return view ? withGm(view) : null;
+    },
     /** Pick a hex as the orders' travel (for the Realm tab's map). */
     pickHex(id) {
-      if (!picks || !last || modeOf(last) !== 'orders') return false;
-      const o = last.state.awaiting.orders;
+      const view = T.app.view() || last;
+      if (!view || modeOf(view) !== 'orders') return false;
+      ensurePicks(view, 'orders');
+      const o = view.state.awaiting.orders;
       if (!o.hexes.some((h) => h.id === id)) return false;
       picks.travel = id;
-      allHexes = allHexes || !o.hexes.slice(0, NEAR_HEXES).some((h) => h.id === id);
+      if (picks.mission !== null) {
+        const mi = o.missions[picks.mission];
+        if (mi && mi.hex && mi.hex !== id) picks.mission = null;
+      }
+      const near = o.hexes.slice().sort((a, b) => (a.days ?? 99) - (b.days ?? 99)).slice(0, NEAR_HEXES);
+      allHexes = allHexes || !near.some((h) => h.id === id);
+      const w = withGm(view, 'orders');
+      if (w) revise = w.id; // changing the orders sent
       T.app.render();
+      // once the Story shows, bring the form's travel row into view
+      setTimeout(() => {
+        const row = A.form && A.form.querySelector('[data-row="travel"]');
+        if (row && visible()) row.scrollIntoView({ block: 'center' });
+      }, 60);
       return true;
     },
   };
@@ -4208,11 +4330,16 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       }
       const pts = hp.map((v, i) => (isNum(v) ? { x: x(i), y: y(Math.max(0, v)), hp: v, i } : null));
       let d = '';
+      let gap = '';
       let pen = false;
+      let prev = null;
       for (const p of pts) {
         if (!p) { pen = false; continue; }
+        // rounds the GM did not report (a fight told after): a faint dotted bridge
+        if (!pen && prev) gap += `M${f1(prev.x)},${f1(prev.y)} L${f1(p.x)},${f1(p.y)} `;
         d += `${pen ? 'L' : 'M'}${f1(p.x)},${f1(p.y)} `;
         pen = true;
+        prev = p;
       }
       const real = pts.filter(Boolean);
       const last = real[real.length - 1];
@@ -4222,7 +4349,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       if (!me) foeI += 1;
       // a foe that went down: its line stops there (a red dot), a faint rule runs on at 0
       const gone = dead && last.i < n ? `M${f1(last.x)},${f1(last.y)} L${f1(x(n))},${f1(last.y)}` : '';
-      return { t, me, cls, dash, pts: real, d: d.trim(), gone, last, dead, label: { x: x(n) + 6, y: last.y, text: `${shortName(t.name)} ${dead ? '✝' : last.hp <= 0 ? '0' : fmt.n(last.hp)}` } };
+      return { t, me, cls, dash, pts: real, d: d.trim(), gap: gap.trim(), gone, last, dead, label: { x: x(n) + 6, y: last.y, text: `${shortName(t.name)} ${dead ? '✝' : last.hp <= 0 ? '0' : fmt.n(last.hp)}` } };
     });
     // end labels, all in the right gutter: pushed apart where two end close together,
     // then back up off the round ticks when several end low (as Dream's hp-track does)
@@ -4244,6 +4371,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       + grid.map((v) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${f1(y(v))}" y2="${f1(y(v))}"/><text class="tick" x="${L - 5}" y="${f1(y(v) + 3)}" text-anchor="end">${v}</text>`).join('')
       + ticks.map((k) => `<text class="tick" x="${f1(x(k.i))}" y="${H - 6}" text-anchor="middle">${k.t}</text>`).join('')
       + out.map((s) => (s.gone ? `<path class="gone" d="${s.gone}"/>` : '')).join('')
+      + out.map((s) => (s.gap ? `<path class="ln gap ${s.cls}" d="${s.gap}"/>` : '')).join('')
       + out.map((s) => `<path class="ln ${s.cls}" d="${s.d}"${s.dash ? ` stroke-dasharray="${s.dash}"` : ''}/>`).join('')
       + out.map((s) => s.pts.map((p) => `<circle class="dot ${s.cls}${!s.me && p.hp <= 0 ? ' dead' : ''}" cx="${f1(p.x)}" cy="${f1(p.y)}" r="${!s.me && p.hp <= 0 ? 3.6 : n > 12 ? 1.8 : 2.6}"><title>${esc(s.t.name)}, ${when(p.i)}: ${esc(isNum(s.t.max) ? `${p.hp}/${s.t.max} HP` : `${p.hp} HP`)}</title></circle>`).join('')
         + `<text class="end ${s.cls}" x="${f1(s.label.x)}" y="${f1(s.label.y)}">${esc(s.label.text)}</text>`).join('')
@@ -4267,7 +4395,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
   function lineText(text) {
     return esc(text)
       .replace(/((?:\b[A-Z][\w'’]*(?: [A-Z]\b)? )?\d+ → \d+ HP)/g, '<b>$1</b>')
-      .replace(/\b(dead|down|killed)\b/g, '<b>$1</b>');
+      .replace(/\b(dead|killed|destroyed|(?:goes|went|is|falls|fell|drops|dropped) down)\b/g, '<b>$1</b>');
   }
 
   const MARK = { morten: '✦', foe: '›', gm: '·', world: '·' };
@@ -5022,9 +5150,18 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       const c = 'FCW'[i];
       return `<span title="${esc(r.words[k] || '')}">${icon(ATTR[c][0])}${ATTR[c][1]} <b>${esc(fmt.n(t[k]))}</b></span>`;
     }).join('<span class="dot" aria-hidden="true">·</span>');
-    const gold = `<p class="gold"><b>${esc(fmt.gp(t.treasury) || '? GP')}</b> in the coffers, <b>${esc(t.income !== null ? `${fmt.signed(t.income)} GP` : '? GP')}</b> a month</p>`;
-    const next = r.report.next.length
-      ? `<div class="nextm"><span class="label">What month ${esc(r.month !== null ? r.month : (r.report.month || 0) + 1)} can bring</span><div class="chips">${nextChips(r.report.next)}</div></div>`
+    // a hex of the tower's with another realm's soldiers in it pays it nothing: say so
+    const held = t.hexes.map((id) => m.byId.get(id)).filter(Boolean)
+      .map((h) => ({ h, by: h.assets.filter((a) => a.owner !== h.holder && typeOf(a, r.kinds[a.name]) === 'F').map((a) => a.owner) }))
+      .filter((x) => x.by.length);
+    const why = held.length ? ` <small class="warn">(${esc(held.map((x) => `${poss(x.by[0])} soldiers hold ${x.h.id}`).join('; '))}: no income from it)</small>` : '';
+    const gold = `<p class="gold"><b>${esc(fmt.gp(t.treasury) || '? GP')}</b> in the coffers, <b>${esc(t.income !== null ? `${fmt.signed(t.income)} GP` : '? GP')}</b> a month${why}</p>`;
+    const lines = r.nextWords.length ? r.nextWords : r.report.next;
+    const next = lines.length
+      ? `<div class="nextm"><span class="label">What month ${esc(r.month !== null ? r.month : (r.report.month || 0) + 1)} can bring</span><div class="chips">${nextChips(lines)}</div></div>`
+      : '';
+    const found = r.dissidents.length
+      ? `<div class="sub"><span class="label">Dissidents found</span><ul class="heard">${r.dissidents.map((d) => `<li class="${fac(d.realm)}">${icon('speech')}<span><b>${esc(d.name)}</b>, of ${esc(the(d.realm))}${d.hex ? ` in ${esc(cap(nameOf(m, d.hex)))}` : ''}: the tower can buy Seditionists there</span></li>`).join('')}</ul></div>`
       : '';
     return '<div class="card tower">'
       + `<h3>${icon('tower')}The tower<small>yours</small></h3>`
@@ -5036,6 +5173,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       + (t.hexes.length ? `<div class="sub"><span class="label">Its land</span><div class="hexbtns">${t.hexes.map((id) => hexBtn(m, id)).join('')}</div></div>` : '')
       + `<div class="rel"><span class="label">Allies</span><span class="links">${allies.length ? allies.map(realmLink).join('') : '<span class="muted">none</span>'}</span>`
       + `<span class="label">Hostile</span><span class="links">${hostile.length ? hostile.map(realmLink).join('') : '<span class="muted">nobody</span>'}</span></div>`
+      + found
       + next
       + '</div>';
   }
@@ -5265,7 +5403,7 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
     const occupiers = h.assets.filter((a) => a.owner !== h.holder && typeOf(a, r.kinds[a.name]) === 'F').map((a) => a.owner);
     const inc = typeof h.income === 'number' ? h.income : lv !== null ? lv * 10 : null;
     const income = inc === 0 && occupiers.length
-      ? `pays ${home ? 'the tower' : 'them'} nothing while ${esc(the(occupiers[0]))}' soldiers stand in it`
+      ? `pays ${home ? 'the tower' : 'them'} nothing while ${esc(poss(occupiers[0]))} soldiers stand in it`
       : inc !== null ? `${esc(fmt.gp(inc))} a month to ${home ? 'the tower' : 'them'}` : '';
     const way = m.way.get(id);
     const dist = d === 0 ? '<b class="brass">Morten is here</b>'
@@ -5292,11 +5430,18 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       ? `<div class="pieces">${h.assets.map((a) => pieceRow(m, a, h)).join('')}</div>`
         + (h.assets.some((a) => !isTower(a.owner)) ? '<p class="muted small">A Strike or a Rob is a fight for Morten, and turns the owner hostile to the tower for 3 months (6 at a seat).</p>' : '')
       : '<p class="muted small">Nothing the tower can see stands here.</p>';
+    // the orders form is open: send Morten here from the map (the Story's form takes it)
+    const aw = m.state && m.state.status === 'awaiting' && m.state.awaiting && m.state.awaiting.kind === 'orders' ? m.state.awaiting.orders : null;
+    const oh = aw ? aw.hexes.find((x) => x.id === id) : null;
+    const travel = oh
+      ? `<div class="travel-here"><button type="button" class="primary" data-travel-here="${esc(id)}">${icon('boots')}Travel here<small>${esc(oh.days === 0 ? 'stay: 0 days' : days(oh.days))}</small></button><span class="muted small">for this month's orders, in the Story</span></div>`
+      : '';
     const evs = m.evAt.get(id) || [];
     const heard = r.rumours[id] || [];
     const nb = m.nbrs.get(id) || [];
     return `<h3>${esc(cap(nameOf(m, id)))}${lv !== null ? `, level ${esc(lv)}` : ''}${home ? ' · home' : ''}<span class="code">${esc(id)}</span></h3>`
       + `<p class="line">${[held, income, dist].filter(Boolean).join(' · ')}${river}.</p>`
+      + travel
       + (lv !== null ? `<p class="line lvl-line">Level ${esc(lv)}: floor ${esc(lv)} lies under it, and its wanderers are level-${esc(lv)} trouble.${seat}</p>` : seat ? `<p class="line">${seat.trim()}</p>` : '')
       + `<span class="label">Pieces here · ${esc(h.assets.length)}</span>${pieces}`
       + (more.length ? `<span class="label">Morten's missions here</span><div class="do">${more.join('')}</div>` : '')
@@ -5423,6 +5568,12 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       return;
     }
     if (t.closest('[data-ev-close]')) { evShown = null; paint(); return; }
+    const th = t.closest('[data-travel-here]');
+    if (th) {
+      const sp = T.panels.story;
+      if (sp && typeof sp.pickHex === 'function' && sp.pickHex(th.getAttribute('data-travel-here'))) T.app.go('story');
+      return;
+    }
     const hx = t.closest('[data-hex]');
     if (hx) {
       pick(hx.getAttribute('data-hex'), true);
@@ -5773,18 +5924,60 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
   })();
 
   // ====================================================================================
-  // Rules: game/rules.sections, a contents list and a fold each.
+  // Rules: game/rules.sections, a contents list, a filter box and a fold each.
   // ====================================================================================
   (() => {
     let box = null;
+    let top = null;
+    let bar = null;
+    let body = null;
+    let input = null;
+    let q = '';
     const open = new Set();
     const fold = (id) => U.$$('details.rule', box).find((d) => d.getAttribute('data-rule') === id) || null;
+    const norm = (t) => String(t || '').toLowerCase();
+
+    /** Wrap each match of q in the visible text of el with <mark> (text nodes only: safe). */
+    function mark(el, needle) {
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const hits = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) if (norm(n.nodeValue).includes(needle)) hits.push(n);
+      for (const n of hits) {
+        const text = n.nodeValue;
+        const low = norm(text);
+        const frag = document.createDocumentFragment();
+        let i = 0;
+        for (let j = low.indexOf(needle); j >= 0; j = low.indexOf(needle, i)) {
+          if (j > i) frag.appendChild(document.createTextNode(text.slice(i, j)));
+          const m = document.createElement('mark');
+          m.textContent = text.slice(j, j + needle.length);
+          frag.appendChild(m);
+          i = j + needle.length;
+        }
+        if (i < text.length) frag.appendChild(document.createTextNode(text.slice(i)));
+        n.parentNode.replaceChild(frag, n);
+      }
+    }
+
     T.panels.rules = {
       mount(el) {
         box = el;
+        el.innerHTML = '<div data-r="top"></div>'
+          + '<label class="rsearch" data-r="bar" hidden><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg>'
+          + '<input type="search" data-r="q" placeholder="Find in the rules: Shield, Rob, death…" aria-label="Find in the rules" autocomplete="off"></label>'
+          + '<div data-r="body"></div>';
+        top = U.$('[data-r="top"]', el);
+        bar = U.$('[data-r="bar"]', el);
+        body = U.$('[data-r="body"]', el);
+        input = U.$('[data-r="q"]', el);
+        input.addEventListener('input', () => {
+          q = norm(input.value.trim());
+          T.panels.rules.render(T.app.view());
+        });
         el.addEventListener('toggle', (ev) => {
           const d = ev.target;
           if (!d || !d.matches || !d.matches('details.rule')) return;
+          if (q) return; // a fold opened by the filter is not remembered
           const id = d.getAttribute('data-rule');
           if (d.open) open.add(id);
           else open.delete(id);
@@ -5802,6 +5995,13 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
             else window.scrollTo({ top: Math.max(0, d.getBoundingClientRect().top + window.scrollY - nowH - 10) });
             return;
           }
+          if (ev.target.closest('[data-rules-clear]')) {
+            input.value = '';
+            q = '';
+            T.panels.rules.render(T.app.view());
+            input.focus();
+            return;
+          }
           if (ev.target.closest('[data-rules-all]')) {
             const all = U.$$('details.rule', box);
             const to = !all.every((x) => x.open);
@@ -5810,18 +6010,32 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
         });
       },
       render(view) {
+        if (!box || !view) return;
         const secs = view.rules ? view.rules.sections : [];
-        let body;
+        let head;
+        let folds = '';
+        bar.hidden = !secs.length;
         if (!secs.length) {
-          body = `<div class="card more-card"><h3>${icon('book')}Rules</h3><p class="muted empty">${view.loaded.rules || view.db !== 'ok' ? 'The GM has not put the rules on the table yet.' : 'Opening the rules…'}</p></div>`;
+          head = `<div class="card more-card"><h3>${icon('book')}Rules</h3><p class="muted empty">${view.loaded.rules || view.db !== 'ok' ? 'The GM has not put the rules on the table yet.' : 'Opening the rules…'}</p></div>`;
         } else {
-          const allOpen = secs.every((s) => open.has(s.id));
-          body = `<div class="card more-card"><h3>${icon('book')}Rules <small>the house rules, cut from the campaign</small></h3>`
-            + `<nav class="toc" aria-label="The rules' contents">${secs.map((s) => `<button type="button" data-rule-go="${esc(s.id)}">${esc(s.title || s.id)}</button>`).join('')}</nav>`
-            + `<div class="toc-bar"><button type="button" class="toggle" data-rules-all>${allOpen ? 'Fold all' : 'Open all'}</button></div></div>`
-            + secs.map((s) => `<details class="sec rule" data-rule="${esc(s.id)}"${open.has(s.id) ? ' open' : ''}><summary>${icon('chev')}<span>${esc(s.title || s.id)}</span></summary>${ui.md(s.md)}</details>`).join('');
+          // the filter: a section matches by its title or its text; matches open, the rest hide
+          const shown = q ? secs.filter((s) => norm(s.title).includes(q) || norm(s.md).includes(q)) : secs;
+          const allOpen = shown.length && shown.every((s) => q || open.has(s.id));
+          head = `<div class="card more-card"><h3>${icon('book')}Rules <small>the house rules, cut from the campaign</small></h3>`
+            + `<nav class="toc" aria-label="The rules' contents">${shown.map((s) => `<button type="button" data-rule-go="${esc(s.id)}">${esc(s.title || s.id)}</button>`).join('')}</nav>`
+            + (q
+              ? `<p class="rfound" role="status">${shown.length ? `${esc(fmt.plural(shown.length, 'section'))} with “${esc(input.value.trim())}”` : `Nothing in the rules says “${esc(input.value.trim())}”.`} <button type="button" class="toggle" data-rules-clear>Clear</button></p>`
+              : `<div class="toc-bar"><button type="button" class="toggle" data-rules-all>${allOpen ? 'Fold all' : 'Open all'}</button></div>`)
+            + '</div>';
+          folds = shown.map((s) => `<details class="sec rule" data-rule="${esc(s.id)}"${q || open.has(s.id) ? ' open' : ''}><summary>${icon('chev')}<span>${esc(s.title || s.id)}</span></summary>${ui.md(s.md)}</details>`).join('');
         }
-        put(box, `${ui.note('tab.more', NOTE_TEXT.more)}${body}`);
+        put(top, `${ui.note('tab.more', NOTE_TEXT.more)}${head}`);
+        const key = `${q}\u0000${folds}`;
+        if (body.dataset.k !== key) {
+          body.dataset.k = key;
+          body.innerHTML = folds;
+          if (q) for (const d of U.$$('details.rule', body)) mark(d, q);
+        }
       },
     };
   })();
@@ -5880,7 +6094,9 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       if (view.db !== 'ok') return 'opens with the table';
       if (!view.canWrite) return 'watching: asking needs edit access';
       const w = view.wake;
-      if (lastSent && w.move === lastSent.id) {
+      // once the GM has answered it (the move is gone from the store), the hint is the usual one
+      const open = lastSent && (view.moves.some((m) => m.id === lastSent.id) || view.pending.some((p) => p.id === lastSent.id));
+      if (open && w.move === lastSent.id) {
         if (w.state === 'calling') return 'sent · calling the GM…';
         if (w.state === 'called') return 'sent · the GM has been called';
         if (w.state === 'off') return 'sent · the GM reads it at the next stop';
@@ -6040,6 +6256,8 @@ details.rule .md .bullets b, .talk-list .md .bullets b { font: inherit; font-wei
       if (th) {
         const v = th.getAttribute('data-theme-set');
         T.app.setTheme(v === 'system' ? null : v);
+        // pressed at once (the panel's own render follows on the next frame)
+        for (const x of U.$$('[data-theme-set]', th.parentNode)) x.setAttribute('aria-pressed', String(x === th));
         T.app.render();
         return;
       }

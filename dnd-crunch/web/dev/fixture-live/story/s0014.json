@@ -293,7 +293,63 @@
   "rounds": 4,
   "outcome": "cleared",
   "verdict": "two dogs fled",
-  "hpTrack": [],
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     null,
+     null,
+     null,
+     17
+    ]
+   },
+   {
+    "name": "Mastiff A",
+    "max": 5,
+    "hp": [
+     5,
+     null,
+     null,
+     null,
+     0
+    ]
+   },
+   {
+    "name": "Mastiff B",
+    "max": 5,
+    "hp": [
+     5,
+     null,
+     null,
+     null,
+     0
+    ]
+   },
+   {
+    "name": "Mastiff C",
+    "max": 5,
+    "hp": [
+     5,
+     null,
+     null,
+     null,
+     0
+    ]
+   },
+   {
+    "name": "Mastiff D",
+    "max": 5,
+    "hp": [
+     5,
+     null,
+     null,
+     null,
+     0
+    ]
+   }
+  ],
   "loot": "+10 GP",
   "lost": [
    "Shocking Grasp",

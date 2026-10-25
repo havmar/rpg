@@ -36,6 +36,7 @@ web/
   dev/fixture/         a realms3-like campaign projected by tools/table.py (the store's docs)
   dev/sample/          a small hand-made store tree in the same layout (used when there is no fixture)
   e2e.mjs              Playwright at 412 px and 1280 px: runs the checks in e2e/*.mjs
+  e2e-loop.mjs         the GM's loop end to end with the real tools/table.py (and db.mjs)
   e2e/NN-name.mjs      the checks, one file per owner (10-shell, 50-story, …)
 ```
 
@@ -412,14 +413,18 @@ version rules, so the whole loop runs locally (below).
    the pending batches, said so, and never deleted.
 3. **Play** to the next stop point the dials give, as the chat game is played. Roll every
    die with `python3 dnd-crunch/tools/roll.py --keep DIR …` (`--vs "AC 15" --result hit`
-   label a roll); the next `beat` or `section` takes the dice. Apply `table` and `take`
+   label a roll; `roll.py --keep DIR --label fizzle` labels the last kept roll once its result
+   is known, several `--label`s the last few in order); the next `beat` or `section` takes the dice. Apply `table` and `take`
    moves with `table.py state DIR` (it applies them to the dials and deletes them). Then, as
    the play goes:
    - a fight or a day that streams: `table.py open DIR --kind fight --title … --foes …`, a
-     `table.py beat DIR --round N --text … --hp 11/20 --foe "Darkmantle=13/22"` per round;
+     `table.py beat DIR --round N --text … --hp 11/20 --foe "Darkmantle=13/22"` per round
+     (a beat whose `--hp` moves Morten's HP also rewrites `game/morten` and `game/state` in
+     its batch, so the HUD follows the fight);
    - every change to the sheet: `table.py morten DIR --hp … --lose … --xp … --coins …`;
    - a section's end: `table.py section DIR --file s.md` (it settles the open section, takes
-     the beats as its trace, answers every move read unless `--answers`, deletes the beats,
+     the beats as its trace, answers every move read unless `--answers` (`--answers none`:
+     none), deletes the beats,
      the log lines and the moves, and rewrites `game/state`); a world's turn adds
      `table.py realm DIR`; an out-of-game answer is `table.py aside DIR --ooc --answers m0007
      --text …`;
@@ -460,6 +465,8 @@ and the result names the entry and the version the store holds.
    gives the `url`, and the session that publishes it watches it.
 2. `table.py new DIR --file opening.md [--month 1 --day 1 --clock 08:00 --hex B5 --where …]`
    (needs `morten.json` and `map.json`): every singleton and the opening section, unpinned.
+   A new game has no `morten.json` yet: `--sheet fresh` writes the New game defaults' Morten
+   (`tools/morten-wizard3.json`: Wizard 3, 900 XP, 47 GP 7 SP 5 CP, the template's gear).
 3. Send that batch to the new `url`, then `table.py sent DIR --url URL` (the link goes into
    `page.json` and `state.md`, and into `game/state.url` with the next write, the wake's).
 4. `table.py wake DIR`, send, `sent`: `game/state.wake.on` is true, and from then on the page
@@ -518,13 +525,28 @@ What the GM's side does that the shapes above don't say (`table.py VERB --help` 
   same batch.
 - **Log lines** are deleted at the next section (not an aside) and at a stop (`state` with
   the status `awaiting` or `ended`), so a turn answered without a section leaves none.
+- **A fight told after** (no beats) still gets its `hpTrack`: from the section's trace lines
+  ("Warrior A 9 → 0 HP", "Morten 20 → 13 HP", "C dead", by round), else the start and the end
+  alone with `null` between (front matter `hpBefore` is Morten's HP at the start); a trace
+  round after the last beat moves the beats' track on the same way.
+- **The player's words** under a section (`story.words[].text`) are plain sentences, as the
+  page shows a pending move: "Orders: to the Elves' mountains (A1) · Contact the Elves of A1
+  (Persuasion DC 14) · the tower saves. <the plan>", "Stop after this: <steer>", "Play a
+  month", "Fight it: <text>".
+- **The rules for the player.** `game/rules` is cut from `CLAUDE.md`, `realms.md` and
+  `rules.md` and unwrapped, and the GM's file names, commands and paths are taken out: a
+  parenthesis naming one goes, a sentence only about one goes, a needed one is said in words
+  ("the engine", "the GM's notes"); other `code` becomes plain text.
 - **Extra keys** the page may use (or ignore): `hud.armorOn` (and `hud.ac` is the AC now:
   `acArmor` while Mage Armor is up); in `awaiting.orders`, each mission's `hex` and `days`,
   each action's `affordable` (its cost against the treasury plus the month's income) and
   `orders.funds`; an action's `action` is the engine's `--action` (`buy:farms@B5`), the
   string an `orders` move sends back. In `game/realm`, a floor's `cleared`, an explored
   room's `xp`, `difficulty`, `size`, `feature`, `note`; a floor never entered has
-  `rooms: []`; `eventsWords[].action`; each kind's `needs`, `income`, `moves`, `fight`.
+  `rooms: []`; `eventsWords[].action`; each kind's `needs`, `income`, `moves`, `fight`; `nextWords`
+  (`report.next` in words: pieces named, not numbered, tiers spelled out, prices in GP; the
+  tower card shows them when present) and `dissidents` (`[{realm, name, hex}]`, the
+  dissidents a won Contact named: public to the tower; the tower card lists them).
   `game/morten` adds the sheet's rest (`abilities[].saveProf`, `skills[].expertise`,
   `proficiencies`, spells' `time`, `range`, `note`, `book`, `armorOn`, `coinsNote`).
 - **The fixture.** `bash dnd-crunch/web/dev/fixture-campaign/play.sh` replays realms3's
@@ -686,6 +708,25 @@ The shell is `src/page.html`, `00-tokens.css`, `10-shell.css` and `00-core.js` �
   Panel-only rules (the map, the realm rows, the fight rows, the month headers, the live
   card, the world's turn) are the panels' own: copy them from the mockup into your CSS file.
 
+### Hooks from the Story (`50-story.js`)
+
+- **The answer box after a send.** When the player answers the question showing (the
+  orders, a fight call, Morten's turn, or a word or Play when the GM waits for one), the box
+  says it is with the GM until the GM asks something new: the status line reads "The GM's
+  move", the form folds to a line with **Change the orders** (or **Change your call**…),
+  which brings the form back to send again, and the text box stays for more words. The now
+  line says "the GM has your orders". While the GM plays, **Stop after this fight** shows
+  as asked once a Stop is in `moves`. What was sent for which question is kept per viewer
+  (`T.ui.local` key `story.sent`).
+- `T.panels.story.pickHex(id)` picks a hex as the orders' travel (false when no orders form
+  is open or the hex is not in it); the Realm tab's hex entry offers **Travel here** while
+  `game/state.awaiting.kind` is `orders` and calls it, then `T.app.go('story')`.
+- `T.panels.story.withGm(view)` → the move with the GM for the question showing, or null;
+  `T.panels.story.goTo(sectionId)` opens the Story at a section.
+
+The Rules tab has a filter box: sections whose title or text holds the words show, open,
+with the words marked; the others hide until it is cleared.
+
 ### Hooks from the More panels (`80-more.js`)
 
 - **Opening the Story at a month.** A Months row calls `T.app.go('story')`, sets
@@ -706,7 +747,7 @@ The shell is `src/page.html`, `00-tokens.css`, `10-shell.css` and `00-core.js` �
   buttons: Story (a section or beat newer than the viewer last saw), Talk and More (a new
   aside), Fights (a new `state.lastFight`). What was seen is `T.ui.local` key `seen`
   (`{story, talk, fights}`); a tab is seen while it is in view (the Story always from
-  900 px). It runs after the shell's own Story dot in the same render and wins.
+  900 px). They are the only unread marks (the shell has none of its own).
 - `T.more.monthsOf(view)` gives the Months rows' data (month, route, pips, xp, loot,
   deaths, world) for a panel that wants it.
 
@@ -750,3 +791,12 @@ confirms it, a read-only viewer, a slow first load from the cache, a dead bridge
 recovered, a beat landing live, the two zones at 1280 px, the page with no store, a
 revoked store, no `window.claude`, and both themes. `e2e/50-story.mjs` tests the stub answer
 box; the Story replaces it.
+
+`node dnd-crunch/web/e2e-loop.mjs [--keep] [--shots DIR]` plays the GM's loop with the real
+GM side in a scratch campaign (realms3's world, `new --sheet fresh`): `table.py new`, `wake`
+and the orders form, batches applied with `db.mjs apply` and recorded with `sent`; the page
+sends the month's orders from the form (and its wake); `db.mjs moves` and `table.py moves`
+read them; `open` and a `beat` stream a fight onto the live card (and the HUD); `section`
+answers the orders and `state` asks for the next month's; the page shows the section with
+the player's words, the fight card's HP chart, and the box back at the orders form;
+`check_table` stays clean. About 10 s.

@@ -131,3 +131,8 @@
 @media (min-width: 900px) { .jump { bottom: 16px; } }
 @media (prefers-reduced-motion: reduce) { .wait i { animation: none; width: 35%; } .sec.live .beat:last-child { animation: none; } }
 .live-wrap { display: grid; min-width: 0; }
+/* the answer sent, with the GM: the player's words and a way to change them */
+.box .form .sent-row > .label { display: inline-flex; align-items: center; gap: 6px; color: var(--good); }
+.box .form .sent-row .sent-words { margin: 0; font-size: .95rem; color: var(--ink-2); }
+.box .form .sent-row .seg { justify-content: flex-start; }
+.answer .stop[aria-pressed="true"] { opacity: .7; }

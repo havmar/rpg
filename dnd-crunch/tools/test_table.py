@@ -841,5 +841,97 @@ class Secrecy(Case):
                 self.assertNotIn(deed, whole, f"seed {seed}: a --gm line reached the store: {ln}")
 
 
+class Playtest(Case):
+    """What the table's two-month playtest (sessions/2026-10-25-table-playtest.md) fixed."""
+
+    def test_new_with_a_fresh_sheet(self):
+        (self.d / "morten.json").unlink()
+        _, err = self.t("new", self.d, "--sheet", "fresh", "--hex", "B5")
+        self.assertIn("fresh Wizard 3", err)
+        m = self.doc("game", "morten")
+        self.assertEqual((m["xp"], m["coins"]["on"], m["hp"]), (900, "47 GP 7 SP 5 CP", 20))
+        self.shape(m, MORTEN, "game/morten")
+
+    def test_fight_told_after_gets_an_hp_track(self):
+        self.new()
+        f = self.md("f.md", "---\nkind: fight\ntitle: Room 1.2 · 2 Warrior Infantry (CR 1/8 each)\n"
+                    'foes: [{"name": "Warrior Infantry", "cr": "1/8", "ac": 13, "hp": 9, "maxHp": 9, '
+                    '"speed": "6 sq (9 m)", "attacks": ["Spear +3, 1d6+1 piercing"], "notes": "", "count": 2}]\n'
+                    "rounds: 3\nhpBefore: 20\n---\nCleared.\n\n### Trace\n"
+                    "- R1 foe/attack: Warrior A stabs: 7 piercing dmg. Morten 20 → 13 HP.\n"
+                    "- R2 morten/cast: Magic Missile: 9 force dmg. Warrior A 9 → 0 HP, dead.\n"
+                    "- R3 morten/cast: Thunderwave: B dead.\n")
+        self.t("section", self.d, "--file", f)
+        s = json.loads(sorted((self.d / "story").glob("s*.json"))[-1].read_text())
+        track = {t["name"]: t["hp"] for t in s["fight"]["hpTrack"]}
+        self.assertEqual(track, {"Morten": [20, 13, 13, 13], "Warrior Infantry A": [9, 9, 0, 0],
+                                 "Warrior Infantry B": [9, 9, 9, 0]})
+        # nothing to go by in the trace: the start and the end, the rounds between unknown
+        g = self.md("g.md", "---\nkind: fight\ntitle: Room 1.3 · Panther (CR 1/4)\n"
+                    'foes: [{"name": "Panther", "cr": "1/4", "ac": 13, "hp": 13, "maxHp": 13, "speed": "10 sq", '
+                    '"attacks": [], "notes": "", "count": 1}]\nrounds: 2\n---\nOne blast.\n')
+        self.t("section", self.d, "--file", g)
+        s = json.loads(sorted((self.d / "story").glob("s*.json"))[-1].read_text())
+        self.assertEqual([t["hp"] for t in s["fight"]["hpTrack"]], [[20, None, 20], [13, None, 0]])
+
+    def test_beat_hp_moves_the_hud_and_the_sheet(self):
+        self.new()
+        self.t("open", self.d, "--kind", "fight", "--title", "Room 2.4 · Darkmantle (CR 1/2)",
+               "--foes", json.dumps(FOES["darkmantle"]))
+        self.t("sent", self.d)
+        out, _ = self.t("beat", self.d, "--round", 1, "--text", "A crit: 10 dmg.", "--hp", "10/20")
+        got = [(w["collection"], w["doc_id"]) for w in self.batches(out)[0]["writes"]]
+        self.assertEqual(got[0][0], "live")
+        self.assertIn(("game", "state"), got)
+        self.assertEqual(self.doc("game", "state")["hud"]["hp"], 10)
+        self.assertEqual(self.doc("game", "morten")["hp"], 10)
+        self.t("sent", self.d)
+        out, _ = self.t("beat", self.d, "--round", 2, "--text", "A miss.", "--hp", "10/20")
+        self.assertEqual(len(self.batches(out)[0]["writes"]), 1, "HP unchanged: the beat alone")
+
+    def test_words_and_small_verbs(self):
+        self.new()
+        self.t("state", self.d, "--awaiting", "orders", "--prompt", "Orders")
+        self.t("sent", self.d)
+        mv = [{"v": 1, "seq": 1, "at": "2026-10-25T09:00:00Z", "kind": "orders", "travel": "B5",
+               "mission": {"type": "delve", "target": "floor 1"}, "action": None, "give": None, "plan": "Safe XP."},
+              {"v": 1, "seq": 2, "at": "2026-10-25T09:01:00Z", "kind": "play", "scope": "stop", "text": "Fire Bolt them."}]
+        self.t("moves", self.d, "--file", self.md("m.json", json.dumps(mv)))
+        self.assertEqual(T.Camp(self.d).page["moves"]["m0001"]["text"],
+                         "Orders: to the tower's desert (B5) · Delve floor 1 under B5 (cleared) · the tower saves. Safe XP.")
+        self.assertEqual(T.Camp(self.d).page["moves"]["m0002"]["text"], "Stop after this: Fire Bolt them.")
+        _, err = self.t("morten", self.d, "--condition", "-Prone", "--condition", "+Poisoned", "--habit", "Purse home.")
+        self.assertIn("condition Poisoned", err)
+        self.assertIn("habit added", err)
+        f = self.md("r.md", "---\nkind: rest\ntitle: A rest\n---\nRested.\n")
+        self.t("section", self.d, "--file", f, "--answers", "none")
+        self.assertEqual(sorted(T.Camp(self.d).page["moves"]), ["m0001", "m0002"], "--answers none answers nothing")
+        self.t("sent", self.d)
+        self.t("realm", self.d)
+        _, err = self.t("realm", self.d)
+        self.assertIn("unchanged", err)
+
+    def test_rules_and_next_month_in_words(self):
+        self.new()
+        rules = self.doc("game", "rules")
+        for s in rules["sections"]:
+            self.assertNotRegex(s["md"], r"`|python3|\.json\b|dnd-crunch/", s["id"])
+        realm = self.doc("game", "realm")
+        self.assertEqual(len(realm["nextWords"]), len(realm["report"]["next"]))
+        for ln in realm["nextWords"]:
+            self.assertNotRegex(ln, r"\ba\d+\b|\bT\d\b|\(L\d|1 = encounter", ln)
+        self.assertEqual(realm["dissidents"], [])
+        self.assertNotIn("the Goblinkind's", json.dumps(self.doc("game", "state")))
+
+    def test_roll_label_after_the_fact(self):
+        roll = [sys.executable, str(HERE / "roll.py"), "--keep", str(self.d)]
+        subprocess.run(roll + ["1d20+5", "--vs", "DC 11", "1d20+4"], capture_output=True, check=True)
+        subprocess.run(roll + ["--label", "fizzle", "--label", "hit:AC 14"], capture_output=True, check=True)
+        kept = [json.loads(x) for x in (self.d / "live" / "rolls.jsonl").read_text().splitlines()]
+        self.assertEqual([(d["result"], d["vs"]) for d in kept], [("fizzle", "DC 11"), ("hit", "AC 14")])
+        bad = subprocess.run(roll + ["--label", "hit", "--label", "hit", "--label", "hit"], capture_output=True, text=True)
+        self.assertNotEqual(bad.returncode, 0)
+
+
 if __name__ == "__main__":
     unittest.main()

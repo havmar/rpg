@@ -214,9 +214,18 @@
       const c = 'FCW'[i];
       return `<span title="${esc(r.words[k] || '')}">${icon(ATTR[c][0])}${ATTR[c][1]} <b>${esc(fmt.n(t[k]))}</b></span>`;
     }).join('<span class="dot" aria-hidden="true">·</span>');
-    const gold = `<p class="gold"><b>${esc(fmt.gp(t.treasury) || '? GP')}</b> in the coffers, <b>${esc(t.income !== null ? `${fmt.signed(t.income)} GP` : '? GP')}</b> a month</p>`;
-    const next = r.report.next.length
-      ? `<div class="nextm"><span class="label">What month ${esc(r.month !== null ? r.month : (r.report.month || 0) + 1)} can bring</span><div class="chips">${nextChips(r.report.next)}</div></div>`
+    // a hex of the tower's with another realm's soldiers in it pays it nothing: say so
+    const held = t.hexes.map((id) => m.byId.get(id)).filter(Boolean)
+      .map((h) => ({ h, by: h.assets.filter((a) => a.owner !== h.holder && typeOf(a, r.kinds[a.name]) === 'F').map((a) => a.owner) }))
+      .filter((x) => x.by.length);
+    const why = held.length ? ` <small class="warn">(${esc(held.map((x) => `${poss(x.by[0])} soldiers hold ${x.h.id}`).join('; '))}: no income from it)</small>` : '';
+    const gold = `<p class="gold"><b>${esc(fmt.gp(t.treasury) || '? GP')}</b> in the coffers, <b>${esc(t.income !== null ? `${fmt.signed(t.income)} GP` : '? GP')}</b> a month${why}</p>`;
+    const lines = r.nextWords.length ? r.nextWords : r.report.next;
+    const next = lines.length
+      ? `<div class="nextm"><span class="label">What month ${esc(r.month !== null ? r.month : (r.report.month || 0) + 1)} can bring</span><div class="chips">${nextChips(lines)}</div></div>`
+      : '';
+    const found = r.dissidents.length
+      ? `<div class="sub"><span class="label">Dissidents found</span><ul class="heard">${r.dissidents.map((d) => `<li class="${fac(d.realm)}">${icon('speech')}<span><b>${esc(d.name)}</b>, of ${esc(the(d.realm))}${d.hex ? ` in ${esc(cap(nameOf(m, d.hex)))}` : ''}: the tower can buy Seditionists there</span></li>`).join('')}</ul></div>`
       : '';
     return '<div class="card tower">'
       + `<h3>${icon('tower')}The tower<small>yours</small></h3>`
@@ -228,6 +237,7 @@
       + (t.hexes.length ? `<div class="sub"><span class="label">Its land</span><div class="hexbtns">${t.hexes.map((id) => hexBtn(m, id)).join('')}</div></div>` : '')
       + `<div class="rel"><span class="label">Allies</span><span class="links">${allies.length ? allies.map(realmLink).join('') : '<span class="muted">none</span>'}</span>`
       + `<span class="label">Hostile</span><span class="links">${hostile.length ? hostile.map(realmLink).join('') : '<span class="muted">nobody</span>'}</span></div>`
+      + found
       + next
       + '</div>';
   }
@@ -457,7 +467,7 @@
     const occupiers = h.assets.filter((a) => a.owner !== h.holder && typeOf(a, r.kinds[a.name]) === 'F').map((a) => a.owner);
     const inc = typeof h.income === 'number' ? h.income : lv !== null ? lv * 10 : null;
     const income = inc === 0 && occupiers.length
-      ? `pays ${home ? 'the tower' : 'them'} nothing while ${esc(the(occupiers[0]))}' soldiers stand in it`
+      ? `pays ${home ? 'the tower' : 'them'} nothing while ${esc(poss(occupiers[0]))} soldiers stand in it`
       : inc !== null ? `${esc(fmt.gp(inc))} a month to ${home ? 'the tower' : 'them'}` : '';
     const way = m.way.get(id);
     const dist = d === 0 ? '<b class="brass">Morten is here</b>'
@@ -484,11 +494,18 @@
       ? `<div class="pieces">${h.assets.map((a) => pieceRow(m, a, h)).join('')}</div>`
         + (h.assets.some((a) => !isTower(a.owner)) ? '<p class="muted small">A Strike or a Rob is a fight for Morten, and turns the owner hostile to the tower for 3 months (6 at a seat).</p>' : '')
       : '<p class="muted small">Nothing the tower can see stands here.</p>';
+    // the orders form is open: send Morten here from the map (the Story's form takes it)
+    const aw = m.state && m.state.status === 'awaiting' && m.state.awaiting && m.state.awaiting.kind === 'orders' ? m.state.awaiting.orders : null;
+    const oh = aw ? aw.hexes.find((x) => x.id === id) : null;
+    const travel = oh
+      ? `<div class="travel-here"><button type="button" class="primary" data-travel-here="${esc(id)}">${icon('boots')}Travel here<small>${esc(oh.days === 0 ? 'stay: 0 days' : days(oh.days))}</small></button><span class="muted small">for this month's orders, in the Story</span></div>`
+      : '';
     const evs = m.evAt.get(id) || [];
     const heard = r.rumours[id] || [];
     const nb = m.nbrs.get(id) || [];
     return `<h3>${esc(cap(nameOf(m, id)))}${lv !== null ? `, level ${esc(lv)}` : ''}${home ? ' · home' : ''}<span class="code">${esc(id)}</span></h3>`
       + `<p class="line">${[held, income, dist].filter(Boolean).join(' · ')}${river}.</p>`
+      + travel
       + (lv !== null ? `<p class="line lvl-line">Level ${esc(lv)}: floor ${esc(lv)} lies under it, and its wanderers are level-${esc(lv)} trouble.${seat}</p>` : seat ? `<p class="line">${seat.trim()}</p>` : '')
       + `<span class="label">Pieces here · ${esc(h.assets.length)}</span>${pieces}`
       + (more.length ? `<span class="label">Morten's missions here</span><div class="do">${more.join('')}</div>` : '')
@@ -615,6 +632,12 @@
       return;
     }
     if (t.closest('[data-ev-close]')) { evShown = null; paint(); return; }
+    const th = t.closest('[data-travel-here]');
+    if (th) {
+      const sp = T.panels.story;
+      if (sp && typeof sp.pickHex === 'function' && sp.pickHex(th.getAttribute('data-travel-here'))) T.app.go('story');
+      return;
+    }
     const hx = t.closest('[data-hex]');
     if (hx) {
       pick(hx.getAttribute('data-hex'), true);

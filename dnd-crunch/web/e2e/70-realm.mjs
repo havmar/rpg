@@ -173,6 +173,31 @@ export const checks = [
     },
   },
   {
+    name: 'realm: "Travel here" in a hex entry picks the orders\' travel in the Story',
+    async run(t) {
+      const st = (await t.api.doc('game', 'state')).data;
+      t.expect(st.awaiting && st.awaiting.kind === 'orders', 'the fixture awaits orders');
+      const far = st.awaiting.orders.hexes.slice().sort((a, b) => b.days - a.days)[0];
+      const page = await openRealm(t);
+      await page.click(`#realm svg.map .hit[data-hex="${far.id}"]`);
+      const btn = page.locator(`#realm [data-travel-here="${far.id}"]`);
+      await t.waitFor(() => btn.count(), 'the Travel here button');
+      t.expect(/Travel here/.test(await btn.innerText()), 'it says Travel here, with the days');
+      const bb = await btn.boundingBox();
+      t.expect(bb && bb.height >= 44, `a 44 px target: ${JSON.stringify(bb)}`);
+      await t.shot(page, 'phone-realm-travel-here');
+      await btn.click();
+      await t.waitFor(() => page.evaluate(() => T.app.nav().view === 'story'), 'the Story opens');
+      await t.waitFor(() => page.locator(`#story [data-f="travel"][data-v="${far.id}"][aria-pressed="true"]`).count(), `${far.id} picked in the orders form (even though it is far)`);
+      // with no orders asked, the entry offers no travel
+      await t.api.write({ op: 'update', collection: 'game', doc_id: 'state', data: { status: 'playing', awaiting: { kind: 'none', prompt: '', orders: null, fight: null, turn: null } } });
+      await page.click('#tabs button[data-view="realm"]');
+      await t.waitFor(() => page.evaluate(() => T.app.view().state.status === 'playing'), 'the state change');
+      await page.waitForTimeout(100);
+      t.expect(!(await page.locator('#realm [data-travel-here]').count()), 'no Travel here while the GM plays');
+    },
+  },
+  {
     name: 'realm: no map doc renders a quiet card',
     async run(t) {
       await t.api.write({ op: 'delete', collection: 'game', doc_id: 'realm' });

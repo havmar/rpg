@@ -27,7 +27,7 @@ be run again; `resend --version K=N` re-pins after a refused pin instead; `sent 
 records a send that stopped part way. `sent` with nothing pending removes the snapshot.
 
 Usage:
-  table.py new DIR [--file opening.md] [--month N --day N --clock HH:MM --hex B5 --where TEXT]
+  table.py new DIR [--file opening.md] [--sheet fresh|FILE] [--month N --day N --clock HH:MM --hex B5 --where TEXT]
   table.py open DIR --kind fight --title TEXT [--where TEXT] [--foes FILE|JSON]
   table.py beat DIR --text TEXT [--round N] [--hp 11/20] [--foe "Darkmantle=13/22" ...]
                 [--line "WHO/KIND[/N]: TEXT" ...] [--die "EXPR:FACES[:VS[:RESULT]]" ...]
@@ -309,7 +309,11 @@ def build_lines(specs, dice, rnd=None, default=None, fight=False):
     for i, (r, who, kind, n, text) in enumerate(parsed):
         take = n if n is not None else (len(dice) if i == last_free else 0)
         if take > len(dice):
-            raise Bad(f"line '{text[:40]}…' takes {take} dice, only {len(dice)} left")
+            hint = ""
+            if last_free is not None and last_free < i:
+                hint = (f" (line '{parsed[last_free][4][:30]}…' has no /N, so it took the rest:"
+                        " give it /0 or its count)")
+            raise Bad(f"line '{text[:40]}…' takes {take} dice, only {len(dice)} left{hint}")
         line = {"text": text, "who": who, "kind": kind}
         r = r if r is not None else rnd
         if fight and r is not None:
@@ -763,7 +767,10 @@ def hex_name(mp, h, extra=None):
     if extra and h in extra:
         return extra[h]
     x = hex_by_id(mp)[h]
-    who = "the tower's" if x["holder"] == "tower" else f"the {R.poss(x['holder'])}"
+    holder = x["holder"]
+    # "the Elves' mountains", but "Goblinkind's savanna" (a people named in the singular)
+    who = ("the tower's" if holder == "tower" else
+           f"the {R.poss(holder)}" if holder.endswith("s") else R.poss(holder))
     return f"{who} {x['biome']}" + (" with its lake" if x.get("lake") else "")
 
 
@@ -917,6 +924,43 @@ def floors_public(c):
     return out
 
 
+def next_words(mp, line):
+    """The engine's Next-month line in words for the page: pieces named, not numbered (a6),
+    tiers spelled out, the hex in words, the wandering roll as a chance."""
+    assets = {a["id"]: a for h in mp.get("hexes", []) for a in h.get("assets", [])}
+
+    def whose(owner):
+        return ("the tower's" if owner == "tower" else
+                f"the {R.poss(owner)}" if owner.endswith("s") else R.poss(owner))
+
+    def piece(i):
+        a = assets.get(i)
+        return f"{whose(a['owner'])} {a['name']}" if a else "a piece"
+    t = re.sub(r"\b(a\d+) \(([^,()]+), T(\d)\)", lambda mt: f"{piece(mt.group(1))} (tier {mt.group(3)})", line)
+    t = re.sub(r"\b(a\d+)\b", lambda mt: piece(mt.group(1)), t)
+    t = re.sub(r"\(L(\d+), (\w+), ([^)]+)\)",
+               lambda mt: f"({whose(mt.group(3))} level-{mt.group(1)} {mt.group(2)})", t)
+    t = re.sub(r"the (\w+)' seat (\w\d) has no Force asset", r"the \1' seat \2 has no soldiers at home", t)
+    t = re.sub(r"the (\w+)'s seat (\w\d) has no Force asset", r"\1's seat \2 has no soldiers at home", t)
+    t = re.sub(r"d6 each day outside (\w+) \(1 = encounter\)",
+               r"a 1-in-6 chance of a wandering fight each day outside \1", t)
+    t = re.sub(r"\bT(\d)\b", r"tier \1", t)
+    t = re.sub(r"\((\d[\d,]*)\)", r"(\1 GP)", t)  # the actions' prices
+    t = re.sub(r"\btheir HP (\d+)/(\d+)", r"their regime's \1/\2 HP", t)
+    return t
+
+
+def dissidents(c):
+    """The dissidents the tower has found (a won Contact names one): public to the tower."""
+    st = jload(c.d / "realms.json") or {}
+    out = []
+    for n, f in (st.get("factions") or {}).items():
+        d = f.get("dissident") if isinstance(f, dict) else None
+        if isinstance(d, dict) and d.get("name"):
+            out.append({"realm": n, "name": d["name"], "hex": d.get("hex")})
+    return out
+
+
 def proj_realm(c):
     mp = copy.deepcopy(c.need_map())
     extra = c.page.get("realm", {})
@@ -925,6 +969,8 @@ def proj_realm(c):
     return {"v": 1, **mp, "words": WORDS, "kinds": kinds(), "rumours": rum,
             "floors": floors_public(c), "days": days_from(mp, mp["morten"]["hex"]),
             "eventsWords": events_words(mp),
+            "nextWords": [next_words(mp, x) for x in (mp.get("report") or {}).get("next", [])],
+            "dissidents": dissidents(c),
             "hexNames": {h["id"]: hex_name(mp, h["id"], extra.get("hexNames")) for h in mp["hexes"]}}
 
 
@@ -947,6 +993,58 @@ def cut(text, heading):
     return "\n".join(out).strip() + "\n"
 
 
+CODEY = re.compile(r"`[^`]*(?:/|\.md|\.json|\.py|--|python3|game/|Report style:)[^`]*`")
+
+
+def player_md(md):
+    """The rules as the player reads them: the GM's file names, commands and paths are
+    for the GM. Each paragraph and bullet (unwrapped to one line) loses a parenthesis that
+    names one, then a sentence that names one (a bullet left with nothing goes); the other
+    `code` spans (1d12, Deaths: N) become plain text. Tables and headings stay as they are."""
+    blocks_, cur = [], None
+    for ln in md.split("\n"):
+        bullet = re.match(r"^(\s*)([-*]|\d+\.)\s+(.*)$", ln)
+        if not ln.strip() or ln.lstrip().startswith(("|", "#")):
+            cur = None
+            blocks_.append(["raw", "", ln])
+        elif bullet:
+            cur = ["item", f"{bullet.group(1)}{bullet.group(2)} ", bullet.group(3)]
+            blocks_.append(cur)
+        elif cur is not None:
+            cur[2] += " " + ln.strip()
+        else:
+            cur = ["para", "", ln.strip()]
+            blocks_.append(cur)
+    paren = re.compile(r"\s*\([^()]*" + CODEY.pattern + r"[^()]*\)")
+
+    def word(mt):  # a GM's span the sentence still needs: said in words
+        t = mt.group(0).strip("`")
+        if "srd/Equipment" in t:
+            return "the SRD's equipment lists"
+        if re.search(r"realms\.py|encounter|python3|--", t):
+            return "the engine"
+        if "README" in t or t.startswith("game/"):
+            return "the page"
+        if t.endswith("CLAUDE.md"):
+            return "the game's rules"
+        if t.endswith("realms.md"):
+            return "the Realms rules"
+        return "the GM's notes"
+    out = []
+    for kind, head, body in blocks_:
+        if kind != "raw":
+            body = re.sub(r"\s*\((?:[\w-]+/)*[\w-]+\.(?:md|json)\)", "", paren.sub("", body))
+            # a sentence that is only about the GM's files goes; one that needs the span keeps it in words
+            parts = re.split(r"(?<=[.;!?])\s+(?=[A-Z*(“\"`])", body)
+            keep = [x for x in parts if not (CODEY.search(x) and re.fullmatch(
+                r"(?:\s*(?:" + CODEY.pattern + r")\s*(?:is|are|feeds|holds|goes in)?[^.;]*[.;]?\s*)+", x))]
+            if not keep:
+                continue
+            body = CODEY.sub(word, " ".join(keep))
+        out.append(head + re.sub(r"`([^`]*)`", r"\1", body))
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(out)).strip() + "\n"
+
+
 def proj_rules(c):
     secs = []
     for sid_, title, src, heading in RULES:
@@ -958,7 +1056,7 @@ def proj_rules(c):
             md = cut(text, heading)
         else:
             md = "\n".join(ln for ln in text.splitlines() if not ln.startswith("# ")).strip() + "\n"
-        secs.append({"id": sid_, "title": title, "md": md})
+        secs.append({"id": sid_, "title": title, "md": player_md(md)})
     return {"v": 1, "sections": secs}
 
 
@@ -1161,16 +1259,52 @@ def move_words(m, mp=None):
     return f"unknown kind {q(k)}"
 
 
-def move_text(m):
+SCOPE_WORDS = {"month": "a month", "matters": "until something matters", "fight": "this fight",
+               "round": "a round"}
+CHOICE_WORDS = {"fight": "Fight it", "avoid": "Avoid it", "plan": "Plan"}
+
+
+def move_text(m, c=None):
+    """The player's words as the page shows them under the section that answers them: plain
+    sentences, never the move's fields (the orders' hex names and labels from the form the
+    move answered)."""
     k = m.get("kind")
     if k in ("say", "turn"):
         return m.get("text")
     if k == "fight":
-        return f"{m.get('choice')}: {m.get('text') or ''}".strip(": ")
-    if k == "orders":
-        return m.get("plan") or move_words(m)
+        return CHOICE_WORDS.get(m.get("choice"), "Fight it") + (f": {m['text']}" if m.get("text") else "")
     if k == "play":
-        return f"{m.get('scope')}" + (f": {m['text']}" if m.get("text") else "")
+        t = f": {m['text']}" if m.get("text") else ""
+        return f"Stop after this{t}" if m.get("scope") == "stop" else f"Play {SCOPE_WORDS.get(m.get('scope'), m.get('scope'))}{t}"
+    if k == "orders":
+        st = (c.state or {}) if c is not None else {}
+        form = ((st.get("awaiting") or {}).get("orders")) or {}
+        mp = c.map if c is not None else None
+        bits = []
+        t = m.get("travel")
+        if t:
+            h = next((x for x in form.get("hexes", []) if x.get("id") == t), None)
+            name = h["name"] if h else (hex_name(mp, t) if mp and t in hex_by_id(mp) else "")
+            bits.append(f"to {name} ({t})" if name else f"to {t}")
+        mi = m.get("mission")
+        if mi:
+            f = next((x for x in form.get("missions", []) if x.get("type") == mi.get("type")
+                      and x.get("target") == mi.get("target")), None)
+            bits.append(f["label"] if f else f"{mi.get('type')} {mi.get('target')}")
+        act = m.get("action")
+        if act:
+            f = next((x for x in form.get("actions", []) if x.get("action") == act), None)
+            bits.append(f"the tower: {f['label'] if f else act}")
+        else:
+            bits.append("the tower saves")
+        g = m.get("give")
+        if g:
+            bits.append(f"give {fmt_int(g.get('gp'))} GP to the {g.get('realm')}")
+        return "Orders: " + " · ".join(bits) + (f". {m['plan']}" if m.get("plan") else "")
+    if k == "take":
+        return "I take over Morten." if m.get("who") == "you" else "The GM plays Morten again."
+    if k == "table":
+        return "New table settings"
     return move_words(m)
 
 
@@ -1267,6 +1401,8 @@ def pick_moves(c, spec):
     for s in spec:
         for mid in s.split(","):
             mid = mid.strip()
+            if not mid or mid == "none":
+                continue
             if mid not in c.page["moves"]:
                 raise Bad(f"move {mid} is not among the moves read (run `moves` first)")
             out.append(mid)
@@ -1367,6 +1503,13 @@ def cmd_new(a):
     c = Camp(a.dir, need_page=False)
     if (c.d / "page.json").exists() and not a.force:
         raise Bad(f"{c.d / 'page.json'} exists: this campaign has a page (--force to reseed)")
+    if c.morten is None and a.sheet:
+        src = HERE / "morten-wizard3.json" if a.sheet == "fresh" else Path(a.sheet)
+        c.morten = jload(src)
+        if c.morten is None:
+            raise Bad(f"no sheet at {src}")
+        jdump(c.d / "morten.json", c.morten)
+        note(f"morten.json: {'a fresh Wizard 3 (Evoker), 900 XP, 47 GP 7 SP 5 CP' if a.sheet == 'fresh' else src}")
     c.need_morten()
     c.need_map()
     if not c.page["pending"]:
@@ -1436,9 +1579,11 @@ def cmd_beat(a):
         "morten": dict(head["morten"]),
         "foes": [{"name": n, "hp": f.get("hp"), "maxHp": f.get("maxHp", f.get("hp"))}
                  for n, f in foe_names(head["foes"])]}
+    hp_moved = False
     if a.hp:
         hp, _, mx = a.hp.partition("/")
         st["morten"] = {"hp": int(hp), "maxHp": int(mx or m["maxHp"])}
+        hp_moved = m.get("hp") != int(hp)
         m["hp"] = int(hp)
     for spec in a.foe:
         name, _, val = spec.partition("=")
@@ -1464,6 +1609,10 @@ def cmd_beat(a):
     c.take_rolls()
     beat = c.put("live", sid("b", seq), beat)
     jdump(c.d / "live" / f"{sid('b', seq)}.json", beat)
+    if hp_moved:  # the sheet and the HUD follow the fight (same batch, after the beat)
+        c.sync("game", "morten", proj_morten(c))
+        if c.state is not None:
+            c.put("game", "state", proj_state(c))
     c.save()
     render_all(c)
     c.flush()
@@ -1494,17 +1643,120 @@ def hp_track(head, beats, rounds):
     return track
 
 
-def build_fight(fm, head, beats, m):
+HP_CHANGE = re.compile(r"((?:[A-Z][\w'’-]*\s)*[A-Z][\w'’-]*)\s+(\d+)\s*→\s*(\d+)\s*HP")
+KILLED = re.compile(r"\b((?:[A-Z][\w'’-]*\s)*[A-Z][\w'’-]*(?:(?:,\s*|\s+and\s+)[A-Z]\b)*)\s+(?:is\s+|are\s+|both\s+)?(?:dead|killed|destroyed)\b")
+
+
+def trace_changes(names, foes, trace, skip_before=1):
+    """{round: [(name, hp)]} from the trace's "Name 20 → 15 HP" and "C dead" lines, and the
+    first HP each name was seen at (rounds before skip_before are left to the beats)."""
+    def who(phrase):
+        phrase = phrase.strip()
+        if phrase.split()[0] in ("Morten", "Morten's"):
+            return ["Morten"]
+        words = phrase.split()
+        for i in range(len(words)):  # the longest tail of the phrase that names someone
+            tail = " ".join(words[i:])
+            hit = [n for n, _ in names if n == tail or n.endswith(" " + tail)]
+            if hit and (len(hit) == 1 or tail == hit[0]):
+                return hit[:1]
+            base = [n for n, f in foes if f["name"] == tail]
+            if len(base) == 1:
+                return base
+        return []
+
+    changes, first = {}, {}
+    for ln in trace:
+        r = ln.get("round")
+        if r is None or r < skip_before:
+            continue
+        t = ln.get("text") or ""
+        for mt in HP_CHANGE.finditer(t):
+            for n in who(mt.group(1)):
+                first.setdefault(n, int(mt.group(2)))
+                changes.setdefault(r, []).append((n, int(mt.group(3))))
+        for mt in KILLED.finditer(t):
+            for part in re.split(r",\s*|\s+and\s+", mt.group(1)):
+                for n in (who(part) if n_ok(part) else []):
+                    first.setdefault(n, None)
+                    changes.setdefault(r, []).append((n, 0))
+    return changes, first
+
+
+def trace_track(fm, trace, m, rounds):
+    """An HP track from a fight told after (no beats): Morten and each foe from the front
+    matter, moved by the trace's "Name 20 → 15 HP" and "C dead" lines, round by round."""
+    foes = foe_names(fm.get("foes") or [])
+    names = [("Morten", m.get("maxHp"))] + [(n, f.get("maxHp", f.get("hp"))) for n, f in foes]
+    rounds = rounds or max([ln["round"] for ln in trace if ln.get("round") is not None] or [0])
+    if not rounds or len(names) < 2:
+        return []
+    changes, first = trace_changes(names, foes, trace)
+    start = {n: mx for n, mx in names}
+    for n, v in first.items():
+        if v is not None and not (n == "Morten" and "hpBefore" in fm):
+            start[n] = v
+    if isinstance(fm.get("hpBefore"), int):
+        start["Morten"] = fm["hpBefore"]
+    if not first:
+        # nothing in the trace to go by: the start and the end alone (from the front matter
+        # and the sheet), the rounds between unknown (null), so the card still has its chart
+        end_foe = 0 if fm.get("outcome", "cleared") == "cleared" else None
+        out = []
+        for n, mx in names:
+            end = m.get("hp") if n == "Morten" else end_foe
+            out.append({"name": n, "max": mx, "hp": [start[n]] + [None] * (rounds - 1) + [end]})
+        return out
+    if "Morten" not in first and "hpBefore" not in fm:
+        start["Morten"] = m.get("hp")
+    track = []
+    for n, mx in names:
+        cur, hp = start[n], [start[n]]
+        for r in range(1, rounds + 1):
+            for x, v in changes.get(r, []):
+                if x == n:
+                    cur = v
+            hp.append(cur)
+        track.append({"name": n, "max": mx, "hp": hp})
+    return track
+
+
+def n_ok(part):
+    return part.strip() not in ("", "Both", "All", "Two", "Three", "Four")
+
+
+def extend_track(track, head, beats, trace, rounds):
+    """The rounds a section's own trace adds after its beats (the last round told at the
+    end): their HP lines move the beats' track on."""
+    last = max([b.get("round") or 0 for b in beats] or [0])
+    if rounds <= last:
+        return track
+    names = [(t["name"], t["max"]) for t in track]
+    changes, _ = trace_changes(names, foe_names(head.get("foes", [])), trace, skip_before=last + 1)
+    for t in track:
+        cur = t["hp"][-1] if t["hp"] else None
+        t["hp"] = t["hp"][:last + 1]
+        for r in range(last + 1, rounds + 1):
+            for x, v in changes.get(r, []):
+                if x == t["name"]:
+                    cur = v
+            t["hp"].append(cur)
+    return track
+
+
+def build_fight(fm, head, beats, m, trace=()):
     head = head or {"morten": {"hp": m["hp"], "maxHp": m["maxHp"]}, "foes": fm.get("foes") or [],
                     "lost": [], "xp": m["xp"]}
-    rounds = fm.get("rounds") or max([b.get("round") or 0 for b in beats] or [0])
+    rounds = fm.get("rounds") or max([b.get("round") or 0 for b in beats]
+                                     + [ln["round"] for ln in trace if ln.get("round") is not None] or [0])
     init = fm.get("initiative") or []
     if isinstance(init, str):
         init = [x.strip() for x in re.split(r"\s*[›>,]\s*", init) if x.strip()]
     lost = fm.get("lost")
     if lost is None:
         lost = [s for s in lost_spells(m) if s not in head.get("lost", [])]
-    track = fm.get("hpTrack") or (hp_track(head, beats, rounds) if beats else [])
+    track = fm.get("hpTrack") or (extend_track(hp_track(head, beats, rounds), head, beats, trace, rounds)
+                                  if beats else trace_track(fm, trace, m, rounds))
     return {"foes": fm.get("foes") or head.get("foes") or [], "difficulty": fm.get("difficulty"),
             "budget": fm.get("budget"), "xp": fm.get("xp"), "initiative": init, "rounds": rounds,
             "outcome": fm.get("outcome") or "cleared", "verdict": fm.get("verdict"),
@@ -1596,7 +1848,7 @@ def write_section(c, text, extra_dice, kind_default=None, close=True, answers=No
            "answered": answered,
            "after": {"hp": m["hp"], "maxHp": m["maxHp"], "xp": m["xp"],
                      "coins": m.get("coins", {}).get("on", "none"), "lost": lost_spells(m)},
-           "fight": build_fight(fm, head, beats, m) if kind == "fight" else None,
+           "fight": build_fight(fm, head, beats, m, trace) if kind == "fight" else None,
            "domain": build_domain(fm, parts, c) if kind == "domain" else None,
            "words": words}
     if kind == "aside":
@@ -1762,8 +2014,10 @@ def apply_morten(m, a):
         if cnd.startswith("-"):
             if cnd[1:] in conds:
                 conds.remove(cnd[1:])
+                ch.append(f"condition {cnd[1:]} ended")
         elif cnd.lstrip("+") not in conds:
             conds.append(cnd.lstrip("+"))
+            ch.append(f"condition {cnd.lstrip('+')}")
     if a.exhaustion is not None:
         m["exhaustion"] = num_change(m.get("exhaustion", 0), a.exhaustion, 0, 6)
     for key, val in (("inspiration", a.inspiration), ("freeArmor", a.free_armor),
@@ -1793,6 +2047,7 @@ def apply_morten(m, a):
         ch.append(f"deaths {m['deaths']}")
     for h in a.habit:
         m.setdefault("habits", []).append(h)
+        ch.append(f"habit added: {h[:40]}{'…' if len(h) > 40 else ''}")
     if a.habits:
         hb = jarg(a.habits)
         if not isinstance(hb, list):
@@ -1820,7 +2075,10 @@ def cmd_realm(a):
     for spec in a.hex_name:
         h, _, t = spec.partition("=")
         ex.setdefault("hexNames", {})[h] = t
-    c.sync("game", "realm", proj_realm(c), force=True)
+    before = len(c.writes)
+    c.sync("game", "realm", proj_realm(c))
+    if len(c.writes) == before:
+        note("game/realm unchanged since it was last written: nothing to send")
     render_all(c)
     c.flush()
 
@@ -1879,7 +2137,7 @@ def cmd_moves(a):
         rec = {"seq": body.get("seq") if isinstance(body, dict) and isinstance(body.get("seq"), int) else 0,
                "kind": body.get("kind") if isinstance(body, dict) else None, "ok": ok,
                "errors": errs, "body": body if ok else None,
-               "text": move_text(body) if ok else None}
+               "text": move_text(body, c) if ok else None}
         if re.fullmatch(r"[A-Za-z0-9_\-.~:@+]{1,200}", str(did)):
             c.page["moves"][did] = rec
             c.page["versions"][f"moves/{did}"] = ver
@@ -2346,8 +2604,10 @@ def main(argv=None):
     p = verb("new", "seed a campaign's page: every singleton and the opening",
              "Seed the page: writes game/state (fresh), game/morten (from morten.json), game/realm "
              "(from map.json), game/rules (cut from CLAUDE.md, realms.md, rules.md) and, with --file, "
-             "the opening section. Creates page.json. Needs morten.json and map.json.")
+             "the opening section. Creates page.json. Needs morten.json (or --sheet) and map.json.")
     p.add_argument("--file", help="the opening section (Markdown with front matter; kind opening)")
+    p.add_argument("--sheet", help="with no morten.json yet: 'fresh' (tools/morten-wizard3.json, the New game "
+                   "defaults' Morten: Wizard 3, 900 XP, 47 GP 7 SP 5 CP) or a JSON file to copy")
     p.add_argument("--campaign", help="the campaign's name (default: the folder's)")
     p.add_argument("--force", action="store_true", help="reseed a page that exists (keeps versions)")
     for k in ("month", "day"):
@@ -2368,7 +2628,7 @@ def main(argv=None):
     p.add_argument("--doing", help="what the GM is doing now")
     p.set_defaults(fn=cmd_open)
 
-    p = verb("beat", "one live/bNNNN: a round's text, lines, dice and HP (a one-write batch)",
+    p = verb("beat", "one live/bNNNN: a round's text, lines, dice and HP (one write; + the sheet and the HUD when --hp moves)",
              "One beat of the open section. The dice are the rolls in DIR/live/rolls.jsonl (from "
              "`roll.py --keep DIR`) then each --die, in order; each --line takes its N of them "
              "(WHO/KIND/N: TEXT), and the last line with no N takes the rest. With no --line, one "
@@ -2388,7 +2648,7 @@ def main(argv=None):
     p = verb("section", "one story/sNNNN from a Markdown file; settles the open section",
              "One section from a Markdown file with front matter (kind, title, month, day, clock, "
              "hex, where, headline; a fight adds foes, difficulty, budget, xp, initiative, outcome, "
-             "verdict, loot, lost, potion, rounds, hpTrack; values in JSON when they look like JSON). "
+             "verdict, loot, lost, potion, rounds, hpTrack (else built from the beats, or from the trace's \"A 19 → 14 HP\" and \"C dead\" lines; hpBefore: Morten's HP at the start); values in JSON when they look like JSON). "
              "The body: paragraphs (the first is the headline when there is no `headline:`), bullets "
              "'- **Label:** text', and '### Trace' with lines '- [R2 ]WHO/KIND[/N]: TEXT' taking "
              "the rolls in live/rolls.jsonl and each --die. A domain section uses '### The plan', "
@@ -2526,6 +2786,12 @@ def main(argv=None):
              "Render the Markdown only; nothing is sent.")
     p.set_defaults(fn=cmd_render)
 
+    argv = list(sys.argv[1:] if argv is None else argv)
+    i = 0
+    while i < len(argv) - 1:  # `--condition -Prone`: argparse would take -Prone for an option
+        if argv[i] in ("--condition", "--lose", "--regain") and re.match(r"^-[A-Za-z]", argv[i + 1]):
+            argv[i:i + 2] = [f"{argv[i]}={argv[i + 1]}"]
+        i += 1
     a = ap.parse_args(argv)
     try:
         a.fn(a)

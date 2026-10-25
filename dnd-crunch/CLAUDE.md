@@ -515,9 +515,9 @@ human can change any of them, before or during play.
 4. If the session is resumed by a fresh GM, read `state.md`, `character.md`,
    `gm-secrets.md` and the end of `transcript.md`, then continue.
 
-At the table, steps 2 and 3 become: write `morten.json` from the template sheet (its
-fields are `game/morten`'s in `web/README.md`), `rules.md`, and the world with `realms.py
-new`; publish the page and seed it (`web/README.md`, The first publish), where the opening
+At the table, steps 2 and 3 become: `rules.md` and the world with `realms.py new`, and
+Morten's sheet from `table.py new --sheet fresh` (`tools/morten-wizard3.json`, the template
+sheet as `morten.json`); publish the page and seed it (`web/README.md`, The first publish), where the opening
 section is the first reply (the world, Rumours, the Month 1 orders); then play one GM's
 turn per wake or call. A fresh GM resuming a table campaign reads `state.md` (rendered),
 `page.json` for the link, takes the page's watch with `ArtifactComments`, and plays the

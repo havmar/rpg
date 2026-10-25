@@ -69,6 +69,10 @@
   let picksSig = '';
   let allHexes = false;
   let lastMode = '';
+  let revise = ''; // the id of the sent move the player chose to change (the form shows again)
+  // the box's answer to the question showing now: {sig, kind, id} (id null while the write is
+  // in flight); kept per viewer so a reload still says the move is with the GM
+  let sentFor = (() => { const v = ui.local.get('story.sent', null); return v && typeof v === 'object' && typeof v.sig === 'string' ? v : null; })();
 
   const saved = ui.local.get('story.reading', null);
   if (U.isObj(saved)) {
@@ -155,9 +159,9 @@
     const a = s.after;
     if (!a) return '';
     const bits = [];
-    if (isNum(a.hp)) bits.push(`<span>HP <b>${esc(fmt.hp(a.hp, a.maxHp))}</b></span>`);
-    if (isNum(a.xp)) bits.push(`<span><b>${esc(fmt.xp(a.xp))}</b></span>`);
-    if (a.coins) bits.push(`<span>on him <b>${esc(a.coins)}</b></span>`);
+    if (isNum(a.hp)) bits.push(`<span>${icon('heart')}<b>${esc(fmt.hp(a.hp, a.maxHp))}</b></span>`);
+    if (isNum(a.xp)) bits.push(`<span>${icon('spark')}<b>${esc(fmt.xp(a.xp))}</b></span>`);
+    if (a.coins) bits.push(/^(none|0( GP)?)$/i.test(a.coins) ? '<span>no coins on him</span>' : `<span>${icon('coins')}<b>${esc(a.coins)}</b> on him</span>`);
     if (a.lost.length) bits.push(`<span>lost <b>${esc(a.lost.join(', '))}</b></span>`);
     return bits.length ? `<p class="result">${bits.join('')}</p>` : '';
   }
@@ -322,8 +326,11 @@
       case 'orders': {
         const bits = [];
         if (m.travel) bits.push(`to ${hexName(view, m.travel)}`);
-        if (m.mission) bits.push(`${m.mission.type} ${m.mission.target}`);
-        bits.push(m.action ? `the tower: ${m.action}` : 'the tower saves');
+        const form = view.state && view.state.awaiting.orders;
+        const mi = m.mission && form ? form.missions.find((x) => x.type === m.mission.type && x.target === m.mission.target) : null;
+        const ac = m.action && form ? form.actions.find((x) => x.action === m.action) : null;
+        if (m.mission) bits.push(mi ? mi.label : `${m.mission.type} ${m.mission.target}`);
+        bits.push(m.action ? `the tower: ${ac ? ac.label : m.action.replace(/^(\w+):([^@]*)(?:@(.+))?$/, (x, v, k, h) => `${v} ${k}${h ? ` in ${h}` : ''}`)}` : 'the tower saves');
         if (m.give) bits.push(`give ${fmt.gp(m.give.gp)} to the ${m.give.realm}`);
         return `Orders: ${bits.join(' · ')}${m.plan ? `. ${m.plan}` : ''}`;
       }
@@ -725,6 +732,64 @@
   }
 
   // ---------- the answer box ----------
+  /** The box's face: the GM's question, or 'sent' while the player's answer to it is with
+   * the GM (unless they chose to change it). */
+  /** What the GM is asking now, as a key: a new question (or the same asked again later in
+   * the month) gets a fresh form. */
+  function sigOf(view, mode) {
+    const st = view.state;
+    const a = st ? st.awaiting : null;
+    return [mode, a && a.kind, a && a.prompt, st && st.month, st && st.day, a && a.fight && a.fight.title].join('|');
+  }
+
+  /** The player's answer to the question showing now while it waits for the GM (in moves,
+   * or being written), else null. */
+  function withGm(view, mode = modeOf(view)) {
+    if (!sentFor || mode === 'closed' || mode === 'playing' || sentFor.sig !== sigOf(view, mode)) return null;
+    if (!sentFor.id) {
+      const p = view.pending.filter((x) => x.status === 'sending' && x.move && x.move.kind === sentFor.kind).pop();
+      return p ? p.move : null;
+    }
+    const m = view.moves.find((x) => x.id === sentFor.id);
+    if (m) return m;
+    const p = view.pending.find((x) => x.id === sentFor.id && x.status === 'sending');
+    return p ? p.move : null;
+  }
+
+  function faceOf(view, mode) {
+    const w = withGm(view, mode);
+    if (!w || revise === w.id) return mode;
+    return 'sent';
+  }
+
+  /** A send from the box that answers the question showing now. */
+  function sendAnswer(view, mode, kind, fields) {
+    const sig = sigOf(view, mode);
+    sentFor = { sig, kind, id: null };
+    revise = '';
+    const p = sendMove(kind, fields);
+    p.then((res) => {
+      if (sentFor && sentFor.sig === sig && !sentFor.id) {
+        sentFor = { sig, kind, id: res.id };
+        ui.local.set('story.sent', sentFor);
+      }
+      T.app.render();
+    }, () => {
+      if (sentFor && sentFor.sig === sig) sentFor = null;
+      T.app.render();
+    });
+    return p;
+  }
+
+  const CHANGE_WORD = { orders: 'Change the orders', fight: 'Change your call', turn: 'Change the turn', word: 'Something else' };
+
+  function sentForm(view, mode) {
+    const w = withGm(view, mode);
+    return `<div class="row sent-row" data-row="sent"><span class="label">${icon('hand')}With the GM</span>`
+      + `<p class="sent-words">${esc(w.kind === 'orders' ? 'Your orders are sent (above): the GM plays the month from them.' : w.kind === 'fight' ? 'Your call is sent (above): the GM plays the fight from it.' : w.kind === 'turn' ? "Morten's turn is sent (above): the GM resolves it." : 'Your word is sent (above): the GM plays on from it.')}</p>`
+      + `<div class="seg"><button type="button" data-act="revise" data-id="${esc(w.id)}">${esc(CHANGE_WORD[mode] || 'Something else')}</button></div></div>`;
+  }
+
   function modeOf(view) {
     const st = view.state;
     if (view.db !== 'ok' || !view.canWrite || !st || st.status === 'ended') return 'closed';
@@ -879,10 +944,16 @@
     const take = st.table.who === 'you'
       ? `<button type="button" data-act="take" data-who="dm">${icon('hand')}Hand Morten back</button>`
       : `<button type="button" data-act="take" data-who="you">${icon('hand')}Take over Morten</button>`;
-    return `<div class="row" data-row="playing"><span class="label">A word now</span><div class="seg"><button type="button" class="stop" data-act="stop">${icon('stop')}${fight ? 'Stop after this fight' : 'Stop at the next stop'}</button>${take}</div></div>`;
+    const isStop = (m) => !!m && m.kind === 'play' && m.scope === 'stop';
+    const asked = view.moves.some(isStop) || view.pending.some((x) => x.status === 'sending' && isStop(x.move));
+    const stop = asked
+      ? `<button type="button" class="stop" data-act="stop" aria-pressed="true" disabled title="the GM reads it at the next stop point">${icon('stop')}${fight ? 'Stopping after this fight' : 'Stopping at the next stop'}</button>`
+      : `<button type="button" class="stop" data-act="stop">${icon('stop')}${fight ? 'Stop after this fight' : 'Stop at the next stop'}</button>`;
+    return `<div class="row" data-row="playing"><span class="label">A word now</span><div class="seg">${stop}${take}</div></div>`;
   }
 
-  function formHtml(view, mode) {
+  function formHtml(view, mode, face) {
+    if (face === 'sent') return sentForm(view, mode);
     if (mode === 'orders') return ordersForm(view);
     if (mode === 'fight') return fightForm(view) + playRow('Or let the GM play');
     if (mode === 'turn') return turnForm(view);
@@ -897,6 +968,7 @@
     turn: "Morten's turn: tap a spell above, then say at whom and where he moves.",
     playing: "A steer for the GM ('leave the sleeping boar, go round'), read at the next stop point.",
     word: "Morten's words, or a question for the GM.",
+    sent: 'More words for the GM, read with your move.',
     closed: '',
   };
   const HINT = {
@@ -905,6 +977,7 @@
     turn: 'an illegal move comes back with why',
     playing: 'read at the next fight, day or world\'s turn',
     word: "sent as Morten's words",
+    sent: 'read with your move',
   };
 
   function sendHtml(view, mode) {
@@ -943,6 +1016,9 @@
       parts.push(`<span class="who-move gm"><i class="pulse" aria-hidden="true"></i>${st.table.who === 'you' ? 'The GM is playing; Morten is yours' : 'The GM is playing Morten'}</span>`);
       parts.push(`<span>${esc(STOP_WORD[st.table.stop] || '')}</span>`);
       parts.push(`<span>${esc(FIGHTS_WORD[st.table.fights] || '')}</span>`);
+    } else if (withGm(view) && revise !== withGm(view).id) {
+      parts.push(`<span class="who-move gm"><i class="pulse" aria-hidden="true"></i>The GM's move</span>`);
+      parts.push(`<span>${esc(withGm(view).kind === 'orders' ? 'your orders are with the GM' : 'your word is with the GM')}</span>`);
     } else {
       parts.push(`<span class="who-move mine">${icon('hand')}Your move</span>`);
       if (st.awaiting.prompt) parts.push(`<span>${esc(st.awaiting.prompt)}</span>`);
@@ -968,6 +1044,8 @@
     if (!A.box) return;
     const mode = modeOf(view);
     if (mode !== 'closed') ensurePicks(view, mode);
+    if (revise && !(withGm(view, mode) && withGm(view, mode).id === revise)) revise = '';
+    const face = faceOf(view, mode);
     ui.put(A.status, statusHtml(view));
     const open = myOpenMove(view);
     const waitKey = open && !view.pending.some((p) => p.status === 'failed') ? open.id : '';
@@ -981,20 +1059,20 @@
     ui.put(A.closed, why ? esc(why) : '');
     A.box.hidden = mode === 'closed';
     if (mode === 'closed') return;
-    if (ui.put(A.form, formHtml(view, mode))) {
+    if (ui.put(A.form, formHtml(view, mode, face))) {
       restoreFolds(A.form);
       const gp = A.form.querySelector('[data-a="gp"]');
       if (gp) gp.value = picks.gp;
     }
     A.form.hidden = !A.form.innerHTML;
-    const ph = ooc ? 'A question for the GM, out of game.' : PLACEHOLDER[mode];
+    const ph = ooc ? 'A question for the GM, out of game.' : PLACEHOLDER[face];
     if (A.text.placeholder !== ph) A.text.placeholder = ph;
-    if (lastMode !== mode) {
-      lastMode = mode;
-      A.text.setAttribute('aria-label', mode === 'orders' ? 'Why, for the orders' : mode === 'turn' ? "Morten's turn" : 'Your words to the GM');
+    if (lastMode !== face) {
+      lastMode = face;
+      A.text.setAttribute('aria-label', face === 'orders' ? 'Why, for the orders' : face === 'turn' ? "Morten's turn" : 'Your words to the GM');
     }
     if (A.text.value !== draft && document.activeElement !== A.text) A.text.value = draft;
-    ui.put(A.send, sendHtml(view, mode));
+    ui.put(A.send, sendHtml(view, face));
   }
 
   function setDraft(v) {
@@ -1023,24 +1101,26 @@
   }
 
   function sendPrimary(view) {
-    const mode = modeOf(view);
+    const base = modeOf(view);
+    const mode = faceOf(view, base);
     const text = draft.trim();
     if (mode === 'orders') {
       const o = view.state.awaiting.orders;
       const m = picks.mission !== null ? o.missions[picks.mission] : null;
       const a = picks.action !== null ? o.actions[picks.action] : null;
       const gp = parseInt(picks.gp, 10);
-      sendMove('orders', {
+      sendAnswer(view, base, 'orders', {
         travel: picks.travel,
         mission: m ? { type: m.type, target: m.target } : null,
         action: a ? a.action : null,
         give: picks.give && Number.isFinite(gp) && gp > 0 ? { realm: picks.give, gp } : null,
         plan: text,
       });
-    } else if (mode === 'fight') sendMove('fight', { choice: picks.choice, text });
+    } else if (mode === 'fight') sendAnswer(view, base, 'fight', { choice: picks.choice, text });
     else if (mode === 'turn') {
-      if (text) sendMove('turn', { text });
-    } else if (text) sendMove('say', { text, ooc });
+      if (text) sendAnswer(view, base, 'turn', { text });
+    } else if (text && !ooc && mode === 'word') sendAnswer(view, base, 'say', { text, ooc });
+    else if (text) sendMove('say', { text, ooc });
   }
 
   function insertText(v) {
@@ -1129,13 +1209,18 @@
       case 'send':
         if (view) sendPrimary(view);
         break;
+      case 'revise':
+        revise = b.dataset.id || '';
+        T.app.render();
+        break;
       case 'say': {
         const text = draft.trim();
         if (text) sendMove('say', { text, ooc });
         break;
       }
       case 'play':
-        sendMove('play', { scope: b.dataset.scope, text: draft.trim() });
+        if (view && modeOf(view) !== 'playing') sendAnswer(view, modeOf(view), 'play', { scope: b.dataset.scope, text: draft.trim() });
+        else sendMove('play', { scope: b.dataset.scope, text: draft.trim() });
         break;
       case 'stop':
         sendMove('play', { scope: 'stop', text: draft.trim() });
@@ -1267,14 +1352,32 @@
       if (el) scrollToEl(el);
       remember();
     },
+    /** The player's answer to the GM's question now, while it waits for the GM (the now line). */
+    withGm(view) {
+      return view ? withGm(view) : null;
+    },
     /** Pick a hex as the orders' travel (for the Realm tab's map). */
     pickHex(id) {
-      if (!picks || !last || modeOf(last) !== 'orders') return false;
-      const o = last.state.awaiting.orders;
+      const view = T.app.view() || last;
+      if (!view || modeOf(view) !== 'orders') return false;
+      ensurePicks(view, 'orders');
+      const o = view.state.awaiting.orders;
       if (!o.hexes.some((h) => h.id === id)) return false;
       picks.travel = id;
-      allHexes = allHexes || !o.hexes.slice(0, NEAR_HEXES).some((h) => h.id === id);
+      if (picks.mission !== null) {
+        const mi = o.missions[picks.mission];
+        if (mi && mi.hex && mi.hex !== id) picks.mission = null;
+      }
+      const near = o.hexes.slice().sort((a, b) => (a.days ?? 99) - (b.days ?? 99)).slice(0, NEAR_HEXES);
+      allHexes = allHexes || !near.some((h) => h.id === id);
+      const w = withGm(view, 'orders');
+      if (w) revise = w.id; // changing the orders sent
       T.app.render();
+      // once the Story shows, bring the form's travel row into view
+      setTimeout(() => {
+        const row = A.form && A.form.querySelector('[data-row="travel"]');
+        if (row && visible()) row.scrollIntoView({ block: 'center' });
+      }, 60);
       return true;
     },
   };

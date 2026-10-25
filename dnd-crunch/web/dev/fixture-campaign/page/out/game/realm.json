@@ -1706,6 +1706,14 @@
    "text": "The Elves moved to seize B1 (Orcs'): taken."
   }
  ],
+ "nextWords": [
+  "Chance: the Elves' seat A2 has no soldiers at home (Strike it for 2d6 to their regime's 16/16 HP).",
+  "Chance: the Gnomes' seat D3 has no soldiers at home (Strike it for 2d6 to their regime's 22/22 HP).",
+  "Open: Morten is in B5 (the tower's level-1 desert); travel 1 day a hex, a 1-in-6 chance of a wandering fight each day outside B5.",
+  "Open: missions here: Delve floor 1.",
+  "Open: the tower's one action (89 GP now): buy Thugs (200 GP) · buy Militia (400 GP) · buy Informers (200 GP) · buy Smugglers (200 GP) · buy Farms (200 GP) · raise Force to 2 (200 GP) · raise Cunning to 2 (200 GP) · raise Wealth to 2 (200 GP) · move · attack · seize · repair. Give is free."
+ ],
+ "dissidents": [],
  "hexNames": {
   "A1": "the Orcs' mountains",
   "A2": "the Elves' forest",
@@ -1718,12 +1726,12 @@
   "B4": "the Gnomes' plains",
   "B5": "the tower's desert",
   "C1": "the Orcs' taiga",
-  "C2": "the Goblinkind's forest",
-  "C3": "the Goblinkind's hills",
+  "C2": "Goblinkind's forest",
+  "C3": "Goblinkind's hills",
   "C4": "the Gnomes' swamp",
   "C5": "the Tieflings' savanna",
   "D1": "the Orcs' tundra",
-  "D2": "the Goblinkind's forest",
+  "D2": "Goblinkind's forest",
   "D3": "the Gnomes' swamp with its lake",
   "D4": "the Tieflings' forest",
   "D5": "the Tieflings' savanna"

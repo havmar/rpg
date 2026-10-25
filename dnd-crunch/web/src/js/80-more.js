@@ -300,18 +300,60 @@
   })();
 
   // ====================================================================================
-  // Rules: game/rules.sections, a contents list and a fold each.
+  // Rules: game/rules.sections, a contents list, a filter box and a fold each.
   // ====================================================================================
   (() => {
     let box = null;
+    let top = null;
+    let bar = null;
+    let body = null;
+    let input = null;
+    let q = '';
     const open = new Set();
     const fold = (id) => U.$$('details.rule', box).find((d) => d.getAttribute('data-rule') === id) || null;
+    const norm = (t) => String(t || '').toLowerCase();
+
+    /** Wrap each match of q in the visible text of el with <mark> (text nodes only: safe). */
+    function mark(el, needle) {
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const hits = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) if (norm(n.nodeValue).includes(needle)) hits.push(n);
+      for (const n of hits) {
+        const text = n.nodeValue;
+        const low = norm(text);
+        const frag = document.createDocumentFragment();
+        let i = 0;
+        for (let j = low.indexOf(needle); j >= 0; j = low.indexOf(needle, i)) {
+          if (j > i) frag.appendChild(document.createTextNode(text.slice(i, j)));
+          const m = document.createElement('mark');
+          m.textContent = text.slice(j, j + needle.length);
+          frag.appendChild(m);
+          i = j + needle.length;
+        }
+        if (i < text.length) frag.appendChild(document.createTextNode(text.slice(i)));
+        n.parentNode.replaceChild(frag, n);
+      }
+    }
+
     T.panels.rules = {
       mount(el) {
         box = el;
+        el.innerHTML = '<div data-r="top"></div>'
+          + '<label class="rsearch" data-r="bar" hidden><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg>'
+          + '<input type="search" data-r="q" placeholder="Find in the rules: Shield, Rob, death…" aria-label="Find in the rules" autocomplete="off"></label>'
+          + '<div data-r="body"></div>';
+        top = U.$('[data-r="top"]', el);
+        bar = U.$('[data-r="bar"]', el);
+        body = U.$('[data-r="body"]', el);
+        input = U.$('[data-r="q"]', el);
+        input.addEventListener('input', () => {
+          q = norm(input.value.trim());
+          T.panels.rules.render(T.app.view());
+        });
         el.addEventListener('toggle', (ev) => {
           const d = ev.target;
           if (!d || !d.matches || !d.matches('details.rule')) return;
+          if (q) return; // a fold opened by the filter is not remembered
           const id = d.getAttribute('data-rule');
           if (d.open) open.add(id);
           else open.delete(id);
@@ -329,6 +371,13 @@
             else window.scrollTo({ top: Math.max(0, d.getBoundingClientRect().top + window.scrollY - nowH - 10) });
             return;
           }
+          if (ev.target.closest('[data-rules-clear]')) {
+            input.value = '';
+            q = '';
+            T.panels.rules.render(T.app.view());
+            input.focus();
+            return;
+          }
           if (ev.target.closest('[data-rules-all]')) {
             const all = U.$$('details.rule', box);
             const to = !all.every((x) => x.open);
@@ -337,18 +386,32 @@
         });
       },
       render(view) {
+        if (!box || !view) return;
         const secs = view.rules ? view.rules.sections : [];
-        let body;
+        let head;
+        let folds = '';
+        bar.hidden = !secs.length;
         if (!secs.length) {
-          body = `<div class="card more-card"><h3>${icon('book')}Rules</h3><p class="muted empty">${view.loaded.rules || view.db !== 'ok' ? 'The GM has not put the rules on the table yet.' : 'Opening the rules…'}</p></div>`;
+          head = `<div class="card more-card"><h3>${icon('book')}Rules</h3><p class="muted empty">${view.loaded.rules || view.db !== 'ok' ? 'The GM has not put the rules on the table yet.' : 'Opening the rules…'}</p></div>`;
         } else {
-          const allOpen = secs.every((s) => open.has(s.id));
-          body = `<div class="card more-card"><h3>${icon('book')}Rules <small>the house rules, cut from the campaign</small></h3>`
-            + `<nav class="toc" aria-label="The rules' contents">${secs.map((s) => `<button type="button" data-rule-go="${esc(s.id)}">${esc(s.title || s.id)}</button>`).join('')}</nav>`
-            + `<div class="toc-bar"><button type="button" class="toggle" data-rules-all>${allOpen ? 'Fold all' : 'Open all'}</button></div></div>`
-            + secs.map((s) => `<details class="sec rule" data-rule="${esc(s.id)}"${open.has(s.id) ? ' open' : ''}><summary>${icon('chev')}<span>${esc(s.title || s.id)}</span></summary>${ui.md(s.md)}</details>`).join('');
+          // the filter: a section matches by its title or its text; matches open, the rest hide
+          const shown = q ? secs.filter((s) => norm(s.title).includes(q) || norm(s.md).includes(q)) : secs;
+          const allOpen = shown.length && shown.every((s) => q || open.has(s.id));
+          head = `<div class="card more-card"><h3>${icon('book')}Rules <small>the house rules, cut from the campaign</small></h3>`
+            + `<nav class="toc" aria-label="The rules' contents">${shown.map((s) => `<button type="button" data-rule-go="${esc(s.id)}">${esc(s.title || s.id)}</button>`).join('')}</nav>`
+            + (q
+              ? `<p class="rfound" role="status">${shown.length ? `${esc(fmt.plural(shown.length, 'section'))} with “${esc(input.value.trim())}”` : `Nothing in the rules says “${esc(input.value.trim())}”.`} <button type="button" class="toggle" data-rules-clear>Clear</button></p>`
+              : `<div class="toc-bar"><button type="button" class="toggle" data-rules-all>${allOpen ? 'Fold all' : 'Open all'}</button></div>`)
+            + '</div>';
+          folds = shown.map((s) => `<details class="sec rule" data-rule="${esc(s.id)}"${q || open.has(s.id) ? ' open' : ''}><summary>${icon('chev')}<span>${esc(s.title || s.id)}</span></summary>${ui.md(s.md)}</details>`).join('');
         }
-        put(box, `${ui.note('tab.more', NOTE_TEXT.more)}${body}`);
+        put(top, `${ui.note('tab.more', NOTE_TEXT.more)}${head}`);
+        const key = `${q}\u0000${folds}`;
+        if (body.dataset.k !== key) {
+          body.dataset.k = key;
+          body.innerHTML = folds;
+          if (q) for (const d of U.$$('details.rule', body)) mark(d, q);
+        }
       },
     };
   })();
@@ -407,7 +470,9 @@
       if (view.db !== 'ok') return 'opens with the table';
       if (!view.canWrite) return 'watching: asking needs edit access';
       const w = view.wake;
-      if (lastSent && w.move === lastSent.id) {
+      // once the GM has answered it (the move is gone from the store), the hint is the usual one
+      const open = lastSent && (view.moves.some((m) => m.id === lastSent.id) || view.pending.some((p) => p.id === lastSent.id));
+      if (open && w.move === lastSent.id) {
         if (w.state === 'calling') return 'sent · calling the GM…';
         if (w.state === 'called') return 'sent · the GM has been called';
         if (w.state === 'off') return 'sent · the GM reads it at the next stop';
@@ -567,6 +632,8 @@
       if (th) {
         const v = th.getAttribute('data-theme-set');
         T.app.setTheme(v === 'system' ? null : v);
+        // pressed at once (the panel's own render follows on the next frame)
+        for (const x of U.$$('[data-theme-set]', th.parentNode)) x.setAttribute('aria-pressed', String(x === th));
         T.app.render();
         return;
       }

@@ -209,6 +209,16 @@ export const checks = [
       await t.waitFor(() => page.locator('[data-wake-anchor] .status').innerText().then((s) => /the GM has been called/.test(s)), 'the status line says the GM was called');
       t.expect(await page.locator(`${keyed(`p-m${pad(mv.seq)}`)}`).count() === 1, 'the sent move shows as a bubble at the bottom');
       t.expect((await page.inputValue('#answer-text')) === '', 'the why line is cleared after the send');
+      // the orders are with the GM: the form folds to a line, the now line and status say so
+      await t.waitFor(() => page.locator('[data-row="sent"]').count(), 'the box: the orders are with the GM');
+      t.expect(!(await page.locator('[data-row="travel"]').count()), 'the orders form is folded away');
+      t.expect(/The GM's move/.test(await page.locator('[data-wake-anchor] .status').innerText()), 'the status line: the GM\'s move');
+      t.expect(/the GM has your orders/.test(await page.locator('#now').innerText()), 'the now line: the GM has your orders');
+      await page.reload();
+      await page.waitForFunction(() => window.T && T.app.view() && T.app.view().ready);
+      await t.waitFor(() => page.locator('[data-row="sent"]').count(), 'still with the GM after a reload');
+      await page.locator('[data-act="revise"]').click();
+      await t.waitFor(() => page.locator('[data-row="travel"]').count(), 'Change the orders brings the form back');
       await t.shot(page, 'phone-orders-sent');
     },
   },
@@ -224,7 +234,14 @@ export const checks = [
       await page.locator('[data-act="choice"][data-v="avoid"]').click();
       await page.locator('[data-act="send"]').click();
       await moveOf(t, 'fight', (d) => d.choice === 'avoid');
+      // the call is with the GM: the box says so and offers to change it
+      await t.waitFor(() => page.locator('[data-row="sent"]').count(), 'the box says the call is with the GM');
+      t.expect(/The GM's move/.test(await page.locator('[data-wake-anchor] .status').innerText()), 'the status line: the GM\'s move');
+      await page.locator('[data-act="revise"]').click();
+      await t.waitFor(() => page.locator('[data-act="choice"][data-v="plan"]').count(), 'the fight chips again, to change the call');
       await page.locator('[data-act="choice"][data-v="plan"]').click();
+      // the box re-renders on the next frame: wait for the plan's button before reading it
+      await t.waitFor(() => page.locator('[data-act="send"]').innerText().then((x) => /plan/i.test(x)), 'the plan\'s send button');
       t.expect(await page.locator('[data-act="send"]').isDisabled(), 'a plan needs words');
       await page.fill('#answer-text', 'Web the doorway first.');
       await page.locator('[data-act="send"]').click();
