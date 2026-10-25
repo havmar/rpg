@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "seq": 4,
+ "kind": "orders",
+ "month": 2,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "B5",
+ "where": "the tower (B5)",
+ "title": "Month 2's orders",
+ "headline": "Morten goes next door to delve floor 2 under the Humans' A5; the tower saves its 67 GP.",
+ "prose": [
+  "Floor 2 is the safe step toward level 4: a level-2 floor one day away, under an ally's hex. Floor 3 lies past the Gnomes' B4, an L10 hex with level-10 wanderers, so it waits."
+ ],
+ "bullets": [
+  {
+   "label": "Travel",
+   "text": "B5 → A5, 1 day, a d6 for wanderers on arrival (1 = an encounter)."
+  },
+  {
+   "label": "Mission",
+   "text": "Delve floor 2 under A5."
+  },
+  {
+   "label": "The tower",
+   "text": "no action. 67 GP buys nothing; everything costs 200 GP or more."
+  },
+  {
+   "label": "Give",
+   "text": "none."
+  }
+ ],
+ "trace": [],
+ "answered": [
+  "m0002"
+ ],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1275,
+  "coins": "2 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": [
+  {
+   "move": "m0002",
+   "text": "month: play another month"
+  }
+ ]
+}

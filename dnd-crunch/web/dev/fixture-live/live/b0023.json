@@ -1,0 +1,126 @@
+{
+ "v": 1,
+ "seq": 23,
+ "section": {
+  "kind": "fight",
+  "title": "Room 2.5 · 3 Giant Wolf Spiders (CR 1/4 each)",
+  "month": 2,
+  "day": 4,
+  "where": "Floor 2 · room 2.5",
+  "foes": [
+   {
+    "name": "Giant Wolf Spider",
+    "cr": "1/4",
+    "ac": 13,
+    "hp": 11,
+    "maxHp": 11,
+    "speed": "8 sq (12 m), climb 8 sq (12 m)",
+    "attacks": [
+     "Bite +5, 1d4+3 piercing + 2d4 poison"
+    ],
+    "notes": "WIS +1",
+    "count": 3
+   }
+  ]
+ },
+ "round": 2,
+ "text": "Sleep again, and a natural 20 doubles its radius: the spider in the doorway fails. Morten is on 20/20 HP.",
+ "lines": [
+  {
+   "text": "Spider A bites: miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 5,
+     "total": 8,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Sleep, a natural 20: 3 m radius over C12 and E11. A fails (Incapacitated), C saves.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      20
+     ],
+     "kept": [
+      20
+     ],
+     "mod": 5,
+     "total": 25,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": 20
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      6
+     ],
+     "kept": [
+      6
+     ],
+     "mod": 1,
+     "total": 7,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 1,
+     "total": 18,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "state": {
+  "morten": {
+   "hp": 20,
+   "maxHp": 20
+  },
+  "foes": [
+   {
+    "name": "Giant Wolf Spider A",
+    "hp": 11,
+    "maxHp": 11
+   },
+   {
+    "name": "Giant Wolf Spider B",
+    "hp": 11,
+    "maxHp": 11
+   },
+   {
+    "name": "Giant Wolf Spider C",
+    "hp": 11,
+    "maxHp": 11
+   }
+  ]
+ },
+ "at": "2026-10-25T09:11:00Z"
+}

@@ -1,0 +1,308 @@
+{
+ "v": 1,
+ "seq": 14,
+ "kind": "fight",
+ "month": 2,
+ "day": 3,
+ "clock": "06:50",
+ "hex": "A5",
+ "where": "Floor 2 · room 2.2",
+ "title": "Room 2.2 · 4 Mastiffs (CR 1/8 each) · Low, 100 XP · cleared, two fled",
+ "headline": "Two fizzles in a row made room 2.2 slower than it should have been, but the doorway held.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Area",
+   "text": "a 6×18 m room lit by braziers; he stood just outside the south door."
+  },
+  {
+   "label": "The dice",
+   "text": "Fire Bolt killed the first dog. Then Shocking Grasp and Magic Missile both fizzled and are lost until a Long Rest; Shield turned one bite."
+  },
+  {
+   "label": "How it ended",
+   "text": "Thunderwave killed the dog at the door; the last two failed their morale roll and cowered (bypassed: their XP counts)."
+  },
+  {
+   "label": "Result",
+   "text": "17/20 HP. XP 1,575 → 1,675. +10 GP."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Fire Bolt at the dog at C6: hit, 8 fire dmg. Dead.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      11
+     ],
+     "kept": [
+      11
+     ],
+     "mod": 5,
+     "total": 16,
+     "vs": "AC 12",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d10",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 0,
+     "total": 8,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "The dog from A6 bites: hit, 3 piercing dmg, Morten prone. 20 → 17 HP.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 3,
+     "total": 20,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d6+1",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 1,
+     "total": 3,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Shocking Grasp fizzles: lost until a Long Rest.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 5,
+     "total": 8,
+     "vs": "DC 10",
+     "result": "fizzle",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "A bite hits; Shield holds: AC 20, miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 3,
+     "total": 18,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d20+5",
+     "faces": [
+      18
+     ],
+     "kept": [
+      18
+     ],
+     "mod": 5,
+     "total": 23,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Magic Missile fizzles: lost.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 5,
+     "total": 7,
+     "vs": "DC 11",
+     "result": "fizzle",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Thunderwave holds; the dog fails its save: 6 thunder dmg. Dead.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      11
+     ],
+     "kept": [
+      11
+     ],
+     "mod": 5,
+     "total": 16,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 1,
+     "total": 3,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "2d8",
+     "faces": [
+      1,
+      5
+     ],
+     "kept": [
+      1,
+      5
+     ],
+     "mod": 0,
+     "total": 6,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Morale fails: the last two flee and cower.",
+   "who": "foe",
+   "kind": "save",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      6
+     ],
+     "kept": [
+      6
+     ],
+     "mod": 3,
+     "total": 9,
+     "vs": "DC 10",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 17,
+  "maxHp": 20,
+  "xp": 1675,
+  "coins": "40 GP 2 SP 5 CP",
+  "lost": [
+   "Shocking Grasp",
+   "Magic Missile"
+  ]
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Mastiff",
+    "cr": "1/8",
+    "ac": 12,
+    "hp": 5,
+    "maxHp": 5,
+    "speed": "8 sq (12 m)",
+    "attacks": [
+     "Bite +3, 1d6+1 piercing, knocks prone"
+    ],
+    "notes": "",
+    "count": 4
+   }
+  ],
+  "difficulty": "Low",
+  "budget": 150,
+  "xp": 100,
+  "initiative": [
+   "Morten 23",
+   "Mastiffs 4"
+  ],
+  "rounds": 4,
+  "outcome": "cleared",
+  "verdict": "two dogs fled",
+  "hpTrack": [],
+  "loot": "+10 GP",
+  "lost": [
+   "Shocking Grasp",
+   "Magic Missile"
+  ],
+  "potion": false,
+  "xpBefore": 1575,
+  "xpAfter": 1675
+ },
+ "domain": null,
+ "words": []
+}

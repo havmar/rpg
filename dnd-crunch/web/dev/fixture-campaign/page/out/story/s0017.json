@@ -1,0 +1,31 @@
+{
+ "v": 1,
+ "seq": 17,
+ "kind": "rest",
+ "month": 2,
+ "day": 4,
+ "clock": "06:00",
+ "hex": "A5",
+ "where": "Floor 2 · room 2.3",
+ "title": "Day 3 → 4 · Long Rest in room 2.3",
+ "headline": "He waits out the day in the cleared room and takes a Long Rest overnight; Strength comes back.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Back",
+   "text": "20/20 HP, STR 8, Hit Dice 3/3, Heroic Inspiration and the free Mage Armor. One ration (2 → 1). The gear by the door picked up again."
+  }
+ ],
+ "trace": [],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1875,
+  "coins": "60 GP 2 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}

@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "seq": 14,
+ "section": {
+  "kind": "fight",
+  "title": "Room 2.4 · Darkmantle (CR 1/2)",
+  "month": 3,
+  "day": 4,
+  "where": "Floor 2 · room 2.4",
+  "foes": [
+   {
+    "name": "Darkmantle",
+    "cr": "1/2",
+    "ac": 11,
+    "hp": 13,
+    "maxHp": 22,
+    "speed": "2 sq (3 m), fly 6 sq (9 m)",
+    "attacks": [
+     "Crush +5, 1d6+3 bludgeoning"
+    ],
+    "notes": "Darkness Aura (1/day)",
+    "count": 1
+   }
+  ]
+ },
+ "round": 2,
+ "text": "Fire Bolt hits for 9 dmg; the Darkmantle is on 13/22 HP.",
+ "lines": [
+  {
+   "text": "Fire Bolt.",
+   "who": "morten",
+   "kind": "cast",
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      14
+     ],
+     "kept": [
+      14
+     ],
+     "mod": 5,
+     "total": 19,
+     "vs": "AC 11",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d10",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 0,
+     "total": 9,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ],
+   "round": 2
+  }
+ ],
+ "state": {
+  "morten": {
+   "hp": 14,
+   "maxHp": 20
+  },
+  "foes": [
+   {
+    "name": "Darkmantle",
+    "hp": 13,
+    "maxHp": 22
+   }
+  ]
+ },
+ "at": "2026-10-25T09:14:00Z"
+}

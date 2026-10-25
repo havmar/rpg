@@ -1,0 +1,194 @@
+{
+ "v": 1,
+ "seq": 7,
+ "kind": "fight",
+ "month": 2,
+ "day": 2,
+ "clock": "18:20",
+ "hex": "A5",
+ "where": "the savanna, A5",
+ "title": "On the road · 3 Giant Lizards (CR 1/4 each) · Moderate, 150 XP · cleared",
+ "headline": "Sleep on the opening roll came up a natural 20, which doubled its reach to all three.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "The dice",
+   "text": "Thunderwave fizzled in round 3 and the Heroic Inspiration reroll saved it. Magic Missile fizzled in round 5 and is lost for the day."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Sleep, cast DC 11.",
+   "who": "morten",
+   "kind": "cast",
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      20
+     ],
+     "kept": [
+      20
+     ],
+     "mod": 5,
+     "total": 25,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": 20
+    }
+   ],
+   "round": 1
+  },
+  {
+   "text": "Thunderwave.",
+   "who": "morten",
+   "kind": "cast",
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      5
+     ],
+     "kept": [
+      5
+     ],
+     "mod": 5,
+     "total": 10,
+     "vs": "DC 11",
+     "result": "fizzle",
+     "nat": null
+    }
+   ],
+   "round": 3
+  },
+  {
+   "text": "Heroic Inspiration reroll.",
+   "who": "morten",
+   "kind": "cast",
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 5,
+     "total": 13,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ],
+   "round": 3
+  },
+  {
+   "text": "Lizard B bites with advantage.",
+   "who": "foe",
+   "kind": "attack",
+   "dice": [
+    {
+     "expr": "2d20kh1+4",
+     "faces": [
+      15,
+      3
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 4,
+     "total": 19,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    }
+   ],
+   "round": 4
+  },
+  {
+   "text": "Magic Missile.",
+   "who": "morten",
+   "kind": "cast",
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      1
+     ],
+     "kept": [
+      1
+     ],
+     "mod": 5,
+     "total": 6,
+     "vs": "DC 11",
+     "result": "fizzle",
+     "nat": 1
+    }
+   ],
+   "round": 5
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 17,
+  "maxHp": 20,
+  "xp": 1875,
+  "coins": "70 GP 2 SP 5 CP",
+  "lost": [
+   "Magic Missile"
+  ]
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Giant Lizard",
+    "cr": "1/4",
+    "ac": 12,
+    "hp": 0,
+    "maxHp": 19,
+    "speed": "6 sq (9 m)",
+    "attacks": [
+     "Bite +4, 1d8+2 piercing"
+    ],
+    "notes": "",
+    "count": 3
+   }
+  ],
+  "difficulty": "Moderate",
+  "budget": 225,
+  "xp": 150,
+  "initiative": [
+   "Morten 24",
+   "Lizards 16"
+  ],
+  "rounds": 7,
+  "outcome": "cleared",
+  "verdict": "a natural 20 did the work",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     20,
+     20,
+     17,
+     17,
+     17,
+     17
+    ]
+   }
+  ],
+  "loot": "",
+  "lost": [
+   "Magic Missile"
+  ],
+  "potion": false,
+  "xpBefore": 1725,
+  "xpAfter": 1875
+ },
+ "domain": null,
+ "words": []
+}

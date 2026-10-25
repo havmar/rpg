@@ -1,0 +1,47 @@
+{
+ "v": 1,
+ "seq": 6,
+ "kind": "travel",
+ "month": 2,
+ "day": 2,
+ "clock": "18:00",
+ "hex": "A5",
+ "where": "the road, B5 → A5",
+ "title": "The road to A5",
+ "headline": "One day on the savanna; the wandering roll came up 1.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "",
+   "text": "Ration 4 → 3."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Wandering check, day 2.",
+   "who": "gm",
+   "kind": "roll",
+   "dice": [
+    {
+     "expr": "1d6",
+     "faces": [
+      1
+     ],
+     "kept": [
+      1
+     ],
+     "mod": 0,
+     "total": 1,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": null,
+ "fight": null,
+ "domain": null,
+ "words": []
+}

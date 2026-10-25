@@ -1,0 +1,22 @@
+{
+ "v": 1,
+ "seq": 5,
+ "kind": "orders",
+ "month": 2,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "B5",
+ "where": "the tower, B5",
+ "title": "Month 2's orders",
+ "headline": "Delve floor 2 under the Humans' A5 · the tower saves · no gifts.",
+ "prose": [
+  "Floor 2 is next door: XP toward level 4 at low risk."
+ ],
+ "bullets": [],
+ "trace": [],
+ "answered": [],
+ "after": null,
+ "fight": null,
+ "domain": null,
+ "words": []
+}

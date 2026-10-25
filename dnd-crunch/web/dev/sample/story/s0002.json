@@ -1,0 +1,29 @@
+{
+ "v": 1,
+ "seq": 2,
+ "kind": "orders",
+ "month": 1,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "B5",
+ "where": "the tower, B5",
+ "title": "Month 1's orders",
+ "headline": "Delve floor 1 under the tower; the purse into the treasury.",
+ "prose": [
+  "Floor 1 is safe XP at home, and the treasury needs 200 GP to buy Farms."
+ ],
+ "bullets": [],
+ "trace": [],
+ "answered": [
+  "m0001"
+ ],
+ "after": null,
+ "fight": null,
+ "domain": null,
+ "words": [
+  {
+   "move": "m0001",
+   "text": "Play the first month, carefully."
+  }
+ ]
+}

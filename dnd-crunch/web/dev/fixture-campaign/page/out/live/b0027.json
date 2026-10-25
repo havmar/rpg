@@ -1,0 +1,116 @@
+{
+ "v": 1,
+ "seq": 27,
+ "section": {
+  "kind": "fight",
+  "title": "Room 2.5 · 3 Giant Wolf Spiders (CR 1/4 each)",
+  "month": 2,
+  "day": 4,
+  "where": "Floor 2 · room 2.5",
+  "foes": [
+   {
+    "name": "Giant Wolf Spider",
+    "cr": "1/4",
+    "ac": 13,
+    "hp": 11,
+    "maxHp": 11,
+    "speed": "8 sq (12 m), climb 8 sq (12 m)",
+    "attacks": [
+     "Bite +5, 1d4+3 piercing + 2d4 poison"
+    ],
+    "notes": "WIS +1",
+    "count": 3
+   }
+  ]
+ },
+ "round": 5,
+ "text": "Magic Missile for 8 force dmg; the spider's bite misses. It is on 3/11 HP.",
+ "lines": [
+  {
+   "text": "Magic Missile holds: 8 force dmg. Spider B 11 → 3 HP.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 5,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "3d4+3",
+     "faces": [
+      2,
+      1,
+      2
+     ],
+     "kept": [
+      2,
+      1,
+      2
+     ],
+     "mod": 3,
+     "total": 8,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Spider B bites: miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 5,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      7
+     ],
+     "kept": [
+      7
+     ],
+     "mod": 5,
+     "total": 12,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "state": {
+  "morten": {
+   "hp": 10,
+   "maxHp": 20
+  },
+  "foes": [
+   {
+    "name": "Giant Wolf Spider A",
+    "hp": 0,
+    "maxHp": 11
+   },
+   {
+    "name": "Giant Wolf Spider B",
+    "hp": 3,
+    "maxHp": 11
+   },
+   {
+    "name": "Giant Wolf Spider C",
+    "hp": 0,
+    "maxHp": 11
+   }
+  ]
+ },
+ "at": "2026-10-25T09:15:00Z"
+}

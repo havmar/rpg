@@ -42,13 +42,13 @@ ul, ol { padding: 0; list-style: none; }
 .now .doing.ended { color: var(--ink-3); }
 .pulse { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 50%, transparent); animation: pulse 1.6s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 50%, transparent); } 100% { box-shadow: 0 0 0 7px transparent; } }
-.hud { display: flex; align-items: center; gap: 4px 12px; flex-wrap: wrap; font-family: var(--mono); font-size: .76rem; color: var(--ink-2); }
+.hud { display: flex; align-items: center; gap: 2px 10px; flex-wrap: wrap; font-family: var(--mono); font-size: .76rem; color: var(--ink-2); }
 .hud:empty { display: none; }
 .hud > span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 .hud b { color: var(--ink); font-weight: 600; }
 .hud .spent { color: var(--ink-3); text-decoration: line-through; }
 .hud .lit { color: var(--accent); }
-.hud .bar { width: 64px; flex: none; }
+.bar { display: inline-block; vertical-align: middle; height: 7px; border-radius: 4px; background: var(--track); overflow: hidden; flex: 1 1 auto; min-width: 36px; }
 .bar > i { display: block; height: 100%; background: var(--good); border-radius: 4px; }
 .bar.mid > i { background: var(--warn); } .bar.low > i { background: var(--bad); }
 .hud .bar { width: 64px; flex: none; }
@@ -65,8 +65,12 @@ ul, ol { padding: 0; list-style: none; }
 .subtabs { display: flex; flex-wrap: wrap; gap: 6px; }
 .subtabs button { min-height: var(--tap); padding: 0 14px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); font: 500 .78rem var(--mono); color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; }
 .subtabs button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
-.subtabs .theme { margin-left: auto; }
+.subtabs .theme { position: relative; margin-left: auto; width: var(--tap); padding: 0; justify-content: center; border-radius: 50%; }
+.subtabs .theme span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.subtabs .theme .ic { width: 18px; height: 18px; }
 .dtabs { display: none; }
+#more-tabs { gap: 5px; }
+#more-tabs button:not(.theme) { padding: 0 10px; }
 
 /* phone: one view at a time */
 @media (max-width: 899.98px) {
@@ -76,18 +80,21 @@ ul, ol { padding: 0; list-style: none; }
   .app[data-view="more"][data-more="talk"] #talk, .app[data-view="more"][data-more="table"] #table { display: grid; }
   #more-tabs { display: none; }
   .app[data-view="more"] #more-tabs { display: flex; }
+  .now .doing { margin-left: 0; flex-basis: 100%; }
 }
 
 /* wide: the Story on the left, the drawer on the right */
 @media (min-width: 900px) {
-  .app { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: 28px; align-items: start; padding-top: 20px; padding-bottom: 40px; }
+  .app { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; align-items: start; padding-top: 20px; padding-bottom: 40px; }
   .app > .notice { grid-column: 1 / -1; }
   #story { grid-column: 1; }
   .drawer { grid-column: 2; position: sticky; top: calc(var(--now-h) + 12px); max-height: calc(100vh - var(--now-h) - 24px); max-height: calc(100dvh - var(--now-h) - 24px); overflow-y: auto; overscroll-behavior: contain; padding: 2px 4px 12px 2px; }
   .drawer .pane { display: none; }
   .app[data-drawer="morten"] #morten, .app[data-drawer="realm"] #realm, .app[data-drawer="fights"] #fights, .app[data-drawer="months"] #months,
   .app[data-drawer="rules"] #rules, .app[data-drawer="talk"] #talk, .app[data-drawer="table"] #table { display: grid; }
-  .dtabs { display: flex; position: sticky; top: 0; z-index: 2; background: var(--bg); padding-bottom: 6px; }
+  .dtabs { display: flex; position: sticky; top: 0; z-index: 2; background: var(--bg); padding-bottom: 6px; gap: 4px; }
+  .dtabs button { padding: 0 12px; }
+  .dtabs button:not(.theme) .ic { display: none; }
   #more-tabs, .tabs { display: none; }
 }
 

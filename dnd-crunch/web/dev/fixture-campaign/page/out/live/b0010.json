@@ -1,0 +1,198 @@
+{
+ "v": 1,
+ "seq": 10,
+ "section": {
+  "kind": "fight",
+  "title": "Room 2.1 · 3 Grimlocks (CR 1/4 each)",
+  "month": 2,
+  "day": 3,
+  "where": "Floor 2 · room 2.1",
+  "foes": [
+   {
+    "name": "Grimlock",
+    "cr": "1/4",
+    "ac": 11,
+    "hp": 11,
+    "maxHp": 11,
+    "speed": "6 sq (9 m), climb 6 sq (9 m)",
+    "attacks": [
+     "Bone Cudgel +5, 1d6+3 bludgeoning + 1d4 psychic"
+    ],
+    "notes": "blindsight 9 m; WIS −1",
+    "count": 3
+   }
+  ]
+ },
+ "round": 1,
+ "text": "Sleep on the two grimlocks that came first: the cast holds (20) and both fail their WIS saves. Morten is on 20/20 HP.",
+ "lines": [
+  {
+   "text": "Grimlock Stealth 11 vs passive Perception 13: seen. Initiative: Grimlocks 21, Morten 15.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      6
+     ],
+     "kept": [
+      6
+     ],
+     "mod": 5,
+     "total": 11,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      20
+     ],
+     "kept": [
+      20
+     ],
+     "mod": 1,
+     "total": 21,
+     "vs": null,
+     "result": null,
+     "nat": 20
+    },
+    {
+     "expr": "1d20+4",
+     "faces": [
+      11
+     ],
+     "kept": [
+      11
+     ],
+     "mod": 4,
+     "total": 15,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Grimlocks A and B close to D9 and C9 and swing their bone cudgels: both miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      5
+     ],
+     "kept": [
+      5
+     ],
+     "mod": 5,
+     "total": 10,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    },
+    {
+     "expr": "1d20+5",
+     "faces": [
+      7
+     ],
+     "kept": [
+      7
+     ],
+     "mod": 5,
+     "total": 12,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Sleep on A and B: the cast holds.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "A and B fail their WIS saves: Incapacitated.",
+   "who": "foe",
+   "kind": "save",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20-1",
+     "faces": [
+      4
+     ],
+     "kept": [
+      4
+     ],
+     "mod": -1,
+     "total": 3,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "1d20-1",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": -1,
+     "total": 12,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "state": {
+  "morten": {
+   "hp": 20,
+   "maxHp": 20
+  },
+  "foes": [
+   {
+    "name": "Grimlock A",
+    "hp": 11,
+    "maxHp": 11
+   },
+   {
+    "name": "Grimlock B",
+    "hp": 11,
+    "maxHp": 11
+   },
+   {
+    "name": "Grimlock C",
+    "hp": 11,
+    "maxHp": 11
+   }
+  ]
+ },
+ "at": "2026-10-25T09:03:00Z"
+}

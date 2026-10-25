@@ -1,0 +1,80 @@
+{
+ "v": 1,
+ "seq": 13,
+ "section": {
+  "kind": "fight",
+  "title": "Room 2.4 · Darkmantle (CR 1/2)",
+  "month": 3,
+  "day": 4,
+  "where": "Floor 2 · room 2.4",
+  "foes": [
+   {
+    "name": "Darkmantle",
+    "cr": "1/2",
+    "ac": 11,
+    "hp": 13,
+    "maxHp": 22,
+    "speed": "2 sq (3 m), fly 6 sq (9 m)",
+    "attacks": [
+     "Crush +5, 1d6+3 bludgeoning"
+    ],
+    "notes": "Darkness Aura (1/day)",
+    "count": 1
+   }
+  ]
+ },
+ "round": 1,
+ "text": "Darkmantle drops from the ceiling; its crush hits for 6 dmg. Morten is on 14/20 HP.",
+ "lines": [
+  {
+   "text": "Crush.",
+   "who": "foe",
+   "kind": "attack",
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": 5,
+     "total": 18,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d6+3",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 3,
+     "total": 6,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ],
+   "round": 1
+  }
+ ],
+ "state": {
+  "morten": {
+   "hp": 14,
+   "maxHp": 20
+  },
+  "foes": [
+   {
+    "name": "Darkmantle",
+    "hp": 22,
+    "maxHp": 22
+   }
+  ]
+ },
+ "at": "2026-10-25T09:13:00Z"
+}

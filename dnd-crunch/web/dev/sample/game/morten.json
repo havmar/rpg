@@ -1,0 +1,207 @@
+{
+ "v": 1,
+ "name": "Morten",
+ "class": "Wizard 3 (Evoker)",
+ "species": "Human",
+ "background": "Sage",
+ "hp": 14,
+ "maxHp": 20,
+ "hitDice": "3/3 d6",
+ "ac": 12,
+ "acArmor": 15,
+ "armorOn": true,
+ "speed": "6 sq (9 m)",
+ "initiative": "+2",
+ "passivePerception": 11,
+ "prof": 2,
+ "spellAttack": 5,
+ "saveDc": 13,
+ "abilities": [
+  {
+   "key": "STR",
+   "score": 8,
+   "mod": -1,
+   "save": -1
+  },
+  {
+   "key": "DEX",
+   "score": 14,
+   "mod": 2,
+   "save": 2
+  },
+  {
+   "key": "CON",
+   "score": 14,
+   "mod": 2,
+   "save": 2
+  },
+  {
+   "key": "INT",
+   "score": 15,
+   "mod": 2,
+   "save": 4
+  },
+  {
+   "key": "WIS",
+   "score": 12,
+   "mod": 1,
+   "save": 3
+  },
+  {
+   "key": "CHA",
+   "score": 10,
+   "mod": 0,
+   "save": 0
+  }
+ ],
+ "skills": [
+  {
+   "name": "Arcana",
+   "mod": 4
+  },
+  {
+   "name": "History",
+   "mod": 4
+  },
+  {
+   "name": "Investigation",
+   "mod": 4
+  },
+  {
+   "name": "Insight",
+   "mod": 3
+  }
+ ],
+ "attacks": [
+  {
+   "name": "Fire Bolt",
+   "hit": "+5",
+   "damage": "1d10 fire",
+   "range": "24 sq (36 m)"
+  },
+  {
+   "name": "Dagger",
+   "hit": "+4",
+   "damage": "1d4+2 piercing",
+   "range": "melee, thrown 4/12 sq"
+  }
+ ],
+ "spells": [
+  {
+   "name": "Fire Bolt",
+   "level": 0,
+   "dc": 10,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "24 sq (36 m) · 1d10 fire",
+   "prepared": true
+  },
+  {
+   "name": "Shocking Grasp",
+   "level": 0,
+   "dc": 10,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "touch · 1d8 lightning, no reactions",
+   "prepared": true
+  },
+  {
+   "name": "Shield",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "Reaction: +5 AC until your next turn; no Magic Missile.",
+   "prepared": true
+  },
+  {
+   "name": "Magic Missile",
+   "level": 1,
+   "dc": 11,
+   "lost": true,
+   "conc": false,
+   "ritual": false,
+   "line": "3 darts, 1d4+1 force each, never miss",
+   "prepared": true
+  },
+  {
+   "name": "Sleep",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": true,
+   "ritual": false,
+   "line": "WIS save or Incapacitated, then Unconscious",
+   "prepared": true
+  },
+  {
+   "name": "Misty Step",
+   "level": 2,
+   "dc": 12,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "Bonus action: teleport 6 sq (9 m)",
+   "prepared": true
+  }
+ ],
+ "features": [
+  {
+   "name": "Arcane Recovery",
+   "state": "ready",
+   "line": "Once a Long Rest, after a Short Rest: lost spells back, levels up to 2."
+  }
+ ],
+ "light": "lamp, about 1 h of oil left",
+ "conc": null,
+ "conditions": [],
+ "exhaustion": 0,
+ "inspiration": true,
+ "freeArmor": false,
+ "gear": [
+  {
+   "name": "Oil flask",
+   "count": 8,
+   "kg": 0.5,
+   "note": ""
+  },
+  {
+   "name": "Torch",
+   "count": 7,
+   "kg": 0.5,
+   "note": ""
+  },
+  {
+   "name": "Rations",
+   "count": 4,
+   "kg": 1,
+   "note": ""
+  },
+  {
+   "name": "Potion of Healing",
+   "count": 1,
+   "kg": 0.5,
+   "note": "2d4+2 HP"
+  }
+ ],
+ "load": {
+  "kg": 31,
+  "max": 54
+ },
+ "coins": {
+  "on": "7 SP 5 CP",
+  "purse": "none"
+ },
+ "xp": 2125,
+ "nextXp": 2700,
+ "level": 3,
+ "deaths": 0,
+ "familiar": "owl (Fey)",
+ "habits": [
+  "Shield when a hit would miss at AC 20 and deals 4+.",
+  "Drop the purse before each new door."
+ ]
+}

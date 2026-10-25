@@ -1,0 +1,27 @@
+{
+ "v": 1,
+ "seq": 10,
+ "kind": "orders",
+ "month": 3,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "B5",
+ "where": "the tower, B5",
+ "title": "Month 3's orders",
+ "headline": "Back to floor 2 under A5 for room 2.4 and on · the tower saves.",
+ "prose": [],
+ "bullets": [],
+ "trace": [],
+ "answered": [
+  "m0003"
+ ],
+ "after": null,
+ "fight": null,
+ "domain": null,
+ "words": [
+  {
+   "move": "m0003",
+   "text": "Finish floor 2, then come home."
+  }
+ ]
+}

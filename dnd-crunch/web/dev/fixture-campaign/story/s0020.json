@@ -1,0 +1,297 @@
+{
+ "v": 1,
+ "seq": 20,
+ "kind": "fight",
+ "month": 2,
+ "day": 4,
+ "clock": "06:20",
+ "hex": "A5",
+ "where": "Floor 2 · room 2.4",
+ "title": "Room 2.4 · Darkmantle (CR 1/2) · Moderate, 100 XP · cleared",
+ "headline": "The Darkmantle crit him for 10 dmg and stuck to his head, and Thunderwave blew it off and killed it.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Scouting",
+   "text": "its Stealth (12) lost to his passive Perception 13: seen on the ceiling at E8."
+  },
+  {
+   "label": "The dice",
+   "text": "a natural 20 on its Crush: 10 bludgeoning dmg, and it attached (no Advantage, so it didn't cover his head)."
+  },
+  {
+   "label": "How it ended",
+   "text": "Thunderwave, 13 thunder dmg on a failed save, a kill. A GM ruling: the push away detaches it."
+  },
+  {
+   "label": "Result",
+   "text": "10/20 HP. XP 1,875 → 1,975. +10 GP."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Darkmantle Stealth 12 vs passive Perception 13: seen on the ceiling at E8. Initiative: Darkmantle 21, Morten 17.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 3,
+     "total": 12,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+3",
+     "faces": [
+      18
+     ],
+     "kept": [
+      18
+     ],
+     "mod": 3,
+     "total": 21,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+4",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": 4,
+     "total": 17,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Crush: miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 5,
+     "total": 7,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Magic Missile holds: 3 darts, 9 force dmg. Darkmantle 22 → 13 HP.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      10
+     ],
+     "kept": [
+      10
+     ],
+     "mod": 5,
+     "total": 15,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "3d4+3",
+     "faces": [
+      1,
+      3,
+      2
+     ],
+     "kept": [
+      1,
+      3,
+      2
+     ],
+     "mod": 3,
+     "total": 9,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Crush, a natural 20: a crit, 10 bludgeoning dmg, attached (not covering: no Advantage). Morten 20 → 10 HP.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      20
+     ],
+     "kept": [
+      20
+     ],
+     "mod": 5,
+     "total": 25,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": 20
+    },
+    {
+     "expr": "2d6+3",
+     "faces": [
+      3,
+      4
+     ],
+     "kept": [
+      3,
+      4
+     ],
+     "mod": 3,
+     "total": 10,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Thunderwave holds; it fails its CON save: 13 thunder dmg, pushed off. Dead.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 1,
+     "total": 9,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "2d8",
+     "faces": [
+      7,
+      6
+     ],
+     "kept": [
+      7,
+      6
+     ],
+     "mod": 0,
+     "total": 13,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 10,
+  "maxHp": 20,
+  "xp": 1975,
+  "coins": "70 GP 2 SP 5 CP",
+  "lost": []
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Darkmantle",
+    "cr": "1/2",
+    "ac": 11,
+    "hp": 22,
+    "maxHp": 22,
+    "speed": "2 sq (3 m), fly 6 sq (9 m)",
+    "attacks": [
+     "Crush +5, 1d6+3 bludgeoning, attaches"
+    ],
+    "notes": "covers its target on Advantage (Blinded, suffocating); DC 13 STR (Athletics) to detach",
+    "count": 1
+   }
+  ],
+  "difficulty": "Moderate",
+  "budget": 225,
+  "xp": 100,
+  "initiative": [
+   "Darkmantle 21",
+   "Morten 17"
+  ],
+  "rounds": 2,
+  "outcome": "cleared",
+  "verdict": "one bad round",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     10
+    ]
+   },
+   {
+    "name": "Darkmantle",
+    "max": 22,
+    "hp": [
+     22,
+     13,
+     0
+    ]
+   }
+  ],
+  "loot": "+10 GP",
+  "lost": [],
+  "potion": false,
+  "xpBefore": 1875,
+  "xpAfter": 1975
+ },
+ "domain": null,
+ "words": []
+}

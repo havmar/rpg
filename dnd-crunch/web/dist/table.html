@@ -1,0 +1,2193 @@
+<title>Morten's Table</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<!-- Morten's Table: the page a D&D Crunch Realms campaign is played from. Built by
+     dnd-crunch/web/build.py from dnd-crunch/web/src/; do not edit dist/ by hand. -->
+<style>
+/* ---- css/00-tokens.css ---- */
+/* The table's tokens: the war table's palette from ui/table-mockup.html. Survey paper by
+   day, a lamp-lit slate by night, a pigment a realm, brass (--accent) for Morten and the
+   tower; --good, --warn, --bad only for states. Every colour is defined on bare :root
+   (light), then redefined for dark under prefers-color-scheme (unless the viewer chose
+   light) and under [data-theme="dark"] (the page's own switch). Fonts: Alegreya SC for
+   headings, Alegreya Sans for text, IBM Plex Mono for numbers and dice.
+   Layout: phone first at 412 px, one view at a time over a bottom bar; from 900 px two
+   zones, the Story on the left and a drawer on the right. */
+:root {
+  --bg: #e1e6e4; --panel: #eef1ef; --panel-2: #d5dcd9; --table: #c7d0cd;
+  --ink: #18232a; --ink-2: #44525a; --ink-3: #66737a; --rule: #b3bdbc; --track: #c4ccca;
+  --land: #ebe9df; --water: #4f86ad; --halo: #eef1ef;
+  --accent: #8a5a10; --on-accent: #fff8ea; --accent-soft: #efe3c6;
+  --good: #2b6d43; --warn: #8f6200; --bad: #ad3528; --world: #e4e2ee; --world-rule: #8c84b8;
+  --f-humans: #2c5eb3; --f-gnomes: #0d7f7e; --f-tieflings: #ad2d69; --f-orcs: #557719;
+  --f-goblinkind: #bd600c; --f-elves: #7145b3; --f-tower: #33384f; --f-other: #66737a;
+  --on-fc: #ffffff; --mix: 30%;
+  --display: "Alegreya SC", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --body: "Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12171a; --panel: #1a2125; --panel-2: #232c31; --table: #0c1012;
+    --ink: #e2e8e6; --ink-2: #a9b4b6; --ink-3: #7e8a8d; --rule: #34404a; --track: #2e3a41;
+    --land: #283035; --water: #5b93bb; --halo: #12171a;
+    --accent: #e0a94e; --on-accent: #1c1406; --accent-soft: #3a2e14;
+    --good: #6cc28a; --warn: #e3b54f; --bad: #f07a6a; --world: #201e2c; --world-rule: #8c84b8;
+    --f-humans: #6f9df0; --f-gnomes: #3cc0bb; --f-tieflings: #ea6aa2; --f-orcs: #9bc44c;
+    --f-goblinkind: #f0954a; --f-elves: #ad8ae8; --f-tower: #c3c8de; --f-other: #8a9599;
+    --on-fc: #0f1417; --mix: 34%;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12171a; --panel: #1a2125; --panel-2: #232c31; --table: #0c1012;
+  --ink: #e2e8e6; --ink-2: #a9b4b6; --ink-3: #7e8a8d; --rule: #34404a; --track: #2e3a41;
+  --land: #283035; --water: #5b93bb; --halo: #12171a;
+  --accent: #e0a94e; --on-accent: #1c1406; --accent-soft: #3a2e14;
+  --good: #6cc28a; --warn: #e3b54f; --bad: #f07a6a; --world: #201e2c; --world-rule: #8c84b8;
+  --f-humans: #6f9df0; --f-gnomes: #3cc0bb; --f-tieflings: #ea6aa2; --f-orcs: #9bc44c;
+  --f-goblinkind: #f0954a; --f-elves: #ad8ae8; --f-tower: #c3c8de; --f-other: #8a9599;
+  --on-fc: #0f1417; --mix: 34%;
+  color-scheme: dark;
+}
+:root {
+  --r-card: 10px; --r-ctl: 8px; --tap: 44px;
+  --now-h: 64px;          /* set by the app from the now line's real height */
+}
+/* ---- css/10-shell.css ---- */
+/* The shell: base, the now line and HUD, the views, the bottom bar and the drawer, and
+   the shared atoms every panel may use (cards, chips, bars, buttons, notes, dice, trace
+   lines, the answer box's parts). Most rules are the mockup's (ui/table-mockup.html);
+   panel-only rules belong in the panel's own CSS file. */
+
+/* ---------- base ---------- */
+[hidden] { display: none !important; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 var(--body); overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--panel); }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:disabled { cursor: default; opacity: .55; }
+textarea, input, select { font: inherit; color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3, h4, h5 { font-family: var(--display); font-weight: 500; margin: 0; line-height: 1.15; text-wrap: balance; }
+p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+ul, ol { padding: 0; list-style: none; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.label { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+.muted { color: var(--ink-3); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ic { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; vertical-align: -.15em; flex: none; }
+.fac-humans { --fc: var(--f-humans); } .fac-gnomes { --fc: var(--f-gnomes); } .fac-tieflings { --fc: var(--f-tieflings); }
+.fac-orcs { --fc: var(--f-orcs); } .fac-goblinkind { --fc: var(--f-goblinkind); } .fac-elves { --fc: var(--f-elves); }
+.fac-tower { --fc: var(--f-tower); } .fac-none { --fc: var(--land); }
+.sw { display: inline-block; flex: none; width: 11px; height: 11px; border-radius: 3px; background: var(--fc); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--ink) 25%, transparent); vertical-align: -1px; }
+.who { color: var(--fc); font-weight: 700; }
+.good { color: var(--good); } .warn { color: var(--warn); } .bad { color: var(--bad); } .brass { color: var(--accent); }
+
+
+/* ---------- the now line and the HUD ---------- */
+.now { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--panel); border-bottom: 1px solid var(--rule); }
+.now-in { max-width: 1280px; margin: 0 auto; padding-block: 6px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 4px; }
+.now .where { display: flex; align-items: baseline; gap: 2px 8px; flex-wrap: wrap; font-family: var(--mono); font-size: .76rem; color: var(--ink-2); min-width: 0; }
+.now .where b { color: var(--ink); font-weight: 600; }
+.now .where .place { min-width: 0; overflow-wrap: anywhere; }
+.now .doing { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; color: var(--accent); min-width: 0; }
+.now .doing .ago { color: var(--ink-3); }
+.now .doing.yours { color: var(--good); }
+.now .doing.ended { color: var(--ink-3); }
+.pulse { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 50%, transparent); animation: pulse 1.6s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 50%, transparent); } 100% { box-shadow: 0 0 0 7px transparent; } }
+.hud { display: flex; align-items: center; gap: 2px 10px; flex-wrap: wrap; font-family: var(--mono); font-size: .76rem; color: var(--ink-2); }
+.hud:empty { display: none; }
+.hud > span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.hud b { color: var(--ink); font-weight: 600; }
+.hud .spent { color: var(--ink-3); text-decoration: line-through; }
+.hud .lit { color: var(--accent); }
+.bar { display: inline-block; vertical-align: middle; height: 7px; border-radius: 4px; background: var(--track); overflow: hidden; flex: 1 1 auto; min-width: 36px; }
+.bar > i { display: block; height: 100%; background: var(--good); border-radius: 4px; }
+.bar.mid > i { background: var(--warn); } .bar.low > i { background: var(--bad); }
+.hud .bar { width: 64px; flex: none; }
+
+/* ---------- the views, the bottom bar and the drawer ---------- */
+.app { max-width: 1280px; margin: 0 auto; padding-top: 14px; padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 14px; align-content: start; }
+.pane, .drawer { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.drawer:empty { display: none; }
+.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; display: flex; background: var(--panel); border-top: 1px solid var(--rule); padding: 2px max(8px, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(8px, env(safe-area-inset-left, 0px)); }
+.tabs button { position: relative; flex: 1 1 0; min-width: 0; min-height: 58px; border: 0; background: none; padding: 6px 0 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font: 500 .7rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.tabs .ic { width: 22px; height: 22px; stroke-width: 1.6; }
+.tabs button[aria-current="true"] { color: var(--accent); }
+.tabs .dot { position: absolute; top: 8px; left: calc(50% + 10px); width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.subtabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.subtabs button { min-height: var(--tap); padding: 0 14px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); font: 500 .78rem var(--mono); color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; }
+.subtabs button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.subtabs .theme { position: relative; margin-left: auto; width: var(--tap); padding: 0; justify-content: center; border-radius: 50%; }
+.subtabs .theme span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.subtabs .theme .ic { width: 18px; height: 18px; }
+.dtabs { display: none; }
+#more-tabs { gap: 5px; }
+#more-tabs button:not(.theme) { padding: 0 10px; }
+
+/* phone: one view at a time */
+@media (max-width: 899.98px) {
+  .pane { display: none; }
+  .app[data-view="story"] #story, .app[data-view="morten"] #morten, .app[data-view="realm"] #realm, .app[data-view="fights"] #fights,
+  .app[data-view="more"][data-more="months"] #months, .app[data-view="more"][data-more="rules"] #rules,
+  .app[data-view="more"][data-more="talk"] #talk, .app[data-view="more"][data-more="table"] #table { display: grid; }
+  #more-tabs { display: none; }
+  .app[data-view="more"] #more-tabs { display: flex; }
+  .now .doing { margin-left: 0; flex-basis: 100%; }
+}
+
+/* wide: the Story on the left, the drawer on the right */
+@media (min-width: 900px) {
+  .app { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; align-items: start; padding-top: 20px; padding-bottom: 40px; }
+  .app > .notice { grid-column: 1 / -1; }
+  #story { grid-column: 1; }
+  .drawer { grid-column: 2; position: sticky; top: calc(var(--now-h) + 12px); max-height: calc(100vh - var(--now-h) - 24px); max-height: calc(100dvh - var(--now-h) - 24px); overflow-y: auto; overscroll-behavior: contain; padding: 2px 4px 12px 2px; }
+  .drawer .pane { display: none; }
+  .app[data-drawer="morten"] #morten, .app[data-drawer="realm"] #realm, .app[data-drawer="fights"] #fights, .app[data-drawer="months"] #months,
+  .app[data-drawer="rules"] #rules, .app[data-drawer="talk"] #talk, .app[data-drawer="table"] #table { display: grid; }
+  .dtabs { display: flex; position: sticky; top: 0; z-index: 2; background: var(--bg); padding-bottom: 6px; gap: 4px; }
+  .dtabs button { padding: 0 12px; }
+  .dtabs button:not(.theme) .ic { display: none; }
+  #more-tabs, .tabs { display: none; }
+}
+
+/* ---------- notices: the store's state, and first-visit notes ---------- */
+.notice { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--r-ctl); background: var(--panel); font-size: .92rem; color: var(--ink-2); }
+.notice .ic { color: var(--ink-3); margin-top: 3px; width: 18px; height: 18px; }
+.notice b { color: var(--ink); font-weight: 600; }
+.notice.err { border-color: var(--bad); }
+.notice.err .ic { color: var(--bad); }
+.note { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: start; padding: 10px 12px; border: 1px dashed var(--accent); border-radius: 8px; background: var(--accent-soft); font-size: .92rem; }
+.note .ic { color: var(--accent); margin-top: 3px; }
+.note button { border: 0; background: none; color: var(--accent); font-family: var(--mono); font-size: .72rem; min-height: var(--tap); min-width: var(--tap); padding: 0 4px; }
+.stub { color: var(--ink-3); font: 500 .8rem var(--mono); padding: 8px 0; }
+.panel-error { border: 1px dashed var(--bad); border-radius: var(--r-ctl); padding: 10px 12px; color: var(--bad); font: .8rem var(--mono); }
+
+/* ---------- shared atoms: sections, story text, foes, HP rows, the trace ---------- */
+.sec { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.sec-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; }
+.sec-head .ic { width: 22px; height: 22px; color: var(--accent); margin-top: 3px; }
+.sec-head h3 { font-size: 1.25rem; }
+.sec-head h3 small { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); font-weight: 500; letter-spacing: 0; margin-left: 6px; }
+.meta { display: flex; flex-wrap: wrap; gap: 4px 10px; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); }
+.out { font-weight: 600; }
+.story p { font-size: 1.02rem; line-height: 1.6; }
+.story .head { font-weight: 500; }
+.bullets { display: grid; gap: 6px; }
+.bullets li { position: relative; padding-left: 14px; line-height: 1.5; font-size: .98rem; }
+.bullets li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); transform: rotate(45deg); }
+.bullets b { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); margin-right: 4px; }
+.foes { display: grid; gap: 4px; }
+.foe { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; align-items: baseline; font-size: .9rem; padding: 6px 10px; border-radius: 6px; background: var(--bg); }
+.foe b { font-weight: 700; }
+.foe .stats { grid-column: 1 / -1; font-family: var(--mono); font-size: .72rem; color: var(--ink-2); }
+.foe .hp { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: .74rem; white-space: nowrap; }
+.foe .hp .bar { width: 54px; flex: none; }
+.hprow { display: grid; gap: 6px; }
+.hprow .hp { display: grid; grid-template-columns: 6.5em minmax(0, 1fr) auto; align-items: center; gap: 8px; font-family: var(--mono); font-size: .76rem; }
+.hprow .hp .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+details.trace { border-top: 1px solid var(--rule); padding-top: 6px; }
+details.trace > summary { list-style: none; cursor: pointer; min-height: var(--tap); display: flex; align-items: center; gap: 8px; font: 500 .74rem var(--mono); color: var(--accent); }
+details.trace > summary::-webkit-details-marker { display: none; }
+details.trace > summary .ic { transition: transform .2s; }
+details.trace[open] > summary .ic { transform: rotate(90deg); }
+.round { display: grid; gap: 3px; padding: 4px 0; }
+.round h5 { margin: 0; font: 500 .68rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); display: flex; gap: 8px; align-items: center; }
+.round h5::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.ln { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 6px; font-family: var(--mono); font-size: .76rem; line-height: 1.55; }
+.ln .mk { text-align: center; color: var(--accent); }
+.ln.them .mk { color: var(--ink-3); }
+.ln.them { padding-left: 12px; }
+.ln .tx { overflow-wrap: anywhere; }
+.die { display: inline-flex; align-items: center; gap: 4px; margin: 1px 2px 1px 0; padding: 0 6px; border-radius: 4px; border: 1px solid var(--rule); background: var(--bg); font-size: .7rem; white-space: nowrap; }
+.die b { font-weight: 600; } .die i { font-style: normal; color: var(--ink-3); }
+.die .r { font-weight: 600; } .die .r.hit, .die .r.ok { color: var(--good); } .die .r.miss { color: var(--ink-3); } .die .r.fizz, .die .r.fail { color: var(--bad); }
+.die.nat20 { border-color: var(--accent); background: var(--accent-soft); } .die.nat1 { border-color: var(--bad); }
+.die u { text-decoration: none; color: var(--ink-3); }
+.die s { color: var(--ink-3); }
+.die.fizzle { border-color: var(--bad); border-style: dashed; }
+.die .r.nat { color: var(--accent); }
+.die.nat1 .r.nat { color: var(--bad); }
+.dice { display: inline; }
+.result { display: flex; flex-wrap: wrap; gap: 4px 12px; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 8px; }
+.result b { color: var(--ink); font-weight: 600; }
+.you { justify-self: end; max-width: 88%; background: var(--panel-2); border: 1px solid var(--rule); border-radius: 14px 14px 4px 14px; padding: 8px 14px; display: grid; gap: 2px; }
+.you .label { font-size: .62rem; }
+.you p { line-height: 1.5; }
+.sec.aside { background: transparent; border: 0; border-left: 2px dashed var(--accent); border-radius: 0; padding: 4px 0 4px 14px; }
+.sec.aside .sec-head .ic { color: var(--accent); }
+.sec.aside p { color: var(--ink-2); font-size: .95rem; line-height: 1.5; }
+.sec.plain { background: transparent; border: 0; padding: 2px 0; }
+.sec.plain .sec-head h3 { font-size: 1.05rem; }
+.sec.plain .meta { margin-top: 2px; }
+
+/* ---------- shared atoms: numbered events, chips ---------- */
+.events { display: grid; gap: 8px; counter-reset: ev; }
+.events li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; align-items: start; line-height: 1.5; font-size: .98rem; }
+.events .n { width: 22px; height: 22px; border-radius: 50%; background: var(--fc, var(--ink-3)); color: var(--on-fc); display: grid; place-items: center; font: 600 .72rem/1 var(--mono); margin-top: 2px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 3px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); font-size: .88rem; line-height: 1.3; }
+.chip.threat { border-color: var(--bad); color: var(--bad); background: color-mix(in oklab, var(--bad) 8%, var(--panel)); }
+.chip.chance { border-color: var(--good); color: var(--good); background: color-mix(in oklab, var(--good) 8%, var(--panel)); }
+.chip.open { border-color: var(--accent); color: var(--accent); background: color-mix(in oklab, var(--accent) 8%, var(--panel)); }
+.chip .k { font: 600 .64rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.trace-lines { display: grid; gap: 2px; font-family: var(--mono); font-size: .72rem; color: var(--ink-2); line-height: 1.5; }
+
+/* ---------- shared atoms: the answer box's parts ---------- */
+.answer { display: grid; gap: 8px; margin-top: 4px; }
+.status { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); }
+.status .sep { color: var(--ink-3); }
+.mockbar { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; font: 500 .66rem var(--mono); color: var(--ink-3); }
+.mockbar button { min-height: 28px; padding: 0 8px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); font: inherit; }
+.mockbar button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.box { border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); display: grid; }
+.box .form { display: grid; gap: 10px; padding: 12px 14px; }
+.box .form .row { display: grid; gap: 4px; }
+.box .form .row > .label { font-size: .64rem; }
+.seg { display: flex; flex-wrap: wrap; gap: 4px; }
+.seg button { min-height: var(--tap); padding: 4px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); font-size: .9rem; display: inline-flex; align-items: center; gap: 6px; }
+.seg button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--ink); }
+.seg button small { font-family: var(--mono); font-size: .68rem; color: var(--ink-3); }
+.seg button.stop { border-color: var(--bad); color: var(--bad); }
+.box textarea { border: 0; border-top: 1px solid var(--rule); background: transparent; resize: vertical; min-height: 64px; padding: 10px 14px; font: 1rem/1.5 var(--body); color: var(--ink); }
+.box textarea::placeholder { color: var(--ink-3); }
+.box .send { display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid var(--rule); padding: 8px 10px 8px 14px; }
+.box .send .hint { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); }
+.box .send button { min-height: 44px; min-width: 88px; border: 0; background: var(--accent); color: var(--on-accent); border-radius: 6px; font: 600 .8rem var(--mono); padding: 0 16px; }
+.form .pick { display: flex; flex-wrap: wrap; gap: 6px; }
+.form .pick button { min-height: 44px; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); display: inline-flex; align-items: center; gap: 8px; text-align: left; font-size: .9rem; }
+.form .pick button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.form .pick small { font-family: var(--mono); font-size: .68rem; color: var(--ink-3); }
+.form .pick button.spell { font-family: var(--mono); font-size: .76rem; min-height: 36px; }
+.box textarea { width: 100%; }
+.box .send .hint { min-width: 0; }
+.status button { min-height: 32px; padding: 0 10px; border: 1px solid var(--accent); border-radius: 999px; background: var(--panel); color: var(--accent); font: 500 .72rem var(--mono); }
+
+/* ---------- shared atoms: cards, stats, spells, pips, toggles, hex buttons ---------- */
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.card h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 4px 8px; flex-wrap: wrap; }
+.card h3 .ic { color: var(--accent); width: 20px; height: 20px; }
+.card h3 small { margin-left: auto; font: 500 .72rem var(--mono); color: var(--ink-3); }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(78px, 1fr)); gap: 6px; }
+.stat { border: 1px solid var(--rule); border-radius: 8px; padding: 6px 8px; display: grid; gap: 1px; background: var(--bg); min-width: 0; }
+.stat .v { font: 600 1.05rem/1.2 var(--mono); display: flex; align-items: center; gap: 6px; }
+.stat .v .ic { color: var(--accent); }
+.stat .label { font-size: .6rem; }
+.stat .sub { font-family: var(--mono); font-size: .66rem; color: var(--ink-3); }
+.hpbig { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; font-family: var(--mono); font-size: .9rem; }
+.spell small { font: 500 .66rem var(--mono); color: var(--ink-3); }
+.spell.lost { text-decoration: line-through; color: var(--ink-3); border-style: dashed; }
+.spell.conc { border-color: var(--accent); }
+.spell.free { border-color: var(--good); }
+.spell .ic { width: 14px; height: 14px; color: var(--accent); }
+.inv { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 2px 10px; font-size: .9rem; }
+.inv .label { grid-column: 1 / -1; padding-top: 6px; font-size: .6rem; }
+.pips i.off { background: var(--track); }
+.feat { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: .92rem; padding: 6px 0; border-top: 1px solid var(--rule); }
+.feat .ic { color: var(--accent); }
+.toggle { min-height: var(--tap); padding: 0 12px; border: 1px solid var(--rule); border-radius: 999px; background: var(--panel); display: inline-flex; align-items: center; gap: 6px; font: 500 .76rem var(--mono); color: var(--ink-2); }
+.toggle[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.hexbtns { display: flex; flex-wrap: wrap; gap: 6px; }
+.hexbtn { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); text-align: left; font-size: .88rem; }
+.hexbtn small { font: 500 .68rem var(--mono); color: var(--ink-3); }
+.hexbtn .ic { width: 14px; height: 14px; color: var(--accent); }
+
+/* ---------- Markdown from T.ui.md ---------- */
+.md { display: grid; gap: 8px; min-width: 0; }
+.md h4 { font-size: 1.1rem; margin-top: 4px; }
+.md h5 { font: 600 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.md code { font-family: var(--mono); font-size: .86em; background: var(--panel-2); border-radius: 4px; padding: 0 4px; }
+.md ol { list-style: decimal; padding-left: 1.4em; display: grid; gap: 4px; }
+.md-table { overflow-x: auto; max-width: 100%; }
+.md table { border-collapse: collapse; font-size: .88rem; min-width: 100%; }
+.md th, .md td { text-align: left; vertical-align: top; padding: 4px 10px 4px 0; border-bottom: 1px solid var(--rule); }
+.md th { font: 600 .68rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+
+@media (prefers-reduced-motion: reduce) { .pulse { animation: none; } * { transition: none !important; } }
+/* ---- css/50-story.css ---- */
+/* STUB: 50-story's own styles go here (owner: see web/README.md, File ownership). The shared atoms are in 10-shell.css. */
+/* ---- css/60-fight.css ---- */
+/* STUB: 60-fight's own styles go here (owner: see web/README.md, File ownership). The shared atoms are in 10-shell.css. */
+/* ---- css/62-morten.css ---- */
+/* STUB: 62-morten's own styles go here (owner: see web/README.md, File ownership). The shared atoms are in 10-shell.css. */
+/* ---- css/70-realm.css ---- */
+/* STUB: 70-realm's own styles go here (owner: see web/README.md, File ownership). The shared atoms are in 10-shell.css. */
+/* ---- css/80-more.css ---- */
+/* STUB: 80-more's own styles go here (owner: see web/README.md, File ownership). The shared atoms are in 10-shell.css. */
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.3A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.2c0 5.7-7.5 10.3-7.5 10.3z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/></symbol>
+  <symbol id="i-sword" viewBox="0 0 24 24"><path d="M20 4l-9 9M13 15l-3-3M8 16l-4 4M6 18l2 2M19 4h1v1"/></symbol>
+  <symbol id="i-mask" viewBox="0 0 24 24"><path d="M3 9c0-2 2-3 4-3h10c2 0 4 1 4 3v2c0 4-3 6-6 6-2 0-2-2-3-2s-1 2-3 2c-3 0-6-2-6-6zM8 11h2M14 11h2"/></symbol>
+  <symbol id="i-coins" viewBox="0 0 24 24"><path d="M5 8a7 3 0 1 0 14 0a7 3 0 1 0-14 0M5 8v8c0 1.7 3.1 3 7 3s7-1.3 7-3V8M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 24 24"><path d="M4 18h16M4 18l-1-10 5 4 4-6 4 6 5-4-1 10"/></symbol>
+  <symbol id="i-tower" viewBox="0 0 24 24"><path d="M7 20V8h2V5h2v3h2V5h2v3h2v12zM10 20v-4h4v4"/></symbol>
+  <symbol id="i-skull" viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-7 7c0 3 2 4 3 5v3h8v-3c1-1 3-2 3-5a7 7 0 0 0-7-7zM9 11h.01M15 11h.01M10 18v2M14 18v2"/></symbol>
+  <symbol id="i-d20" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7zM12 2v20M3 7l9 5 9-5M12 12l-9 5M12 12l9 5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6-6-6-11a6 6 0 0 1 12 0c0 5-6 11-6 11zM12 10m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0"/></symbol>
+  <symbol id="i-boots" viewBox="0 0 24 24"><path d="M6 3h5v8l6 3v3H6zM6 17v3h11"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24"><path d="M5 3h14v18H5zM15 12h.01M9 21V3"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18v-8h18v8M3 14h18M6 10V7h5v3"/></symbol>
+  <symbol id="i-lantern" viewBox="0 0 24 24"><path d="M9 2h6M10 5h4l2 3v8l-2 3h-4l-2-3V8zM12 9v5M12 19v3"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 8h12l1 13H5zM9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+  <symbol id="i-speech" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h12l-3 4 3 4H5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 12V5a1.5 1.5 0 0 1 3 0v6M11 11V4a1.5 1.5 0 0 1 3 0v7M14 11V5a1.5 1.5 0 0 1 3 0v8c0 4-2 7-6 7s-6-3-6-7v-2a1.5 1.5 0 0 1 3 0"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-hex" viewBox="0 0 24 24"><path d="M7 3.5h5l2.5 4.3L12 12H7L4.5 7.8z"/><path d="M14.5 7.8h5L22 12l-2.5 4.3h-5L12 12"/><path d="M7 12h5l2.5 4.3L12 20.5H7l-2.5-4.2z"/></symbol>
+  <symbol id="i-fight" viewBox="0 0 24 24"><path d="M5 19L19 5M14 5h5v5M5 5l14 14M5 14v5h5"/></symbol>
+  <symbol id="i-story" viewBox="0 0 24 24"><path d="M4 5h11a4 4 0 0 1 4 4v10H8a4 4 0 0 1-4-4z"/><path d="M8 9h7M8 13h7"/></symbol>
+  <symbol id="i-hat" viewBox="0 0 24 24"><path d="M12 3l4 9H8zM5 14h14l1 3H4zM10 9l2-1 2 1"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><path d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0M11 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0M18 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><path d="M4 5h16v15H4zM4 10h16M9 3v4M15 3v4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h3l2 11h11l2-7H7M9 20a1 1 0 1 0 2 0a1 1 0 1 0-2 0M16 20a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/></symbol>
+  <symbol id="i-q" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-off" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM5.6 5.6l12.8 12.8"/></symbol>
+</svg>
+
+<header class="now" id="now" aria-label="Now">
+  <div class="now-in">
+    <p class="where" id="now-where"><b>Morten's table</b><span class="place">opening the table</span></p>
+    <p class="hud" id="hud" aria-label="Morten at a glance"></p>
+  </div>
+</header>
+
+<div class="app" id="app" data-view="story" data-more="months" data-drawer="realm">
+  <div class="notice" id="notice" role="status" hidden></div>
+
+  <main class="pane" id="story" aria-label="The story"></main>
+
+  <aside class="drawer" id="drawer" aria-label="The drawer">
+    <nav class="subtabs dtabs" id="dtabs" aria-label="The drawer's tabs">
+      <button type="button" data-drawer="realm" aria-pressed="true"><svg class="ic" aria-hidden="true"><use href="#i-hex"/></svg>Realm</button>
+      <button type="button" data-drawer="morten" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-hat"/></svg>Morten</button>
+      <button type="button" data-drawer="fights" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-fight"/></svg>Fights</button>
+      <button type="button" data-drawer="months" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg>Months</button>
+      <button type="button" data-drawer="rules" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Rules</button>
+      <button type="button" data-drawer="talk" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-speech"/></svg>Talk</button>
+      <button type="button" data-drawer="table" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-gear"/></svg>Table</button>
+      <button type="button" class="theme" data-theme-switch aria-label="Switch to the dark theme"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg><span>Dark</span></button>
+    </nav>
+    <nav class="subtabs" id="more-tabs" aria-label="More">
+      <button type="button" data-more="months" aria-pressed="true"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg>Months</button>
+      <button type="button" data-more="rules" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Rules</button>
+      <button type="button" data-more="talk" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-speech"/></svg>Talk</button>
+      <button type="button" data-more="table" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-gear"/></svg>Table</button>
+      <button type="button" class="theme" data-theme-switch aria-label="Switch to the dark theme"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg><span>Dark</span></button>
+    </nav>
+    <section class="pane" id="realm" aria-label="The realm"></section>
+    <section class="pane" id="morten" aria-label="Morten"></section>
+    <section class="pane" id="fights" aria-label="Fights"></section>
+    <section class="pane" id="months" aria-label="The months"></section>
+    <section class="pane" id="rules" aria-label="Rules"></section>
+    <section class="pane" id="talk" aria-label="Table talk"></section>
+    <section class="pane" id="table" aria-label="The table's settings"></section>
+  </aside>
+</div>
+
+<nav class="tabs" id="tabs" aria-label="Views">
+  <button type="button" data-view="story" aria-current="true"><svg class="ic" aria-hidden="true"><use href="#i-story"/></svg>Story<i class="dot" aria-hidden="true" hidden></i></button>
+  <button type="button" data-view="morten" aria-current="false"><svg class="ic" aria-hidden="true"><use href="#i-hat"/></svg>Morten</button>
+  <button type="button" data-view="realm" aria-current="false"><svg class="ic" aria-hidden="true"><use href="#i-hex"/></svg>Realm</button>
+  <button type="button" data-view="fights" aria-current="false"><svg class="ic" aria-hidden="true"><use href="#i-fight"/></svg>Fights</button>
+  <button type="button" data-view="more" aria-current="false"><svg class="ic" aria-hidden="true"><use href="#i-more"/></svg>More</button>
+</nav>
+
+<script>
+/* ---- js/00-core.js ---- */
+// window.T: the page's one namespace. Every other file is an IIFE that hangs its exports
+// on T: T.store (10), T.model (20), T.ui (30), T.app (40), T.panels.<name> (50 and up).
+// This file also holds the few tiny helpers the others share (T.util).
+(() => {
+  'use strict';
+  const T = (window.T = window.T || {});
+  T.panels = T.panels || {};
+  T.version = 1;
+
+  const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+
+  T.util = {
+    isObj,
+    /** document.querySelector, scoped. */
+    $: (sel, root = document) => root.querySelector(sel),
+    /** document.querySelectorAll as an array. */
+    $$: (sel, root = document) => Array.from(root.querySelectorAll(sel)),
+    /** Zero-padded id: pad(7) is "0007". */
+    pad: (n, width = 4) => String(Math.max(0, Math.trunc(n))).padStart(width, '0'),
+    /** Milliseconds for an ISO time or a number; null when it is neither. */
+    ms(at) {
+      if (typeof at === 'number' && Number.isFinite(at)) return at;
+      if (typeof at !== 'string' || !at) return null;
+      const t = Date.parse(at);
+      return Number.isFinite(t) ? t : null;
+    },
+    /** Run fn, log and swallow what it throws; returns fn's value or undefined. */
+    safe(fn, label) {
+      try {
+        return fn();
+      } catch (err) {
+        console.error(`[table] ${label || 'error'}:`, err);
+        return undefined;
+      }
+    },
+    /** A short readable message for any thrown value (a DbError, an Error, a string). */
+    errText(err) {
+      if (!err) return 'unknown error';
+      if (typeof err === 'string') return err;
+      if (isObj(err) && typeof err.code === 'string') return err.message ? `${err.code}: ${err.message}` : err.code;
+      if (err instanceof Error) return err.message;
+      return 'unknown error';
+    },
+    sleep: (ms) => new Promise((r) => setTimeout(r, ms)),
+  };
+})();
+/* ---- js/10-store.js ---- */
+// T.store: the bridge to the platform's db (and comments, for the wake).
+//
+// It subscribes ONCE to the four singleton docs (game/state, game/morten, game/realm,
+// game/rules) and the four collections (story, live, log, moves), keeps their bodies as
+// they arrive, and tells its subscribers after every change. It writes only moves, one at
+// a time, and after a move lands it wakes the GM through comments.sendToClaude (README:
+// The wake). Everything is defensive: window.claude may be missing, use() may resolve
+// null or reject, a snapshot may error; the page renders whatever it has.
+(() => {
+  'use strict';
+  const T = window.T;
+  const U = T.util;
+
+  const DOCS = ['state', 'morten', 'realm', 'rules'];
+  const COLS = ['story', 'live', 'log', 'moves'];
+  const KINDS = ['say', 'play', 'orders', 'fight', 'turn', 'table', 'take'];
+  const WRITTEN_GRACE_MS = 10000;
+
+  const raw = {
+    db: 'pending', // 'pending' until use("db") answers; then 'ok' | 'none' | 'error'
+    dbError: '', // why the store stopped, in words
+    docs: { state: null, morten: null, realm: null, rules: null }, // bodies, null when missing
+    cols: { story: [], live: [], log: [], moves: [] }, // [{id, data}]
+    loaded: { state: false, morten: false, realm: false, rules: false, story: false, live: false, log: false, moves: false },
+    pending: [], // [{id, seq, kind, body, at, status: 'sending'|'written'|'failed', error}]
+    sentIds: [], // move ids this view wrote
+    sending: 0, // writes queued or in flight
+    wake: { state: 'idle', reason: '', move: null, kind: null, at: null },
+    comments: 'pending', // 'pending' | 'ok' | 'none'
+    user: { canWrite: null, canEdit: null },
+    rev: 0,
+  };
+
+  const listeners = new Set();
+  let DB = null;
+  let CM = null;
+  let started = null;
+  let queue = Promise.resolve();
+  let lastSeq = 0;
+  const unsubs = [];
+
+  function emit() {
+    raw.rev += 1;
+    for (const fn of Array.from(listeners)) U.safe(() => fn(raw), 'store subscriber');
+  }
+
+  const local = () => (T.ui && T.ui.local) || { get: (k, d) => d, set() {}, del() {} };
+
+  // ---------- capabilities ----------
+  function use(name) {
+    const c = window.claude;
+    if (!c || typeof c.use !== 'function') return Promise.resolve(null);
+    return Promise.resolve()
+      .then(() => c.use(name))
+      .then((ns) => ns || null)
+      .catch((err) => {
+        console.warn(`[table] claude.use("${name}") rejected:`, U.errText(err));
+        return null;
+      });
+  }
+
+  function start() {
+    if (started) return started;
+    started = (async () => {
+      use('comments').then((cm) => {
+        CM = cm;
+        raw.comments = cm ? 'ok' : 'none';
+        emit();
+      });
+      use('user').then(async (u) => {
+        if (!u) return;
+        try {
+          const w = typeof u.can === 'function' ? await u.can('data.write') : null;
+          raw.user.canWrite = typeof w === 'boolean' ? w : null;
+        } catch (_) { /* unknown: keep the inputs */ }
+        try {
+          const e = typeof u.canEdit === 'function' ? await u.canEdit() : null;
+          raw.user.canEdit = typeof e === 'boolean' ? e : null;
+        } catch (_) { /* unknown */ }
+        emit();
+      });
+      const db = await use('db');
+      if (!db) {
+        raw.db = 'none';
+        emit();
+        return;
+      }
+      DB = db;
+      raw.db = 'ok';
+      for (const name of DOCS) listenDoc(name, 0);
+      for (const name of COLS) listenCol(name, 0);
+      emit();
+    })().catch((err) => {
+      raw.db = 'error';
+      raw.dbError = `the table's store did not open (${U.errText(err)})`;
+      emit();
+    });
+    return started;
+  }
+
+  // ---------- subscriptions (once each) ----------
+  const SUB_REASON = {
+    revoked: 'this view lost access to the table',
+    invalid_argument: "the page asked the store for something it can't give",
+    resource_exhausted: 'the store is busy; reload the page in a minute',
+    not_granted: 'this view was not given the table store',
+    capability_disabled: 'the table store is not available in this view',
+    capability_removed: 'the table store is not available in this view',
+  };
+
+  function onSubError(err, again, attempt) {
+    const code = err && typeof err.code === 'string' ? err.code : 'unavailable';
+    if (code === 'unavailable' && attempt < 2) {
+      setTimeout(again, 2000 + Math.random() * 3000);
+      return;
+    }
+    raw.db = 'error';
+    raw.dbError = SUB_REASON[code] || 'the table store stopped answering';
+    console.warn('[table] subscription ended:', U.errText(err));
+    emit();
+  }
+
+  function listenDoc(name, attempt) {
+    const again = () => listenDoc(name, attempt + 1);
+    try {
+      const ref = DB.doc(`game/${name}`);
+      unsubs.push(ref.onSnapshot(
+        (snap) => U.safe(() => {
+          const body = snap && snap.exists && typeof snap.data === 'function' ? snap.data() : null;
+          raw.docs[name] = U.isObj(body) ? body : null;
+          raw.loaded[name] = true;
+          emit();
+        }, `game/${name} snapshot`),
+        (err) => onSubError(err, again, attempt),
+      ));
+    } catch (err) {
+      onSubError(err, again, attempt);
+    }
+  }
+
+  function listenCol(name, attempt) {
+    const again = () => listenCol(name, attempt + 1);
+    try {
+      const ref = DB.collection(name);
+      unsubs.push(ref.onSnapshot(
+        (qs) => U.safe(() => {
+          const list = qs && Array.isArray(qs.docs) ? qs.docs : [];
+          raw.cols[name] = list
+            .map((d) => ({ id: d && typeof d.id === 'string' ? d.id : '', data: d && typeof d.data === 'function' ? d.data() : null }))
+            .filter((d) => d.id && U.isObj(d.data));
+          raw.loaded[name] = true;
+          prune();
+          emit();
+        }, `${name} snapshot`),
+        (err) => onSubError(err, again, attempt),
+      ));
+    } catch (err) {
+      onSubError(err, again, attempt);
+    }
+  }
+
+  // A pending move is done once it shows in moves, or a section answers it, or (written,
+  // never seen) a while after its write was confirmed.
+  function prune() {
+    const inMoves = new Set(raw.cols.moves.map((d) => d.id));
+    const answered = new Set();
+    for (const s of raw.cols.story) {
+      const a = s.data.answered;
+      if (Array.isArray(a)) for (const id of a) if (typeof id === 'string') answered.add(id);
+      const w = s.data.words;
+      if (Array.isArray(w)) for (const x of w) if (U.isObj(x) && typeof x.move === 'string') answered.add(x.move);
+    }
+    const now = Date.now();
+    raw.pending = raw.pending.filter((p) => {
+      if (p.status === 'failed') return true;
+      if (inMoves.has(p.id) || answered.has(p.id)) return false;
+      if (p.status === 'written' && now - p.writtenAt > WRITTEN_GRACE_MS) return false;
+      return true;
+    });
+  }
+
+  // ---------- writing a move ----------
+  function seqOf(d) {
+    if (d && U.isObj(d.data) && typeof d.data.seq === 'number' && Number.isFinite(d.data.seq)) return d.data.seq;
+    const m = d && typeof d.id === 'string' ? /^m(\d+)$/.exec(d.id) : null;
+    return m ? parseInt(m[1], 10) : 0;
+  }
+
+  function nextSeq() {
+    const st = raw.docs.state;
+    let max = st && typeof st.lastMove === 'number' && Number.isFinite(st.lastMove) ? st.lastMove : 0;
+    for (const d of raw.cols.moves) max = Math.max(max, seqOf(d));
+    for (const p of raw.pending) max = Math.max(max, p.seq);
+    return Math.max(max, lastSeq) + 1;
+  }
+
+  function storeError(code, message) {
+    return { code, message };
+  }
+
+  async function writeMove(id, body) {
+    const ref = DB.collection('moves').doc(id);
+    try {
+      await ref.set(body);
+    } catch (err) {
+      if (err && err.code === 'unavailable') {
+        await U.sleep(300 + Math.random() * 700);
+        await ref.set(body);
+        return;
+      }
+      throw err;
+    }
+  }
+
+  function plainFields(fields) {
+    if (!U.isObj(fields)) return {};
+    try {
+      const copy = JSON.parse(JSON.stringify(fields));
+      return U.isObj(copy) ? copy : {};
+    } catch (_) {
+      return {};
+    }
+  }
+
+  async function doSend(kind, fields) {
+    if (!DB) throw storeError('no_store', raw.db === 'pending' ? 'the table is still opening; send again in a moment' : 'there is no table store in this view');
+    if (raw.db === 'error') throw storeError('no_store', raw.dbError || 'the table store stopped answering');
+    if (raw.user.canWrite === false) throw storeError('read_only', 'this view can read the table but not write to it');
+    const seq = nextSeq();
+    const id = `m${U.pad(seq)}`;
+    const at = new Date().toISOString();
+    const body = Object.assign(plainFields(fields), { v: 1, seq, at, kind });
+    const entry = { id, seq, kind, body, at, status: 'sending', error: '', writtenAt: 0 };
+    raw.pending.push(entry);
+    lastSeq = seq;
+    emit();
+    // Ask early, alongside the write, so the wake still runs inside the viewer's gesture.
+    const wakeOn = isWakeOn();
+    const canP = wakeOn && CM ? Promise.resolve().then(() => CM.canSendToClaude()).catch(() => 'error') : null;
+    try {
+      await writeMove(id, body);
+    } catch (err) {
+      entry.status = 'failed';
+      entry.error = err && err.code === 'quota_exceeded' ? 'the store is full; the GM has to clear old moves' : U.errText(err);
+      if (err && err.code === 'invalid_argument' && raw.user.canWrite === null) raw.user.canWrite = false;
+      emit();
+      throw err;
+    }
+    entry.status = 'written';
+    entry.writtenAt = Date.now();
+    raw.sentIds.push(id);
+    prune();
+    emit();
+    if (wakeOn) await callGm(id, kind, canP);
+    else {
+      raw.wake = { state: 'off', reason: '', move: id, kind, at: null };
+      emit();
+    }
+    return { id, seq };
+  }
+
+  /** Write one move (moves/mNNNN), then wake the GM. Resolves {id, seq}; rejects on a failed write. */
+  function send(kind, fields) {
+    if (!KINDS.includes(kind)) return Promise.reject(new TypeError(`unknown move kind: ${kind}`));
+    raw.sending += 1;
+    emit();
+    const job = queue.then(() => doSend(kind, fields));
+    queue = job.catch(() => {});
+    return job.finally(() => {
+      raw.sending = Math.max(0, raw.sending - 1);
+      emit();
+    });
+  }
+
+  // ---------- the wake ----------
+  function isWakeOn() {
+    const st = raw.docs.state;
+    return !!(st && U.isObj(st.wake) && st.wake.on === true);
+  }
+
+  const CAN_REASON = {
+    no_session: 'the GM is not watching; it will read your move next time',
+    writers_only: "only the table's editors can call the GM; it will read your move next time",
+    off: 'calling the GM is off here; it will read your move next time',
+    none: 'this view cannot call the GM; it will read your move next time',
+    error: 'the GM could not be called; it will read your move next time',
+  };
+  const SEND_REASON = {
+    consent_required: 'the GM was not called: allow this page to comment for you, then call again',
+    forbidden: 'commenting from the page is off here; the GM will read your move next time',
+    rate_limited: 'the GM was called a lot just now; call again in a minute',
+    claude_unavailable: 'the GM could not be reached from this view; it will read your move next time',
+    invalid: 'the call to the GM was refused; it will read your move next time',
+  };
+
+  function anchorEl() {
+    return document.querySelector('[data-wake-anchor]') || document.getElementById('story') || document.body;
+  }
+
+  async function callGm(id, kind, canP) {
+    raw.wake = { state: 'calling', reason: '', move: id, kind, at: null };
+    emit();
+    const done = (state, reason) => {
+      raw.wake = { state, reason: reason || '', move: id, kind, at: Date.now() };
+      emit();
+    };
+    if (!CM) return done('unavailable', CAN_REASON.none);
+    let can;
+    try {
+      can = await (canP || CM.canSendToClaude());
+    } catch (_) {
+      can = 'error';
+    }
+    if (can !== 'available') return done('unavailable', CAN_REASON[can] || CAN_REASON.error);
+    const text = `Table move ${id} (${kind}).`;
+    let thread = local().get('wake.thread', null);
+    try {
+      let res = null;
+      if (typeof thread === 'string' && thread) {
+        try {
+          res = await CM.sendToClaude({ threadId: thread, text });
+        } catch (err) {
+          if (!(err && err.code === 'not_found')) throw err;
+          local().del('wake.thread');
+          thread = null;
+        }
+      }
+      if (!res) {
+        const anchor = await CM.anchorFor(anchorEl());
+        res = await CM.sendToClaude({ anchor, text });
+      }
+      if (res && typeof res.threadId === 'string' && res.threadId) local().set('wake.thread', res.threadId);
+      return done('called', '');
+    } catch (err) {
+      const code = err && typeof err.code === 'string' ? err.code : '';
+      console.warn('[table] the wake failed:', U.errText(err));
+      return done('failed', SEND_REASON[code] || `the GM could not be called (${code || 'error'}); it will read your move next time`);
+    }
+  }
+
+  /** The status line's one "Call the GM again" button. Never loops; one call per tap. */
+  function wakeAgain() {
+    const w = raw.wake;
+    if (!w.move || w.state === 'calling') return Promise.resolve();
+    return callGm(w.move, w.kind || 'say', null);
+  }
+
+  /** Send a failed move again, as a new move (it gets the next seq). */
+  function retry(id) {
+    const i = raw.pending.findIndex((p) => p.id === id && p.status === 'failed');
+    if (i < 0) return Promise.resolve(null);
+    const [p] = raw.pending.splice(i, 1);
+    const fields = Object.assign({}, p.body);
+    for (const k of ['v', 'seq', 'at', 'kind']) delete fields[k];
+    return send(p.kind, fields);
+  }
+
+  /** Forget a failed move. */
+  function dismiss(id) {
+    const before = raw.pending.length;
+    raw.pending = raw.pending.filter((p) => !(p.id === id && p.status === 'failed'));
+    if (raw.pending.length !== before) emit();
+  }
+
+  T.store = {
+    KINDS,
+    start,
+    /** fn(raw) after every change; returns an unsubscribe. */
+    subscribe(fn) {
+      if (typeof fn !== 'function') return () => {};
+      listeners.add(fn);
+      return () => listeners.delete(fn);
+    },
+    raw: () => raw,
+    send,
+    wakeAgain,
+    retry,
+    dismiss,
+    /** Stop every subscription (tests, teardown). */
+    stop() {
+      while (unsubs.length) U.safe(() => unsubs.pop()(), 'unsubscribe');
+    },
+  };
+
+  setInterval(() => {
+    const before = raw.pending.length;
+    prune();
+    if (raw.pending.length !== before) emit();
+  }, 5000);
+})();
+/* ---- js/20-model.js ---- */
+// T.model: the defensive parsers. T.model.view(raw) turns the store's raw bodies into the
+// view model the panels render (README: The page's view model). Every field is read with
+// a fallback of the right type; a wrong type falls back, nothing is cast. Parsed docs are
+// cached by body identity (delivered bodies are frozen and reused when unchanged).
+(() => {
+  'use strict';
+  const T = window.T;
+  const U = T.util;
+  const isObj = U.isObj;
+
+  // ---------- readers ----------
+  const P = {
+    str: (v, d = '') => (typeof v === 'string' ? v : d),
+    strOrNull: (v) => (typeof v === 'string' && v !== '' ? v : null),
+    /** A display value that may come as a string or a number ("1/2", 2, "+5"). */
+    text: (v, d = '') => (typeof v === 'string' ? v : typeof v === 'number' && Number.isFinite(v) ? String(v) : d),
+    num: (v, d = null) => (typeof v === 'number' && Number.isFinite(v) ? v : d),
+    int: (v, d = null) => (Number.isInteger(v) ? v : d),
+    bool: (v, d = false) => (typeof v === 'boolean' ? v : d),
+    boolOrNull: (v) => (typeof v === 'boolean' ? v : null),
+    arr: (v) => (Array.isArray(v) ? v : []),
+    obj: (v) => (isObj(v) ? v : null),
+    oneOf: (v, list, d) => (list.includes(v) ? v : d),
+    strs: (v) => (Array.isArray(v) ? v.filter((x) => typeof x === 'string') : typeof v === 'string' && v ? [v] : []),
+    nums: (v) => (Array.isArray(v) ? v.filter((x) => typeof x === 'number' && Number.isFinite(x)) : []),
+    /** Map an array through fn, dropping what fn returns null for. */
+    list: (v, fn) => (Array.isArray(v) ? v.map((x, i) => fn(x, i)).filter((x) => x !== null && x !== undefined) : []),
+    /** An object of key -> fn(value), dropping nulls. */
+    map: (v, fn) => {
+      const out = {};
+      if (!isObj(v)) return out;
+      for (const k of Object.keys(v)) {
+        const x = fn(v[k], k);
+        if (x !== null && x !== undefined) out[k] = x;
+      }
+      return out;
+    },
+    seqFromId: (id) => {
+      const m = typeof id === 'string' ? /(\d+)$/.exec(id) : null;
+      return m ? parseInt(m[1], 10) : 0;
+    },
+  };
+  const { str, strOrNull, text, num, int, bool, boolOrNull, obj, oneOf, strs, nums, list, map } = P;
+
+  // ---------- enums (README: The data contract) ----------
+  const E = {
+    status: ['awaiting', 'playing', 'ended'],
+    who: ['dm', 'you'],
+    stop: ['month', 'orders', 'fight', 'round', 'matters'],
+    fights: ['live', 'turning', 'summary', 'line'],
+    world: ['story', 'report'],
+    dice: ['key', 'all', 'none'],
+    mode: ['open', 'closed'],
+    awaiting: ['orders', 'fight', 'turn', 'word', 'none'],
+    sectionKinds: ['orders', 'travel', 'fight', 'rest', 'shop', 'delve', 'domain', 'death', 'wrap', 'aside', 'opening'],
+    lineWho: ['morten', 'foe', 'gm', 'world'],
+    lineKind: ['roll', 'cast', 'attack', 'save', 'damage', 'note', 'move'],
+    dieResult: ['hit', 'miss', 'cast', 'fizzle', 'save', 'fail'],
+    outcome: ['cleared', 'died', 'fled', 'bypassed', 'going'],
+    foeState: ['healthy', 'bloodied', 'near death'],
+    moveKinds: ['say', 'play', 'orders', 'fight', 'turn', 'table', 'take'],
+    playScope: ['month', 'matters', 'fight', 'round', 'stop'],
+    fightChoice: ['fight', 'avoid', 'plan'],
+  };
+
+  // ---------- shared shapes ----------
+  function die(d) {
+    if (!isObj(d)) return null;
+    const faces = nums(d.faces);
+    const kept = Array.isArray(d.kept) ? nums(d.kept) : faces;
+    return {
+      expr: str(d.expr),
+      faces,
+      kept,
+      mod: num(d.mod, 0),
+      total: num(d.total, null),
+      vs: str(d.vs),
+      result: oneOf(d.result, E.dieResult, null),
+      nat: d.nat === 20 || d.nat === 1 ? d.nat : null,
+    };
+  }
+
+  function line(l) {
+    if (typeof l === 'string') return { text: l, who: 'gm', kind: 'note', round: null, dice: [] };
+    if (!isObj(l)) return null;
+    return {
+      text: str(l.text),
+      who: oneOf(l.who, E.lineWho, 'gm'),
+      kind: oneOf(l.kind, E.lineKind, 'note'),
+      round: int(l.round, null),
+      dice: list(l.dice, die),
+    };
+  }
+
+  function foe(f) {
+    if (!isObj(f)) return null;
+    return {
+      name: str(f.name, 'unknown foe'),
+      cr: text(f.cr),
+      ac: num(f.ac, null),
+      hp: num(f.hp, null),
+      maxHp: num(f.maxHp, null),
+      speed: str(f.speed),
+      attacks: strs(f.attacks),
+      notes: str(f.notes),
+      count: int(f.count, 1),
+      state: oneOf(f.state, E.foeState, null),
+    };
+  }
+
+  function table(t) {
+    const o = isObj(t) ? t : {};
+    return {
+      who: oneOf(o.who, E.who, 'dm'),
+      stop: oneOf(o.stop, E.stop, 'month'),
+      fights: oneOf(o.fights, E.fights, 'live'),
+      world: oneOf(o.world, E.world, 'story'),
+      dice: oneOf(o.dice, E.dice, 'key'),
+      mode: oneOf(o.mode, E.mode, 'open'),
+      habits: strs(o.habits),
+    };
+  }
+
+  // ---------- game/state ----------
+  function hud(h) {
+    const o = isObj(h) ? h : {};
+    return {
+      known: isObj(h),
+      hp: num(o.hp, null),
+      maxHp: num(o.maxHp, null),
+      ac: num(o.ac, null),
+      acArmor: num(o.acArmor, null),
+      armorOn: boolOrNull(o.armorOn),
+      light: str(o.light),
+      conc: strOrNull(o.conc),
+      conditions: strs(o.conditions),
+      exhaustion: int(o.exhaustion, 0),
+      reaction: boolOrNull(o.reaction),
+      inspiration: boolOrNull(o.inspiration),
+      freeArmor: boolOrNull(o.freeArmor),
+      coins: str(o.coins),
+      lost: strs(o.lost),
+    };
+  }
+
+  function orders(o) {
+    if (!isObj(o)) return null;
+    return {
+      hexes: list(o.hexes, (h) => (isObj(h) && typeof h.id === 'string' ? { id: h.id, name: str(h.name, h.id), days: num(h.days, null) } : null)),
+      missions: list(o.missions, (m) => (isObj(m) ? { type: str(m.type), target: str(m.target), label: str(m.label, str(m.type)) } : null)),
+      actions: list(o.actions, (a) => (isObj(a) ? { action: str(a.action), label: str(a.label, str(a.action)), cost: num(a.cost, null) } : null)),
+      realms: strs(o.realms),
+    };
+  }
+
+  function awaiting(a) {
+    const o = isObj(a) ? a : {};
+    const f = obj(o.fight);
+    const t = obj(o.turn);
+    return {
+      kind: oneOf(o.kind, E.awaiting, 'none'),
+      prompt: str(o.prompt),
+      orders: orders(o.orders),
+      fight: f ? { title: str(f.title), foes: list(f.foes, foe), difficulty: str(f.difficulty), xp: num(f.xp, null) } : null,
+      turn: t ? { board: Array.isArray(t.board) ? strs(t.board).join('\n') : str(t.board), lines: strs(t.lines), options: strs(t.options) } : null,
+    };
+  }
+
+  function liveHead(l) {
+    if (!isObj(l)) return null;
+    return { kind: str(l.kind), title: str(l.title), month: int(l.month, null), day: int(l.day, null), openedAt: str(l.openedAt) };
+  }
+
+  function state(d) {
+    if (!isObj(d)) return null;
+    return {
+      v: num(d.v, 1),
+      campaign: str(d.campaign),
+      status: oneOf(d.status, E.status, 'awaiting'),
+      lastSeq: int(d.lastSeq, 0),
+      lastMove: int(d.lastMove, 0),
+      month: int(d.month, null),
+      day: int(d.day, null),
+      clock: str(d.clock),
+      hex: str(d.hex),
+      where: str(d.where),
+      level: int(d.level, null),
+      xp: num(d.xp, null),
+      deaths: int(d.deaths, 0),
+      hud: hud(d.hud),
+      table: table(d.table),
+      awaiting: awaiting(d.awaiting),
+      live: liveHead(d.live),
+      latest: strOrNull(d.latest),
+      lastFight: strOrNull(d.lastFight),
+      doing: str(d.doing),
+      checkIn: typeof d.checkIn === 'string' || isObj(d.checkIn) ? d.checkIn : null,
+      wake: { on: isObj(d.wake) && d.wake.on === true },
+      url: str(d.url),
+    };
+  }
+
+  // ---------- game/morten ----------
+  function morten(d) {
+    if (!isObj(d)) return null;
+    const coins = isObj(d.coins) ? { on: str(d.coins.on), purse: str(d.coins.purse) } : { on: str(d.coins), purse: '' };
+    const load = obj(d.load);
+    return {
+      v: num(d.v, 1),
+      name: str(d.name, 'Morten'),
+      class: str(d.class),
+      species: str(d.species),
+      background: str(d.background),
+      hp: num(d.hp, null),
+      maxHp: num(d.maxHp, null),
+      hitDice: str(d.hitDice),
+      ac: num(d.ac, null),
+      acArmor: num(d.acArmor, null),
+      armorOn: boolOrNull(d.armorOn),
+      speed: text(d.speed),
+      initiative: text(d.initiative),
+      passivePerception: num(d.passivePerception, null),
+      prof: num(d.prof, null),
+      spellAttack: num(d.spellAttack, null),
+      saveDc: num(d.saveDc, null),
+      abilities: list(d.abilities, (a) => (isObj(a) && typeof a.key === 'string' ? { key: a.key, score: num(a.score, null), mod: num(a.mod, null), save: num(a.save, null) } : null)),
+      skills: list(d.skills, (s) => (isObj(s) && typeof s.name === 'string' ? { name: s.name, mod: num(s.mod, null) } : null)),
+      attacks: list(d.attacks, (a) => (isObj(a) && typeof a.name === 'string' ? { name: a.name, hit: text(a.hit), damage: str(a.damage), range: str(a.range) } : null)),
+      spells: list(d.spells, (s) => (isObj(s) && typeof s.name === 'string'
+        ? { name: s.name, level: int(s.level, 0), dc: num(s.dc, null), lost: bool(s.lost), conc: bool(s.conc), ritual: bool(s.ritual), line: str(s.line), prepared: bool(s.prepared, true) }
+        : null)),
+      features: list(d.features, (f) => (isObj(f) && typeof f.name === 'string' ? { name: f.name, state: str(f.state), line: str(f.line) } : null)),
+      light: str(d.light),
+      conc: strOrNull(d.conc),
+      conditions: strs(d.conditions),
+      exhaustion: int(d.exhaustion, 0),
+      inspiration: boolOrNull(d.inspiration),
+      freeArmor: boolOrNull(d.freeArmor),
+      gear: list(d.gear, (g) => (isObj(g) && typeof g.name === 'string' ? { name: g.name, count: num(g.count, null), kg: num(g.kg, null), note: str(g.note) } : null)),
+      load: load ? { kg: num(load.kg, null), max: num(load.max, null) } : null,
+      coins,
+      xp: num(d.xp, null),
+      nextXp: num(d.nextXp, null),
+      level: int(d.level, null),
+      deaths: int(d.deaths, 0),
+      familiar: str(d.familiar),
+      habits: strs(d.habits),
+      trader: list(d.trader, (t) => (isObj(t) && typeof t.name === 'string' ? { name: t.name, price: text(t.price) } : null)),
+    };
+  }
+
+  // ---------- game/realm (map.json, snake_case, plus the page's camelCase keys) ----------
+  function asset(a) {
+    if (!isObj(a)) return null;
+    return {
+      id: str(a.id),
+      owner: str(a.owner),
+      name: str(a.name),
+      type: str(a.type),
+      tier: int(a.tier, 1),
+      hp: num(a.hp, null),
+      max_hp: num(a.max_hp, null),
+      leader: strOrNull(a.leader),
+      attack: str(a.attack),
+      counter: str(a.counter),
+      special: str(a.special),
+    };
+  }
+
+  function hex(h) {
+    if (!isObj(h) || typeof h.id !== 'string' || !h.id) return null;
+    const m = /^([A-Z])(\d+)$/.exec(h.id);
+    return {
+      id: h.id,
+      col: int(h.col, m ? m[1].charCodeAt(0) - 65 : 0),
+      row: int(h.row, m ? parseInt(m[2], 10) - 1 : 0),
+      level: int(h.level, null),
+      biome: str(h.biome),
+      people: str(h.people),
+      holder: strOrNull(h.holder),
+      lake: bool(h.lake),
+      seat_of: strOrNull(h.seat_of),
+      income: num(h.income, null),
+      neighbours: strs(h.neighbours),
+      assets: list(h.assets, asset),
+    };
+  }
+
+  function faction(f) {
+    if (!isObj(f) || typeof f.name !== 'string') return null;
+    const l = isObj(f.leader) ? f.leader : {};
+    return {
+      name: f.name,
+      tower: bool(f.tower),
+      leader: { name: str(l.name), title: str(l.title), label: str(l.label), tag: str(l.tag), verb: str(l.verb) },
+      income: num(f.income, null),
+      goal: str(f.goal),
+      hp: num(f.hp, null),
+      max_hp: num(f.max_hp, null),
+      force: num(f.force, null),
+      cunning: num(f.cunning, null),
+      wealth: num(f.wealth, null),
+      treasury: num(f.treasury, null),
+      seat: strOrNull(f.seat),
+      hexes: strs(f.hexes),
+      hostile: int(f.hostile, 0),
+      ally: bool(f.ally),
+      disorder: int(f.disorder, 0),
+    };
+  }
+
+  function realm(d) {
+    if (!isObj(d)) return null;
+    const lay = isObj(d.layout) ? d.layout : {};
+    const rep = isObj(d.report) ? d.report : {};
+    const mo = obj(d.morten);
+    return {
+      v: num(d.v, 1),
+      campaign: str(d.campaign),
+      month: int(d.month, null),
+      layout: { cols: int(lay.cols, 4), rows: int(lay.rows, 5), orientation: str(lay.orientation, 'flat-top'), shift: str(lay.shift, 'odd') },
+      hexes: list(d.hexes, hex),
+      rivers: P.arr(d.rivers).filter((p) => Array.isArray(p) && p.length === 2 && typeof p[0] === 'string' && typeof p[1] === 'string'),
+      factions: list(d.factions, faction),
+      morten: mo ? { hex: str(mo.hex), level: int(mo.level, null) } : null,
+      events: list(d.events, (e) => (isObj(e)
+        ? { month: int(e.month, null), actor: str(e.actor), action: str(e.action), from_hex: strOrNull(e.from_hex), to_hex: strOrNull(e.to_hex), target: str(e.target), result: str(e.result) }
+        : null)),
+      report: { plan: strs(rep.plan), happened: strs(rep.happened), tower: strs(rep.tower), next: strs(rep.next) },
+      words: map(d.words, (v) => (typeof v === 'string' ? v : null)),
+      kinds: map(d.kinds, (k) => (isObj(k)
+        ? { glyph: str(k.glyph), type: str(k.type), tier: int(k.tier, 1), what: str(k.what), cost: num(k.cost, null), hp: num(k.hp, null), hits: str(k.hits), counter: str(k.counter), upkeep: num(k.upkeep, null), special: str(k.special) }
+        : null)),
+      rumours: map(d.rumours, (v) => strs(v)),
+      floors: map(d.floors, (f) => (isObj(f)
+        ? { floor: int(f.floor, null), rooms: list(f.rooms, (r) => (isObj(r) ? { n: text(r.n), monster: strOrNull(r.monster), cr: strOrNull(text(r.cr)), state: str(r.state, 'unknown') } : null)) }
+        : null)),
+      days: map(d.days, (v) => num(v, null)),
+      eventsWords: list(d.eventsWords, (e) => (isObj(e) ? { n: int(e.n, null), who: str(e.who), from: str(e.from), to: str(e.to), text: str(e.text) } : null)),
+      hexNames: map(d.hexNames, (v) => (typeof v === 'string' ? v : null)),
+    };
+  }
+
+  // ---------- game/rules ----------
+  function rules(d) {
+    if (!isObj(d)) return null;
+    return {
+      v: num(d.v, 1),
+      sections: list(d.sections, (s, i) => (isObj(s) ? { id: str(s.id, `rule-${i + 1}`), title: str(s.title), md: str(s.md) } : null)),
+    };
+  }
+
+  // ---------- story/sNNNN ----------
+  function fight(f) {
+    if (!isObj(f)) return null;
+    return {
+      foes: list(f.foes, foe),
+      difficulty: str(f.difficulty),
+      budget: num(f.budget, null),
+      xp: num(f.xp, null),
+      initiative: strs(f.initiative),
+      rounds: int(f.rounds, null),
+      outcome: oneOf(f.outcome, E.outcome, 'going'),
+      verdict: str(f.verdict),
+      hpTrack: list(f.hpTrack, (t) => (isObj(t) ? { name: str(t.name), max: num(t.max, null), hp: P.arr(t.hp).map((v) => num(v, null)) } : null)),
+      loot: str(f.loot),
+      lost: strs(f.lost),
+      potion: bool(f.potion),
+      xpBefore: num(f.xpBefore, null),
+      xpAfter: num(f.xpAfter, null),
+    };
+  }
+
+  function domain(d) {
+    if (!isObj(d)) return null;
+    const nx = isObj(d.next) ? d.next : {};
+    return {
+      plan: strs(d.plan),
+      happened: list(d.happened, (h) => (isObj(h)
+        ? { n: int(h.n, null), who: str(h.who), label: str(h.label), verb: str(h.verb), text: str(h.text), from: str(h.from), to: str(h.to) }
+        : null)),
+      elsewhere: str(d.elsewhere),
+      tower: list(d.tower, (t) => (isObj(t) ? { what: str(t.what), before: text(t.before), after: text(t.after) } : null)),
+      next: { threats: strs(nx.threats), chances: strs(nx.chances), open: strs(nx.open) },
+      income: strs(d.income),
+      log: strs(d.log),
+    };
+  }
+
+  function section(id, d) {
+    if (!isObj(d)) return null;
+    const after = obj(d.after);
+    return {
+      id,
+      seq: num(d.seq, P.seqFromId(id)),
+      kind: typeof d.kind === 'string' && d.kind ? d.kind : 'aside',
+      month: int(d.month, null),
+      day: int(d.day, null),
+      clock: str(d.clock),
+      hex: str(d.hex),
+      where: str(d.where),
+      title: str(d.title),
+      headline: str(d.headline),
+      prose: strs(d.prose),
+      bullets: list(d.bullets, (b) => (typeof b === 'string' ? { label: '', text: b } : isObj(b) ? { label: str(b.label), text: str(b.text) } : null)),
+      trace: list(d.trace, line),
+      answered: strs(d.answered),
+      after: after ? { hp: num(after.hp, null), maxHp: num(after.maxHp, null), xp: num(after.xp, null), coins: str(after.coins), lost: strs(after.lost) } : null,
+      fight: fight(d.fight),
+      domain: domain(d.domain),
+      words: list(d.words, (w) => (isObj(w) && typeof w.text === 'string' ? { move: str(w.move), text: w.text } : null)),
+      ooc: bool(d.ooc),
+    };
+  }
+
+  // ---------- live/bNNNN, log/lNNNN, moves/mNNNN ----------
+  function beat(id, d) {
+    if (!isObj(d)) return null;
+    const s = obj(d.section);
+    const st = isObj(d.state) ? d.state : {};
+    const m = obj(st.morten);
+    return {
+      id,
+      seq: num(d.seq, P.seqFromId(id)),
+      section: s ? { kind: str(s.kind), title: str(s.title), month: int(s.month, null), day: int(s.day, null), where: str(s.where), foes: list(s.foes, foe) } : null,
+      round: int(d.round, null),
+      text: str(d.text),
+      lines: list(d.lines, line),
+      state: {
+        morten: m ? { hp: num(m.hp, null), maxHp: num(m.maxHp, null) } : null,
+        foes: list(st.foes, (f) => (isObj(f) ? { name: str(f.name), hp: num(f.hp, null), maxHp: num(f.maxHp, null), state: oneOf(f.state, E.foeState, null) } : null)),
+      },
+      at: str(d.at),
+    };
+  }
+
+  function log(id, d) {
+    if (!isObj(d)) return null;
+    return { id, seq: num(d.seq, P.seqFromId(id)), text: str(d.text), at: str(d.at) };
+  }
+
+  function move(id, d) {
+    if (!isObj(d)) return null;
+    const mi = obj(d.mission);
+    const gv = obj(d.give);
+    return {
+      id,
+      seq: num(d.seq, P.seqFromId(id)),
+      at: str(d.at),
+      kind: oneOf(d.kind, E.moveKinds, 'say'),
+      text: str(d.text),
+      ooc: bool(d.ooc),
+      scope: oneOf(d.scope, E.playScope, null),
+      travel: strOrNull(d.travel),
+      mission: mi ? { type: str(mi.type), target: str(mi.target) } : null,
+      action: strOrNull(d.action),
+      give: gv ? { realm: str(gv.realm), gp: num(gv.gp, 0) } : null,
+      plan: str(d.plan),
+      choice: oneOf(d.choice, E.fightChoice, null),
+      table: isObj(d.table) ? table(d.table) : null,
+      who: oneOf(d.who, E.who, null),
+    };
+  }
+
+  // ---------- the view ----------
+  const caches = {};
+  function cached(kind, body, fn) {
+    if (!isObj(body)) return fn(body);
+    const cache = caches[kind] || (caches[kind] = new WeakMap());
+    let hit = cache.get(body);
+    if (hit === undefined) {
+      hit = U.safe(() => fn(body), 'parse') || null;
+      try { cache.set(body, hit); } catch (_) { /* not cacheable */ }
+    }
+    return hit;
+  }
+  const bySeq = (a, b) => a.seq - b.seq || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+  // cached by id too: a body is parsed under the id it came with
+  const parseCol = (kind, rows, fn) => (Array.isArray(rows) ? rows : [])
+    .map((r) => (r && typeof r.id === 'string' ? cached(`${kind}/${r.id}`, r.data, (d) => fn(r.id, d)) : null))
+    .filter(Boolean)
+    .sort(bySeq);
+
+  function view(raw) {
+    const r = isObj(raw) ? raw : {};
+    const docs = isObj(r.docs) ? r.docs : {};
+    const cols = isObj(r.cols) ? r.cols : {};
+    const loaded = isObj(r.loaded) ? r.loaded : {};
+    const sent = new Set(P.arr(r.sentIds));
+
+    const sections = parseCol('story', cols.story, section);
+    const beats = parseCol('live', cols.live, beat);
+    const logs = parseCol('log', cols.log, log);
+    const moves = parseCol('moves', cols.moves, move).map((m) => (sent.has(m.id) ? Object.assign({}, m, { mine: true }) : Object.assign({}, m, { mine: false })));
+    const inMoves = new Set(moves.map((m) => m.id));
+    const pending = P.arr(r.pending)
+      .filter((p) => isObj(p) && !inMoves.has(p.id))
+      .map((p) => ({ id: p.id, seq: p.seq, kind: p.kind, at: p.at, status: p.status === 'failed' ? 'failed' : 'sending', error: str(p.error), move: move(p.id, p.body) }));
+
+    const st = cached('state', docs.state, state);
+    let lastBeatAt = null;
+    for (const x of beats.concat(logs)) {
+      const t = U.ms(x.at);
+      if (t !== null && (lastBeatAt === null || t > lastBeatAt)) lastBeatAt = t;
+    }
+    const newestLog = logs.length ? logs[logs.length - 1].text : '';
+    const w = isObj(r.wake) ? r.wake : {};
+    const user = isObj(r.user) ? r.user : {};
+
+    return {
+      ready: loaded.state === true,
+      db: r.db === 'none' || r.db === 'error' ? r.db : 'ok',
+      dbError: str(r.dbError),
+      opening: r.db === 'pending' || (r.db === 'ok' && loaded.state !== true),
+      loaded: {
+        state: !!loaded.state, morten: !!loaded.morten, realm: !!loaded.realm, rules: !!loaded.rules,
+        story: !!loaded.story, live: !!loaded.live, log: !!loaded.log, moves: !!loaded.moves,
+      },
+      state: st,
+      morten: cached('morten', docs.morten, morten),
+      realm: cached('realm', docs.realm, realm),
+      rules: cached('rules', docs.rules, rules),
+      sections,
+      beats,
+      logs,
+      moves,
+      pending,
+      sending: num(r.sending, 0) > 0,
+      wake: {
+        state: oneOf(w.state, ['idle', 'off', 'calling', 'called', 'unavailable', 'failed'], 'idle'),
+        reason: str(w.reason),
+        move: strOrNull(w.move),
+        at: num(w.at, null),
+      },
+      comments: oneOf(r.comments, ['pending', 'ok', 'none'], 'pending'),
+      canWrite: isObj(user) && user.canWrite === false ? false : r.db !== 'none' && r.db !== 'error',
+      activity: (st && st.doing) || newestLog,
+      lastBeatAt,
+      now: Date.now(),
+      rev: num(r.rev, 0),
+    };
+  }
+
+  T.model = {
+    view,
+    P,
+    E,
+    parse: { state, morten, realm, rules, section, beat, log, move, line, die, foe, fight, domain, table, hud, awaiting },
+  };
+})();
+/* ---- js/30-ui.js ---- */
+// T.ui: the helpers every panel builds markup with. Every string from the store goes
+// through esc() (or textContent) before it reaches the page; md() escapes first too.
+(() => {
+  'use strict';
+  const T = window.T;
+  const U = T.util;
+
+  // ---------- escaping and icons ----------
+  const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+  /** Escape any value for HTML text or a double-quoted attribute. null/undefined give ''. */
+  const esc = (v) => (v === null || v === undefined ? '' : String(v)).replace(/[&<>"']/g, (c) => ESC[c]);
+
+  /** <svg class="ic"><use href="#i-NAME"/></svg>; extra classes in cls. */
+  const icon = (name, cls = '') => `<svg class="ic${cls ? ` ${esc(cls)}` : ''}" aria-hidden="true"><use href="#i-${esc(name)}"/></svg>`;
+
+  /** innerHTML only when it changed, so an unchanged panel keeps its focus, folds and scroll. */
+  function put(el, html) {
+    if (!el) return false;
+    if (el.__tableHtml === html) return false;
+    el.innerHTML = html;
+    el.__tableHtml = html;
+    return true;
+  }
+
+  // ---------- per-viewer storage ----------
+  const PREFIX = 'table.';
+  const local = {
+    get(key, fallback = null) {
+      try {
+        const s = window.localStorage.getItem(PREFIX + key);
+        return s === null ? fallback : JSON.parse(s);
+      } catch (_) {
+        return fallback;
+      }
+    },
+    set(key, value) {
+      try {
+        window.localStorage.setItem(PREFIX + key, JSON.stringify(value));
+        return true;
+      } catch (_) {
+        return false;
+      }
+    },
+    del(key) {
+      try {
+        window.localStorage.removeItem(PREFIX + key);
+      } catch (_) { /* nothing to do */ }
+    },
+  };
+
+  // ---------- numbers with their units ----------
+  const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
+  const MINUS = '−';
+  const fmt = {
+    /** 1200 -> "1,200"; non-numbers -> dash. */
+    n: (v, dash = '—') => (isNum(v) ? v.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : dash),
+    /** +5 / −1 / +0 */
+    signed: (v) => (isNum(v) ? (v < 0 ? `${MINUS}${fmt.n(-v)}` : `+${fmt.n(v)}`) : '—'),
+    /** "11/20 HP"; "13 HP" without a max; "? HP" with neither. */
+    hp: (hp, max) => (isNum(hp) && isNum(max) ? `${fmt.n(hp)}/${fmt.n(max)} HP` : isNum(hp) ? `${fmt.n(hp)} HP` : isNum(max) ? `?/${fmt.n(max)} HP` : '? HP'),
+    /** fmt.unit(8, 'dmg') -> "8 dmg". */
+    unit: (v, unit) => (isNum(v) ? `${fmt.n(v)} ${unit}` : ''),
+    gp: (v) => (isNum(v) ? `${fmt.n(v)} GP` : ''),
+    xp: (v) => (isNum(v) ? `${fmt.n(v)} XP` : ''),
+    kg: (v) => (isNum(v) ? `${fmt.n(v)} kg` : ''),
+    ac: (v) => (isNum(v) ? `AC ${fmt.n(v)}` : ''),
+    /** Squares with metres: 6 -> "6 sq (9 m)". */
+    sq: (v) => (isNum(v) ? `${fmt.n(v)} sq (${fmt.n(v * 1.5)} m)` : ''),
+    /** fmt.plural(3, 'fight') -> "3 fights"; plural(1, 'foe') -> "1 foe"; plural(2, 'ally', 'allies'). */
+    plural: (v, one, many) => `${fmt.n(v, '0')} ${v === 1 ? one : many || `${one}s`}`,
+    /** "Month 3 · Day 4 · 09:40", leaving out what is missing. */
+    when: (o) => {
+      const x = o && typeof o === 'object' ? o : {};
+      const parts = [];
+      if (isNum(x.month)) parts.push(`Month ${x.month}`);
+      if (isNum(x.day)) parts.push(`Day ${x.day}`);
+      if (typeof x.clock === 'string' && x.clock) parts.push(x.clock);
+      return parts.join(' · ');
+    },
+  };
+
+  /** HP band: '' above half, 'mid' to a quarter, 'low' below. */
+  function band(hp, max) {
+    if (!isNum(hp) || !isNum(max) || max <= 0) return '';
+    const r = hp / max;
+    return r > 0.5 ? '' : r > 0.25 ? 'mid' : 'low';
+  }
+
+  /** An HP bar: <span class="bar mid"><i style="width:55%"></i></span>; cls adds classes. */
+  function bar(hp, max, cls = '') {
+    const ok = isNum(hp) && isNum(max) && max > 0;
+    const pct = ok ? Math.max(0, Math.min(100, Math.round((hp / max) * 100))) : 0;
+    const label = ok ? `${fmt.n(hp)} of ${fmt.n(max)}` : 'unknown';
+    return `<span class="bar ${band(hp, max)}${cls ? ` ${esc(cls)}` : ''}" role="img" aria-label="${esc(label)}"><i style="width:${pct}%"></i></span>`;
+  }
+
+  /**
+   * A chip. chip('the Gnomes march', {kind: 'threat'}) -> <span class="chip threat"><span class="k">threat</span>…</span>.
+   * opts: kind ('threat' | 'chance' | 'open' | 'good' | any class), k (the small label; defaults
+   * to kind for threat/chance/open), icon (sprite name), html (true: text is trusted markup), tag.
+   */
+  function chip(textOrHtml, opts = {}) {
+    const o = opts || {};
+    const kind = typeof o.kind === 'string' ? o.kind : '';
+    const k = typeof o.k === 'string' ? o.k : ['threat', 'chance', 'open'].includes(kind) ? kind : '';
+    const tag = o.tag === 'button' ? 'button' : 'span';
+    const attrs = tag === 'button' ? ' type="button"' : '';
+    const body = o.html ? textOrHtml : esc(textOrHtml);
+    return `<${tag}${attrs} class="chip${kind ? ` ${esc(kind)}` : ''}">${o.icon ? icon(o.icon) : ''}${k ? `<span class="k">${esc(k)}</span>` : ''}${body}</${tag}>`;
+  }
+
+  // ---------- dice ----------
+  const RESULT = { hit: ['hit', 'hit'], miss: ['miss', 'miss'], cast: ['cast', 'ok'], fizzle: ['fizzle', 'fizz'], save: ['save', 'ok'], fail: ['fail', 'fail'] };
+  const signedMod = (m) => (m < 0 ? `${MINUS}${-m}` : `+${m}`);
+
+  /** The dice part of an expression: "1d20+5" -> "d20", "2d8" -> "2d8". */
+  function dieLabel(expr) {
+    const m = /(\d*)d(\d+)/i.exec(typeof expr === 'string' ? expr : '');
+    if (!m) return typeof expr === 'string' ? expr : '';
+    return m[1] && m[1] !== '1' ? `${m[1]}d${m[2]}` : `d${m[2]}`;
+  }
+
+  /**
+   * A die chip for a Die (README: Line, Die): "d20 14 +5 = 19 vs AC 15 hit". A natural 20
+   * is lit brass, a natural 1 red; a fizzle is dashed red. Dice dropped by advantage or
+   * disadvantage are struck through.
+   */
+  function die(d) {
+    if (!d || typeof d !== 'object') return '';
+    const faces = Array.isArray(d.faces) ? d.faces.filter(isNum) : [];
+    const kept = Array.isArray(d.kept) ? d.kept.filter(isNum) : faces;
+    const mod = isNum(d.mod) ? d.mod : 0;
+    const total = isNum(d.total) ? d.total : null;
+    const res = RESULT[d.result] || null;
+    const nat = d.nat === 20 || d.nat === 1 ? d.nat : null;
+    // faces: the kept ones plain, the dropped ones struck
+    const left = kept.slice();
+    const shown = faces.map((f) => {
+      const i = left.indexOf(f);
+      if (i >= 0) {
+        left.splice(i, 1);
+        return esc(f);
+      }
+      return `<s>${esc(f)}</s>`;
+    });
+    const dropped = faces.length > kept.length;
+    const facesHtml = dropped ? shown.join(' ') : shown.join('+');
+    const showTotal = total !== null && (mod !== 0 || kept.length > 1);
+    const cls = ['die'];
+    if (nat === 20) cls.push('nat20');
+    if (nat === 1) cls.push('nat1');
+    if (d.result === 'fizzle') cls.push('fizzle');
+    const words = [dieLabel(d.expr), faces.join(dropped ? ' or ' : ' + ')];
+    if (mod) words.push(signedMod(mod));
+    if (showTotal) words.push(`= ${total}`);
+    if (d.vs) words.push(`vs ${d.vs}`);
+    if (nat) words.push(`natural ${nat}`);
+    if (res) words.push(res[0]);
+    return `<span class="${cls.join(' ')}" title="${esc(words.filter(Boolean).join(' '))}"><b>${esc(dieLabel(d.expr) || 'die')}</b> ${facesHtml}`
+      + (mod ? ` <i>${esc(signedMod(mod))}</i>` : '')
+      + (showTotal ? ` = ${esc(total)}` : '')
+      + (d.vs ? ` <u>vs ${esc(d.vs)}</u>` : '')
+      + (nat ? ` <span class="r nat">nat ${nat}</span>` : '')
+      + (res ? ` <span class="r ${res[1]}">${res[0]}</span>` : '')
+      + '</span>';
+  }
+  const dice = (list) => (Array.isArray(list) ? list.map(die).join(' ') : '');
+
+  // ---------- time ----------
+  /** "just now", "4 min ago", "2 h 5 min ago", "3 days ago"; '' for a bad time. */
+  function ago(at, now = Date.now()) {
+    const t = U.ms(at);
+    if (t === null) return '';
+    const s = Math.max(0, Math.round((now - t) / 1000));
+    if (s < 45) return 'just now';
+    const m = Math.round(s / 60);
+    if (m < 60) return `${m} min ago`;
+    const h = Math.floor(m / 60);
+    if (h < 24) return m % 60 && h < 6 ? `${h} h ${m % 60} min ago` : `${h} h ago`;
+    const days = Math.round(h / 24);
+    return days === 1 ? 'a day ago' : `${days} days ago`;
+  }
+
+  // ---------- first-visit notes ----------
+  /**
+   * A first-visit note, shown until the viewer taps "Got it" (remembered per viewer).
+   * html is trusted markup (write it in the panel, never from the store). '' once dismissed.
+   */
+  function note(id, html) {
+    if (local.get(`note.${id}`, false)) return '';
+    return `<div class="note" data-note="${esc(id)}">${icon('q')}<span>${html}</span><button type="button" data-note-dismiss="${esc(id)}">Got it</button></div>`;
+  }
+  const noteSeen = (id) => !!local.get(`note.${id}`, false);
+  document.addEventListener('click', (ev) => {
+    const b = ev.target && ev.target.closest ? ev.target.closest('[data-note-dismiss]') : null;
+    if (!b) return;
+    const id = b.getAttribute('data-note-dismiss');
+    local.set(`note.${id}`, true);
+    const n = b.closest('.note');
+    if (n) n.remove();
+  });
+
+  // ---------- realms ----------
+  const FACTIONS = ['humans', 'gnomes', 'tieflings', 'orcs', 'goblinkind', 'elves'];
+  /** The colour class for a realm: fac('Gnomes') -> 'fac-gnomes', the tower -> 'fac-tower'. */
+  function fac(name) {
+    const s = typeof name === 'string' ? name.toLowerCase() : '';
+    if (s === 'tower' || s === 'the tower') return 'fac-tower';
+    return FACTIONS.includes(s) ? `fac-${s}` : 'fac-none';
+  }
+
+  // ---------- a small, safe Markdown ----------
+  function inline(s) {
+    // s is already escaped. Code spans first, kept out of the other rules.
+    const codes = [];
+    let out = s.replace(/`([^`]+)`/g, (_, c) => {
+      codes.push(c);
+      return `\u0000${codes.length - 1}\u0000`;
+    });
+    out = out
+      .replace(/\*\*([^*]+?)\*\*/g, '<b>$1</b>')
+      .replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?!\w)/g, '$1<i>$2</i>')
+      .replace(/(^|[^\w])_([^_\s][^_]*?)_(?!\w)/g, '$1<i>$2</i>');
+    return out.replace(/\u0000(\d+)\u0000/g, (_, i) => `<code>${codes[+i]}</code>`);
+  }
+  const cells = (row) => row.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
+  const isRule = (row) => /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(row);
+
+  /**
+   * Markdown subset -> HTML in <div class="md">: paragraphs, **bold**, *italic*, `code`,
+   * bullets (- or *), numbered lists, | tables |, headings (#..###: h4, ####: h5).
+   * Everything is escaped first; no links, no raw HTML.
+   */
+  function md(src) {
+    const lines = esc(typeof src === 'string' ? src : '').replace(/\r\n?/g, '\n').split('\n');
+    const out = [];
+    let para = [];
+    const flush = () => {
+      if (para.length) out.push(`<p>${inline(para.join(' '))}</p>`);
+      para = [];
+    };
+    for (let i = 0; i < lines.length; i++) {
+      const l = lines[i];
+      if (!l.trim()) { flush(); continue; }
+      const h = /^(#{1,4})\s+(.*)$/.exec(l);
+      if (h) { flush(); out.push(h[1].length === 4 ? `<h5>${inline(h[2])}</h5>` : `<h4>${inline(h[2])}</h4>`); continue; }
+      if (/^\s*\|/.test(l) && i + 1 < lines.length && isRule(lines[i + 1])) {
+        flush();
+        const head = cells(l);
+        i += 1;
+        const body = [];
+        while (i + 1 < lines.length && /^\s*\|/.test(lines[i + 1])) { i += 1; body.push(cells(lines[i])); }
+        out.push(`<div class="md-table"><table><thead><tr>${head.map((c) => `<th>${inline(c)}</th>`).join('')}</tr></thead><tbody>${body.map((r) => `<tr>${r.map((c) => `<td>${inline(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`);
+        continue;
+      }
+      const ul = /^\s*[-*+]\s+(.*)$/.exec(l);
+      const ol = /^\s*\d+[.)]\s+(.*)$/.exec(l);
+      if (ul || ol) {
+        flush();
+        const tag = ul ? 'ul' : 'ol';
+        const re = ul ? /^\s*[-*+]\s+(.*)$/ : /^\s*\d+[.)]\s+(.*)$/;
+        const items = [(ul || ol)[1]];
+        while (i + 1 < lines.length) {
+          const m = re.exec(lines[i + 1]);
+          if (m) { items.push(m[1]); i += 1; continue; }
+          if (/^\s{2,}\S/.test(lines[i + 1]) && !/^\s*([-*+]|\d+[.)])\s+/.test(lines[i + 1])) { items[items.length - 1] += ` ${lines[i + 1].trim()}`; i += 1; continue; }
+          break;
+        }
+        out.push(`<${tag}${tag === 'ul' ? ' class="bullets"' : ''}>${items.map((t) => `<li>${inline(t)}</li>`).join('')}</${tag}>`);
+        continue;
+      }
+      para.push(l.trim());
+    }
+    flush();
+    return `<div class="md">${out.join('')}</div>`;
+  }
+
+  T.ui = { esc, icon, put, local, fmt, band, bar, chip, die, dice, dieLabel, ago, note, noteSeen, fac, md };
+  T.icons = { use: icon };
+})();
+/* ---- js/40-app.js ---- */
+// T.app: the shell. The views and the bottom bar (phone), the drawer and its tabs (from
+// 900 px), More's chips, the theme switch, the now line and the HUD, the store notice,
+// and render scheduling: at most once per animation frame, every T.panels.<name> that
+// has a container is mounted once and rendered with the view model.
+(() => {
+  'use strict';
+  const T = window.T;
+  const U = T.util;
+  const ui = T.ui;
+  const { esc, icon, fmt } = ui;
+
+  /** Panels the shell mounts: T.panels[name] renders into the element with id=name. */
+  const CONTAINERS = ['story', 'morten', 'realm', 'fights', 'months', 'rules', 'talk', 'table'];
+  const VIEWS = ['story', 'morten', 'realm', 'fights', 'more'];
+  const MORE = ['months', 'rules', 'talk', 'table'];
+  const DRAWER = ['realm', 'morten', 'fights', 'months', 'rules', 'talk', 'table'];
+  const TICK_MS = 20000;
+
+  const nav = { view: 'story', more: 'months', drawer: 'realm' };
+  const scrolls = {};
+  const mounted = new Map();
+  let current = null;
+  let raf = 0;
+  let timer = 0;
+  let storySeen = 0;
+  let booted = false;
+  const el = (id) => document.getElementById(id);
+  const isWide = () => window.matchMedia('(min-width: 900px)').matches;
+
+  // ---------- navigation ----------
+  function saveNav() {
+    ui.local.set('nav', nav);
+  }
+
+  function applyNav() {
+    const app = el('app');
+    if (!app) return;
+    app.dataset.view = nav.view;
+    app.dataset.more = nav.more;
+    app.dataset.drawer = nav.drawer;
+    for (const b of U.$$('#tabs button[data-view]')) b.setAttribute('aria-current', String(b.dataset.view === nav.view));
+    for (const b of U.$$('#more-tabs button[data-more]')) b.setAttribute('aria-pressed', String(b.dataset.more === nav.more));
+    for (const b of U.$$('#dtabs button[data-drawer]')) b.setAttribute('aria-pressed', String(b.dataset.drawer === nav.drawer));
+  }
+
+  function setView(v) {
+    if (!VIEWS.includes(v)) return;
+    const was = nav.view;
+    if (was === v) {
+      if (!isWide()) window.scrollTo({ top: 0 });
+      return;
+    }
+    scrolls[was] = window.scrollY;
+    nav.view = v;
+    if (DRAWER.includes(v)) nav.drawer = v;
+    if (v === 'more') nav.drawer = nav.more;
+    applyNav();
+    saveNav();
+    if (!isWide()) window.scrollTo({ top: scrolls[v] || 0 });
+    schedule();
+  }
+
+  function setMore(m) {
+    if (!MORE.includes(m)) return;
+    nav.more = m;
+    nav.drawer = m;
+    applyNav();
+    saveNav();
+    schedule();
+  }
+
+  function setDrawer(d) {
+    if (!DRAWER.includes(d)) return;
+    nav.drawer = d;
+    if (MORE.includes(d)) {
+      nav.more = d;
+      nav.view = 'more';
+    } else nav.view = d;
+    applyNav();
+    saveNav();
+    const dr = el('drawer');
+    if (dr && isWide()) dr.scrollTop = 0;
+    schedule();
+  }
+
+  /** Open a place on the page: a view (story, morten, realm, fights, more) or a drawer tab (months, rules, talk, table). */
+  function go(name) {
+    if (name === 'story') {
+      setView('story');
+      return;
+    }
+    if (MORE.includes(name)) {
+      nav.more = name;
+      setView('more');
+      setMore(name);
+      return;
+    }
+    if (DRAWER.includes(name)) {
+      setView(name);
+      setDrawer(name);
+      return;
+    }
+    if (name === 'more') setView('more');
+  }
+
+  function fromHash() {
+    const h = (window.location.hash || '').replace(/^#/, '');
+    if (VIEWS.includes(h) || MORE.includes(h)) go(h);
+  }
+
+  // ---------- theme ----------
+  function effectiveDark() {
+    const t = document.documentElement.dataset.theme;
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  function themeButtons() {
+    const dark = effectiveDark();
+    for (const b of U.$$('[data-theme-switch]')) {
+      b.innerHTML = `${icon(dark ? 'sun' : 'moon')}<span>${dark ? 'Light' : 'Dark'}</span>`;
+      b.setAttribute('aria-label', dark ? 'Switch to the light theme' : 'Switch to the dark theme');
+    }
+  }
+
+  /** setTheme('dark' | 'light' | null); null follows the system. Remembered per viewer. */
+  function setTheme(t) {
+    const root = document.documentElement;
+    if (t === 'dark' || t === 'light') {
+      root.dataset.theme = t;
+      ui.local.set('theme', t);
+    } else {
+      delete root.dataset.theme;
+      ui.local.del('theme');
+    }
+    themeButtons();
+  }
+
+  // ---------- the now line ----------
+  function renderNow(view) {
+    const where = el('now-where');
+    if (!where) return;
+    const st = view.state;
+    let html;
+    if (!st) {
+      const why = view.db === 'none' ? 'no table store in this view'
+        : view.db === 'error' ? 'the table stopped updating'
+          : view.opening ? 'opening the table…' : 'the GM has not set the table yet';
+      html = `<b>Morten's table</b><span class="place">${esc(why)}</span>`;
+    } else {
+      const when = fmt.when(st) || (st.campaign ? st.campaign : "Morten's table");
+      html = `<b>${esc(when)}</b>${st.where ? `<span class="place">${esc(st.where)}</span>` : st.hex ? `<span class="place">${esc(st.hex)}</span>` : ''}`;
+      const since = view.lastBeatAt ? ui.ago(view.lastBeatAt, view.now) : '';
+      if (st.status === 'playing') {
+        html += `<span class="doing" data-now="doing"><i class="pulse" aria-hidden="true"></i><span>the GM: ${esc(view.activity || 'playing')}</span>${since ? `<span class="ago">· ${esc(since)}</span>` : ''}</span>`;
+      } else if (st.status === 'ended') {
+        html += '<span class="doing ended" data-now="doing">the campaign has ended</span>';
+      } else {
+        const p = st.awaiting.prompt;
+        html += `<span class="doing yours" data-now="doing">${icon('hand')}<span>your move${p ? `: ${esc(p)}` : ''}</span>${since ? `<span class="ago">· last beat ${esc(since)}</span>` : ''}</span>`;
+      }
+    }
+    ui.put(where, html);
+    renderHud(view);
+  }
+
+  function renderHud(view) {
+    const hudEl = el('hud');
+    if (!hudEl) return;
+    const st = view.state;
+    const h = st && st.hud;
+    if (!h || !h.known) {
+      ui.put(hudEl, '');
+      return;
+    }
+    const parts = [];
+    if (h.hp !== null || h.maxHp !== null) parts.push(`<span>${icon('heart', 'bad')}${ui.bar(h.hp, h.maxHp)}<b>${esc(fmt.hp(h.hp, h.maxHp))}</b></span>`);
+    // hud.ac is the AC now; armorOn says Mage Armor holds (acArmor is the AC with it).
+    const armor = h.armorOn === true || (h.armorOn === null && h.acArmor !== null && h.acArmor === h.ac);
+    if (h.ac !== null) {
+      const tip = h.acArmor !== null && !armor ? ` title="${esc(`${h.acArmor} with Mage Armor`)}"` : '';
+      parts.push(`<span${tip}>${icon('shield')}<b>AC ${esc(h.ac)}</b>${armor ? ' Mage Armor' : ''}</span>`);
+    }
+    if (h.light) parts.push(`<span>${icon('lantern')}${esc(h.light)}</span>`);
+    if (h.conc) parts.push(`<span>${icon('eye')}conc <b>${esc(h.conc)}</b></span>`);
+    parts.push(`<span>${icon('spark')}lost <b>${esc(h.lost.length ? h.lost.join(', ') : 'none')}</b></span>`);
+    if (h.conditions.length) parts.push(`<span class="warn">${esc(h.conditions.join(', '))}</span>`);
+    if (h.exhaustion > 0) parts.push(`<span class="bad">exhaustion <b>${esc(h.exhaustion)}</b></span>`);
+    const inFight = (st.live && st.live.kind === 'fight') || st.awaiting.kind === 'turn';
+    if (inFight && h.reaction !== null) parts.push(`<span class="${h.reaction ? '' : 'spent'}">reaction ${h.reaction ? '✓' : '✗'}</span>`);
+    if (h.inspiration !== null) parts.push(`<span class="${h.inspiration ? 'lit' : 'spent'}" title="Heroic Inspiration ${h.inspiration ? 'ready' : 'spent'}">${icon('d20')}insp</span>`);
+    if (h.freeArmor !== null) parts.push(`<span class="${h.freeArmor ? 'lit' : 'spent'}" title="The free Mage Armor ${h.freeArmor ? 'ready' : 'used today'}">${icon('shield')}free armor</span>`);
+    if (h.coins) parts.push(`<span title="coins on him (lost if he dies)">${icon('coins')}<b>${esc(h.coins)}</b></span>`);
+    ui.put(hudEl, parts.join(''));
+  }
+
+  // ---------- the store notice ----------
+  function renderNotice(view) {
+    const n = el('notice');
+    if (!n) return;
+    let html = '';
+    let err = false;
+    if (view.db === 'none') {
+      html = `${icon('off')}<span><b>No table store in this view.</b> The game shows here when the page is opened as the table on claude.ai, where the GM writes to it.</span>`;
+    } else if (view.db === 'error') {
+      err = true;
+      html = `${icon('off')}<span><b>The table stopped updating:</b> ${esc(view.dbError || 'the store stopped answering')}. Reload the page to reconnect.</span>`;
+    } else if (view.ready && !view.state) {
+      html = `${icon('q')}<span><b>The table is empty.</b> The GM sets it up from the campaign (table.py new); the game appears here as soon as it does.</span>`;
+    } else if (view.ready && view.canWrite === false) {
+      html = `${icon('eye')}<span><b>You are watching this table.</b> You can read everything; playing needs edit access.</span>`;
+    }
+    n.classList.toggle('err', err);
+    n.hidden = !html;
+    ui.put(n, html);
+  }
+
+  // ---------- the Story tab's dot ----------
+  function renderDot(view) {
+    const newest = Math.max(0, ...view.sections.map((s) => s.seq), ...view.beats.map((b) => b.seq));
+    if (nav.view === 'story' || isWide()) storySeen = Math.max(storySeen, newest);
+    if (!storySeen && newest) storySeen = newest;
+    const dot = U.$('#tabs button[data-view="story"] .dot');
+    if (dot) dot.hidden = !(newest > storySeen);
+  }
+
+  // ---------- panels ----------
+  function failCard(name, err) {
+    return `<div class="panel-error">This part of the page failed (${esc(name)}): ${esc(U.errText(err))}</div>`;
+  }
+
+  function mountPanels() {
+    for (const name of CONTAINERS) {
+      const p = T.panels[name];
+      const box = el(name);
+      if (!p || !box || mounted.get(name) === p) continue;
+      try {
+        if (typeof p.mount === 'function') p.mount(box);
+        mounted.set(name, p);
+      } catch (err) {
+        console.error(`[table] mounting ${name} failed:`, err);
+        mounted.set(name, null);
+        box.innerHTML = failCard(name, err);
+      }
+    }
+  }
+
+  function renderPanels(view) {
+    for (const [name, p] of mounted) {
+      if (!p || typeof p.render !== 'function') continue;
+      try {
+        p.render(view);
+      } catch (err) {
+        console.error(`[table] rendering ${name} failed:`, err);
+      }
+    }
+  }
+
+  // ---------- rendering, at most once a frame ----------
+  function flush() {
+    if (raf) cancelAnimationFrame(raf);
+    if (timer) clearTimeout(timer);
+    raf = 0;
+    timer = 0;
+    const view = U.safe(() => T.model.view(T.store.raw()), 'view model');
+    if (!view) return;
+    current = view;
+    U.safe(() => renderNow(view), 'now line');
+    U.safe(() => renderNotice(view), 'notice');
+    U.safe(() => renderDot(view), 'dot');
+    mountPanels();
+    renderPanels(view);
+  }
+
+  /** Ask for a render; many asks in one frame give one render. */
+  function schedule() {
+    if (!booted || raf || timer) return;
+    raf = requestAnimationFrame(flush);
+    timer = setTimeout(flush, 250); // a hidden or throttled frame still renders
+  }
+
+  function tick() {
+    if (!current) return;
+    const view = Object.assign({}, current, { now: Date.now() });
+    current = view;
+    U.safe(() => renderNow(view), 'now line');
+    for (const [name, p] of mounted) {
+      if (p && typeof p.tick === 'function') U.safe(() => p.tick(view), `${name} tick`);
+    }
+  }
+
+  // ---------- boot ----------
+  function wire() {
+    const tabs = el('tabs');
+    if (tabs) tabs.addEventListener('click', (ev) => {
+      const b = ev.target.closest('button[data-view]');
+      if (b) setView(b.dataset.view);
+    });
+    const more = el('more-tabs');
+    if (more) more.addEventListener('click', (ev) => {
+      const b = ev.target.closest('button[data-more]');
+      if (b) setMore(b.dataset.more);
+    });
+    const dt = el('dtabs');
+    if (dt) dt.addEventListener('click', (ev) => {
+      const b = ev.target.closest('button[data-drawer]');
+      if (b) setDrawer(b.dataset.drawer);
+    });
+    document.addEventListener('click', (ev) => {
+      if (ev.target.closest('[data-theme-switch]')) setTheme(effectiveDark() ? 'light' : 'dark');
+    });
+    window.addEventListener('hashchange', fromHash);
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq.addEventListener) mq.addEventListener('change', themeButtons);
+    const wq = window.matchMedia('(min-width: 900px)');
+    if (wq.addEventListener) wq.addEventListener('change', schedule);
+    const now = el('now');
+    if (now && 'ResizeObserver' in window) {
+      new ResizeObserver(() => document.documentElement.style.setProperty('--now-h', `${now.offsetHeight}px`)).observe(now);
+    }
+  }
+
+  function boot() {
+    if (booted) return;
+    booted = true;
+    const saved = ui.local.get('nav', null);
+    if (U.isObj(saved)) {
+      if (VIEWS.includes(saved.view)) nav.view = saved.view;
+      if (MORE.includes(saved.more)) nav.more = saved.more;
+      if (DRAWER.includes(saved.drawer)) nav.drawer = saved.drawer;
+    }
+    const t = ui.local.get('theme', null);
+    setTheme(t === 'dark' || t === 'light' ? t : null);
+    applyNav();
+    fromHash();
+    wire();
+    T.store.subscribe(schedule);
+    T.store.start();
+    flush();
+    setInterval(tick, TICK_MS);
+  }
+
+  T.app = {
+    CONTAINERS,
+    /** Ask for a render of everything (coalesced to one per frame). */
+    render: schedule,
+    go,
+    /** The last view model rendered (null before the first). */
+    view: () => current,
+    /** Where the viewer is: {view, more, drawer}. */
+    nav: () => Object.assign({}, nav),
+    wide: isWide,
+    setTheme,
+    theme: () => (effectiveDark() ? 'dark' : 'light'),
+  };
+
+  // Boot after the whole script has run, so every panel file has registered first.
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else setTimeout(boot, 0);
+})();
+/* ---- js/50-story.js ---- */
+// STUB, owned by the Story panel (README: File ownership). It stands in until the Story is
+// built: a one-line summary of what the Story will show, the newest live beat, and a
+// minimal answer box (a text box and Send, as one `say` move) with its status line, so
+// the shell's send and wake can be tried end to end. Replace this file whole.
+(() => {
+  'use strict';
+  const T = window.T;
+  const ui = T.ui;
+  const { esc, fmt } = ui;
+  let els = null;
+
+  function status(view) {
+    const st = view.state;
+    const failed = view.pending.find((p) => p.status === 'failed');
+    if (failed) return `<span class="bad">${esc(failed.id)} was not sent: ${esc(failed.error)}</span><button type="button" data-retry="${esc(failed.id)}">Send again</button>`;
+    const sending = view.pending.find((p) => p.status === 'sending');
+    if (sending) return `<span>Sending ${esc(sending.id)}…</span>`;
+    const w = view.wake;
+    if (w.move) {
+      const when = w.at ? ` · ${esc(ui.ago(w.at, view.now))}` : '';
+      if (w.state === 'calling') return `<span>Sent ${esc(w.move)}</span><span class="sep">·</span><span>calling the GM…</span>`;
+      if (w.state === 'called') return `<span>Sent ${esc(w.move)}</span><span class="sep">·</span><span>the GM has been called${when}</span>`;
+      if (w.state === 'off') return `<span>Sent ${esc(w.move)}</span><span class="sep">·</span><span>the GM reads it at the next stop</span>`;
+      if (w.state === 'unavailable' || w.state === 'failed') return `<span>Sent ${esc(w.move)}</span><span class="sep">·</span><span>${esc(w.reason)}</span><button type="button" data-wake-again>Call the GM again</button>`;
+    }
+    if (!st) return '<span>The answer box opens when the table does.</span>';
+    if (st.status === 'playing') return '<span>The GM is playing</span>';
+    return `<span>Your move</span>${st.awaiting.prompt ? `<span class="sep">·</span><span>${esc(st.awaiting.prompt)}</span>` : ''}`;
+  }
+
+  T.panels.story = {
+    mount(el) {
+      el.innerHTML = '<p class="stub" data-stub="story"></p><p class="stub" data-stub="beat"></p>'
+        + '<section class="answer" data-wake-anchor aria-label="Your word"><p class="status" data-stub="status"></p>'
+        + '<div class="box"><label class="vh" for="answer-text">Your word to the GM</label><textarea id="answer-text" rows="2" placeholder="Morten\'s words, or a question for the GM"></textarea>'
+        + '<div class="send"><span class="hint">sent as a say move</span><button type="button" id="answer-send">Send</button></div></div></section>';
+      els = {
+        sum: el.querySelector('[data-stub="story"]'),
+        beat: el.querySelector('[data-stub="beat"]'),
+        status: el.querySelector('[data-stub="status"]'),
+        text: el.querySelector('#answer-text'),
+        send: el.querySelector('#answer-send'),
+      };
+      els.send.addEventListener('click', () => {
+        const text = els.text.value.trim();
+        if (!text) return;
+        T.store.send('say', { text, ooc: false }).then(() => { els.text.value = ''; }, () => {});
+      });
+      el.addEventListener('click', (ev) => {
+        if (ev.target.closest('[data-wake-again]')) T.store.wakeAgain();
+        const r = ev.target.closest('[data-retry]');
+        if (r) T.store.retry(r.getAttribute('data-retry'));
+      });
+    },
+    render(view) {
+      if (!els) return;
+      const months = new Set(view.sections.map((s) => s.month).filter((m) => m !== null));
+      const newest = view.sections[view.sections.length - 1];
+      ui.put(els.sum, `Story: ${esc(fmt.plural(view.sections.length, 'section'))} in ${esc(fmt.plural(months.size, 'month'))}`
+        + ` · ${esc(fmt.plural(view.beats.length, 'beat'))} live · ${esc(fmt.plural(view.moves.length, 'move'))} waiting`
+        + (newest ? ` · newest: ${esc(newest.title || newest.kind)}` : ''));
+      const b = view.beats[view.beats.length - 1];
+      ui.put(els.beat, b ? `Live: ${esc(b.text)} ${ui.dice(b.lines.flatMap((l) => l.dice))}` : '');
+      ui.put(els.status, status(view));
+      const busy = view.sending || !view.canWrite;
+      els.send.disabled = busy;
+    },
+    tick(view) {
+      if (els) ui.put(els.status, status(view));
+    },
+  };
+})();
+/* ---- js/60-fight.js ---- */
+// STUB, owned by Fights & Morten (README: File ownership). The real file holds
+// T.panels.fightCard (the fight card the Story and the Fights tab share) and the Fights
+// tab. This stand-in renders one line: how many fights the story holds. Replace it whole.
+(() => {
+  'use strict';
+  const T = window.T;
+  const { esc, fmt, put } = T.ui;
+  let box = null;
+  T.panels.fights = {
+    mount(el) { box = el; },
+    render(view) {
+      const fights = view.sections.filter((s) => s.kind === 'fight');
+      const going = view.state && view.state.live && view.state.live.kind === 'fight' ? ' · one going on' : '';
+      put(box, `<p class="stub" data-stub="fights">Fights: ${esc(fmt.plural(fights.length, 'fight'))}${esc(going)}</p>`);
+    },
+  };
+})();
+/* ---- js/62-morten.js ---- */
+// STUB, owned by Fights & Morten (README: File ownership): the Morten tab, the sheet from
+// game/morten. This stand-in renders one line. Replace it whole.
+(() => {
+  'use strict';
+  const T = window.T;
+  const { esc, fmt, put } = T.ui;
+  let box = null;
+  T.panels.morten = {
+    mount(el) { box = el; },
+    render(view) {
+      const m = view.morten;
+      put(box, `<p class="stub" data-stub="morten">${m
+        ? `Morten: ${esc(m.class || m.name)} · ${esc(fmt.hp(m.hp, m.maxHp))} · ${esc(fmt.plural(m.spells.length, 'spell'))} · ${esc(fmt.plural(m.gear.length, 'gear row'))}`
+        : 'Morten: no sheet yet'}</p>`);
+    },
+  };
+})();
+/* ---- js/70-realm.js ---- */
+// STUB, owned by the Realm panel (README: File ownership): the tower card, the map, the
+// hex entry and the realm rows, from game/realm. This stand-in renders one line. Replace it whole.
+(() => {
+  'use strict';
+  const T = window.T;
+  const { esc, fmt, put } = T.ui;
+  let box = null;
+  T.panels.realm = {
+    mount(el) { box = el; },
+    render(view) {
+      const r = view.realm;
+      put(box, `<p class="stub" data-stub="realm">${r
+        ? `Realm: ${esc(fmt.plural(r.hexes.length, 'hex', 'hexes'))} · ${esc(fmt.plural(r.factions.length, 'realm'))} · ${esc(fmt.plural(r.events.length, 'event'))} last month`
+        : 'Realm: no map yet'}</p>`);
+    },
+  };
+})();
+/* ---- js/80-more.js ---- */
+// STUB, owned by the More panel (README: File ownership): Months, Rules, Talk and Table.
+// Each stand-in renders one line. Replace this file whole.
+(() => {
+  'use strict';
+  const T = window.T;
+  const { esc, fmt, put } = T.ui;
+  const one = (render) => {
+    let box = null;
+    return { mount(el) { box = el; }, render(view) { put(box, `<p class="stub">${render(view)}</p>`); } };
+  };
+  T.panels.months = one((v) => {
+    const months = new Set(v.sections.map((s) => s.month).filter((m) => m !== null));
+    return `Months: ${esc(fmt.plural(months.size, 'month'))}`;
+  });
+  T.panels.rules = one((v) => `Rules: ${esc(fmt.plural(v.rules ? v.rules.sections.length : 0, 'section'))}`);
+  T.panels.talk = one((v) => `Talk: ${esc(fmt.plural(v.sections.filter((s) => s.kind === 'aside').length, 'aside'))}`);
+  T.panels.table = one((v) => {
+    const t = v.state && v.state.table;
+    return t ? `Table: ${esc(t.mode)} · ${t.who === 'dm' ? 'the GM moves Morten' : 'you move Morten'} · stops at ${esc(t.stop)}` : 'Table: no dials yet';
+  });
+})();
+</script>

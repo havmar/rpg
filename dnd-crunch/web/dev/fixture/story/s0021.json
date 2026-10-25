@@ -1,0 +1,67 @@
+{
+ "v": 1,
+ "seq": 21,
+ "kind": "rest",
+ "month": 2,
+ "day": 4,
+ "clock": "06:40",
+ "hex": "A5",
+ "where": "Floor 2 · room 2.4",
+ "title": "Short Rest after room 2.4",
+ "headline": "Two Hit Dice put him back on 20/20 HP before the last door.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Hit Dice",
+   "text": "5 and 6 HP. Hit Dice 1/3. Arcane Recovery was spent yesterday."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Two Hit Dice: 1d6+2 each.",
+   "who": "morten",
+   "kind": "roll",
+   "dice": [
+    {
+     "expr": "1d6+2",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 2,
+     "total": 5,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d6+2",
+     "faces": [
+      4
+     ],
+     "kept": [
+      4
+     ],
+     "mod": 2,
+     "total": 6,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1975,
+  "coins": "70 GP 2 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}

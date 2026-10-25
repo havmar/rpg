@@ -30,7 +30,9 @@ web/
   dev/fake-claude.js   window.claude for the dev page: use("db"), use("comments"), use("user")
   dev/db.mjs           CLI: apply an ArtifactData-shaped batch to the dev store, dump it, seed it
   dev/fixture/         a realms3-like campaign projected by tools/table.py (the store's docs)
-  e2e.mjs              Playwright at 412 px: seed, load, play a move, a beat, a section
+  dev/sample/          a small hand-made store tree in the same layout (used when there is no fixture)
+  e2e.mjs              Playwright at 412 px and 1280 px: runs the checks in e2e/*.mjs
+  e2e/NN-name.mjs      the checks, one file per owner (10-shell, 50-story, …)
 ```
 
 ### JS conventions
@@ -58,7 +60,11 @@ web/
 | `src/css/50-story.css`, `src/js/50-story.js` (sections, months, days, live card, world's turn, aside, answer box, orders form, turn form) | Story |
 | `src/css/60-fight.css`, `src/js/60-fight.js` (`T.panels.fightCard`, the Fights tab), `src/css/62-morten.css`, `src/js/62-morten.js` | Fights & Morten |
 | `src/css/70-realm.css`, `src/js/70-realm.js` (tower card, map, hex entry, realm rows) | Realm |
-| `src/css/80-more.css`, `src/js/80-more.js` (Months, Rules, Talk, Table, notes, theme) | More |
+| `src/css/80-more.css`, `src/js/80-more.js` (Months, Rules, Talk, Table, notes) | More |
+| `e2e/10-shell.mjs`, `dev/`, `build.py`, `e2e.mjs`; `e2e/NN-<panel>.mjs` | the shell; each panel its own e2e file |
+
+The theme switch is the shell's (the moon/sun chip at the end of More's chips and of the
+drawer's tabs, `T.app.setTheme`); the Table tab may offer it too by calling that.
 
 ## The page's view model
 
@@ -74,10 +80,29 @@ view = {
   sections: [...],        // story/*, sorted by seq ascending
   beats: [...],           // live/*, sorted by seq
   logs: [...],            // log/*, sorted by seq
-  moves: [...],           // moves/*, sorted by seq (the player's, not yet answered)
+  moves: [...],           // moves/*, sorted by seq (the player's, not yet answered); each has mine: bool
   pending: [...],         // moves this view sent that have not landed yet
 }
 ```
+
+The shell adds (none of these is in the store; all are always present):
+
+```js
+  opening: bool,          // the store is still answering for the first time
+  dbError: '',            // why db is 'error', in words
+  loaded: {state, morten, realm, rules, story, live, log, moves},  // bools: first snapshot seen
+  pending: [{id, seq, kind, at, status: 'sending' | 'failed', error, move}],  // move: parsed like moves/*
+  sending: bool,          // a write is queued or in flight
+  wake: {state: 'idle' | 'off' | 'calling' | 'called' | 'unavailable' | 'failed', reason, move, at},
+  comments: 'pending' | 'ok' | 'none',
+  canWrite: bool,         // false with no store, a dead store, or a read-only viewer
+  activity: '',           // what the GM is doing: state.doing, else the newest log line
+  lastBeatAt: ms | null,  // the newest live/ or log/ `at`
+  now: ms,                // when this view was built (the shell ticks every 20 s)
+```
+
+Every parsed shape is in `src/js/20-model.js` (`T.model.parse.*`), one function per
+document type of the contract below, with the same field names.
 
 `T.store.send(kind, fields)` writes one move (below), then wakes the GM. Writes go one at
 a time; a second send waits for the first.
@@ -121,6 +146,8 @@ camelCase. A `seq` is one counter shared by the GM's sections, beats and logs (t
 }
 ```
 
+- `hud.ac` is the AC now; `hud.armorOn` (bool) says Mage Armor holds; `hud.acArmor` is the AC with it
+  (`tools/table.py` writes all three; `game/morten` has `acArmor` and `armorOn` too).
 - `status`: `awaiting` (the GM waits for the player) · `playing` (a run is going on) ·
   `ended`.
 - `table.who`: `dm` · `you`. `table.stop`: `month` · `orders` · `fight` · `round` ·
@@ -301,9 +328,135 @@ version rules, so the whole loop runs locally.
 ## Running it
 
 ```sh
-python3 dnd-crunch/web/build.py                  # build dist/table.html
-python3 dnd-crunch/web/build.py --check          # dist is current
+python3 dnd-crunch/web/build.py                  # build dist/table.html (prints its size)
+python3 dnd-crunch/web/build.py --check          # exit 1 if dist/ is stale (commit dist/ with src/)
 node dnd-crunch/web/dev/serve.mjs --seed dnd-crunch/web/dev/fixture   # http://localhost:8787
 node dnd-crunch/web/dev/db.mjs apply batch.json  # play the GM's side locally
-node dnd-crunch/web/e2e.mjs                      # the smoke test at 412 px
+node dnd-crunch/web/e2e.mjs                      # the checks, at 412 px and 1280 px
 ```
+
+Node 22 and Python 3, standard libraries only; Playwright is the one exception, for
+`e2e.mjs`, and it is pre-installed (found with `createRequire`; never `playwright install`).
+
+### The build
+
+`build.py` puts `src/css/*.css` (in file-name order) where `src/page.html` says `/*@CSS*/`,
+as one `<style>`, and `src/js/*.js` where it says `/*@JS*/`, as one `<script>`. It refuses
+a page with a doctype, `<html>`, `<head>` or `<body>`, an external script, a stylesheet from
+anywhere but Google Fonts, a `<title>` outside two to four words, or a `</script` inside the
+JS. The panels' files need no registration: a new `NN-name.js` is picked up by its name.
+
+### The dev table
+
+`serve.mjs [--seed DIR] [--port 8787] [--quiet]` keeps an in-memory store seeded from a tree
+of `<collection>/<doc_id>.json` (each file a document body, version 1), the layout
+`table.py export` writes and `dev/fixture/` holds. `dev/sample/` is a small hand-made tree in
+the same layout, for when there is no fixture. The page is `dist/table.html` inside a
+doctype skeleton with `dev/fake-claude.js`, re-read on every load (rebuild, then reload).
+Store changes reach open pages live over server-sent events.
+
+URL switches for the page: `?nodb=1` (`use("db")` resolves null: the "No table store in
+this view" path), `?nocomments=1`, `?cansend=no_session` (or `writers_only`, `off`: the
+wake's refusal path), `?delay=300` (every call waits 300 ms), `?dbfail=revoked` (every
+subscription ends with that error after its first snapshot), `?noclaude=1` (no
+`window.claude` at all, as in a saved copy of the page).
+
+`db.mjs` talks to a running `serve.mjs` (`--port N`, `--url URL` or `TABLE_DEV_URL`):
+
+| Command | Does |
+|---|---|
+| `apply BATCH.json` | an ArtifactData batch (`{"writes": [{op, collection, doc_id, data or file_path, if_version}]}`), with the store's rules: a create has no `if_version`, a write to an existing doc carries its current version, all or nothing. Prints `set story/s0042 v1` per write; a refusal names the write and writes nothing. A `file_path` resolves against the current folder, then the batch's. |
+| `dump [COLLECTION]` | every document as `{collection, doc_id, version, data}` |
+| `seed DIR` / `reset` | replace the store with a tree / with serve.mjs's `--seed` again (and forget the wakes) |
+| `wakes` | the wakes the page sent: `1. <time> th_1 Table move m0004 (say).` |
+| `moves --out DIR` | each move as `DIR/moves/<doc_id>.json` = `{"collection": "moves", "doc_id", "version", "data"}` (what `table.py moves DIR` reads); stale files there are removed |
+
+### The shell's API (for the panels)
+
+The shell is `src/page.html`, `00-tokens.css`, `10-shell.css` and `00-core.js` … `40-app.js`.
+
+- **Containers.** The shell mounts `T.panels.<name>` into `#<name>` for `story`, `morten`,
+  `realm`, `fights`, `months`, `rules`, `talk`, `table`: `mount(el)` once (when the panel
+  first exists), then `render(view)` after every store change, at most once a frame, and
+  `tick(view)` (optional) every 20 s so times like "4 min ago" stay true. Other names
+  (`T.panels.fightCard`) are components the panels call themselves. A panel that throws is
+  logged and the rest still render. `#story` holds the answer box; mark the element the
+  GM's wake thread anchors to with `data-wake-anchor` (else `#story` is used).
+- **Navigation.** `T.app.go(name)` opens a view (`story`, `morten`, `realm`, `fights`,
+  `more`) or a drawer tab (`months`, `rules`, `talk`, `table`, which on a phone is More with
+  that chip); `T.app.nav()` → `{view, more, drawer}`; `T.app.wide()` is true from 900 px;
+  `T.app.render()` asks for a render; `T.app.view()` is the last view model;
+  `T.app.setTheme('dark' | 'light' | null)`, `T.app.theme()`. `#story`, `#realm`, `#months`
+  etc. on the link open that place.
+- **The store.** `T.store.send(kind, fields)` → `Promise<{id, seq}>` (rejects
+  `{code, message}`: `no_store`, `read_only`, or the db's code); one write at a time; the
+  wake follows when `game/state.wake.on`. `T.store.wakeAgain()` is the status line's "Call
+  the GM again" (one call per tap). `T.store.retry(id)` / `T.store.dismiss(id)` for a
+  failed move. `T.store.subscribe(fn)`, `T.store.raw()` exist; panels use the view instead.
+  Only `send` writes. Call `send` from the click handler itself: `sendToClaude` needs the
+  viewer's own recent gesture, so do not put a confirm step between the tap and the send.
+- **`T.ui`**, the helpers (all return strings of HTML unless said):
+
+| Helper | Gives |
+|---|---|
+| `esc(v)` | `v` escaped for text and double-quoted attributes; null → `''` |
+| `icon(name, cls?)` | `<svg class="ic"><use href="#i-name"/></svg>`; names: heart shield sword mask coins crown tower skull d20 spark pin boots door bed lantern bag globe speech gear flag book play stop hand chev hex fight story hat more cal moon sun eye cart q off |
+| `put(el, html)` | sets `innerHTML` only when it changed (keeps focus, folds and scroll); → changed? |
+| `md(text)` | the safe Markdown subset in `<div class="md">` |
+| `bar(hp, max, cls?)` | an HP bar coloured by band; `band(hp, max)` → `''` · `'mid'` · `'low'` |
+| `chip(text, {kind, k, icon, html, tag})` | `.chip`; `kind` `threat` · `chance` · `open` adds their label |
+| `die(Die)` / `dice([Die])` | die chips: `d20 14 +5 = 19 vs AC 15 hit`; nat 20 brass, nat 1 red, fizzle dashed red, dice dropped by advantage struck; `dieLabel('1d20+5')` → `d20` |
+| `ago(at, now?)` | `just now` · `4 min ago` · `2 h 5 min ago` · `3 days ago`; `at` is ISO or ms |
+| `note(id, html)` / `noteSeen(id)` | a first-visit note with "Got it", remembered per viewer; `''` once dismissed (html is the panel's own copy, never the store's) |
+| `fac(realmName)` | the realm's colour class: `fac-gnomes`, `fac-tower`, `fac-none` |
+| `local.get(key, fallback)` / `.set(key, value)` / `.del(key)` | per-viewer JSON in localStorage, try/catch wrapped (keys are prefixed `table.`) |
+| `fmt.n(1200)` `fmt.signed(-1)` `fmt.hp(11, 20)` `fmt.unit(8, 'dmg')` `fmt.gp` `fmt.xp` `fmt.kg` `fmt.ac` `fmt.sq(6)` `fmt.plural(3, 'fight')` `fmt.when({month, day, clock})` | `1,200` · `−1` · `11/20 HP` · `8 dmg` · `1,200 GP` · `2,125 XP` · `0.5 kg` · `AC 15` · `6 sq (9 m)` · `3 fights` · `Month 3 · Day 4 · 09:40` (strings, not HTML) |
+
+  `T.util` has `$`, `$$`, `pad(7)` → `0007`, `ms(at)`, `isObj`, `errText(err)`; `T.model.P`
+  the readers the parsers use (`str`, `num`, `int`, `strs`, `list`, …) if a panel parses
+  something of its own.
+- **Shared CSS** in `10-shell.css` (the mockup's, so panels reuse rather than redefine):
+  `.card`, `.sec` `.sec-head` `.meta` `.story` `.bullets`, `.sec.aside`, `.you`, `.foes`
+  `.foe`, `.hprow`, `details.trace`, `.round`, `.ln` (`.them`), `.die`, `.result`, `.events`
+  `.n`, `.chips` `.chip` (`.threat` `.chance` `.open`), `.answer` `.status` `.box` `.seg`
+  `.form .pick`, `.stat-row` `.stat`, `.spells` `.spell` (`.lost` `.conc` `.free`), `.pips`,
+  `.toggle`, `.hexbtns` `.hexbtn`, `.subtabs`, `.note`, `.label` `.muted` `.num` `.vh`, the
+  colours `.good` `.warn` `.bad` `.brass` and realms `.fac-*` with `.sw` `.who`, and `.md`.
+  Panel-only rules (the map, the realm rows, the fight rows, the month headers, the live
+  card, the world's turn) are the panels' own: copy them from the mockup into your CSS file.
+
+### The checks
+
+`node dnd-crunch/web/e2e.mjs [--only TEXT] [--shots DIR] [--fixture DIR] [--fonts]` starts
+`serve.mjs` on a free port with `dev/fixture` (when it has `game/state.json`) or
+`dev/sample`, and runs every `export const checks = [...]` in `e2e/*.mjs`, in file-name
+order. Before each check the store is re-seeded and the wakes forgotten; after it, any
+console error on a page it opened fails it (unless the check says `allowErrors: true`).
+Screenshots go to `--shots` (default `$TABLE_E2E_SHOTS` or `<tmp>/table-e2e`). Google
+Fonts are stubbed so a run needs no network; `--fonts` loads them for screenshots worth
+looking at.
+
+To add checks for a panel, add `e2e/NN-<panel>.mjs` (50-story, 60-fight, 62-morten,
+70-realm, 80-more):
+
+```js
+export const checks = [{
+  name: 'realm: a hex opens its entry',
+  async run(t) {
+    const page = await t.open();                  // 412×915; {width, height, query, colorScheme}
+    await page.click('#tabs button[data-view="realm"]');
+    t.expect(await page.locator('#realm .entry').isVisible(), 'the entry shows');
+    await t.api.batch([{ op: 'set', collection: 'log', doc_id: 'l0099', data: { v: 1, seq: 99, text: 'x', at: new Date().toISOString() } }]);
+    await t.waitFor(() => page.evaluate(() => T.app.view().logs.length > 1), 'the log line');
+    await t.shot(page, 'phone-realm-entry');
+  },
+}];
+```
+
+`t.api` has `docs(collection?)`, `doc(collection, id)` → `{collection, doc_id, version,
+data}`, `batch(writes)`, `write({op, collection, doc_id, data})` (a page write, no
+versions), `wakes()`, `reset()`. The shell's checks (`e2e/10-shell.mjs`) cover the now line
+and HUD, every bottom-bar tab and More chip, 44 px targets, no sideways scroll, a move and
+its wake (twice, one thread), the refused wake, a beat landing live, the two zones at
+1280 px, the page with no store, a revoked store, no `window.claude`, and both themes. `e2e/50-story.mjs` tests the stub answer
+box; the Story replaces it.

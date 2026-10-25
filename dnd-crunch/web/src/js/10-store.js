@@ -223,7 +223,7 @@
   }
 
   async function doSend(kind, fields) {
-    if (!DB) throw storeError('no_store', 'there is no table store in this view');
+    if (!DB) throw storeError('no_store', raw.db === 'pending' ? 'the table is still opening; send again in a moment' : 'there is no table store in this view');
     if (raw.db === 'error') throw storeError('no_store', raw.dbError || 'the table store stopped answering');
     if (raw.user.canWrite === false) throw storeError('read_only', 'this view can read the table but not write to it');
     const seq = nextSeq();
