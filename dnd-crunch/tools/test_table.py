@@ -539,6 +539,50 @@ class Renderers(Case):
         self.assertRegex(lines[2], r"^2d6-1: \[\d, \d\] - 1 = \d+$")
 
 
+class Fixture(unittest.TestCase):
+    """The exported fixture (web/dev/fixture, fixture-live) holds the README's shapes."""
+
+    def test_fixture_shapes(self):
+        for name in ("fixture", "fixture-live"):
+            root = GAME / "web" / "dev" / name
+            if not (root / "game" / "state.json").exists():
+                self.skipTest(f"{name} not built")
+            c = Case("shape")
+            st = json.loads((root / "game" / "state.json").read_text())
+            c.shape(st, STATE, f"{name} game/state")
+            c.shape(st["hud"], HUD, "hud")
+            c.shape(json.loads((root / "game" / "morten.json").read_text()), MORTEN, "game/morten")
+            c.shape(json.loads((root / "game" / "realm.json").read_text()), REALM, "game/realm")
+            secs = sorted((json.loads(p.read_text()) for p in (root / "story").glob("*.json")),
+                          key=lambda x: x["seq"])
+            kinds = {x["kind"] for x in secs}
+            self.assertTrue({"opening", "aside", "orders", "travel", "fight", "rest"} <= kinds, kinds)
+            for x in secs:
+                c.shape(x, SECTION, f"{name} {x['seq']}")
+                for ln in x["trace"]:
+                    c.shape(ln, LINE, "line")
+                    for dd in ln["dice"]:
+                        c.shape(dd, DIE, "die")
+                if x["fight"]:
+                    c.shape(x["fight"], FIGHT, "fight")
+                    for t in x["fight"]["hpTrack"]:
+                        self.assertEqual(len(t["hp"]), x["fight"]["rounds"] + 1, x["title"])
+                if x["domain"]:
+                    c.shape(x["domain"], DOMAIN, "domain")
+            beats = [json.loads(p.read_text()) for p in (root / "live").glob("*.json")] if (root / "live").exists() else []
+            for b in beats:
+                c.shape(b, BEAT, "beat")
+            ids = [st.get("latest")] + [f"s{x['seq']:04d}" for x in secs]
+            self.assertEqual(st["latest"], ids[-1])
+            if name == "fixture":
+                self.assertEqual((st["status"], st["awaiting"]["kind"], st["month"]), ("awaiting", "orders", 3))
+                self.assertIn("domain", kinds)
+                self.assertEqual(beats, [])
+            else:
+                self.assertEqual((st["status"], st["live"]["kind"], len(beats)), ("playing", "fight", 2))
+                self.assertTrue(list((root / "log").glob("*.json")))
+
+
 class Secrecy(Case):
     def test_fixture_is_clean(self):
         if not (FIXTURE / "page.json").exists():

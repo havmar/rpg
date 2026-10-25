@@ -1250,6 +1250,9 @@ def cmd_open(a):
     s["live"] = {"kind": a.kind, "title": a.title, "month": head["month"], "day": head["day"],
                  "openedAt": at}
     s["status"] = "playing"
+    for k in ("where", "clock", "day"):
+        if getattr(a, k):
+            s[k] = getattr(a, k)
     if a.doing is not None:
         s["doing"] = a.doing or None
     finish(c)
@@ -1471,6 +1474,10 @@ def write_section(c, text, extra_dice, kind_default=None, close=True, answers=No
 
 def cmd_section(a):
     c = Camp(a.dir)
+    keep = c.state, c.morten  # check the state options before anything is written
+    c.state, c.morten = copy.deepcopy(keep[0]), copy.deepcopy(keep[1])
+    apply_state_opts(c, a)
+    c.state, c.morten = keep
     sec = write_section(c, Path(a.file).read_text(), [parse_die(d) for d in a.die],
                         answers=a.answers or None)
     apply_state_opts(c, a)
@@ -1755,6 +1762,10 @@ def cmd_sent(a):
         c.page["url"] = a.url
         if c.state is not None:
             c.state["url"] = a.url
+    if not c.page["pending"]:  # page/out mirrors the store: drop the files of deleted docs
+        for f in c.out.glob("*/*.json"):
+            if f"{f.parent.name}/{f.stem}" not in c.page["versions"]:
+                f.unlink()
     c.save()
     if a.url and c.state is not None:
         render_all(c)

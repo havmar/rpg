@@ -19,11 +19,16 @@ dnd-crunch/
   agents/player.md       instructions for the AI player who runs Morten
   ui/realms-map.html     the Realms map page (a template; see ui/README.md)
   ui/table-mockup.html   the table's look, a clickable mockup (see ui/README.md)
-  tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
+  tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest; --keep DIR for the page)
   tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
   tools/realms.py        Realms v2 engine: world, domain turns, mission fights, sim, map.json
   tools/realms_v1.py     Realms v1 engine, for the `realms` campaign
   tools/realms_page.py   builds a campaign's map page (page.html) from its map.json
+  tools/table.py         the table's GM side: the record (morten.json, story/, live/, page.json),
+                         the page's store documents and their ArtifactData batches, the Markdown
+                         renderers (character.md, state.md, transcript.md)
+  tools/check_table.py   the table's secrecy check: no GM secret in a document for the page's store
+  tools/test_table.py    tests for table.py, check_table.py and roll.py --keep
   templates/             a new game's starting sheet and campaign rules (New game defaults)
   campaigns/<name>/      one folder per campaign (see Campaign files)
   sessions/              per-session notes and full transcripts
