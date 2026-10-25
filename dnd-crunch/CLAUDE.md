@@ -58,7 +58,8 @@ name and `grep -n`; never read a big file whole.
   beats momentum at this table.
 - **Open table.** Every roll is shown: die faces, modifiers, total, the DC or AC it was
   against, and the result. Monster stat blocks are open too: when the wizard first sees a
-  creature, give its name, AC, HP, speed and attacks (the human can ask for the full block).
+  creature, give its name, CR, AC, HP, speed and attacks (the human can ask for the full
+  block).
   Track monster HP exactly and show it. What stays hidden is only what the character can't
   perceive: unexplored rooms, unseen creatures, undetected traps, a creature's hidden
   abilities that a check hasn't revealed. The human can switch to **closed table** (monster
@@ -168,14 +169,29 @@ fights can be checked.
 | Domain turns | **summary** | **report**: the script's four-part report as it prints |
 | Events (travel, shopping, rests, rituals, loot) | **summary** | **log**: one line per event with its rolls |
 | Dice in summaries | **key rolls** (nat 20s, nat 1s, fizzles, and the roll that decided the fight) | **none** · **all** |
+| Live updates | **every round** | **turning points** (a fizzle, a crit, a kill, a big hit) · **off** (the report only) |
 
 When the human plays Morten turn by turn, a fight is always shown in the **log** format,
 because the human needs the board to choose Morten's move. The dials matter when the GM (or the AI
 player) plays several turns or fights in one reply.
 
+**Live updates.** While the GM plays a fight, it reports as the dice fall instead of
+playing the whole fight and reporting at the end: before each round's rolls, a line on
+what Morten is about to try and why; after them, one or two plain sentences on what
+happened, with both sides' HP. These go out as chat text between the dice calls, so the
+human watches the fight unfold. The summary block still follows when the fight ends; it
+can be shorter, since the human has seen the rounds.
+
+> R2: Thunderwave on the three snakes lined up beside him (cast 16). Two fail their saves; all three die. Morten 11/20.
+
+**Monsters show their CR.** Every time a monster is named in a heading, a stat line or a
+fight report, give its CR next to it, with the fight's difficulty and XP: "3 Venomous
+Snakes (CR 1/8 each) · Moderate, 75 XP". A mixed group gives each kind's CR.
+
 **Fights: summary.** One block per fight, sent when the fight ends. A heading with the
-room or place, the foes, the difficulty and XP, and a two- or three-word verdict, then
-labelled bullets. Use the labels that have something to say and skip the rest:
+room or place, the foes and their CR, the difficulty and XP, and a two- or three-word
+verdict, then labelled bullets. Use the labels that have something to say and skip the
+rest:
 
 - **Room** or **Area:** the size and the feature that mattered, and the foes' key stats
   the first time they're seen (AC, HP, speed, the attack or trait that matters).
@@ -192,7 +208,7 @@ him, XP, gold), and leave the rest to the transcript. A long fight that's still 
 gets a **So far:** line (foes and their HP, Morten's HP, what's been lost) and the report
 when it ends.
 
-> **Room 3.1 · 3 Boars (Low, 150 XP) · cleared, but barely**
+> **Room 3.1 · 3 Boars (CR 1/4 each) · Low, 150 XP · cleared, but barely**
 > - **Prep:** sold the garnet for a Potion of Healing, bought 8 rations, cast Mage Armor (AC 15). Prepared Web for this room.
 > - **Scouting:** the owl got in unseen: 12×15 m room, 2 boars visible, 1 in magical darkness.
 > - **Cheese:** Web across the approach to the door. Two boars got stuck in round 1, and the third waded through.
@@ -404,7 +420,7 @@ human can change any of them, before or during play.
   before a risky fight.
 - **Table mode:** open.
 - **Report style:** the defaults in **Report style** (summary for fights, domain turns and
-  events, key rolls only).
+  events, key rolls only, live updates every round).
 - **Campaign rules:** copy `templates/realms-rules.md` and fill in the name, seed and the
   tower's hex. It holds the Delve, mission-fight, death, purse and downtime rules.
 - **Start:** Month 1 · Day 1 · 08:00, in the tower, rested.
