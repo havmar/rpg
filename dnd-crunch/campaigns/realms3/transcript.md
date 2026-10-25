@@ -183,3 +183,73 @@ Map page: https://claude.ai/artifact/HtS74JpK8j6iHiNXsjHmRP
 - Humans (Reeve Leopold, good: keeps the peace): saves for Walls (400/600 GP).
 - Tower (Morten): Buy Farms a25 in B5, −200 GP → 7 GP.
 - (2 hidden events)
+
+---
+
+## Human
+
+can you check older sessions? i preferred the style there to report on fights amd events. it was more like a concise narration or summary, and not as sparse. let's turn this into a tweakable style instruction. thank you.
+
+---
+
+**GM:** (Month 1 restated in the new summary style; the roll log above stands.)
+
+**Month 1 · Day 1 · B5 · Delve: floor 1**
+
+- **Prep:** sold the Sage's Book (+12 GP 5 SP) and left the whole purse in the tower, so a death would cost nothing. Free Mage Armor (AC 15). Light rolled a natural 1, so it's gone for the day and the mishap tied his tongue for a moment. The lamp does the job instead.
+
+**Room 1.1 · Giant Badger (Moderate, 50 XP) · kited, untouched**
+- **Area:** a 9×18 m empty hall. Badger: AC 13, 15 HP, 9 m speed, 2d4+1 bite.
+- **The dice:** Fire Bolt fizzled on the opening shot and is lost for the day.
+- **How it ended:** three Rays of Frost in a row, each slowing it by 3 m, while he backed up the entrance stair. It never got within reach.
+- **Result:** no damage. +50 XP, 5 GP.
+
+**Room 1.2 · Swarm of Ravens (Moderate, 50 XP) · scratched**
+- **Area:** a long room with a chasm and a 1.5 m bridge. Ravens: AC 12, 11 HP, fly 15 m, resist weapons.
+- **The dice:** Magic Missile fizzled and is lost. The swarm missed twice.
+- **How it ended:** Thunderwave knocked it down to 3 HP and blew it back. It came back for one 4-point peck, and Shocking Grasp finished it.
+- **Result:** HP 16/20. +50 XP, 5 GP.
+
+**Room 1.3 · 3 Venomous Snakes (Moderate, 75 XP) · the close one**
+- **Area:** a 9×9 m pillared room. Snakes: AC 12, 5 HP, bite 1d4+2 plus 1d6 poison.
+- **How it went:** the opening Thunderwave only grazed two of them. All three came at him: Shield stopped one, one missed, and the third bit for 11. **Morten 16 → 5.**
+- **How it ended:** he drank his potion (back to 11) and Thunderwaved again with all three lined up beside him. All three died.
+- **Result:** HP 11/20, potion used. +75 XP, 7 GP.
+
+**Short rest:** two Hit Dice back to 20/20. Arcane Recovery returns Fire Bolt and Magic Missile.
+
+**Room 1.4 · 4 Mastiffs (High, 100 XP) · chokepoint**
+- **Area:** a 12×12 m room, its north half in magical darkness he can't see into. Mastiffs: AC 12, 5 HP, 12 m speed, a bite that knocks prone.
+- **Cheese:** he stood just outside the door, so only one dog at a time could reach him, and readied Shocking Grasp for the first one through.
+- **How it ended:** the readied grasp killed the first dog. The second rolled a natural 20 for 9 and knocked him prone, and Magic Missile killed it. With half the pack dead, the last two broke and hid in the dark.
+- **Result:** HP 11/20. +100 XP (the two that fled count as bypassed), 10 GP.
+
+**Short rest:** his last Hit Die, back to 17/20.
+
+**Room 1.5 · 2 Boars (High, 100 XP) · Sleep and crits**
+- **Area:** a 12×12 m pillared room. Boars: AC 11, 13 HP, a charging gore, Advantage on attacks once Bloodied.
+- **Cheese:** Sleep on one boar from the doorway. It failed both saves and went down unconscious.
+- **The dice:** Thunderwave fizzled, and the Heroic Inspiration reroll saved it. Magic Missile rolled a natural 20, which doubled it to 6 darts for 19 on the awake boar. Shield caught its one hit.
+- **How it ended:** he walked up to the sleeper and fired Scorching Ray point-blank. The first ray auto-crit for 11 and woke it on 2 HP, and the third ray rolled a natural 20 to finish it.
+- **Result:** HP 17/20. +100 XP, 10 GP.
+
+**Floor 1 done:** XP 900 → 1,275, +37 GP. Back in the tower by 12:30, and a Long Rest in downtime brings everything back.
+
+**Month 1 · Domain turn**
+
+**The plan:** Morten took the safe XP under his own tower. He put all his coins, 97 GP, in the treasury so the tower could reach 200 GP and buy Farms.
+
+**What happened**
+- **The tower** bought Farms in B5. With the hex, that's 60 GP a month from now on. The treasury is down to 7 GP.
+- **The Gnomes** (bad: robs its neighbours) marched Thugs and Knights from their seat into C4 to rob the Tieflings' Mercenaries in C5. C4 is two hexes from the tower, and they aren't after us. The fight, if it comes, is next door in C5.
+- **The Orcs** (bad: robs its neighbours) sent two Thugs into C2 after the Goblinkind Caravans. **Goblinkind** (good: keeps the peace, our ally) struck first with the Caravans and lost badly (5 vs 13): the Caravans are down to 2/4 HP.
+- **Elsewhere:** the Elves (bad: takes land) moved both Militias into the Orcs' B1 to take it. The Humans (ally) and Tieflings are saving gold. There were two hidden Cunning moves.
+
+**The tower now:** HP 7/7 · F1 C1 W1 · 7 GP · Farms in B5 · no enemies · allies Goblinkind and Humans.
+
+**Next month**
+- **Threats:** none aimed at the tower.
+- **Chances:** the Gnomes, Orcs and Elves have marched their soldiers out of their seats (D3, D1, A2), leaving each guarded only by its court. A Strike there does 2d6 to that realm's HP, but it's a High fight and makes them hostile for 6 months. The Gnomes' D3 is the nearest, 3 days away.
+- **Open:** the tower has 67 GP next month, and everything costs 200. Floor 1 is cleared. Floor 2 lies under the Humans' A5, next door; floor 3 is under the Elves' B3.
+
+**Wrap-up:** Morten is on 20/20 at level 3 (1,275 of 2,700 XP), with 2 SP 5 CP on him and nothing lost. Doorways and Sleep did the work; the snakes' 11-point bite was the only real danger. Ruling: monsters that flee on a morale check count as bypassed, so they give their XP.

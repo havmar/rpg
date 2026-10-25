@@ -63,9 +63,10 @@ name and `grep -n`; never read a big file whole.
   perceive: unexplored rooms, unseen creatures, undetected traps, a creature's hidden
   abilities that a check hasn't revealed. The human can switch to **closed table** (monster
   HP shown as Healthy/Bloodied/Near death, stats hidden) by asking; note it in `state.md`.
-- **Minimal narration.** No mood, no prose. One terse line per new area: dimensions, exits,
-  light, terrain, visible creatures and objects. NPC speech only when it carries
-  information, one line, no flourish.
+- **Minimal narration.** No mood, no flavour prose. One terse line per new area:
+  dimensions, exits, light, terrain, visible creatures and objects. NPC speech only when it
+  carries information, one line, no flourish. Reports on fights and events are a concise
+  plain-language summary of what happened and why (see **Report style**), not flavour.
 - **Space is a grid.** 1 square = 1.5 m (5 ft). Use squares and metres, never feet: speed
   30 ft = 6 squares = 9 m, Fire Bolt 120 ft = 24 squares = 36 m. Give positions as grid
   coordinates (A1 = north-west corner) whenever they matter, always in combat. Diagonals
@@ -151,11 +152,76 @@ likes, but every cast needs a **casting check**:
   plus Potions of Healing (50 GP), and buys gear at half price, gems at full value. That's
   where gold matters.
 
+## Report style
+
+How the GM reports fights and events in chat. It's a set of dials: the human can turn
+any of them ("fights as outcomes", "domain as log", "more detail on the dice"), and the
+current setting goes in `state.md` (`Report style:`). Whatever the dials say, the full
+roll-by-roll log always goes in `transcript.md` and the dice are rolled as usual, so the
+fights can be checked.
+
+**The dials**
+
+| Dial | Default | Other settings |
+|---|---|---|
+| Fights | **summary** | **log**: the round-by-round Reply format below · **outcome**: one or two lines per fight (foes, result, HP and spells lost, XP and gold) |
+| Domain turns | **summary** | **report**: the script's four-part report as it prints |
+| Events (travel, shopping, rests, rituals, loot) | **summary** | **log**: one line per event with its rolls |
+| Dice in summaries | **key rolls** (nat 20s, nat 1s, fizzles, and the roll that decided the fight) | **none** · **all** |
+
+When the human plays Morten turn by turn, a fight is always shown in the **log** format,
+because the human needs the board to choose Morten's move. The dials matter when the GM (or the AI
+player) plays several turns or fights in one reply.
+
+**Fights: summary.** One block per fight, sent when the fight ends. A heading with the
+room or place, the foes, the difficulty and XP, and a two- or three-word verdict, then
+labelled bullets. Use the labels that have something to say and skip the rest:
+
+- **Room** or **Area:** the size and the feature that mattered, and the foes' key stats
+  the first time they're seen (AC, HP, speed, the attack or trait that matters).
+- **Prep:** shopping, rituals, Mage Armor, what he prepared, the purse left behind.
+- **Scouting:** what the owl or a check found.
+- **Cheese** or **Plan:** the idea in one line, and whether it worked.
+- **The dice:** fizzles and lost spells, crits, the luck that swung it.
+- **How it ended:** the turning points in a sentence or two.
+- **Result:** HP at the end, spells lost, potions used, XP before → after, coins.
+
+Write in short plain sentences, not roll strings: "Sleep dropped one boar, but a natural 1
+on concentration woke it." Keep the numbers that matter (HP, damage that nearly killed
+him, XP, gold), and leave the rest to the transcript. A long fight that's still going
+gets a **So far:** line (foes and their HP, Morten's HP, what's been lost) and the report
+when it ends.
+
+> **Room 3.1 · 3 Boars (Low, 150 XP) · cleared, but barely**
+> - **Prep:** sold the garnet for a Potion of Healing, bought 8 rations, cast Mage Armor (AC 15). Prepared Web for this room.
+> - **Scouting:** the owl got in unseen: 12×15 m room, 2 boars visible, 1 in magical darkness.
+> - **Cheese:** Web across the approach to the door. Two boars got stuck in round 1, and the third waded through.
+> - **The dice:** 5 spells fizzled, each lost for the day: Scorching Ray (the Heroic Inspiration reroll still landed 1 short), Magic Missile, Shocking Grasp, Shield and Misty Step.
+> - **How it ended:** Sleep dropped one boar, but a natural 1 on concentration woke it. He finished the last two with a dagger and Ray of Frost while backing up the stair.
+> - **Result:** cleared on **1 HP**, potion used. XP 1,150 → 1,300. +15 GP.
+
+**Domain turns: summary.** Keep the four parts (The plan, What happened, The tower now,
+Next month), but write What happened as one or two plain sentences per event: who
+(*label: verb*), what they did, what goal it served, how it came out, and what it means
+for the tower ("The Gnomes march Thugs and Knights into C4 to rob the Tieflings; that's
+two hexes from the tower, but they aren't after us"). Give an attack's roll in brief only
+when it decided something. Next month says the threats and chances in words, then the
+open choices.
+
+**Events: summary.** A few bullets per day or stop: travel and wandering checks (only
+an encounter gets more than a clause), shopping with the coins left, rests with what came
+back, loot. Fold routine steps into one line.
+
+**After a run of several fights** (a floor, a month), end with a short wrap-up: where
+Morten stands (HP, XP, level, gold, what's lost), what worked and what didn't, any rulings
+made along the way, and what's next.
+
 ## Reply format
 
-Every GM reply follows this shape. The human reads on a phone: **no code blocks and no
-ASCII maps** (they don't wrap). Use plain Markdown: bold labels, short lines, bullets.
-Leave out a section only when it's empty.
+This is the **log** format: a fight shown round by round (see **Report style** for when).
+Every reply, in any style, is read on a phone: **no code blocks and no ASCII maps** (they
+don't wrap). Use plain Markdown: bold labels, short lines, bullets. Leave out a section
+only when it's empty.
 
 > **R2 · Init: Morten 18 › Goblin A 12 › Goblin B 7** (exploration: **Turn 4 · 08:40**)
 >
@@ -282,6 +348,9 @@ follow.** The bare roll log of a domain turn isn't enough. The v2 report is buil
   leader as *label: verb* and the goal it served; the rest in one Elsewhere line.
 - **The tower now**, then **Next month:** threats, chances and the open choices.
 
+The **Report style** dials say how plainly to write each part (domain **summary** by
+default).
+
 Leaders are always shown as *label: verb* ("bad: takes land"), never a bare tag. The report
 holds only what the tower can know: never paste `--gm` output or `realms.json` into chat.
 
@@ -289,9 +358,8 @@ holds only what the tower can know: never paste `--gm` output or `realms.json` i
 `python3 dnd-crunch/tools/realms_page.py dnd-crunch/campaigns/<name>` and republish the
 page; its link is in `state.md`.
 
-When the human asks for **outcome-only fights**, report each fight in chat in one or two
-lines (foes, result, HP and spells lost, XP and gold). Keep the full roll-by-roll log in
-`transcript.md` as usual, so it can be checked.
+Fights and domain turns are reported by the **Report style** dials (fights **outcome**
+when the human asks for outcome-only fights).
 
 ## Campaign files
 
@@ -303,7 +371,7 @@ Each campaign lives in `dnd-crunch/campaigns/<name>/`:
   HP, hit dice, lost spells, Arcane Recovery, Heroic Inspiration, deaths, concentration,
   conditions, light sources, rations, and in combat the initiative order, positions and
   every monster's HP. A fresh GM must be able to resume from this file alone. Also notes
-  the table mode (open/closed) and who plays Morten. It holds no secrets: the AI player
+  the table mode (open/closed), the report style and who plays Morten. It holds no secrets: the AI player
   reads it.
 - `transcript.md`: every GM reply word for word, with the action before it (the human's
   words, or Morten (AI)'s turn), in order. Never put GM secrets in it.
@@ -335,6 +403,8 @@ human can change any of them, before or during play.
   point-blank crits, hold chokepoints, retreat to reset, and leave the purse in the tower
   before a risky fight.
 - **Table mode:** open.
+- **Report style:** the defaults in **Report style** (summary for fights, domain turns and
+  events, key rolls only).
 - **Campaign rules:** copy `templates/realms-rules.md` and fill in the name, seed and the
   tower's hex. It holds the Delve, mission-fight, death, purse and downtime rules.
 - **Start:** Month 1 · Day 1 · 08:00, in the tower, rested.
