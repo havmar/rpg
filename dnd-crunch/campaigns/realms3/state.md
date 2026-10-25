@@ -3,7 +3,7 @@
 - **Table mode:** open
 - **Morten played by:** the GM (human's request); the human can step in anytime
 - **Style:** cheese everything (human's request)
-- **Report style:** fights summary · domain summary · events summary · dice: key rolls · live updates: every round · CR shown (`dnd-crunch/CLAUDE.md`: Report style)
+- **Report style:** fights summary · domain summary · events summary · dice: key rolls · live updates: every round · CR shown · units on every number · voice of the first session (`dnd-crunch/CLAUDE.md`: Report style)
 - **Month 3 · Day 1 · B5** (L1, desert, tower) · start of the month, choices pending
 - **Deaths:** 0 · **XP:** 2,125 · **level 3** (level 4 at 2,700)
 

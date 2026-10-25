@@ -172,45 +172,61 @@ fights can be checked.
 | Live updates | **every round** | **turning points** (a fizzle, a crit, a kill, a big hit) · **off** (the report only) |
 
 When the human plays Morten turn by turn, a fight is always shown in the **log** format,
-because the human needs the board to choose Morten's move. The dials matter when the GM (or the AI
-player) plays several turns or fights in one reply.
+because the human needs the board to choose Morten's move. The dials matter when the GM
+(or the AI player) plays several turns or fights in one reply.
+
+**Voice.** The model is the first session (`sessions/2026-10-24-transcript.md`, the
+Sunken Vault stirges and library): a GM talking the human through the fight, relaxed, with
+some detail, never a form filled in. In practice:
+
+- **Lead with the headline,** in a full sentence: "Morten cleared the library without
+  taking a single point of damage, and every spell he cast worked. Two natural 20s
+  helped." Then the detail.
+- **Say the plan and why,** in Morten's voice when the GM plays him: "Motionless skeletons
+  around a lectern look like a trap, so he never goes near it; the floating hand does."
+  Number the tricks when there are several (Cheese 1, Cheese 2, …).
+- **Explain a rule when it matters,** in a short aside: "An unconscious target fails the
+  save automatically, so it's coated."
+- **Let the drama of the dice show** in plain words: "Shield just fizzled, so two of them
+  are about to land bites."
+- **Group rounds under a short heading** (Round 1 · Initiative: …) with a few lines each,
+  and fold routine rounds together ("R7–R8: Dash to the sleeping worg").
+- **End with the stakes and a question:** what he carries and could lose, what's still
+  below, the open choices.
+- **Vary it.** Use labels and structure where they help; don't force every fight into
+  the same template.
+
+What makes a report formulaic, and is to be avoided: a fixed set of labels on every
+fight; every line opening with the same prefix ("R3 · Morten (GM):"); fragments like
+"Cast (20). Both fail (3, 12)." instead of sentences; a stream of one-liners, one per die
+call; and bare numbers with no unit.
+
+**Units on every number.** HP, damage, AC, squares and metres always carry their unit or
+word: "Fire Bolt hits for 8 dmg", "Boar B 13 → 9 HP", "Morten 17/20 HP", "AC 15",
+"6 sq (9 m)". Never a bare "B 11 · C 6" or "Morten 20 → 17". Dice shown in a roll keep
+their form (d20 14 +5 = 19 vs AC 15, HIT → 2d6: 3+4 = 7 dmg).
 
 **Live updates.** While the GM plays a fight, it reports as the dice fall instead of
-playing the whole fight and reporting at the end: before each round's rolls, a line on
-what Morten is about to try and why; after them, one or two plain sentences on what
-happened, with both sides' HP. These go out as chat text between the dice calls, so the
-human watches the fight unfold. The summary block still follows when the fight ends; it
-can be shorter, since the human has seen the rounds.
+playing the whole fight and reporting at the end. The updates go out as chat text between
+the dice calls, at a natural pace: a line when Morten tries something that matters and
+why, and a sentence or two when it resolves, with both sides' HP. A quiet round can share
+a line with the next. When the fight ends, a short wrap-up follows: the headline and the
+result, not a replay of rounds the human has just watched.
 
-> R2: Thunderwave on the three snakes lined up beside him (cast 16). Two fail their saves; all three die. Morten 11/20.
+> Round 2 · Thunderwave on the three snakes lined up beside him. The cast holds (16), two of them fail their saves, and 11 thunder dmg kills all three. Morten is on 11/20 HP.
 
 **Monsters show their CR.** Every time a monster is named in a heading, a stat line or a
 fight report, give its CR next to it, with the fight's difficulty and XP: "3 Venomous
 Snakes (CR 1/8 each) · Moderate, 75 XP". A mixed group gives each kind's CR.
 
-**Fights: summary.** One block per fight, sent when the fight ends. A heading with the
-room or place, the foes and their CR, the difficulty and XP, and a two- or three-word
-verdict, then labelled bullets. Use the labels that have something to say and skip the
-rest:
-
-- **Room** or **Area:** the size and the feature that mattered, and the foes' key stats
-  the first time they're seen (AC, HP, speed, the attack or trait that matters).
-- **Prep:** shopping, rituals, Mage Armor, what he prepared, the purse left behind.
-- **Scouting:** what the owl or a check found.
-- **Cheese** or **Plan:** the idea in one line, and whether it worked.
-- **The dice:** fizzles and lost spells, crits, the luck that swung it.
-- **How it ended:** the turning points in a sentence or two.
-- **Result:** HP at the end, spells lost, potions used, XP before → after, coins.
-
-Write in short plain sentences, not roll strings: "Sleep dropped one boar, but a natural 1
-on concentration woke it." Keep the numbers that matter (HP, damage that nearly killed
-him, XP, gold), and leave the rest to the transcript. A long fight that's still going
-gets a **So far:** line (foes and their HP, Morten's HP, what's been lost) and the report
-when it ends.
+**Fights: summary.** When fights aren't watched live (live updates off, or a fight
+reported afterwards), one block per fight: a heading with the room or place, the foes and
+their CR, the difficulty and XP, and a few words of verdict; then the story in a few
+bullets, using labels such as Prep, Scouting, Cheese, The dice, How it ended and Result
+only where they have something to say. Keep the numbers that matter (HP, the damage that
+nearly killed him, XP, gold) and leave the rest to the transcript.
 
 > **Room 3.1 · 3 Boars (CR 1/4 each) · Low, 150 XP · cleared, but barely**
-> - **Prep:** sold the garnet for a Potion of Healing, bought 8 rations, cast Mage Armor (AC 15). Prepared Web for this room.
-> - **Scouting:** the owl got in unseen: 12×15 m room, 2 boars visible, 1 in magical darkness.
 > - **Cheese:** Web across the approach to the door. Two boars got stuck in round 1, and the third waded through.
 > - **The dice:** 5 spells fizzled, each lost for the day: Scorching Ray (the Heroic Inspiration reroll still landed 1 short), Magic Missile, Shocking Grasp, Shield and Misty Step.
 > - **How it ended:** Sleep dropped one boar, but a natural 1 on concentration woke it. He finished the last two with a dagger and Ray of Frost while backing up the stair.
