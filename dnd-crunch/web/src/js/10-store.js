@@ -6,6 +6,19 @@
 // a time, and after a move lands it wakes the GM through comments.sendToClaude (README:
 // The wake). Everything is defensive: window.claude may be missing, use() may resolve
 // null or reject, a snapshot may error; the page renders whatever it has.
+//
+// The bridge, the seq handshake and the wake follow Dream's store.ts (proven on claude.ai)
+// and the platform's db.d.ts / comments.d.ts (contract 0.2.90):
+// - a listener ended by `unavailable` (the bridge stopped answering) or an unknown code is
+//   dead, and a fresh onSnapshot is the only recovery: it is opened again, a few times;
+// - every query carries a limit (1-1000), so no default page size cuts a collection;
+// - a snapshot from the cache that has nothing yet is not "loaded" (no "empty table"
+//   flash before the server answers); our own unconfirmed write (hasPendingWrites) is not
+//   "landed" until the store confirms it;
+// - the wake is a NEW thread per call, anchored on the answer box, resolved at once (the
+//   GM tells a wake's second arrival by its thread); one call at a time, the moves that
+//   land meanwhile get one more call naming the newest; never retried on its own; a
+//   refusal that is permanent for the view stops the calls for the page load.
 (() => {
   'use strict';
   const T = window.T;
@@ -15,17 +28,25 @@
   const COLS = ['story', 'live', 'log', 'moves'];
   const KINDS = ['say', 'play', 'orders', 'fight', 'turn', 'table', 'take'];
   const WRITTEN_GRACE_MS = 10000;
+  /** A query's window: the store allows 1-1000; without one a default page might cut it. */
+  const LIMIT = 1000;
+  /** A move's body, serialised, at most (the store's cap is 256 KiB a document). */
+  const MOVE_MAX_BYTES = 64 * 1024;
+  /** Fresh subscriptions after a dead one, in a row with no snapshot between. */
+  const RESUBSCRIBE_MAX = 4;
 
   const raw = {
     db: 'pending', // 'pending' until use("db") answers; then 'ok' | 'none' | 'error'
     dbError: '', // why the store stopped, in words
     docs: { state: null, morten: null, realm: null, rules: null }, // bodies, null when missing
-    cols: { story: [], live: [], log: [], moves: [] }, // [{id, data}]
+    cols: { story: [], live: [], log: [], moves: [] }, // [{id, data, pending}]; pending: our unconfirmed write
     loaded: { state: false, morten: false, realm: false, rules: false, story: false, live: false, log: false, moves: false },
     pending: [], // [{id, seq, kind, body, at, status: 'sending'|'written'|'failed', error}]
     sentIds: [], // move ids this view wrote
     sending: 0, // writes queued or in flight
-    wake: { state: 'idle', reason: '', move: null, kind: null, at: null },
+    // the wake: state idle|off|calling|called|unavailable|failed; reach is canSendToClaude's
+    // last answer (null until asked); again: a "Call the GM again" can help
+    wake: { state: 'idle', reason: '', move: null, kind: null, at: null, reach: null, again: false, code: '' },
     comments: 'pending', // 'pending' | 'ok' | 'none'
     user: { canWrite: null, canEdit: null },
     rev: 0,
@@ -34,17 +55,20 @@
   const listeners = new Set();
   let DB = null;
   let CM = null;
+  let commentsP = null;
   let started = null;
   let queue = Promise.resolve();
   let lastSeq = 0;
   const unsubs = [];
+  // the wake's own state (README: The wake)
+  let calling = false;
+  let callAgain = null; // the newest move that landed while a call was in flight: {id, kind}
+  let cannotWake = false; // a permanent refusal: no more calls this page load
 
   function emit() {
     raw.rev += 1;
     for (const fn of Array.from(listeners)) U.safe(() => fn(raw), 'store subscriber');
   }
-
-  const local = () => (T.ui && T.ui.local) || { get: (k, d) => d, set() {}, del() {} };
 
   // ---------- capabilities ----------
   function use(name) {
@@ -59,14 +83,38 @@
       });
   }
 
+  /** use("comments"), asked once; on arrival canSendToClaude is asked once too (posts nothing). */
+  function useComments() {
+    if (!commentsP) {
+      commentsP = use('comments').then(async (cm) => {
+        CM = cm;
+        raw.comments = cm ? 'ok' : 'none';
+        if (cm) await checkReach();
+        else raw.wake.reach = 'none';
+        emit();
+        return cm;
+      });
+    }
+    return commentsP;
+  }
+
+  /** Ask canSendToClaude again: cheap, never prompts. Any other answer or a rejection is "off". */
+  async function checkReach() {
+    let reach = 'off';
+    try {
+      const said = CM ? await CM.canSendToClaude() : 'none';
+      reach = ['available', 'writers_only', 'no_session', 'off', 'none'].includes(said) ? said : 'off';
+    } catch (_) {
+      reach = 'off'; // capability_removed on an older platform: no sending
+    }
+    raw.wake.reach = reach;
+    return reach;
+  }
+
   function start() {
     if (started) return started;
     started = (async () => {
-      use('comments').then((cm) => {
-        CM = cm;
-        raw.comments = cm ? 'ok' : 'none';
-        emit();
-      });
+      useComments();
       use('user').then(async (u) => {
         if (!u) return;
         try {
@@ -98,20 +146,22 @@
     return started;
   }
 
-  // ---------- subscriptions (once each) ----------
+  // ---------- subscriptions (once each; again only when the platform ended one) ----------
   const SUB_REASON = {
-    revoked: 'this view lost access to the table',
+    revoked: 'the table is no longer available in this view',
     invalid_argument: "the page asked the store for something it can't give",
+    transform_error: "the page asked the store for something it can't give",
     resource_exhausted: 'the store is busy; reload the page in a minute',
     not_granted: 'this view was not given the table store',
     capability_disabled: 'the table store is not available in this view',
     capability_removed: 'the table store is not available in this view',
   };
 
+  /** A listener's terminal error. `unavailable` and unknown codes: open a fresh one, a few times. */
   function onSubError(err, again, attempt) {
     const code = err && typeof err.code === 'string' ? err.code : 'unavailable';
-    if (code === 'unavailable' && attempt < 2) {
-      setTimeout(again, 2000 + Math.random() * 3000);
+    if (!SUB_REASON[code] && attempt < RESUBSCRIBE_MAX) {
+      setTimeout(again, Math.min(30000, 1000 * 2 ** attempt) + Math.random() * 1500);
       return;
     }
     raw.db = 'error';
@@ -120,49 +170,65 @@
     emit();
   }
 
+  const meta = (s) => (s && U.isObj(s.metadata) ? s.metadata : {});
+
   function listenDoc(name, attempt) {
-    const again = () => listenDoc(name, attempt + 1);
+    let tries = attempt;
+    const again = () => listenDoc(name, tries + 1);
     try {
       const ref = DB.doc(`game/${name}`);
       unsubs.push(ref.onSnapshot(
         (snap) => U.safe(() => {
-          const body = snap && snap.exists && typeof snap.data === 'function' ? snap.data() : null;
+          const exists = !!(snap && snap.exists);
+          // nothing yet, from the cache: the server's answer follows; don't call it empty
+          if (!exists && meta(snap).fromCache === true && !raw.loaded[name]) return;
+          const body = exists && typeof snap.data === 'function' ? snap.data() : null;
           raw.docs[name] = U.isObj(body) ? body : null;
           raw.loaded[name] = true;
+          tries = 0;
           emit();
         }, `game/${name} snapshot`),
-        (err) => onSubError(err, again, attempt),
+        (err) => onSubError(err, again, tries),
       ));
     } catch (err) {
-      onSubError(err, again, attempt);
+      onSubError(err, again, tries);
     }
   }
 
   function listenCol(name, attempt) {
-    const again = () => listenCol(name, attempt + 1);
+    let tries = attempt;
+    const again = () => listenCol(name, tries + 1);
     try {
-      const ref = DB.collection(name);
+      // the newest sections if there are ever more than the window holds; the rest by id
+      let ref = DB.collection(name);
+      ref = name === 'story' ? ref.orderBy('seq', 'desc').limit(LIMIT) : ref.limit(LIMIT);
       unsubs.push(ref.onSnapshot(
         (qs) => U.safe(() => {
           const list = qs && Array.isArray(qs.docs) ? qs.docs : [];
+          if (!list.length && meta(qs).fromCache === true && !raw.loaded[name]) return;
           raw.cols[name] = list
-            .map((d) => ({ id: d && typeof d.id === 'string' ? d.id : '', data: d && typeof d.data === 'function' ? d.data() : null }))
+            .map((d) => ({
+              id: d && typeof d.id === 'string' ? d.id : '',
+              data: d && typeof d.data === 'function' ? d.data() : null,
+              pending: meta(d).hasPendingWrites === true,
+            }))
             .filter((d) => d.id && U.isObj(d.data));
           raw.loaded[name] = true;
+          tries = 0;
           prune();
           emit();
         }, `${name} snapshot`),
-        (err) => onSubError(err, again, attempt),
+        (err) => onSubError(err, again, tries),
       ));
     } catch (err) {
-      onSubError(err, again, attempt);
+      onSubError(err, again, tries);
     }
   }
 
-  // A pending move is done once it shows in moves, or a section answers it, or (written,
-  // never seen) a while after its write was confirmed.
+  // A pending move is done once the store confirms it in moves, or a section answers it, or
+  // (written, never seen) a while after its write was confirmed.
   function prune() {
-    const inMoves = new Set(raw.cols.moves.map((d) => d.id));
+    const inMoves = new Set(raw.cols.moves.filter((d) => !d.pending).map((d) => d.id));
     const answered = new Set();
     for (const s of raw.cols.story) {
       const a = s.data.answered;
@@ -173,7 +239,8 @@
     const now = Date.now();
     raw.pending = raw.pending.filter((p) => {
       if (p.status === 'failed') return true;
-      if (inMoves.has(p.id) || answered.has(p.id)) return false;
+      if (answered.has(p.id)) return false;
+      if (p.status === 'written' && inMoves.has(p.id)) return false;
       if (p.status === 'written' && now - p.writtenAt > WRITTEN_GRACE_MS) return false;
       return true;
     });
@@ -186,6 +253,7 @@
     return m ? parseInt(m[1], 10) : 0;
   }
 
+  /** The handshake: one past the highest move seq either side has seen. */
   function nextSeq() {
     const st = raw.docs.state;
     let max = st && typeof st.lastMove === 'number' && Number.isFinite(st.lastMove) ? st.lastMove : 0;
@@ -203,6 +271,8 @@
     try {
       await ref.set(body);
     } catch (err) {
+      // a verb's `unavailable` is transient: once more after a short randomized delay
+      // (a set of the same whole body to the same id is safe to repeat)
       if (err && err.code === 'unavailable') {
         await U.sleep(300 + Math.random() * 700);
         await ref.set(body);
@@ -222,6 +292,29 @@
     }
   }
 
+  /** What a refused write says to the player, and what it does to the view. */
+  function onWriteError(entry, err) {
+    const code = err && typeof err.code === 'string' ? err.code : 'unavailable';
+    if (code === 'invalid_argument' && raw.user.canWrite !== true) {
+      // a well-formed write refused: this viewer reads the table but may not write to it
+      raw.user.canWrite = false;
+      entry.error = 'this view can read the table but not write to it';
+    } else if (code === 'not_granted' || code === 'capability_disabled' || code === 'capability_removed') {
+      raw.user.canWrite = false;
+      entry.error = 'this view cannot write to the table';
+    } else if (code === 'revoked') {
+      raw.db = 'error';
+      raw.dbError = SUB_REASON.revoked;
+      entry.error = 'the table is no longer available in this view';
+    } else if (code === 'quota_exceeded') {
+      entry.error = 'the store is full; the GM has to clear old moves';
+    } else if (code === 'resource_exhausted' || code === 'unavailable') {
+      entry.error = 'that did not go through; wait a moment and send it again';
+    } else {
+      entry.error = U.errText(err);
+    }
+  }
+
   async function doSend(kind, fields) {
     if (!DB) throw storeError('no_store', raw.db === 'pending' ? 'the table is still opening; send again in a moment' : 'there is no table store in this view');
     if (raw.db === 'error') throw storeError('no_store', raw.dbError || 'the table store stopped answering');
@@ -230,19 +323,16 @@
     const id = `m${U.pad(seq)}`;
     const at = new Date().toISOString();
     const body = Object.assign(plainFields(fields), { v: 1, seq, at, kind });
+    if (JSON.stringify(body).length > MOVE_MAX_BYTES) throw storeError('too_long', 'that move is too long to send; shorten it');
     const entry = { id, seq, kind, body, at, status: 'sending', error: '', writtenAt: 0 };
     raw.pending.push(entry);
     lastSeq = seq;
     emit();
-    // Ask early, alongside the write, so the wake still runs inside the viewer's gesture.
-    const wakeOn = isWakeOn();
-    const canP = wakeOn && CM ? Promise.resolve().then(() => CM.canSendToClaude()).catch(() => 'error') : null;
     try {
       await writeMove(id, body);
     } catch (err) {
       entry.status = 'failed';
-      entry.error = err && err.code === 'quota_exceeded' ? 'the store is full; the GM has to clear old moves' : U.errText(err);
-      if (err && err.code === 'invalid_argument' && raw.user.canWrite === null) raw.user.canWrite = false;
+      onWriteError(entry, err);
       emit();
       throw err;
     }
@@ -251,25 +341,30 @@
     raw.sentIds.push(id);
     prune();
     emit();
-    if (wakeOn) await callGm(id, kind, canP);
-    else {
-      raw.wake = { state: 'off', reason: '', move: id, kind, at: null };
-      emit();
-    }
     return { id, seq };
   }
 
-  /** Write one move (moves/mNNNN), then wake the GM. Resolves {id, seq}; rejects on a failed write. */
+  /**
+   * Write one move (moves/mNNNN), then wake the GM. Resolves {id, seq} once the move is
+   * stored (the wake follows on its own, never holding the next write); rejects on a
+   * failed write. Call it from the click handler itself: the wake needs a recent gesture.
+   */
   function send(kind, fields) {
     if (!KINDS.includes(kind)) return Promise.reject(new TypeError(`unknown move kind: ${kind}`));
     raw.sending += 1;
     emit();
+    // One write at a time: chain onto whatever is already in flight.
     const job = queue.then(() => doSend(kind, fields));
     queue = job.catch(() => {});
-    return job.finally(() => {
-      raw.sending = Math.max(0, raw.sending - 1);
-      emit();
-    });
+    return job
+      .then((res) => {
+        wake(res.id, kind);
+        return res;
+      })
+      .finally(() => {
+        raw.sending = Math.max(0, raw.sending - 1);
+        emit();
+      });
   }
 
   // ---------- the wake ----------
@@ -283,66 +378,102 @@
     writers_only: "only the table's editors can call the GM; it will read your move next time",
     off: 'calling the GM is off here; it will read your move next time',
     none: 'this view cannot call the GM; it will read your move next time',
-    error: 'the GM could not be called; it will read your move next time',
   };
-  const SEND_REASON = {
+  /** Refusals that are permanent for this view: stop calling for the page load. */
+  const CANNOT_WAKE = {
+    forbidden: "commenting from the page is off for you (allow it in the page's comment panel); the GM will read your move next time",
+    not_granted: 'this page may not comment here; the GM will read your move next time',
+    capability_disabled: 'this view cannot comment from the page; the GM will read your move next time',
+    capability_removed: 'this view cannot call the GM from the page; it will read your move next time',
+    invalid: 'the page could not call the GM; it will read your move next time',
+    transform_error: 'the page could not call the GM; it will read your move next time',
+  };
+  /** Refusals that may go through next time: the next move (or one tap) tries again. */
+  const DID_NOT_WAKE = {
     consent_required: 'the GM was not called: allow this page to comment for you, then call again',
-    forbidden: 'commenting from the page is off here; the GM will read your move next time',
+    claude_unavailable: 'the GM could not be reached from this view just now',
     rate_limited: 'the GM was called a lot just now; call again in a minute',
-    claude_unavailable: 'the GM could not be reached from this view; it will read your move next time',
-    invalid: 'the call to the GM was refused; it will read your move next time',
+    unavailable: 'the comments did not answer',
+    upstream_error: 'the call did not go through',
+    not_found: 'the call did not go through',
   };
 
   function anchorEl() {
     return document.querySelector('[data-wake-anchor]') || document.getElementById('story') || document.body;
   }
 
-  async function callGm(id, kind, canP) {
-    raw.wake = { state: 'calling', reason: '', move: id, kind, at: null };
+  function setWake(fields) {
+    Object.assign(raw.wake, fields);
     emit();
-    const done = (state, reason) => {
-      raw.wake = { state, reason: reason || '', move: id, kind, at: Date.now() };
-      emit();
-    };
-    if (!CM) return done('unavailable', CAN_REASON.none);
-    let can;
-    try {
-      can = await (canP || CM.canSendToClaude());
-    } catch (_) {
-      can = 'error';
+  }
+
+  /**
+   * Wake the GM for the move that just landed: one new comment thread, sent to Claude,
+   * then resolved (the GM answers on the page, not in the thread). One call at a time;
+   * moves that land meanwhile get one more call, naming the newest. Never on load, never
+   * retried on its own.
+   */
+  async function wake(id, kind) {
+    if (!isWakeOn()) {
+      setWake({ state: 'off', reason: '', move: id, kind, at: null, again: false, code: '' });
+      return;
     }
-    if (can !== 'available') return done('unavailable', CAN_REASON[can] || CAN_REASON.error);
-    const text = `Table move ${id} (${kind}).`;
-    let thread = local().get('wake.thread', null);
+    if (calling) {
+      callAgain = { id, kind };
+      return;
+    }
+    calling = true;
     try {
-      let res = null;
-      if (typeof thread === 'string' && thread) {
-        try {
-          res = await CM.sendToClaude({ threadId: thread, text });
-        } catch (err) {
-          if (!(err && err.code === 'not_found')) throw err;
-          local().del('wake.thread');
-          thread = null;
+      let next = { id, kind };
+      while (next) {
+        await callGm(next.id, next.kind);
+        next = callAgain;
+        callAgain = null;
+        if (next && !isWakeOn()) {
+          setWake({ state: 'off', reason: '', move: next.id, kind: next.kind, at: null, again: false, code: '' });
+          next = null;
         }
       }
-      if (!res) {
-        const anchor = await CM.anchorFor(anchorEl());
-        res = await CM.sendToClaude({ anchor, text });
-      }
-      if (res && typeof res.threadId === 'string' && res.threadId) local().set('wake.thread', res.threadId);
-      return done('called', '');
-    } catch (err) {
-      const code = err && typeof err.code === 'string' ? err.code : '';
-      console.warn('[table] the wake failed:', U.errText(err));
-      return done('failed', SEND_REASON[code] || `the GM could not be called (${code || 'error'}); it will read your move next time`);
+    } finally {
+      calling = false;
+      callAgain = null;
     }
   }
 
-  /** The status line's one "Call the GM again" button. Never loops; one call per tap. */
+  async function callGm(id, kind) {
+    const done = (state, reason, again, code) => setWake({ state, reason: reason || '', move: id, kind, at: Date.now(), again: !!again, code: code || '' });
+    if (cannotWake) return done('unavailable', raw.wake.reason || CAN_REASON.none, false, raw.wake.code);
+    setWake({ state: 'calling', reason: '', move: id, kind, at: null, again: false, code: '' });
+    const cm = await useComments();
+    if (!cm) return done('unavailable', CAN_REASON.none, false, 'none');
+    // a reach learned as anything else may have changed (the GM took the watch): ask again
+    const reach = raw.wake.reach === 'available' ? 'available' : await checkReach();
+    if (reach !== 'available') return done('unavailable', CAN_REASON[reach] || CAN_REASON.off, true, reach);
+    const text = `Table move ${id} (${kind}).`;
+    try {
+      const anchor = await cm.anchorFor(anchorEl());
+      const res = await cm.sendToClaude({ anchor, text });
+      const thread = res && typeof res.threadId === 'string' ? res.threadId : '';
+      if (thread) Promise.resolve().then(() => cm.resolve(thread, true)).catch(() => {});
+      return done('called', '', false, '');
+    } catch (err) {
+      const code = err && typeof err.code === 'string' ? err.code : 'upstream_error';
+      console.warn('[table] the wake failed:', U.errText(err));
+      if (Object.prototype.hasOwnProperty.call(CANNOT_WAKE, code)) {
+        cannotWake = true;
+        return done('unavailable', CANNOT_WAKE[code], false, code);
+      }
+      checkReach().then(emit, () => {});
+      const why = Object.prototype.hasOwnProperty.call(DID_NOT_WAKE, code) ? DID_NOT_WAKE[code] : `the call did not go through (${code})`;
+      return done('failed', `${why}; it will read your move next time`, true, code);
+    }
+  }
+
+  /** The status line's one "Call the GM again" button: one call per tap, from that tap. */
   function wakeAgain() {
     const w = raw.wake;
-    if (!w.move || w.state === 'calling') return Promise.resolve();
-    return callGm(w.move, w.kind || 'say', null);
+    if (!w.move || calling || cannotWake || !isWakeOn()) return Promise.resolve();
+    return wake(w.move, w.kind || 'say');
   }
 
   /** Send a failed move again, as a new move (it gets the next seq). */

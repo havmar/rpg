@@ -1,1 +1,84 @@
-/* STUB: 60-fight's own styles go here (owner: see web/README.md, File ownership). The shared atoms are in 10-shell.css. */
+/* The fight card (T.panels.fightCard) and the Fights tab. The shared atoms (.sec, .foes,
+   .foe, .hprow, details.trace, .round, .ln, .die, .result, .bullets) are the shell's;
+   these are the card's own: its meta line, the HP track, the live state, the rows. */
+
+/* ---------- the card ---------- */
+.fcard .sec-head h3 { overflow-wrap: anywhere; }
+.fcard .meta > span + span::before { content: "·"; margin-right: 10px; color: var(--ink-3); font-weight: 400; }
+.fcard .meta { gap: 2px 10px; }
+.fcard .meta.when { color: var(--ink-3); margin-top: 2px; }
+.fcard .meta.when::before { content: none; }
+.fcard .out.good { color: var(--good); } .fcard .out.warn { color: var(--warn); } .fcard .out.bad { color: var(--bad); }
+.fcard .out.brass { color: var(--accent); } .fcard .out.muted { color: var(--ink-3); }
+.fcard .verdict { font-style: italic; font-family: var(--body); font-size: .86rem; color: var(--ink-2); }
+.fcard .foe b .ct { font-family: var(--mono); font-weight: 500; color: var(--ink-2); font-size: .82rem; }
+.fcard .foe .stats { overflow-wrap: anywhere; line-height: 1.5; }
+.fcard .foe .hp .ic { width: 13px; height: 13px; }
+.fcard .hprow .hp.me .nm { color: var(--accent); font-weight: 600; }
+.fcard .hprow .hp.down b { color: var(--bad); }
+.fcard .hprow .hp b { font-weight: 600; white-space: nowrap; }
+.fcard.live { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent); }
+.fcard .live-tag { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; }
+.fcard .rounds { display: grid; gap: 4px; }
+.fcard .waiting { font: .76rem var(--mono); }
+.fcard .beat-tx { font-size: .95rem; line-height: 1.5; color: var(--ink); padding: 2px 0 2px; }
+.fcard .ln.me .mk { color: var(--accent); }
+.fcard .ln.gm { color: var(--ink-2); }
+.fcard .ln.gm .mk { color: var(--ink-3); }
+.fcard .ln.them { padding-left: 14px; color: var(--ink-2); }
+.fcard .ln .tx b { color: var(--ink); font-weight: 600; }
+.fcard .ln .dice { display: inline; }
+.fcard .tag-fizz { font: 600 .64rem var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--bad); border: 1px dashed var(--bad); border-radius: 4px; padding: 0 4px; }
+.fcard .result .ic { width: 13px; height: 13px; margin-right: 4px; color: var(--accent); }
+.fcard .result > span { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 4px; }
+.fcard .result .lost b { color: var(--bad); }
+.fcard .result .warn { color: var(--warn); }
+
+/* ---------- the HP track ---------- */
+.fcard .track { margin: 0; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg); padding: 8px 10px 4px; display: grid; gap: 4px; min-width: 0; }
+.fcard .track figcaption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 12px; }
+.fcard .track .legend { display: flex; flex-wrap: wrap; gap: 2px 12px; font: .7rem var(--mono); color: var(--ink-2); }
+.fcard .track .legend > span { display: inline-flex; align-items: center; gap: 5px; }
+.fcard .track .legend svg { width: 18px; height: 6px; overflow: visible; }
+.fcard .track > svg { width: 100%; max-width: 560px; height: auto; display: block; overflow: visible; cursor: pointer; justify-self: center; }
+.fcard .track .grid { stroke: var(--rule); stroke-width: 1; }
+.fcard .track .tick { font: 9px var(--mono); fill: var(--ink-3); }
+.fcard .track .ln { fill: none; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
+.fcard .track .ln.m { stroke: var(--accent); stroke-width: 2.6; }
+.fcard .track .ln.f0, .fcard .track .ln.f2 { stroke: var(--ink-2); }
+.fcard .track .ln.f1, .fcard .track .ln.f3 { stroke: var(--ink-3); }
+.fcard .track .dot { stroke: var(--bg); stroke-width: 1.5; }
+.fcard .track .dot.m { fill: var(--accent); }
+.fcard .track .dot.f0, .fcard .track .dot.f2 { fill: var(--ink-2); }
+.fcard .track .dot.f1, .fcard .track .dot.f3 { fill: var(--ink-3); }
+.fcard .track .dot.dead { fill: var(--bad); }
+.fcard .track .end { font: 9.5px var(--mono); dominant-baseline: middle; fill: var(--ink-2); }
+.fcard .track .end.m { fill: var(--accent); font-weight: 600; }
+.fcard .numbers > summary { list-style: none; cursor: pointer; min-height: var(--tap); display: flex; align-items: center; gap: 8px; font: 500 .72rem var(--mono); color: var(--accent); }
+.fcard .numbers > summary::-webkit-details-marker { display: none; }
+.fcard .numbers > summary .ic { transition: transform .2s; }
+.fcard .numbers[open] > summary .ic { transform: rotate(90deg); }
+.fcard .numbers .scroll { overflow-x: auto; max-width: 100%; padding-bottom: 6px; }
+.fcard .numbers table { border-collapse: collapse; font: .72rem var(--mono); font-variant-numeric: tabular-nums; }
+.fcard .numbers th, .fcard .numbers td { padding: 2px 6px; text-align: right; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+.fcard .numbers th { color: var(--ink-3); font-weight: 500; }
+.fcard .numbers tbody th { text-align: left; color: var(--ink-2); }
+.fcard .numbers tbody th small { color: var(--ink-3); font-size: .64rem; }
+.fcard .numbers td.zero { color: var(--bad); font-weight: 600; }
+
+/* ---------- the Fights tab ---------- */
+.fights .frows { display: grid; gap: 6px; }
+.fights .fitem { display: grid; gap: 8px; min-width: 0; }
+.fights .fitem.open > .fcard { margin-bottom: 8px; }
+.frow { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; gap: 2px 10px; align-items: center; min-height: var(--tap); padding: 8px 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); text-align: left; width: 100%; font-size: .95rem; line-height: 1.35; }
+.frow[aria-expanded="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.frow .pip { width: 12px; height: 12px; border-radius: 50%; background: var(--good); grid-row: span 2; }
+.frow .pip.hurt { background: var(--warn); } .frow .pip.dead { background: var(--bad); } .frow .pip.off { background: var(--ink-3); }
+.frow .pip.going { background: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent); }
+.frow .t { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.frow .t small { font: 500 .7rem var(--mono); }
+.frow .m { font-family: var(--mono); font-size: .72rem; color: var(--ink-2); grid-column: 2; min-width: 0; overflow-wrap: anywhere; }
+.frow .r { font-family: var(--mono); font-size: .72rem; color: var(--ink-2); grid-row: span 2; text-align: right; white-space: nowrap; }
+.frow .r .good { color: var(--good); } .frow .r .warn { color: var(--warn); } .frow .r .bad { color: var(--bad); }
+.frow .r .brass { color: var(--accent); } .frow .r .muted { color: var(--ink-3); }
+.fights .hint, .fights .empty { font-size: .86rem; }

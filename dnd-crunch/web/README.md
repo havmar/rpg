@@ -157,6 +157,10 @@ camelCase. A `seq` is one counter shared by the GM's sections, beats and logs (t
   `awaiting.fight` is `{"title", "foes": [Foe], "difficulty", "xp"}`. With `turn`,
   `awaiting.turn` is `{"board": "<the log format's Area/Positions/State as text lines>",
   "lines": ["…"], "options": ["Fire Bolt", "Shocking Grasp", "Dagger", "Dash", …]}`.
+- `awaiting.orders`: each mission may carry `hex` (the hex it is done in) and `days` (from
+  Morten), and the orders form offers a hex's missions once that hex is picked (all of them
+  when no mission has a `hex`); each action may carry `affordable` (bool; false greys it out
+  with its price; when absent the page compares `cost` with the tower's treasury).
 - `live` is null when no section is open.
 
 ### `game/morten`
@@ -324,6 +328,37 @@ writes nothing, so a wrong guess is safe: re-read and redo.
 
 `web/dev/db.mjs apply <batch.json>` applies the same batch to the dev store, with the same
 version rules, so the whole loop runs locally.
+
+What the GM's side does that the shapes above don't say (`table.py VERB --help` has the rest):
+
+- **The batch.** A create carries no `if_version` (the store refuses one); `file_path` is
+  absolute. Past 50 writes a verb splits the batch (`batch.json`, `batch-2.json`, …) and says
+  so. A verb run before the last batch was sent pins against the versions that batch will
+  leave. `sent --drop` forgets unsent batches; `resend` reprints them as one.
+- **The verbs** beyond the plan's: `open` (a section opens: `live/open.json` and
+  `game/state.live`; beats need it), `export DIR OUTDIR` (the store's view as
+  `<collection>/<doc_id>.json`, the layout `serve.mjs --seed` reads), `render`.
+- **Moves.** `moves --file` reads `db.mjs moves --out` or `ArtifactData` out_dir dumps
+  (`{collection, doc_id, version, data}`) or plain JSON. A malformed move is refused (exit
+  3), then deleted unanswered: it is never in a section's `answered`. Unknown extra fields
+  are only warned about. `section` answers every move read (or `--answers`); `state`
+  answers `table` and `take` moves (it applies them to the dials); `aside --answers`.
+  Every delete of a move raises `game/state.lastMove` in the same batch.
+- **Extra keys** the page may use (or ignore): `hud.armorOn` (and `hud.ac` is the AC now:
+  `acArmor` while Mage Armor is up); in `awaiting.orders`, each mission's `hex` and `days`,
+  each action's `affordable` (its cost against the treasury plus the month's income) and
+  `orders.funds`; an action's `action` is the engine's `--action` (`buy:farms@B5`), the
+  string an `orders` move sends back. In `game/realm`, a floor's `cleared`, an explored
+  room's `xp`, `difficulty`, `size`, `feature`, `note`; a floor never entered has
+  `rooms: []`; `eventsWords[].action`; each kind's `needs`, `income`, `moves`, `fight`.
+  `game/morten` adds the sheet's rest (`abilities[].saveProf`, `skills[].expertise`,
+  `proficiencies`, spells' `time`, `range`, `note`, `book`, `armorOn`, `coinsNote`).
+- **The fixture.** `bash dnd-crunch/web/dev/fixture-campaign/play.sh` replays realms3's
+  month 2 through `table.py` (its inputs are `fixture-campaign/play/`) and exports
+  `dev/fixture/` (month 2 played, awaiting month 3's orders, no section open) and
+  `dev/fixture-live/` (the same play stopped in room 2.5: a fight open with 2 beats and a
+  log line, `status: playing`). The secrecy check runs on both:
+  `python3 dnd-crunch/tools/check_table.py DIR [--docs FOLDER]`.
 
 ## Running it
 

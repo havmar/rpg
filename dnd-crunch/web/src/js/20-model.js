@@ -147,8 +147,8 @@
     if (!isObj(o)) return null;
     return {
       hexes: list(o.hexes, (h) => (isObj(h) && typeof h.id === 'string' ? { id: h.id, name: str(h.name, h.id), days: num(h.days, null) } : null)),
-      missions: list(o.missions, (m) => (isObj(m) ? { type: str(m.type), target: str(m.target), label: str(m.label, str(m.type)) } : null)),
-      actions: list(o.actions, (a) => (isObj(a) ? { action: str(a.action), label: str(a.label, str(a.action)), cost: num(a.cost, null) } : null)),
+      missions: list(o.missions, (m) => (isObj(m) ? { type: str(m.type), target: str(m.target), label: str(m.label, str(m.type)), hex: str(m.hex), days: num(m.days, null) } : null)),
+      actions: list(o.actions, (a) => (isObj(a) ? { action: str(a.action), label: str(a.label, str(a.action)), cost: num(a.cost, null), affordable: boolOrNull(a.affordable) } : null)),
       realms: strs(o.realms),
     };
   }
@@ -223,11 +223,11 @@
       prof: num(d.prof, null),
       spellAttack: num(d.spellAttack, null),
       saveDc: num(d.saveDc, null),
-      abilities: list(d.abilities, (a) => (isObj(a) && typeof a.key === 'string' ? { key: a.key, score: num(a.score, null), mod: num(a.mod, null), save: num(a.save, null) } : null)),
+      abilities: list(d.abilities, (a) => (isObj(a) && typeof a.key === 'string' ? { key: a.key, score: num(a.score, null), mod: num(a.mod, null), save: num(a.save, null), saveProf: bool(a.saveProf) } : null)),
       skills: list(d.skills, (s) => (isObj(s) && typeof s.name === 'string' ? { name: s.name, mod: num(s.mod, null) } : null)),
       attacks: list(d.attacks, (a) => (isObj(a) && typeof a.name === 'string' ? { name: a.name, hit: text(a.hit), damage: str(a.damage), range: str(a.range) } : null)),
       spells: list(d.spells, (s) => (isObj(s) && typeof s.name === 'string'
-        ? { name: s.name, level: int(s.level, 0), dc: num(s.dc, null), lost: bool(s.lost), conc: bool(s.conc), ritual: bool(s.ritual), line: str(s.line), prepared: bool(s.prepared, true) }
+        ? { name: s.name, level: int(s.level, 0), dc: num(s.dc, null), lost: bool(s.lost), conc: bool(s.conc), ritual: bool(s.ritual), line: str(s.line), prepared: bool(s.prepared, true), time: str(s.time), range: str(s.range), note: str(s.note) }
         : null)),
       features: list(d.features, (f) => (isObj(f) && typeof f.name === 'string' ? { name: f.name, state: str(f.state), line: str(f.line) } : null)),
       light: str(d.light),
@@ -236,6 +236,7 @@
       exhaustion: int(d.exhaustion, 0),
       inspiration: boolOrNull(d.inspiration),
       freeArmor: boolOrNull(d.freeArmor),
+      reaction: boolOrNull(d.reaction),
       gear: list(d.gear, (g) => (isObj(g) && typeof g.name === 'string' ? { name: g.name, count: num(g.count, null), kg: num(g.kg, null), note: str(g.note) } : null)),
       load: load ? { kg: num(load.kg, null), max: num(load.max, null) } : null,
       coins,
@@ -329,14 +330,14 @@
       report: { plan: strs(rep.plan), happened: strs(rep.happened), tower: strs(rep.tower), next: strs(rep.next) },
       words: map(d.words, (v) => (typeof v === 'string' ? v : null)),
       kinds: map(d.kinds, (k) => (isObj(k)
-        ? { glyph: str(k.glyph), type: str(k.type), tier: int(k.tier, 1), what: str(k.what), cost: num(k.cost, null), hp: num(k.hp, null), hits: str(k.hits), counter: str(k.counter), upkeep: num(k.upkeep, null), special: str(k.special) }
+        ? { glyph: str(k.glyph), type: str(k.type), tier: int(k.tier, 1), what: str(k.what), cost: num(k.cost, null), hp: num(k.hp, null), hits: str(k.hits), counter: str(k.counter), upkeep: num(k.upkeep, null), special: str(k.special), needs: str(k.needs), income: num(k.income, null), moves: num(k.moves, null), fight: str(k.fight) }
         : null)),
       rumours: map(d.rumours, (v) => strs(v)),
       floors: map(d.floors, (f) => (isObj(f)
-        ? { floor: int(f.floor, null), rooms: list(f.rooms, (r) => (isObj(r) ? { n: text(r.n), monster: strOrNull(r.monster), cr: strOrNull(text(r.cr)), state: str(r.state, 'unknown') } : null)) }
+        ? { floor: int(f.floor, null), rooms: list(f.rooms, (r) => (isObj(r) ? { n: text(r.n), monster: strOrNull(r.monster), cr: strOrNull(text(r.cr)), state: str(r.state, 'unknown'), xp: strOrNull(text(r.xp)), difficulty: str(r.difficulty), note: str(r.note) } : null)), cleared: bool(f.cleared) }
         : null)),
       days: map(d.days, (v) => num(v, null)),
-      eventsWords: list(d.eventsWords, (e) => (isObj(e) ? { n: int(e.n, null), who: str(e.who), from: str(e.from), to: str(e.to), text: str(e.text) } : null)),
+      eventsWords: list(d.eventsWords, (e) => (isObj(e) ? { n: int(e.n, null), who: str(e.who), from: str(e.from), to: str(e.to), action: str(e.action), text: str(e.text) } : null)),
       hexNames: map(d.hexNames, (v) => (typeof v === 'string' ? v : null)),
     };
   }
@@ -491,7 +492,9 @@
     const sections = parseCol('story', cols.story, section);
     const beats = parseCol('live', cols.live, beat);
     const logs = parseCol('log', cols.log, log);
-    const moves = parseCol('moves', cols.moves, move).map((m) => (sent.has(m.id) ? Object.assign({}, m, { mine: true }) : Object.assign({}, m, { mine: false })));
+    // our own write the store has not confirmed yet (hasPendingWrites) is still pending, not sent
+    const confirmed = P.arr(cols.moves).filter((row) => !(isObj(row) && row.pending === true));
+    const moves = parseCol('moves', confirmed, move).map((m) => (sent.has(m.id) ? Object.assign({}, m, { mine: true }) : Object.assign({}, m, { mine: false })));
     const inMoves = new Set(moves.map((m) => m.id));
     const pending = P.arr(r.pending)
       .filter((p) => isObj(p) && !inMoves.has(p.id))
@@ -531,6 +534,10 @@
         reason: str(w.reason),
         move: strOrNull(w.move),
         at: num(w.at, null),
+        // canSendToClaude's last answer: available · writers_only · no_session · off · none; null until asked
+        reach: oneOf(w.reach, ['available', 'writers_only', 'no_session', 'off', 'none'], null),
+        again: w.again === true, // a "Call the GM again" can help (false after a permanent refusal)
+        code: str(w.code), // the refusal's code, '' when none
       },
       comments: oneOf(r.comments, ['pending', 'ok', 'none'], 'pending'),
       canWrite: isObj(user) && user.canWrite === false ? false : r.db !== 'none' && r.db !== 'error',
