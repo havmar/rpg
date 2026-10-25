@@ -15,8 +15,10 @@ dnd-crunch/
   realms-v1.md           Realms v1 rules, kept for the `realms` campaign
   realms-plan.md         the design record of Realms v1
   realms-v2-plan.md      the design record of Realms v2 (implemented)
+  table-plan.md          the plan for the table: the game played from a page (not built)
   agents/player.md       instructions for the AI player who runs Morten
   ui/realms-map.html     the Realms map page (a template; see ui/README.md)
+  ui/table-mockup.html   the table's look, a clickable mockup (see ui/README.md)
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
   tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
   tools/realms.py        Realms v2 engine: world, domain turns, mission fights, sim, map.json
