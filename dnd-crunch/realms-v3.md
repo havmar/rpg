@@ -31,8 +31,10 @@ As in v2:
 - **2 rivers** along hex edges, **2 lakes** inside hexes, flavour only: nothing attacks
   across them any more.
 - **Travel:** entering a hex takes 1 day. Each day outside the tower hex, `1d6`: on a 1, a
-  wandering encounter for that hex's level (`encounter --hex HEX`). From Lord on, a tower
-  hex with a garrison has no wandering checks either.
+  wandering encounter for that hex's level (`encounter --hex HEX`, which labels the
+  fight's difficulty for Morten's level, so a 150 XP fight in a level-2 hex reads "Low for
+  Morten at level 3"). From Lord on, a tower hex with a garrison has no wandering checks
+  either.
 
 ## 2. Peoples and realms
 
@@ -58,7 +60,7 @@ As in v2:
 | **Goal** | one line: a kind, a target, a **clock** of N marks, the month it was picked (section 5) |
 | **Standing** | with the tower, −2 to +2 (section 7) |
 | **Dissident** | the name a won Contact gives the tower, once standing is +1 or more; needed to topple (section 10) |
-| **Rest** | after its *break the tower* fires, the realm leaves the tower alone for 12 months (section 5) |
+| **Rest** | after its *break the tower* fires, the realm does not weigh *break the tower* again for 12 months (section 5; its other goals may still aim at the tower) |
 
 - **A realm's tier** from its Force: Force 1–2 **tier 1**, 3–4 **tier 2**, 5 **tier 3**.
   Its seat fights one tier up (max 3), its works one tier down (min 1). So a Force-5
@@ -166,7 +168,9 @@ ally.
 A realm with no goal picks one the moment it needs one at the world's turn, in this
 order, the first that applies. A goal picked because the old one fired rolls from the
 next month; one picked because the realm had none, or its goal's target was gone, rolls
-that same month. The d6s below are rolled and shown in the log.
+that same month. The d6s below are rolled and shown in the log; they come from a stream
+seeded by the world's seed and the month, so the same month rolls the same whatever
+Morten's orders were.
 
 1. **Take back**, before anything, if the realm holds no land (section 3).
 2. **Break the tower** if it is bad, not an ally, at standing 0 or less and not resting:
@@ -199,10 +203,10 @@ that same month. The d6s below are rolled and shown in the log.
 
 An **ally** (+2) never aims a goal at the tower: not *break the tower*, not *raid the
 tower*, not a *take* of a tower hex (*take back* included); one it already holds is
-dropped. A goal not done **12 months** after it was picked is dropped at clean-up, its
-marks lost, and a new one picked (6 months, the plan's number, kept dropping a *take*
-against a garrison and picking the same one again); a goal that waits full is not
-dropped.
+dropped. A goal not done after **12 months of rolling** (12 rolls, counted from its first
+roll) is dropped at clean-up, its marks lost, and a new one picked (6 months, the plan's
+number, kept dropping a *take* against a garrison and picking the same one again); a
+goal that waits full is not dropped.
 
 ## 6. Rulers
 
@@ -351,7 +355,7 @@ Every month, after Morten's month, the script runs:
 4. **The tower's goal:** allies' marks (on *take* and *topple*); an *ally* goal whose
    realm courted its way to +2 fills; a *take* whose hex changed hands is dropped; a full
    clock fires.
-5. **Clean-up:** goals 12 months old dropped and replaced; Renown and tier (a change is
+5. **Clean-up:** goals that have rolled 12 months dropped and replaced; Renown and tier (a change is
    one line of the report); the end of the campaign; the month advances. Squeeze and
    rest timers are month numbers and simply run out.
 
@@ -368,7 +372,7 @@ The script is `python3 dnd-crunch/tools/realms3.py`; DIR is the campaign folder.
 | `encounter --campaign DIR --site ID [--level N]` | The fight for a Strike or Rob on that site (its id as `show` prints it), for Morten's level (the campaign's unless `--level`). |
 | `encounter --campaign DIR --aid REALM [--level N]` | The fight for an Aid, and the hex it is fought in. |
 | `encounter --campaign DIR --contact REALM` | The Contact DC, with its parts. |
-| `encounter --campaign DIR --hex HEX [--seed N]` | A wandering encounter for the hex's level (random unless `--seed`). |
+| `encounter --campaign DIR --hex HEX [--seed N] [--level N]` | A wandering encounter for the hex's level (random unless `--seed`), its difficulty labelled for Morten's level (the campaign's unless `--level`). |
 | `turn --campaign DIR [options] [--dry-run]` | The world's turn: prints the report, saves `realms.json`, `world.md`, `map.json`. |
 | `sim [--seeds 1-10] [--seed N] [--months 24] [--scripted] [--verbose]` | Passive-tower months for tuning; `--scripted`, a Morten who strikes the weakest neighbour; `--verbose`, every month's report; `--seed N`, one world with its end state. |
 
@@ -381,7 +385,7 @@ The script is `python3 dnd-crunch/tools/realms3.py`; DIR is the campaign folder.
 | `--goal take:HEX` · `ally:REALM` · `topple:REALM` · `drop` | the tower's goal (kept when omitted; a different one replaces a running goal and loses its marks) |
 | `--buy garrison@HEX` · `walls@HEX` · `works@HEX` · `mend` | purse actions (repeatable) |
 | `--give REALM=GP` · `--back REALM` · `--hinder REALM` | repeatable Give; one back or hinder |
-| `--set REALM=GOAL` | the Master's power: an ally's goal, GOAL as `take:HEX`, `fortify:HEX`, `raise`, `raid:REALM`, `press:REALM`, `squeeze` or `break:REALM` (repeatable, one per ally) |
+| `--set REALM=GOAL` | the Master's power: an ally's goal, GOAL as `take:HEX`, `fortify:HEX`, `raise`, `raid:REALM`, `press:REALM`, `squeeze` or `break:REALM` (repeatable; a second Set for the same ally is rejected) |
 | `--deposit GP` · `--withdraw GP` | gold moved between the purse and the treasury |
 | `--plan "why"` | a line for The plan (repeatable) |
 
@@ -400,8 +404,9 @@ rejected order prints one line and saves nothing: fix it and rerun. **Always
 2. **Travel**, one hex a day, wandering checks; `show --at HEX` for the rumours.
 3. **The mission:** `encounter --site ID` (or `--aid REALM`, `--contact REALM`), then the
    fight or the check as usual. Delve: the floor from `gm-secrets.md`.
-4. **The world's turn:** `turn` with the month's options, `--dry-run` first. Update
-   `character.md` for gold moved, then reply in the world's-turn format below.
+4. **The world's turn:** `turn` with the month's options, `--dry-run` first. Update the
+   sheet for gold moved (`character.md` in chat; at the table `morten.json`, with
+   `table.py morten --coins`), then reply in the world's-turn format below.
 5. **The map:** a campaign at the table refreshes its Realm tab with `table.py realm`
    after every world's turn (`web/README.md`); the old map page (`ui/realms-map.html`)
    is v2's and doesn't draw a v3 world.
@@ -413,7 +418,9 @@ The script prints it in this order; the chat reply keeps it (plain Markdown, no 
 blocks), written as the **Report style** dials say (domain **summary** by default):
 
 1. **The plan:** Morten's mission, the tower's goal and purse actions, and what they were
-   for (`--plan`).
+   for (`--plan`; the script prints the why as its own line, the chat reply folds it into
+   the Morten line: "Strike the Humans' mine in B3, to take B3 before their
+   break-the-tower clock fills").
 2. **What happened:** the **tower's goal line first** ("Take B4 from the Gnomes: 4 of 6
    marks, +2 for the Strike on their garrison, +1 from the Humans"), then **one sentence
    per realm**: who (*label: verb*), the goal, the roll in two words, the marks now, and
@@ -421,10 +428,18 @@ blocks), written as the **Report style** dials say (domain **summary** by defaul
    into one **Elsewhere** line.
 3. **The tower now:** tier and Renown, Hold, gold, hexes and sites, allies and enemies,
    the goal and its clock.
-4. **Next month:** `Threat:` every goal aimed at the tower or its hexes, with marks left
-   and the roll's odds in words; `Chance:` clocks one Strike from empty or one Aid from
-   full, realms one Contact from ally, treasuries worth a Rob; `Open:` where Morten is,
-   the missions there with their tier, the purse actions with prices.
+4. **Next month:** `Threat:` every goal aimed at the tower or its hexes: the marks to go,
+   the roll's odds in words, then what it takes when it fires (a Hold box and half the
+   treasury in GP, the GP a raid takes, the hex). `Chance:` the three that matter most,
+   in this order: a Strike that empties a clock aimed at the tower or a Contact that
+   makes an ally, an Aid for a friendly realm, Robs within two hexes (nearest and
+   richest first), a friendly realm one goal from ally, other Aids; never an Aid for a bad
+   ruler's *press*, *squeeze* or *raid*; the rest fold into one line ("and 4 more chances
+   on the map"; `show` prints them all). `Open:` where Morten is, the missions there with
+   their fight ("a Low fight, 1 Tough and 2 Guards"; a Strike and a Rob of a works are
+   the same fight, said once), the purse's actions with prices, the goal to keep or
+   declare. All of it in words: no site ids and no option syntax (the tables above have
+   those for the GM).
 
 Then the realms (one line each, with the goal and clock), the income lines and the roll
 log (every d6 with its modifiers), which go to `transcript.md`. A month, as it reads:
@@ -446,11 +461,14 @@ log (every d6 with its modifiers), which go to `transcript.md`. A month, as it r
 > **The tower now.** Hermit (Renown 1: the Humans). Hold 3 of 3 · 140 GP · hex B5 · no
 > sites · allies: Humans · enemies: none · goal *take B4*, 4 of 6.
 >
-> **Next month.** Threat: the Gnomes' *raid the tower* needs 1 mark; a 3 or more does it
-> (two in three), and takes up to 70 GP. Chance: one more Strike in B4 (Moderate fight,
-> Knights) and the Humans' mark end the goal next month; the Goblinkind (good, friendly)
-> would be a quick *ally* goal: 3 marks, Contact at DC 10. Open: Morten in B4; Strike the
-> garrison (Moderate) · Rob the works (Low, 400 GP) · Delve floor 10 · travel.
+> **Next month.** Threat: the Gnomes (bad: robs its neighbours), raid the tower, 1 mark
+> to go: a 3 or more fills it this month (two in three). When it fires: up to 70 GP from
+> the treasury. Chance: the Goblinkind (good: fights tyrants) are friendly: an ally goal
+> is 3 marks, Contact at DC 10. Open: Morten is in B4, the Gnomes' plains (level 10);
+> missions here: Strike the Gnomes' garrison (a Moderate fight, 2 Knights) · Strike or
+> Rob their caravans (a Low fight, 1 Scout and 2 Guards; a Rob takes up to 400 GP) ·
+> Contact the Gnomes (Persuasion DC 17) · Delve floor 10. The purse holds 140 GP. The goal
+> stays take B4 from the Gnomes, 4 of 6.
 
 Six lines, and every number on them is a thing the map shows.
 

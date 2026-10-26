@@ -922,7 +922,7 @@ class RealmsV3(Case):
         self.assertEqual(here, [("delve", "floor 1", "--delve")])
         a5 = {m["type"]: m for m in o["missions"] if m["hex"] == "A5"}
         self.assertEqual(a5["strike"]["turn"], "--strike s14")
-        self.assertRegex(a5["strike"]["label"], r"^Strike the Gnomes' Garrison in A5 \((Low|Moderate|High), .*; 2 marks off their goal\)$")
+        self.assertRegex(a5["strike"]["label"], r"^Strike the Gnomes' Garrison in A5 \(a (Low|Moderate|High) fight, .*; 2 marks off their goal\)$")
         self.assertEqual(a5["contact"]["turn"], "--contact Gnomes")
         self.assertIn("Persuasion DC 15", a5["contact"]["label"])
         robs = [m for m in o["missions"] if m["type"] == "rob"]
@@ -1032,7 +1032,7 @@ class RealmsV3(Case):
         r = self.doc("game", "realm")
         self.assertEqual([e["text"] for e in r["eventsWords"]][:2],
                          ["The tower's goal: take A5 from the Gnomes (declared, clock 5).",
-                          "Morten struck the Gnomes' Garrison in A5: won: their raid the Elves 0 → 0 of 2; standing -1, wary."])
+                          "Morten struck the Gnomes' Garrison in A5: won: their raid the Elves 0 → 0 of 2; standing −1, wary."])
         gn = next(x for x in r["factions"] if x["name"] == "Gnomes")
         self.assertEqual((gn["standing"], gn["standingWord"]), (-1, "wary"))
         bad = self.md("e.md", "---\nkind: domain\ntitle: x\n---\n### What happened\n- The Elves rolled.\n")

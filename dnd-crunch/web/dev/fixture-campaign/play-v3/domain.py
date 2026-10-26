@@ -15,7 +15,7 @@ far = [h for h in rep["happened"] if h.get("far")]
 lines = ["---", "kind: domain", f"title: Month {rep['month']} · the world's turn", f"month: {rep['month']}",
          "day: 30", 'clock: "20:00"', "hex: B5", "where: the tower (B5)",
          "headline: The tower has no goal yet, so the clocks moved without it: "
-         + "; ".join(f"the {h['who']}' {h['goal']} at {h['marks']} of {h['size']}" for h in near if h["who"] != "tower"
+         + "; ".join(f"the {h['who']}{chr(39) if h['who'].endswith('s') else chr(39) + 's'} {h['goal']} at {h['marks']} of {h['size']}" for h in near if h["who"] != "tower"
                      and h["marks"]) + ".",
          "---", "### The plan"] + [f"- {clean(p)}" for p in rep["plan"]]
 lines += ["", "### What happened"] + [f"- who={h['who']}: {clean(h['text'])}" for h in near]

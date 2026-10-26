@@ -8,16 +8,16 @@ Seed 7. Realms v3. Rendered by `realms3.py` from `realms.json` after every turn;
 - Hexes: B5 (B5 warded)
 - Sites: none
 - Allies: none · enemies: none
-- Goal: none (declare one with --goal)
+- Goal: none yet (declared with the month's orders)
 
 ## Realms
 
-- Humans · Reeve Galen (good: fights tyrants) · Force 3 · 590 GP · seat D3 · hexes C4 D3 D4 · goal: fortify D3 · 0 of 3 · standing +1 friendly
-- Elves · Archon Erevan (good: fights tyrants) · Force 5 · 1,010 GP · seat B2 · hexes A2 A3 B2 · goal: break the Gnomes · 2 of 4 · standing +1 friendly
-- Goblinkind · Warchief Blix (bad: takes people for soldiers) · Force 3 · 610 GP · seat C3 · hexes C2 C3 D1 D2 · goal: press the Humans · 0 of 3 · standing +0 neutral
-- Orcs · Chief Vorga (bad: takes people for soldiers) · Force 4 · 850 GP · seat B4 · hexes B4 C5 D5 · goal: press the Humans · 1 of 3 · standing +0 neutral
-- Gnomes · Mayor Fizwick (bad: robs its neighbours) · Force 3 · 670 GP · seat A4 · hexes A4 A5 B3 · goal: raid the Elves · 0 of 2 · standing +0 neutral
-- Tieflings · Hierarch Damaia (bad: robs its neighbours) · Force 4 · 750 GP · seat A1 · hexes A1 B1 C1 · goal: raid the Elves · 1 of 2 · standing +0 neutral
+- Humans · Reeve Galen (good: fights tyrants) · Force 3 · 590 GP · seat D3 · hexes C4 D3 D4 · goal: fortify D3 · 1 of 3 · standing +1, friendly
+- Elves · Archon Erevan (good: fights tyrants) · Force 5 · 1,010 GP · seat B2 · hexes A2 A3 B2 · goal: break the Gnomes · 2 of 4 · standing +1, friendly
+- Goblinkind · Warchief Blix (bad: takes people for soldiers) · Force 3 · 610 GP · seat C3 · hexes C2 C3 D1 D2 · goal: press the Humans · 1 of 3 · standing 0, neutral
+- Orcs · Chief Vorga (bad: takes people for soldiers) · Force 4 · 850 GP · seat B4 · hexes B4 C5 D5 · goal: press the Humans · 0 of 3 · standing 0, neutral
+- Gnomes · Mayor Fizwick (bad: robs its neighbours) · Force 3 · 670 GP · seat A4 · hexes A4 A5 B3 · goal: raid the Elves · 0 of 2 · standing 0, neutral
+- Tieflings · Hierarch Damaia (bad: robs its neighbours) · Force 4 · 750 GP · seat A1 · hexes A1 B1 C1 · goal: raid the Elves · 1 of 2 · standing 0, neutral
 
 ## Hexes
 
@@ -112,13 +112,13 @@ Seed 7. Realms v3. Rendered by `realms3.py` from `realms.json` after every turn;
 
 - Morten: Delve floor 1 under B5 (the dungeon game; no domain effect).
 - Morten: deposit 5 GP → tower 105 GP.
-- Order: Elves Force 5 (d6 5) · Orcs Force 4 (d6 6) · Tieflings Force 4 (d6 5) · Humans Force 3 (d6 3) · Gnomes Force 3 (d6 1) · Goblinkind Force 3 (d6 1).
-- The Elves, break the Gnomes: d6 5 +1 (Force 5 over 3) = 6 → two marks: 2 of 4.
-- The Orcs, press the Humans: d6 4 +1 (Force 4 over 3) = 5 → one mark: 1 of 3.
-- The Tieflings, raid the Elves: d6 5 -1 (Force 4 under 5) = 4 → one mark: 1 of 2.
-- The Humans, fortify D3: d6 1 = 1 → setback: 0 of 3.
-- The Gnomes, raid the Elves: d6 1 -1 (Force 3 under 5) = 0 → setback: 0 of 2.
-- The Goblinkind, press the Humans: d6 2 = 2 → nothing: 0 of 3.
+- Order: Elves Force 5 (d6 4) · Orcs Force 4 (d6 4) · Tieflings Force 4 (d6 1) · Gnomes Force 3 (d6 6) · Humans Force 3 (d6 6) · Goblinkind Force 3 (d6 2).
+- The Elves, break the Gnomes: d6 6 +1 (Force 5 over 3) = 7 → two marks: 2 of 4.
+- The Orcs, press the Humans: d6 1 +1 (Force 4 over 3) = 2 → setback: 0 of 3.
+- The Tieflings, raid the Elves: d6 6 −1 (Force 4 under 5) = 5 → one mark: 1 of 2.
+- The Gnomes, raid the Elves: d6 3 −1 (Force 3 under 5) = 2 → nothing: 0 of 2.
+- The Humans, fortify D3: d6 4 = 4 → one mark: 1 of 3.
+- The Goblinkind, press the Humans: d6 5 = 5 → one mark: 1 of 3.
 
 ## Month
 

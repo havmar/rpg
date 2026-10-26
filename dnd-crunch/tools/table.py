@@ -836,9 +836,11 @@ def hex_name(mp, h, extra=None):
         return extra[h]
     x = hex_by_id(mp)[h]
     holder = x["holder"]
-    # "the Elves' mountains", but "Goblinkind's savanna" (a people named in the singular)
-    who = ("the tower's" if holder == "tower" else
-           f"the {R.poss(holder)}" if holder.endswith("s") else R.poss(holder))
+    if is_v3(mp):   # the engine's own article: "the Goblinkind's taiga", as its lines say
+        who = R3.poss(holder)
+    else:   # v2: "the Elves' mountains", but "Goblinkind's savanna" (a people named in the singular)
+        who = ("the tower's" if holder == "tower" else
+               f"the {R.poss(holder)}" if holder.endswith("s") else R.poss(holder))
     return f"{who} {x['biome']}" + (" with its lake" if x.get("lake") else "")
 
 
@@ -1090,12 +1092,9 @@ def next_words(mp, line):
 
 
 def next_words3(line):
-    """v3's Next-month line for the page: site ids and the goal's asterisks dropped, the hex
-    label in words."""
-    t = strip_site_ids(line)
-    t = re.sub(r"\(L(\d+), (\w+), ([^)]+)\)",
-               lambda mt: f"({R3.poss(mt.group(3))} level-{mt.group(1)} {mt.group(2)})", t)
-    return t
+    """v3's Next-month line for the page. realms3.py prints it in words already (no site ids,
+    no option syntax); this only makes sure no id or asterisk slips through."""
+    return strip_site_ids(line)
 
 
 def dissidents(c):
@@ -3055,7 +3054,7 @@ def main(argv=None):
     p.set_defaults(fn=cmd_morten)
 
     p = verb("realm", "game/realm from map.json with the words, kinds, rumours, floors, days",
-             "Rewrite game/realm: map.json as realms.py wrote it (the tower's view) plus words, "
+             "Rewrite game/realm: map.json as realms3.py or realms.py wrote it (the tower's view) plus words, "
              "kinds, rumours by hex, floors (explored rooms from gm-secrets.md; the rest unknown), "
              "days from Morten by hex, eventsWords and hexNames. Run after a world's turn, a reveal, "
              "a room explored.")

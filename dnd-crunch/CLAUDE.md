@@ -496,7 +496,8 @@ human can change any of them, before or during play.
   seed with `roll.py 1d100`.
 - **Name:** the next free `realmsN` (`realms3` was the first game started this way).
 - **Morten:** a fresh pre-built Wizard 3 (Evoker) with 900 XP, his starting gear and
-  47 GP 7 SP 5 CP. Copy `templates/character-wizard3.md` as his sheet.
+  47 GP 7 SP 5 CP. At the table his sheet is `morten.json`, from `table.py new --sheet
+  fresh`; in chat, copy `templates/character-wizard3.md` as his sheet.
 - **Who plays Morten:** the GM.
 - **Style:** cheese everything. Scout, use rituals and Mage Hand, use oil, Sleep then
   point-blank crits, hold chokepoints, retreat to reset, and leave the purse in the tower
@@ -534,6 +535,8 @@ At the table, steps 2 and 3 become: `rules.md` and the world with `realms3.py ne
 Morten's sheet from `table.py new --sheet fresh` (`tools/morten-wizard3.json`, the template
 sheet as `morten.json`); publish the page and seed it (`web/README.md`, The first publish), where the opening
 section is the first reply (the world, Rumours, the Month 1 orders); then play one GM's
-turn per wake or call. A fresh GM resuming a table campaign reads `state.md` (rendered),
+turn per wake or call. The v3 fixture's script, `web/dev/fixture-campaign/play-v3.sh`, is
+a first month played verb by verb on the GM's side: the worked example to read before
+the first one. A fresh GM resuming a table campaign reads `state.md` (rendered),
 `page.json` for the link, takes the page's watch with `ArtifactComments`, and plays the
 next GM's turn from step 1.

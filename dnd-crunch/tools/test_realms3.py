@@ -208,6 +208,7 @@ class Picker(unittest.TestCase):
                 self.st["realms"][x]["treasury"] = 0
         hold_hex(self.st, [h for h in R.nbrs(f["hexes"][0]) if h not in f["hexes"]][0], R.TOWER)
         self.st["tower"]["treasury"] = 9000
+        fixed_die(self.t, 2)     # a neighbour of the tower weighs break the tower on a 6 first
         g = self.t.pick_goal(n)
         self.assertEqual((g["kind"], g["target"]), ("raid", R.TOWER))
 
@@ -647,7 +648,7 @@ class RealmGoals(unittest.TestCase):
         self.f["goal"]["since"] = 1
         t = R.Turn(self.st)
         t.cleanup()
-        self.assertEqual(self.f["goal"]["since"], R.GOAL_MONTHS)
+        self.assertEqual(self.f["goal"]["since"], R.GOAL_MONTHS + 1)   # the new goal rolls from next month
         self.assertEqual(t.stats["drop_time"], 1)
 
 
@@ -821,6 +822,146 @@ class Files(unittest.TestCase):
             self.assertIn(k, m["report"])
 
 
+class Words(unittest.TestCase):
+    """The printed report reads in words: plurals, signs, no site ids or option syntax."""
+
+    def test_plurals_signs_and_rosters(self):
+        self.assertEqual([R.plural(n, 2) for n in ("Guard", "Dire Wolf", "Tough", "Spy", "Tough Boss",
+                                                   "Giant Elk", "Warhorse", "Swarm of Bats")],
+                         ["Guards", "Dire Wolves", "Toughs", "Spies", "Tough Bosses", "Giant Elk", "Warhorses",
+                          "Swarm of Bats"])
+        self.assertEqual(R.plural("Guard", 1), "Guard")
+        self.assertEqual(R.roster([(1, "Tough"), (2, "Guard")]), "1 Tough and 2 Guards")
+        self.assertEqual(R.roster([(2, "Knight")]), "2 Knights")
+        self.assertEqual((R.sgn(0), R.sgn(-1), R.sgn(2)), ("0", "−1", "+2"))
+        self.assertEqual((R.diff_for(3, 150), R.diff_for(2, 150), R.diff_for(3, 100)), ("Low", "Moderate", "under Low"))
+
+    def test_next_month_in_words(self):
+        st = world(11)
+        t = R.Turn(st)
+        works = next(s for s in st["sites"].values() if s["kind"] == "works")
+        t.run(orders(at=works["hex"], strike=works["id"], goal=f"take:{works['hex']}"))
+        st["report"] = R.report(st, t, 1)
+        lines = st["report"]["next"]
+        text = "\n".join(lines)
+        self.assertNotRegex(text, r"\bs\d+\b|@HEX|REALM=|\(L\d|\*|1 = encounter|\+0\b| -\d")
+        self.assertNotRegex(text, r"\b\d+ (Guard|Tough|Knight|Scout|Dire Wolf)\b[,;)]")   # "2 Guard" is "2 Guards"
+        self.assertTrue(any(x.startswith("Open: the purse holds") for x in lines), lines)
+        self.assertTrue(any(x.startswith("Open: the goal stays take") and "Switching loses those marks" in x
+                            for x in lines), lines)
+        self.assertTrue(any(x.startswith("Open: missions here in") and "Strike or Rob" in x for x in lines), lines)
+        for x in lines:
+            if x.startswith("Threat:"):
+                self.assertIn("When it fires:", x)
+        self.assertLessEqual(sum(x.startswith("Chance:") for x in lines), R.CHANCES_SHOWN + 1)
+        full = [x for x in R.next_month(st, full=True) if x.startswith("Chance:")]
+        self.assertFalse(any("more chance" in x for x in full))
+        if len(full) > R.CHANCES_SHOWN:
+            self.assertIn(f"Chance: and {len(full) - R.CHANCES_SHOWN} more chance", text)
+        self.assertNotIn("+0", "\n".join(R.realm_line(st, f) for f in st["realms"].values()))
+        self.assertTrue(any("standing 0, neutral" in R.realm_line(st, f) for f in st["realms"].values()))
+        self.assertTrue(st["report"]["plan"][0].startswith("Morten: Strike the "))
+        self.assertNotRegex(st["report"]["plan"][0], r"\bs\d+\b")
+        self.assertIn("+2 for the Strike in", st["report"]["happened"][0]["text"])
+
+    def test_threat_odds_and_stake(self):
+        st = world(11)
+        t = R.Turn(st)
+        n = next(iter(st["realms"]))
+        f = st["realms"][n]
+        f["goal"] = t.new_goal("break_tower", R.TOWER)
+        f["goal"]["marks"] = 2
+        th = next(x for x in R.next_month(st, full=True) if x.startswith("Threat:") and R.the(n) in x)
+        self.assertIn("2 marks to go: a 6 fills it this month (one in six), a 3 to 5 adds one (one in two)."
+                      " When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).", th)
+        self.assertEqual(R.odds_words(1, [2, 3, 4, 5, 6], [5, 6]), "a 2 or more fills it this month (five in six)")
+        self.assertEqual(R.odds_words(4, [4, 5, 6], []), "a 4 or more adds one (one in two)")
+        self.assertEqual(R.odds_words(2, [4, 5, 6], []), "no roll fills it this month; a 4 or more adds one (one in two)")
+        self.assertEqual(R.odds_words(3, [], []), "no roll can add a mark")
+
+    def test_no_aid_for_a_bad_rulers_squeeze_or_press(self):
+        st = world(11)
+        t = R.Turn(st)
+        for n, f in st["realms"].items():
+            if f["leader"]["label"] == "bad":
+                f["goal"] = t.new_goal("squeeze")
+                f["goal"]["marks"] = 1      # one Aid from full
+                f["standing"] = 0
+        lines = R.next_month(st, full=True)
+        self.assertFalse(any(x.startswith("Chance: an Aid") and "squeeze" in x for x in lines), lines)
+
+    def test_a_press_at_the_cap_says_so(self):
+        st = world()
+        t = R.Turn(st)
+        names = list(st["realms"])
+        n, o = names[0], names[1]
+        st["realms"][n]["force"], st["realms"][o]["force"] = R.MAX_FORCE, 2
+        st["realms"][n]["goal"] = t.new_goal("press", o)
+        st["realms"][n]["goal"]["marks"] = R.CLOCK["press"]
+        res = t.fire(n)
+        self.assertIn(f"they stay at Force {R.MAX_FORCE}, the cap", res)
+        self.assertIn(f"{R.the(o)} down to Force 1", res)
+
+
+class Behaviour(unittest.TestCase):
+    def test_world_rolls_do_not_depend_on_the_orders(self):
+        dice = []
+        for with_contact in (False, True):
+            st = world(11)
+            n = next(iter(st["realms"]))
+            f = st["realms"][n]
+            f["standing"] = 1
+            t = R.Turn(st)
+            t.run(orders(at=f["seat"], contact=n) if with_contact else orders())
+            if with_contact:
+                self.assertTrue(f["dissident"])     # the Contact drew a name from the orders' stream
+            dice.append(t.dice)
+        self.assertEqual(dice[0], dice[1])
+        self.assertTrue(dice[0])
+
+    def test_next_months_seed_does_not_depend_on_the_orders(self):
+        seeds = []
+        for kw in ({}, dict(goal="ally:" + next(iter(world(11)["realms"])))):
+            st = world(11)
+            R.Turn(st).run(orders(**kw))
+            seeds.append(st["rng"])
+        self.assertEqual(seeds[0], seeds[1])
+
+    def test_a_goal_picked_after_a_fire_rolls_from_next_month(self):
+        st = world()
+        n = next(iter(st["realms"]))
+        f = st["realms"][n]
+        t = R.Turn(st)
+        fixed_die(t, 4)
+        f["goal"] = t.new_goal("squeeze")
+        f["goal"]["marks"] = R.CLOCK["squeeze"]      # full: fires after this month's roll
+        t.world()
+        self.assertTrue(t.stats["fired_squeeze"])
+        self.assertEqual(f["goal"]["since"], st["month"] + 1)
+        # dropped after 12 months of rolling, not 11 (cleanup advances the month)
+        since = f["goal"]["since"]
+        st["month"] = since + R.GOAL_MONTHS - 2
+        R.Turn(st).cleanup()
+        self.assertEqual(f["goal"]["since"], since)      # 11 rolls: kept
+        st["month"] = since + R.GOAL_MONTHS - 1
+        R.Turn(st).cleanup()
+        self.assertEqual(f["goal"]["since"], since + R.GOAL_MONTHS)   # 12 rolls: dropped and replaced
+
+    def test_set_is_one_per_ally_a_month(self):
+        st = world()
+        st["tower"]["toppled"] = 7       # Renown 14+: Master
+        n = next(iter(st["realms"]))
+        st["realms"][n]["standing"] = 2
+        R.sync(st)
+        self.assertEqual(R.tier_now(st), R.MASTER)
+        t = R.Turn(st)
+        t.set_ally_goal(f"{n}=raise")
+        with self.assertRaises(R.Bad) as cm:
+            t.set_ally_goal(f"{n}=squeeze")
+        self.assertIn("one Set per ally", str(cm.exception))
+        self.assertEqual(st["realms"][n]["goal"]["kind"], "raise")
+
+
 class Smoke(unittest.TestCase):
     def run_cmd(self, *args, ok=True):
         p = subprocess.run([sys.executable, str(SCRIPT), *args], capture_output=True, text=True)
@@ -858,6 +999,9 @@ class Smoke(unittest.TestCase):
             self.assertIn("DC", out)
             out = self.run_cmd("encounter", "--campaign", d, "--hex", "A1", "--seed", "3")
             self.assertIn("Wandering encounter", out)
+            self.assertIn("for Morten at level 3", out)
+            out = self.run_cmd("encounter", "--campaign", d, "--hex", "A1", "--seed", "3", "--level", "5")
+            self.assertIn("for Morten at level 5", out)
             self.run_cmd("encounter", "--campaign", d, ok=False)
             before = (Path(d) / "realms.json").read_text()
             out = self.run_cmd("turn", "--campaign", d, "--dry-run")

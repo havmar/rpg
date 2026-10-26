@@ -346,7 +346,45 @@ def site_fight(st, s):
 
 
 def sname(st, s):
+    """'the Humans' Mine s9': with the id, for the log, show and the orders."""
     return f"{poss(s['owner'])} {s['name']} {s['id']}"
+
+
+def sdesc(st, s):
+    """'the Humans' mine': the site in words for the lines a player reads (no id)."""
+    return f"{poss(s['owner'])} {s['name'].lower()}"
+
+
+def sgn(n):
+    """A signed number in prose: +1, 0, −1 (a true minus sign, no sign on zero)."""
+    return "0" if n == 0 else f"+{n}" if n > 0 else f"−{-n}"
+
+
+def plural(name, n):
+    """The SRD's monster names are singular; 2 of them are '2 Guards', '2 Dire Wolves'."""
+    if n == 1 or name.endswith("Elk"):
+        return name
+    if name.endswith("Wolf"):
+        return name[:-1] + "ves"
+    if re.search(r"[^aeiou]y$", name):
+        return name[:-1] + "ies"
+    if re.search(r"(ss|x|sh|ch)$", name):
+        return name + "es"
+    if name.endswith("s"):      # "Swarm of Bats" is plural already
+        return name
+    return name + "s"
+
+
+def roster(parts):
+    """'1 Tough and 2 Guards' from [(1, 'Tough'), (2, 'Guard')]."""
+    bits = [f"{n} {plural(m, n)}" for n, m in parts]
+    return bits[0] if len(bits) == 1 else ", ".join(bits[:-1]) + " and " + bits[-1]
+
+
+def diff_for(level, total):
+    """The SRD's difficulty word for a fight of `total` XP against a level-N character."""
+    low, mod, high = BUDGET[level]
+    return "High" if total >= high else "Moderate" if total >= mod else "Low" if total >= low else "under Low"
 
 
 def is_ally(f):
@@ -553,10 +591,11 @@ def generate(seed, level=3):
         add_site(st, people, "works", mine[2])
     sync(st)
     st["rng"] = rng.getrandbits(32)
-    t = Turn(st)  # every realm starts with a goal
+    t = Turn(st)  # every realm starts with a goal, picked on the seed's own stream
+    t.wrng = random.Random(st["rng"])
     for n in st["realms"]:
         t.pick_goal(n)
-    st["rng"] = t.rng.getrandbits(32)
+    st["rng"] = t.wrng.getrandbits(32)
     st["log"] = ["The world begins."] + [x for x in t.log]
     return st
 
@@ -627,16 +666,16 @@ def fight_lines(st, target, level):
     out = [f"**Fight · {title}**", "",
            f"- Tier {tier} → {diff} for level {level}: budget {budget:,} XP"]
     for n, m in parts:
-        out.append(f"- {n}× {m} · CR {M[m][0]} · {M[m][1]:,} XP each")
+        out.append(f"- {n}× {plural(m, n)} · CR {M[m][0]} · {M[m][1]:,} XP each")
     out.append(f"- {total:,} XP total{' (over budget: nothing smaller fits)' if over else ''}"
                f" · coins on them {total // 10:,} GP")
     return out
 
 
 def fight_word(st, target, level):
-    """'Moderate (Knights)' for the Open and Chance lines."""
+    """'a Moderate fight, 2 Knights' for the Open and Chance lines."""
     _, _, diff, _, parts, _, _ = fight_for(st, target, level)
-    return f"{diff}, {', '.join(f'{n} {m}' for n, m in parts)}"
+    return f"a {diff} fight, {roster(parts)}"
 
 
 # ---- The world's turn ----
@@ -649,8 +688,14 @@ PASSIVE = dict(at=None, level=None, strike=None, rob=None, aid=None, contact=Non
 class Turn:
     def __init__(self, st):
         self.st = st
-        self.rng = random.Random(st["rng"])
         self.month = st["month"]
+        # Two streams from (the world's seed, the month), so the realms' d6s are the same
+        # whatever Morten's orders: the orders' draws (a dissident's name, a toppled realm's
+        # new ruler) never shift the world's dice, and the next month's seed depends on neither.
+        self.rng = random.Random(f"{st['rng']}:{self.month}:orders")
+        self.wrng = random.Random(f"{st['rng']}:{self.month}:world")
+        self.dice = []          # every d6 the world rolled this month, in order
+        self.set_done = set()   # realms whose goal a --set set this month (one per ally)
         self.log = []
         self.income = []
         self.events = []
@@ -666,7 +711,9 @@ class Turn:
 
     # -- small helpers --
     def d(self, n):
-        return self.rng.randint(1, n)
+        r = self.wrng.randint(1, n)
+        self.dice.append(r)
+        return r
 
     def R(self, name):
         return self.st["realms"][name]
@@ -718,15 +765,15 @@ class Turn:
             return ""
         f["standing"] = new
         self.stats["standing"] += 1
-        self.say(f"Standing: {the(name)} {old:+d} → {new:+d} ({standing_word(new)}){', ' + why if why else ''}.")
-        return f"standing {new:+d}, {standing_word(new)}"
+        self.say(f"Standing: {the(name)} {sgn(old)} → {sgn(new)} ({standing_word(new)}){', ' + why if why else ''}.")
+        return f"standing {sgn(new)}, {standing_word(new)}"
 
     def set_standing(self, name, value, why=""):
         f = self.R(name)
         old = f["standing"]
         f["standing"] = value
         if old != value:
-            self.say(f"Standing: {the(name)} {old:+d} → {value:+d} ({standing_word(value)}){', ' + why if why else ''}.")
+            self.say(f"Standing: {the(name)} {sgn(old)} → {sgn(value)} ({standing_word(value)}){', ' + why if why else ''}.")
 
     def tower_mark(self, n, why):
         g = self.T["goal"]
@@ -734,7 +781,7 @@ class Turn:
             return
         g["marks"] = max(0, min(g["size"], g["marks"] + n))
         self.tower_marks.append((n, why))
-        self.say(f"The tower's goal {goal_text(self.st, g)}: {n:+d} ({why}) → {clock_text(g)}.")
+        self.say(f"The tower's goal {goal_text(self.st, g)}: {sgn(n)} for {why} → {clock_text(g)}.")
 
     def new_goal(self, kind, target=None, hex=None, size=None):
         if size is None:
@@ -745,7 +792,9 @@ class Turn:
                 "since": self.month, "waits": 0}
 
     # -- the picker (section 7) --
-    def pick_goal(self, name, why="new goal"):
+    def pick_goal(self, name, why="new goal", next_month=False):
+        """next_month: the goal rolls from next month (picked after the old one fired, or by
+        a new ruler), so its 12 months of rolling are counted from then."""
         st, f = self.st, self.R(name)
         tag, bad = f["leader"]["tag"], f["leader"]["label"] == "bad"
         tier, ally = tier_now(st), is_ally(f)
@@ -783,6 +832,8 @@ class Turn:
                     g, note = rich, f" (rich: {f['treasury']:,} GP, so this first)"
         if g is None:
             g = self.fallback(name)
+        if next_month:
+            g["since"] = self.month + 1
         f["goal"] = g
         self.stats["goals_picked"] += 1
         self.stats[f"picked_{g['kind']}"] += 1
@@ -940,7 +991,7 @@ class Turn:
             n, word = 2, "two marks"
         old = g["marks"]
         g["marks"] = max(0, min(g["size"], old + n))
-        mtxt = "".join(f" {m:+d} ({w})" for m, w in mods)
+        mtxt = "".join(f" {sgn(m)} ({w})" for m, w in mods)
         self.say(f"{cap(the(name))}, {goal_text(st, g)}: d6 {die}{mtxt} = {total} → {word}:"
                  f" {g['marks']} of {g['size']}.")
         self.stats["rolls"] += 1
@@ -991,9 +1042,11 @@ class Turn:
             self.stats["raids"] += 1
         elif k == "press":
             o = self.R(t)
+            was = f["force"]
             f["force"] = min(MAX_FORCE, f["force"] + 1)
             o["force"] = max(1, o["force"] - 1)
-            res = f"Force {f['force']}, {the(t)} down to Force {o['force']}"
+            res = (f"Force {was} → {f['force']}" if f["force"] > was
+                   else f"they stay at Force {MAX_FORCE}, the cap") + f"; {the(t)} down to Force {o['force']}"
         elif k == "squeeze":
             amt = SQUEEZE_GP * len(f["hexes"])
             f["treasury"] += amt
@@ -1117,13 +1170,13 @@ class Turn:
             self.give(spec)
         for name, amt in sorted(self.bribed.items()):
             if amt >= GIVE_MIN:
-                self.tower_mark(1, f"{amt:,} GP to the dissident")
+                self.tower_mark(1, f"the {amt:,} GP to the dissident")
         for name, amt in sorted(self.gave.items()):
             if amt >= GIVE_MIN:
                 g = T["goal"]
                 self.stand(name, 1, cap=1, why=f"the tower gave {amt:,} GP")
                 if g and g["kind"] == "ally" and g["target"] == name:
-                    self.tower_mark(1, f"{amt:,} GP given")
+                    self.tower_mark(1, f"the {amt:,} GP given")
         if o.back and o.hinder:
             raise Bad("one of --back and --hinder a month")
         for spec, sign in ((o.back, 1), (o.hinder, -1)):
@@ -1163,9 +1216,10 @@ class Turn:
             if tg["kind"] == "take" and tg["hex"] == here:
                 self.tower_mark(n, f"the Strike in {here}")
             elif tg["kind"] == "topple" and tg["target"] == name:
-                self.tower_mark(n if s["kind"] == "seat" else 1, f"the Strike on their {s['name']}")
+                self.tower_mark(n if s["kind"] == "seat" else 1, f"the Strike on their {s['name'].lower()}")
         self.stats["strikes"] += 1
-        self.mission = f"Morten: Strike {sname(st, s)} in {here} (tier {site_tier(st, s)})."
+        self.mission = (f"Morten: Strike {sdesc(st, s)} in {here}"
+                        f" (a {['Low', 'Moderate', 'High'][site_tier(st, s) - 1]} fight).")
         self.event(TOWER, "Strike", here, here, sname(st, s), "won: " + "; ".join(bits),
                    f"Morten: Strike on {sname(st, s)} in {here}, won: {'; '.join(bits)}.",
                    involves=[name])
@@ -1183,7 +1237,7 @@ class Turn:
         self.T["treasury"] += amt
         w = self.stand(name, -1, why=f"Morten robbed their {s['name']}")
         self.stats["robs"] += 1
-        self.mission = f"Morten: Rob {sname(st, s)} in {here}."
+        self.mission = f"Morten: Rob {sdesc(st, s)} in {here}."
         self.event(TOWER, "Rob", here, here, sname(st, s), f"won: {amt:,} GP",
                    f"Morten: Rob {sname(st, s)} in {here}, won: {amt:,} GP to the tower"
                    f" ({the(name)} {f['treasury'] + amt:,} → {f['treasury']:,} GP){'; ' + w if w else ''}.",
@@ -1372,8 +1426,8 @@ class Turn:
         self.pay(word, PRICE["back"])
         self.backed[name] = sign
         self.plan.append(f"Tower: {word} {the(name)} ({PRICE['back']} GP).")
-        self.event(TOWER, word, None, self.R(name)["seat"], the(name), f"{sign:+d} on their roll",
-                   f"Tower: {word} {the(name)} for {PRICE['back']} GP: {sign:+d} on their roll.",
+        self.event(TOWER, word, None, self.R(name)["seat"], the(name), f"{sgn(sign)} on their roll",
+                   f"Tower: {word} {the(name)} for {PRICE['back']} GP: {sgn(sign)} on their roll.",
                    involves=[name])
 
     def set_ally_goal(self, spec):
@@ -1388,6 +1442,9 @@ class Turn:
         f = self.R(name)
         if not is_ally(f):
             raise Bad(f"--set: {the(name)} are not an ally")
+        if name in self.set_done:
+            raise Bad(f"--set {spec}: one Set per ally a month, and {poss(name)} goal is set already")
+        self.set_done.add(name)
         kind, _, arg = gs.strip().lower().partition(":")
         if kind == "take":
             h = self.hexarg(arg)
@@ -1464,7 +1521,7 @@ class Turn:
                 if f["treasury"] >= g["waits"]:
                     res = self.fire(name)
                     entry.update(roll="paid", marks=g["size"], fired=True)
-                    self.pick_goal(name)
+                    self.pick_goal(name, next_month=True)
                     entry["new"] = goal_text(st, f["goal"])
                     entry["text"] = (f"{cap(who(f))}, *{goal_text(st, g)}*: paid at last, {res}."
                                      f" New goal: *{entry['new']}* ({f['goal']['size']}).")
@@ -1480,7 +1537,7 @@ class Turn:
             if die == 1:
                 rolled = "rolled a natural 1, a setback"
             elif total != die:
-                rolled = f"rolled a {total} ({die} {total - die:+d})"
+                rolled = f"rolled a {total} ({die} {sgn(total - die)})"
             else:
                 rolled = f"rolled a {total}"
             entry["roll"] = rolled
@@ -1493,7 +1550,7 @@ class Turn:
                 entry["marks"] = g["size"]
                 if f["goal"] is None:
                     entry["fired"] = True
-                    self.pick_goal(name)
+                    self.pick_goal(name, next_month=True)
                     entry["new"] = goal_text(st, f["goal"])
                     entry["text"] = (f"{lead}{rolled}: **{g['size']} of {g['size']}, done**, {res}."
                                      f" New goal: *{entry['new']}* ({f['goal']['size']}).")
@@ -1527,12 +1584,12 @@ class Turn:
             for n in allies[:k]:
                 self.tower_mark(1, f"{the(n)}, an ally")
         elif g["kind"] == "ally" and is_ally(self.R(g["target"])) and g["marks"] < g["size"]:
-            self.tower_mark(g["size"] - g["marks"], "they courted their way to ally")
+            self.tower_mark(g["size"] - g["marks"], "their own courting: they are an ally")
         res = ""
         fired = g["marks"] >= g["size"]
         if fired:
             res = self.fire_tower()
-        bits = ", ".join(f"{n:+d} {w}" for n, w in self.tower_marks)
+        bits = ", ".join(f"{sgn(n)} for {w}" for n, w in self.tower_marks)
         text = f"**The tower:** *{goal_text(st, g)}*, **{g['marks']} of {g['size']}**"
         text += f" ({bits})" if bits else " (no marks this month)"
         text += f": done, {res}." if fired else "."
@@ -1563,7 +1620,7 @@ class Turn:
             f["goal"] = None
             T["toppled"] += 1
             self.set_standing(name, 2, why="a ruler the tower put on the throne")
-            self.pick_goal(name)
+            self.pick_goal(name, next_month=True)
             res = (f"{old['title']} {old['name']} is toppled; {f['leader']['title']} {dn} rules"
                    f" {the(name)} ({label(f)}), the treasury kept, new goal {goal_text(st, f['goal'])}")
             self.stats["toppled"] += 1
@@ -1578,13 +1635,14 @@ class Turn:
         for name, f in st["realms"].items():
             g = f["goal"]
             if g and not g["waits"] and self.month - g["since"] + 1 >= GOAL_MONTHS:
-                self.say(f"{cap(the(name))} drop {goal_text(st, g)} after {GOAL_MONTHS} months at {clock_text(g)}.")
+                self.say(f"{cap(the(name))} drop {goal_text(st, g)} after {GOAL_MONTHS} months of rolling at {clock_text(g)}.")
                 f["last"] = g["kind"]
                 f["goal"] = None
                 self.stats["goal_drop"] += 1
                 self.stats["drop_time"] += 1
                 self.stats[f"timed_{g['kind']}"] += 1
-                self.pick_goal(name, why=f"{goal_text(st, g)} dropped after {GOAL_MONTHS} months; new goal")
+                self.pick_goal(name, why=f"{goal_text(st, g)} dropped after {GOAL_MONTHS} months of rolling; new goal",
+                               next_month=True)
         sync(st)
         old, new = T.get("tier", 0), tier_now(st)
         if new != old:
@@ -1597,7 +1655,7 @@ class Turn:
             T["won"] = self.month
             self.say("The tower is Master of the twenty hexes and every realm is an ally or toppled: the world is his.")
         st["month"] += 1
-        st["rng"] = self.rng.getrandbits(32)
+        st["rng"] = random.Random(f"{st['rng']}:{self.month}:next").getrandbits(32)
         sync(st)
 
     def run(self, o):
@@ -1638,7 +1696,7 @@ def realm_line(st, f):
             f"{f['treasury']:,} GP", f"seat {f['seat'] or 'none'}",
             f"hexes {' '.join(f['hexes']) or 'none'}"]
     bits.append(f"goal: {goal_text(st, g)} · {clock_text(g)}" if g else "no goal")
-    bits.append(f"standing {f['standing']:+d} {standing_word(f['standing'])}")
+    bits.append(f"standing {sgn(f['standing'])}, {standing_word(f['standing'])}")
     if f.get("dissident"):
         bits.append(f"dissident {f['dissident']['name']} ({f['dissident']['hex']})")
     return " · ".join(bits)
@@ -1671,7 +1729,7 @@ def tower_now(st):
     en = [n for n, f in st["realms"].items() if f["standing"] <= -2]
     out.append(f"Allies: {', '.join(al) or 'none'} · enemies: {', '.join(en) or 'none'}")
     g = T["goal"]
-    out.append(f"Goal: {goal_text(st, g)}, {clock_text(g)}" if g else "Goal: none (declare one with --goal)")
+    out.append(f"Goal: {goal_text(st, g)}, {clock_text(g)}" if g else "Goal: none yet (declared with the month's orders)")
     ds = [f"{f['dissident']['name']} ({n}, {f['dissident']['hex']})" for n, f in st["realms"].items() if f.get("dissident")]
     if ds:
         out.append("Dissidents named: " + ", ".join(ds))
@@ -1682,10 +1740,12 @@ def tower_now(st):
 
 ODDS = {0: "never", 1: "one in six", 2: "one in three", 3: "one in two", 4: "two in three",
         5: "five in six", 6: "certain"}
+CHANCES_SHOWN = 3        # Chance lines in the report; the rest fold into one line (show prints all)
 
 
 def roll_odds(st, name):
-    """(faces that add a mark, the lowest face that does) for a realm's goal next month."""
+    """A realm's goal next month: the die faces (2–6; a 1 is always a setback) that add a
+    mark, and those that add two, with the map's modifiers (Force, garrison, walls)."""
     f = st["realms"][name]
     g = f["goal"]
     mod = 0
@@ -1697,12 +1757,55 @@ def roll_odds(st, name):
     if aimed:
         holder = st["hexes"][aimed]["holder"]
         mod -= bool(site_at(st, aimed, "garrison", holder)) + bool(site_at(st, aimed, "walls", holder))
-    faces = [d for d in range(2, 7) if d + mod >= 3]
-    return len(faces), (faces[0] if faces else None)
+    one = [d for d in range(2, 7) if d + mod >= 3]
+    two = [d for d in range(2, 7) if d + mod >= 6]
+    return one, two
+
+
+def odds_words(left, one, two):
+    """'a 6 fills it this month (one in six), a 3 to 5 adds one (one in two)'."""
+    k1, k2 = len(one), len(two)
+    if not one:
+        return "no roll can add a mark"
+    if left <= 1:
+        return f"a {one[0]} or more fills it this month ({ODDS[k1]})"
+    if left == 2:
+        if not two:
+            return f"no roll fills it this month; a {one[0]} or more adds one ({ODDS[k1]})"
+        if k1 == k2:
+            return f"a {two[0]} or more fills it this month ({ODDS[k2]})"
+        span = f"a {one[0]}" if one[0] == two[0] - 1 else f"a {one[0]} to {two[0] - 1}"
+        return f"a {two[0]} fills it this month ({ODDS[k2]}), {span} adds one ({ODDS[k1 - k2]})"
+    if two and k1 > k2:
+        return f"a {one[0]} or more adds one ({ODDS[k1]}), a {two[0]} two"
+    if two:
+        return f"a {two[0]} or more adds two ({ODDS[k2]})"
+    return f"a {one[0]} or more adds one ({ODDS[k1]})"
+
+
+def stake_words(st, name):
+    """What a goal aimed at the tower takes when it fires."""
+    T, f = st["tower"], st["realms"][name]
+    g = f["goal"]
+    half = T["treasury"] // 2
+    if g["kind"] == "raid":
+        return f"up to {min(RAID_GP * f['force'], half):,} GP from the treasury"
+    if g["kind"] == "break_tower":
+        if T["hold"]:
+            return f"a Hold box ({T['hold']} of {HOLD} now) and half the treasury ({half:,} GP as it stands)"
+        mine = [h for h in hexes_of(st, TOWER) if h != st["warded"]]
+        if mine:
+            return (f"{deepest(st, mine)[0]}, the tower's deepest hex, with its sites, and half the"
+                    f" treasury ({half:,} GP as it stands); Hold is 0")
+        return f"half the treasury ({half:,} GP as it stands); Hold is 0 and the tower holds no other hex"
+    return f"{g['hex']} is theirs with its sites"
 
 
 def outlook(st):
-    """Next month's lines as (kind, text, realms, hexes) for the report and the rumours."""
+    """Next month's lines as (kind, text, realms, hexes) for the report and the rumours: every
+    Threat, then the Chances by relevance (a Strike that empties a clock aimed at the tower
+    or a Contact that makes an ally first, then an Aid for a friend, Robs by distance, a
+    friendly realm one goal from ally, other Aids)."""
     T = st["tower"]
     here = st["morten"]["hex"]
     level = st["morten"]["level"]
@@ -1712,51 +1815,45 @@ def outlook(st):
         if not aimed_at_tower(st, g):
             continue
         left = g["size"] - g["marks"]
-        k, low = roll_odds(st, n)
-        if g["waits"]:
-            odds = "it is full and waits for nothing"
-        elif left <= 1:
-            odds = f"a {low} or more does it ({ODDS[k]})" if low else "no roll can add a mark"
-        elif left == 2:
-            odds = f"a 6 does it at once; a {low} or more adds one ({ODDS[k]})" if low and low <= 6 else "no roll can add a mark"
-        else:
-            odds = f"a {low} or more adds one ({ODDS[k]})" if low else "no roll can add a mark"
-        if g["kind"] == "raid":
-            effect = f", and takes up to {min(RAID_GP * f['force'], T['treasury'] // 2):,} GP"
-        elif g["kind"] == "break_tower":
-            effect = f", and takes a Hold box and half the treasury" if T["hold"] else ", and takes a hex of the tower's"
-        else:
-            effect = f", and {g['hex']} is theirs"
-        out.append(("Threat", f"{who(f)}: *{goal_text(st, g)}* needs {left} mark{'s' if left != 1 else ''};"
-                    f" {odds}{effect}.", {n}, {g["hex"]} - {None}))
+        one, two = roll_odds(st, n)
+        odds = "it is full and waits for nothing" if g["waits"] else odds_words(left, one, two)
+        out.append(("Threat", f"{who(f)}, {goal_text(st, g)}, {left} mark{'s' if left != 1 else ''} to go:"
+                    f" {odds}. When it fires: {stake_words(st, n)}.", {n}, {g["hex"]} - {None}))
     tg = T["goal"]
+    chances = []     # (rank, order, text, realms, hexes)
+    step = mark_step(st)
     for n, f in st["realms"].items():
         g = f["goal"]
         if not g or g["waits"]:
             continue
-        step = mark_step(st)
         if aimed_at_tower(st, g) and 0 < g["marks"] <= step:
             ss = sites_of(st, n)
-            out.append(("Chance", f"a Strike on any of {poss(n)} sites ({', '.join(s['id'] + ' in ' + s['hex'] for s in ss)})"
-                        f" empties their *{goal_text(st, g)}* ({clock_text(g)}).", {n}, {s["hex"] for s in ss}))
-        elif not aimed_at_tower(st, g) and 0 < g["size"] - g["marks"] <= step and f["standing"] >= -1:
+            chances.append((0, 0, f"a Strike on any of {poss(n)} sites ({', '.join(s['name'].lower() + ' in ' + s['hex'] for s in ss)})"
+                            f" empties their {goal_text(st, g)}, {clock_text(g)}.", {n}, {s["hex"] for s in ss}))
+        elif (not aimed_at_tower(st, g) and 0 < g["size"] - g["marks"] <= step and f["standing"] >= -1
+              and not (f["leader"]["label"] == "bad" and g["kind"] in ("press", "squeeze", "raid"))):
             h = aim_hex(st, n)
-            out.append(("Chance", f"an Aid in {h} finishes {poss(n)} *{goal_text(st, g)}* ({clock_text(g)}):"
-                        f" {fight_word(st, n, level)}.", {n}, {h}))
+            warm = ", and softens them (standing +1)" if f["standing"] < 1 else ""
+            chances.append((1 if f["standing"] >= 1 else 4, 0,
+                            f"an Aid in {h} ({fight_word(st, n, level)}) finishes {poss(n)} {goal_text(st, g)},"
+                            f" {clock_text(g)}{warm}.", {n}, {h}))
     if tg and tg["kind"] == "ally" and tg["size"] - tg["marks"] <= 1:
         f = st["realms"][tg["target"]]
-        out.append(("Chance", f"one Contact {the(tg['target'])} (DC {contact_dc(st, tg['target'])}) makes them an ally"
-                    f" (*{goal_text(st, tg)}*, {clock_text(tg)}).", {tg["target"]}, set(f["hexes"])))
+        chances.append((0, 0, f"one Contact with {the(tg['target'])} (Persuasion DC {contact_dc(st, tg['target'])}) makes them"
+                        f" an ally ({goal_text(st, tg)}, {clock_text(tg)}).", {tg["target"]}, set(f["hexes"])))
     for n, f in st["realms"].items():
         for s in sites_of(st, n, kind="works"):
             amt = min(ROB_GP * f["force"], f["treasury"])
-            if amt >= ROB_GP * f["force"] and dist(s["hex"], here) <= 2:
-                out.append(("Chance", f"{poss(n)} {s['name']} {s['id']} in {s['hex']}: a Rob takes {amt:,} GP"
-                            f" ({fight_word(st, s, level)}).", {n}, {s["hex"]}))
+            d = dist(s["hex"], here)
+            if amt >= ROB_GP * f["force"] and d <= 2:
+                chances.append((2, (d, -amt), f"{sdesc(st, s)} in {s['hex']}: a Rob takes {amt:,} GP"
+                                f" ({fight_word(st, s, level)}).", {n}, {s["hex"]}))
     for n, f in st["realms"].items():
         if f["standing"] == 1 and not is_ally(f) and not (tg and tg["target"] == n):
-            out.append(("Chance", f"{who(f)} are friendly: an *ally* goal is 3 marks, Contact at DC {contact_dc(st, n)}.",
-                        {n}, set(f["hexes"])))
+            chances.append((3, 0, f"{who(f)} are friendly: an ally goal is {TOWER_CLOCK['ally']} marks,"
+                            f" Contact at DC {contact_dc(st, n)}.", {n}, set(f["hexes"])))
+    chances.sort(key=lambda c: (c[0], c[1]))
+    out += [("Chance", t, rs, hs) for _, _, t, rs, hs in chances]
     return out
 
 
@@ -1764,58 +1861,84 @@ def open_lines(st):
     T = st["tower"]
     here, level = st["morten"]["hex"], st["morten"]["level"]
     tier = tier_now(st)
-    out = [f"Open: Morten is in {hex_label(st, here)}; travel 1 day a hex, a d6 each day outside the tower"
+    x = st["hexes"][here]
+    holder = x["holder"]
+    where = (f"the tower (level {x['level']}, {x['biome']})" if here == st["warded"]
+             else f"a hex of the tower's (level {x['level']}, {x['biome']})" if holder == TOWER
+             else f"{poss(holder)} {x['biome']} (level {x['level']})")
+    out = [f"Open: Morten is in {here}, {where}. Travel is a day a hex; each day away from the tower"
            + (" and its garrisoned hexes" if any(s["kind"] == "garrison" for s in sites_of(st, TOWER)) else "")
-           + " (1 = encounter)."]
+           + " a d6, and a 1 is a wandering encounter."]
     ms = []
     for s in sites_of(st, hex=here):
         if s["owner"] == TOWER:
             continue
-        ms.append(f"Strike {s['id']} ({s['name']}, {fight_word(st, s, level)})")
         if s["kind"] == "works":
             f = st["realms"][s["owner"]]
-            ms.append(f"Rob {s['id']} ({fight_word(st, s, level)}, up to {min(ROB_GP * f['force'], f['treasury']):,} GP)")
+            ms.append(f"Strike or Rob {sdesc(st, s)} ({fight_word(st, s, level)};"
+                      f" a Rob takes up to {min(ROB_GP * f['force'], f['treasury']):,} GP)")
+        else:
+            ms.append(f"Strike {sdesc(st, s)} ({fight_word(st, s, level)})")
     for n, f in st["realms"].items():
         g = f["goal"]
         if g and g["target"] != TOWER and aim_hex(st, n) == here and not g["waits"]:
-            ms.append(f"Aid {the(n)} with *{goal_text(st, g)}* ({fight_word(st, n, level)})")
-    holder = st["hexes"][here]["holder"]
+            ms.append(f"Aid {the(n)} with {goal_text(st, g)} ({fight_word(st, n, level)})")
     if holder != TOWER:
         f = st["realms"][holder]
         if f["standing"] <= -2:
             ms.append(f"Contact {the(holder)}: refused (enemy)")
         else:
             ms.append(f"Contact {the(holder)} (Persuasion DC {contact_dc(st, holder)})")
-    ms.append(f"Delve floor {st['hexes'][here]['level']}")
-    out.append("Open: missions here: " + " · ".join(ms) + ".")
-    acts = [f"works@HEX ({PRICE['works']} GP)"]
+    ms.append(f"Delve floor {x['level']}")
+    out.append(f"Open: missions here in {here}: " + " · ".join(ms) + ".")
+    acts = []
     if tier >= LORD:
-        acts = [f"garrison@HEX ({PRICE['garrison']} GP)", f"walls@HEX ({PRICE['walls']} GP, needs a garrison)"] + acts
+        acts.append(f"a Garrison ({PRICE['garrison']} GP) or Walls ({PRICE['walls']} GP, needs the garrison) on a tower hex")
+    acts.append(f"Works on a hex of the tower's ({PRICE['works']} GP)")
     if T["hold"] < HOLD:
-        acts.append(f"mend ({PRICE['mend']} GP)")
-    acts.append("give REALM=GP")
+        acts.append(f"Mend a Hold box ({PRICE['mend']} GP)")
+    acts.append(f"a gift to a realm ({GIVE_MIN} GP or more counts for a month)")
     if tier >= WARDEN:
-        acts.append(f"back or hinder REALM ({PRICE['back']} GP)")
+        acts.append(f"back or hinder a realm's roll ({PRICE['back']} GP)")
     if tier >= MASTER:
         acts.append("set an ally's goal")
-    out.append(f"Open: the purse ({T['treasury']:,} GP): " + " · ".join(acts) + ".")
+    out.append(f"Open: the purse holds {T['treasury']:,} GP: " + "; ".join(acts) + ".")
     g = T["goal"]
-    gs = []
+    opts = []
     if not g or g["kind"] != "take":
-        gs.append("take HEX (2 + the holder's Force marks, +2 if walled)")
+        opts.append(f"take a hex (its holder's Force + {TOWER_CLOCK['take']} marks, +{WALLED_TOWER_TAKE} if walled)")
     if not g or g["kind"] != "ally":
         fr = [n for n, f in st["realms"].items() if not is_ally(f)]
-        gs.append(f"ally REALM (3 marks; {', '.join(fr) or 'nobody left'})")
-    ds = [n for n, f in st["realms"].items() if f.get("dissident")]
-    if ds and (not g or g["kind"] != "topple"):
-        gs.append(f"topple REALM (3 + Force marks; dissidents in {', '.join(ds)})")
-    out.append(("Open: the goal " + (f"stays *{goal_text(st, g)}* ({clock_text(g)}), or drop it for: " if g else "to declare: ")
-                + " · ".join(gs) + ".") if gs else f"Open: the goal stays *{goal_text(st, g)}* ({clock_text(g)}).")
+        if fr:
+            opts.append(f"ally a realm ({TOWER_CLOCK['ally']} marks; "
+                        + ("any of the six" if len(fr) == len(st["realms"]) else ", ".join(the(n) for n in fr)) + ")")
+    if not g or g["kind"] != "topple":
+        ds = [(n, f) for n, f in st["realms"].items() if f.get("dissident")]
+        if ds:
+            opts += [f"topple {the(n)} ({TOWER_CLOCK['topple'] + f['force']} marks; {f['dissident']['name']} is the dissident)"
+                     for n, f in ds]
+        else:
+            opts.append("topple a ruler (needs a dissident; none named yet)")
+    alts = ", ".join(opts[:-1]) + ", or " + opts[-1] if len(opts) > 1 else opts[0] if opts else "nothing else"
+    if g:
+        head = f"Open: the goal stays {goal_text(st, g)}, {clock_text(g)}. " + (
+            "Switching loses those marks: " if g["marks"] else "Or switch to: ")
+    else:
+        head = "Open: no goal yet. Declare one: "
+    out.append(head + alts + ".")
     return out
 
 
-def next_month(st):
-    return [f"{k}: {t}" for k, t, _, _ in outlook(st)] + open_lines(st)
+def next_month(st, full=False):
+    """The report's Next month: every Threat, the top CHANCES_SHOWN Chances (the rest in one
+    line), the Open lines. `full` (show) prints every Chance."""
+    lines = outlook(st)
+    threats = [f"Threat: {t}" for k, t, _, _ in lines if k == "Threat"]
+    chances = [f"Chance: {t}" for k, t, _, _ in lines if k == "Chance"]
+    if not full and len(chances) > CHANCES_SHOWN:
+        more = len(chances) - CHANCES_SHOWN
+        chances = chances[:CHANCES_SHOWN] + [f"Chance: and {more} more chance{'s' if more != 1 else ''} on the map."]
+    return threats + chances + open_lines(st)
 
 
 def rumours(st, at):
@@ -1829,7 +1952,7 @@ def rumours(st, at):
         f = st["realms"][n]
         g = f["goal"]
         out.append(f"{cap(who(f))}, {f['leader']['title']} {f['leader']['name']}: *{goal_text(st, g)}*,"
-                   f" {clock_text(g)}; standing {f['standing']:+d} ({standing_word(f['standing'])}).")
+                   f" {clock_text(g)}; standing {sgn(f['standing'])}, {standing_word(f['standing'])}.")
     return out
 
 
@@ -1883,7 +2006,7 @@ def summary(st, at=None):
            "**The tower**"] + [f"- {x}" for x in tower_now(st)]
     out += ["", "**Realms**"] + [f"- {realm_line(st, f)}" for f in st["realms"].values()]
     out += ["", "**Sites**"] + [f"- {site_line(st, s)}" for s in sites_of(st)]
-    out += ["", "**Next month**"] + [f"- {x}" for x in next_month(st)]
+    out += ["", "**Next month**"] + [f"- {x}" for x in next_month(st, full=True)]
     if at:
         out += ["", f"**Rumours** (from {at})"] + [f"- {r}" for r in rumours(st, at) or ["none"]]
     return "\n".join(out) + "\n"
@@ -2093,7 +2216,7 @@ def cmd_encounter(a):
         if f["leader"]["label"] == "bad":
             bits.append(f"+ {CONTACT_BAD} bad ruler")
         if f["standing"]:
-            bits.append(f"− 2 × standing {f['standing']:+d}")
+            bits.append(f"− 2 × standing {sgn(f['standing'])}")
         if f["squeeze_until"] and st["month"] <= f["squeeze_until"]:
             bits.append(f"+ {SQUEEZE_DC} squeezed")
         print(f"**Contact {the(name)}** in any of {' '.join(f['hexes'])}: Persuasion (CHA) DC"
@@ -2104,10 +2227,13 @@ def cmd_encounter(a):
         raise Bad("encounter needs --site, --aid, --contact or --hex")
     h = t.hexarg(a.hex)
     seed = a.seed if a.seed is not None else random.SystemRandom().randrange(10 ** 6)
-    e = encounter(st["hexes"][h]["level"], random.Random(seed))
+    hl = st["hexes"][h]["level"]
+    e = encounter(hl, random.Random(seed))
     print(f"**Wandering encounter · {hex_label(st, h)}** (seed {seed})\n")
-    print(f"- {e['count']}× {e['name']} · CR {e['cr']} · {e['xp']:,} XP each")
-    print(f"- {e['total']:,} XP total · {e['diff']} · coins {e['total'] // 10:,} GP")
+    print(f"- {e['count']}× {plural(e['name'], e['count'])} · CR {e['cr']} · {e['xp']:,} XP each")
+    print(f"- {e['total']:,} XP total · {diff_for(level, e['total'])} for Morten at level {level}"
+          + (f" ({e['diff']} for the hex's level {hl})" if hl != level else "")
+          + f" · coins {e['total'] // 10:,} GP")
 
 
 def cmd_turn(a):
@@ -2295,7 +2421,7 @@ def cmd_sim(a):
         print("End:")
         for n, (tag, h, f, seat, gp, standing) in r["end"].items():
             print(f"  {n:<10} {tag:<10} hexes {h} (was {r['start'][n][1]}) · Force {f} (was {r['start'][n][2]})"
-                  f" · {gp:,} GP · standing {standing:+d} · longest quiet line {r['longest'][n]} months")
+                  f" · {gp:,} GP · standing {sgn(standing)} · longest quiet line {r['longest'][n]} months")
         print()
     print("\n".join(S["rows"]))
     print()

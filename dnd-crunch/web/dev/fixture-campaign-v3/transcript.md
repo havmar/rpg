@@ -97,7 +97,7 @@ Floor 1 is a level-1 floor under his own warded hex: XP toward level 4 with no w
 
 *s0007 · domain · Month 1 · Day 30 · 20:00 · B5 · the tower (B5)*
 
-**The tower has no goal yet, so the clocks moved without it: the Elves' break the Gnomes at 2 of 4; the Orcs' press the Humans at 1 of 3; the Tieflings' raid the Elves at 1 of 2.**
+**The tower has no goal yet, so the clocks moved without it: the Elves' break the Gnomes at 2 of 4; the Tieflings' raid the Elves at 1 of 2; the Humans' fortify D3 at 1 of 3; the Goblinkind's press the Humans at 1 of 3.**
 
 **The plan**
 - Morten: Delve floor 1 under B5.
@@ -105,12 +105,12 @@ Floor 1 is a level-1 floor under his own warded hex: XP toward level 4 with no w
 - Tower: no goal, no purse action.
 
 **What happened**
-- (None) **Elves** (good: fights tyrants): The Elves (good: fights tyrants), break the Gnomes: rolled a 6 (5 +1): 2 of 4.
-- (None) **Orcs** (bad: takes people for soldiers): The Orcs (bad: takes people for soldiers), press the Humans: rolled a 5 (4 +1): 1 of 3.
-- (None) **Tieflings** (bad: robs its neighbours): The Tieflings (bad: robs its neighbours), raid the Elves: rolled a 4 (5 -1): 1 of 2.
-- (None) **Humans** (good: fights tyrants): The Humans (good: fights tyrants), fortify D3: rolled a natural 1, a setback: 0 of 3.
-- (None) **Gnomes** (bad: robs its neighbours): The Gnomes (bad: robs its neighbours), raid the Elves: rolled a natural 1, a setback: 0 of 2.
-- **Elsewhere:** The Goblinkind (bad: takes people for soldiers), press the Humans: rolled a 2: 0 of 3.
+- (None) **Elves** (good: fights tyrants): The Elves (good: fights tyrants), break the Gnomes: rolled a 7 (6 +1): 2 of 4.
+- (None) **Orcs** (bad: takes people for soldiers): The Orcs (bad: takes people for soldiers), press the Humans: rolled a natural 1, a setback: 0 of 3.
+- (None) **Tieflings** (bad: robs its neighbours): The Tieflings (bad: robs its neighbours), raid the Elves: rolled a 5 (6 −1): 1 of 2.
+- (None) **Gnomes** (bad: robs its neighbours): The Gnomes (bad: robs its neighbours), raid the Elves: rolled a 2 (3 −1): 0 of 2.
+- (None) **Humans** (good: fights tyrants): The Humans (good: fights tyrants), fortify D3: rolled a 4: 1 of 3.
+- (None) **Goblinkind** (bad: takes people for soldiers): The Goblinkind (bad: takes people for soldiers), press the Humans: rolled a 5: 1 of 3.
 
 **The tower now**
 - Gold: 105 GP → 115 GP
@@ -119,30 +119,25 @@ Floor 1 is a level-1 floor under his own warded hex: XP toward level 4 with no w
 - Morten's XP: 900 → 950
 
 **Next month**
-- Chance: an Aid in A4 finishes the Elves' break the Gnomes (2 of 4): Moderate, 2 Warhorse.
-- Chance: an Aid in D3 finishes the Orcs' press the Humans (1 of 3): Moderate, 2 Warhorse.
-- Chance: an Aid in B2 finishes the Gnomes' raid the Elves (0 of 2): High, 1 Berserker.
-- Chance: an Aid in B2 finishes the Tieflings' raid the Elves (1 of 2): High, 1 Berserker.
-- Chance: the Humans' Caravans in D4: a Rob takes 300 GP (Low, 1 Scout, 2 Guard).
-- Chance: the Orcs' Farms in D5: a Rob takes 400 GP (Low, 1 Scout, 2 Guard).
-- Chance: the Gnomes' Caravans in B3: a Rob takes 300 GP (Low, 1 Scout, 2 Guard).
-- Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.
-- Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.
-- Open: Morten is in B5 (L1, mountains, tower); travel 1 day a hex, a d6 each day outside the tower (1 = encounter).
-- Open: missions here: Delve floor 1.
-- Open: the purse (115 GP): works@HEX (300 GP) · give REALM=GP.
-- Open: the goal to declare: take HEX (2 + the holder's Force marks, +2 if walled) · ally REALM (3 marks; Humans, Elves, Goblinkind, Orcs, Gnomes, Tieflings).
+- Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.
+- Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.
+- Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).
+- Chance: and 4 more chances on the map.
+- Open: Morten is in B5, the tower (level 1, mountains). Travel is a day a hex; each day away from the tower a d6, and a 1 is a wandering encounter.
+- Open: missions here in B5: Delve floor 1.
+- Open: the purse holds 115 GP: Works on a hex of the tower's (300 GP); a gift to a realm (200 GP or more counts for a month).
+- Open: no goal yet. Declare one: take a hex (its holder's Force + 2 marks, +2 if walled), ally a realm (3 marks; any of the six), or topple a ruler (needs a dissident; none named yet).
 
 **Log (script)**
 - Morten: Delve floor 1 under B5 (the dungeon game; no domain effect).
 - Morten: deposit 5 GP → tower 105 GP.
-- Order: Elves Force 5 (d6 5) · Orcs Force 4 (d6 6) · Tieflings Force 4 (d6 5) · Humans Force 3 (d6 3) · Gnomes Force 3 (d6 1) · Goblinkind Force 3 (d6 1).
-- The Elves, break the Gnomes: d6 5 +1 (Force 5 over 3) = 6 → two marks: 2 of 4.
-- The Orcs, press the Humans: d6 4 +1 (Force 4 over 3) = 5 → one mark: 1 of 3.
-- The Tieflings, raid the Elves: d6 5 -1 (Force 4 under 5) = 4 → one mark: 1 of 2.
-- The Humans, fortify D3: d6 1 = 1 → setback: 0 of 3.
-- The Gnomes, raid the Elves: d6 1 -1 (Force 3 under 5) = 0 → setback: 0 of 2.
-- The Goblinkind, press the Humans: d6 2 = 2 → nothing: 0 of 3.
+- Order: Elves Force 5 (d6 4) · Orcs Force 4 (d6 4) · Tieflings Force 4 (d6 1) · Gnomes Force 3 (d6 6) · Humans Force 3 (d6 6) · Goblinkind Force 3 (d6 2).
+- The Elves, break the Gnomes: d6 6 +1 (Force 5 over 3) = 7 → two marks: 2 of 4.
+- The Orcs, press the Humans: d6 1 +1 (Force 4 over 3) = 2 → setback: 0 of 3.
+- The Tieflings, raid the Elves: d6 6 −1 (Force 4 under 5) = 5 → one mark: 1 of 2.
+- The Gnomes, raid the Elves: d6 3 −1 (Force 3 under 5) = 2 → nothing: 0 of 2.
+- The Humans, fortify D3: d6 4 = 4 → one mark: 1 of 3.
+- The Goblinkind, press the Humans: d6 5 = 5 → one mark: 1 of 3.
 
 *After: 20/20 HP · XP 950 · 47 GP 7 SP 5 CP · lost: nothing*
 

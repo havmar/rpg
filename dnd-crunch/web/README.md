@@ -301,8 +301,8 @@ tier changes. The page's keys change with it:
                          "tierWords": "the realm's tier", "fight": "tier 1: Guard, Scout, Guard Captain · tier 2: …",
                          "effect": "−1 to goal rolls aimed at this hex."}},
   "goalWords": {"take": "the hex changes hands with its sites", "raid": "…"},
-  "rumours": {"A5": ["Chance: the Gnomes' Caravans in B3: a Rob takes 300 GP (Low, 1 Scout, 2 Guard).",
-                     "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing +0 (neutral)."]}
+  "rumours": {"A5": ["Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+                     "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral."]}
 }
 ```
 

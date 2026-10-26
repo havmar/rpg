@@ -104,7 +104,7 @@
     },
     {
      "id": "C3",
-     "name": "Goblinkind's hills",
+     "name": "the Goblinkind's hills",
      "days": 3
     },
     {
@@ -124,12 +124,12 @@
     },
     {
      "id": "C2",
-     "name": "Goblinkind's taiga",
+     "name": "the Goblinkind's taiga",
      "days": 4
     },
     {
      "id": "D2",
-     "name": "Goblinkind's forest",
+     "name": "the Goblinkind's forest",
      "days": 4
     },
     {
@@ -144,7 +144,7 @@
     },
     {
      "id": "D1",
-     "name": "Goblinkind's mountains with its lake",
+     "name": "the Goblinkind's mountains with its lake",
      "days": 5
     }
    ],
@@ -163,7 +163,7 @@
      "hex": "A5",
      "days": 1,
      "turn": "--strike s14",
-     "label": "Strike the Gnomes' Garrison in A5 (Moderate, 2 Warhorse; 2 marks off their goal)"
+     "label": "Strike the Gnomes' Garrison in A5 (a Moderate fight, 2 Warhorses; 2 marks off their goal)"
     },
     {
      "type": "contact",
@@ -187,7 +187,7 @@
      "hex": "B4",
      "days": 1,
      "turn": "--strike s10",
-     "label": "Strike the Orcs' Seat in B4 (High, 2 Spy; 2 marks off their goal)"
+     "label": "Strike the Orcs' Seat in B4 (a High fight, 2 Spies; 2 marks off their goal)"
     },
     {
      "type": "contact",
@@ -211,7 +211,7 @@
      "hex": "C5",
      "days": 1,
      "turn": "--strike s11",
-     "label": "Strike the Orcs' Garrison in C5 (Moderate, 2 Warhorse; 2 marks off their goal)"
+     "label": "Strike the Orcs' Garrison in C5 (a Moderate fight, 2 Warhorses; 2 marks off their goal)"
     },
     {
      "type": "contact",
@@ -235,7 +235,7 @@
      "hex": "A4",
      "days": 2,
      "turn": "--strike s13",
-     "label": "Strike the Gnomes' Seat in A4 (High, 2 Spy; 2 marks off their goal)"
+     "label": "Strike the Gnomes' Seat in A4 (a High fight, 2 Spies; 2 marks off their goal)"
     },
     {
      "type": "aid",
@@ -243,7 +243,7 @@
      "hex": "A4",
      "days": 2,
      "turn": "--aid Elves",
-     "label": "Aid the Elves with break the Gnomes in A4 (Moderate, 2 Warhorse; 2 marks on it)"
+     "label": "Aid the Elves with break the Gnomes in A4 (a Moderate fight, 2 Warhorses; 2 marks on it)"
     },
     {
      "type": "contact",
@@ -267,7 +267,7 @@
      "hex": "B3",
      "days": 2,
      "turn": "--strike s15",
-     "label": "Strike the Gnomes' Caravans in B3 (Low, 1 Scout, 2 Guard; 2 marks off their goal)"
+     "label": "Strike the Gnomes' Caravans in B3 (a Low fight, 1 Scout and 2 Guards; 2 marks off their goal)"
     },
     {
      "type": "rob",
@@ -275,7 +275,7 @@
      "hex": "B3",
      "days": 2,
      "turn": "--rob s15",
-     "label": "Rob the Gnomes' Caravans in B3 (Low, 1 Scout, 2 Guard; up to 300 GP)"
+     "label": "Rob the Gnomes' Caravans in B3 (a Low fight, 1 Scout and 2 Guards; up to 300 GP)"
     },
     {
      "type": "contact",
@@ -299,7 +299,7 @@
      "hex": "C4",
      "days": 2,
      "turn": "--strike s2",
-     "label": "Strike the Humans' Garrison in C4 (Moderate, 2 Warhorse; 2 marks off their goal)"
+     "label": "Strike the Humans' Garrison in C4 (a Moderate fight, 2 Warhorses; 2 marks off their goal)"
     },
     {
      "type": "contact",
@@ -323,7 +323,7 @@
      "hex": "D4",
      "days": 2,
      "turn": "--strike s3",
-     "label": "Strike the Humans' Caravans in D4 (Low, 1 Scout, 2 Guard; 2 marks off their goal)"
+     "label": "Strike the Humans' Caravans in D4 (a Low fight, 1 Scout and 2 Guards; 2 marks off their goal)"
     },
     {
      "type": "rob",
@@ -331,7 +331,7 @@
      "hex": "D4",
      "days": 2,
      "turn": "--rob s3",
-     "label": "Rob the Humans' Caravans in D4 (Low, 1 Scout, 2 Guard; up to 300 GP)"
+     "label": "Rob the Humans' Caravans in D4 (a Low fight, 1 Scout and 2 Guards; up to 300 GP)"
     },
     {
      "type": "contact",
@@ -355,7 +355,7 @@
      "hex": "D5",
      "days": 2,
      "turn": "--strike s12",
-     "label": "Strike the Orcs' Farms in D5 (Low, 1 Scout, 2 Guard; 2 marks off their goal)"
+     "label": "Strike the Orcs' Farms in D5 (a Low fight, 1 Scout and 2 Guards; 2 marks off their goal)"
     },
     {
      "type": "rob",
@@ -363,7 +363,7 @@
      "hex": "D5",
      "days": 2,
      "turn": "--rob s12",
-     "label": "Rob the Orcs' Farms in D5 (Low, 1 Scout, 2 Guard; up to 400 GP)"
+     "label": "Rob the Orcs' Farms in D5 (a Low fight, 1 Scout and 2 Guards; up to 400 GP)"
     },
     {
      "type": "contact",
@@ -387,7 +387,7 @@
      "hex": "A3",
      "days": 3,
      "turn": "--strike s6",
-     "label": "Strike the Elves' Farms in A3 (Moderate, 1 Guard, 2 Scout; 2 marks off their goal)"
+     "label": "Strike the Elves' Farms in A3 (a Moderate fight, 1 Guard and 2 Scouts; 2 marks off their goal)"
     },
     {
      "type": "rob",
@@ -395,7 +395,7 @@
      "hex": "A3",
      "days": 3,
      "turn": "--rob s6",
-     "label": "Rob the Elves' Farms in A3 (Moderate, 1 Guard, 2 Scout; up to 500 GP)"
+     "label": "Rob the Elves' Farms in A3 (a Moderate fight, 1 Guard and 2 Scouts; up to 500 GP)"
     },
     {
      "type": "contact",
@@ -419,7 +419,7 @@
      "hex": "B2",
      "days": 3,
      "turn": "--strike s4",
-     "label": "Strike the Elves' Seat in B2 (High, 2 Spy; 2 marks off their goal)"
+     "label": "Strike the Elves' Seat in B2 (a High fight, 2 Spies; 2 marks off their goal)"
     },
     {
      "type": "aid",
@@ -427,7 +427,7 @@
      "hex": "B2",
      "days": 3,
      "turn": "--aid Gnomes",
-     "label": "Aid the Gnomes with raid the Elves in B2 (High, 1 Berserker; 2 marks on it)"
+     "label": "Aid the Gnomes with raid the Elves in B2 (a High fight, 1 Berserker; 2 marks on it)"
     },
     {
      "type": "aid",
@@ -435,7 +435,7 @@
      "hex": "B2",
      "days": 3,
      "turn": "--aid Tieflings",
-     "label": "Aid the Tieflings with raid the Elves in B2 (High, 1 Berserker; 2 marks on it)"
+     "label": "Aid the Tieflings with raid the Elves in B2 (a High fight, 1 Berserker; 2 marks on it)"
     },
     {
      "type": "contact",
@@ -459,7 +459,7 @@
      "hex": "C3",
      "days": 3,
      "turn": "--strike s7",
-     "label": "Strike the Goblinkind's Seat in C3 (High, 2 Spy; 2 marks off their goal)"
+     "label": "Strike the Goblinkind's Seat in C3 (a High fight, 2 Spies; 2 marks off their goal)"
     },
     {
      "type": "contact",
@@ -483,7 +483,7 @@
      "hex": "D3",
      "days": 3,
      "turn": "--strike s1",
-     "label": "Strike the Humans' Seat in D3 (High, 2 Spy; 2 marks off their goal)"
+     "label": "Strike the Humans' Seat in D3 (a High fight, 2 Spies; 2 marks off their goal)"
     },
     {
      "type": "aid",
@@ -491,7 +491,7 @@
      "hex": "D3",
      "days": 3,
      "turn": "--aid Humans",
-     "label": "Aid the Humans with fortify D3 in D3 (Moderate, 1 Mastiff, 2 Warhorse; 2 marks on it)"
+     "label": "Aid the Humans with fortify D3 in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses; 2 marks on it)"
     },
     {
      "type": "aid",
@@ -499,7 +499,7 @@
      "hex": "D3",
      "days": 3,
      "turn": "--aid Goblinkind",
-     "label": "Aid the Goblinkind with press the Humans in D3 (Moderate, 2 Warhorse; 2 marks on it)"
+     "label": "Aid the Goblinkind with press the Humans in D3 (a Moderate fight, 2 Warhorses; 2 marks on it)"
     },
     {
      "type": "aid",
@@ -507,7 +507,7 @@
      "hex": "D3",
      "days": 3,
      "turn": "--aid Orcs",
-     "label": "Aid the Orcs with press the Humans in D3 (Moderate, 2 Warhorse; 2 marks on it)"
+     "label": "Aid the Orcs with press the Humans in D3 (a Moderate fight, 2 Warhorses; 2 marks on it)"
     },
     {
      "type": "contact",
@@ -531,7 +531,7 @@
      "hex": "A2",
      "days": 4,
      "turn": "--strike s5",
-     "label": "Strike the Elves' Garrison in A2 (High, 1 Berserker; 2 marks off their goal)"
+     "label": "Strike the Elves' Garrison in A2 (a High fight, 1 Berserker; 2 marks off their goal)"
     },
     {
      "type": "contact",
@@ -555,7 +555,7 @@
      "hex": "B1",
      "days": 4,
      "turn": "--strike s18",
-     "label": "Strike the Tieflings' Farms in B1 (Low, 1 Scout, 2 Guard; 2 marks off their goal)"
+     "label": "Strike the Tieflings' Farms in B1 (a Low fight, 1 Scout and 2 Guards; 2 marks off their goal)"
     },
     {
      "type": "rob",
@@ -563,7 +563,7 @@
      "hex": "B1",
      "days": 4,
      "turn": "--rob s18",
-     "label": "Rob the Tieflings' Farms in B1 (Low, 1 Scout, 2 Guard; up to 400 GP)"
+     "label": "Rob the Tieflings' Farms in B1 (a Low fight, 1 Scout and 2 Guards; up to 400 GP)"
     },
     {
      "type": "contact",
@@ -587,7 +587,7 @@
      "hex": "C2",
      "days": 4,
      "turn": "--strike s8",
-     "label": "Strike the Goblinkind's Garrison in C2 (Moderate, 2 Warhorse; 2 marks off their goal)"
+     "label": "Strike the Goblinkind's Garrison in C2 (a Moderate fight, 2 Warhorses; 2 marks off their goal)"
     },
     {
      "type": "contact",
@@ -627,7 +627,7 @@
      "hex": "A1",
      "days": 5,
      "turn": "--strike s16",
-     "label": "Strike the Tieflings' Seat in A1 (High, 2 Spy; 2 marks off their goal)"
+     "label": "Strike the Tieflings' Seat in A1 (a High fight, 2 Spies; 2 marks off their goal)"
     },
     {
      "type": "contact",
@@ -651,7 +651,7 @@
      "hex": "C1",
      "days": 5,
      "turn": "--strike s17",
-     "label": "Strike the Tieflings' Garrison in C1 (Moderate, 2 Warhorse; 2 marks off their goal)"
+     "label": "Strike the Tieflings' Garrison in C1 (a Moderate fight, 2 Warhorses; 2 marks off their goal)"
     },
     {
      "type": "contact",
@@ -675,7 +675,7 @@
      "hex": "D1",
      "days": 5,
      "turn": "--strike s9",
-     "label": "Strike the Goblinkind's Mine in D1 (Low, 1 Tough, 2 Guard; 2 marks off their goal)"
+     "label": "Strike the Goblinkind's Mine in D1 (a Low fight, 1 Tough and 2 Guards; 2 marks off their goal)"
     },
     {
      "type": "rob",
@@ -683,7 +683,7 @@
      "hex": "D1",
      "days": 5,
      "turn": "--rob s9",
-     "label": "Rob the Goblinkind's Mine in D1 (Low, 1 Tough, 2 Guard; up to 300 GP)"
+     "label": "Rob the Goblinkind's Mine in D1 (a Low fight, 1 Tough and 2 Guards; up to 300 GP)"
     },
     {
      "type": "contact",
