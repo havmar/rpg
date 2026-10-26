@@ -229,3 +229,100 @@ The tower holds one hex, the level-1 desert at C5, in the south-east corner of t
 *After: 13/20 HP · XP 1,125 · 22 GP 7 SP 5 CP · lost: nothing*
 
 ---
+
+## Room 1.5 · Sprite (CR 1/4) · Moderate, 50 XP · cleared, untouched
+
+*s0010 · fight · Month 1 · Day 1 · 12:15 · C5 · Floor 1 · room 1.5*
+
+**Morten tried talking the Sprite out of the way in Elvish. It wasn't having it, so he won initiative and dropped it with one Magic Missile that rolled exactly its 10 HP.**
+
+- **The room:** 8×10 sq (12×15 m), entered through a 1.5 m-wide gap. The owl found a Sprite hovering in the middle, bow in hand.
+- **The parley:** a Sprite is a good-hearted fey, so Morten asked in Elvish to be let through. Persuasion 3 vs DC 13 failed, and it drew.
+- **Why Magic Missile:** AC 15 and Invisibility make a Sprite hard to hit for long, but Magic Missile never misses. The cast held (24 vs DC 11), and 3d4+3 came to exactly 10 force dmg against 10 HP.
+- **Result:** 13/20 HP, nothing lost. XP 1,125 → 1,175. +5 GP.
+
+**Fight:** 1× Sprite (CR 1/4, AC 15, 10 HP) · Moderate, 50 XP · cleared (talk failed, missile didn't)
+**Result:** XP 1,125 → 1,175 · +5 GP
+
+- HP track, Morten: 13 → 13 (of 20 HP)
+- HP track, Sprite: 10 → 0 (of 10 HP)
+
+**Trace**
+
+- GM: Persuasion (in Elvish) 3 vs DC 13: the Sprite refuses. (d20 3 vs DC 13, FAIL)
+- R1 · GM: Initiative: Morten 20, the Sprite 16. (d20 16 +4 = 20; d20 12 +4 = 16)
+- R1 · Morten: Magic Missile holds (24 vs DC 11): 3 darts, 10 force dmg. Sprite 10 → 0 HP, dead. (d20 19 +5 = 24 vs DC 11, CAST; 3d4: 3+3+1 +3 = 10)
+
+*After: 13/20 HP · XP 1,125 · 22 GP 7 SP 5 CP · lost: nothing*
+
+---
+
+## Day 1 · the owl sees two Blink Dogs, and Morten goes home
+
+*s0011 · rest · Month 1 · Day 2 · 08:00 · C5 · the tower (C5)*
+
+**The owl looked into room 1.6 and found two Blink Dogs among the pillars. At 13 HP with nothing left in reserve, Morten turned back. The Delve ends with five of six rooms cleared and 275 XP, and the floor's coins buy him a new Potion of Healing.**
+
+**Morten (GM):** "One of those dogs had me on 2 HP from full. Two of them, at 13 HP, with no potion and no Hit Dice, is how wizards die. They'll still be there next month, and I'll come back rested with Sleep and a doorway."
+
+- **Room 1.6:** 6×6 sq (9×9 m), pillars for full cover, **2 Blink Dogs (CR 1/4 each, High, 100 XP)**. Left for next month; floor 1 is not cleared. Leaving the floor ends the Delve.
+- **The Delve's haul:** 5 rooms, 275 XP (900 → 1,175), 27 GP of coins. No deaths.
+- **Shopping:** the 27 GP he found joins the 37 GP he left upstairs (64 GP), and a **Potion of Healing** from the trader costs 50 GP. 14 GP stays in the purse.
+- **Downtime:** the rest of the month passes in the tower. A Long Rest brings back full HP, all Hit Dice, Arcane Recovery, Heroic Inspiration and the free Mage Armor.
+- **Deposit:** none. The tower's treasury stays at 100 GP, plus the month's 10 GP income at the world's turn.
+
+*After: 13/20 HP · XP 1,175 · 27 GP 7 SP 5 CP · lost: nothing*
+
+---
+
+## Month 1 · the world's turn
+
+*s0012 · domain · Month 1 · Day 30 · 20:00 · C5 · the tower (C5)*
+
+**A quiet first month for the tower. The Orcs rolled a 2, so their break-the-tower clock is still at 0 of 4. The Humans rolled high and are halfway to breaking the Gnomes, and that opens a door for us.**
+
+**The plan**
+- Morten delved floor 1 under C5: 275 XP under his own wards, with no realm angered.
+- The tower declared *ally the Humans*, the good realm next door that also borders the Orcs. A Contact or an Aid fills it; a Delve doesn't.
+
+**What happened**
+- (None) **tower**: *Ally the Humans* is 0 of 3. A Delve moves no clock, so no marks this month.
+- (None) **Orcs** (bad: takes people for soldiers): The Orcs (bad: takes people for soldiers) rolled a 2 for *break the tower* and stay at 0 of 4. Their biggest threat is still four marks away.
+- (None) **Humans** (good: fights tyrants): The Humans (good: fights tyrants) rolled a 6 +1 for *break the Gnomes* and jumped to 2 of 4. They are halfway, and an Aid from us would finish it.
+- (None) **Tieflings** (good: fights tyrants): The Tieflings (good: fights tyrants), also out to break the Gnomes, rolled a 4 and stand at 1 of 4.
+- (None) **Elves** (bad: squeezes its own people): The Elves (bad: squeezes its own people) rolled a 6 and finished *squeeze*, wringing 300 GP from their own hexes. A Contact with them is DC +4 for 3 months, and their new goal is to fortify A5, their seat (0 of 3).
+- (None) **Goblinkind** (bad: takes people for soldiers): The Goblinkind (bad: takes people for soldiers) rolled a natural 1 on *press the Gnomes*, a setback, so they stay at 0 of 3.
+- (None) **Gnomes** (bad: takes people for soldiers): The Gnomes (bad: takes people for soldiers) also rolled a natural 1 on *press the Goblinkind*: 0 of 3. With three realms aiming at them, they are the map's punching bag.
+
+**The tower now**
+- Gold: 100 GP → 110 GP (the month's 10 GP income)
+- Tier: Hermit (Renown 0) → Hermit (Renown 0)
+- Hold: 3 of 3 → 3 of 3
+- Goal: none → ally the Humans, 0 of 3
+- Morten's XP: 900 → 1,175 (level 4 at 2,700)
+- Morten's purse: 47 GP → 14 GP (incense and a Potion of Healing)
+
+**Next month**
+- Threat: the Orcs' *break the tower* is 4 marks from firing. Each month a 3 or more adds one and a 6 adds two. When it fires it takes a Hold box and half the treasury (55 GP as it stands).
+- Chance: an **Aid for the Humans in C3**, the Gnomes' seat (a Low fight: 1 Scout and 2 Guards), finishes their *break the Gnomes* (2 → 4 of 4). It also puts **+2 on our *ally the Humans*** and is worth standing +1. C3 is 2 days away through the Orcs' C4, or 3 days round through the Humans' D4 and D3.
+- Chance: a Contact with the Humans in D4 or D5 (1 day, DC 10) is a safer +1 on the ally clock.
+- Chance: the Orcs' Mine in B4, next door, holds 500 GP for a Rob (a Moderate fight: 1 Guard and 2 Toughs). It would cost standing with the Orcs, who already want the tower broken.
+- Open: room 1.6 (2 Blink Dogs, High, 100 XP) still waits under the tower.
+- Open: the purse holds 14 GP and the treasury 110 GP. Works cost 300 GP.
+
+**Log (script)**
+- Tower: the goal is ally the Humans, a clock of 3.
+- Morten: Delve floor 1 under C5 (the dungeon game; no domain effect).
+- Order: Orcs Force 5 (d6 4) · Tieflings Force 4 (d6 6) · Elves Force 4 (d6 2) · Goblinkind Force 3 (d6 3) · Humans Force 3 (d6 1) · Gnomes Force 2 (d6 4).
+- The Orcs, break the tower: d6 2 = 2 → nothing: 0 of 4.
+- The Tieflings, break the Gnomes: d6 3 +1 (Force 4 over 2) = 4 → one mark: 1 of 4.
+- The Elves, squeeze: d6 6 = 6 → two marks: 2 of 2.
+- The Elves (bad: squeezes its own people) did squeeze: 300 GP squeezed out, Contact there is DC +4 for 3 months.
+- The Elves (bad: squeezes its own people): new goal, fortify A5 (clock 3).
+- The Goblinkind, press the Gnomes: d6 1 +1 (Force 3 over 2) = 2 → setback: 0 of 3.
+- The Humans, break the Gnomes: d6 6 +1 (Force 3 over 2) = 7 → two marks: 2 of 4.
+- The Gnomes, press the Goblinkind: d6 1 −1 (Force 2 under 3) = 0 → setback: 0 of 3.
+
+*After: 20/20 HP · XP 1,175 · 7 SP 5 CP · lost: nothing*
+
+---

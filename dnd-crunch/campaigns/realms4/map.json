@@ -1,7 +1,7 @@
 {
  "version": 3,
  "campaign": "realms4",
- "month": 1,
+ "month": 2,
  "layout": {
   "cols": 4,
   "rows": 5,
@@ -612,7 +612,7 @@
    "income": 390,
    "force": 3,
    "tier": 2,
-   "treasury": 340,
+   "treasury": 730,
    "seat": "D5",
    "hexes": [
     "D3",
@@ -627,7 +627,7 @@
     "kind": "break",
     "target": "Gnomes",
     "hex": null,
-    "marks": 0,
+    "marks": 2,
     "size": 4,
     "waits": 0,
     "since": 1
@@ -648,7 +648,7 @@
    "income": 350,
    "force": 3,
    "tier": 2,
-   "treasury": 300,
+   "treasury": 650,
    "seat": "D1",
    "hexes": [
     "C1",
@@ -684,7 +684,7 @@
    "income": 220,
    "force": 2,
    "tier": 1,
-   "treasury": 170,
+   "treasury": 390,
    "seat": "C3",
    "hexes": [
     "B3",
@@ -720,7 +720,7 @@
    "income": 590,
    "force": 5,
    "tier": 3,
-   "treasury": 540,
+   "treasury": 1130,
    "seat": "C4",
    "hexes": [
     "B4",
@@ -756,7 +756,7 @@
    "income": 420,
    "force": 4,
    "tier": 2,
-   "treasury": 370,
+   "treasury": 790,
    "seat": "B1",
    "hexes": [
     "A1",
@@ -772,7 +772,7 @@
     "kind": "break",
     "target": "Gnomes",
     "hex": null,
-    "marks": 0,
+    "marks": 1,
     "size": 4,
     "waits": 0,
     "since": 1
@@ -793,7 +793,7 @@
    "income": 605,
    "force": 4,
    "tier": 2,
-   "treasury": 370,
+   "treasury": 1275,
    "seat": "A5",
    "hexes": [
     "A3",
@@ -804,17 +804,17 @@
    "standingWord": "neutral",
    "ally": false,
    "goal": {
-    "text": "squeeze",
-    "kind": "squeeze",
+    "text": "fortify A5",
+    "kind": "fortify",
     "target": null,
-    "hex": null,
+    "hex": "A5",
     "marks": 0,
-    "size": 2,
+    "size": 3,
     "waits": 0,
-    "since": 1
+    "since": 2
    },
    "dissident": null,
-   "squeezed": false
+   "squeezed": true
   },
   {
    "name": "tower",
@@ -827,7 +827,7 @@
     "verb": null
    },
    "income": 10,
-   "treasury": 100,
+   "treasury": 110,
    "seat": "C5",
    "hexes": [
     "C5"
@@ -835,7 +835,16 @@
    "standing": null,
    "standingWord": null,
    "ally": false,
-   "goal": null,
+   "goal": {
+    "text": "ally the Humans",
+    "kind": "ally",
+    "target": "Humans",
+    "hex": null,
+    "marks": 0,
+    "size": 3,
+    "waits": 0,
+    "since": 1
+   },
    "tier": 0,
    "tierName": "Hermit",
    "renown": 0,
@@ -849,31 +858,153 @@
   "hex": "C5",
   "level": 3
  },
- "events": [],
+ "events": [
+  {
+   "month": 1,
+   "actor": "tower",
+   "action": "Goal",
+   "from_hex": null,
+   "to_hex": null,
+   "target": "ally the Humans",
+   "result": "declared, clock 3"
+  },
+  {
+   "month": 1,
+   "actor": "tower",
+   "action": "Delve",
+   "from_hex": "C5",
+   "to_hex": "C5",
+   "target": "floor 1",
+   "result": "delved"
+  },
+  {
+   "month": 1,
+   "actor": "Elves",
+   "action": "Goal",
+   "from_hex": "A5",
+   "to_hex": "A5",
+   "target": "squeeze",
+   "result": "300 GP squeezed out, Contact there is DC +4 for 3 months"
+  }
+ ],
  "report": {
-  "month": 0,
-  "plan": [],
-  "happened": [],
+  "month": 1,
+  "plan": [
+   "Morten: Delve floor 1 under C5.",
+   "Floor 1 first: 275 XP under his own wards, no realm angered. The tower declares ally the Humans, the good realm next door that borders the Orcs; Contact and Aid will fill it.",
+   "Tower: goal ally the Humans (clock 3)."
+  ],
+  "happened": [
+   {
+    "who": "tower",
+    "label": null,
+    "goal": "ally the Humans",
+    "roll": null,
+    "marks": 0,
+    "size": 3,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "**The tower:** *ally the Humans*, **0 of 3** (no marks this month)."
+   },
+   {
+    "who": "Orcs",
+    "label": "bad: takes people for soldiers",
+    "goal": "break the tower",
+    "roll": "rolled a 2",
+    "marks": 0,
+    "size": 4,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Orcs (bad: takes people for soldiers), *break the tower*: rolled a 2: **0 of 4**."
+   },
+   {
+    "who": "Tieflings",
+    "label": "good: fights tyrants",
+    "goal": "break the Gnomes",
+    "roll": "rolled a 4 (3 +1)",
+    "marks": 1,
+    "size": 4,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Tieflings (good: fights tyrants), *break the Gnomes*: rolled a 4 (3 +1): **1 of 4**."
+   },
+   {
+    "who": "Elves",
+    "label": "bad: squeezes its own people",
+    "goal": "squeeze",
+    "roll": "rolled a 6",
+    "marks": 2,
+    "size": 2,
+    "fired": true,
+    "far": false,
+    "waits": 0,
+    "new": "fortify A5",
+    "text": "The Elves (bad: squeezes its own people), *squeeze*: rolled a 6: **2 of 2, done**, 300 GP squeezed out, Contact there is DC +4 for 3 months. New goal: *fortify A5* (3)."
+   },
+   {
+    "who": "Goblinkind",
+    "label": "bad: takes people for soldiers",
+    "goal": "press the Gnomes",
+    "roll": "rolled a natural 1, a setback",
+    "marks": 0,
+    "size": 3,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Goblinkind (bad: takes people for soldiers), *press the Gnomes*: rolled a natural 1, a setback: **0 of 3**."
+   },
+   {
+    "who": "Humans",
+    "label": "good: fights tyrants",
+    "goal": "break the Gnomes",
+    "roll": "rolled a 7 (6 +1)",
+    "marks": 2,
+    "size": 4,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Humans (good: fights tyrants), *break the Gnomes*: rolled a 7 (6 +1): **2 of 4**."
+   },
+   {
+    "who": "Gnomes",
+    "label": "bad: takes people for soldiers",
+    "goal": "press the Goblinkind",
+    "roll": "rolled a natural 1, a setback",
+    "marks": 0,
+    "size": 3,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Gnomes (bad: takes people for soldiers), *press the Goblinkind*: rolled a natural 1, a setback: **0 of 3**."
+   }
+  ],
   "tower": [
-   "Hermit (tier 0, Renown 0) · Hold 3 of 3 · 100 GP · income 10 GP a month · Morten level 3 in C5",
+   "Hermit (tier 0, Renown 0) · Hold 3 of 3 · 110 GP · income 10 GP a month · Morten level 3 in C5",
    "Hexes: C5 (C5 warded)",
    "Sites: none",
    "Allies: none · enemies: none",
-   "Goal: none yet (declared with the month's orders)"
+   "Goal: ally the Humans, 0 of 3"
   ],
   "next": [
-   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (55 GP as it stands).",
+   "Chance: an Aid in C3 (a Low fight, 1 Scout and 2 Guards) finishes the Humans' break the Gnomes, 2 of 4.",
    "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
-   "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
-   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
-   "Chance: and 1 more chance on the map.",
+   "Chance: the Elves' mine in A4: a Rob takes 400 GP (a Low fight, 1 Tough and 2 Guards).",
+   "Chance: and 3 more chances on the map.",
    "Open: Morten is in C5, the tower (level 1, desert). Travel is a day a hex; each day away from the tower a d6, and a 1 is a wandering encounter.",
    "Open: missions here in C5: Delve floor 1.",
-   "Open: the purse holds 100 GP: Works on a hex of the tower's (300 GP); a gift to a realm (200 GP or more counts for a month).",
-   "Open: no goal yet. Declare one: take a hex (its holder's Force + 2 marks, +2 if walled), ally a realm (3 marks; any of the six), or topple a ruler (needs a dissident; none named yet)."
+   "Open: the purse holds 110 GP: Works on a hex of the tower's (300 GP); a gift to a realm (200 GP or more counts for a month).",
+   "Open: the goal stays ally the Humans, 0 of 3. Or switch to: take a hex (its holder's Force + 2 marks, +2 if walled), or topple a ruler (needs a dissident; none named yet)."
   ],
-  "notes": [
-   "Month 1: the world begins."
-  ]
+  "notes": []
  }
 }

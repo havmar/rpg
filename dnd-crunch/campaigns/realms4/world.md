@@ -1,23 +1,23 @@
-# World · Month 1
+# World · Month 2
 
 Seed 83. Realms v3. Rendered by `realms3.py` from `realms.json` after every turn; don't edit by hand. Everything here is open: every site, goal and clock.
 
 ## The tower
 
-- Hermit (tier 0, Renown 0) · Hold 3 of 3 · 100 GP · income 10 GP a month · Morten level 3 in C5
+- Hermit (tier 0, Renown 0) · Hold 3 of 3 · 110 GP · income 10 GP a month · Morten level 3 in C5
 - Hexes: C5 (C5 warded)
 - Sites: none
 - Allies: none · enemies: none
-- Goal: none yet (declared with the month's orders)
+- Goal: ally the Humans, 0 of 3
 
 ## Realms
 
-- Humans · Reeve Hilde (good: fights tyrants) · Force 3 · 340 GP · seat D5 · hexes D3 D4 D5 · goal: break the Gnomes · 0 of 4 · standing +1, friendly
-- Goblinkind · Big Boss Hrothak (bad: takes people for soldiers) · Force 3 · 300 GP · seat D1 · hexes C1 D1 D2 · goal: press the Gnomes · 0 of 3 · standing 0, neutral
-- Gnomes · Provost Tobble (bad: takes people for soldiers) · Force 2 · 170 GP · seat C3 · hexes B3 C2 C3 · goal: press the Goblinkind · 0 of 3 · standing 0, neutral
-- Orcs · Boss Brakka (bad: takes people for soldiers) · Force 5 · 540 GP · seat C4 · hexes B4 B5 C4 · goal: break the tower · 0 of 4 · standing 0, neutral
-- Tieflings · Magister Ekemon (good: fights tyrants) · Force 4 · 370 GP · seat B1 · hexes A1 A2 B1 B2 · goal: break the Gnomes · 0 of 4 · standing +1, friendly
-- Elves · Archon Ynnara (bad: squeezes its own people) · Force 4 · 370 GP · seat A5 · hexes A3 A4 A5 · goal: squeeze · 0 of 2 · standing 0, neutral
+- Humans · Reeve Hilde (good: fights tyrants) · Force 3 · 730 GP · seat D5 · hexes D3 D4 D5 · goal: break the Gnomes · 2 of 4 · standing +1, friendly
+- Goblinkind · Big Boss Hrothak (bad: takes people for soldiers) · Force 3 · 650 GP · seat D1 · hexes C1 D1 D2 · goal: press the Gnomes · 0 of 3 · standing 0, neutral
+- Gnomes · Provost Tobble (bad: takes people for soldiers) · Force 2 · 390 GP · seat C3 · hexes B3 C2 C3 · goal: press the Goblinkind · 0 of 3 · standing 0, neutral
+- Orcs · Boss Brakka (bad: takes people for soldiers) · Force 5 · 1,130 GP · seat C4 · hexes B4 B5 C4 · goal: break the tower · 0 of 4 · standing 0, neutral
+- Tieflings · Magister Ekemon (good: fights tyrants) · Force 4 · 790 GP · seat B1 · hexes A1 A2 B1 B2 · goal: break the Gnomes · 1 of 4 · standing +1, friendly
+- Elves · Archon Ynnara (bad: squeezes its own people) · Force 4 · 1,275 GP · seat A5 · hexes A3 A4 A5 · goal: fortify A5 · 0 of 3 · standing 0, neutral
 
 ## Hexes
 
@@ -110,14 +110,18 @@ Seed 83. Realms v3. Rendered by `realms3.py` from `realms.json` after every turn
 
 ## Last month
 
-- The world begins.
-- The Humans (good: fights tyrants): new goal, break the Gnomes (clock 4).
-- The Goblinkind (bad: takes people for soldiers): new goal, press the Gnomes (clock 3).
-- The Gnomes (bad: takes people for soldiers): new goal, press the Goblinkind (clock 3).
-- The Orcs (bad: takes people for soldiers): new goal, break the tower (clock 4) (a neighbour of the tower: d6 6 for break the tower).
-- The Tieflings (good: fights tyrants): new goal, break the Gnomes (clock 4).
-- The Elves (bad: squeezes its own people): new goal, squeeze (clock 2).
+- Tower: the goal is ally the Humans, a clock of 3.
+- Morten: Delve floor 1 under C5 (the dungeon game; no domain effect).
+- Order: Orcs Force 5 (d6 4) · Tieflings Force 4 (d6 6) · Elves Force 4 (d6 2) · Goblinkind Force 3 (d6 3) · Humans Force 3 (d6 1) · Gnomes Force 2 (d6 4).
+- The Orcs, break the tower: d6 2 = 2 → nothing: 0 of 4.
+- The Tieflings, break the Gnomes: d6 3 +1 (Force 4 over 2) = 4 → one mark: 1 of 4.
+- The Elves, squeeze: d6 6 = 6 → two marks: 2 of 2.
+- The Elves (bad: squeezes its own people) did squeeze: 300 GP squeezed out, Contact there is DC +4 for 3 months.
+- The Elves (bad: squeezes its own people): new goal, fortify A5 (clock 3).
+- The Goblinkind, press the Gnomes: d6 1 +1 (Force 3 over 2) = 2 → setback: 0 of 3.
+- The Humans, break the Gnomes: d6 6 +1 (Force 3 over 2) = 7 → two marks: 2 of 4.
+- The Gnomes, press the Goblinkind: d6 1 −1 (Force 2 under 3) = 0 → setback: 0 of 3.
 
 ## Month
 
-- **Next world's turn:** month 1
+- **Next world's turn:** month 2

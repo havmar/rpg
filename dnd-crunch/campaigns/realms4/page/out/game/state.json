@@ -1,31 +1,31 @@
 {
  "v": 1,
  "campaign": "realms4",
- "status": "playing",
- "lastSeq": 9,
+ "status": "awaiting",
+ "lastSeq": 12,
  "lastMove": 0,
- "month": 1,
+ "month": 2,
  "day": 1,
- "clock": "12:05",
+ "clock": "08:00",
  "hex": "C5",
- "where": "Floor 1 · room 1.4",
+ "where": "the tower (C5)",
  "level": 3,
- "xp": 1125,
+ "xp": 1175,
  "deaths": 0,
  "hud": {
-  "hp": 13,
+  "hp": 20,
   "maxHp": 20,
-  "ac": 15,
+  "ac": 12,
   "acArmor": 15,
-  "armorOn": true,
-  "light": "lamp, lit at 09:10 (until 15:10)",
+  "armorOn": false,
+  "light": "lamp, about 2½ h of oil left",
   "conc": null,
   "conditions": [],
   "exhaustion": 0,
   "reaction": true,
-  "inspiration": false,
-  "freeArmor": false,
-  "coins": "22 GP 7 SP 5 CP",
+  "inspiration": true,
+  "freeArmor": true,
+  "coins": "7 SP 5 CP",
   "lost": []
  },
  "table": {
@@ -43,16 +43,896 @@
   ]
  },
  "awaiting": {
-  "kind": "none",
-  "prompt": "",
-  "orders": null,
+  "kind": "orders",
+  "prompt": "Month 2's orders: where Morten goes, his mission, the tower's goal, the purse, a gift",
+  "orders": {
+   "version": 3,
+   "hexes": [
+    {
+     "id": "C5",
+     "name": "the tower's desert",
+     "days": 0
+    },
+    {
+     "id": "B4",
+     "name": "the Orcs' hills",
+     "days": 1
+    },
+    {
+     "id": "B5",
+     "name": "the Orcs' desert",
+     "days": 1
+    },
+    {
+     "id": "C4",
+     "name": "the Orcs' savanna",
+     "days": 1
+    },
+    {
+     "id": "D4",
+     "name": "the Humans' forest",
+     "days": 1
+    },
+    {
+     "id": "D5",
+     "name": "the Humans' savanna",
+     "days": 1
+    },
+    {
+     "id": "A4",
+     "name": "the Elves' hills",
+     "days": 2
+    },
+    {
+     "id": "A5",
+     "name": "the Elves' desert",
+     "days": 2
+    },
+    {
+     "id": "B3",
+     "name": "the Gnomes' plains",
+     "days": 2
+    },
+    {
+     "id": "C3",
+     "name": "the Gnomes' swamp",
+     "days": 2
+    },
+    {
+     "id": "D3",
+     "name": "the Humans' forest",
+     "days": 2
+    },
+    {
+     "id": "A3",
+     "name": "the Elves' plains",
+     "days": 3
+    },
+    {
+     "id": "B2",
+     "name": "the Tieflings' hills",
+     "days": 3
+    },
+    {
+     "id": "C2",
+     "name": "the Gnomes' taiga",
+     "days": 3
+    },
+    {
+     "id": "D2",
+     "name": "the Goblinkind's taiga with its lake",
+     "days": 3
+    },
+    {
+     "id": "A2",
+     "name": "the Tieflings' hills with its lake",
+     "days": 4
+    },
+    {
+     "id": "B1",
+     "name": "the Tieflings' taiga",
+     "days": 4
+    },
+    {
+     "id": "C1",
+     "name": "the Goblinkind's mountains",
+     "days": 4
+    },
+    {
+     "id": "D1",
+     "name": "the Goblinkind's tundra",
+     "days": 4
+    },
+    {
+     "id": "A1",
+     "name": "the Tieflings' taiga",
+     "days": 5
+    }
+   ],
+   "missions": [
+    {
+     "type": "delve",
+     "target": "floor 1",
+     "hex": "C5",
+     "days": 0,
+     "turn": "--delve",
+     "label": "Delve floor 1 under C5"
+    },
+    {
+     "type": "strike",
+     "target": "s12",
+     "hex": "B4",
+     "days": 1,
+     "turn": "--strike s12",
+     "label": "Strike the Orcs' Mine in B4 (a Moderate fight, 1 Guard and 2 Toughs; 2 marks off their goal)"
+    },
+    {
+     "type": "rob",
+     "target": "s12",
+     "hex": "B4",
+     "days": 1,
+     "turn": "--rob s12",
+     "label": "Rob the Orcs' Mine in B4 (a Moderate fight, 1 Guard and 2 Toughs; up to 500 GP)"
+    },
+    {
+     "type": "contact",
+     "target": "Orcs",
+     "hex": "B4",
+     "days": 1,
+     "turn": "--contact Orcs",
+     "label": "Contact the Orcs in B4 (Persuasion DC 15)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 17",
+     "hex": "B4",
+     "days": 1,
+     "turn": "--delve",
+     "label": "Delve floor 17 under B4"
+    },
+    {
+     "type": "strike",
+     "target": "s11",
+     "hex": "B5",
+     "days": 1,
+     "turn": "--strike s11",
+     "label": "Strike the Orcs' Garrison in B5 (a High fight, 1 Berserker; 2 marks off their goal)"
+    },
+    {
+     "type": "contact",
+     "target": "Orcs",
+     "hex": "B5",
+     "days": 1,
+     "turn": "--contact Orcs",
+     "label": "Contact the Orcs in B5 (Persuasion DC 15)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 18",
+     "hex": "B5",
+     "days": 1,
+     "turn": "--delve",
+     "label": "Delve floor 18 under B5"
+    },
+    {
+     "type": "strike",
+     "target": "s10",
+     "hex": "C4",
+     "days": 1,
+     "turn": "--strike s10",
+     "label": "Strike the Orcs' Seat in C4 (a High fight, 2 Spies; 2 marks off their goal)"
+    },
+    {
+     "type": "contact",
+     "target": "Orcs",
+     "hex": "C4",
+     "days": 1,
+     "turn": "--contact Orcs",
+     "label": "Contact the Orcs in C4 (Persuasion DC 15)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 19",
+     "hex": "C4",
+     "days": 1,
+     "turn": "--delve",
+     "label": "Delve floor 19 under C4"
+    },
+    {
+     "type": "strike",
+     "target": "s2",
+     "hex": "D4",
+     "days": 1,
+     "turn": "--strike s2",
+     "label": "Strike the Humans' Garrison in D4 (a Moderate fight, 2 Warhorses; 2 marks off their goal)"
+    },
+    {
+     "type": "contact",
+     "target": "Humans",
+     "hex": "D4",
+     "days": 1,
+     "turn": "--contact Humans",
+     "label": "Contact the Humans in D4 (Persuasion DC 10)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 15",
+     "hex": "D4",
+     "days": 1,
+     "turn": "--delve",
+     "label": "Delve floor 15 under D4"
+    },
+    {
+     "type": "strike",
+     "target": "s1",
+     "hex": "D5",
+     "days": 1,
+     "turn": "--strike s1",
+     "label": "Strike the Humans' Seat in D5 (a High fight, 2 Spies; 2 marks off their goal)"
+    },
+    {
+     "type": "contact",
+     "target": "Humans",
+     "hex": "D5",
+     "days": 1,
+     "turn": "--contact Humans",
+     "label": "Contact the Humans in D5 (Persuasion DC 10)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 16",
+     "hex": "D5",
+     "days": 1,
+     "turn": "--delve",
+     "label": "Delve floor 16 under D5"
+    },
+    {
+     "type": "strike",
+     "target": "s18",
+     "hex": "A4",
+     "days": 2,
+     "turn": "--strike s18",
+     "label": "Strike the Elves' Mine in A4 (a Low fight, 1 Tough and 2 Guards; 2 marks off their goal)"
+    },
+    {
+     "type": "rob",
+     "target": "s18",
+     "hex": "A4",
+     "days": 2,
+     "turn": "--rob s18",
+     "label": "Rob the Elves' Mine in A4 (a Low fight, 1 Tough and 2 Guards; up to 400 GP)"
+    },
+    {
+     "type": "contact",
+     "target": "Elves",
+     "hex": "A4",
+     "days": 2,
+     "turn": "--contact Elves",
+     "label": "Contact the Elves in A4 (Persuasion DC 19)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 8",
+     "hex": "A4",
+     "days": 2,
+     "turn": "--delve",
+     "label": "Delve floor 8 under A4"
+    },
+    {
+     "type": "strike",
+     "target": "s16",
+     "hex": "A5",
+     "days": 2,
+     "turn": "--strike s16",
+     "label": "Strike the Elves' Seat in A5 (a High fight, 2 Spies; 2 marks off their goal)"
+    },
+    {
+     "type": "aid",
+     "target": "Elves",
+     "hex": "A5",
+     "days": 2,
+     "turn": "--aid Elves",
+     "label": "Aid the Elves with fortify A5 in A5 (a Moderate fight, 1 Giant Eagle; 2 marks on it)"
+    },
+    {
+     "type": "contact",
+     "target": "Elves",
+     "hex": "A5",
+     "days": 2,
+     "turn": "--contact Elves",
+     "label": "Contact the Elves in A5 (Persuasion DC 19)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 20",
+     "hex": "A5",
+     "days": 2,
+     "turn": "--delve",
+     "label": "Delve floor 20 under A5"
+    },
+    {
+     "type": "strike",
+     "target": "s9",
+     "hex": "B3",
+     "days": 2,
+     "turn": "--strike s9",
+     "label": "Strike the Gnomes' Caravans in B3 (a Low fight, 1 Scout and 2 Guards; 2 marks off their goal)"
+    },
+    {
+     "type": "rob",
+     "target": "s9",
+     "hex": "B3",
+     "days": 2,
+     "turn": "--rob s9",
+     "label": "Rob the Gnomes' Caravans in B3 (a Low fight, 1 Scout and 2 Guards; up to 200 GP)"
+    },
+    {
+     "type": "contact",
+     "target": "Gnomes",
+     "hex": "B3",
+     "days": 2,
+     "turn": "--contact Gnomes",
+     "label": "Contact the Gnomes in B3 (Persuasion DC 15)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 2",
+     "hex": "B3",
+     "days": 2,
+     "turn": "--delve",
+     "label": "Delve floor 2 under B3"
+    },
+    {
+     "type": "strike",
+     "target": "s7",
+     "hex": "C3",
+     "days": 2,
+     "turn": "--strike s7",
+     "label": "Strike the Gnomes' Seat in C3 (a Moderate fight, 1 Spy and 1 Noble; 2 marks off their goal)"
+    },
+    {
+     "type": "aid",
+     "target": "Humans",
+     "hex": "C3",
+     "days": 2,
+     "turn": "--aid Humans",
+     "label": "Aid the Humans with break the Gnomes in C3 (a Low fight, 1 Scout and 2 Guards; 2 marks on it)"
+    },
+    {
+     "type": "aid",
+     "target": "Goblinkind",
+     "hex": "C3",
+     "days": 2,
+     "turn": "--aid Goblinkind",
+     "label": "Aid the Goblinkind with press the Gnomes in C3 (a Low fight, 1 Scout and 2 Guards; 2 marks on it)"
+    },
+    {
+     "type": "aid",
+     "target": "Tieflings",
+     "hex": "C3",
+     "days": 2,
+     "turn": "--aid Tieflings",
+     "label": "Aid the Tieflings with break the Gnomes in C3 (a Low fight, 1 Scout and 2 Guards; 2 marks on it)"
+    },
+    {
+     "type": "contact",
+     "target": "Gnomes",
+     "hex": "C3",
+     "days": 2,
+     "turn": "--contact Gnomes",
+     "label": "Contact the Gnomes in C3 (Persuasion DC 15)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 11",
+     "hex": "C3",
+     "days": 2,
+     "turn": "--delve",
+     "label": "Delve floor 11 under C3"
+    },
+    {
+     "type": "strike",
+     "target": "s3",
+     "hex": "D3",
+     "days": 2,
+     "turn": "--strike s3",
+     "label": "Strike the Humans' Farms in D3 (a Low fight, 1 Scout and 2 Guards; 2 marks off their goal)"
+    },
+    {
+     "type": "rob",
+     "target": "s3",
+     "hex": "D3",
+     "days": 2,
+     "turn": "--rob s3",
+     "label": "Rob the Humans' Farms in D3 (a Low fight, 1 Scout and 2 Guards; up to 300 GP)"
+    },
+    {
+     "type": "contact",
+     "target": "Humans",
+     "hex": "D3",
+     "days": 2,
+     "turn": "--contact Humans",
+     "label": "Contact the Humans in D3 (Persuasion DC 10)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 3",
+     "hex": "D3",
+     "days": 2,
+     "turn": "--delve",
+     "label": "Delve floor 3 under D3"
+    },
+    {
+     "type": "strike",
+     "target": "s17",
+     "hex": "A3",
+     "days": 3,
+     "turn": "--strike s17",
+     "label": "Strike the Elves' Garrison in A3 (a Moderate fight, 2 Warhorses; 2 marks off their goal)"
+    },
+    {
+     "type": "contact",
+     "target": "Elves",
+     "hex": "A3",
+     "days": 3,
+     "turn": "--contact Elves",
+     "label": "Contact the Elves in A3 (Persuasion DC 19)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 9",
+     "hex": "A3",
+     "days": 3,
+     "turn": "--delve",
+     "label": "Delve floor 9 under A3"
+    },
+    {
+     "type": "strike",
+     "target": "s15",
+     "hex": "B2",
+     "days": 3,
+     "turn": "--strike s15",
+     "label": "Strike the Tieflings' Mine in B2 (a Low fight, 1 Tough and 2 Guards; 2 marks off their goal)"
+    },
+    {
+     "type": "rob",
+     "target": "s15",
+     "hex": "B2",
+     "days": 3,
+     "turn": "--rob s15",
+     "label": "Rob the Tieflings' Mine in B2 (a Low fight, 1 Tough and 2 Guards; up to 400 GP)"
+    },
+    {
+     "type": "contact",
+     "target": "Tieflings",
+     "hex": "B2",
+     "days": 3,
+     "turn": "--contact Tieflings",
+     "label": "Contact the Tieflings in B2 (Persuasion DC 10)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 7",
+     "hex": "B2",
+     "days": 3,
+     "turn": "--delve",
+     "label": "Delve floor 7 under B2"
+    },
+    {
+     "type": "strike",
+     "target": "s8",
+     "hex": "C2",
+     "days": 3,
+     "turn": "--strike s8",
+     "label": "Strike the Gnomes' Garrison in C2 (a Low fight, 1 Scout and 2 Guards; 2 marks off their goal)"
+    },
+    {
+     "type": "contact",
+     "target": "Gnomes",
+     "hex": "C2",
+     "days": 3,
+     "turn": "--contact Gnomes",
+     "label": "Contact the Gnomes in C2 (Persuasion DC 15)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 4",
+     "hex": "C2",
+     "days": 3,
+     "turn": "--delve",
+     "label": "Delve floor 4 under C2"
+    },
+    {
+     "type": "strike",
+     "target": "s6",
+     "hex": "D2",
+     "days": 3,
+     "turn": "--strike s6",
+     "label": "Strike the Goblinkind's Farms in D2 (a Low fight, 1 Scout and 2 Guards; 2 marks off their goal)"
+    },
+    {
+     "type": "rob",
+     "target": "s6",
+     "hex": "D2",
+     "days": 3,
+     "turn": "--rob s6",
+     "label": "Rob the Goblinkind's Farms in D2 (a Low fight, 1 Scout and 2 Guards; up to 300 GP)"
+    },
+    {
+     "type": "contact",
+     "target": "Goblinkind",
+     "hex": "D2",
+     "days": 3,
+     "turn": "--contact Goblinkind",
+     "label": "Contact the Goblinkind in D2 (Persuasion DC 15)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 5",
+     "hex": "D2",
+     "days": 3,
+     "turn": "--delve",
+     "label": "Delve floor 5 under D2"
+    },
+    {
+     "type": "strike",
+     "target": "s14",
+     "hex": "A2",
+     "days": 4,
+     "turn": "--strike s14",
+     "label": "Strike the Tieflings' Garrison in A2 (a Moderate fight, 2 Warhorses; 2 marks off their goal)"
+    },
+    {
+     "type": "contact",
+     "target": "Tieflings",
+     "hex": "A2",
+     "days": 4,
+     "turn": "--contact Tieflings",
+     "label": "Contact the Tieflings in A2 (Persuasion DC 10)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 10",
+     "hex": "A2",
+     "days": 4,
+     "turn": "--delve",
+     "label": "Delve floor 10 under A2"
+    },
+    {
+     "type": "strike",
+     "target": "s13",
+     "hex": "B1",
+     "days": 4,
+     "turn": "--strike s13",
+     "label": "Strike the Tieflings' Seat in B1 (a High fight, 2 Spies; 2 marks off their goal)"
+    },
+    {
+     "type": "contact",
+     "target": "Tieflings",
+     "hex": "B1",
+     "days": 4,
+     "turn": "--contact Tieflings",
+     "label": "Contact the Tieflings in B1 (Persuasion DC 10)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 14",
+     "hex": "B1",
+     "days": 4,
+     "turn": "--delve",
+     "label": "Delve floor 14 under B1"
+    },
+    {
+     "type": "strike",
+     "target": "s5",
+     "hex": "C1",
+     "days": 4,
+     "turn": "--strike s5",
+     "label": "Strike the Goblinkind's Garrison in C1 (a Moderate fight, 2 Warhorses; 2 marks off their goal)"
+    },
+    {
+     "type": "contact",
+     "target": "Goblinkind",
+     "hex": "C1",
+     "days": 4,
+     "turn": "--contact Goblinkind",
+     "label": "Contact the Goblinkind in C1 (Persuasion DC 15)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 12",
+     "hex": "C1",
+     "days": 4,
+     "turn": "--delve",
+     "label": "Delve floor 12 under C1"
+    },
+    {
+     "type": "strike",
+     "target": "s4",
+     "hex": "D1",
+     "days": 4,
+     "turn": "--strike s4",
+     "label": "Strike the Goblinkind's Seat in D1 (a High fight, 2 Spies; 2 marks off their goal)"
+    },
+    {
+     "type": "aid",
+     "target": "Gnomes",
+     "hex": "D1",
+     "days": 4,
+     "turn": "--aid Gnomes",
+     "label": "Aid the Gnomes with press the Goblinkind in D1 (a Moderate fight, 2 Warhorses; 2 marks on it)"
+    },
+    {
+     "type": "contact",
+     "target": "Goblinkind",
+     "hex": "D1",
+     "days": 4,
+     "turn": "--contact Goblinkind",
+     "label": "Contact the Goblinkind in D1 (Persuasion DC 15)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 13",
+     "hex": "D1",
+     "days": 4,
+     "turn": "--delve",
+     "label": "Delve floor 13 under D1"
+    },
+    {
+     "type": "contact",
+     "target": "Tieflings",
+     "hex": "A1",
+     "days": 5,
+     "turn": "--contact Tieflings",
+     "label": "Contact the Tieflings in A1 (Persuasion DC 10)"
+    },
+    {
+     "type": "delve",
+     "target": "floor 6",
+     "hex": "A1",
+     "days": 5,
+     "turn": "--delve",
+     "label": "Delve floor 6 under A1"
+    }
+   ],
+   "goals": [
+    {
+     "goal": "take:B4",
+     "kind": "take",
+     "target": "Orcs",
+     "hex": "B4",
+     "size": 7,
+     "label": "Take B4 from the Orcs (a clock of 7)"
+    },
+    {
+     "goal": "take:B5",
+     "kind": "take",
+     "target": "Orcs",
+     "hex": "B5",
+     "size": 7,
+     "label": "Take B5 from the Orcs (a clock of 7)"
+    },
+    {
+     "goal": "take:C4",
+     "kind": "take",
+     "target": "Orcs",
+     "hex": "C4",
+     "size": 7,
+     "label": "Take C4 from the Orcs (a clock of 7)"
+    },
+    {
+     "goal": "take:D4",
+     "kind": "take",
+     "target": "Humans",
+     "hex": "D4",
+     "size": 5,
+     "label": "Take D4 from the Humans (a clock of 5)"
+    },
+    {
+     "goal": "take:D5",
+     "kind": "take",
+     "target": "Humans",
+     "hex": "D5",
+     "size": 5,
+     "label": "Take D5 from the Humans (a clock of 5)"
+    },
+    {
+     "goal": "take:A4",
+     "kind": "take",
+     "target": "Elves",
+     "hex": "A4",
+     "size": 6,
+     "label": "Take A4 from the Elves (a clock of 6)"
+    },
+    {
+     "goal": "take:A5",
+     "kind": "take",
+     "target": "Elves",
+     "hex": "A5",
+     "size": 6,
+     "label": "Take A5 from the Elves (a clock of 6)"
+    },
+    {
+     "goal": "take:B3",
+     "kind": "take",
+     "target": "Gnomes",
+     "hex": "B3",
+     "size": 4,
+     "label": "Take B3 from the Gnomes (a clock of 4)"
+    },
+    {
+     "goal": "take:C3",
+     "kind": "take",
+     "target": "Gnomes",
+     "hex": "C3",
+     "size": 4,
+     "label": "Take C3 from the Gnomes (a clock of 4)"
+    },
+    {
+     "goal": "take:D3",
+     "kind": "take",
+     "target": "Humans",
+     "hex": "D3",
+     "size": 5,
+     "label": "Take D3 from the Humans (a clock of 5)"
+    },
+    {
+     "goal": "take:A3",
+     "kind": "take",
+     "target": "Elves",
+     "hex": "A3",
+     "size": 6,
+     "label": "Take A3 from the Elves (a clock of 6)"
+    },
+    {
+     "goal": "take:B2",
+     "kind": "take",
+     "target": "Tieflings",
+     "hex": "B2",
+     "size": 6,
+     "label": "Take B2 from the Tieflings (a clock of 6)"
+    },
+    {
+     "goal": "take:C2",
+     "kind": "take",
+     "target": "Gnomes",
+     "hex": "C2",
+     "size": 4,
+     "label": "Take C2 from the Gnomes (a clock of 4)"
+    },
+    {
+     "goal": "take:D2",
+     "kind": "take",
+     "target": "Goblinkind",
+     "hex": "D2",
+     "size": 5,
+     "label": "Take D2 from the Goblinkind (a clock of 5)"
+    },
+    {
+     "goal": "take:A2",
+     "kind": "take",
+     "target": "Tieflings",
+     "hex": "A2",
+     "size": 6,
+     "label": "Take A2 from the Tieflings (a clock of 6)"
+    },
+    {
+     "goal": "take:B1",
+     "kind": "take",
+     "target": "Tieflings",
+     "hex": "B1",
+     "size": 6,
+     "label": "Take B1 from the Tieflings (a clock of 6)"
+    },
+    {
+     "goal": "take:C1",
+     "kind": "take",
+     "target": "Goblinkind",
+     "hex": "C1",
+     "size": 5,
+     "label": "Take C1 from the Goblinkind (a clock of 5)"
+    },
+    {
+     "goal": "take:D1",
+     "kind": "take",
+     "target": "Goblinkind",
+     "hex": "D1",
+     "size": 5,
+     "label": "Take D1 from the Goblinkind (a clock of 5)"
+    },
+    {
+     "goal": "take:A1",
+     "kind": "take",
+     "target": "Tieflings",
+     "hex": "A1",
+     "size": 6,
+     "label": "Take A1 from the Tieflings (a clock of 6)"
+    },
+    {
+     "goal": "ally:Goblinkind",
+     "kind": "ally",
+     "target": "Goblinkind",
+     "hex": null,
+     "size": 3,
+     "label": "Ally the Goblinkind (a clock of 3; standing +0, neutral)"
+    },
+    {
+     "goal": "ally:Gnomes",
+     "kind": "ally",
+     "target": "Gnomes",
+     "hex": null,
+     "size": 3,
+     "label": "Ally the Gnomes (a clock of 3; standing +0, neutral)"
+    },
+    {
+     "goal": "ally:Orcs",
+     "kind": "ally",
+     "target": "Orcs",
+     "hex": null,
+     "size": 3,
+     "label": "Ally the Orcs (a clock of 3; standing +0, neutral)"
+    },
+    {
+     "goal": "ally:Tieflings",
+     "kind": "ally",
+     "target": "Tieflings",
+     "hex": null,
+     "size": 3,
+     "label": "Ally the Tieflings (a clock of 3; standing +1, friendly)"
+    },
+    {
+     "goal": "ally:Elves",
+     "kind": "ally",
+     "target": "Elves",
+     "hex": null,
+     "size": 3,
+     "label": "Ally the Elves (a clock of 3; standing +0, neutral)"
+    },
+    {
+     "goal": "drop",
+     "kind": "drop",
+     "target": null,
+     "hex": null,
+     "size": null,
+     "label": "Drop ally the Humans (its 0 marks are lost)"
+    }
+   ],
+   "goal": {
+    "goal": "ally:Humans",
+    "text": "ally the Humans",
+    "marks": 0,
+    "size": 3
+   },
+   "actions": [
+    {
+     "action": "--buy works@C5",
+     "label": "Farms at C5",
+     "cost": 300,
+     "affordable": false
+    }
+   ],
+   "realms": [
+    "Elves",
+    "Gnomes",
+    "Goblinkind",
+    "Humans",
+    "Orcs",
+    "Tieflings"
+   ],
+   "funds": {
+    "treasury": 110,
+    "income": 10,
+    "onMorten": "7 SP 5 CP",
+    "text": "110 GP in the treasury; the purse pays before the month's +10 GP income lands"
+   }
+  },
   "fight": null,
   "turn": null
  },
  "live": null,
- "latest": "s0009",
- "lastFight": "s0008",
- "doing": "playing month 1",
+ "latest": "s0012",
+ "lastFight": "s0010",
+ "doing": null,
  "checkIn": null,
  "wake": {
   "on": true

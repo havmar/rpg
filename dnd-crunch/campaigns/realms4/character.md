@@ -2,7 +2,7 @@
 
 <!-- Rendered by tools/table.py from morten.json; edit with `table.py morten`. -->
 
-Human (Medium), male (he/him). Background: Sage. XP 1,125 (level 4 at 2,700). Deaths: 0.
+Human (Medium), male (he/him). Background: Sage. XP 1,175 (level 4 at 2,700). Deaths: 0.
 
 ## Core
 
@@ -12,11 +12,11 @@ Human (Medium), male (he/him). Background: Sage. XP 1,125 (level 4 at 2,700). De
 
 Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +1 CON).
 
-- **HP** 13/20 · **Hit Dice** 0/3 d6
-- **AC** 12 unarmoured · **15 with Mage Armor** (on)
+- **HP** 20/20 · **Hit Dice** 3/3 d6
+- **AC** 12 unarmoured · **15 with Mage Armor**
 - **Speed** 6 sq (9 m) · **Initiative** +4
 - **Proficiency bonus** +2 · **Passive Perception** 13
-- **Carrying capacity** 54 kg (carrying ≈ 33.4 kg)
+- **Carrying capacity** 54 kg (carrying ≈ 33.5 kg)
 
 **Saving throws:** STR −1 · DEX +2 · CON +2 · **INT +5** · **WIS +3** · CHA +0
 
@@ -75,7 +75,7 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 
 ## Features
 
-- **Arcane Recovery** (used): Once per Long Rest, after a Short Rest: regain lost spells totalling up to 2 levels (a cantrip counts as 1).
+- **Arcane Recovery** (ready): Once per Long Rest, after a Short Rest: regain lost spells totalling up to 2 levels (a cantrip counts as 1).
 - **Ritual Adept**: Cast Ritual spells from the spellbook unprepared, +10 minutes, no casting check.
 - **Scholar**: Expertise in Investigation.
 - **Evocation Savant**: Shatter and Scorching Ray copied free.
@@ -105,9 +105,9 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 | Bedroll | 1 | 3.2 |  |
 | Caltrops (bag) | 1 | 0.9 | cover a 1.5 m square |
 | Crowbar | 1 | 2.3 | Advantage on STR checks where leverage helps |
-| Potion of Healing | 0 | 0.2 | Bonus action: regain 2d4+2 HP |
+| Potion of Healing | 1 | 0.2 | Bonus action: regain 2d4+2 HP |
 
-**Coins:** 22 GP 7 SP 5 CP on him · purse in the tower: 37 GP. Month 1: 47 GP left in the tower before the Delve; 10 GP of it spent on incense.
+**Coins:** 7 SP 5 CP on him · purse in the tower: 14 GP. Month 1: 47 GP left in the tower; 10 GP on incense; 27 GP from floor 1 added; 50 GP on a Potion of Healing. Purse 14 GP.
 
 **Familiar:** owl (Fey spirit).
 

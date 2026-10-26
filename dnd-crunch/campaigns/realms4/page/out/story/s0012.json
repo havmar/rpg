@@ -1,0 +1,157 @@
+{
+ "v": 1,
+ "seq": 12,
+ "kind": "domain",
+ "month": 1,
+ "day": 30,
+ "clock": "20:00",
+ "hex": "C5",
+ "where": "the tower (C5)",
+ "title": "Month 1 · the world's turn",
+ "headline": "A quiet first month for the tower. The Orcs rolled a 2, so their break-the-tower clock is still at 0 of 4. The Humans rolled high and are halfway to breaking the Gnomes, and that opens a door for us.",
+ "prose": [],
+ "bullets": [],
+ "trace": [],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 1175,
+  "coins": "7 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": {
+  "plan": [
+   "Morten delved floor 1 under C5: 275 XP under his own wards, with no realm angered.",
+   "The tower declared *ally the Humans*, the good realm next door that also borders the Orcs. A Contact or an Aid fills it; a Delve doesn't."
+  ],
+  "happened": [
+   {
+    "n": null,
+    "who": "tower",
+    "label": null,
+    "verb": null,
+    "text": "*Ally the Humans* is 0 of 3. A Delve moves no clock, so no marks this month.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Orcs",
+    "label": "bad",
+    "verb": "takes people for soldiers",
+    "text": "The Orcs (bad: takes people for soldiers) rolled a 2 for *break the tower* and stay at 0 of 4. Their biggest threat is still four marks away.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Humans",
+    "label": "good",
+    "verb": "fights tyrants",
+    "text": "The Humans (good: fights tyrants) rolled a 6 +1 for *break the Gnomes* and jumped to 2 of 4. They are halfway, and an Aid from us would finish it.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Tieflings",
+    "label": "good",
+    "verb": "fights tyrants",
+    "text": "The Tieflings (good: fights tyrants), also out to break the Gnomes, rolled a 4 and stand at 1 of 4.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Elves",
+    "label": "bad",
+    "verb": "squeezes its own people",
+    "text": "The Elves (bad: squeezes its own people) rolled a 6 and finished *squeeze*, wringing 300 GP from their own hexes. A Contact with them is DC +4 for 3 months, and their new goal is to fortify A5, their seat (0 of 3).",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Goblinkind",
+    "label": "bad",
+    "verb": "takes people for soldiers",
+    "text": "The Goblinkind (bad: takes people for soldiers) rolled a natural 1 on *press the Gnomes*, a setback, so they stay at 0 of 3.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Gnomes",
+    "label": "bad",
+    "verb": "takes people for soldiers",
+    "text": "The Gnomes (bad: takes people for soldiers) also rolled a natural 1 on *press the Goblinkind*: 0 of 3. With three realms aiming at them, they are the map's punching bag.",
+    "from": null,
+    "to": null
+   }
+  ],
+  "elsewhere": "",
+  "tower": [
+   {
+    "what": "Gold",
+    "before": "100 GP",
+    "after": "110 GP (the month's 10 GP income)"
+   },
+   {
+    "what": "Tier",
+    "before": "Hermit (Renown 0)",
+    "after": "Hermit (Renown 0)"
+   },
+   {
+    "what": "Hold",
+    "before": "3 of 3",
+    "after": "3 of 3"
+   },
+   {
+    "what": "Goal",
+    "before": "none",
+    "after": "ally the Humans, 0 of 3"
+   },
+   {
+    "what": "Morten's XP",
+    "before": "900",
+    "after": "1,175 (level 4 at 2,700)"
+   },
+   {
+    "what": "Morten's purse",
+    "before": "47 GP",
+    "after": "14 GP (incense and a Potion of Healing)"
+   }
+  ],
+  "next": {
+   "threats": [
+    "the Orcs' *break the tower* is 4 marks from firing. Each month a 3 or more adds one and a 6 adds two. When it fires it takes a Hold box and half the treasury (55 GP as it stands)."
+   ],
+   "chances": [
+    "an **Aid for the Humans in C3**, the Gnomes' seat (a Low fight: 1 Scout and 2 Guards), finishes their *break the Gnomes* (2 → 4 of 4). It also puts **+2 on our *ally the Humans*** and is worth standing +1. C3 is 2 days away through the Orcs' C4, or 3 days round through the Humans' D4 and D3.",
+    "a Contact with the Humans in D4 or D5 (1 day, DC 10) is a safer +1 on the ally clock.",
+    "the Orcs' Mine in B4, next door, holds 500 GP for a Rob (a Moderate fight: 1 Guard and 2 Toughs). It would cost standing with the Orcs, who already want the tower broken."
+   ],
+   "open": [
+    "room 1.6 (2 Blink Dogs, High, 100 XP) still waits under the tower.",
+    "the purse holds 14 GP and the treasury 110 GP. Works cost 300 GP."
+   ]
+  },
+  "income": [],
+  "log": [
+   "Tower: the goal is ally the Humans, a clock of 3.",
+   "Morten: Delve floor 1 under C5 (the dungeon game; no domain effect).",
+   "Order: Orcs Force 5 (d6 4) · Tieflings Force 4 (d6 6) · Elves Force 4 (d6 2) · Goblinkind Force 3 (d6 3) · Humans Force 3 (d6 1) · Gnomes Force 2 (d6 4).",
+   "The Orcs, break the tower: d6 2 = 2 → nothing: 0 of 4.",
+   "The Tieflings, break the Gnomes: d6 3 +1 (Force 4 over 2) = 4 → one mark: 1 of 4.",
+   "The Elves, squeeze: d6 6 = 6 → two marks: 2 of 2.",
+   "The Elves (bad: squeezes its own people) did squeeze: 300 GP squeezed out, Contact there is DC +4 for 3 months.",
+   "The Elves (bad: squeezes its own people): new goal, fortify A5 (clock 3).",
+   "The Goblinkind, press the Gnomes: d6 1 +1 (Force 3 over 2) = 2 → setback: 0 of 3.",
+   "The Humans, break the Gnomes: d6 6 +1 (Force 3 over 2) = 7 → two marks: 2 of 4.",
+   "The Gnomes, press the Goblinkind: d6 1 −1 (Force 2 under 3) = 0 → setback: 0 of 3."
+  ]
+ },
+ "words": []
+}
