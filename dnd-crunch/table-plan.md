@@ -384,7 +384,7 @@ chat's **Report style** section is rewritten to name them the same way.
 | Dial | Settings | What it changes |
 |---|---|---|
 | **Who moves Morten** | the GM (default) · you | with *you*, the GM stops for Morten's turn each round in a fight and for each choice out of one; with *the GM*, the stop dial decides |
-| **Stop for your word** | never in the month (default: play the month through, stop at the next month's orders) · at each month's orders · before each fight (the foes shown, then Fight / Avoid / Plan) · each round · when something matters (the chat's default: a new room or monster, a real choice, half HP, dying, a death) | where the GM's run ends and what the answer box offers; a steer sent while the GM plays takes effect at the next stop point |
+| **Stop for your word** | never in the month (default: play the month through, stop at the next month's orders) · at each month's orders · before each fight (the foes shown, then Fight / Avoid / Plan) · each round · when something matters (the chat's default: a new room or monster, a real choice, a death) | where the GM's run ends and what the answer box offers; a steer sent while the GM plays takes effect at the next stop point |
 | **Fights** | live, every round (default) · turning points (a beat only at a fizzle, a crit, a kill, a big hit, a death) · summary after (no beats; the card lands whole) · one line (the outcome strip only, the rounds folded) | the live cadence and how much story a fight card gets; the trace is always whole |
 | **The world's turn** | story (default) · full report | whether the section's four parts are the GM's sentences or the script's lines unfolded |
 | **Dice** | key rolls (default) · all · none | which dice the story's sentences carry; the trace keeps every die |
