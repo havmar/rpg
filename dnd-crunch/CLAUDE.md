@@ -330,8 +330,8 @@ it's fastest:
   monster, a real choice such as loot or parley, or a death), then stop and report. Low HP
   is never a stop: Morten plays on and cheeses his way out (the potion, Misty Step, a
   retreat to a chokepoint, Sleep, a Short Rest), and a death is a respawn. When the human
-  sets a goal ("search 10 rooms"), play on to it. Show his choices as **Morten (GM):** lines
-  with one line of reasoning.
+  sets a goal ("search 10 rooms"), new rooms and monsters aren't stops either: play on to
+  the goal or a death. Show his choices as **Morten (GM):** lines with one line of reasoning.
 
 - **AI player mode.** Morten is played by a `general-purpose` subagent following
   `dnd-crunch/agents/player.md`, so the GM's secrets never leak into his decisions. Spawn it
