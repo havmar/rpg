@@ -1,0 +1,86 @@
+{
+ "v": 1,
+ "seq": 6,
+ "kind": "rest",
+ "month": 1,
+ "day": 1,
+ "clock": "10:45",
+ "hex": "C5",
+ "where": "Floor 1 · room 1.2",
+ "title": "Day 1 · a Short Rest in room 1.2",
+ "headline": "Morten takes a Short Rest in the cleared room. Two Hit Dice bring him to 18/20 HP, and Arcane Recovery gives back Magic Missile.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "Why here",
+   "text": "floor 1 has no wandering monsters, and leaving the floor would end the Delve. Resting in the dog's room costs nothing but the hour."
+  },
+  {
+   "label": "Hit Dice",
+   "text": "two spent, 1d6+2 each: 6 and 4 HP. Morten 8 → 18/20 HP. 1 of 3 Hit Dice left."
+  },
+  {
+   "label": "Arcane Recovery",
+   "text": "Magic Missile is back (level 1 of the 2 levels allowed). The feature is used until the Long Rest."
+  },
+  {
+   "label": "Still running",
+   "text": "Mage Armor until 17:10, the lamp until 15:10. Heroic Inspiration and the potion are both spent."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Hit Die 1d6+2: 6 HP.",
+   "who": "morten",
+   "kind": "roll",
+   "dice": [
+    {
+     "expr": "1d6+2",
+     "faces": [
+      4
+     ],
+     "kept": [
+      4
+     ],
+     "mod": 2,
+     "total": 6,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Hit Die 1d6+2: 4 HP.",
+   "who": "morten",
+   "kind": "roll",
+   "dice": [
+    {
+     "expr": "1d6+2",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 2,
+     "total": 4,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 18,
+  "maxHp": 20,
+  "xp": 1025,
+  "coins": "12 GP 7 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}

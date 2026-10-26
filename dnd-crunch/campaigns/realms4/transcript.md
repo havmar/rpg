@@ -95,3 +95,62 @@ The tower holds one hex, the level-1 desert at C5, in the south-east corner of t
 *After: 20/20 HP · XP 900 · 7 SP 5 CP · lost: nothing*
 
 ---
+
+## Room 1.2 · Blink Dog (CR 1/4) · Moderate, 50 XP · cleared on 2 HP
+
+*s0005 · fight · Month 1 · Day 1 · 09:40 · C5 · Floor 1 · room 1.2*
+
+**One Blink Dog nearly ended the Delve in its second room. It teleported straight onto Morten, shrugged off Sleep, and a natural 20 bite left him on 2 HP before a potion and Thunderwave finished it.**
+
+- **The room:** 8×10 sq (12×15 m) with a 3 m ledge along the east wall. The owl spotted the dog, and the dog spotted the owl.
+- **What went wrong:** the doorway trick doesn't work on a dog that teleports. It blinked 8 sq straight to Morten's side and bit before he could act. Shield turned the first bite (16 into a miss at AC 20). Sleep then held on a natural 20, but the dog made its save (14 vs DC 13), so his first action did nothing.
+- **The dice:** Magic Missile hit for 12 force dmg, but the second cast fizzled (10 vs DC 11), so it's lost until the Long Rest. Then the dog rolled a natural 20 for 9 dmg, which took Morten from 11 to **2 HP**.
+- **How it ended:** the Potion of Healing as a bonus action (+6, to 8 HP), then Thunderwave in the same turn. The dog failed its CON save on a 3, and 10 thunder dmg dropped it from exactly 10 HP to 0.
+- **Result:** 8/20 HP, potion gone, Magic Missile lost. XP 975 → 1,025. +5 GP.
+
+**Fight:** 1× Blink Dog (CR 1/4, AC 13, 22 HP) · Moderate, 50 XP · cleared (the one that hurt)
+**Result:** XP 975 → 1,025 · +5 GP · lost: Magic Missile · potion used
+
+- HP track, Morten: 20 → 20 → 16 → 11 → 8 (of 20 HP)
+- HP track, Blink Dog: 22 → 22 → 10 → 10 → 0 (of 22 HP)
+
+**Trace**
+
+- R1 · GM: Initiative: Morten 10, the Blink Dog 10; the tie goes to the dog's DEX. (d20 6 +4 = 10; d20 7 +3 = 10)
+- R1 · Foe: The dog teleports 8 sq to Morten's side and bites: 16 vs AC 15. (d20 11 +5 = 16 vs AC 15, HIT)
+- R1 · Morten: Shield (reaction) holds (18 vs DC 11): AC 20, and the bite misses. (d20 13 +5 = 18 vs DC 11, CAST)
+- R1 · Morten: Sleep holds on a natural 20 (25 vs DC 11). (d20 20 +5 = 25 vs DC 11, NAT 20, CAST)
+- R1 · Foe: WIS save 14 vs DC 13: the dog stays awake. (d20 13 +1 = 14 vs DC 13, SAVE)
+- R2 · Foe: Bite 24 vs AC 15, hit for 4 piercing dmg. Morten 20 → 16 HP. (d20 19 +5 = 24 vs AC 15, HIT; d4 1 +3 = 4)
+- R2 · Morten: Magic Missile holds (24 vs DC 11): 3 darts, 12 force dmg. Blink Dog 22 → 10 HP. (d20 19 +5 = 24 vs DC 11, CAST; 3d4: 4+3+2 +3 = 12)
+- R3 · Foe: Bite 21 vs AC 15 (Shield wouldn't turn it), 5 piercing dmg. Morten 16 → 11 HP. (d20 16 +5 = 21 vs AC 15, HIT; d4 2 +3 = 5)
+- R3 · Morten: Magic Missile fizzles (10 vs DC 11): lost until the Long Rest. (d20 5 +5 = 10 vs DC 11, FIZZLE)
+- R4 · Foe: Bite on a natural 20 (25), a crit: 2d4+3 = 9 piercing dmg. Morten 11 → 2 HP. (d20 20 +5 = 25 vs AC 15, NAT 20, HIT; 2d4: 2+4 +3 = 9)
+- R4 · Morten: Potion of Healing (bonus action): +6 HP. Morten 2 → 8 HP. (2d4: 1+3 +2 = 6)
+- R4 · Morten: Thunderwave holds (19 vs DC 11). (d20 14 +5 = 19 vs DC 11, CAST)
+- R4 · Foe: CON save 4 vs DC 13, fail. (d20 3 +1 = 4 vs DC 13, FAIL)
+- R4 · Morten: 10 thunder dmg. Blink Dog 10 → 0 HP, dead. (2d8: 3+7 = 10)
+
+*After: 20/20 HP · XP 975 · 7 GP 7 SP 5 CP · lost: nothing*
+
+---
+
+## Day 1 · a Short Rest in room 1.2
+
+*s0006 · rest · Month 1 · Day 1 · 10:45 · C5 · Floor 1 · room 1.2*
+
+**Morten takes a Short Rest in the cleared room. Two Hit Dice bring him to 18/20 HP, and Arcane Recovery gives back Magic Missile.**
+
+- **Why here:** floor 1 has no wandering monsters, and leaving the floor would end the Delve. Resting in the dog's room costs nothing but the hour.
+- **Hit Dice:** two spent, 1d6+2 each: 6 and 4 HP. Morten 8 → 18/20 HP. 1 of 3 Hit Dice left.
+- **Arcane Recovery:** Magic Missile is back (level 1 of the 2 levels allowed). The feature is used until the Long Rest.
+- **Still running:** Mage Armor until 17:10, the lamp until 15:10. Heroic Inspiration and the potion are both spent.
+
+**Trace**
+
+- Morten: Hit Die 1d6+2: 6 HP. (d6 4 +2 = 6)
+- Morten: Hit Die 1d6+2: 4 HP. (d6 2 +2 = 4)
+
+*After: 18/20 HP · XP 1,025 · 12 GP 7 SP 5 CP · lost: nothing*
+
+---

@@ -9,7 +9,7 @@ XP needed for level 2: 300 · floor total: 375 · 6 encounters
 | Room | Encounter | CR | XP | Difficulty | Room size | Feature | Coins |
 |---|---|---|---|---|---|---|---|
 | 1.1 ✓ | 3× Mastiff | 1/8 | 75 | Moderate | 6×8 sq (9×12 m) | knee-deep water (difficult terrain) | 7 GP |
-| 1.2 | 1× Blink Dog | 1/4 | 50 | Moderate | 8×10 sq (12×15 m) | a 3 m ledge along one wall (elevation) | 5 GP |
+| 1.2 ✓ | 1× Blink Dog | 1/4 | 50 | Moderate | 8×10 sq (12×15 m) | a 3 m ledge along one wall (elevation) | 5 GP |
 | 1.3 | 1× Boar | 1/4 | 50 | Low | 6×6 sq (9×9 m) | statues (half cover) | 5 GP |
 | 1.4 | 1× Giant Owl | 1/4 | 50 | Low | 4×12 sq (6×18 m) | a 3 m ledge along one wall (elevation) | 5 GP |
 | 1.5 | 1× Sprite | 1/4 | 50 | Moderate | 8×10 sq (12×15 m) | a narrow 1.5 m entrance (chokepoint) | 5 GP |

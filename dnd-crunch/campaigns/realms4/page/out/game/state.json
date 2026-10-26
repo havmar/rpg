@@ -2,18 +2,18 @@
  "v": 1,
  "campaign": "realms4",
  "status": "playing",
- "lastSeq": 4,
+ "lastSeq": 6,
  "lastMove": 0,
  "month": 1,
  "day": 1,
- "clock": "09:30",
+ "clock": "10:45",
  "hex": "C5",
- "where": "Floor 1 · room 1.1",
+ "where": "Floor 1 · room 1.2",
  "level": 3,
- "xp": 975,
+ "xp": 1025,
  "deaths": 0,
  "hud": {
-  "hp": 20,
+  "hp": 18,
   "maxHp": 20,
   "ac": 15,
   "acArmor": 15,
@@ -25,7 +25,7 @@
   "reaction": true,
   "inspiration": false,
   "freeArmor": false,
-  "coins": "7 GP 7 SP 5 CP",
+  "coins": "12 GP 7 SP 5 CP",
   "lost": []
  },
  "table": {
@@ -50,8 +50,8 @@
   "turn": null
  },
  "live": null,
- "latest": "s0004",
- "lastFight": "s0004",
+ "latest": "s0006",
+ "lastFight": "s0005",
  "doing": "playing month 1",
  "checkIn": null,
  "wake": {
