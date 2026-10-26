@@ -1,10 +1,11 @@
 # Realms v3: goal clocks on a hex map (a plan)
 
-**Status: planned 2026-10-26, not built.** This is the design record for the third
-overworld, written to be implemented as `realms-v3.md` (the rules) and
-`tools/realms3.py` (the engine). Realms v2 (`realms.md`, `tools/realms.py`) keeps running
-the `realms3` campaign until that campaign ends; v3 starts with a new campaign. Where the
-build ends up differing from this plan, the rules file wins and section 17 records why.
+**Status: implemented 2026-10-26.** The rules are `realms-v3.md` and the engine
+`tools/realms3.py` (tests in `tools/test_realms3.py`); the table plays it (`tools/table.py`,
+the Realm tab, a v3 fixture in `web/dev/fixture-v3/`). Realms v2 (`realms.md`,
+`tools/realms.py`) keeps running the `realms2` and `realms3` campaigns. Where the build
+differs from this plan, `realms-v3.md` wins; section 20 lists the differences and the sim's
+numbers are in the rules' sim section. This document stays as the design record.
 
 ## 1. Why a third version
 
@@ -495,3 +496,51 @@ Six lines, and every number on them is a thing the map shows.
   *break* between neighbours, resolved by one roll each. There is no battle between two
   realms' dice, by design: two sentences a month about the neighbours is the right amount
   of world.
+
+## 20. What the build decided (2026-10-26)
+
+Built by four agents from this plan (engine, rules, the table, a reconciliation) and
+reviewed by a fifth playing four months by hand. The readings taken where the plan was
+silent, and the places the build moved away from it:
+
+- **Court the tower reaches ally.** A good ruler courting twice becomes an ally on its own,
+  and a running *ally REALM* goal for it fires. Deeds by the tower (Contact, Aid, Give)
+  still cap at +1; the tower's *ally* goal is its own road to +2. Court needs the tower at
+  Lord or higher (section 7's text), not Warden.
+- **Allies never aim a goal at the tower,** a *take* of a tower hex included.
+- **The tower has no Force:** no ±1 for or against it on goal rolls; for *take back* it
+  counts as 0.
+- **Aid's hex:** for *take* and *fortify*, the hex named; for *raid*, *press* and *break*,
+  the target's seat; for the rest, the aided realm's seat. A goal aimed at the tower can't
+  be aided.
+- **Which Strikes mark which tower goal:** *take HEX* only from a Strike in HEX; *topple*
+  from its seat (+2) and its garrison or works (+1); *ally* from none. Rob marks nothing
+  and its gold goes to the tower's treasury at the world's turn. Give while the tower's
+  goal is *topple REALM* goes to the dissident (+1 on the clock, no roll bonus).
+- **`--goal` with a different goal replaces the current one and loses its marks;** the
+  same goal keeps it.
+- **Break the tower at Hold 0** takes a hex of the tower's and still half its treasury.
+- **Goals time out after 12 months, not 6:** a *take* at −1 or −2 needs 8–12 months, and
+  at 6 realms dropped and re-picked the same goal at 0 marks. The Conqueror prefers an
+  unguarded border hex. A Liberator's *break* needs a target at Force 2 or more.
+- **Three rules the sim asked for.** *Menace:* a bad neighbour of the tower at standing 0
+  weighs *break the tower* on a d6 of 6 when it picks a goal, at any tier (a passive tower
+  was never threatened: standing never drops by itself). *Rest:* a realm whose *break the
+  tower* fired doesn't weigh it again for 12 months (without it the −1 after a fire chained
+  the wars). *Rich:* a realm with 1,000 GP or more whose tag's goal has no price picks
+  *raise* first (at Force 5, *fortify*), alternating with its tag's goal.
+- **The Master's power** is a `turn` option, `--set REALM=GOAL`, one per ally a month; it
+  replaces the ally's goal at 0 marks.
+- **A landless realm** keeps its ruler and treasury, gets a seat back with its first hex,
+  and picks *take back* before anything.
+- **The world's dice don't depend on the orders:** the realms' d6s come from a stream
+  seeded by the seed and the month, so the same month rolls the same whatever Morten did.
+- **Sim against section 16** (passive, seeds 1–10, 24 months): about 1.4 goals fire a
+  month, no realm line a year unchanged, Stewards hold 12 of 12 seats, no realm landless,
+  none to Force 5; the tower at rest sees *break the tower* picked 2.3 and fired 1.6 times
+  a world and loses 1.5 Hold boxes, never a hex. Missed: hexes change hands 1.6 a world
+  (0 in a world with no Conqueror; 4–5 with one), and every world still has a realm
+  sitting on 2,000 GP for a year, since nothing drains a treasury but goals with a price
+  (the next lever, if wanted, is an army's pay: Force × 50 GP a month). Scripted (Strike
+  the weakest neighbour's garrison, then its seat): the first hex in month 3; by three
+  years 2 worlds in 10 reach Master and 8 Power, by conquest alone.
