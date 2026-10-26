@@ -169,3 +169,53 @@ Say what Morten does and I'll resume.
 - Dretch Rend 1d20+3 = 17+3 = 20 (hit); 1d6+1 = 6+1 = 7 (Morten 0 HP).
 - Death save 1d20 = 13 (success). Dretch Rend (adv) [18, 19] 19+3 = 22, crit (two failures). Death save 1d20 = 8 (third failure, dead).
 - Housekeeping: 103 1d6 = 6, 104 1d6 = 5 (no restock). Event 1d6 = 6 → 1d12 = 9 (a complaint).
+
+## Human
+
+> go on please. a question: Housekeeping covers the 10 GP damages on the spot, what does that mean?
+
+## GM
+
+(The question: noise check 2 in `hotel.md` section 3. Housekeeping catches him mid-search; he pays the damages, 10 GP × floor, on the spot, or Staff standing −1. He paid, so Staff stayed 0. Ruling: paying on the spot only cancels the −1; the +1 deed is a damage bill paid at the desk.)
+
+**Day 2 · 01:31 → 10:51 · Bricks 4 · Staff −1 · Residents 0 · Ark 0**
+
+**Room 204 searched (7 of 10), then Morten died at 201's door to two Giant Wolf Spiders after four casting checks in a row failed.**
+
+### Room 204 · empty · searched, no brick
+- Prepared Web in place of Misty Step. Free Mage Armor (AC 15 until 09:31). Up to floor 2.
+- Search 01:45–02:45. Before tearing the room apart he cast Web across the narrow entrance: 9 vs DC 12, fizzle; Heroic Inspiration reroll: **natural 1**, mishap 8 (Slipped grip, out of combat: harmless). **Web lost.**
+- Noise **1**: a Giant Wolf Spider from 201, reaction 2d6 −3 = 1, attacks. (CR 1/4, AC 13, HP 11, speed 8 sq (12 m), climb, Bite +5 for 1d4+3 piercing plus 2d4 poison.) Stealth 14 beat his passive 13: surprised, but initiative with Disadvantage still came up 22 › 6.
+- **Round 1:** Scorching Ray (cast 22): rays 6 + 8 fire. **Dead.** 50 XP. Morten untouched.
+- Brick 4 (none). Luggage: 10 GP and a horseshoe key ring (2 GP). The room's 100 XP was the horse's. XP 1,375 → **1,425**.
+
+### Room 201 · 2 Giant Wolf Spiders (CR 1/4 each) · Morten died
+- Lamp lit, standing in the corridor diagonal to the door. Knock: reaction 2d6 −2 = 2, attacks. Initiative: Morten 14 › Spiders 4 (natural 1).
+- **Round 1:** Readied Sleep: 10 vs DC 11, **fizzle, Sleep lost.** Spider A came out and missed (natural 1). Spider B took the doorway and bit: 24, 5 piercing + 5 poison → **10/20 HP**.
+- **Round 2:** Scorching Ray on B: 9 vs DC 12, **fizzle, lost.** Spider A bit, 18: Shield, **natural 1**, lost, mishap 8 (Slipped grip: staff and lamp dropped). 6 + 6 = 12 dmg → **0 HP.** Spider B on the unconscious wizard: 23, crit, two failures (16 dmg, under the 20 for instant death).
+- **Round 3:** death save 19 (success). Spider A: 20, crit, two failures. **Dead** at 02:51.
+
+### Respawn
+- Room 101, **Day 2 · 10:51**, full HP and spells, Heroic Inspiration back, counted as a Long Rest. **Lost: 10 GP.** Kept: bricks, gear (the Hotel brought the staff and lamp back), the key ring, both key tags. Deaths: 2.
+- Housekeeping: 103 (2), 104 (5), no; **204 (1): restocked** with 4 Stirges (CR 1/8 each). It stays searched. Event 1d6 = 5: none.
+
+**Where it stands**
+- Morten 20/20 HP, nothing lost, 0 coins, XP 1,425, Deaths 2. Key tags: Warhorse and Giant Wolf Spider (the Ark pays 12 GP 5 SP and 10 GP).
+- Rooms searched: 101–105, 203, 204 (**7 of 10**). Left on floor 2: 201 (2 spiders, Hostile), 205 (big birds), 202 (the Ark).
+
+## Roll log, Day 2 01:31 → 10:51 (roll.py, in order)
+
+- 204 search: noise 1d6 = 1; brick 1d6 = 4; wandering 4, 3.
+- Web cast 1d20+5 = 4+5 = 9 (fizzle). Noise guest 1d4 = 1 (201); reaction 2d6−3 = 1+3−3 = 1. Inspiration reroll 1d20+5 = 1+5 = 6 (natural 1); mishap 1d12 = 8.
+- Spider Stealth 1d20+7 = 7+7 = 14 (vs passive 13: surprised).
+- Initiative: Morten 1d20+4 (dis) [20, 18] keep 18 + 4 = 22; spider 1d20+3 = 3+3 = 6.
+- Scorching Ray cast 1d20+5 = 17+5 = 22; 2d6 = 2+4 = 6. Rays 2, 3: 8+5 = 13 (hit), 11+5 = 16 (hit). Ray 2 2d6 = 5+3 = 8 (spider dead).
+- 201 reaction 2d6−2 = 3+1−2 = 2.
+- Initiative: Morten 1d20+4 = 10+4 = 14; spiders 1d20+3 = 1+3 = 4.
+- Sleep (readied) cast 1d20+5 = 5+5 = 10 (fizzle).
+- Spider A bite 1d20+5 = 1+5 = 6 (natural 1, miss). Spider B bite 1d20+5 = 19+5 = 24 (hit); 1d4+3 = 2+3 = 5; 2d4 = 1+4 = 5 (Morten 10/20).
+- Scorching Ray cast 1d20+5 = 4+5 = 9 (fizzle).
+- Spider A bite 1d20+5 = 13+5 = 18. Shield 1d20+5 = 1+5 = 6 (natural 1); mishap 1d12 = 8. Damage 1d4+3 = 3+3 = 6; 2d4 = 3+3 = 6 (Morten 0 HP).
+- Spider B bite (adv) [18, 7] 18+5 = 23, crit: 2d4+3 = 3+4+3 = 10; 4d4 = 1+1+3+1 = 6 (two failures).
+- Death save 1d20 = 19. Spider A bite (adv) [15, 11] 15+5 = 20, crit (two failures, dead).
+- Housekeeping: 103 1d6 = 2, 104 1d6 = 5, 204 1d6 = 1 (restock). Seed 1d100 = 77 → 4× Stirge. Event 1d6 = 5 (none).
