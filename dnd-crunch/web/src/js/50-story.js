@@ -43,8 +43,9 @@
   const CHOICES = [['fight', 'Fight it', 'fight'], ['avoid', 'Avoid it', 'boots'], ['plan', 'Plan…', 'spark']];
   const CHOICE_WORD = { fight: 'Fight it', avoid: 'Avoid it', plan: 'Plan' };
   const OUTCOME = { cleared: 'good', died: 'bad', fled: 'warn', bypassed: 'muted', going: 'brass' };
-  const MISSION_ICON = { delve: 'door', strike: 'sword', rob: 'coins', contact: 'speech' };
+  const MISSION_ICON = { delve: 'door', strike: 'sword', rob: 'coins', contact: 'speech', aid: 'hand' };
   const NEAR_HEXES = 6;
+  const NEAR_GOALS = 5;   // v3: the tower's goal choices shown before "all N goals"
 
   // ---------- the panel's own state (survives re-renders) ----------
   let root = null;
@@ -68,6 +69,7 @@
   let picks = null;
   let picksSig = '';
   let allHexes = false;
+  let allGoals = false;
   let lastMode = '';
   let revise = ''; // the id of the sent move the player chose to change (the form shows again)
   // the box's answer to the question showing now: {sig, kind, id} (id null while the write is
@@ -330,7 +332,13 @@
         const mi = m.mission && form ? form.missions.find((x) => x.type === m.mission.type && x.target === m.mission.target) : null;
         const ac = m.action && form ? form.actions.find((x) => x.action === m.action) : null;
         if (m.mission) bits.push(mi ? mi.label : `${m.mission.type} ${m.mission.target}`);
-        bits.push(m.action ? `the tower: ${ac ? ac.label : m.action.replace(/^(\w+):([^@]*)(?:@(.+))?$/, (x, v, k, h) => `${v} ${k}${h ? ` in ${h}` : ''}`)}` : 'the tower saves');
+        if (m.actions !== null) {  // Realms v3: the goal and the purse's options
+          if (m.goal) {
+            const g = form ? form.goals.find((x) => x.goal === m.goal) : null;
+            bits.push(`the goal: ${g ? g.label : m.goal.replace(':', ' ')}`);
+          }
+          bits.push(m.actions.length ? `the purse: ${m.actions.map((a) => { const f = form ? form.actions.find((x) => x.action === a) : null; return f ? f.label : a.replace(/^--/, ''); }).join(', ')}` : 'the purse saves');
+        } else bits.push(m.action ? `the tower: ${ac ? ac.label : m.action.replace(/^(\w+):([^@]*)(?:@(.+))?$/, (x, v, k, h) => `${v} ${k}${h ? ` in ${h}` : ''}`)}` : 'the tower saves');
         if (m.give) bits.push(`give ${fmt.gp(m.give.gp)} to the ${m.give.realm}`);
         return `Orders: ${bits.join(' · ')}${m.plan ? `. ${m.plan}` : ''}`;
       }
@@ -818,9 +826,10 @@
     if (picks && sig === picksSig) return;
     picksSig = sig;
     allHexes = false;
+    allGoals = false;
     const hexes = a && a.orders ? a.orders.hexes : [];
     const here = st && hexes.find((h) => h.id === st.hex);
-    picks = { travel: here ? here.id : hexes.length ? hexes[0].id : null, mission: null, action: null, give: null, gp: '', choice: 'fight' };
+    picks = { travel: here ? here.id : hexes.length ? hexes[0].id : null, mission: null, action: null, actions: [], goal: null, give: null, gp: '', choice: 'fight' };
   }
 
   function holderOf(view, id) {
@@ -836,8 +845,9 @@
   function kindGlyph(view, label) {
     const kinds = view.realm ? view.realm.kinds : {};
     for (const k of Object.keys(kinds)) if (label.toLowerCase().includes(k.toLowerCase()) && kinds[k].glyph) return kinds[k].glyph;
-    return /raise/i.test(label) ? 'spark' : /repair/i.test(label) ? 'heart' : '';
+    return /raise/i.test(label) ? 'spark' : /repair|mend/i.test(label) ? 'heart' : /^back/i.test(label) ? 'hand' : /^hinder/i.test(label) ? 'off' : /^set/i.test(label) ? 'flag' : '';
   }
+  const GOAL_ICON = { take: 'hex', ally: 'hand', topple: 'crown', drop: 'off' };
 
   function missionsFor(o, hex) {
     const anyHex = o.missions.some((m) => m.hex);
@@ -870,11 +880,28 @@
       }).join('')
       + (ms.length ? '' : '<span class="muted small">nothing to do there but travel</span>')
       + '</div></div>');
-    // the tower's action
-    const gold = treasury(view);
+    const v3 = o.version === 3;
+    // v3: the tower's goal (kept, a new one, or dropped)
+    if (v3) {
+      const near = o.goals.filter((g, i) => i < NEAR_GOALS || g.goal === picks.goal || g.kind === 'drop');
+      const shownGoals = allGoals ? o.goals : near;
+      const keep = o.goal
+        ? `keep <i>${esc(o.goal.text)}</i> <small>${esc(`${o.goal.marks} of ${o.goal.size !== null ? o.goal.size : '?'} marks`)}</small>`
+        : 'none <small>no goal yet</small>';
+      rows.push(`<div class="row" data-row="goal"><span class="label">The tower's goal</span><div class="pick">`
+        + `<button type="button" data-act="pick" data-f="goal" data-v=""${pressed(picks.goal === null)}>${icon('flag')}<span>${keep}</span></button>`
+        + shownGoals.map((g) => `<button type="button" data-act="pick" data-f="goal" data-v="${esc(g.goal)}"${pressed(picks.goal === g.goal)}>${icon(GOAL_ICON[g.kind] || 'flag')}<span>${esc(g.label)}</span></button>`).join('')
+        + (o.goals.length > shownGoals.length ? `<button type="button" data-act="all-goals">${icon('more')}<span>all ${esc(o.goals.length)} goals <small>every hex, ally and topple</small></span></button>` : '')
+        + '</div>'
+        + (o.goal ? '<p class="muted small">A new goal drops the old one and loses its marks.</p>' : '')
+        + '</div>');
+    }
+    // the tower's action (v3: the purse, several at once)
+    const gold = o.funds && o.funds.treasury !== null ? o.funds.treasury : treasury(view);
+    const isPicked = (i) => (v3 ? picks.actions.includes(i) : picks.action === i);
     const actBtn = (a, i, ok) => {
       const g = kindGlyph(view, a.label);
-      return `<button type="button" data-act="pick" data-f="action" data-v="${i}"${pressed(picks.action === i)}${ok ? '' : ' disabled title="the tower cannot afford it"'}>${g ? icon(g) : ''}<span>${esc(a.label)}${a.cost !== null ? ` <small>${esc(fmt.gp(a.cost))}</small>` : ''}</span></button>`;
+      return `<button type="button" data-act="pick" data-f="action" data-v="${i}"${pressed(isPicked(i))}${ok ? '' : ' disabled title="the tower cannot afford it"'}>${g ? icon(g) : ''}<span>${esc(a.label)}${a.cost !== null && a.cost > 0 ? ` <small>${esc(fmt.gp(a.cost))}</small>` : ''}</span></button>`;
     };
     const can = [];
     const cannot = [];
@@ -883,8 +910,9 @@
       (ok ? can : cannot).push(actBtn(a, i, ok));
     });
     const least = o.actions.filter((a, i) => a.cost !== null).reduce((m, a) => (m === null || a.cost < m ? a.cost : m), null);
-    rows.push(`<div class="row" data-row="action"><span class="label">The tower's action${gold !== null ? ` <small class="muted">· ${esc(fmt.gp(gold))} in the treasury</small>` : ''}</span><div class="pick">`
-      + `<button type="button" data-act="pick" data-f="action" data-v=""${pressed(picks.action === null)}>save <small>no action</small></button>`
+    const spent = v3 ? picks.actions.reduce((s, i) => s + ((o.actions[i] && o.actions[i].cost) || 0), 0) : 0;
+    rows.push(`<div class="row" data-row="action"><span class="label">${v3 ? 'The purse' : "The tower's action"}${gold !== null ? ` <small class="muted">· ${esc(fmt.gp(gold))} in the treasury${spent ? `, ${esc(fmt.gp(spent))} picked` : ''}</small>` : ''}</span><div class="pick">`
+      + `<button type="button" data-act="pick" data-f="action" data-v=""${pressed(v3 ? !picks.actions.length : picks.action === null)}>save <small>no action</small></button>`
       + can.join('')
       + '</div>'
       + (cannot.length ? foldHtml('orders-cannot', `${fmt.plural(cannot.length, 'action')} the tower cannot afford yet${least !== null ? ` (from ${fmt.gp(least)})` : ''}`, `<div class="pick">${cannot.join('')}</div>`) : '')
@@ -1109,13 +1137,25 @@
       const m = picks.mission !== null ? o.missions[picks.mission] : null;
       const a = picks.action !== null ? o.actions[picks.action] : null;
       const gp = parseInt(picks.gp, 10);
-      sendAnswer(view, base, 'orders', {
-        travel: picks.travel,
-        mission: m ? { type: m.type, target: m.target } : null,
-        action: a ? a.action : null,
-        give: picks.give && Number.isFinite(gp) && gp > 0 ? { realm: picks.give, gp } : null,
-        plan: text,
-      });
+      const give = picks.give && Number.isFinite(gp) && gp > 0 ? { realm: picks.give, gp } : null;
+      if (o.version === 3) {
+        sendAnswer(view, base, 'orders', {
+          travel: picks.travel,
+          mission: m ? { type: m.type, target: m.target } : null,
+          goal: picks.goal,
+          actions: picks.actions.map((i) => o.actions[i]).filter(Boolean).map((x) => x.action),
+          give,
+          plan: text,
+        });
+      } else {
+        sendAnswer(view, base, 'orders', {
+          travel: picks.travel,
+          mission: m ? { type: m.type, target: m.target } : null,
+          action: a ? a.action : null,
+          give,
+          plan: text,
+        });
+      }
     } else if (mode === 'fight') sendAnswer(view, base, 'fight', { choice: picks.choice, text });
     else if (mode === 'turn') {
       if (text) sendAnswer(view, base, 'turn', { text });
@@ -1185,13 +1225,25 @@
             const m = view.state.awaiting.orders.missions[picks.mission];
             if (m && m.hex && m.hex !== v) picks.mission = null;
           }
+        } else if (f === 'action' && view && view.state && view.state.awaiting.orders && view.state.awaiting.orders.version === 3) {
+          // v3: the purse takes several options; "save" clears them
+          if (v === '') picks.actions = [];
+          else {
+            const i = parseInt(v, 10);
+            picks.actions = picks.actions.includes(i) ? picks.actions.filter((x) => x !== i) : picks.actions.concat(i);
+          }
         } else if (f === 'mission' || f === 'action') picks[f] = v === '' ? null : parseInt(v, 10);
+        else if (f === 'goal') picks.goal = v || null;
         else if (f === 'give') picks.give = v || null;
         T.app.render();
         break;
       }
       case 'all-hexes':
         allHexes = true;
+        T.app.render();
+        break;
+      case 'all-goals':
+        allGoals = true;
         T.app.render();
         break;
       case 'choice':

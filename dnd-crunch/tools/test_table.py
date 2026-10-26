@@ -30,6 +30,7 @@ import table as T  # noqa: E402
 GAME = HERE.parent
 REALMS3 = GAME / "campaigns" / "realms3"
 FIXTURE = GAME / "web" / "dev" / "fixture-campaign"
+FIXTURE3 = GAME / "web" / "dev" / "fixture-campaign-v3"
 START = FIXTURE / "play" / "morten-start.json"
 FOES = json.loads((FIXTURE / "play" / "foes.json").read_text())
 
@@ -56,6 +57,7 @@ REALM = {"v": I, "hexes": L, "rivers": L, "factions": L, "morten": D, "events": 
          "floors": D, "days": D, "eventsWords": L, "hexNames": D}
 KIND = {"glyph": S, "type": S, "tier": I, "what": S, "cost": I, "hp": I, "hits": S,
         "counter": S, "upkeep": I, "special": S}
+KIND3 = {"glyph": S, "type": S, "what": S, "tierWords": S, "fight": S, "effect": S}
 ROOM = {"n": S, "monster": (S, N), "cr": (S, N), "state": S}
 SECTION = {"v": I, "seq": I, "kind": S, "month": I, "day": I, "clock": (S, N), "hex": (S, N),
            "where": (S, N), "title": S, "headline": S, "prose": L, "bullets": L, "trace": L,
@@ -707,7 +709,7 @@ class Fixture(unittest.TestCase):
     """The exported fixture (web/dev/fixture, fixture-live) holds the README's shapes."""
 
     def test_fixture_shapes(self):
-        for name in ("fixture", "fixture-live"):
+        for name in ("fixture", "fixture-live", "fixture-v3"):
             root = GAME / "web" / "dev" / name
             if not (root / "game" / "state.json").exists():
                 self.skipTest(f"{name} not built")
@@ -720,7 +722,10 @@ class Fixture(unittest.TestCase):
             secs = sorted((json.loads(p.read_text()) for p in (root / "story").glob("*.json")),
                           key=lambda x: x["seq"])
             kinds = {x["kind"] for x in secs}
-            self.assertTrue({"opening", "aside", "orders", "travel", "fight", "rest"} <= kinds, kinds)
+            if name == "fixture-v3":
+                self.assertTrue({"opening", "orders", "delve", "fight", "rest", "domain"} <= kinds, kinds)
+            else:
+                self.assertTrue({"opening", "aside", "orders", "travel", "fight", "rest"} <= kinds, kinds)
             for x in secs:
                 c.shape(x, SECTION, f"{name} {x['seq']}")
                 for ln in x["trace"]:
@@ -738,7 +743,14 @@ class Fixture(unittest.TestCase):
                 c.shape(b, BEAT, "beat")
             ids = [st.get("latest")] + [f"s{x['seq']:04d}" for x in secs]
             self.assertEqual(st["latest"], ids[-1])
-            if name == "fixture":
+            if name == "fixture-v3":
+                self.assertEqual((st["status"], st["awaiting"]["kind"], st["month"]), ("awaiting", "orders", 2))
+                self.assertEqual(st["awaiting"]["orders"]["version"], 3)
+                r = json.loads((root / "game" / "realm.json").read_text())
+                self.assertEqual(r["version"], 3)
+                for k in r["kinds"].values():
+                    c.shape(k, KIND3, "kind")
+            elif name == "fixture":
                 self.assertEqual((st["status"], st["awaiting"]["kind"], st["month"]), ("awaiting", "orders", 3))
                 self.assertIn("domain", kinds)
                 self.assertEqual(beats, [])
@@ -755,6 +767,10 @@ class Secrecy(Case):
         args = [str(FIXTURE)] + [a for d in docs for a in ("--docs", d)]
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(check_table.main(args), 0)
+        if (FIXTURE3 / "page.json").exists():
+            args = [str(FIXTURE3), "--docs", str(GAME / "web" / "dev" / "fixture-v3")]
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(check_table.main(args), 0)
 
     def planted(self, mutate):
         self.tearDown()
@@ -839,6 +855,206 @@ class Secrecy(Case):
             for ln in hidden:  # "- Gnomes (…): Move Assassins a15 B1 → C2 (goal: …)": the deed itself
                 deed = ln.split("): ", 1)[-1].split(" (goal")[0]
                 self.assertNotIn(deed, whole, f"seed {seed}: a --gm line reached the store: {ln}")
+
+
+class RealmsV3(Case):
+    """A Realms v3 campaign (tools/realms3.py) at the table: the projection, the orders form
+    and the orders move, the tower line, the domain section, the secrecy check."""
+
+    def setUp(self):
+        super().setUp()
+        for f in ("map.json", "realms.json", "gm-secrets.md", "rules.md", "world.md"):
+            (self.d / f).unlink()
+        subprocess.run([sys.executable, str(HERE / "realms3.py"), "new", "--seed", "7", "--campaign",
+                        str(self.d), "--level", "3"], capture_output=True, check=True)
+        shutil.copy(GAME / "templates" / "realms-rules.md", self.d / "rules.md")
+        (self.d / "morten.json").unlink()
+
+    def new(self):
+        self.t("new", self.d, "--sheet", "fresh", "--hex", "B5", "--where", "the tower (B5)")
+        self.t("sent", self.d)
+
+    def turn(self, *args):
+        subprocess.run([sys.executable, str(HERE / "realms3.py"), "turn", "--campaign", str(self.d), *args],
+                       capture_output=True, check=True, text=True)
+
+    def test_realm_projection(self):
+        self.new()
+        r = self.doc("game", "realm")
+        self.shape(r, REALM, "game/realm")
+        self.assertEqual(r["version"], 3)
+        self.assertEqual(set(r["words"]) & {"force", "standing", "clock", "hold", "renown", "tier", "site"},
+                         {"force", "standing", "clock", "hold", "renown", "tier", "site"})
+        self.assertFalse({"cunning", "wealth", "regime", "piece"} & set(r["words"]))
+        self.assertEqual(set(r["kinds"]), {"Seat", "Garrison", "Farms", "Mine", "Caravans", "Walls"})
+        for k in r["kinds"].values():
+            self.shape(k, KIND3, "kind")
+        self.assertEqual(r["kinds"]["Walls"]["type"], "walls")
+        self.assertIn("Gargoyle", r["kinds"]["Walls"]["fight"])
+        # every site the engine lists is on the map with its fight tier, as a site (not a piece)
+        sites = [a for h in r["hexes"] for a in h["assets"]]
+        self.assertEqual(len(sites), 18)
+        self.assertTrue(all(a["type"] in ("seat", "garrison", "works", "walls") and 1 <= a["tier"] <= 3 for a in sites))
+        self.assertTrue(all("hp" not in a for a in sites))
+        # rumours from a hex: the engine's, with no site ids; the goal in words
+        heard = r["rumours"]["A5"]
+        self.assertTrue(any("Gnomes" in x and "raid the Elves" in x and "standing" in x for x in heard), heard)
+        self.assertFalse(any(re.search(r"\bs\d+\b", x) for x in heard), heard)
+        self.assertFalse(any("*" in x for x in heard), heard)
+        self.assertFalse(any(re.search(r"\bs\d+\b", x) for x in r["nextWords"]), r["nextWords"])
+        self.assertIn("take", r["goalWords"])
+        self.assertEqual(r["dissidents"], [])
+        tower = next(f for f in r["factions"] if f["tower"])
+        self.assertEqual((tower["tierName"], tower["renown"], tower["hold"], tower["maxHold"]), ("Hermit", 0, 3, 3))
+        self.assertEqual(r["hexNames"]["B5"], "the tower's mountains")
+        ru = self.doc("game", "rules")
+        self.assertEqual([x["id"] for x in ru["sections"]],
+                         ["cast", "death", "campaign", "sites", "goals", "standing", "purse", "missions", "goal", "rulers", "report"])
+        self.assertIn("Garrison", ru["sections"][3]["md"])
+
+    def test_orders_auto(self):
+        self.new()
+        self.t("state", self.d, "--awaiting", "orders", "--prompt", "Month 1's orders")
+        o = self.doc("game", "state")["awaiting"]["orders"]
+        self.assertEqual(o["version"], 3)
+        self.assertEqual(o["hexes"][0], {"id": "B5", "name": "the tower's mountains", "days": 0})
+        here = [(m["type"], m["target"], m["turn"]) for m in o["missions"] if m["hex"] == "B5"]
+        self.assertEqual(here, [("delve", "floor 1", "--delve")])
+        a5 = {m["type"]: m for m in o["missions"] if m["hex"] == "A5"}
+        self.assertEqual(a5["strike"]["turn"], "--strike s14")
+        self.assertRegex(a5["strike"]["label"], r"^Strike the Gnomes' Garrison in A5 \((Low|Moderate|High), .*; 2 marks off their goal\)$")
+        self.assertEqual(a5["contact"]["turn"], "--contact Gnomes")
+        self.assertIn("Persuasion DC 15", a5["contact"]["label"])
+        robs = [m for m in o["missions"] if m["type"] == "rob"]
+        self.assertTrue(robs and all(m["turn"].startswith("--rob s") for m in robs))
+        aids = [m for m in o["missions"] if m["type"] == "aid"]
+        self.assertTrue(aids and all(m["turn"] == f"--aid {m['target']}" for m in aids))
+        self.assertTrue(all(m["days"] >= 0 for m in o["missions"]))
+        goals = {g["goal"]: g for g in o["goals"]}
+        self.assertEqual((goals["take:A5"]["size"], goals["take:A5"]["target"]), (5, "Gnomes"))
+        self.assertEqual(goals["ally:Humans"]["size"], 3)
+        self.assertFalse([g for g in goals if g.startswith("topple:")])  # no dissident named yet
+        self.assertNotIn("take:B5", goals)  # the tower's own hex
+        self.assertNotIn("drop", goals)
+        self.assertIsNone(o["goal"])
+        for g in o["goals"]:
+            self.assertRegex(g["goal"], T.GOAL3)
+        self.assertEqual([(a["action"], a["cost"], a["affordable"]) for a in o["actions"]],
+                         [("--buy works@B5", 300, False)])  # Hermit: no garrison or walls yet; 100 GP
+        for a in o["actions"]:
+            self.assertRegex(a["action"], T.ACTION3)
+        self.assertEqual(o["realms"][:2], ["Elves", "Gnomes"])
+        self.assertEqual(o["funds"]["treasury"], 100)
+        # with a goal declared and a dissident named, the form offers keep (null), drop and topple
+        self.turn("--at", "B5", "--delve", "--goal", "take:A5")
+        st = json.loads((self.d / "realms.json").read_text())
+        st["realms"]["Humans"]["dissident"] = {"name": "Edda", "hex": "D3"}
+        (self.d / "realms.json").write_text(json.dumps(st))
+        self.t("state", self.d, "--awaiting", "orders", "--prompt", "Month 2's orders", "--realm")
+        o = self.doc("game", "state")["awaiting"]["orders"]
+        self.assertEqual(o["goal"], {"goal": "take:A5", "text": "take A5 from the Gnomes", "marks": 0, "size": 5})
+        goals = {g["goal"]: g for g in o["goals"]}
+        self.assertNotIn("take:A5", goals)
+        self.assertIn("drop", goals)
+        self.assertEqual(goals["topple:Humans"]["size"], 6)
+        self.assertIn("Edda", goals["topple:Humans"]["label"])
+        self.assertEqual(self.doc("game", "realm")["dissidents"], [{"realm": "Humans", "name": "Edda", "hex": "D3"}])
+
+    def test_orders_move_validated_as_v3(self):
+        hexes = {f"{c}{r}" for c in "ABCD" for r in range(1, 6)}
+        good = {"v": 1, "seq": 1, "at": "2026-10-26T09:00:00Z", "kind": "orders", "travel": "A5",
+                "mission": {"type": "aid", "target": "Humans"}, "goal": "take:A5",
+                "actions": ["--buy works@B5", "--buy mend", "--back Humans", "--set Humans=take:C4"],
+                "give": {"realm": "Humans", "gp": 200}, "plan": "Weakest neighbour first."}
+        self.assertEqual(T.validate_move(good, hexes, 3), ([], []))
+        self.assertEqual(T.validate_move({**good, "goal": None, "actions": []}, hexes, 3), ([], []))
+        self.assertIn("goal take:A5", T.move_words(good))
+        self.assertIn("purse --buy works@B5 --buy mend", T.move_words(good))
+        bad = [({**good, "goal": "take:Z9"}, "orders.goal"),
+               ({**good, "goal": "raid:Humans"}, "orders.goal"),
+               ({**good, "actions": "--buy mend"}, "orders.actions"),
+               ({**good, "actions": ["--buy farms@B5"]}, "orders.actions"),
+               ({**good, "actions": ["rm -rf /"]}, "orders.actions"),
+               ({**good, "actions": ["--buy mend", "--buy mend"]}, "repeats"),
+               ({**good, "actions": ["--back Humans", "--hinder Elves"]}, "one back or hinder"),
+               ({**good, "mission": {"type": "seize", "target": "A5"}}, "orders.mission"),
+               ({k: v for k, v in good.items() if k not in ("goal", "actions")}, "orders.goal is missing"),
+               ({k: v for k, v in good.items() if k not in ("goal", "actions")}, "orders.actions is missing")]
+        for m, want in bad:
+            errs, _ = T.validate_move(m, hexes, 3)
+            self.assertTrue(any(want in e for e in errs), f"{m} → {errs}")
+        # a v2 move against a v2 world still validates as before; the v3 keys are ignored fields there
+        v2 = {**good, "action": "buy:farms@B5"}
+        del v2["goal"]
+        del v2["actions"]
+        v2["mission"] = {"type": "delve", "target": "floor 2"}
+        self.assertEqual(T.validate_move(v2, hexes)[0], [])
+        _, warn = T.validate_move({**v2, "goal": None, "actions": []}, hexes)
+        self.assertEqual(warn, ["ignored fields: actions, goal"])
+        # the moves verb reads a v3 move and words it from the form's labels
+        self.new()
+        self.t("state", self.d, "--awaiting", "orders", "--prompt", "Orders")
+        self.t("sent", self.d)
+        mv = {**good, "travel": "B5", "mission": {"type": "delve", "target": "floor 1"},
+              "actions": ["--buy works@B5"], "give": None}
+        out, _ = self.t("moves", self.d, "--file", self.md("m.json", json.dumps([mv])))
+        self.assertIn("goal take:A5", out)
+        text = T.Camp(self.d).page["moves"]["m0001"]["text"]
+        self.assertIn("the goal: Take A5 from the Gnomes (a clock of 5)", text)
+        self.assertIn("the purse: Mine at B5", text)
+        self.assertIn("Delve floor 1 under B5", text)
+        with self.assertRaises(SystemExit):
+            self.t("moves", self.d, "--file", self.md("m2.json", json.dumps([{**v2, "seq": 2}])))
+
+    def test_tower_line_and_domain_section(self):
+        self.new()
+        md = (self.d / "state.md").read_text()
+        self.assertIn("## Domain (Realms v3)", md)
+        self.assertIn("- Tower: Hermit (tier 0, Renown 0) · Hold 3 of 3 · 100 GP (+10 GP a month) · hexes B5 · goal none", md)
+        self.assertIn("- Allies: none · Enemies: nobody", md)
+        self.assertNotIn("Cunning", md)
+        self.turn("--at", "A5", "--strike", "s14", "--goal", "take:A5", "--plan", "weakest neighbour first")
+        f = self.md("d.md", "---\nkind: domain\ntitle: Month 1 · the world's turn\n---\nThe clocks moved.\n\n"
+                    "### What happened\n- who=tower: The tower's take A5 from the Gnomes: 2 of 5.\n"
+                    "- n=2: Morten struck the Gnomes' Garrison in A5.\n- who=Elves: The Elves rolled a 4: 1 of 4.\n"
+                    "### The tower now\n- Goal: none → take A5 from the Gnomes, 2 of 5\n"
+                    "### Next month\n- Open: Strike the garrison again.\n")
+        self.t("section", self.d, "--file", f)
+        self.t("realm", self.d)
+        d = json.loads((self.d / "story" / "s0001.json").read_text())["domain"]
+        self.shape(d, DOMAIN, "domain")
+        self.assertEqual([(h["n"], h["who"], h["label"]) for h in d["happened"]],
+                         [(None, "tower", None), (2, "tower", None), (None, "Elves", "good")])
+        self.assertEqual(d["happened"][1]["to"], "A5")
+        self.assertTrue(d["log"])
+        md = (self.d / "state.md").read_text()
+        self.assertIn("· goal take A5 from the Gnomes, 2 of 5", md)
+        r = self.doc("game", "realm")
+        self.assertEqual([e["text"] for e in r["eventsWords"]][:2],
+                         ["The tower's goal: take A5 from the Gnomes (declared, clock 5).",
+                          "Morten struck the Gnomes' Garrison in A5: won: their raid the Elves 0 → 0 of 2; standing -1, wary."])
+        gn = next(x for x in r["factions"] if x["name"] == "Gnomes")
+        self.assertEqual((gn["standing"], gn["standingWord"]), (-1, "wary"))
+        bad = self.md("e.md", "---\nkind: domain\ntitle: x\n---\n### What happened\n- The Elves rolled.\n")
+        with self.assertRaises(SystemExit):
+            self.t("section", self.d, "--file", bad)
+
+    def test_two_months_leak_nothing(self):
+        """A v3 world hides nothing but its dice: two months played, projected and checked."""
+        self.new()
+        for month in range(2):
+            self.turn("--at", "B5", "--delve")
+            f = self.md("d.md", f"---\nkind: domain\ntitle: Month {month + 1} · the world's turn\n---\nThe world moved.\n")
+            self.t("section", self.d, "--file", f)
+            self.t("state", self.d, "--awaiting", "orders", "--prompt", "Orders", "--realm")
+            self.t("sent", self.d)
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+            self.assertEqual(check_table.main([str(self.d)]), 0, out.getvalue())
+        rng = json.loads((self.d / "realms.json").read_text())["rng"]
+        whole = "\n".join(p.read_text() for p in (self.d / "page" / "out").rglob("*.json"))
+        self.assertNotIn(str(rng), whole)
+        self.assertIn('"dissident"', whole)  # public in v3 (named by a won Contact; null until then)
 
 
 class Playtest(Case):

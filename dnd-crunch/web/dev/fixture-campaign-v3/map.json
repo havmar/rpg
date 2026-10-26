@@ -1,0 +1,966 @@
+{
+ "version": 3,
+ "campaign": "fixture-campaign-v3",
+ "month": 2,
+ "layout": {
+  "cols": 4,
+  "rows": 5,
+  "orientation": "flat-top",
+  "shift": "odd"
+ },
+ "hexes": [
+  {
+   "id": "A1",
+   "col": 0,
+   "row": 0,
+   "level": 18,
+   "biome": "taiga",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": "Tieflings",
+   "warded": false,
+   "income": 180,
+   "neighbours": [
+    "A2",
+    "B1"
+   ],
+   "assets": [
+    {
+     "id": "s16",
+     "owner": "Tieflings",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "A2",
+   "col": 0,
+   "row": 1,
+   "level": 16,
+   "biome": "taiga",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 160,
+   "neighbours": [
+    "A1",
+    "A3",
+    "B1",
+    "B2"
+   ],
+   "assets": [
+    {
+     "id": "s5",
+     "owner": "Elves",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "A3",
+   "col": 0,
+   "row": 2,
+   "level": 12,
+   "biome": "forest",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 120,
+   "neighbours": [
+    "A2",
+    "A4",
+    "B2",
+    "B3"
+   ],
+   "assets": [
+    {
+     "id": "s6",
+     "owner": "Elves",
+     "name": "Farms",
+     "type": "works",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "A4",
+   "col": 0,
+   "row": 3,
+   "level": 19,
+   "biome": "savanna",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": "Gnomes",
+   "warded": false,
+   "income": 190,
+   "neighbours": [
+    "A3",
+    "A5",
+    "B3",
+    "B4"
+   ],
+   "assets": [
+    {
+     "id": "s13",
+     "owner": "Gnomes",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "A5",
+   "col": 0,
+   "row": 4,
+   "level": 8,
+   "biome": "mountains",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 80,
+   "neighbours": [
+    "A4",
+    "B4",
+    "B5"
+   ],
+   "assets": [
+    {
+     "id": "s14",
+     "owner": "Gnomes",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "B1",
+   "col": 1,
+   "row": 0,
+   "level": 7,
+   "biome": "tundra",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 70,
+   "neighbours": [
+    "A1",
+    "A2",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "assets": [
+    {
+     "id": "s18",
+     "owner": "Tieflings",
+     "name": "Farms",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "B2",
+   "col": 1,
+   "row": 1,
+   "level": 20,
+   "biome": "mountains",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": "Elves",
+   "warded": false,
+   "income": 200,
+   "neighbours": [
+    "A2",
+    "A3",
+    "B1",
+    "B3",
+    "C2",
+    "C3"
+   ],
+   "assets": [
+    {
+     "id": "s4",
+     "owner": "Elves",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "B3",
+   "col": 1,
+   "row": 2,
+   "level": 4,
+   "biome": "plains",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 40,
+   "neighbours": [
+    "A3",
+    "A4",
+    "B2",
+    "B4",
+    "C3",
+    "C4"
+   ],
+   "assets": [
+    {
+     "id": "s15",
+     "owner": "Gnomes",
+     "name": "Caravans",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "B4",
+   "col": 1,
+   "row": 3,
+   "level": 15,
+   "biome": "hills",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": true,
+   "seat_of": "Orcs",
+   "warded": false,
+   "income": 150,
+   "neighbours": [
+    "A4",
+    "A5",
+    "B3",
+    "B5",
+    "C4",
+    "C5"
+   ],
+   "assets": [
+    {
+     "id": "s10",
+     "owner": "Orcs",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "B5",
+   "col": 1,
+   "row": 4,
+   "level": 1,
+   "biome": "mountains",
+   "people": "tower folk",
+   "holder": "tower",
+   "lake": false,
+   "seat_of": "tower",
+   "warded": true,
+   "income": 10,
+   "neighbours": [
+    "A5",
+    "B4",
+    "C5"
+   ],
+   "assets": []
+  },
+  {
+   "id": "C1",
+   "col": 2,
+   "row": 0,
+   "level": 10,
+   "biome": "tundra",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 100,
+   "neighbours": [
+    "B1",
+    "C2",
+    "D1"
+   ],
+   "assets": [
+    {
+     "id": "s17",
+     "owner": "Tieflings",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "C2",
+   "col": 2,
+   "row": 1,
+   "level": 6,
+   "biome": "taiga",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 60,
+   "neighbours": [
+    "B1",
+    "B2",
+    "C1",
+    "C3",
+    "D1",
+    "D2"
+   ],
+   "assets": [
+    {
+     "id": "s8",
+     "owner": "Goblinkind",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "C3",
+   "col": 2,
+   "row": 2,
+   "level": 17,
+   "biome": "hills",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": "Goblinkind",
+   "warded": false,
+   "income": 170,
+   "neighbours": [
+    "B2",
+    "B3",
+    "C2",
+    "C4",
+    "D2",
+    "D3"
+   ],
+   "assets": [
+    {
+     "id": "s7",
+     "owner": "Goblinkind",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "C4",
+   "col": 2,
+   "row": 3,
+   "level": 9,
+   "biome": "swamp",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 90,
+   "neighbours": [
+    "B3",
+    "B4",
+    "C3",
+    "C5",
+    "D3",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "s2",
+     "owner": "Humans",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "C5",
+   "col": 2,
+   "row": 4,
+   "level": 14,
+   "biome": "jungle",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 140,
+   "neighbours": [
+    "B4",
+    "B5",
+    "C4",
+    "D4",
+    "D5"
+   ],
+   "assets": [
+    {
+     "id": "s11",
+     "owner": "Orcs",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "D1",
+   "col": 3,
+   "row": 0,
+   "level": 3,
+   "biome": "mountains",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": true,
+   "seat_of": null,
+   "warded": false,
+   "income": 30,
+   "neighbours": [
+    "C1",
+    "C2",
+    "D2"
+   ],
+   "assets": [
+    {
+     "id": "s9",
+     "owner": "Goblinkind",
+     "name": "Mine",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "D2",
+   "col": 3,
+   "row": 1,
+   "level": 2,
+   "biome": "forest",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 20,
+   "neighbours": [
+    "C2",
+    "C3",
+    "D1",
+    "D3"
+   ],
+   "assets": []
+  },
+  {
+   "id": "D3",
+   "col": 3,
+   "row": 2,
+   "level": 13,
+   "biome": "swamp",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": "Humans",
+   "warded": false,
+   "income": 130,
+   "neighbours": [
+    "C3",
+    "C4",
+    "D2",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "s1",
+     "owner": "Humans",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "D4",
+   "col": 3,
+   "row": 3,
+   "level": 5,
+   "biome": "plains",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 50,
+   "neighbours": [
+    "C4",
+    "C5",
+    "D3",
+    "D5"
+   ],
+   "assets": [
+    {
+     "id": "s3",
+     "owner": "Humans",
+     "name": "Caravans",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "D5",
+   "col": 3,
+   "row": 4,
+   "level": 11,
+   "biome": "desert",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 110,
+   "neighbours": [
+    "C5",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "s12",
+     "owner": "Orcs",
+     "name": "Farms",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  }
+ ],
+ "rivers": [
+  [
+   "B1",
+   "C1"
+  ],
+  [
+   "C1",
+   "C2"
+  ],
+  [
+   "C1",
+   "D1"
+  ],
+  [
+   "B4",
+   "C5"
+  ],
+  [
+   "C4",
+   "C5"
+  ],
+  [
+   "C5",
+   "D4"
+  ],
+  [
+   "D4",
+   "D5"
+  ]
+ ],
+ "factions": [
+  {
+   "name": "Humans",
+   "tower": false,
+   "leader": {
+    "name": "Galen",
+    "title": "Reeve",
+    "label": "good",
+    "tag": "Liberator",
+    "verb": "fights tyrants"
+   },
+   "income": 320,
+   "force": 3,
+   "tier": 2,
+   "treasury": 590,
+   "seat": "D3",
+   "hexes": [
+    "C4",
+    "D3",
+    "D4"
+   ],
+   "standing": 1,
+   "standingWord": "friendly",
+   "ally": false,
+   "goal": {
+    "text": "fortify D3",
+    "kind": "fortify",
+    "target": null,
+    "hex": "D3",
+    "marks": 0,
+    "size": 3,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Elves",
+   "tower": false,
+   "leader": {
+    "name": "Erevan",
+    "title": "Archon",
+    "label": "good",
+    "tag": "Liberator",
+    "verb": "fights tyrants"
+   },
+   "income": 530,
+   "force": 5,
+   "tier": 3,
+   "treasury": 1010,
+   "seat": "B2",
+   "hexes": [
+    "A2",
+    "A3",
+    "B2"
+   ],
+   "standing": 1,
+   "standingWord": "friendly",
+   "ally": false,
+   "goal": {
+    "text": "break the Gnomes",
+    "kind": "break",
+    "target": "Gnomes",
+    "hex": null,
+    "marks": 2,
+    "size": 4,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Goblinkind",
+   "tower": false,
+   "leader": {
+    "name": "Blix",
+    "title": "Warchief",
+    "label": "bad",
+    "tag": "Slaver",
+    "verb": "takes people for soldiers"
+   },
+   "income": 330,
+   "force": 3,
+   "tier": 2,
+   "treasury": 610,
+   "seat": "C3",
+   "hexes": [
+    "C2",
+    "C3",
+    "D1",
+    "D2"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "press the Humans",
+    "kind": "press",
+    "target": "Humans",
+    "hex": null,
+    "marks": 0,
+    "size": 3,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Orcs",
+   "tower": false,
+   "leader": {
+    "name": "Vorga",
+    "title": "Chief",
+    "label": "bad",
+    "tag": "Slaver",
+    "verb": "takes people for soldiers"
+   },
+   "income": 450,
+   "force": 4,
+   "tier": 2,
+   "treasury": 850,
+   "seat": "B4",
+   "hexes": [
+    "B4",
+    "C5",
+    "D5"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "press the Humans",
+    "kind": "press",
+    "target": "Humans",
+    "hex": null,
+    "marks": 1,
+    "size": 3,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Gnomes",
+   "tower": false,
+   "leader": {
+    "name": "Fizwick",
+    "title": "Mayor",
+    "label": "bad",
+    "tag": "Raider",
+    "verb": "robs its neighbours"
+   },
+   "income": 360,
+   "force": 3,
+   "tier": 2,
+   "treasury": 670,
+   "seat": "A4",
+   "hexes": [
+    "A4",
+    "A5",
+    "B3"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "raid the Elves",
+    "kind": "raid",
+    "target": "Elves",
+    "hex": null,
+    "marks": 0,
+    "size": 2,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Tieflings",
+   "tower": false,
+   "leader": {
+    "name": "Damaia",
+    "title": "Hierarch",
+    "label": "bad",
+    "tag": "Raider",
+    "verb": "robs its neighbours"
+   },
+   "income": 400,
+   "force": 4,
+   "tier": 2,
+   "treasury": 750,
+   "seat": "A1",
+   "hexes": [
+    "A1",
+    "B1",
+    "C1"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "raid the Elves",
+    "kind": "raid",
+    "target": "Elves",
+    "hex": null,
+    "marks": 1,
+    "size": 2,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "tower",
+   "tower": true,
+   "leader": {
+    "name": "Morten",
+    "title": "Wizard",
+    "label": null,
+    "tag": null,
+    "verb": null
+   },
+   "income": 10,
+   "treasury": 115,
+   "seat": "B5",
+   "hexes": [
+    "B5"
+   ],
+   "standing": null,
+   "standingWord": null,
+   "ally": false,
+   "goal": null,
+   "tier": 0,
+   "tierName": "Hermit",
+   "renown": 0,
+   "hold": 3,
+   "maxHold": 3,
+   "toppled": 0,
+   "won": null
+  }
+ ],
+ "morten": {
+  "hex": "B5",
+  "level": 3
+ },
+ "events": [
+  {
+   "month": 1,
+   "actor": "tower",
+   "action": "Delve",
+   "from_hex": "B5",
+   "to_hex": "B5",
+   "target": "floor 1",
+   "result": "delved"
+  }
+ ],
+ "report": {
+  "month": 1,
+  "plan": [
+   "Morten: Delve floor 1 under B5.",
+   "Floor 1 first: safe XP under the wards; the tower keeps its gold and declares no goal yet.",
+   "Tower: no goal, no purse action."
+  ],
+  "happened": [
+   {
+    "who": "Elves",
+    "label": "good: fights tyrants",
+    "goal": "break the Gnomes",
+    "roll": "rolled a 6 (5 +1)",
+    "marks": 2,
+    "size": 4,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Elves (good: fights tyrants), *break the Gnomes*: rolled a 6 (5 +1): **2 of 4**."
+   },
+   {
+    "who": "Orcs",
+    "label": "bad: takes people for soldiers",
+    "goal": "press the Humans",
+    "roll": "rolled a 5 (4 +1)",
+    "marks": 1,
+    "size": 3,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Orcs (bad: takes people for soldiers), *press the Humans*: rolled a 5 (4 +1): **1 of 3**."
+   },
+   {
+    "who": "Tieflings",
+    "label": "bad: robs its neighbours",
+    "goal": "raid the Elves",
+    "roll": "rolled a 4 (5 -1)",
+    "marks": 1,
+    "size": 2,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Tieflings (bad: robs its neighbours), *raid the Elves*: rolled a 4 (5 -1): **1 of 2**."
+   },
+   {
+    "who": "Humans",
+    "label": "good: fights tyrants",
+    "goal": "fortify D3",
+    "roll": "rolled a natural 1, a setback",
+    "marks": 0,
+    "size": 3,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Humans (good: fights tyrants), *fortify D3*: rolled a natural 1, a setback: **0 of 3**."
+   },
+   {
+    "who": "Gnomes",
+    "label": "bad: robs its neighbours",
+    "goal": "raid the Elves",
+    "roll": "rolled a natural 1, a setback",
+    "marks": 0,
+    "size": 2,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Gnomes (bad: robs its neighbours), *raid the Elves*: rolled a natural 1, a setback: **0 of 2**."
+   },
+   {
+    "who": "Goblinkind",
+    "label": "bad: takes people for soldiers",
+    "goal": "press the Humans",
+    "roll": "rolled a 2",
+    "marks": 0,
+    "size": 3,
+    "fired": false,
+    "far": true,
+    "waits": 0,
+    "new": null,
+    "text": "The Goblinkind (bad: takes people for soldiers), *press the Humans*: rolled a 2: **0 of 3**."
+   }
+  ],
+  "tower": [
+   "Hermit (tier 0, Renown 0) · Hold 3 of 3 · 115 GP · income 10 GP a month · Morten level 3 in B5",
+   "Hexes: B5 (B5 warded)",
+   "Sites: none",
+   "Allies: none · enemies: none",
+   "Goal: none (declare one with --goal)"
+  ],
+  "next": [
+   "Chance: an Aid in A4 finishes the Elves' *break the Gnomes* (2 of 4): Moderate, 2 Warhorse.",
+   "Chance: an Aid in D3 finishes the Orcs' *press the Humans* (1 of 3): Moderate, 2 Warhorse.",
+   "Chance: an Aid in B2 finishes the Gnomes' *raid the Elves* (0 of 2): High, 1 Berserker.",
+   "Chance: an Aid in B2 finishes the Tieflings' *raid the Elves* (1 of 2): High, 1 Berserker.",
+   "Chance: the Humans' Caravans s3 in D4: a Rob takes 300 GP (Low, 1 Scout, 2 Guard).",
+   "Chance: the Orcs' Farms s12 in D5: a Rob takes 400 GP (Low, 1 Scout, 2 Guard).",
+   "Chance: the Gnomes' Caravans s15 in B3: a Rob takes 300 GP (Low, 1 Scout, 2 Guard).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an *ally* goal is 3 marks, Contact at DC 10.",
+   "Chance: the Elves (good: fights tyrants) are friendly: an *ally* goal is 3 marks, Contact at DC 10.",
+   "Open: Morten is in B5 (L1, mountains, tower); travel 1 day a hex, a d6 each day outside the tower (1 = encounter).",
+   "Open: missions here: Delve floor 1.",
+   "Open: the purse (115 GP): works@HEX (300 GP) · give REALM=GP.",
+   "Open: the goal to declare: take HEX (2 + the holder's Force marks, +2 if walled) · ally REALM (3 marks; Humans, Elves, Goblinkind, Orcs, Gnomes, Tieflings)."
+  ],
+  "notes": []
+ }
+}

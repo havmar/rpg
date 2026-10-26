@@ -33,7 +33,8 @@ web/
   dev/serve.mjs        the local table: dist over a fake store, live over server-sent events
   dev/fake-claude.js   window.claude for the dev page: use("db"), use("comments"), use("user")
   dev/db.mjs           CLI: apply an ArtifactData-shaped batch to the dev store, dump it, seed it
-  dev/fixture/         a realms3-like campaign projected by tools/table.py (the store's docs)
+  dev/fixture/         a realms3-like campaign (Realms v2) projected by tools/table.py (the store's docs)
+  dev/fixture-v3/      a Realms v3 campaign (seed 7, month 1 played) projected the same way
   dev/sample/          a small hand-made store tree in the same layout (used when there is no fixture)
   e2e.mjs              Playwright at 412 px and 1280 px: runs the checks in e2e/*.mjs
   e2e-loop.mjs         the GM's loop end to end with the real tools/table.py (and db.mjs)
@@ -185,7 +186,38 @@ camelCase. A `seq` is one counter shared by the GM's sections, beats and logs (t
 - `awaiting.orders`: each mission may carry `hex` (the hex it is done in) and `days` (from
   Morten), and the orders form offers a hex's missions once that hex is picked (all of them
   when no mission has a `hex`); each action may carry `affordable` (bool; false greys it out
-  with its price; when absent the page compares `cost` with the tower's treasury).
+  with its price; when absent the page compares `cost` with the tower's treasury). The
+  example above is a Realms v2 campaign's (`action` is the engine's `--action`); a **Realms
+  v3** campaign's `orders` (`tools/realms3.py`; `game/realm.version` is 3) carries
+  `"version": 3` and:
+
+```json
+{"version": 3,
+ "hexes": [{"id": "B5", "name": "the tower's mountains", "days": 0}],
+ "missions": [{"type": "strike", "target": "s14", "hex": "A5", "days": 1, "turn": "--strike s14",
+               "label": "Strike the Gnomes' Garrison in A5 (Moderate, 2 Warhorse; 2 marks off their goal)"},
+              {"type": "aid", "target": "Humans", "hex": "D3", "days": 3, "turn": "--aid Humans", "label": "Aid the Humans with fortify D3 in D3 (…)"},
+              {"type": "delve", "target": "floor 1", "hex": "B5", "days": 0, "turn": "--delve", "label": "Delve floor 1 under B5"}],
+ "goals": [{"goal": "take:A5", "kind": "take", "target": "Gnomes", "hex": "A5", "size": 5, "label": "Take A5 from the Gnomes (a clock of 5)"},
+           {"goal": "ally:Humans", "kind": "ally", "target": "Humans", "hex": null, "size": 3, "label": "Ally the Humans (a clock of 3; standing +1, friendly)"},
+           {"goal": "drop", "kind": "drop", "target": null, "hex": null, "size": null, "label": "Drop take B4 from the Orcs (its 2 marks are lost)"}],
+ "goal": {"goal": "take:B4", "text": "take B4 from the Orcs", "marks": 2, "size": 6},
+ "actions": [{"action": "--buy works@B5", "label": "Mine at B5", "cost": 300, "affordable": false}],
+ "realms": ["Elves", "Gnomes", "Goblinkind", "Humans", "Orcs", "Tieflings"],
+ "funds": {"treasury": 100, "income": 10, "onMorten": "47 GP 7 SP 5 CP", "text": "100 GP in the treasury; the purse pays before the month's +10 GP income lands"}}
+```
+
+  Mission types are `strike` · `rob` · `aid` · `contact` · `delve` (a Rob only where the
+  site is works, an Aid where a realm's goal is aimed, a Contact in a realm's hex unless it
+  is an enemy); `turn` is the flag `realms3.py turn` takes for it, `target` a site id, a
+  realm or a floor. `goals` are the goals the tower may declare now (`take:HEX` for every
+  hex a realm holds, nearest first; `ally:REALM` for every realm not an ally; `topple:REALM`
+  where a dissident is named; `drop` when a goal is set) and `goal` is the goal it has (null
+  for none): the form's "keep" sends `goal: null`. `actions` are the purse's options as the
+  engine's own option strings (`--buy garrison@HEX`, `--buy walls@HEX`, `--buy works@HEX`,
+  `--buy mend`, `--back REALM`, `--hinder REALM`, `--set REALM=GOAL`), only those the tower's
+  tier allows, several of which may be sent at once; `affordable` is `cost` against the
+  treasury alone, since the purse pays before the month's income.
 - `live` is null when no section is open.
 
 ### `game/morten`
@@ -249,6 +281,40 @@ as the engine writes it, plus these camelCase keys the page needs to know no rul
 
 Only what the tower can know is in it: `map.json` is already the tower's view; a floor's
 rooms past the explored mark are `"state": "unknown"` with no monster.
+
+**Realms v3** (`tools/realms3.py`; `version` is 3 at the top of `map.json`, so the page
+branches on `realm.version`): `map.json` keeps the same top-level keys, and a hex's `assets`
+are **sites** (`{id, owner, name, type: seat|garrison|works|walls, tier}`, a works named
+Farms, Mine or Caravans; no `hp`), a faction has `force`, `tier`, `treasury`, `seat`,
+`hexes`, `standing` (−2..+2), `standingWord`, `ally`, `goal` as an object `{text, kind,
+target, hex, marks, size, waits, since}` (the clock), `dissident` (`{name, hex}` or null)
+and `squeezed`, and the tower adds `tier`, `tierName`, `renown`, `hold`, `maxHold`,
+`toppled`, `won`; `report.happened[]` is one object per realm, the tower's first (`{who,
+label, goal, roll, marks, size, fired, far, waits, new, text}`), and `report.notes` the
+tier changes. The page's keys change with it:
+
+```json
+{
+  "words": {"force": "…", "standing": "…", "clock": "…", "hold": "…", "renown": "…", "tier": "…", "site": "…",
+            "level": "…", "seat": "…", "ally": "…"},
+  "kinds": {"Garrison": {"glyph": "shield", "type": "garrison", "what": "soldiers at home",
+                         "tierWords": "the realm's tier", "fight": "tier 1: Guard, Scout, Guard Captain · tier 2: …",
+                         "effect": "−1 to goal rolls aimed at this hex."}},
+  "goalWords": {"take": "the hex changes hands with its sites", "raid": "…"},
+  "rumours": {"A5": ["Chance: the Gnomes' Caravans in B3: a Rob takes 300 GP (Low, 1 Scout, 2 Guard).",
+                     "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing +0 (neutral)."]}
+}
+```
+
+`words` has no `cunning`, `wealth`, `regime` or `piece`; `kinds` is keyed by the six site
+names (Seat, Garrison, Farms, Mine, Caravans, Walls) with no `cost`, `hp`, `hits`, `counter`
+or `upkeep`; `goalWords` says what each goal kind does when its clock fills; `rumours` are
+the engine's from that hex (the Threat and Chance lines that name a realm or hex nearby, and
+a line per realm near); `nextWords` and `eventsWords` are the engine's lines with site ids
+dropped (`events` keep the engine's actions: Strike, Rob, Aid, Contact, Delve, Goal, Buy,
+Mend, Give, Back, Hinder, Set, Tier). `floors`, `days`, `hexNames` and `dissidents` are as
+in v2. The Realm tab then shows the tower's tier, Renown, Hold boxes and goal clock, each
+realm's ruler, Force, standing word and goal clock, and a hex's sites with their fight tier.
 
 ### `game/rules`
 
@@ -326,7 +392,7 @@ The page renders `md` with `T.ui.md` (a small, safe Markdown subset: paragraphs,
 |---|---|
 | `say` | `text`, `ooc` (bool) |
 | `play` | `scope`: `month` · `matters` · `fight` · `round` · `stop`; `text` (optional steer) |
-| `orders` | `travel` (hex id), `mission` `{type, target}` or null, `action` (string, the engine's `--action`) or null, `give` `{realm, gp}` or null, `plan` (text) |
+| `orders` | `travel` (hex id), `mission` `{type, target}` or null, `action` (string, the engine's `--action`) or null, `give` `{realm, gp}` or null, `plan` (text). **Realms v3** (`awaiting.orders.version` 3): `goal` (`take:HEX` · `ally:REALM` · `topple:REALM` · `drop`, or null to keep the goal as it is) and `actions` (a list of the form's option strings, `[]` for none) in place of `action` |
 | `fight` | `choice`: `fight` · `avoid` · `plan`; `text` |
 | `turn` | `text` (free text, with spell chips dropped in) |
 | `table` | `table` (the whole dials object as in `game/state.table`) |
@@ -549,6 +615,19 @@ What the GM's side does that the shapes above don't say (`table.py VERB --help` 
   dissidents a won Contact named: public to the tower; the tower card lists them).
   `game/morten` adds the sheet's rest (`abilities[].saveProf`, `skills[].expertise`,
   `proficiencies`, spells' `time`, `range`, `note`, `book`, `armorOn`, `coinsNote`).
+- **Realms v3 on the GM's side.** `table.py` reads the engine from `map.json`'s `version`
+  (3: `tools/realms3.py`, else `tools/realms.py`) and the verbs are the same. What changes:
+  `game/realm` and `awaiting.orders` as above; an `orders` move is checked against the v3
+  shape (`moves` refuses one with `action` instead of `goal` and `actions`, a goal or an
+  option the engine would not take, two backs or hinders, or a repeated option), and `moves`
+  prints it as the engine's flags (`goal take:A5 · purse --buy works@B5`), so the GM runs
+  `realms3.py turn --at HEX <mission's turn> --goal … --buy … --give REALM=GP --plan …` from
+  it. A domain section's **What happened** bullets may start with `who=REALM:` instead of
+  `n=N:` (v3's sentences are one per realm, most with no event behind them); `n=N:` still
+  numbers one from `map.json`'s events. `state.md`'s Domain line gives the tier, Renown,
+  Hold, gold, hexes and the goal's clock. `game/rules` is cut from `realms-v3.md`. The
+  secrecy check (`check_table.py`) treats a v3 world's `dissident` and `since` as public
+  (they are) and hides only the dice (`rng`, `next_id`).
 - **The fixture.** `bash dnd-crunch/web/dev/fixture-campaign/play.sh` replays realms3's
   month 2 through `table.py` (its inputs are `fixture-campaign/play/`) and exports
   `dev/fixture/` (month 2 played, awaiting month 3's orders, no section open) and
@@ -557,6 +636,13 @@ What the GM's side does that the shapes above don't say (`table.py VERB --help` 
   `python3 dnd-crunch/tools/check_table.py DIR [--docs FOLDER]`. `test_table.py` also plays
   three fresh worlds (as Dream's `test_secrets.py` plays days) for three months each and
   checks that no hidden piece and no `--gm` line reaches the store.
+- **The v3 fixture.** `bash dnd-crunch/web/dev/fixture-campaign/play-v3.sh` makes a fresh
+  Realms v3 world (`realms3.py new --seed 7`) in `dev/fixture-campaign-v3/`, plays month 1
+  through `table.py` (the opening, a v3 `orders` move answered by the orders section, a
+  Delve with one fight told after, a rest, the engine's world's turn as a domain section
+  written by `play-v3/domain.py` from `map.json`'s report) and exports `dev/fixture-v3/`
+  (month 1 played, awaiting month 2's orders). Its inputs are `fixture-campaign/play-v3/`;
+  `play.sh` and the v2 fixture are untouched. The secrecy check runs on it too.
 
 ## Publishing
 
@@ -588,8 +674,10 @@ on (`game/state.wake.on`).
 python3 dnd-crunch/web/build.py                  # build dist/table.html (prints its size)
 python3 dnd-crunch/web/build.py --check          # exit 1 if dist/ is stale (commit dist/ with src/)
 node dnd-crunch/web/dev/serve.mjs --seed dnd-crunch/web/dev/fixture   # http://localhost:8787
+node dnd-crunch/web/dev/serve.mjs --seed dnd-crunch/web/dev/fixture-v3   # the Realms v3 fixture
 node dnd-crunch/web/dev/db.mjs apply batch.json  # play the GM's side locally
 node dnd-crunch/web/e2e.mjs                      # the checks, at 412 px and 1280 px
+node dnd-crunch/web/e2e.mjs --fixture dnd-crunch/web/dev/fixture-v3   # the same checks on the v3 fixture
 ```
 
 Node 22 and Python 3, standard libraries only; Playwright is the one exception, for
@@ -614,8 +702,9 @@ stamps a hash of its sources instead because its build needs node and npm.
 
 `serve.mjs [--seed DIR] [--port 8787] [--quiet]` keeps an in-memory store seeded from a tree
 of `<collection>/<doc_id>.json` (each file a document body, version 1), the layout
-`table.py export` writes and `dev/fixture/` holds. `dev/sample/` is a small hand-made tree in
-the same layout, for when there is no fixture. The page is `dist/table.html` inside a
+`table.py export` writes and `dev/fixture/` (Realms v2) and `dev/fixture-v3/` (Realms v3)
+hold: `--seed` picks the one to serve. `dev/sample/` is a small hand-made tree in the same
+layout, for when there is no fixture. The page is `dist/table.html` inside a
 doctype skeleton with `dev/fake-claude.js`, re-read on every load (rebuild, then reload).
 Store changes reach open pages live over server-sent events.
 
@@ -758,6 +847,11 @@ with the words marked; the others hide until it is cleared.
 `dev/sample`, and runs every `export const checks = [...]` in `e2e/*.mjs`, in file-name
 order. Before each check the store is re-seeded and the wakes forgotten; after it, any
 console error on a page it opened fails it (unless the check says `allowErrors: true`).
+The checks read the fixture's `game/realm.version` where v2 and v3 differ (the tower card,
+the piece or site rows, a hostile realm or an enemy, the orders move's `action` or `goal`
+and `actions`), and `e2e/70-realm.mjs` has one check for the v3 Realm tab alone (the tier,
+the Hold boxes, every realm's clock, the tower's goal clock, a hex's sites); run
+`--fixture dnd-crunch/web/dev/fixture-v3` for those.
 Screenshots go to `--shots` (default `$TABLE_E2E_SHOTS` or `<tmp>/table-e2e`). Google
 Fonts are stubbed so a run needs no network; `--fonts` loads them for screenshots worth
 looking at.

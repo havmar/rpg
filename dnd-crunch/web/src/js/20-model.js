@@ -147,9 +147,14 @@
     if (!isObj(o)) return null;
     return {
       hexes: list(o.hexes, (h) => (isObj(h) && typeof h.id === 'string' ? { id: h.id, name: str(h.name, h.id), days: num(h.days, null) } : null)),
-      missions: list(o.missions, (m) => (isObj(m) ? { type: str(m.type), target: str(m.target), label: str(m.label, str(m.type)), hex: str(m.hex), days: num(m.days, null) } : null)),
+      missions: list(o.missions, (m) => (isObj(m) ? { type: str(m.type), target: str(m.target), label: str(m.label, str(m.type)), hex: str(m.hex), days: num(m.days, null), turn: str(m.turn) } : null)),
       actions: list(o.actions, (a) => (isObj(a) ? { action: str(a.action), label: str(a.label, str(a.action)), cost: num(a.cost, null), affordable: boolOrNull(a.affordable) } : null)),
       realms: strs(o.realms),
+      // Realms v3 (version 3): the tower's goal choices, the goal it has, the purse's funds
+      version: int(o.version, 2),
+      goals: list(o.goals, (g) => (isObj(g) && typeof g.goal === 'string' ? { goal: g.goal, kind: str(g.kind), target: strOrNull(g.target), hex: strOrNull(g.hex), size: int(g.size, null), label: str(g.label, g.goal) } : null)),
+      goal: isObj(o.goal) ? { goal: str(o.goal.goal), text: str(o.goal.text), marks: int(o.goal.marks, 0), size: int(o.goal.size, null) } : null,
+      funds: isObj(o.funds) ? { treasury: num(o.funds.treasury, null), income: num(o.funds.income, null), text: str(o.funds.text) } : null,
     };
   }
 
@@ -281,21 +286,42 @@
       holder: strOrNull(h.holder),
       lake: bool(h.lake),
       seat_of: strOrNull(h.seat_of),
+      warded: bool(h.warded),
       income: num(h.income, null),
       neighbours: strs(h.neighbours),
       assets: list(h.assets, asset),
     };
   }
 
+  /** A v3 goal with its clock ({text, kind, target, hex, marks, size, waits, since}); v2's goal is a string. */
+  function clock(g) {
+    if (!isObj(g)) return null;
+    return { text: str(g.text), kind: str(g.kind), target: strOrNull(g.target), hex: strOrNull(g.hex), marks: int(g.marks, 0), size: int(g.size, null), waits: num(g.waits, 0), since: int(g.since, null) };
+  }
+
   function faction(f) {
     if (!isObj(f) || typeof f.name !== 'string') return null;
     const l = isObj(f.leader) ? f.leader : {};
+    const d = isObj(f.dissident) ? f.dissident : null;
     return {
       name: f.name,
       tower: bool(f.tower),
       leader: { name: str(l.name), title: str(l.title), label: str(l.label), tag: str(l.tag), verb: str(l.verb) },
       income: num(f.income, null),
-      goal: str(f.goal),
+      goal: isObj(f.goal) ? str(f.goal.text) : str(f.goal),
+      clock: clock(f.goal),
+      // Realms v3: Force sets the tier; standing with the tower; the tower's own ladder
+      tier: int(f.tier, null),
+      standing: int(f.standing, null),
+      standingWord: str(f.standingWord),
+      dissident: d && typeof d.name === 'string' ? { name: d.name, hex: strOrNull(d.hex) } : null,
+      squeezed: bool(f.squeezed),
+      tierName: str(f.tierName),
+      renown: int(f.renown, null),
+      hold: int(f.hold, null),
+      maxHold: int(f.maxHold, null),
+      toppled: int(f.toppled, 0),
+      won: int(f.won, null),
       hp: num(f.hp, null),
       max_hp: num(f.max_hp, null),
       force: num(f.force, null),
@@ -317,6 +343,7 @@
     const mo = obj(d.morten);
     return {
       v: num(d.v, 1),
+      version: int(d.version, 2),
       campaign: str(d.campaign),
       month: int(d.month, null),
       layout: { cols: int(lay.cols, 4), rows: int(lay.rows, 5), orientation: str(lay.orientation, 'flat-top'), shift: str(lay.shift, 'odd') },
@@ -327,11 +354,20 @@
       events: list(d.events, (e) => (isObj(e)
         ? { month: int(e.month, null), actor: str(e.actor), action: str(e.action), from_hex: strOrNull(e.from_hex), to_hex: strOrNull(e.to_hex), target: str(e.target), result: str(e.result) }
         : null)),
-      report: { plan: strs(rep.plan), happened: strs(rep.happened), tower: strs(rep.tower), next: strs(rep.next) },
+      report: {
+        plan: strs(rep.plan),
+        // v2: a line each; v3: {who, label, goal, roll, marks, size, fired, far, waits, new, text}
+        happened: list(rep.happened, (h) => (typeof h === 'string' ? { text: h, who: '', label: '', goal: '', roll: '', marks: null, size: null, fired: false, far: false, waits: 0, new: null }
+          : isObj(h) ? { text: str(h.text), who: str(h.who), label: str(h.label), goal: str(h.goal), roll: str(h.roll), marks: int(h.marks, null), size: int(h.size, null), fired: bool(h.fired), far: bool(h.far), waits: num(h.waits, 0), new: strOrNull(h.new) } : null)),
+        tower: strs(rep.tower),
+        next: strs(rep.next),
+        notes: strs(rep.notes),
+      },
       words: map(d.words, (v) => (typeof v === 'string' ? v : null)),
       kinds: map(d.kinds, (k) => (isObj(k)
-        ? { glyph: str(k.glyph), type: str(k.type), tier: int(k.tier, 1), what: str(k.what), cost: num(k.cost, null), hp: num(k.hp, null), hits: str(k.hits), counter: str(k.counter), upkeep: num(k.upkeep, null), special: str(k.special), needs: str(k.needs), income: num(k.income, null), moves: num(k.moves, null), fight: str(k.fight) }
+        ? { glyph: str(k.glyph), type: str(k.type), tier: int(k.tier, 1), what: str(k.what), cost: num(k.cost, null), hp: num(k.hp, null), hits: str(k.hits), counter: str(k.counter), upkeep: num(k.upkeep, null), special: str(k.special), needs: str(k.needs), income: num(k.income, null), moves: num(k.moves, null), fight: str(k.fight), tierWords: str(k.tierWords), effect: str(k.effect) }
         : null)),
+      goalWords: map(d.goalWords, (v) => (typeof v === 'string' ? v : null)),
       rumours: map(d.rumours, (v) => strs(v)),
       floors: map(d.floors, (f) => (isObj(f)
         ? { floor: int(f.floor, null), rooms: list(f.rooms, (r) => (isObj(r) ? { n: text(r.n), monster: strOrNull(r.monster), cr: strOrNull(text(r.cr)), state: str(r.state, 'unknown'), xp: strOrNull(text(r.xp)), difficulty: str(r.difficulty), note: str(r.note) } : null)), cleared: bool(f.cleared) }
@@ -457,6 +493,8 @@
       travel: strOrNull(d.travel),
       mission: mi ? { type: str(mi.type), target: str(mi.target) } : null,
       action: strOrNull(d.action),
+      goal: strOrNull(d.goal),
+      actions: Array.isArray(d.actions) ? strs(d.actions) : null,
       give: gv ? { realm: str(gv.realm), gp: num(gv.gp, 0) } : null,
       plan: str(d.plan),
       choice: oneOf(d.choice, E.fightChoice, null),

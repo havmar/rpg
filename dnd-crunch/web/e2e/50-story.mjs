@@ -110,7 +110,7 @@ export const checks = [
         const evs = await w.locator('.events li[data-event]').evaluateAll((els) => els.map((e) => ({ n: e.dataset.event, cls: e.className, who: !!e.querySelector('.who') })));
         t.expect(evs.length === dom.domain.happened.length, `${evs.length} events, want ${dom.domain.happened.length}`);
         dom.domain.happened.forEach((h, i) => {
-          t.expect(evs[i].n === String(h.n), `event ${i} is numbered ${h.n} like the map's badge`);
+          t.expect(evs[i].n === (h.n === null ? '' : String(h.n)), `event ${i} is numbered ${h.n} like the map's badge (v3: a realm's sentence with no event has no number)`);
           t.expect(evs[i].cls.startsWith('fac-') && evs[i].who, `event ${h.n} has its realm's colour and its who: ${evs[i].cls}`);
         });
         const nx = dom.domain.next;
@@ -185,6 +185,12 @@ export const checks = [
         t.expect(offered.every((i) => !o.missions[i].hex || o.missions[i].hex === target.id), `missions offered for ${target.id}: ${offered}`);
         await page.locator(`[data-f="mission"][data-v="${mIdx}"]`).click();
       }
+      // v3: the tower's goal row offers the engine's take/ally/topple choices
+      const goal = o.version === 3 && o.goals.length ? o.goals[0] : null;
+      if (goal) {
+        t.expect(await page.locator('[data-row="goal"]').count() === 1, 'the goal row (v3)');
+        await page.locator(`[data-f="goal"][data-v="${goal.goal}"]`).click();
+      }
       const aIdx = o.actions.findIndex((a) => a.affordable !== false);
       if (aIdx >= 0) await page.locator(`[data-f="action"][data-v="${aIdx}"]`).click();
       else if (o.actions.length) t.expect(await page.locator('[data-f="action"][data-v="0"]').isDisabled(), 'an action the tower cannot afford is greyed out');
@@ -200,10 +206,13 @@ export const checks = [
       const want = {
         travel: target.id,
         mission: mission ? { type: mission.type, target: mission.target } : null,
-        action: aIdx >= 0 ? o.actions[aIdx].action : null,
         give: realm ? { realm, gp: 20 } : null,
         plan: 'Safe XP next door; the tower saves.',
       };
+      if (o.version === 3) {
+        want.goal = goal ? goal.goal : null;
+        want.actions = aIdx >= 0 ? [o.actions[aIdx].action] : [];
+      } else want.action = aIdx >= 0 ? o.actions[aIdx].action : null;
       for (const k of Object.keys(want)) t.expect(JSON.stringify(mv[k]) === JSON.stringify(want[k]), `orders.${k}: ${JSON.stringify(mv[k])}, want ${JSON.stringify(want[k])}`);
       t.expect(mv.v === 1 && Number.isInteger(mv.seq) && typeof mv.at === 'string', `the move's frame: ${JSON.stringify(mv)}`);
       await t.waitFor(() => page.locator('[data-wake-anchor] .status').innerText().then((s) => /the GM has been called/.test(s)), 'the status line says the GM was called');

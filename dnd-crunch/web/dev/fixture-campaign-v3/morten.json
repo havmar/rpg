@@ -1,0 +1,574 @@
+{
+ "name": "Morten",
+ "class": "Wizard 3 (Evoker)",
+ "species": "Human",
+ "size": "Medium",
+ "sex": "male",
+ "pronouns": "he/him",
+ "background": "Sage",
+ "hp": 20,
+ "maxHp": 20,
+ "hitDice": "3/3 d6",
+ "ac": 12,
+ "acArmor": 15,
+ "armorOn": false,
+ "speed": "6 sq (9 m)",
+ "initiative": "+4",
+ "passivePerception": 13,
+ "prof": 2,
+ "spellAttack": 5,
+ "saveDc": 13,
+ "abilityNote": "Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +1 CON).",
+ "abilities": [
+  {
+   "key": "STR",
+   "score": 8,
+   "mod": -1,
+   "save": -1,
+   "saveProf": false
+  },
+  {
+   "key": "DEX",
+   "score": 14,
+   "mod": 2,
+   "save": 2,
+   "saveProf": false
+  },
+  {
+   "key": "CON",
+   "score": 14,
+   "mod": 2,
+   "save": 2,
+   "saveProf": false
+  },
+  {
+   "key": "INT",
+   "score": 17,
+   "mod": 3,
+   "save": 5,
+   "saveProf": true
+  },
+  {
+   "key": "WIS",
+   "score": 12,
+   "mod": 1,
+   "save": 3,
+   "saveProf": true
+  },
+  {
+   "key": "CHA",
+   "score": 10,
+   "mod": 0,
+   "save": 0,
+   "saveProf": false
+  }
+ ],
+ "skills": [
+  {
+   "name": "Arcana",
+   "mod": 5
+  },
+  {
+   "name": "History",
+   "mod": 5
+  },
+  {
+   "name": "Insight",
+   "mod": 3
+  },
+  {
+   "name": "Investigation",
+   "mod": 7,
+   "expertise": true
+  },
+  {
+   "name": "Perception",
+   "mod": 3
+  }
+ ],
+ "proficiencies": {
+  "tools": "Calligrapher's Supplies",
+  "languages": "Common, Draconic, Elvish",
+  "weapons": "simple weapons",
+  "armour": "none"
+ },
+ "attacks": [
+  {
+   "name": "Fire Bolt",
+   "hit": "+5 (cast DC 10)",
+   "damage": "1d10 fire",
+   "range": "24 sq (36 m)"
+  },
+  {
+   "name": "Ray of Frost",
+   "hit": "+5 (cast DC 10)",
+   "damage": "1d8 cold, −3 m speed",
+   "range": "12 sq (18 m)"
+  },
+  {
+   "name": "Shocking Grasp",
+   "hit": "+5 (cast DC 10)",
+   "damage": "1d8 lightning",
+   "range": "touch"
+  },
+  {
+   "name": "Dagger (×2)",
+   "hit": "+4",
+   "damage": "1d4+2 piercing",
+   "range": "melee, or thrown 4/12 sq (6/18 m)"
+  },
+  {
+   "name": "Quarterstaff",
+   "hit": "+1",
+   "damage": "1d6−1 bludgeoning (1d8−1 two-handed)",
+   "range": "melee"
+  },
+  {
+   "name": "Oil flask (thrown)",
+   "hit": "DEX save DC 12",
+   "damage": "covered: +5 fire if hit by fire within 1 min",
+   "range": "4 sq (6 m)"
+  }
+ ],
+ "spells": [
+  {
+   "name": "Fire Bolt",
+   "level": 0,
+   "dc": 10,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "Spell attack, 1d10 fire; ignites flammable objects.",
+   "prepared": true,
+   "time": "Action",
+   "range": "24 sq (36 m)",
+   "book": true
+  },
+  {
+   "name": "Ray of Frost",
+   "level": 0,
+   "dc": 10,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "Spell attack, 1d8 cold; the target's speed −3 m until your next turn.",
+   "prepared": true,
+   "time": "Action",
+   "range": "12 sq (18 m)",
+   "book": true
+  },
+  {
+   "name": "Shocking Grasp",
+   "level": 0,
+   "dc": 10,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "Melee spell attack, 1d8 lightning; the target can't make Opportunity Attacks until its next turn.",
+   "prepared": true,
+   "time": "Action",
+   "range": "touch",
+   "book": true
+  },
+  {
+   "name": "Light",
+   "level": 0,
+   "dc": 10,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "An object sheds 6 m bright + 6 m dim light for 1 hour.",
+   "prepared": true,
+   "time": "Action",
+   "range": "touch",
+   "book": true,
+   "note": "Magic Initiate"
+  },
+  {
+   "name": "Mage Hand",
+   "level": 0,
+   "dc": 10,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "A spectral hand for 1 minute, 4.5 kg; a Magic action to use it again.",
+   "prepared": true,
+   "time": "Action",
+   "range": "6 sq (9 m)",
+   "book": true,
+   "note": "Magic Initiate"
+  },
+  {
+   "name": "Mage Armor",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "Base AC 13 + DEX for 8 h. Once per Long Rest with no check.",
+   "prepared": true,
+   "time": "Action",
+   "range": "touch",
+   "book": false,
+   "note": "Magic Initiate, always prepared"
+  },
+  {
+   "name": "Shield",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "Reaction when hit or targeted by Magic Missile: +5 AC until your next turn, the triggering attack included.",
+   "prepared": true,
+   "time": "Reaction",
+   "range": "self",
+   "book": true
+  },
+  {
+   "name": "Magic Missile",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "3 darts, 1d4+1 force each, never miss; +1 dart per level above 1.",
+   "prepared": true,
+   "time": "Action",
+   "range": "24 sq (36 m)",
+   "book": true
+  },
+  {
+   "name": "Thunderwave",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "4.5 m cube from you, CON save: 2d8 thunder and a push of 3 m, half on a save; heard 90 m away.",
+   "prepared": true,
+   "time": "Action",
+   "range": "self (4.5 m cube)",
+   "book": true
+  },
+  {
+   "name": "Sleep",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": true,
+   "ritual": false,
+   "line": "WIS save or Incapacitated, then a second save or Unconscious; 1.5 m radius; no effect on undead and constructs.",
+   "prepared": true,
+   "time": "Action",
+   "range": "12 sq (18 m)",
+   "book": true
+  },
+  {
+   "name": "Misty Step",
+   "level": 2,
+   "dc": 12,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "Teleport 9 m to a space you can see.",
+   "prepared": true,
+   "time": "Bonus action",
+   "range": "self",
+   "book": true
+  },
+  {
+   "name": "Scorching Ray",
+   "level": 2,
+   "dc": 12,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "3 rays, each a spell attack, 2d6 fire.",
+   "prepared": true,
+   "time": "Action",
+   "range": "24 sq (36 m)",
+   "book": true
+  },
+  {
+   "name": "Detect Magic",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": true,
+   "ritual": true,
+   "line": "Sense magic within 9 m for 10 minutes.",
+   "prepared": false,
+   "time": "Action",
+   "range": "self",
+   "book": true
+  },
+  {
+   "name": "Feather Fall",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "Reaction: up to five falling creatures fall gently for 1 minute.",
+   "prepared": false,
+   "time": "Reaction",
+   "range": "12 sq (18 m)",
+   "book": true
+  },
+  {
+   "name": "Find Familiar",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": false,
+   "ritual": true,
+   "line": "A spirit familiar (needs 10 GP of incense).",
+   "prepared": false,
+   "time": "1 hour",
+   "range": "2 sq (3 m)",
+   "book": true
+  },
+  {
+   "name": "Grease",
+   "level": 1,
+   "dc": 11,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "A 3 m square of grease: difficult terrain, DEX save or Prone.",
+   "prepared": false,
+   "time": "Action",
+   "range": "12 sq (18 m)",
+   "book": true
+  },
+  {
+   "name": "Shatter",
+   "level": 2,
+   "dc": 12,
+   "lost": false,
+   "conc": false,
+   "ritual": false,
+   "line": "3 m-radius sphere, CON save: 3d8 thunder, half on a save.",
+   "prepared": false,
+   "time": "Action",
+   "range": "12 sq (18 m)",
+   "book": true,
+   "note": "Evocation Savant"
+  },
+  {
+   "name": "Web",
+   "level": 2,
+   "dc": 12,
+   "lost": false,
+   "conc": true,
+   "ritual": false,
+   "line": "A 6 m cube of webs: difficult terrain, DEX save or Restrained.",
+   "prepared": false,
+   "time": "Action",
+   "range": "12 sq (18 m)",
+   "book": true
+  }
+ ],
+ "features": [
+  {
+   "name": "Arcane Recovery",
+   "state": "ready",
+   "line": "Once per Long Rest, after a Short Rest: regain lost spells totalling up to 2 levels (a cantrip counts as 1)."
+  },
+  {
+   "name": "Ritual Adept",
+   "state": "always",
+   "line": "Cast Ritual spells from the spellbook unprepared, +10 minutes, no casting check."
+  },
+  {
+   "name": "Scholar",
+   "state": "always",
+   "line": "Expertise in Investigation."
+  },
+  {
+   "name": "Evocation Savant",
+   "state": "always",
+   "line": "Shatter and Scorching Ray copied free."
+  },
+  {
+   "name": "Potent Cantrip",
+   "state": "always",
+   "line": "A damaging cantrip that misses (or is saved against) still deals half damage."
+  },
+  {
+   "name": "Alert",
+   "state": "always",
+   "line": "+2 Initiative; may swap Initiative with a willing ally."
+  },
+  {
+   "name": "Magic Initiate (Wizard)",
+   "state": "always",
+   "line": "Light, Mage Hand, Mage Armor."
+  },
+  {
+   "name": "Heroic Inspiration",
+   "state": "always",
+   "line": "Human, Resourceful: after each Long Rest, reroll any one die."
+  }
+ ],
+ "light": "lamp, about 5 h of oil left",
+ "conc": null,
+ "conditions": [],
+ "exhaustion": 0,
+ "inspiration": true,
+ "freeArmor": false,
+ "reaction": true,
+ "gear": [
+  {
+   "name": "Spellbook",
+   "count": 1,
+   "kg": 1.4,
+   "note": ""
+  },
+  {
+   "name": "Quarterstaff (arcane focus)",
+   "count": 1,
+   "kg": 1.8,
+   "note": ""
+  },
+  {
+   "name": "Dagger",
+   "count": 2,
+   "kg": 0.45,
+   "note": ""
+  },
+  {
+   "name": "Robe (worn)",
+   "count": 1,
+   "kg": 1.8,
+   "note": ""
+  },
+  {
+   "name": "Backpack",
+   "count": 1,
+   "kg": 2.3,
+   "note": ""
+  },
+  {
+   "name": "Book (Sage)",
+   "count": 1,
+   "kg": 2.3,
+   "note": "the trader buys it for 12 GP 5 SP"
+  },
+  {
+   "name": "Ink, ink pen, 10 parchment",
+   "count": 1,
+   "kg": 0,
+   "note": ""
+  },
+  {
+   "name": "Lamp",
+   "count": 1,
+   "kg": 0.5,
+   "note": "4.5 m bright + 9 m dim; 6 h per oil flask"
+  },
+  {
+   "name": "Oil flask",
+   "count": 10,
+   "kg": 0.5,
+   "note": "fuel, or thrown / poured for fire"
+  },
+  {
+   "name": "Tinderbox",
+   "count": 1,
+   "kg": 0.5,
+   "note": "light a torch or lamp: Bonus action"
+  },
+  {
+   "name": "Torch",
+   "count": 7,
+   "kg": 0.45,
+   "note": "1 h, 6 m bright + 6 m dim"
+  },
+  {
+   "name": "Rations",
+   "count": 3,
+   "kg": 0.9,
+   "note": "1 per day"
+  },
+  {
+   "name": "Waterskin (full)",
+   "count": 1,
+   "kg": 2.3,
+   "note": ""
+  },
+  {
+   "name": "Rope, 15 m",
+   "count": 1,
+   "kg": 2.3,
+   "note": ""
+  },
+  {
+   "name": "Bedroll",
+   "count": 1,
+   "kg": 3.2,
+   "note": ""
+  },
+  {
+   "name": "Caltrops (bag)",
+   "count": 1,
+   "kg": 0.9,
+   "note": "cover a 1.5 m square"
+  },
+  {
+   "name": "Crowbar",
+   "count": 1,
+   "kg": 2.3,
+   "note": "Advantage on STR checks where leverage helps"
+  },
+  {
+   "name": "Potion of Healing",
+   "count": 1,
+   "kg": 0.2,
+   "note": "Bonus action: regain 2d4+2 HP"
+  }
+ ],
+ "load": {
+  "kg": 33.5,
+  "max": 54
+ },
+ "coins": {
+  "on": "47 GP 7 SP 5 CP",
+  "purse": "none"
+ },
+ "coinsNote": "Month 1: room 1.1 +5 GP, deposited.",
+ "xp": 950,
+ "nextXp": 2700,
+ "level": 3,
+ "deaths": 0,
+ "familiar": null,
+ "habits": [
+  "Shield: cast as a reaction when a hit would become a miss at AC 20 and deals 4+ damage (any damage at 8 HP or less), if Shield isn't lost and the reaction is free.",
+  "Heroic Inspiration: reroll a failed cast of Shield, Misty Step, Scorching Ray, Thunderwave or Sleep.",
+  "Cheese everything: scout, rituals, Mage Hand, oil, Sleep then point-blank crits, chokepoints, Ready Shocking Grasp for the first through the door, retreat to reset, leave the purse home before a risky fight.",
+  "Rulings: monsters that flee on a morale check count as bypassed (XP given)."
+ ],
+ "trader": [
+  {
+   "name": "Potion of Healing",
+   "price": "50 GP"
+  },
+  {
+   "name": "Rations (1 day)",
+   "price": "5 SP"
+  },
+  {
+   "name": "Incense for Find Familiar",
+   "price": "10 GP"
+  },
+  {
+   "name": "Oil flask",
+   "price": "1 SP"
+  },
+  {
+   "name": "Anything in the SRD's equipment",
+   "price": "list price"
+  }
+ ]
+}

@@ -16,6 +16,35 @@
     return ATTR[c] ? c : 'F';
   };
   const DIFF = ['Low', 'Moderate', 'High'];
+  // Realms v3 (game/realm.version 3): sites instead of pieces, goals as clocks, standing, the ladder
+  const V3 = (r) => r.version === 3;
+  const SITE_GLYPH = { seat: 'crown', garrison: 'shield', works: 'globe', walls: 'door' };
+  const STANDING_CLS = { ally: 'good', friendly: 'good', neutral: '', wary: 'warn', enemy: 'bad' };
+  /** What a Strike or an Aid moves: 2 marks, 3 once the tower is A power in the land. */
+  const markStep = (m) => (m.tower && m.tower.tier !== null && m.tower.tier >= 3 ? 3 : 2);
+  /** A goal's clock: its marks as boxes, and the count in words. */
+  function clockHtml(c, cls = '') {
+    if (!c || c.size === null) return '';
+    const n = Math.max(0, Math.min(c.size, c.marks));
+    const boxes = Array.from({ length: c.size }, (_, i) => `<i${i < n ? ' class="on"' : ''}></i>`).join('');
+    const waits = c.waits ? `<small>done, waits for ${esc(fmt.gp(c.waits))}</small>` : '';
+    return `<span class="clock${cls ? ` ${cls}` : ''}" role="img" aria-label="${esc(`${n} of ${c.size} marks`)}"><span class="boxes">${boxes}</span><b>${esc(`${n} of ${c.size}`)}</b>${waits}</span>`;
+  }
+  /** The tower's Hold boxes. */
+  function holdHtml(hold, max) {
+    const h = hold === null ? 0 : hold;
+    const mx = max === null ? 3 : max;
+    return `<span class="hold" role="img" aria-label="${esc(`Hold ${h} of ${mx}`)}"><span class="boxes">${Array.from({ length: mx }, (_, i) => `<i${i < h ? ' class="on"' : ''}></i>`).join('')}</span><b>Hold ${esc(h)} of ${esc(mx)}</b></span>`;
+  }
+  /** The hex a v3 realm's goal is aimed at (its seat for goals with no hex; the target's seat for a goal at a realm). */
+  function aimHex(m, f) {
+    const c = f.clock;
+    if (!c) return f.seat;
+    if (c.hex) return c.hex;
+    if (c.target && isTower(c.target)) return m.tower ? m.tower.seat : null;
+    if (c.target) { const o = m.facs.get(c.target); return o ? o.seat : f.seat; }
+    return f.seat;
+  }
   const isTower = (n) => n === 'tower' || n === 'the tower';
   const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : '');
   /** "the Orcs" / "the tower" */
@@ -92,7 +121,8 @@
     }
     const useDays = realm.morten && realm.morten.hex === origin;
     const dayOf = (id) => (useDays && typeof realm.days[id] === 'number' ? realm.days[id] : hops.has(id) ? hops.get(id) : null);
-    const hostile = new Set(realm.factions.filter((f) => !f.tower && f.hostile > 0).map((f) => f.name));
+    // v2: hostile realms (a timer); v3: enemies (standing −2)
+    const hostile = new Set(realm.factions.filter((f) => !f.tower && (V3(realm) ? f.standing !== null && f.standing <= -2 : f.hostile > 0)).map((f) => f.name));
     const piecesOf = new Map();
     for (const h of realm.hexes) for (const a of h.assets) {
       if (!piecesOf.has(a.owner)) piecesOf.set(a.owner, []);
@@ -169,6 +199,43 @@
     return `<div class="do">${out.join('')}</div>`;
   }
 
+  /** v3: a site's row (a seat, a garrison, works or walls): its fight tier, its effect, Strike / Rob. */
+  function siteRow(m, a, h, opts = {}) {
+    const k = m.realm.kinds[a.name] || null;
+    const glyph = (k && k.glyph) || SITE_GLYPH[a.type] || 'hex';
+    const tier = Math.max(1, Math.min(3, a.tier || 1));
+    const enemy = m.hostile.has(a.owner);
+    const what = k && k.what ? k.what : a.type || 'a site';
+    const where = opts.where && h ? (() => {
+      const d = m.dayOf(h.id);
+      return `<small class="at">in ${esc(nameOf(m, h.id))} · ${esc(d === 0 ? 'where Morten is' : d !== null ? `${days(d)} from Morten` : h.id)}</small>`;
+    })() : '';
+    const f = m.facs.get(a.owner);
+    const step = markStep(m);
+    let dos = '';
+    if (!isTower(a.owner) && opts.missions !== false) {
+      const out = [`<span>Strike: a ${esc(DIFF[tier - 1])} fight, ${esc(step)} marks off their goal</span>`];
+      if (a.type === 'works') {
+        let gp = 100 * (f && f.force !== null ? f.force : 1);
+        if (f && typeof f.treasury === 'number') gp = Math.min(gp, f.treasury);
+        out.push(`<span>${gp > 0 ? `Rob: a ${esc(DIFF[tier - 1])} fight, up to ${esc(fmt.gp(gp))}` : 'Rob: their coffers are empty'}</span>`);
+      }
+      dos = `<div class="do">${out.join('')}</div>`;
+    }
+    return `<div class="piece site ${fac(a.owner)}${enemy ? ' hostile' : ''}" data-piece="${esc(a.id)}">`
+      + `<span class="tok-big site" title="${esc(cap(a.type || 'site'))}">${icon(glyph)}</span>`
+      + '<div class="body">'
+      + `<div class="pn"><b>${esc(a.name || 'A site')}</b>${opts.owner === false ? '' : `<span>${esc(poss(a.owner))}</span>`}<small>${esc(what)}</small>${enemy ? `<span class="hos">${icon('skull')}enemy</span>` : ''}</div>`
+      + `<div class="hp">${pips(tier)}<span>tier ${esc(tier)} · a ${esc(DIFF[tier - 1])} fight</span></div>`
+      + (k && k.effect ? `<p class="what">${esc(k.effect)}</p>` : '')
+      + where
+      + dos
+      + '</div></div>';
+  }
+
+  /** A piece (v2) or a site (v3), one row. */
+  const assetRow = (m, a, h, opts) => (V3(m.realm) ? siteRow(m, a, h, opts) : pieceRow(m, a, h, opts));
+
   function pieceRow(m, a, h, opts = {}) {
     const k = m.realm.kinds[a.name] || null;
     const t = typeOf(a, k);
@@ -203,10 +270,50 @@
     return `<button type="button" class="rlink ${fac(f.name)}" data-goto-realm="${esc(f.name)}"><span class="sw"></span>${esc(f.name)}${st}</button>`;
   }
 
+  /** v3: tier and Renown, Hold, gold, the goal as a clock, sites, land, allies and enemies. */
+  function towerCard3(m) {
+    const t = m.tower;
+    const r = m.realm;
+    const allies = r.factions.filter((f) => !f.tower && f.ally);
+    const enemies = r.factions.filter((f) => !f.tower && f.standing !== null && f.standing <= -2);
+    const own = (m.piecesOf.get(t.name) || []).concat(t.name !== 'tower' ? (m.piecesOf.get('tower') || []) : []);
+    const tier = `<div class="tierline" title="${esc(r.words.tier || '')}">${icon('crown')}<b>${esc(t.tierName || 'Hermit')}</b><small>tier ${esc(t.tier !== null ? t.tier : 0)} · Renown ${esc(t.renown !== null ? t.renown : 0)}</small></div>`;
+    const hold = `<div class="holdline" title="${esc(r.words.hold || '')}">${icon('shield')}${holdHtml(t.hold, t.maxHold)}</div>`;
+    const gold = `<p class="gold"><b>${esc(fmt.gp(t.treasury) || '? GP')}</b> in the coffers, <b>${esc(t.income !== null ? `${fmt.signed(t.income)} GP` : '? GP')}</b> a month</p>`;
+    const c = t.clock;
+    const goal = c
+      ? `<div class="sub"><span class="label">The tower's goal</span><p class="goal">${icon('flag')}<span><b>${esc(cap(c.text))}</b> ${clockHtml(c)}${c.kind && r.goalWords[c.kind] ? `<small class="muted">When full: ${esc(r.goalWords[c.kind])}.</small>` : ''}</span></p></div>`
+      : '<p class="muted small">No goal yet: declare one with the month\'s orders (take a hex, win an ally or topple a ruler). Its marks come from Morten\'s deeds and from allies, never from dice.</p>';
+    const lines = r.nextWords.length ? r.nextWords : r.report.next;
+    const next = lines.length
+      ? `<div class="nextm"><span class="label">What month ${esc(r.month !== null ? r.month : (r.report.month || 0) + 1)} can bring</span><div class="chips">${nextChips(lines)}</div></div>`
+      : '';
+    const found = r.dissidents.length
+      ? `<div class="sub"><span class="label">Dissidents found</span><ul class="heard">${r.dissidents.map((d) => `<li class="${fac(d.realm)}">${icon('speech')}<span><b>${esc(d.name)}</b>, of ${esc(the(d.realm))}${d.hex ? ` in ${esc(cap(nameOf(m, d.hex)))}` : ''}: the tower can declare a topple there</span></li>`).join('')}</ul></div>`
+      : '';
+    const won = t.won !== null ? `<p class="brass"><b>The world is his</b> (since month ${esc(t.won)}).</p>` : '';
+    return '<div class="card tower v3">'
+      + `<h3>${icon('tower')}The tower<small>yours</small></h3>`
+      + tier
+      + note('realm-ladder', '<b>Renown</b> is hexes held beyond the tower\'s own, plus allies, plus 2 for each ruler toppled; it climbs a ladder of five tiers, each with a power. <b>Hold</b> is three boxes: a realm\'s <i>break the tower</i> goal that fires takes one, and half the gold.')
+      + hold
+      + gold
+      + won
+      + goal
+      + (own.length ? `<div class="sub"><span class="label">Its sites · ${esc(own.length)}</span><div class="pieces">${own.map(({ a, h }) => siteRow(m, a, h, { owner: false, missions: false, where: true })).join('')}</div></div>` : '<p class="muted small">No sites yet: works for income, and from Lord of the hex a garrison and walls for its hexes.</p>')
+      + (t.hexes.length ? `<div class="sub"><span class="label">Its land</span><div class="hexbtns">${t.hexes.map((id) => hexBtn(m, id)).join('')}</div></div>` : '')
+      + `<div class="rel"><span class="label">Allies</span><span class="links">${allies.length ? allies.map(realmLink).join('') : '<span class="muted">none</span>'}</span>`
+      + `<span class="label">Enemies</span><span class="links">${enemies.length ? enemies.map(realmLink).join('') : '<span class="muted">nobody</span>'}</span></div>`
+      + found
+      + next
+      + '</div>';
+  }
+
   function towerCard(m) {
     const t = m.tower;
     const r = m.realm;
     if (!t) return '';
+    if (V3(r)) return towerCard3(m);
     const allies = r.factions.filter((f) => !f.tower && f.ally);
     const hostile = r.factions.filter((f) => !f.tower && f.hostile > 0);
     const own = (m.piecesOf.get(t.name) || []).concat(t.name !== 'tower' ? (m.piecesOf.get('tower') || []) : []);
@@ -274,6 +381,7 @@
       const cy = !two ? y + 16 : y + (i < 3 ? 8 : 31);
       return [x - ((inRow - 1) * step) / 2 + k * step, cy];
     };
+    const v3 = V3(m.realm);
     shown.forEach((a, i) => {
       const [cx, cy] = place(i);
       const k = m.realm.kinds[a.name] || null;
@@ -284,11 +392,13 @@
       const circ = 2 * Math.PI * ringR;
       const g = r * 1.3;
       const hostile = m.hostile.has(a.owner);
-      out += `<g class="tokn ${fac(a.owner)}${hostile ? ' hos' : ''}" data-piece="${esc(a.id)}">`
+      // v3: a site has no health; its token carries the site's glyph and a plain ring
+      const glyph = v3 ? (k && k.glyph) || SITE_GLYPH[a.type] || 'hex' : ATTR[t][0];
+      out += `<g class="tokn ${fac(a.owner)}${hostile ? ' hos' : ''}${v3 ? ' site' : ''}" data-piece="${esc(a.id)}">`
         + `<circle class="ring" cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(ringR)}"/>`
-        + `<circle class="ring on ${band(a.hp, a.max_hp)}" cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(ringR)}" stroke-dasharray="${f1(circ * rt)} ${f1(circ)}" transform="rotate(-90 ${f1(cx)} ${f1(cy)})"/>`
+        + (v3 ? '' : `<circle class="ring on ${band(a.hp, a.max_hp)}" cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(ringR)}" stroke-dasharray="${f1(circ * rt)} ${f1(circ)}" transform="rotate(-90 ${f1(cx)} ${f1(cy)})"/>`)
         + `<circle class="tok" cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(r)}"/>`
-        + `<use class="tok-g" href="#i-${ATTR[t][0]}" x="${f1(cx - g / 2)}" y="${f1(cy - g / 2)}" width="${f1(g)}" height="${f1(g)}"/>`
+        + `<use class="tok-g" href="#i-${glyph}" x="${f1(cx - g / 2)}" y="${f1(cy - g / 2)}" width="${f1(g)}" height="${f1(g)}"/>`
         + (hostile ? `<circle class="hostile" cx="${f1(cx)}" cy="${f1(cy)}" r="${f1(ringR + 2.2)}"/><circle class="skull-b" cx="${f1(cx + r * 0.95)}" cy="${f1(cy - r * 0.95)}" r="4.6"/><use class="skull-g" href="#i-skull" x="${f1(cx + r * 0.95 - 3.6)}" y="${f1(cy - r * 0.95 - 3.6)}" width="7.2" height="7.2"/>` : '');
       for (let p = 0; p < tier; p++) out += `<circle class="pip" cx="${f1(cx - (tier - 1) * 1.8 + p * 3.6)}" cy="${f1(cy + ringR + 2.9)}" r="1.25"/>`;
       out += '</g>';
@@ -401,7 +511,25 @@
       + '</svg>';
   }
 
+  function keyOver3() {
+    const tok = (g, c = 'fac-humans') => `<span class="ktok site ${c}">${icon(g)}</span>`;
+    return `<div class="keyover" role="dialog" aria-label="The map's key"><ul>`
+      + `<li><b class="klvl">18</b><span>The big number is a hex's <b>level</b>: the floor under it, how bad its wanderers are, and its income (level × 10 GP a month).</span></li>`
+      + `<li>${tok('crown')}<span>A <b>seat</b>: the ruler's court, the realm's hardest fight. A Strike there costs 2 standing.</span></li>`
+      + `<li>${tok('shield')}<span>A <b>garrison</b>: −1 to goal rolls aimed at its hex.</span></li>`
+      + `<li>${tok('globe')}<span><b>Works</b> (farms, a mine, caravans): +50 GP a month to its owner; what a Rob takes from.</span></li>`
+      + `<li>${tok('door')}<span><b>Walls</b>: −1 more to goal rolls at the hex; a take against it needs 6 marks.</span></li>`
+      + `<li><span class="kpips">${pips(2)}</span><span>The pips under a token: the site's fight tier, 1 to 3 (a Low, Moderate or High fight for Morten).</span></li>`
+      + `<li><span class="kic bad">${icon('skull')}</span><span>A red ring and a skull: the owner is an enemy of the tower (standing −2).</span></li>`
+      + `<li><span class="kic">${icon('tower')}</span><span>The tower: your seat, warded.</span></li>`
+      + `<li><span class="kic">${icon('pin')}</span><span>Morten, and the dashed brass ring round his hex.</span></li>`
+      + `<li><span class="kn">3</span><span>Last month's moves, numbered as in the story's world's turn; tap a number for its sentence.</span></li>`
+      + `<li><span class="kriv"></span><span>A river. The lines between colours are borders.</span></li>`
+      + `</ul><button type="button" class="toggle" data-t="key" aria-pressed="true">Close the key</button></div>`;
+  }
+
   function keyOver() {
+    if (last && last.realm && V3(last.realm)) return keyOver3();
     const tok = (g, c = 'fac-humans') => `<span class="ktok ${c}">${icon(g)}</span>`;
     return `<div class="keyover" role="dialog" aria-label="The map's key"><ul>`
       + `<li><b class="klvl">18</b><span>The big number is a hex's <b>level</b>: the floor under it, how bad its wanderers are, and its income (level × 10 GP a month).</span></li>`
@@ -457,14 +585,15 @@
     const h = m.byId.get(id);
     if (!h) return '';
     const r = m.realm;
+    const v3 = V3(r);
     const home = isTower(h.holder);
     const lv = h.level;
     const d = m.dayOf(id);
     const holder = m.facs.get(h.holder);
     const held = home
-      ? 'Yours, warded: it can never be seized'
+      ? (h.warded || !v3 ? `Yours, warded: it can never be ${v3 ? 'taken' : 'seized'}` : 'Yours')
       : h.holder ? `Held by ${esc(the(h.holder))}${h.people === h.holder ? ', their own people' : h.people ? `, ${esc(poss(h.people))} land` : ''}` : 'Held by nobody';
-    const occupiers = h.assets.filter((a) => a.owner !== h.holder && typeOf(a, r.kinds[a.name]) === 'F').map((a) => a.owner);
+    const occupiers = v3 ? [] : h.assets.filter((a) => a.owner !== h.holder && typeOf(a, r.kinds[a.name]) === 'F').map((a) => a.owner);
     const inc = typeof h.income === 'number' ? h.income : lv !== null ? lv * 10 : null;
     const income = inc === 0 && occupiers.length
       ? `pays ${home ? 'the tower' : 'them'} nothing while ${esc(poss(occupiers[0]))} soldiers stand in it`
@@ -478,22 +607,43 @@
     let seat = '';
     if (h.seat_of) seat = isTower(h.seat_of) ? ' The tower stands here.' : ` The seat of ${esc(leaderOf(m.facs.get(h.seat_of)) || 'the ruler')} of ${esc(the(h.seat_of))}.`;
 
-    // missions beyond the pieces: Strike an unguarded seat, Contact, Delve
+    // missions beyond the pieces: Strike an unguarded seat (v2), Aid (v3), Contact, Delve
     const more = [];
-    if (h.seat_of && !isTower(h.seat_of) && !h.assets.some((a) => a.owner === h.seat_of && typeOf(a, r.kinds[a.name]) === 'F')) {
+    const om = m.state && m.state.awaiting && m.state.awaiting.orders ? m.state.awaiting.orders.missions : [];
+    if (!v3 && h.seat_of && !isTower(h.seat_of) && !h.assets.some((a) => a.owner === h.seat_of && typeOf(a, r.kinds[a.name]) === 'F')) {
       more.push(`<span>Strike the seat: a High fight, 2d6 to ${esc(poss(h.seat_of))} regime</span>`);
     }
+    const clocksHere = [];
+    if (v3) {
+      const step = markStep(m);
+      for (const f of r.factions) {
+        if (f.tower || !f.clock) continue;
+        if (f.clock.hex === id) clocksHere.push(f);
+        if (aimHex(m, f) !== id || (f.clock.target && isTower(f.clock.target)) || f.clock.waits) continue;
+        const given = om.find((x) => x.type === 'aid' && x.target === f.name && x.hex === id);
+        const fight = given && /\((Low|Moderate|High)[^)]*\)/.exec(given.label) ? ` ${/\((Low|Moderate|High)[^)]*\)/.exec(given.label)[1]} fight,` : '';
+        more.push(`<span>Aid ${esc(the(f.name))} with ${esc(f.goal)}:${esc(fight)} ${esc(step)} marks on their clock</span>`);
+      }
+    }
     if (!home && holder) {
-      const om = m.state && m.state.awaiting && m.state.awaiting.orders ? m.state.awaiting.orders.missions : [];
-      const given = om.find((x) => x.type === 'contact' && x.target === id);
-      const dc = given && /DC\s*(\d+)/.exec(given.label) ? /DC\s*(\d+)/.exec(given.label)[1]
-        : typeof holder.cunning === 'number' ? 10 + holder.cunning - (holder.leader.tag === 'Tyrant' ? 4 : 0) : null;
-      more.push(`<span>Contact the people: Persuasion${dc !== null ? ` DC ${esc(dc)}` : ''}</span>`);
+      const given = om.find((x) => x.type === 'contact' && (v3 ? x.hex === id : x.target === id));
+      const given2 = given && /DC\s*(\d+)/.exec(given.label) ? /DC\s*(\d+)/.exec(given.label)[1] : null;
+      if (v3) {
+        const enemy = holder.standing !== null && holder.standing <= -2;
+        const dc = given2 !== null ? given2 : holder.standing !== null ? 12 + (holder.leader.label === 'bad' ? 3 : 0) - 2 * holder.standing + (holder.squeezed ? 4 : 0) : null;
+        more.push(enemy ? `<span>Contact ${esc(the(h.holder))}: refused, they are enemies</span>` : `<span>Contact ${esc(the(h.holder))}: Persuasion${dc !== null ? ` DC ${esc(dc)}` : ''}, standing +1</span>`);
+      } else {
+        const dc = given2 !== null ? given2 : typeof holder.cunning === 'number' ? 10 + holder.cunning - (holder.leader.tag === 'Tyrant' ? 4 : 0) : null;
+        more.push(`<span>Contact the people: Persuasion${dc !== null ? ` DC ${esc(dc)}` : ''}</span>`);
+      }
     }
     const pieces = h.assets.length
-      ? `<div class="pieces">${h.assets.map((a) => pieceRow(m, a, h)).join('')}</div>`
-        + (h.assets.some((a) => !isTower(a.owner)) ? '<p class="muted small">A Strike or a Rob is a fight for Morten, and turns the owner hostile to the tower for 3 months (6 at a seat).</p>' : '')
+      ? `<div class="pieces">${h.assets.map((a) => assetRow(m, a, h)).join('')}</div>`
+        + (h.assets.some((a) => !isTower(a.owner)) ? `<p class="muted small">${v3 ? 'A Strike or a Rob is a fight for Morten. A won Strike takes marks off the owner\'s goal and costs 1 standing (2 at a seat); a Rob costs 1.' : 'A Strike or a Rob is a fight for Morten, and turns the owner hostile to the tower for 3 months (6 at a seat).'}</p>` : '')
       : '<p class="muted small">Nothing the tower can see stands here.</p>';
+    const aimed = clocksHere.length
+      ? `<span class="label">Clocks aimed here</span><ul class="heard aimed">${clocksHere.map((f) => `<li class="${fac(f.name)}">${icon('flag')}<span>${esc(the(f.name))}: <b>${esc(f.goal)}</b> ${clockHtml(f.clock)}</span></li>`).join('')}</ul>`
+      : '';
     // the orders form is open: send Morten here from the map (the Story's form takes it)
     const aw = m.state && m.state.status === 'awaiting' && m.state.awaiting && m.state.awaiting.kind === 'orders' ? m.state.awaiting.orders : null;
     const oh = aw ? aw.hexes.find((x) => x.id === id) : null;
@@ -507,8 +657,9 @@
       + `<p class="line">${[held, income, dist].filter(Boolean).join(' · ')}${river}.</p>`
       + travel
       + (lv !== null ? `<p class="line lvl-line">Level ${esc(lv)}: floor ${esc(lv)} lies under it, and its wanderers are level-${esc(lv)} trouble.${seat}</p>` : seat ? `<p class="line">${seat.trim()}</p>` : '')
-      + `<span class="label">Pieces here · ${esc(h.assets.length)}</span>${pieces}`
+      + `<span class="label">${v3 ? 'Sites' : 'Pieces'} here · ${esc(h.assets.length)}</span>${pieces}`
       + (more.length ? `<span class="label">Morten's missions here</span><div class="do">${more.join('')}</div>` : '')
+      + aimed
       + roomsStrip(m, h)
       + (evs.length ? `<span class="label">Last month here</span><ol class="events">${evs.map((e) => `<li class="${fac(e.who)}"><span class="n">${esc(e.n)}</span><span>${esc(e.text)}</span></li>`).join('')}</ol>` : '')
       + (heard.length ? `<span class="label">Heard here</span><ul class="heard">${heard.map((s) => `<li>${icon('speech')}<span>${esc(noIds(s))}</span></li>`).join('')}</ul>` : '')
@@ -525,7 +676,48 @@
     return out.join('');
   }
 
+  /** v3: the standing word, ally or enemy, landless. */
+  function stateWords3(f) {
+    const out = [];
+    const w = f.standingWord || (f.standing !== null ? ['enemy', 'wary', 'neutral', 'friendly', 'ally'][f.standing + 2] : '');
+    if (w) out.push(`<span class="st ${STANDING_CLS[w] || ''}" title="standing ${f.standing !== null ? fmt.signed(f.standing) : '?'} with the tower">${w === 'enemy' ? icon('skull') : ''}${esc(w)}</span>`);
+    if (!f.hexes.length) out.push('<span class="st bad">landless</span>');
+    if (f.squeezed) out.push('<span class="st warn">squeezed</span>');
+    return out.join('');
+  }
+
+  /** v3: ruler (label: verb), Force and tier, the goal as a clock; open: gold, land, sites, the dissident. */
+  function realmRow3(m, f) {
+    const isOpen = open.has(f.name);
+    const r = m.realm;
+    const lab = f.leader.label ? `${f.leader.label}${f.leader.verb ? `: ${f.leader.verb}` : ''}` : f.leader.verb;
+    const tier = f.tier !== null ? f.tier : f.force !== null ? (f.force <= 2 ? 1 : f.force <= 4 ? 2 : 3) : 1;
+    const nums = `<span title="${esc(r.words.force || 'Force')}">${icon('sword')}Force ${esc(f.force !== null ? fmt.n(f.force) : '?')}</span>`
+      + `<span title="${esc(`tier ${tier}: its fights are ${DIFF[tier - 1]} for Morten`)}">${pips(tier)}<span class="vh">tier ${esc(tier)}</span></span>`
+      + `<span title="treasury">${icon('coins')}${esc(fmt.gp(f.treasury) || '? GP')}</span>`;
+    const goal = `<span class="goalline">${icon('flag')}<span>${f.goal ? esc(f.goal) : 'no goal'}</span>${f.clock ? clockHtml(f.clock) : ''}</span>`;
+    const pcs = m.piecesOf.get(f.name) || [];
+    const when = f.clock && f.clock.kind && r.goalWords[f.clock.kind] ? `<p class="muted small">When the clock fills: ${esc(r.goalWords[f.clock.kind])}. Each month a d6: a 1 loses a mark, 3 to 5 add one, a 6 adds two.</p>` : '';
+    const body = isOpen ? `<div class="more">`
+      + when
+      + `<p class="gold"><b>${esc(fmt.gp(f.treasury) || '? GP')}</b> in the coffers, <b>${esc(f.income !== null ? `${fmt.signed(f.income)} GP` : '? GP')}</b> a month</p>`
+      + `<p class="standing"><b>Standing ${esc(f.standing !== null ? fmt.signed(f.standing) : '?')}</b>, ${esc(f.standingWord || '')}: ${esc(r.words.standing || '')}</p>`
+      + (f.dissident ? `<p class="dis">${icon('speech')}<span><b>${esc(f.dissident.name)}</b> is the dissident${f.dissident.hex ? `, in ${esc(cap(nameOf(m, f.dissident.hex)))}` : ''}: the tower can declare a topple.</span></p>` : '')
+      + (f.hexes.length ? `<span class="label">Its land · ${esc(plural(f.hexes.length, 'hex', 'hexes'))}</span><div class="hexbtns">${[...f.hexes].sort((a, b) => (b === f.seat) - (a === f.seat)).map((id) => hexBtn(m, id)).join('')}</div>` : '<p class="muted small">It holds no land: its only goal is to take a hex back.</p>')
+      + `<span class="label">Its sites · ${esc(pcs.length)}</span>`
+      + (pcs.length ? `<div class="pieces">${pcs.map(({ a, h }) => siteRow(m, a, h, { owner: false, where: true })).join('')}</div>` : '<p class="muted small">None.</p>')
+      + '</div>' : '';
+    return `<div class="rrow v3 ${fac(f.name)}" data-realm="${esc(f.name)}" data-open="${isOpen}">`
+      + `<button type="button" class="rhead" data-realm-toggle="${esc(f.name)}" aria-expanded="${isOpen}">`
+      + '<span class="sw"></span>'
+      + `<span class="top"><b>${esc(f.name)}</b><span class="sts">${stateWords3(f)}</span><span class="lv">${esc(leaderOf(f))}${lab ? ` · <i>${esc(lab)}</i>` : ''}</span></span>`
+      + `<span class="nums">${nums}</span>`
+      + `<span class="goalrow">${goal}</span>`
+      + `${icon('chev', 'chev')}</button>${body}</div>`;
+  }
+
   function realmRow(m, f) {
+    if (V3(m.realm)) return realmRow3(m, f);
     const isOpen = open.has(f.name);
     const lab = f.leader.label ? `${f.leader.label}${f.leader.verb ? `: ${f.leader.verb}` : ''}` : f.leader.verb;
     const glyphs = ['force', 'cunning', 'wealth'].map((k, i) => `<span title="${ATTR['FCW'[i]][1]}">${icon(ATTR['FCW'[i]][0])}<span class="vh">${ATTR['FCW'[i]][1]} </span>${esc(fmt.n(f[k]))}</span>`).join('');
@@ -548,9 +740,10 @@
   function realmRows(m) {
     const list = m.realm.factions.filter((f) => !f.tower);
     if (!list.length) return '';
-    const rank = (f) => (f.ally ? 0 : f.hostile > 0 ? 1 : 2);
+    const v3 = V3(m.realm);
+    const rank = (f) => (f.ally ? 0 : (v3 ? f.standing !== null && f.standing <= -2 : f.hostile > 0) ? 1 : 2);
     const sorted = list.map((f, i) => ({ f, i })).sort((a, b) => rank(a.f) - rank(b.f) || a.i - b.i).map((x) => x.f);
-    return `<h3>${icon('crown')}The realms<small>allies first, then the hostile</small></h3><div class="rrows">${sorted.map((f) => realmRow(m, f)).join('')}</div>`;
+    return `<h3>${icon('crown')}The realms<small>allies first, then the ${v3 ? 'enemies' : 'hostile'}</small></h3><div class="rrows">${sorted.map((f) => realmRow(m, f)).join('')}</div>`;
   }
 
   // ---------- state, painting, events ----------
@@ -589,7 +782,9 @@
     const m = model(r, last.state);
     if (!picked || !m.byId.has(picked)) picked = m.byId.has(m.origin) ? m.origin : r.hexes[0].id;
     put(parts.tower, towerCard(m));
-    put(parts.note, note('realm-map', 'Colours are realms. The big number is a hex\'s <b>level</b>: the floor under it, how bad its wanderers are, and its income (level × 10 GP a month). The round tokens are <b>pieces</b> a realm put there: a sword is soldiers, a mask spies, coins income; the ring round a token is its health. A crown is a ruler\'s seat. Tap a hex.'));
+    put(parts.note, V3(r)
+      ? note('realm-map3', 'Colours are realms. The big number is a hex\'s <b>level</b>: the floor under it, how bad its wanderers are, and its income (level × 10 GP a month). The round tokens are <b>sites</b>: a crown the ruler\'s seat, a shield a garrison, a globe, gear or cart its works, a door its walls; the pips under one are its fight tier. Tap a hex.')
+      : note('realm-map', 'Colours are realms. The big number is a hex\'s <b>level</b>: the floor under it, how bad its wanderers are, and its income (level × 10 GP a month). The round tokens are <b>pieces</b> a realm put there: a sword is soldiers, a mask spies, coins income; the ring round a token is its health. A crown is a ruler\'s seat. Tap a hex.'));
     put(parts.bar, mapBar());
     put(parts.svg, mapSvg(m));
     put(parts.key, keyOn ? keyOver() : '');
