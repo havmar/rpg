@@ -154,3 +154,78 @@ The tower holds one hex, the level-1 desert at C5, in the south-east corner of t
 *After: 18/20 HP · XP 1,025 · 12 GP 7 SP 5 CP · lost: nothing*
 
 ---
+
+## Room 1.3 · Boar (CR 1/4) · Low, 50 XP · cleared, untouched
+
+*s0007 · fight · Month 1 · Day 1 · 10:50 · C5 · Floor 1 · room 1.3*
+
+**This was the textbook cheese. Sleep put the Boar out on two failed saves, and one point-blank Shocking Grasp crit for 13 dmg killed it before it ever moved.**
+
+- **The room:** 6×6 sq (9×9 m), with stone statues for half cover. The Boar was 5 sq from the door.
+- **Cheese:** Sleep first (24 vs DC 11). The Boar failed both WIS saves, 10 and then 1 vs DC 13, and fell Unconscious. Morten walked up to it. Attacks within 1.5 m of an Unconscious creature have Advantage and any hit is a critical hit, so Shocking Grasp did 2d8 = 13 lightning dmg against 13 HP.
+- **Result:** 18/20 HP, nothing lost. XP 1,025 → 1,075. +5 GP.
+
+**Fight:** 1× Boar (CR 1/4, AC 11, 13 HP) · Low, 50 XP · cleared (Sleep, then a crit)
+**Result:** XP 1,025 → 1,075 · +5 GP
+
+- HP track, Morten: 18 → 18 → 18 (of 20 HP)
+- HP track, Boar: 13 → 13 → 0 (of 13 HP)
+
+**Trace**
+
+- R1 · GM: Initiative: Morten 23, the Boar 13. (d20 19 +4 = 23; d20 13)
+- R1 · Morten: Sleep holds (24 vs DC 11) on the Boar, 5 sq off. (d20 19 +5 = 24 vs DC 11, CAST)
+- R1 · Foe: WIS save 10 vs DC 13: fail, Incapacitated. (d20 11 −1 = 10 vs DC 13, FAIL)
+- R1 · Foe: At the end of its turn, the second save: 1 vs DC 13. Unconscious. (d20 2 −1 = 1 vs DC 13, FAIL)
+- R2 · Morten: Morten walks up and casts Shocking Grasp with Advantage: 18 vs AC 11, an automatic crit. 2d8 = 13 lightning dmg. Boar 13 → 0 HP, dead. (d20 11, 13 keep 13 +5 = 18 vs AC 11, HIT; 2d8: 5+8 = 13)
+
+*After: 18/20 HP · XP 1,025 · 12 GP 7 SP 5 CP · lost: nothing*
+
+---
+
+## Room 1.4 · Giant Owl (CR 1/4) · Low, 50 XP · cleared
+
+*s0008 · fight · Month 1 · Day 1 · 11:00 · C5 · Floor 1 · room 1.4*
+
+**A Giant Owl on a ledge took one swoop at Morten for 8 dmg, and then Magic Missile brought it down. Two rounds, but he is at half HP now.**
+
+- **The room:** a long hall, 4×12 sq (6×18 m), with a 3 m ledge down one side. The Giant Owl was perched on the ledge about 10 sq away.
+- **The dice:** Scorching Ray held (22 vs DC 12), but only two of the three rays hit, for 10 fire dmg in all. The owl's swoop hit (21 vs AC 15) for 8 slashing dmg. Shield would only have made AC 20, so he didn't spend it. Flyby took the owl back out of reach with no Opportunity Attack.
+- **How it ended:** Magic Missile (20 vs DC 11) for 14 force dmg against its last 9 HP.
+- **Result:** **10/20 HP**, nothing lost. XP 1,075 → 1,125. +5 GP.
+
+**Fight:** 1× Giant Owl (CR 1/4, AC 12, 19 HP) · Low, 50 XP · cleared (one swoop, one missile)
+**Result:** XP 1,075 → 1,125 · +5 GP
+
+- HP track, Morten: 18 → 10 → 10 (of 20 HP)
+- HP track, Giant Owl: 19 → 9 → 0 (of 19 HP)
+
+**Trace**
+
+- R1 · GM: Initiative: Morten 23, the Giant Owl 17. (d20 19 +4 = 23; d20 15 +2 = 17)
+- R1 · Morten: Scorching Ray holds and the first ray hits (22 vs DC 12 and AC 12): 5 fire dmg. (d20 17 +5 = 22 vs DC 12 / AC 12, HIT; 2d6: 3+2 = 5)
+- R1 · Morten: Ray 2 misses (8 vs AC 12); ray 3 hits (18) for 5 fire dmg. Giant Owl 19 → 9 HP. (d20 3 +5 = 8 vs AC 12, MISS; d20 13 +5 = 18 vs AC 12, HIT; 2d6: 2+3 = 5)
+- R1 · Foe: The owl swoops: Talons 21 vs AC 15, hit for 8 slashing dmg, and Flyby takes it back out of reach. Morten 18 → 10 HP. (d20 17 +4 = 21 vs AC 15, HIT; d10 6 +2 = 8)
+- R2 · Morten: Magic Missile holds (20 vs DC 11): 14 force dmg. Giant Owl 9 → 0 HP, dead. (d20 15 +5 = 20 vs DC 11, CAST; 3d4: 3+4+4 +3 = 14)
+
+*After: 18/20 HP · XP 1,075 · 17 GP 7 SP 5 CP · lost: nothing*
+
+---
+
+## Day 1 · a second Short Rest, in room 1.4
+
+*s0009 · rest · Month 1 · Day 1 · 12:05 · C5 · Floor 1 · room 1.4*
+
+**Morten rests another hour and spends his last Hit Die. It rolls a 1, so he only gets back to 13/20 HP.**
+
+- **Hit Die:** 1d6+2 = 3 HP. Morten 10 → 13/20 HP. No Hit Dice left until the Long Rest.
+- **Where he stands:** every spell ready, but no potion, no Heroic Inspiration and no Arcane Recovery. Mage Armor lasts until 17:10 and the lamp until 15:10.
+- **Morten (GM):** "Four rooms down, two to go if the pattern holds. The owl looks first. Anything like that Blink Dog, and I go back upstairs."
+
+**Trace**
+
+- Morten: Hit Die 1d6+2: 3 HP. (d6 1 +2 = 3)
+
+*After: 13/20 HP · XP 1,125 · 22 GP 7 SP 5 CP · lost: nothing*
+
+---

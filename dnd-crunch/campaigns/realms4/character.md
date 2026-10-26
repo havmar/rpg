@@ -2,7 +2,7 @@
 
 <!-- Rendered by tools/table.py from morten.json; edit with `table.py morten`. -->
 
-Human (Medium), male (he/him). Background: Sage. XP 1,025 (level 4 at 2,700). Deaths: 0.
+Human (Medium), male (he/him). Background: Sage. XP 1,125 (level 4 at 2,700). Deaths: 0.
 
 ## Core
 
@@ -12,7 +12,7 @@ Human (Medium), male (he/him). Background: Sage. XP 1,025 (level 4 at 2,700). De
 
 Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +1 CON).
 
-- **HP** 18/20 · **Hit Dice** 1/3 d6
+- **HP** 13/20 · **Hit Dice** 0/3 d6
 - **AC** 12 unarmoured · **15 with Mage Armor** (on)
 - **Speed** 6 sq (9 m) · **Initiative** +4
 - **Proficiency bonus** +2 · **Passive Perception** 13
@@ -107,7 +107,7 @@ Standard array (15 INT, 14 DEX, 13 CON, 12 WIS, 10 CHA, 8 STR) + Sage (+2 INT, +
 | Crowbar | 1 | 2.3 | Advantage on STR checks where leverage helps |
 | Potion of Healing | 0 | 0.2 | Bonus action: regain 2d4+2 HP |
 
-**Coins:** 12 GP 7 SP 5 CP on him · purse in the tower: 37 GP. Month 1: 47 GP left in the tower before the Delve; 10 GP of it spent on incense.
+**Coins:** 22 GP 7 SP 5 CP on him · purse in the tower: 37 GP. Month 1: 47 GP left in the tower before the Delve; 10 GP of it spent on incense.
 
 **Familiar:** owl (Fey spirit).
 

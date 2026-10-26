@@ -6,9 +6,9 @@
  "sex": "male",
  "pronouns": "he/him",
  "background": "Sage",
- "hp": 18,
+ "hp": 13,
  "maxHp": 20,
- "hitDice": "1/3 d6",
+ "hitDice": "0/3 d6",
  "ac": 12,
  "acArmor": 15,
  "armorOn": true,
@@ -534,11 +534,11 @@
   "max": 54
  },
  "coins": {
-  "on": "12 GP 7 SP 5 CP",
+  "on": "22 GP 7 SP 5 CP",
   "purse": "37 GP"
  },
  "coinsNote": "Month 1: 47 GP left in the tower before the Delve; 10 GP of it spent on incense.",
- "xp": 1025,
+ "xp": 1125,
  "nextXp": 2700,
  "level": 3,
  "deaths": 0,

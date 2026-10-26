@@ -6,20 +6,20 @@
 - **Morten played by:** the GM
 - **Stop for your word:** never in the month (at the next month's orders)
 - **Report style:** fights summary after · the world's turn as story · dice: key rolls · CR shown · units on every number
-- **Month 1 · Day 1 · 10:45 · C5** (Floor 1 · room 1.2) · playing
-- **Deaths:** 0 · **XP:** 1,025 · **level 3** (level 4 at 2,700)
+- **Month 1 · Day 1 · 12:05 · C5** (Floor 1 · room 1.4) · playing
+- **Deaths:** 0 · **XP:** 1,125 · **level 3** (level 4 at 2,700)
 - **Page:** https://claude.ai/artifact/L6g6sFmKhofH2eYdv6ZSAy
 - **GM doing:** playing month 1
 
 ## Morten
 
-- HP 18/20 · Hit Dice 1/3 d6 · AC 15 (Mage Armor on)
+- HP 13/20 · Hit Dice 0/3 d6 · AC 15 (Mage Armor on)
 - Lost spells: none
 - Mage Armor free cast: ✗ · Heroic Inspiration: ✗ · Arcane Recovery: used
 - Concentration: none · Conditions: none · Exhaustion 0
 - Light: lamp, lit at 09:10 (until 15:10)
 - Oil flask ×10 · Torch ×7 · Rations ×3 · Waterskin (full) ×1 · Potion of Healing ×0
-- Coins on him: 12 GP 7 SP 5 CP · purse in the tower: 37 GP
+- Coins on him: 22 GP 7 SP 5 CP · purse in the tower: 37 GP
 - Familiar: owl (Fey spirit)
 
 ## Habits
@@ -38,7 +38,7 @@
 
 ## Known dungeon
 
-- Floor 1 (C5): 2 rooms explored
+- Floor 1 (C5): 4 rooms explored
 
 ## Now
 

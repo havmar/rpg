@@ -1,0 +1,297 @@
+{
+ "v": 1,
+ "seq": 8,
+ "kind": "fight",
+ "month": 1,
+ "day": 1,
+ "clock": "11:00",
+ "hex": "C5",
+ "where": "Floor 1 · room 1.4",
+ "title": "Room 1.4 · Giant Owl (CR 1/4) · Low, 50 XP · cleared",
+ "headline": "A Giant Owl on a ledge took one swoop at Morten for 8 dmg, and then Magic Missile brought it down. Two rounds, but he is at half HP now.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "The room",
+   "text": "a long hall, 4×12 sq (6×18 m), with a 3 m ledge down one side. The Giant Owl was perched on the ledge about 10 sq away."
+  },
+  {
+   "label": "The dice",
+   "text": "Scorching Ray held (22 vs DC 12), but only two of the three rays hit, for 10 fire dmg in all. The owl's swoop hit (21 vs AC 15) for 8 slashing dmg. Shield would only have made AC 20, so he didn't spend it. Flyby took the owl back out of reach with no Opportunity Attack."
+  },
+  {
+   "label": "How it ended",
+   "text": "Magic Missile (20 vs DC 11) for 14 force dmg against its last 9 HP."
+  },
+  {
+   "label": "Result",
+   "text": "**10/20 HP**, nothing lost. XP 1,075 → 1,125. +5 GP."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Initiative: Morten 23, the Giant Owl 17.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      19
+     ],
+     "kept": [
+      19
+     ],
+     "mod": 4,
+     "total": 23,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+2",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 2,
+     "total": 17,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Scorching Ray holds and the first ray hits (22 vs DC 12 and AC 12): 5 fire dmg.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 5,
+     "total": 22,
+     "vs": "DC 12 / AC 12",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "2d6",
+     "faces": [
+      3,
+      2
+     ],
+     "kept": [
+      3,
+      2
+     ],
+     "mod": 0,
+     "total": 5,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Ray 2 misses (8 vs AC 12); ray 3 hits (18) for 5 fire dmg. Giant Owl 19 → 9 HP.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 5,
+     "total": 8,
+     "vs": "AC 12",
+     "result": "miss",
+     "nat": null
+    },
+    {
+     "expr": "1d20+5",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": 5,
+     "total": 18,
+     "vs": "AC 12",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "2d6",
+     "faces": [
+      2,
+      3
+     ],
+     "kept": [
+      2,
+      3
+     ],
+     "mod": 0,
+     "total": 5,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "The owl swoops: Talons 21 vs AC 15, hit for 8 slashing dmg, and Flyby takes it back out of reach. Morten 18 → 10 HP.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 4,
+     "total": 21,
+     "vs": "AC 15",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d10+2",
+     "faces": [
+      6
+     ],
+     "kept": [
+      6
+     ],
+     "mod": 2,
+     "total": 8,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Magic Missile holds (20 vs DC 11): 14 force dmg. Giant Owl 9 → 0 HP, dead.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "3d4+3",
+     "faces": [
+      3,
+      4,
+      4
+     ],
+     "kept": [
+      3,
+      4,
+      4
+     ],
+     "mod": 3,
+     "total": 14,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 18,
+  "maxHp": 20,
+  "xp": 1075,
+  "coins": "17 GP 7 SP 5 CP",
+  "lost": []
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Giant Owl",
+    "cr": "1/4",
+    "ac": 12,
+    "hp": 19,
+    "maxHp": 19,
+    "speed": "1 sq (1.5 m), fly 12 sq (18 m)",
+    "attacks": [
+     "Talons +4, 1d10+2 slashing"
+    ],
+    "notes": "Flyby: no Opportunity Attacks when it flies out of reach; Darkvision 36 m",
+    "count": 1
+   }
+  ],
+  "difficulty": "Low",
+  "budget": 150,
+  "xp": 50,
+  "initiative": [
+   "Morten 23",
+   "Giant Owl 17"
+  ],
+  "rounds": 2,
+  "outcome": "cleared",
+  "verdict": "one swoop, one missile",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     18,
+     10,
+     10
+    ]
+   },
+   {
+    "name": "Giant Owl",
+    "max": 19,
+    "hp": [
+     19,
+     9,
+     0
+    ]
+   }
+  ],
+  "loot": "+5 GP",
+  "lost": [],
+  "potion": false,
+  "xpBefore": 1075,
+  "xpAfter": 1125
+ },
+ "domain": null,
+ "words": []
+}
