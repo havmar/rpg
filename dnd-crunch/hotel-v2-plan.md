@@ -1,12 +1,15 @@
 # Hotel v2: two in one body, and the luggage (a plan)
 
-**Status: proposed, not built.** Two additions to the Hotel (`hotel.md`): a class system
-where the guest is **two party members in one body** (any SRD class plus a roll-to-cast
-wizard's spellbook, both levelling together), and **magic items**, rolled from guests'
-luggage at roughly the 2024 DMG's rate but more generous and random. Everything here is a
-proposal for the human to pick from; section 7 lists the choices that are theirs, and
-section 8 what gets built once they have chosen. The rules text in sections 2 and 4 is
-written to be pasted into `hotel.md` as sections 11 and 12.
+**Status: implemented 2026-10-26.** The rules are `hotel.md` sections 11 (the Class and
+the Book) and 12 (luggage and magic items), the tool is `tools/loot.py` (tests in
+`tools/test_loot.py`), and `hotel2` is the first campaign to play them. Where the build
+differs from this plan, `hotel.md` wins; section 9 lists the differences. This document
+stays as the design record.
+
+Two additions to the Hotel: a class system where the guest is **two party members in one
+body** (any SRD class plus a roll-to-cast wizard's spellbook, both levelling together),
+and **magic items**, rolled from guests' luggage at roughly the 2024 DMG's rate but more
+generous and random.
 
 ## 1. The class question, answered
 
@@ -82,6 +85,8 @@ total, one turn a round.
   applies only to Bonus Action spells in the 2024 rules), an Evoker's Sculpt Spells.
   Features that work on spell slots (a Paladin's smite spells, a Pearl of Power) don't
   touch the Book.
+  *(Corrected in the build: the 2024 limit is one spell **slot** a turn, so Book spells
+  are never held back by it; see section 9.)*
 - **The double wizard** is Class Wizard + Book: the Wizard class as written, **with spell
   slots**, Arcane Recovery, Ritual Adept, Scholar, a subclass and the rest, plus the Book.
   One spellbook and one list of prepared spells, cast either from a slot (no check, as
@@ -250,6 +255,11 @@ section 4 are the ones I'd take; these are the rest.
 
 ## 7. The human's choices
 
+**Chosen 2026-10-26:** gestalt; one prepared list for the double wizard; the d20 rows as
+drafted; start `hotel2` with a class rolled on 1d12 (it came up 10: Sorcerer, Draconic).
+Not asked, so left at the draft: the Book has no Arcane Recovery, and the floors are
+generated as before.
+
 1. **Gestalt (section 2) or SRD multiclassing** for the class rule. I recommend gestalt.
 2. **The double wizard's prepared list:** one list cast either way (my draft), or two
    lists (one for slots, one for the roll, 12 prepared at level 3). Two lists are closer
@@ -274,3 +284,27 @@ section 4 are the ones I'd take; these are the rest.
 2. `tools/loot.py` and its tests.
 3. The chosen class's level 3 sheet in `templates/`, and `agents/player.md`.
 4. Convert or start the campaign; commit and push as always.
+
+## 9. As built
+
+- **Action Surge and the one-spell rule.** Section 2 said the 2024 rules limit only Bonus
+  Action spells. They don't: the rule is one spell **slot** a turn (`Spells.md: One
+  Spell with a Spell Slot per Turn`). Book spells use no slots, so a Book spell with the
+  Magic action and a Bonus Action Book spell can share a turn.
+- **Who rolls.** Magic Initiate's spells are cast by the roll like the Book's, with the
+  feat's free casting once per Long Rest; a Class that casts keeps its slots and casts its
+  own spells with no check.
+- **Lost and found** rides on the existing d6 after a Long Rest (a 5; a 6 is still an
+  event) instead of a second d6, and event 10 became **Mislaid luggage**.
+- **One luggage roll per room,** not per guest, rolled when the room's guests are first
+  met.
+- **Starting item.** The SRD's *Starting at Higher Levels* gives a level 3 character one
+  Common magic item, rolled with `loot.py --rarity Common`.
+- **`hotel1` keeps the old game:** its `rules.md` says sections 11 and 12 don't apply and
+  keeps the old event 10.
+- **Morten in `hotel2`** is a Human Acolyte, Sorcerer 3 (Draconic) + Book 3:
+  `templates/character-sorcerer3.md`. *Identify* needs a 100 GP pearl, so he identifies
+  items over Short Rests. A Rogue (Thief) + Book sheet was also built, by a misread of the
+  roll, and kept as `templates/character-rogue3.md` for a future 9.
+- **Magic Initiate** spells roll on the feat's own ability, and a Class with slots may
+  cast the feat's level 1 spell from one, as the feat says.

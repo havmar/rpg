@@ -3,8 +3,10 @@
 An experimental way to play D&D (the 2024 rules, SRD 5.2.1): **minimal narration, maximum
 mechanics**. The game reads like a tactics game's combat log, not a novel. Every roll, DC,
 modifier, range, spell and square is on the table; description is cut to the facts the
-mechanics need. The party is **one wizard (he/him)**, played by the human. This folder is
-self-contained. Paths in this file are relative to the repo root (where the session runs).
+mechanics need. The party is **one character, Morten (he/him)**, played by the human, and
+he is always at least part wizard: in the Hotel a rolled class plus a wizard's spellbook
+cast by the roll (`hotel.md` section 11), in older campaigns a plain Wizard 3. This folder
+is self-contained. Paths in this file are relative to the repo root (where the session runs).
 
 ## Folder layout
 
@@ -12,7 +14,7 @@ self-contained. Paths in this file are relative to the repo root (where the sess
 dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
   hotel.md               the Hotel: the current game, a megadungeon that is a hotel (rules and design, one page)
-  hotel-v2-plan.md       proposed: classes (any SRD class + a roll-to-cast spellbook, levelled together) and magic items in the luggage
+  hotel-v2-plan.md       the design record of the Hotel's classes (a Class + the Book) and magic items (implemented)
   realms-v3.md           legacy: Realms v3 overworld rules (goal clocks, standing, a ladder)
   realms.md              Realms v2 rules (WWN-style factions with assets), kept for the `realms2` and `realms3` campaigns
   realms-v1.md           Realms v1 rules, kept for the `realms` campaign
@@ -27,6 +29,8 @@ dnd-crunch/
   ui/table-mockup.html   the table's look as first sketched, a clickable mockup (ui/README.md)
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest; --keep DIR for the page)
   tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
+  tools/loot.py          the Hotel's magic items: the luggage roll by floor, an item by rarity, scrolls
+  tools/test_loot.py     tests for loot.py
   tools/realms3.py       Realms v3 engine: world, the world's turn, mission fights, sim, map.json
   tools/test_realms3.py  tests for realms3.py
   tools/realms.py        Realms v2 engine, for the `realms2` and `realms3` campaigns
@@ -37,7 +41,7 @@ dnd-crunch/
                          renderers (character.md, state.md, transcript.md)
   tools/check_table.py   the table's secrecy check: no GM secret in a document for the page's store
   tools/test_table.py    tests for table.py, check_table.py and roll.py --keep
-  templates/             a new game's starting sheet and campaign rules (New game defaults)
+  templates/             starting sheets (one per class built so far) and campaign rules (New game defaults)
   campaigns/<name>/      one folder per campaign (see Campaign files)
   sessions/              per-session notes and full transcripts
 ```
@@ -49,7 +53,9 @@ name and `grep -n`; never read a big file whole.
 
 | Need | File |
 |---|---|
-| Wizard features, level table, Evoker | `reference/srd/Classes/Wizard/Wizard.md` |
+| Wizard features, level table, Evoker (the Book's table) | `reference/srd/Classes/Wizard/Wizard.md` |
+| The Class's features | `reference/srd/Classes/<Class>/<Class>.md` |
+| Multiclassing (prerequisites, AC, Extra Attack) | `reference/srd/Character Creation/Multiclassing.md` |
 | Wizard spell list | `reference/srd/Classes/Wizard/Wizard Spell List.md` |
 | A spell | `reference/srd/Spells/<Cantrip or Level N>/<Name>.md` |
 | Casting rules (components, concentration, rituals) | `reference/srd/Spells/Spells.md` |
@@ -63,6 +69,8 @@ name and `grep -n`; never read a big file whole.
 | Traps, poison, environment | `reference/srd/Gameplay/` |
 | Character creation, backgrounds, species, feats | `reference/srd/Character Creation/`, `Backgrounds/`, `Species/`, `Feats/` |
 | Levelling up | `reference/srd/Character Creation/Level Advancement.md` |
+| A magic item | `reference/srd/Magic Items/<Rarity>/<Name>.md`; prices `Magic Item Rarity.md` |
+| Identifying and attuning | `reference/srd/Equipment/Magic Items.md` |
 
 ## The experiment: what "crunch" means here
 
@@ -100,11 +108,14 @@ These replace the SRD where they differ.
 
 ### Roll to cast (Shadowdark-style)
 
-There are **no spell slots**. Morten can cast any spell he has prepared, as often as he
-likes, but every cast needs a **casting check**:
+Morten's wizard spells have **no spell slots**: in the Hotel they are the Book's
+(`hotel.md` section 11), in older campaigns they are all his spells. He can cast any
+wizard spell he has prepared, as often as he likes, but every cast needs a **casting
+check**:
 
-- **Roll:** d20 + INT mod + proficiency bonus (his spell attack bonus) vs **DC 10 + the
-  spell's level**. Cantrips are DC 10.
+- **Roll:** d20 + the spell's spellcasting ability modifier (INT for wizard spells) +
+  proficiency bonus (his spell attack bonus for that spell) vs **DC 10 + the spell's
+  level**. Cantrips are DC 10.
 - **Success:** the spell works as written.
 - **Failure:** the spell fizzles (the action is spent) and that spell is **lost until he
   finishes a Long Rest**: it can't be cast again, cantrips included.
@@ -118,14 +129,15 @@ likes, but every cast needs a **casting check**:
   first attack roll is the casting check; the rest are plain attack rolls.
 - **Save spells:** cast first, then targets save against his spell save DC as normal.
 - **Casting at a higher level:** he may cast a spell as if from a higher-level slot, up to
-  the highest slot level his Wizard level would give (level 2 at Wizard 3). The DC uses
-  that higher level.
+  the highest slot level his Book (or Wizard) level would give (level 2 at level 3). The
+  DC uses that higher level.
 - **Rituals:** casting a Ritual spell as a Ritual (the +10 minutes) needs no check.
-- **Mage Armor from Magic Initiate:** once per Long Rest he may cast it with no check.
-  Otherwise it follows the normal roll.
-- **Arcane Recovery:** once per Long Rest, when he finishes a Short Rest, he regains lost
-  spells whose levels add up to no more than half his Wizard level (round up). A cantrip
-  counts as level 1.
+- **Magic Initiate:** its spells are cast by the roll too, but once per Long Rest he may
+  cast its level 1 spell (Mage Armor) with no check.
+- **Arcane Recovery** (a Wizard class feature; the Book alone doesn't have it): once per
+  Long Rest, when he finishes a Short Rest, he regains lost spells whose levels add up to
+  no more than half his Wizard level (round up). A cantrip counts as level 1. The double
+  wizard may regain slots instead, as written.
 - **Heroic Inspiration** (Human) may reroll a casting check. With Advantage or
   Disadvantage, it rerolls one of the two dice.
 - **The casting check is an ability check**, so anything that affects ability checks
@@ -356,12 +368,16 @@ it's fastest:
   words to the player as `[HUMAN] <exact words>` so it stays in sync. "Take over" or "I'll play"
   switches to human mode, where the human declares Morten's turns directly.
 
-## The wizard
+## The character
 
-- One PC: a male wizard, built by the 2024 character creation rules (class, background,
-  species, standard array 15/14/13/12/10/8, origin feat, starting gear).
-- He is **Morten**, Wizard 3 (Evoker), pre-built. His sheet is in the campaign's
-  `character.md`. Spells follow the roll-to-cast house rule (no slots).
+- One PC, **Morten** (he/him), built by the 2024 character creation rules (class,
+  background, species, standard array 15/14/13/12/10/8, origin feat, starting gear) at
+  level 3. His sheet is the campaign's `character.md`.
+- **In the Hotel** he is a Class plus the Book, levelling together (`hotel.md` section
+  11): the class is rolled on 1d12 at a new game, and a 12 is the double wizard. The
+  Class plays by its own SRD rules; the Book's spells follow the roll-to-cast house rule.
+- **In older campaigns** (`hotel1`, the Realms campaigns) he is a plain Wizard 3 (Evoker)
+  whose every spell is cast by the roll, with no slots.
 - Track the spellbook separately from prepared spells. Copying a found spell costs 2 hours
   and 50 GP per spell level (`Wizard.md: Expanding and Replacing a Spellbook`).
 
@@ -385,10 +401,12 @@ it's fastest:
 The current game is **the Hotel**, `dnd-crunch/hotel.md`: a 20-floor megadungeon that is
 a hotel, every room a random SRD guest in pyjamas, searched room by room for the bricks of
 the Cornerstone. It adds reaction rolls, three factions with a standing each (the Staff,
-the Residents, the Ark), housekeeping (restocking) and a d6 of events after each Long
-Rest, and nothing else: no map, no page, no world turn. It is played in chat, in Markdown.
+the Residents, the Ark), housekeeping (restocking), a d6 of events after each Long Rest,
+a class of Morten's own beside the Book (section 11) and magic items in the guests'
+luggage (section 12, rolled with `tools/loot.py`), and nothing else: no map, no page, no
+world turn. It is played in chat, in Markdown.
 Its header replaces the Realms one: **Day 3 · 14:20 · Room 412 (floor 4) · Bricks 7 ·
-Staff 0 · Residents +1 · Ark −1**. Read `hotel.md` whole; it is short.
+Staff 0 · Residents +1 · Ark −1**. Read `hotel.md` whole before play.
 
 ## Realms (overworld, legacy)
 
@@ -441,8 +459,9 @@ when the human asks for outcome-only fights).
 
 Each campaign lives in `dnd-crunch/campaigns/<name>/`:
 
-- `character.md`: the wizard's full sheet: abilities, saves, skills, HP, AC, speed, feats,
-  features, spellbook, prepared spells, inventory with weights, gold, XP.
+- `character.md`: Morten's full sheet: abilities, saves, skills, HP, AC, speed, feats,
+  features (the Class's and the Book's apart), spellbook, prepared spells, inventory with
+  weights, magic items and attunement, gold, XP.
 - `state.md`: the live state, rewritten (not appended) after every reply: location, time,
   HP, hit dice, lost spells, Arcane Recovery, Heroic Inspiration, deaths, concentration,
   conditions, light sources, rations, and in combat the initiative order, positions and
@@ -514,12 +533,17 @@ human can change any of them, before or during play.
   `gen_dungeon.py --seed N` into `gm-secrets.md`, with the GM's marks (section 9). Roll
   the seed with `roll.py 1d100`.
 - **Name:** the next free `hotelN`.
-- **Morten:** a fresh pre-built Wizard 3 (Evoker) with 900 XP, his starting gear and
-  47 GP 7 SP 5 CP: copy `templates/character-wizard3.md` as his sheet.
+- **Morten:** a fresh level 3 character with 900 XP: roll the class on 1d12 (`hotel.md`
+  section 11), then copy its sheet from `templates/` if there is one
+  (`character-sorcerer3.md` is Sorcerer (Draconic) + Book, `character-rogue3.md` Rogue
+  (Thief) + Book; `character-wizard3.md` is the plain Wizard 3 of the older campaigns and
+  the base for a double wizard), or build it by the
+  creation rules and save it there as `character-<class>3.md`. His starting magic item
+  is rolled with `loot.py --rarity Common`.
 - **Who plays Morten:** the GM.
 - **Style:** cheese everything. Scout, use rituals and Mage Hand, use oil, Sleep then
-  point-blank crits, hold chokepoints, retreat to reset, and spend the purse before a
-  risky fight (there is no bank; death takes the coins).
+  point-blank crits, hold chokepoints, retreat to reset, use what the luggage gives, and
+  spend the purse before a risky fight (there is no bank; death takes the coins).
 - **Table mode:** open.
 - **Report style:** the defaults in **Report style** (summary for fights and events, key
   rolls only, live updates every round).
