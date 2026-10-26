@@ -12,6 +12,7 @@ self-contained. Paths in this file are relative to the repo root (where the sess
 dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
   hotel.md               the Hotel: the current game, a megadungeon that is a hotel (rules and design, one page)
+  hotel-v2-plan.md       proposed: classes (any SRD class + a roll-to-cast spellbook, levelled together) and magic items in the luggage
   realms-v3.md           legacy: Realms v3 overworld rules (goal clocks, standing, a ladder)
   realms.md              Realms v2 rules (WWN-style factions with assets), kept for the `realms2` and `realms3` campaigns
   realms-v1.md           Realms v1 rules, kept for the `realms` campaign
