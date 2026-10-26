@@ -15,6 +15,7 @@ dnd-crunch/
   realms-v1.md           Realms v1 rules, kept for the `realms` campaign
   realms-plan.md         the design record of Realms v1
   realms-v2-plan.md      the design record of Realms v2 (implemented)
+  realms-v3-plan.md      the design record of Realms v3 (goal clocks, standing, a ladder; planned, not built)
   table-plan.md          the design record of the table: the game played from a page (built)
   agents/player.md       instructions for the AI player who runs Morten
   web/                   the table's page: sources, build, dist/table.html, dev harness, e2e
