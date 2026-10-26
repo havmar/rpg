@@ -269,6 +269,73 @@ class Picker(unittest.TestCase):
         g = self.t.pick_goal(n)
         self.assertEqual((g["kind"], g["target"]), ("take", other))
 
+    def test_a_landless_ally_steward_picks_without_a_seat(self):
+        n, f = self.bad("Steward")
+        f["leader"]["label"] = "good"
+        f["standing"] = 2
+        for h in list(f["hexes"]):
+            hold_hex(self.st, h, R.TOWER)
+        f["seat"] = None
+        g = self.t.pick_goal(n)
+        self.assertIn(g["kind"], ("raise", "squeeze"))
+        self.assertIsNone(g["hex"])
+
+    def test_a_liberator_never_breaks_a_realm_at_force_1(self):
+        n, f = self.bad("Liberator")
+        f["leader"]["label"] = "good"
+        f["force"] = 5
+        ns = [x for x in R.neighbours_of(self.st, n) if x != R.TOWER]
+        for x in ns:
+            self.st["realms"][x]["leader"]["label"] = "bad"
+            self.st["realms"][x]["force"] = 1
+        self.assertNotEqual(self.t.pick_goal(n)["kind"], "break")
+        self.st["realms"][ns[0]]["force"] = 2
+        g = self.t.pick_goal(n)
+        self.assertEqual((g["kind"], g["target"]), ("break", ns[0]))
+
+    def test_a_bad_neighbour_of_the_tower_weighs_break_on_a_6(self):
+        n, f = self.bad("Raider")
+        hold_hex(self.st, [h for h in R.nbrs(f["hexes"][0]) if h not in f["hexes"]][0], R.TOWER)
+        self.assertIn(R.TOWER, R.neighbours_of(self.st, n))
+        fixed_die(self.t, 5)
+        self.assertNotEqual(self.t.pick_goal(n)["kind"], "break_tower")
+        fixed_die(self.t, 6)
+        self.assertEqual(self.t.pick_goal(n)["kind"], "break_tower")
+        f["standing"] = 1    # friendly: never
+        self.assertNotEqual(self.t.pick_goal(n)["kind"], "break_tower")
+
+    def test_a_realm_rests_from_the_tower_after_its_break_fires(self):
+        n, f = self.bad("Raider")
+        f["goal"] = self.t.new_goal("break_tower", R.TOWER)
+        f["goal"]["marks"] = 4
+        self.t.fire(n)
+        self.assertEqual((f["standing"], f["rest_until"]), (-1, self.st["month"] + R.REST))
+        self.assertNotEqual(self.t.pick_goal(n)["kind"], "break_tower")   # resting, though at −1
+        self.st["month"] = f["rest_until"]
+        self.t.month = self.st["month"]
+        self.assertNotEqual(self.t.pick_goal(n)["kind"], "break_tower")
+        self.st["month"] += 1
+        self.t.month = self.st["month"]
+        self.assertEqual(self.t.pick_goal(n)["kind"], "break_tower")
+
+    def test_a_rich_realm_raises_first_every_other_goal(self):
+        n, f = self.bad("Raider")
+        f["treasury"], f["last"] = R.RICH, None
+        fixed_die(self.t, 1)   # no break the tower on a 6
+        self.assertEqual(self.t.pick_goal(n)["kind"], "raise")
+        f["last"] = "raise"
+        self.assertEqual(self.t.pick_goal(n)["kind"], "raid")
+        f["last"] = "raid"
+        f["force"] = 5
+        g = self.t.pick_goal(n)
+        self.assertEqual((g["kind"], g["hex"]), ("fortify", f["seat"]))
+        f["treasury"] = R.RICH - 1
+        self.assertEqual(self.t.pick_goal(n)["kind"], "raid")
+        f["treasury"], f["leader"]["tag"], f["leader"]["label"] = R.RICH, "Steward", "good"
+        f["last"] = None
+        g = self.t.pick_goal(n)    # its tag's goal has a price already: no change
+        self.assertEqual((g["kind"], g["hex"]), ("fortify", f["seat"]))
+
 
 class Missions(unittest.TestCase):
     def setUp(self):
@@ -532,6 +599,37 @@ class RealmGoals(unittest.TestCase):
         t = self.full("court", R.TOWER)
         t.fire(self.name)
         self.assertEqual(self.f["standing"], 1)
+        self.f["goal"] = R.Turn(self.st).new_goal("court", R.TOWER)
+        self.assertIsNone(R.Turn(self.st).gone(self.name))   # a friendly realm courts on to ally
+        t = self.full("court", R.TOWER)
+        t.fire(self.name)
+        self.assertEqual(self.f["standing"], 2)
+        self.f["goal"] = R.Turn(self.st).new_goal("court", R.TOWER)
+        self.assertIsNotNone(R.Turn(self.st).gone(self.name))   # an ally has nothing to court for
+
+    def test_courting_to_ally_ends_the_towers_ally_goal(self):
+        self.f["standing"] = 1
+        self.T["goal"] = {"kind": "ally", "target": self.name, "hex": None, "size": 3, "marks": 1,
+                          "since": 1, "waits": 0}
+        t = self.full("court", R.TOWER)
+        t.fire(self.name)
+        t.tower_goal()
+        self.assertEqual(self.f["standing"], 2)
+        self.assertIsNone(self.T["goal"])
+        self.assertTrue(t.happened[0]["fired"])
+        self.assertEqual(R.renown_of(self.st), 1)
+
+    def test_a_strike_undoes_a_goal_that_waits(self):
+        self.f["treasury"] = 0
+        t = self.full("fortify", None, self.f["seat"])
+        t.fire(self.name)
+        self.assertEqual(self.f["goal"]["waits"], 300)
+        gar = R.sites_of(self.st, self.name, kind="garrison")[0]
+        t.land(orders(at=gar["hex"], strike=gar["id"]))
+        self.assertEqual((self.f["goal"]["marks"], self.f["goal"]["waits"]), (1, 0))
+        self.f["treasury"] = 1000
+        R.Turn(self.st).world()
+        self.assertFalse(R.walled(self.st, self.f["seat"]))   # it has to fill again
 
     def test_goal_dropped_when_its_target_is_gone(self):
         other = [n for n in self.st["realms"] if n != self.name][0]
@@ -584,6 +682,24 @@ class Standing(unittest.TestCase):
         t.land(orders(give=[f"{n}=100", f"{n}=100"]))
         self.assertEqual(f["standing"], 1)
         self.assertEqual(f["treasury"], 200 + sum(st["hexes"][h]["level"] for h in f["hexes"]) * 10)
+
+    def test_give_to_the_dissident_moves_only_the_topple_clock(self):
+        st = world()
+        n = next(iter(st["realms"]))
+        f = st["realms"][n]
+        f["standing"], f["dissident"] = 0, {"name": "Edda", "hex": f["seat"]}
+        f["goal"] = R.Turn(st).new_goal("squeeze")
+        before = f["treasury"]
+        st["tower"]["treasury"] = 1000
+        st["tower"]["goal"] = {"kind": "topple", "target": n, "hex": f["seat"], "size": 6, "marks": 0,
+                               "since": 1, "waits": 0}
+        t = R.Turn(st)
+        t.land(orders(give=[f"{n}=200"]))
+        self.assertEqual(st["tower"]["goal"]["marks"], 1)
+        self.assertEqual((f["standing"], f["treasury"]), (0, before))
+        fixed_die(t, 2)
+        _, total, _, _ = t.roll_goal(n)
+        self.assertEqual(total, 2)   # no +1 on the ruler's roll
 
 
 class RenownAndTiers(unittest.TestCase):

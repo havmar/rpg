@@ -66,10 +66,13 @@ TIERS = [(0, "Hermit"), (2, "Lord of the hex"), (5, "Warden of the marches"),
 LORD, WARDEN, POWER, MASTER = 1, 2, 3, 4
 GOAL_MONTHS = 12         # a goal not done in this many months is dropped (the plan said 6;
                          # a take at −1 or −2 needs 8–12 months, so 6 just restarted the same goal)
-MENACE = 7               # a bad neighbour of the tower at standing 0 or less weighs break the
-                         # tower on a d6 of this or more at any tier (7: never; the sim's knob)
-RICH = 0                 # a realm with this much gold raises or fortifies before its tag's goal
-                         # (0: never; the sim's knob)
+MENACE = 6               # a bad neighbour of the tower at standing 0 weighs break the tower on a
+                         # d6 of this or more at any tier (7: never). Tuned with REST: the tower at
+                         # rest is picked on 2.3 times and broken 1.6 times a world
+REST = 12                # months a realm rests from the tower after its break the tower fires:
+                         # it doesn't weigh break the tower again until then (6: 1.8 fires a world)
+RICH = 1000              # a realm with this much gold whose tag's goal has no price raises or
+                         # fortifies first, every other goal (0: never). The treasury sink
 CONQ_OPEN = True         # a Conqueror prefers border hexes with no garrison or walls (tuned: hexes
                          # change hands 1.9 a world instead of 0.9)
 FIGHT_MAX = 4            # most monsters in a mission fight
@@ -543,7 +546,7 @@ def generate(seed, level=3):
         f = {"name": people, "leader": new_leader(st, people, rng, "good" if people in good else "bad"),
              "force": force, "treasury": s * START_GP, "seat": mine[0], "hexes": mine,
              "standing": 1 if people in good else 0, "goal": None, "squeeze_until": 0,
-             "dissident": None, "last": None}
+             "dissident": None, "last": None, "rest_until": 0}
         st["realms"][people] = f
         add_site(st, people, "seat", mine[0])
         add_site(st, people, "garrison", mine[1])
@@ -654,7 +657,8 @@ class Turn:
         self.plan = []
         self.happened = []      # dicts: the tower's goal line, then one per realm
         self.stats = Counter()
-        self.gave = Counter()   # realm → GP given this month
+        self.gave = Counter()   # realm → GP given to its ruler this month
+        self.bribed = Counter()  # realm → GP given to its dissident this month (topple)
         self.backed = {}        # realm → +1 / −1
         self.touched = {}       # realm → what Morten did to its goal this month
         self.tower_marks = []   # (n, why) on the tower's goal this month
@@ -748,15 +752,17 @@ class Turn:
         g, note = None, ""
         if not f["hexes"]:
             g = self.take_back(name, landless=True)
-        if g is None and bad and not ally:
-            if f["standing"] <= -1:
+        if g is None and bad and not ally and f["standing"] <= 0:
+            if self.month <= f.get("rest_until", 0):
+                note = f" (rests from the tower until month {f['rest_until'] + 1})"
+            elif f["standing"] <= -1:
                 g = self.new_goal("break_tower", TOWER)
-            elif tier >= WARDEN and f["standing"] <= 0:
+            elif tier >= WARDEN:
                 r = self.d(6)
                 note = f" (the tower is {tier_name(tier)}: d6 {r} for break the tower)"
                 if r >= 4:
                     g = self.new_goal("break_tower", TOWER)
-            elif MENACE <= 6 and f["standing"] <= 0 and TOWER in neighbours_of(st, name):
+            elif MENACE <= 6 and TOWER in neighbours_of(st, name):
                 r = self.d(6)
                 note = f" (a neighbour of the tower: d6 {r} for break the tower)"
                 if r >= MENACE:
@@ -768,17 +774,13 @@ class Turn:
             note = f" (the tower is {tier_name(tier)}: d6 {r} for court the tower)"
             if r >= 4:
                 g = self.new_goal("court", TOWER)
-        if g is None and RICH and f["treasury"] >= RICH:
-            if f["force"] < MAX_FORCE:
-                g = self.new_goal("raise")
-            else:
-                for h in deepest(st, [h for h in f["hexes"] if not walled(st, h)]):
-                    g = self.new_goal("fortify", None, h)
-                    break
-            if g:
-                note = f" (rich: {f['treasury']:,} GP)"
         if g is None:
             g = self.tag_goal(name)
+            if RICH and f["treasury"] >= RICH and f["hexes"] and f["last"] not in ("raise", "fortify") \
+                    and (g is None or g["kind"] not in ("raise", "fortify")):
+                rich = self.raise_or_fortify(name)
+                if rich:
+                    g, note = rich, f" (rich: {f['treasury']:,} GP, so this first)"
         if g is None:
             g = self.fallback(name)
         f["goal"] = g
@@ -846,12 +848,12 @@ class Turn:
             return self.new_goal("squeeze")
         if tag == "Liberator":
             ns = [n for n in neighbours_of(st, name) if n != TOWER
-                  and self.R(n)["leader"]["label"] == "bad" and self.R(n)["force"] < f["force"]]
+                  and self.R(n)["leader"]["label"] == "bad" and 2 <= self.R(n)["force"] < f["force"]]
             if ns:
                 weak = min(ns, key=lambda n: (self.R(n)["force"], n))
                 return self.new_goal("break", weak)
         # Steward, and a Liberator with no tyrant in reach
-        if not walled(st, f["seat"]):
+        if f["seat"] and not walled(st, f["seat"]):
             return self.new_goal("fortify", None, f["seat"])
         if f["last"] == "fortify" and f["force"] < MAX_FORCE:
             return self.new_goal("raise")
@@ -859,6 +861,15 @@ class Turn:
             return self.new_goal("fortify", None, h)
         if f["force"] < MAX_FORCE:
             return self.new_goal("raise")
+        return None
+
+    def raise_or_fortify(self, name):
+        """The rich realm's goal: raise under Force 5, else walls on its deepest unwalled hex."""
+        st, f = self.st, self.R(name)
+        if f["force"] < MAX_FORCE:
+            return self.new_goal("raise")
+        for h in deepest(st, [h for h in f["hexes"] if not walled(st, h)]):
+            return self.new_goal("fortify", None, h)
         return None
 
     def fallback(self, name):
@@ -890,8 +901,8 @@ class Turn:
             return f"{the(g['target'])} are at Force 1 already"
         elif k in ("raid", "break_tower") and g["target"] == TOWER and is_ally(f):
             return "the tower is an ally"
-        elif k == "court" and f["standing"] >= 1:
-            return f"the tower already counts it {standing_word(f['standing'])}"
+        elif k == "court" and is_ally(f):
+            return "it is the tower's ally already"
         return None
 
     # -- the roll (section 7) --
@@ -995,7 +1006,7 @@ class Turn:
         elif k == "break_tower":
             res = self.break_tower(name)
         elif k == "court":
-            res = self.stand(name, 1, cap=1, why="courting the tower") or "standing unchanged"
+            res = self.stand(name, 1, why="courting the tower") or "standing unchanged"
         else:
             res = "nothing"
         self.stats["fired"] += 1
@@ -1026,6 +1037,8 @@ class Turn:
             else:
                 res = f"Hold is 0 and the tower holds no other hex: {half:,} GP taken"
         w = self.stand(name, -1, why="at war with the tower")
+        self.R(name)["rest_until"] = self.month + REST
+        res += f"; they rest from the tower for {REST} months"
         return res + (f"; {w}" if w else "")
 
     def take_hex(self, h, taker):
@@ -1102,15 +1115,15 @@ class Turn:
             self.set_ally_goal(spec)
         for spec in o.give:
             self.give(spec)
+        for name, amt in sorted(self.bribed.items()):
+            if amt >= GIVE_MIN:
+                self.tower_mark(1, f"{amt:,} GP to the dissident")
         for name, amt in sorted(self.gave.items()):
             if amt >= GIVE_MIN:
                 g = T["goal"]
-                if g and g["kind"] == "topple" and g["target"] == name:
-                    self.tower_mark(1, f"{amt:,} GP to the dissident")
-                else:
-                    self.stand(name, 1, cap=1, why=f"the tower gave {amt:,} GP")
-                    if g and g["kind"] == "ally" and g["target"] == name:
-                        self.tower_mark(1, f"{amt:,} GP given")
+                self.stand(name, 1, cap=1, why=f"the tower gave {amt:,} GP")
+                if g and g["kind"] == "ally" and g["target"] == name:
+                    self.tower_mark(1, f"{amt:,} GP given")
         if o.back and o.hinder:
             raise Bad("one of --back and --hinder a month")
         for spec, sign in ((o.back, 1), (o.hinder, -1)):
@@ -1137,6 +1150,9 @@ class Turn:
             g["marks"] = max(0, old - n)
             bits.append(f"their {goal_text(st, g)} {old} → {g['marks']} of {g['size']}")
             lost = old - g["marks"]
+            if g["waits"] and g["marks"] < g["size"]:
+                g["waits"] = 0      # a goal that waited full has to fill again
+                bits.append("no longer done")
             self.touched[name] = (f"the Strike cost them {lost} mark{'s' if lost != 1 else ''}" if lost
                                   else "the Strike found their clock empty")
         w = self.stand(name, -2 if s["kind"] == "seat" else -1, why=f"Morten struck their {s['name']}")
@@ -1336,13 +1352,14 @@ class Turn:
             self.plan.append(f"Tower: Give {amt:,} GP to {dn}, the dissident of {the(name)}.")
             self.event(TOWER, "Give", None, self.R(name)["seat"], dn, f"{amt:,} GP",
                        f"Tower: Give {amt:,} GP to {dn}, {poss(name)} dissident.", involves=[name])
+            self.bribed[name] += amt
         else:
             self.R(name)["treasury"] += amt
             self.plan.append(f"Tower: Give {amt:,} GP to {the(name)}.")
             self.event(TOWER, "Give", None, self.R(name)["seat"], the(name), f"{amt:,} GP",
                        f"Tower: Give {amt:,} GP to {the(name)} → {self.R(name)['treasury']:,} GP.",
                        involves=[name])
-        self.gave[name] += amt
+            self.gave[name] += amt
         self.stats["given"] += amt
 
     def back(self, spec, sign):
@@ -1509,6 +1526,8 @@ class Turn:
             k = min(len(allies), 2 if tier_now(st) >= POWER else 1)
             for n in allies[:k]:
                 self.tower_mark(1, f"{the(n)}, an ally")
+        elif g["kind"] == "ally" and is_ally(self.R(g["target"])) and g["marks"] < g["size"]:
+            self.tower_mark(g["size"] - g["marks"], "they courted their way to ally")
         res = ""
         fired = g["marks"] >= g["size"]
         if fired:
@@ -2149,7 +2168,7 @@ def sim_one(seed, months, scripted=False, verbose=False):
     last_line, streak, longest = {}, Counter(), Counter()
     rich_months = Counter()
     maxgp = Counter()
-    break_picked = 0
+    break_picked = sum(1 for x in st["log"] if "break the tower (clock" in x)   # picked at the start
     first_hex, tier_at = None, {}
     for m in range(1, months + 1):
         o = scripted_orders(st, m) if scripted else argparse.Namespace(**PASSIVE)

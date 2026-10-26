@@ -58,6 +58,7 @@ As in v2:
 | **Goal** | one line: a kind, a target, a **clock** of N marks, the month it was picked (section 5) |
 | **Standing** | with the tower, −2 to +2 (section 7) |
 | **Dissident** | the name a won Contact gives the tower, once standing is +1 or more; needed to topple (section 10) |
+| **Rest** | after its *break the tower* fires, the realm leaves the tower alone for 12 months (section 5) |
 
 - **A realm's tier** from its Force: Force 1–2 **tier 1**, 3–4 **tier 2**, 5 **tier 3**.
   Its seat fights one tier up (max 3), its works one tier down (min 1). So a Force-5
@@ -66,11 +67,13 @@ As in v2:
 - **Start:** S = the realm's hex levels summed. Force = S ÷ 10, rounded, min 1, max 5.
   Treasury S × 10 GP. The seat at its deepest hex, a garrison on its second-deepest, works
   on its third (a four-hex realm's fourth hex has nothing). 4 rulers bad, 2 good. Good
-  rulers start at standing +1, bad at 0. Each realm starts with a goal from its tag and
-  0 marks, no dissident.
+  rulers start at standing +1, bad at 0. Each realm starts with a goal picked as section 5
+  says (its tag's, as a rule; a bad neighbour of the tower may already be weighing *break
+  the tower*) and 0 marks, no dissident.
 - **A realm is never destroyed.** With every hex lost it still has a ruler and a treasury,
   holds no land, pays and earns nothing, has no seat site and no hex to be Contacted in,
-  and its only goal is *take back* a hex of its people, whatever its Force.
+  and its only goal is *take back* a hex of its people, whatever its Force, before
+  anything else. The first hex it takes back is its seat again, with a seat site.
 - **The tower** is not a realm: it has no Force and no ruler line. It has a treasury
   (100 GP at the start), **Hold** 3 boxes, **Renown** and a **tier** (section 7), its hexes
   (the warded hex at the start), its sites (none at the start) and one goal (section 10).
@@ -90,8 +93,11 @@ works and walls go with it; a seat is the ruler's and moves with the ruler inste
 | **Walls** | a hex a goal or the purse fortified (one per hex) | Animated Armor, Guard, Gargoyle, at the realm's tier | **−1** to goal rolls aimed at this hex; a *take* goal against a walled hex has a 6-mark clock (the tower's, +2) |
 | **Beasts** | any hex, for Aid fights (section 9) | the hex's people's beasts: Humans Mastiff, Warhorse, Scout · Elves Giant Owl, Giant Eagle, Giant Elk · Orcs Worg, Dire Wolf, Giant Boar · Gnomes Giant Badger, Giant Goat, Brown Bear · Tieflings Imp, Hell Hound · Goblinkind Giant Hyena, Worg, Gnoll Warrior · the tower folk Mastiff, Giant Owl, Brown Bear | — |
 
+Works are named by the biome of the hex they are built in (Mine in hills or mountains,
+Caravans in plains or savanna, Farms elsewhere) and keep the name when the hex changes
+hands. Sites have ids `s1`, `s2`, … in the order they were built, and `show` prints them.
 The tower's own sites are never fought: no realm attacks a site, and Morten doesn't
-strike his own.
+strike his own (`show` lists them at tier 1, which never matters).
 
 **Mission fights are D&D fights** built from a site's list by `encounter`: **tier 1 a Low
 encounter for Morten's level, tier 2 Moderate, tier 3 High** (`Combat Encounters.md`),
@@ -120,7 +126,7 @@ Once a month, each realm rolls **d6** for its goal, plus modifiers:
 
 | Roll (after modifiers) | Marks |
 |---|---|
-| natural 1 | **setback:** −1 mark (min 0) |
+| natural 1 | **setback:** −1 mark (min 0), whatever the modifiers |
 | 2 or less | nothing |
 | 3–5 | +1 |
 | 6 or more | +2 |
@@ -135,9 +141,13 @@ visible on the map.
 
 Every goal the script can hand out, resolve and explain. "Price" is paid from the
 realm's treasury when the clock fills; a goal it can't pay **waits full** ("done, waits
-for 300 GP") and fires the month the treasury covers it, rolling no more. A goal whose
-target is gone (the hex already changed hands, the neighbour already at Force 1, the
-tower now an ally for a goal against the tower) is **dropped** and a new one picked.
+for 300 GP") and fires the month the treasury covers it, rolling no more (a Strike that
+knocks it below full sends it back to rolling). A goal whose **target is gone** is
+**dropped** at the world's turn and a new one picked at once: a *take* whose hex already
+changed hands; a *fortify* whose hex is lost or walled already; a *raise* at Force 5; a
+*press* or *break* whose target is at Force 1 already; a *raid the tower*, *break the
+tower* or *take* of a tower hex by a realm that is now an ally; a *court the tower* by an
+ally.
 
 | Goal | Clock | Target | Price at the end | Effect when the clock is full |
 |---|---|---|---|---|
@@ -148,38 +158,51 @@ tower now an ally for a goal against the tower) is **dropped** and a new one pic
 | **press REALM** | 3 | the weakest neighbour | — | its own Force +1 (max 5), the target's Force −1 (min 1) |
 | **squeeze** | 2 | — | — | treasury +100 GP per hex held; Contact in its hexes is DC +4 for the next 3 months |
 | **break REALM** | 4 | a bad neighbour with lower Force | — | the target's Force −1 (min 1) |
-| **break the tower** | 4 | the tower | — | the tower's **Hold −1** and half its treasury taken; at Hold 0, the tower's deepest hex but the warded one changes holder instead, with its sites (section 7); the realm's standing −1 (it is at war now) |
-| **court the tower** | 2 | the tower | — | its standing with the tower +1 (max +2) |
+| **break the tower** | 4 | the tower | — | the tower's **Hold −1** and half its treasury taken; at Hold 0, half the treasury and, instead of the box, the tower's deepest hex but the warded one changes holder with its sites (section 7); the realm's standing −1 (it is at war now) and it **rests** from the tower for 12 months |
+| **court the tower** | 2 | the tower | — | its standing with the tower +1. This one can reach +2: the realm is an ally, and a running *ally REALM* goal of the tower's for it is done (section 10) |
 
 ### Who picks what
 
-A realm with no goal (done, or dropped) picks one the moment it needs one at the world's
-turn, in this order, the first that applies, and rolls for it from the next month:
+A realm with no goal picks one the moment it needs one at the world's turn, in this
+order, the first that applies. A goal picked because the old one fired rolls from the
+next month; one picked because the realm had none, or its goal's target was gone, rolls
+that same month. The d6s below are rolled and shown in the log.
 
-1. **Break the tower** if it is bad and at standing −1 or less; or if it is bad, not an
-   ally, the tower is Warden or higher and its standing is 0 or less, on a d6 of 4+.
-2. **Take back** a hex of its own people it has lost, if its Force is at least the
-   holder's (the tower counts as Force 0; a landless realm takes back whatever its
-   Force). The deepest such hex.
-3. **Court the tower** if it is good, at standing 0 or +1, and the tower is Lord or
+1. **Take back**, before anything, if the realm holds no land (section 3).
+2. **Break the tower** if it is bad, not an ally, at standing 0 or less and not resting:
+   at standing −1 or less, without a roll; at standing 0 when the tower is Warden or
+   higher, on a d6 of 4+; at standing 0 as a **neighbour of the tower**, at any tier, on
+   a d6 of **6**. A realm whose *break the tower* has fired **rests** from the tower for
+   **12 months** and skips this rule until then, even at war.
+3. **Take back** a hex of its own people it has lost, if its Force is at least the
+   holder's. The deepest such hex. From the tower (which has no Force) at any Force, but
+   never the warded hex and never by an ally.
+4. **Court the tower** if it is good, at standing 0 or +1, and the tower is Lord or
    higher, on a d6 of 4+.
-4. **Its tag's goal:**
+5. **Its tag's goal**, with the **rich** rule: a realm with **1,000 GP or more** whose
+   tag would give it a goal with no price (*take*, *raid*, *press*, *squeeze*, *break*)
+   picks **raise** instead (under Force 5; at Force 5, **fortify** its deepest unwalled
+   hex), unless its last goal was a *raise* or a *fortify*. So a rich realm alternates its
+   tag's goal with spending.
 
 | Label | Tag | Shown as | Goal |
 |---|---|---|---|
-| bad | Conqueror | bad: takes land | **take** the deepest hex next to its own that is not a seat and not the warded hex |
-| bad | Raider | bad: robs its neighbours | **raid** the richest neighbour (the tower counts when it is richest) |
-| bad | Slaver | bad: takes people for soldiers | **press** the weakest neighbour (never one at Force 1 already) |
-| bad | Tyrant | bad: squeezes its own people | **squeeze**; while its squeeze still runs, **fortify** its seat; when that is walled, **raise** |
-| good | Steward | good: keeps the peace | **fortify** its seat, then **raise**, then fortify its other hexes (deepest first) |
-| good | Liberator | good: fights tyrants | **break** a bad neighbour with lower Force; else as a Steward |
+| bad | Conqueror | bad: takes land | **take** the deepest hex next to its own that is not a seat and not the warded hex, preferring one with **no garrison or walls**; a guarded one only when every border hex is guarded. An ally never a tower hex |
+| bad | Raider | bad: robs its neighbours | **raid** the richest neighbour by treasury (the tower counts when it holds a hex next to the realm and is richest; a tie goes to a realm). An ally never the tower |
+| bad | Slaver | bad: takes people for soldiers | **press** the weakest neighbour realm at Force 2 or more (ties: the poorer). A Slaver at Force 5 still presses: only the target's −1 lands |
+| bad | Tyrant | bad: squeezes its own people | **squeeze**; after a squeeze, **fortify** its seat if unwalled, else **raise** (under Force 5); after a fortify, **raise**; otherwise squeeze again |
+| good | Steward | good: keeps the peace | **fortify** its seat if unwalled; after a fortify, **raise** (under Force 5); else fortify its deepest unwalled hex; else raise; with everything walled at Force 5, rule 6 |
+| good | Liberator | good: fights tyrants | **break** the weakest bad neighbour realm whose Force is lower than its own and at least 2; else as a Steward |
 
-5. **Raise** if it has the price in hand and is under Force 5; else **fortify** its seat
+6. **Raise** if it has the price in hand and is under Force 5; else **fortify** its seat
    if unwalled; else **squeeze**.
 
-An **ally** (+2) never picks *break the tower* or *raid the tower*; one it already holds
-is dropped. A goal not done **6 months** after it was picked is dropped at clean-up, its
-marks lost, and a new one picked; a goal that waits full is not dropped.
+An **ally** (+2) never aims a goal at the tower: not *break the tower*, not *raid the
+tower*, not a *take* of a tower hex (*take back* included); one it already holds is
+dropped. A goal not done **12 months** after it was picked is dropped at clean-up, its
+marks lost, and a new one picked (6 months, the plan's number, kept dropping a *take*
+against a garrison and picking the same one again); a goal that waits full is not
+dropped.
 
 ## 6. Rulers
 
@@ -203,22 +226,24 @@ Each realm's attitude to the tower, one number:
 | −1 | Morten Strikes one of its sites (**−2** for its seat) or Robs it |
 | −2 | the tower takes one of its hexes |
 | +1 | a won Aid for it; a won Contact; the tower gives it 200 GP or more in a month (once a month). None of these lift it past +1: **ally is the tower's goal** (section 10) |
-| +1 | its *court the tower* goal fires (this one can reach +2) |
+| +1 | its *court the tower* goal fires (this one can reach +2: an ally by its own deed, and the tower's *ally* goal for it, if running, is done) |
 | = +2 | the tower's *ally* goal is done for it; a ruler the tower put on the throne |
-| −1 | its *break the tower* goal fires (it is at war now) |
+| −1 | its *break the tower* goal fires (it is at war now, and rests from the tower for 12 months) |
 
-**An ally** (+2) never picks *break the tower* or *raid the tower*, and adds **+1 mark a
-month to the tower's goal**, whatever that goal is (one ally counts; two at Power,
-section below). **An enemy** (−2) refuses Contact. Nothing drifts back on its own:
-standing moves only by deeds. Standing stays within −2 to +2.
+**An ally** (+2) never aims a goal at the tower (section 5), and adds **+1 mark a month
+to the tower's goal** when that goal is *take* or *topple* (not *ally*; one ally counts,
+two at Power, section below; never the goal's own target). **An enemy** (−2) refuses
+Contact. Nothing drifts back on its own: standing moves only by deeds. Standing stays
+within −2 to +2.
 
 ### Hold
 
 The tower's buffer: **3 boxes**. A *break the tower* goal that fires takes one box and
-half the treasury; at 0 boxes it takes a hex of the tower's instead (its deepest, never
-the warded one), with the sites there. **Mend** a box for 200 GP (a purse action). Hold is
-the only thing on the tower that can be hurt, and only by a goal the human watched fill
-for months.
+half the treasury; at 0 boxes it takes half the treasury and, instead of the box, a hex
+of the tower's (its deepest, never the warded one) with the sites there; with no hex but
+the warded one, half the treasury only. **Mend** a box for 200 GP (a purse action). Hold
+is the only thing on the tower that can be hurt, and only by a goal the human watched
+fill for months.
 
 ### Renown and the ladder
 
@@ -231,20 +256,24 @@ the map after every world's turn, never bought. The tier is the last row Renown 
 | 1 | Lord of the hex | 2 | **Garrison** and **Walls** may be bought for the tower's hexes (purse actions, section 8). Wandering checks stop in a garrisoned tower hex |
 | 2 | Warden of the marches | 5 | **Back** or **hinder** one realm's goal roll a month (+1 / −1) for 100 GP |
 | 3 | A power in the land | 9 | Morten's Strike and Aid move **3 marks** instead of 2 (on the realm's goal and on the tower's); **two allies** count on the tower's goal |
-| 4 | Master of the twenty hexes | 14 | May **set an ally's next goal** from the catalogue each month: the goal that ally picks when its current one ends. Reaching Master with **every realm an ally or toppled** ends the campaign: the world is his |
+| 4 | Master of the twenty hexes | 14 | May **set an ally's goal** from the catalogue each month (`--set`, section 12): the ally drops its goal and takes the set one at 0 marks, rolling for it that month. Reaching Master with **every realm an ally** (a toppled realm's new ruler is one, at +2) ends the campaign: the world is his |
 
 Renown can fall (a hex lost; a toppled ruler is permanent). The tier falls with it; the
 report says so in one line.
 
 **How the realms feel it:** from Warden on, bad rulers who aren't allies start weighing
-*break the tower* (section 5, rule 1), and good ones *court the tower* from Lord on.
-Rising makes enemies and friends at once, which is what the arc wants.
+*break the tower* (section 5, rule 2), and good ones *court the tower* from Lord on.
+Rising makes enemies and friends at once, which is what the arc wants. A Hermit is not
+safe either: a bad neighbour of the tower at standing 0 weighs *break the tower* on a 6
+whenever it picks a goal, so the tower at rest is attacked about twice in two years.
 
 ## 8. Purse actions
 
 Not goals and not limited to one: anything the treasury covers, declared with the month's
-orders and paid at the world's turn. A purse action the treasury can't cover, or the tier
-doesn't allow, is rejected with the orders.
+orders and paid at the world's turn before the month's income, in this order: the
+tower's goal, the mission (a Rob's gold reaches the treasury first), deposit and
+withdraw, the purchases, Set, Give, back or hinder. A purse action the treasury can't
+cover at its turn, or the tier doesn't allow, is rejected with the orders.
 
 | Action | Cost | Needs | Effect |
 |---|---|---|---|
@@ -254,6 +283,7 @@ doesn't allow, is rejected with the orders.
 | **Mend** | 200 GP | Hold below 3 | Hold +1 |
 | **Give REALM GP** | the GP | — | the gold is theirs. 200 GP or more in one month: +1 on its goal roll this month, standing +1 (once a month, to at most +1), and +1 on the tower's goal when that goal is *ally REALM*. While the tower's goal is *topple REALM*, a Give to REALM goes to its **dissident** instead: +1 on the topple clock (once a month) and nothing else |
 | **Back / hinder REALM** | 100 GP | Warden | +1 / −1 on that realm's roll this month; one a month |
+| **Set REALM GOAL** | — | Master; REALM an ally | REALM drops its goal and takes GOAL at 0 marks: *take HEX* (not its own, not the tower's), *fortify HEX* (an unwalled hex of its own), *raise*, *raid REALM*, *press REALM*, *squeeze* or *break REALM* |
 
 **Deposit and withdraw** move gold between Morten's purse and the tower's treasury, free,
 with the orders. The treasury pays purse actions and goal prices; the purse buys at the
@@ -267,9 +297,9 @@ check.
 
 | Mission | Where | The fight | On a win |
 |---|---|---|---|
-| **Strike SITE** | a realm's hex with one of its sites | the site's list at its tier (section 4): seat tier +1, garrison the realm's tier, works tier −1, walls the realm's tier | the realm's goal **−2 marks** (min 0); standing −1 (seat −2); and marks on the tower's goal where section 10 says so |
-| **Rob** | a realm's hex with its works | the works' list at the realm's tier −1 (the same fight as a Strike on them) | **100 × its Force GP** from its treasury (at most what it holds) to the tower's treasury; standing −1; the tower's goal +0 |
-| **Aid REALM** | the hex its goal is aimed at (*take*, *fortify*); the aided realm's seat for goals with no hex | the obstacle: a goal against another realm, that realm's garrison list at that realm's tier; otherwise the hex's beasts at the aided realm's tier. A goal aimed at the tower can't be aided | the realm's goal **+2 marks**; standing +1 (to at most +1); and **+2 on the tower's goal** if it is *ally REALM* |
+| **Strike SITE** | a realm's hex with one of its sites | the site's list at its tier (section 4): seat tier +1, garrison the realm's tier, works tier −1, walls the realm's tier | the realm's goal **−2 marks** (min 0; a goal that waited full is no longer done); standing −1 (seat −2); and marks on the tower's goal where section 10 says so |
+| **Rob** | a realm's hex with its works | the works' list at the realm's tier −1 (the same fight as a Strike on them) | **100 × its Force GP** from its treasury (at most what it holds) to the tower's treasury (withdraw it next month); standing −1; the tower's goal +0 |
+| **Aid REALM** | the hex its goal is aimed at: a *take*'s hex; the **target's seat** for *raid*, *press* and *break REALM*; the aided realm's own seat for *fortify* (that hex), *raise* and *squeeze* | the obstacle: a goal against another realm, that realm's garrison list at that realm's tier; otherwise the hex's beasts at the aided realm's tier. A goal aimed at the tower (*break*, *raid* or *court the tower*, a *take* of a tower hex) can't be aided | the realm's goal **+2 marks**; standing +1 (to at most +1); and **+2 on the tower's goal** if it is *ally REALM* |
 | **Contact REALM** | any of its hexes | no fight: Persuasion (CHA) vs **DC 12 + 3 if the ruler is bad − 2 × standing + 4 while it is squeezed** (a wary bad ruler DC 17, a neutral good one DC 12, a friendly good one DC 10). Standing −2 refuses | standing +1 (to at most +1); at +1 or more after that, a **dissident** is named (needed to topple, section 10); +1 on the tower's goal if it is *ally REALM* |
 | **Delve** | the floor under the hex | as in the dungeon game | no domain effect |
 
@@ -284,20 +314,22 @@ adds 3 and gives 3. Contact's and Give's +1 stay +1.
 ## 10. The tower's goal
 
 The tower keeps **one goal at a time**, declared by the human with the month's orders and
-kept until done or dropped (dropping loses its marks). Its marks come from Morten's
-missions and from allies, never from a die. Its clock is set when it is declared and
-doesn't change after. A full clock fires at the world's turn, and the tower has no goal
-until the human declares the next.
+kept until done or dropped. Declaring a different goal while one runs drops the old one
+and **loses its marks** (declaring the same one again changes nothing); `--goal drop`
+drops it for nothing. Its marks come from Morten's missions and from allies, never from
+a die. Its clock is set when it is declared and doesn't change after. A full clock fires
+at the world's turn, and the tower has no goal until the human declares the next.
 
 | Goal | Clock | Needs | Marks from | When the clock is full |
 |---|---|---|---|---|
-| **take HEX** from REALM | 2 + the holder's Force (3–7; +2 if walled) | HEX held by a realm | a won Strike on any site in HEX +2; an ally +1 a month | the hex is the tower's with its garrison, works and walls (a seat there moves to the loser's deepest hex left); standing with the loser −2; Renown +1 |
-| **ally REALM** | 3 | REALM not an ally | Contact +1; Aid +2; Give 200 GP +1 (once a month); an ally +1 a month | standing +2; Renown +1 |
-| **topple REALM** | 3 + its Force (4–8) | a **dissident** named there | a Strike on its seat +2; on its garrison, works or walls +1; Give 200 GP to the dissident +1 (once a month); an ally +1 a month | the dissident rules with a random good tag, full treasury kept, Force kept, standing +2, the realm picks a new goal by its new tag, the dissident is cleared; Renown +2 |
+| **take HEX** from REALM | 2 + the holder's Force (3–7; +2 if walled) | HEX held by a realm (any realm, anywhere) | a won Strike on any site in HEX +2; an ally +1 a month | the hex is the tower's with its garrison, works and walls (a seat there moves to the loser's deepest hex left); standing with the loser −2; Renown +1. If HEX changes hands first, the goal is dropped at the world's turn and the report says so |
+| **ally REALM** | 3 | REALM not an ally | Contact +1; Aid +2; Give 200 GP +1 (once a month); no ally's mark | standing +2; Renown +1. Done at once if REALM courts its way to +2 on its own |
+| **topple REALM** | 3 + its Force (4–8) | a **dissident** named there | a Strike on its seat +2; on its garrison, works or walls +1; Give 200 GP to the dissident +1 (once a month); an ally +1 a month | the dissident rules with a random title and a random good tag, full treasury kept, Force kept, standing +2, the realm picks a new goal by its new tag at once, the dissident is cleared; Renown +2 |
 
 At Power the 2s are 3s (the garrison's +1 stays). A Strike on a site of the target realm
 outside HEX adds nothing to *take HEX*; a Strike adds nothing to *ally REALM*. A realm
-that courts its way to +2 while the tower's goal is *ally REALM* ends that goal at once.
+that courts its way to +2 while the tower's goal is *ally REALM* ends that goal at once:
+the clock fills and fires that turn.
 
 So the road to the throne is a thing you can watch fill: Contact twice to find the
 dissident, then Strike the seat while an ally adds a mark a month. And "conquer the world"
@@ -307,16 +339,21 @@ is literal on the map: take the hexes you want, ally the good rulers, topple the
 
 Every month, after Morten's month, the script runs:
 
-1. **Morten's month lands:** the mission's result (marks on his target's goal and on the
-   tower's, standing changes, Rob's gold), deposit and withdraw, purse actions, Give,
-   back or hinder.
+1. **Morten's month lands:** the tower's goal declared, the mission's result (marks on
+   his target's goal and on the tower's, standing changes, Rob's gold), deposit and
+   withdraw, purse actions, Set, Give, back or hinder, in that order.
 2. **Income:** hex level × 10 GP to each holder (Tyrant × 1.5), works +50 GP each, the
    tower's hexes to the tower's treasury.
-3. **Each realm rolls its goal,** highest Force first (ties by d6): marks, a full clock
-   fires (and pays, or waits), a new goal is picked where needed.
-4. **The tower's goal:** allies' marks; a full clock fires.
-5. **Clean-up:** Renown and tier; goals 6 months old dropped and replaced; squeeze
-   timers count down; the month advances.
+3. **Each realm rolls its goal,** highest Force first (ties by d6): a realm with no
+   goal, or whose goal's target is gone, picks one first and rolls for it at once; then
+   marks, a full clock fires (and pays, or waits) and the realm picks its next goal,
+   which rolls from next month.
+4. **The tower's goal:** allies' marks (on *take* and *topple*); an *ally* goal whose
+   realm courted its way to +2 fills; a *take* whose hex changed hands is dropped; a full
+   clock fires.
+5. **Clean-up:** goals 12 months old dropped and replaced; Renown and tier (a change is
+   one line of the report); the end of the campaign; the month advances. Squeeze and
+   rest timers are month numbers and simply run out.
 
 Nothing else happens. Six rolls, at most six effects, one for the tower.
 
@@ -326,14 +363,14 @@ The script is `python3 dnd-crunch/tools/realms3.py`; DIR is the campaign folder.
 
 | Command | What it does |
 |---|---|
-| `new --seed N --campaign DIR [--level 3]` | The world: `realms.json` (version 3), `world.md`, `map.json`, and the 20 floors in `gm-secrets.md`. |
-| `show --campaign DIR [--at HEX]` | The world: every realm's line, goal and clock, sites and treasury; `--at`, the rumours from a hex (the goals and clocks in and next to it). Nothing is hidden, so there is no `--gm`. |
-| `encounter --campaign DIR --site ID` | The fight for a Strike or Rob on that site (its id as `show` prints it). |
-| `encounter --campaign DIR --aid REALM` | The fight for an Aid, and the hex it is fought in. |
-| `encounter --campaign DIR --contact REALM` | The Contact DC. |
-| `encounter --campaign DIR --hex HEX` | A wandering encounter for the hex's level. |
+| `new --seed N --campaign DIR [--level 3] [--force]` | The world: `realms.json` (version 3), `world.md`, `map.json`, and the 20 floors in `gm-secrets.md`. `--force` overwrites a campaign's `realms.json`. |
+| `show --campaign DIR [--at HEX]` | The world: the tower, every realm's line, goal and clock, every site, next month's lines; `--at`, the rumours from a hex. Nothing is hidden, so there is no `--gm`. |
+| `encounter --campaign DIR --site ID [--level N]` | The fight for a Strike or Rob on that site (its id as `show` prints it), for Morten's level (the campaign's unless `--level`). |
+| `encounter --campaign DIR --aid REALM [--level N]` | The fight for an Aid, and the hex it is fought in. |
+| `encounter --campaign DIR --contact REALM` | The Contact DC, with its parts. |
+| `encounter --campaign DIR --hex HEX [--seed N]` | A wandering encounter for the hex's level (random unless `--seed`). |
 | `turn --campaign DIR [options] [--dry-run]` | The world's turn: prints the report, saves `realms.json`, `world.md`, `map.json`. |
-| `sim [--seeds 1-10] [--months 24]` | Passive-tower months for tuning. |
+| `sim [--seeds 1-10] [--seed N] [--months 24] [--scripted] [--verbose]` | Passive-tower months for tuning; `--scripted`, a Morten who strikes the weakest neighbour; `--verbose`, every month's report; `--seed N`, one world with its end state. |
 
 **`turn` options:**
 
@@ -341,20 +378,19 @@ The script is `python3 dnd-crunch/tools/realms3.py`; DIR is the campaign folder.
 |---|---|
 | `--at HEX` · `--level N` | where Morten ends the month · his level now |
 | `--strike ID` · `--rob ID` · `--aid REALM` · `--contact REALM` · `--delve` | the month's won mission (one) |
-| `--goal take:HEX` · `ally:REALM` · `topple:REALM` · `drop` | the tower's goal (kept when omitted) |
+| `--goal take:HEX` · `ally:REALM` · `topple:REALM` · `drop` | the tower's goal (kept when omitted; a different one replaces a running goal and loses its marks) |
 | `--buy garrison@HEX` · `walls@HEX` · `works@HEX` · `mend` | purse actions (repeatable) |
 | `--give REALM=GP` · `--back REALM` · `--hinder REALM` | repeatable Give; one back or hinder |
+| `--set REALM=GOAL` | the Master's power: an ally's goal, GOAL as `take:HEX`, `fortify:HEX`, `raise`, `raid:REALM`, `press:REALM`, `squeeze` or `break:REALM` (repeatable, one per ally) |
 | `--deposit GP` · `--withdraw GP` | gold moved between the purse and the treasury |
 | `--plan "why"` | a line for The plan (repeatable) |
-
-The Master's set-goal is declared with the orders too (the engine's own option names it;
-`turn --help`).
 
 Orders are checked before anything happens: a Strike or Rob needs Morten in the site's
 hex, an Aid in the goal's hex, a Contact in the realm's hex; a purse action needs the
 tier and the gold; a goal its conditions (a dissident for *topple*, a realm's hex for
-*take*). One rejected order prints one line and saves nothing: fix it and rerun.
-**Always `--dry-run` first.**
+*take*, a realm not yet an ally for *ally*); a Set needs Master and an ally. One
+rejected order prints one line and saves nothing: fix it and rerun. **Always
+`--dry-run` first.**
 
 ### Steps
 
@@ -429,8 +465,9 @@ Six lines, and every number on them is a thing the map shows.
 | `gm-secrets.md` | The dungeon floors by hex. Mark rooms explored. |
 
 **In the field** the header adds month, day and hex: "Month 3 · Day 4 · C2 (L9, forest,
-Elves)", and a **Rumours** section appears in or next to a realm's hex (`show --at`): its
-goal, its clock and its standing, in words.
+Elves)", and a **Rumours** section appears in or next to a realm's hex (`show --at`): the
+Threat and Chance lines that name the hex's or its neighbours' realms or hexes, then one
+line per such realm: its ruler, its goal and clock, its standing, in words.
 
 ## 13. Constants
 
@@ -445,20 +482,23 @@ goal, its clock and its standing, in words.
 | Clocks | take 4 (6 walled) · fortify 3 · raise 3 · raid 2 · press 3 · squeeze 2 · break 4 · break the tower 4 · court 2 | ours; Blades' 4/6/8 cut in half for monthly ticks |
 | Tower's clocks | take 2 + Force (+2 walled) · ally 3 · topple 3 + Force | ours |
 | Morten's marks | Strike −2 / +2 (topple: seat +2, other sites +1) · Aid +2 · Contact +1 · Give +1; 2s are 3s at Power | Mausritter's "player involvement: 1–3 marks" |
-| Ally's marks | +1 a month on the tower's goal; two allies at Power | ours |
+| Ally's marks | +1 a month on the tower's *take* or *topple* (not *ally*); two allies at Power | ours |
 | Prices | fortify 300 · raise 200 × new Force · garrison 400 · walls 600 · works 300 · mend 200 · back/hinder 100 | ours |
 | Raid · Rob | 100 × Force GP; a raid on the tower at most half its treasury | ours |
 | Squeeze | +100 GP per hex; Contact DC +4 for 3 months | ours |
 | Press | own Force +1, target −1 | ours |
-| Break REALM · the tower | target Force −1 · Hold −1 and half the treasury (a hex at Hold 0) | ours |
+| Break REALM · the tower | target Force −1 · Hold −1 and half the treasury (at Hold 0 a hex instead of the box, half the treasury still); standing −1 and a rest of 12 months | ours |
 | Contact DC | 12 + 3 bad − 2 × standing (+4 squeezed); refused at −2 | ours |
 | Standing | −2..+2; the table in section 7 | Blades' status, −3..+3 cut to five |
 | Hold | 3 boxes; mend 200 GP | Blades' hold, as boxes |
 | Renown | hexes beyond the tower hex + allies + 2 × toppled; tiers at 2, 5, 9, 14 | ours; Blades' tier ladder |
-| Picker | break the tower (bad, standing ≤ −1; or bad, Warden+, standing ≤ 0, d6 4+) · take back · court (good, 0 or +1, Lord+, d6 4+) · the tag · raise, fortify, squeeze | ours |
-| Goal dropped | 6 months after it was picked | v2 |
+| Picker | landless: take back · break the tower (bad, not an ally, not resting: standing ≤ −1; or standing 0 and Warden+, d6 4+; or standing 0 and a neighbour of the tower, d6 6) · take back (Force ≥ the holder's) · court (good, 0 or +1, Lord+, d6 4+) · the tag, rich first · raise, fortify, squeeze | ours |
+| Menace | a bad neighbour of the tower at standing 0: *break the tower* on a d6 of 6 | ours; tuned to 2.3 picks and 1.6 fires a world at rest |
+| Rest | 12 months off the tower after a *break the tower* fires | v2's REST |
+| Rich | 1,000 GP and a tag's goal with no price: raise (at Force 5, fortify) first, every other goal | v2's rule, cut down |
+| Goal dropped | 12 months after it was picked (the plan's 6 restarted takes against garrisons) | v2, doubled |
 | Turn order | highest Force first, ties by d6 | ours |
-| Start | seat + garrison + works on a realm's three deepest hexes; good +1 standing, bad 0; 4 bad, 2 good; tower Hold 3, 100 GP, Hermit, no sites, the warded hex | ours |
+| Start | seat + garrison + works on a realm's three deepest hexes; good +1 standing, bad 0; 4 bad, 2 good; tower Hold 3, 100 GP, Hermit, no sites, the warded hex; a landless realm's first hex back is its seat again | ours |
 | End | Master with every realm an ally or toppled | ours |
 
 ## 14. Left for later
@@ -472,13 +512,32 @@ goal, its clock and its standing, in words.
 
 ## 15. The sim
 
-The numbers are filled in after the engine's `sim` (seeds 1–10, 24 months each, the
-tower taking no action; then a second sim with a scripted Morten striking the weakest
-neighbour's garrison, then its seat). The targets, from the plan: about one goal fires
-somewhere every month and no realm's line goes a year unchanged; two to four hexes change
-hands per world in two years, a Conqueror grows, a Steward holds its seat; no realm loses
-all its hexes and none reaches Force 5 from 1; the tower at rest is targeted by a *break
-the tower* once or twice in two years, loses one Hold box about once and never a hex at
-Hold 3; raids move gold and goals get paid without a realm sitting on 2,000 GP for a year;
-a scripted Morten takes a hex in 3–5 months at level 3–4 and can reach Master in about
-three years of play.
+`sim --seeds 1-10 --months 24`, the tower taking no action, with the constants above
+(the plan's section 16 targets; reproduce with the command, the numbers are
+deterministic):
+
+| Target (the plan) | Result | Verdict |
+|---|---|---|
+| Something fires every month, about one goal a month | 33.9 goals fired a world, **1.41 a month**; 46 of 240 months had nothing fire | met on the rate; "every month" is not possible at one a month |
+| No realm's line goes a year unchanged | **0** realm lines unchanged for 12 months | met |
+| Two to four hexes change hands a world | **1.6** a world (3, 3, 3, 0, 0, 0, 0, 3, 4, 0): 3–4 in a world with a Conqueror, 0 without | missed where no Conqueror exists: only Conquerors and take-backs take hexes |
+| A Conqueror grows | 3→4, 3→4, 3→3, 3→4, 3→4, 3→3 | four of six |
+| A Steward holds its seat | **12 of 12** | met |
+| No realm loses all its hexes; none reaches Force 5 from 1 | **0** landless; **0** to Force 5 from 1 (raises 8.1 a world, presses 2.8, breaks 1.3) | met |
+| The tower at rest: *break the tower* once or twice, one Hold box lost, never a hex at Hold 3 | picked **2.3** times a world, fired **1.6**, Hold boxes lost **1.5**, hexes lost **0** | about met: a little over, by the d6-of-6 rule (section 5) and the 12-month rest; without them 0, with no rest 3.2 fires |
+| Treasuries matter: raids move gold, goals get paid, nobody sits on 2,000 GP for a year | raids 2.7 a world moving 950 GP; fortify and raise paid **9,390 GP** a world (4,970 before the rich rule); no goal ever waited for its price; **10 of 10** worlds have a realm at 2,000+ GP for a year (end treasuries 10,000–29,000 GP) | missed: income (300–650 GP a month a realm) has no sink; the rich rule doubles what is spent and that is the modest fix. Fat treasuries make a Rob or a Raid worth more; an upkeep (Force × 50 GP a month) is the next lever if it matters in play |
+
+The rich rule has a cost: with it, Raiders raise instead of raiding every other goal, so
+raids fell from 4.3 to 2.7 a world and hexes changing hands from 2.4 to 1.6; Conquerors
+grow more often (four of six, from two) because a raise before a take gives the Force +1.
+
+`sim --seeds 1-10 --months 36 --scripted`: a scripted Morten goes to the tower's weakest
+neighbour, declares *take* on its garrison hex, Strikes that site every month until the
+hex is his, then its seat hex, then the next weakest neighbour; level 3 for a year then
+4; mends Hold when he can; no allies, no topples.
+
+| Target (the plan) | Result |
+|---|---|
+| A hex taken in 3–5 months at level 3–4 | the first hex in **month 2.8** on average (2 or 3 in every world): the take clock is 2 + Force 3 = 5 and a Strike is +2, so three Strikes do it |
+| Master in about three years | at 36 months **2 Master, 8 Power**; mean Renown 5.2 / 9.1 / 11.6 at 12 / 24 / 36 months (Master needs 14). Conquest alone gets Power in three years; the plan's road (allies +1, topples +2) is what makes Master |
+| Side effects | the tower takes 19.9 hexes a world and loses 3.8 back; every struck bad realm goes to war: *break the tower* picked 6.0 times and fired 4.6 a world (8.0 before the rest), so Hold is mended as often; 29 of 60 realms end landless; Stewards hold their seat 2 of 12 times |
