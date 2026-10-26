@@ -1,0 +1,28 @@
+{
+ "v": 1,
+ "campaign": "realms4",
+ "url": "https://claude.ai/artifact/L6g6sFmKhofH2eYdv6ZSAy",
+ "lastSeq": 4,
+ "lastMove": 0,
+ "versions": {
+  "story/s0001": 1,
+  "game/morten": 4,
+  "game/realm": 1,
+  "game/rules": 1,
+  "game/state": 9,
+  "story/s0002": 1,
+  "story/s0003": 1,
+  "story/s0004": 1
+ },
+ "pending": [],
+ "moves": {},
+ "answered": [],
+ "ticks": 0,
+ "wake": {
+  "on": true
+ },
+ "realm": {
+  "rumours": {},
+  "hexNames": {}
+ }
+}

@@ -1,0 +1,1253 @@
+{
+ "v": 1,
+ "version": 3,
+ "campaign": "realms4",
+ "month": 1,
+ "layout": {
+  "cols": 4,
+  "rows": 5,
+  "orientation": "flat-top",
+  "shift": "odd"
+ },
+ "hexes": [
+  {
+   "id": "A1",
+   "col": 0,
+   "row": 0,
+   "level": 6,
+   "biome": "taiga",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 60,
+   "neighbours": [
+    "A2",
+    "B1"
+   ],
+   "assets": []
+  },
+  {
+   "id": "A2",
+   "col": 0,
+   "row": 1,
+   "level": 10,
+   "biome": "hills",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": true,
+   "seat_of": null,
+   "warded": false,
+   "income": 100,
+   "neighbours": [
+    "A1",
+    "A3",
+    "B1",
+    "B2"
+   ],
+   "assets": [
+    {
+     "id": "s14",
+     "owner": "Tieflings",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "A3",
+   "col": 0,
+   "row": 2,
+   "level": 9,
+   "biome": "plains",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 135,
+   "neighbours": [
+    "A2",
+    "A4",
+    "B2",
+    "B3"
+   ],
+   "assets": [
+    {
+     "id": "s17",
+     "owner": "Elves",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "A4",
+   "col": 0,
+   "row": 3,
+   "level": 8,
+   "biome": "hills",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 120,
+   "neighbours": [
+    "A3",
+    "A5",
+    "B3",
+    "B4"
+   ],
+   "assets": [
+    {
+     "id": "s18",
+     "owner": "Elves",
+     "name": "Mine",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "A5",
+   "col": 0,
+   "row": 4,
+   "level": 20,
+   "biome": "desert",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": "Elves",
+   "warded": false,
+   "income": 300,
+   "neighbours": [
+    "A4",
+    "B4",
+    "B5"
+   ],
+   "assets": [
+    {
+     "id": "s16",
+     "owner": "Elves",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "B1",
+   "col": 1,
+   "row": 0,
+   "level": 14,
+   "biome": "taiga",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": "Tieflings",
+   "warded": false,
+   "income": 140,
+   "neighbours": [
+    "A1",
+    "A2",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "assets": [
+    {
+     "id": "s13",
+     "owner": "Tieflings",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "B2",
+   "col": 1,
+   "row": 1,
+   "level": 7,
+   "biome": "hills",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 70,
+   "neighbours": [
+    "A2",
+    "A3",
+    "B1",
+    "B3",
+    "C2",
+    "C3"
+   ],
+   "assets": [
+    {
+     "id": "s15",
+     "owner": "Tieflings",
+     "name": "Mine",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "B3",
+   "col": 1,
+   "row": 2,
+   "level": 2,
+   "biome": "plains",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 20,
+   "neighbours": [
+    "A3",
+    "A4",
+    "B2",
+    "B4",
+    "C3",
+    "C4"
+   ],
+   "assets": [
+    {
+     "id": "s9",
+     "owner": "Gnomes",
+     "name": "Caravans",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "B4",
+   "col": 1,
+   "row": 3,
+   "level": 17,
+   "biome": "hills",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 170,
+   "neighbours": [
+    "A4",
+    "A5",
+    "B3",
+    "B5",
+    "C4",
+    "C5"
+   ],
+   "assets": [
+    {
+     "id": "s12",
+     "owner": "Orcs",
+     "name": "Mine",
+     "type": "works",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "B5",
+   "col": 1,
+   "row": 4,
+   "level": 18,
+   "biome": "desert",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 180,
+   "neighbours": [
+    "A5",
+    "B4",
+    "C5"
+   ],
+   "assets": [
+    {
+     "id": "s11",
+     "owner": "Orcs",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "C1",
+   "col": 2,
+   "row": 0,
+   "level": 12,
+   "biome": "mountains",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 120,
+   "neighbours": [
+    "B1",
+    "C2",
+    "D1"
+   ],
+   "assets": [
+    {
+     "id": "s5",
+     "owner": "Goblinkind",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "C2",
+   "col": 2,
+   "row": 1,
+   "level": 4,
+   "biome": "taiga",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 40,
+   "neighbours": [
+    "B1",
+    "B2",
+    "C1",
+    "C3",
+    "D1",
+    "D2"
+   ],
+   "assets": [
+    {
+     "id": "s8",
+     "owner": "Gnomes",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "C3",
+   "col": 2,
+   "row": 2,
+   "level": 11,
+   "biome": "swamp",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": "Gnomes",
+   "warded": false,
+   "income": 110,
+   "neighbours": [
+    "B2",
+    "B3",
+    "C2",
+    "C4",
+    "D2",
+    "D3"
+   ],
+   "assets": [
+    {
+     "id": "s7",
+     "owner": "Gnomes",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "C4",
+   "col": 2,
+   "row": 3,
+   "level": 19,
+   "biome": "savanna",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": "Orcs",
+   "warded": false,
+   "income": 190,
+   "neighbours": [
+    "B3",
+    "B4",
+    "C3",
+    "C5",
+    "D3",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "s10",
+     "owner": "Orcs",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "C5",
+   "col": 2,
+   "row": 4,
+   "level": 1,
+   "biome": "desert",
+   "people": "tower folk",
+   "holder": "tower",
+   "lake": false,
+   "seat_of": "tower",
+   "warded": true,
+   "income": 10,
+   "neighbours": [
+    "B4",
+    "B5",
+    "C4",
+    "D4",
+    "D5"
+   ],
+   "assets": []
+  },
+  {
+   "id": "D1",
+   "col": 3,
+   "row": 0,
+   "level": 13,
+   "biome": "tundra",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": "Goblinkind",
+   "warded": false,
+   "income": 130,
+   "neighbours": [
+    "C1",
+    "C2",
+    "D2"
+   ],
+   "assets": [
+    {
+     "id": "s4",
+     "owner": "Goblinkind",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "D2",
+   "col": 3,
+   "row": 1,
+   "level": 5,
+   "biome": "taiga",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": true,
+   "seat_of": null,
+   "warded": false,
+   "income": 50,
+   "neighbours": [
+    "C2",
+    "C3",
+    "D1",
+    "D3"
+   ],
+   "assets": [
+    {
+     "id": "s6",
+     "owner": "Goblinkind",
+     "name": "Farms",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "D3",
+   "col": 3,
+   "row": 2,
+   "level": 3,
+   "biome": "forest",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 30,
+   "neighbours": [
+    "C3",
+    "C4",
+    "D2",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "s3",
+     "owner": "Humans",
+     "name": "Farms",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "D4",
+   "col": 3,
+   "row": 3,
+   "level": 15,
+   "biome": "forest",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 150,
+   "neighbours": [
+    "C4",
+    "C5",
+    "D3",
+    "D5"
+   ],
+   "assets": [
+    {
+     "id": "s2",
+     "owner": "Humans",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "D5",
+   "col": 3,
+   "row": 4,
+   "level": 16,
+   "biome": "savanna",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": "Humans",
+   "warded": false,
+   "income": 160,
+   "neighbours": [
+    "C5",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "s1",
+     "owner": "Humans",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  }
+ ],
+ "rivers": [
+  [
+   "C3",
+   "D2"
+  ],
+  [
+   "C2",
+   "C3"
+  ],
+  [
+   "B2",
+   "C2"
+  ],
+  [
+   "B1",
+   "C2"
+  ],
+  [
+   "B1",
+   "C1"
+  ],
+  [
+   "A1",
+   "A2"
+  ],
+  [
+   "A2",
+   "B1"
+  ],
+  [
+   "A2",
+   "B2"
+  ],
+  [
+   "A2",
+   "A3"
+  ]
+ ],
+ "factions": [
+  {
+   "name": "Humans",
+   "tower": false,
+   "leader": {
+    "name": "Hilde",
+    "title": "Reeve",
+    "label": "good",
+    "tag": "Liberator",
+    "verb": "fights tyrants"
+   },
+   "income": 390,
+   "force": 3,
+   "tier": 2,
+   "treasury": 340,
+   "seat": "D5",
+   "hexes": [
+    "D3",
+    "D4",
+    "D5"
+   ],
+   "standing": 1,
+   "standingWord": "friendly",
+   "ally": false,
+   "goal": {
+    "text": "break the Gnomes",
+    "kind": "break",
+    "target": "Gnomes",
+    "hex": null,
+    "marks": 0,
+    "size": 4,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Goblinkind",
+   "tower": false,
+   "leader": {
+    "name": "Hrothak",
+    "title": "Big Boss",
+    "label": "bad",
+    "tag": "Slaver",
+    "verb": "takes people for soldiers"
+   },
+   "income": 350,
+   "force": 3,
+   "tier": 2,
+   "treasury": 300,
+   "seat": "D1",
+   "hexes": [
+    "C1",
+    "D1",
+    "D2"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "press the Gnomes",
+    "kind": "press",
+    "target": "Gnomes",
+    "hex": null,
+    "marks": 0,
+    "size": 3,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Gnomes",
+   "tower": false,
+   "leader": {
+    "name": "Tobble",
+    "title": "Provost",
+    "label": "bad",
+    "tag": "Slaver",
+    "verb": "takes people for soldiers"
+   },
+   "income": 220,
+   "force": 2,
+   "tier": 1,
+   "treasury": 170,
+   "seat": "C3",
+   "hexes": [
+    "B3",
+    "C2",
+    "C3"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "press the Goblinkind",
+    "kind": "press",
+    "target": "Goblinkind",
+    "hex": null,
+    "marks": 0,
+    "size": 3,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Orcs",
+   "tower": false,
+   "leader": {
+    "name": "Brakka",
+    "title": "Boss",
+    "label": "bad",
+    "tag": "Slaver",
+    "verb": "takes people for soldiers"
+   },
+   "income": 590,
+   "force": 5,
+   "tier": 3,
+   "treasury": 540,
+   "seat": "C4",
+   "hexes": [
+    "B4",
+    "B5",
+    "C4"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "break the tower",
+    "kind": "break_tower",
+    "target": "tower",
+    "hex": null,
+    "marks": 0,
+    "size": 4,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Tieflings",
+   "tower": false,
+   "leader": {
+    "name": "Ekemon",
+    "title": "Magister",
+    "label": "good",
+    "tag": "Liberator",
+    "verb": "fights tyrants"
+   },
+   "income": 420,
+   "force": 4,
+   "tier": 2,
+   "treasury": 370,
+   "seat": "B1",
+   "hexes": [
+    "A1",
+    "A2",
+    "B1",
+    "B2"
+   ],
+   "standing": 1,
+   "standingWord": "friendly",
+   "ally": false,
+   "goal": {
+    "text": "break the Gnomes",
+    "kind": "break",
+    "target": "Gnomes",
+    "hex": null,
+    "marks": 0,
+    "size": 4,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Elves",
+   "tower": false,
+   "leader": {
+    "name": "Ynnara",
+    "title": "Archon",
+    "label": "bad",
+    "tag": "Tyrant",
+    "verb": "squeezes its own people"
+   },
+   "income": 605,
+   "force": 4,
+   "tier": 2,
+   "treasury": 370,
+   "seat": "A5",
+   "hexes": [
+    "A3",
+    "A4",
+    "A5"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "squeeze",
+    "kind": "squeeze",
+    "target": null,
+    "hex": null,
+    "marks": 0,
+    "size": 2,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "tower",
+   "tower": true,
+   "leader": {
+    "name": "Morten",
+    "title": "Wizard",
+    "label": null,
+    "tag": null,
+    "verb": null
+   },
+   "income": 10,
+   "treasury": 100,
+   "seat": "C5",
+   "hexes": [
+    "C5"
+   ],
+   "standing": null,
+   "standingWord": null,
+   "ally": false,
+   "goal": null,
+   "tier": 0,
+   "tierName": "Hermit",
+   "renown": 0,
+   "hold": 3,
+   "maxHold": 3,
+   "toppled": 0,
+   "won": null
+  }
+ ],
+ "morten": {
+  "hex": "C5",
+  "level": 3
+ },
+ "events": [],
+ "report": {
+  "month": 0,
+  "plan": [],
+  "happened": [],
+  "tower": [
+   "Hermit (tier 0, Renown 0) · Hold 3 of 3 · 100 GP · income 10 GP a month · Morten level 3 in C5",
+   "Hexes: C5 (C5 warded)",
+   "Sites: none",
+   "Allies: none · enemies: none",
+   "Goal: none yet (declared with the month's orders)"
+  ],
+  "next": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "Chance: and 1 more chance on the map.",
+   "Open: Morten is in C5, the tower (level 1, desert). Travel is a day a hex; each day away from the tower a d6, and a 1 is a wandering encounter.",
+   "Open: missions here in C5: Delve floor 1.",
+   "Open: the purse holds 100 GP: Works on a hex of the tower's (300 GP); a gift to a realm (200 GP or more counts for a month).",
+   "Open: no goal yet. Declare one: take a hex (its holder's Force + 2 marks, +2 if walled), ally a realm (3 marks; any of the six), or topple a ruler (needs a dissident; none named yet)."
+  ],
+  "notes": [
+   "Month 1: the world begins."
+  ]
+ },
+ "words": {
+  "force": "Force 1 to 5: a realm's army. It sets the tier of its fights, and its goal roll is +1 against a weaker realm, −1 against a stronger one.",
+  "standing": "Standing: how a realm treats the tower, from −2 (enemy: refuses Contact) through 0 (neutral) to +2 (ally: a mark a month on the tower's goal). It moves only by deeds.",
+  "clock": "A clock: a goal's marks out of its size. Each month a realm rolls a d6 for its goal: a 1 loses a mark, 3 to 5 add one, 6 adds two; a full clock fires the goal.",
+  "hold": "Hold: the tower's three boxes. A realm's break-the-tower goal that fires takes one box and half the tower's gold; at 0 boxes it takes a hex instead. Mend a box for 200 GP.",
+  "renown": "Renown: the tower's hexes beyond its own, plus its allies, plus 2 for each ruler toppled. It is read off the map, never bought.",
+  "tier": "The tower's tier, by Renown: Hermit (0), Lord of the hex (2), Warden of the marches (5), A power in the land (9), Master of the twenty hexes (14). Each brings a power.",
+  "site": "A site is a realm's seat, garrison, works or walls in a hex: the thing Morten can strike. It never moves and never attacks.",
+  "level": "Level N: floor N lies under it, its wanderers are level-N trouble, and it pays N×10 GP a month.",
+  "seat": "The hex the ruler sits in. Its court is the realm's hardest fight; a Strike there costs 2 standing.",
+  "ally": "An ally is a realm at standing +2: the tower's ally goal done for it, or a ruler the tower put on the throne."
+ },
+ "kinds": {
+  "Seat": {
+   "glyph": "crown",
+   "type": "seat",
+   "what": "the ruler's court",
+   "tierWords": "the realm's tier +1 (at most 3)",
+   "fight": "Noble, Spy, Tough, Guard, Knight, Guard Captain",
+   "effect": "A Strike here costs them 2 standing (1 elsewhere) and takes marks off their goal."
+  },
+  "Garrison": {
+   "glyph": "shield",
+   "type": "garrison",
+   "what": "soldiers at home",
+   "tierWords": "the realm's tier",
+   "fight": "tier 1: Guard, Scout, Guard Captain · tier 2: Knight, Warrior Veteran, Warhorse · tier 3: Berserker, Warrior Veteran, Gladiator, Ogre",
+   "effect": "−1 to goal rolls aimed at this hex."
+  },
+  "Farms": {
+   "glyph": "globe",
+   "type": "works",
+   "what": "farmland and its folk",
+   "tierWords": "the realm's tier −1 (at least 1)",
+   "fight": "Guard, Mastiff, Scout",
+   "effect": "Income +50 GP a month; a Rob takes 100 GP × their Force from it."
+  },
+  "Mine": {
+   "glyph": "gear",
+   "type": "works",
+   "what": "a working mine",
+   "tierWords": "the realm's tier −1 (at least 1)",
+   "fight": "Tough, Guard, Tough Boss",
+   "effect": "Income +50 GP a month; a Rob takes 100 GP × their Force from it."
+  },
+  "Caravans": {
+   "glyph": "cart",
+   "type": "works",
+   "what": "traders on the road",
+   "tierWords": "the realm's tier −1 (at least 1)",
+   "fight": "Guard, Scout, Warrior Veteran, Mastiff",
+   "effect": "Income +50 GP a month; a Rob takes 100 GP × their Force from it."
+  },
+  "Walls": {
+   "glyph": "door",
+   "type": "walls",
+   "what": "stone walls",
+   "tierWords": "the realm's tier",
+   "fight": "Animated Armor, Guard, Gargoyle",
+   "effect": "−1 to goal rolls aimed at this hex; a take against it needs 6 marks."
+  }
+ },
+ "rumours": {
+  "A1": [
+   "Chance: the Tieflings (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Tieflings (good: fights tyrants), Magister Ekemon: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "A2": [
+   "Chance: the Tieflings (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (bad: squeezes its own people), Archon Ynnara: squeeze, 0 of 2; standing 0, neutral.",
+   "The Tieflings (good: fights tyrants), Magister Ekemon: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "A3": [
+   "Chance: the Tieflings (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (bad: squeezes its own people), Archon Ynnara: squeeze, 0 of 2; standing 0, neutral.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Tieflings (good: fights tyrants), Magister Ekemon: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "A4": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "The Elves (bad: squeezes its own people), Archon Ynnara: squeeze, 0 of 2; standing 0, neutral.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral."
+  ],
+  "A5": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "The Elves (bad: squeezes its own people), Archon Ynnara: squeeze, 0 of 2; standing 0, neutral.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral."
+  ],
+  "B1": [
+   "Chance: the Tieflings (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Big Boss Hrothak: press the Gnomes, 0 of 3; standing 0, neutral.",
+   "The Tieflings (good: fights tyrants), Magister Ekemon: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "B2": [
+   "Chance: the Tieflings (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (bad: squeezes its own people), Archon Ynnara: squeeze, 0 of 2; standing 0, neutral.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Tieflings (good: fights tyrants), Magister Ekemon: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "B3": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "Chance: the Tieflings (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (bad: squeezes its own people), Archon Ynnara: squeeze, 0 of 2; standing 0, neutral.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral.",
+   "The Tieflings (good: fights tyrants), Magister Ekemon: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "B4": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "The Elves (bad: squeezes its own people), Archon Ynnara: squeeze, 0 of 2; standing 0, neutral.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral."
+  ],
+  "B5": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "The Elves (bad: squeezes its own people), Archon Ynnara: squeeze, 0 of 2; standing 0, neutral.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral."
+  ],
+  "C1": [
+   "Chance: the Tieflings (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Big Boss Hrothak: press the Gnomes, 0 of 3; standing 0, neutral.",
+   "The Tieflings (good: fights tyrants), Magister Ekemon: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "C2": [
+   "Chance: the Tieflings (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Big Boss Hrothak: press the Gnomes, 0 of 3; standing 0, neutral.",
+   "The Tieflings (good: fights tyrants), Magister Ekemon: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "C3": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "Chance: the Tieflings (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Big Boss Hrothak: press the Gnomes, 0 of 3; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Hilde: break the Gnomes, 0 of 4; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral.",
+   "The Tieflings (good: fights tyrants), Magister Ekemon: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "C4": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Hilde: break the Gnomes, 0 of 4; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral."
+  ],
+  "C5": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Humans (good: fights tyrants), Reeve Hilde: break the Gnomes, 0 of 4; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral."
+  ],
+  "D1": [
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Big Boss Hrothak: press the Gnomes, 0 of 3; standing 0, neutral."
+  ],
+  "D2": [
+   "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Big Boss Hrothak: press the Gnomes, 0 of 3; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Hilde: break the Gnomes, 0 of 4; standing +1, friendly."
+  ],
+  "D3": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Gnomes (bad: takes people for soldiers), Provost Tobble: press the Goblinkind, 0 of 3; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Big Boss Hrothak: press the Gnomes, 0 of 3; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Hilde: break the Gnomes, 0 of 4; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral."
+  ],
+  "D4": [
+   "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+   "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+   "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Humans (good: fights tyrants), Reeve Hilde: break the Gnomes, 0 of 4; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Boss Brakka: break the tower, 0 of 4; standing 0, neutral."
+  ],
+  "D5": [
+   "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Humans (good: fights tyrants), Reeve Hilde: break the Gnomes, 0 of 4; standing +1, friendly."
+  ]
+ },
+ "floors": {
+  "C5": {
+   "floor": 1,
+   "rooms": [],
+   "cleared": false
+  },
+  "B3": {
+   "floor": 2,
+   "rooms": [],
+   "cleared": false
+  },
+  "D3": {
+   "floor": 3,
+   "rooms": [],
+   "cleared": false
+  },
+  "C2": {
+   "floor": 4,
+   "rooms": [],
+   "cleared": false
+  },
+  "D2": {
+   "floor": 5,
+   "rooms": [],
+   "cleared": false
+  },
+  "A1": {
+   "floor": 6,
+   "rooms": [],
+   "cleared": false
+  },
+  "B2": {
+   "floor": 7,
+   "rooms": [],
+   "cleared": false
+  },
+  "A4": {
+   "floor": 8,
+   "rooms": [],
+   "cleared": false
+  },
+  "A3": {
+   "floor": 9,
+   "rooms": [],
+   "cleared": false
+  },
+  "A2": {
+   "floor": 10,
+   "rooms": [],
+   "cleared": false
+  },
+  "C3": {
+   "floor": 11,
+   "rooms": [],
+   "cleared": false
+  },
+  "C1": {
+   "floor": 12,
+   "rooms": [],
+   "cleared": false
+  },
+  "D1": {
+   "floor": 13,
+   "rooms": [],
+   "cleared": false
+  },
+  "B1": {
+   "floor": 14,
+   "rooms": [],
+   "cleared": false
+  },
+  "D4": {
+   "floor": 15,
+   "rooms": [],
+   "cleared": false
+  },
+  "D5": {
+   "floor": 16,
+   "rooms": [],
+   "cleared": false
+  },
+  "B4": {
+   "floor": 17,
+   "rooms": [],
+   "cleared": false
+  },
+  "B5": {
+   "floor": 18,
+   "rooms": [],
+   "cleared": false
+  },
+  "C4": {
+   "floor": 19,
+   "rooms": [],
+   "cleared": false
+  },
+  "A5": {
+   "floor": 20,
+   "rooms": [],
+   "cleared": false
+  }
+ },
+ "days": {
+  "A1": 5,
+  "A2": 4,
+  "A3": 3,
+  "A4": 2,
+  "A5": 2,
+  "B1": 4,
+  "B2": 3,
+  "B3": 2,
+  "B4": 1,
+  "B5": 1,
+  "C1": 4,
+  "C2": 3,
+  "C3": 2,
+  "C4": 1,
+  "C5": 0,
+  "D1": 4,
+  "D2": 3,
+  "D3": 2,
+  "D4": 1,
+  "D5": 1
+ },
+ "eventsWords": [],
+ "nextWords": [
+  "Threat: the Orcs (bad: takes people for soldiers), break the tower, 4 marks to go: a 3 or more adds one (two in three), a 6 two. When it fires: a Hold box (3 of 3 now) and half the treasury (50 GP as it stands).",
+  "Chance: the Orcs' mine in B4: a Rob takes 500 GP (a Moderate fight, 1 Guard and 2 Toughs).",
+  "Chance: the Humans' farms in D3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+  "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+  "Chance: and 1 more chance on the map.",
+  "Open: Morten is in C5, the tower (level 1, desert). Travel is a day a hex; each day away from the tower a d6, and a 1 is a wandering encounter.",
+  "Open: missions here in C5: Delve floor 1.",
+  "Open: the purse holds 100 GP: Works on a hex of the tower's (300 GP); a gift to a realm (200 GP or more counts for a month).",
+  "Open: no goal yet. Declare one: take a hex (its holder's Force + 2 marks, +2 if walled), ally a realm (3 marks; any of the six), or topple a ruler (needs a dissident; none named yet)."
+ ],
+ "dissidents": [],
+ "hexNames": {
+  "A1": "the Tieflings' taiga",
+  "A2": "the Tieflings' hills with its lake",
+  "A3": "the Elves' plains",
+  "A4": "the Elves' hills",
+  "A5": "the Elves' desert",
+  "B1": "the Tieflings' taiga",
+  "B2": "the Tieflings' hills",
+  "B3": "the Gnomes' plains",
+  "B4": "the Orcs' hills",
+  "B5": "the Orcs' desert",
+  "C1": "the Goblinkind's mountains",
+  "C2": "the Gnomes' taiga",
+  "C3": "the Gnomes' swamp",
+  "C4": "the Orcs' savanna",
+  "C5": "the tower's desert",
+  "D1": "the Goblinkind's tundra",
+  "D2": "the Goblinkind's taiga with its lake",
+  "D3": "the Humans' forest",
+  "D4": "the Humans' forest",
+  "D5": "the Humans' savanna"
+ },
+ "goalWords": {
+  "take": "the hex changes hands with its sites",
+  "fortify": "walls go up there (300 GP)",
+  "raise": "Force +1 (200 GP × the new Force)",
+  "raid": "takes 100 GP × its Force from the target's treasury",
+  "press": "its Force +1, the target's Force −1",
+  "squeeze": "100 GP a hex into its treasury; Contact there is DC +4 for 3 months",
+  "break": "the target's Force −1",
+  "break_tower": "the tower loses a Hold box and half its gold (a hex, at Hold 0)",
+  "court": "its standing with the tower +1",
+  "ally": "the realm is the tower's ally (standing +2); Renown +1",
+  "topple": "the dissident takes the throne as a good ruler and an ally; Renown +2"
+ }
+}

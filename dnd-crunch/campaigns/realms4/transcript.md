@@ -1,0 +1,97 @@
+# Transcript · realms4
+
+Rendered by `tools/table.py` from `story/` (each section's story, then its trace), in order. Don't edit by hand; no GM secrets here.
+
+---
+
+## Month 1 opens at the tower
+
+*s0001 · opening · Month 1 · Day 1 · 08:00 · C5 · the tower (C5)*
+
+**A fresh world (seed 83). Morten, Wizard 3, wakes in his warded tower in the C5 desert with 20/20 HP, 47 GP 7 SP 5 CP on him and 100 GP in the tower's coffers. His biggest neighbour, the Orcs, already want him gone.**
+
+The tower holds one hex, the level-1 desert at C5, in the south-east corner of the map. It starts as a Hermit (Renown 0), Hold 3 of 3, no sites and no goal yet. Six realms hold the other nineteen hexes. Each works on one goal with a clock, and the world's turn at the end of the month rolls a d6 for each.
+
+- **The threat:** the Orcs (Boss Brakka, bad: takes people for soldiers), Force 5, the strongest realm on the map, hold B4, B5 and their seat at C4, so they sit on three of the tower's five sides. Their goal is **break the tower**, 0 of 4 marks: a 3 or more adds a mark (two in three), a 6 adds two. When it fills it takes a Hold box and half the treasury.
+- **Friendly:** the Humans (Reeve Hilde, good: fights tyrants) next door in D4 and D5, and the Tieflings (Magister Ekemon, good: fights tyrants) far off in the north-west. Both start at standing +1. An *ally* goal for either is a clock of 3, and a Contact there is DC 10.
+- **Neutral:** the Goblinkind (bad: takes people for soldiers) and the Gnomes (bad: takes people for soldiers) are pressing each other in the north. The Elves (Archon Ynnara, bad: squeezes its own people) are squeezing their own hexes in the south-west.
+- **Rumours:** the Humans and the Tieflings both mean to break the Gnomes (clocks of 4). The Orcs' Mine in B4 holds 500 GP for a Rob (a Moderate fight: 1 Guard and 2 Toughs). The Humans' Farms in D3 hold 300 GP (Low: 1 Scout and 2 Guards), though robbing a friend costs standing.
+- **Under the tower:** floor 1, a level-1 floor below his own warded hex. It has no wandering monsters and angers no realm.
+
+*After: 20/20 HP · XP 900 · 47 GP 7 SP 5 CP · lost: nothing*
+
+---
+
+## Month 1's orders
+
+*s0002 · orders · Month 1 · Day 1 · 08:00 · C5 · the tower (C5)*
+
+**Morten stays home and delves floor 1 under the tower. The tower declares its first goal, an alliance with the Humans next door, and keeps its 100 GP.**
+
+**Morten (GM):** "Floor 1 first. It's level-1 XP under my own wards, with no wandering checks and no realm to anger. The Orcs' break-the-tower clock is at 0, so a Strike on them now would take nothing off it. That waits until they have marks to lose."
+
+**Morten (GM):** "The Humans are a good realm that fights tyrants. They border the Orcs and already like us. If they become an ally, they never aim a goal at the tower and they add a mark a month to any *take* goal later. Contacting them next month is DC 10."
+
+- **Travel:** none; he stays in C5.
+- **Mission:** Delve floor 1 under C5.
+- **The tower's goal:** *ally the Humans*, a clock of 3. Marks come from a Contact (+1), an Aid (+2) or a 200 GP gift (+1).
+- **The purse:** nothing. Works cost 300 GP and the tower has 100 GP.
+- **Give:** none.
+
+*After: 20/20 HP · XP 900 · 47 GP 7 SP 5 CP · lost: nothing*
+
+---
+
+## Day 1 · an owl, then down into floor 1
+
+*s0003 · delve · Month 1 · Day 1 · 09:20 · C5 · Floor 1, the entrance · under the tower (C5)*
+
+**Before going down, Morten spends 10 GP of the purse on incense and casts Find Familiar as a ritual, so an owl scouts every room ahead of him from now on.**
+
+- **Shopping:** incense from the tower's trader, 10 GP from the 47 GP he left upstairs (37 GP left in the purse).
+- **Find Familiar (ritual):** 08:00 to 09:10, so no casting check. The owl is a Fey spirit. It flies ahead, and he sees through its eyes as a bonus action.
+- **Prep:** the free Mage Armor (AC 15, until 17:10), the lamp lit (6 hours of oil), one ration eaten (4 → 3).
+- **Habit:** the purse stays in the tower, and he carries 7 SP 5 CP down.
+
+*After: 20/20 HP · XP 900 · 7 SP 5 CP · lost: nothing*
+
+---
+
+## Room 1.1 · 3 Mastiffs (CR 1/8 each) · Moderate, 75 XP · cleared, untouched
+
+*s0004 · fight · Month 1 · Day 1 · 09:30 · C5 · Floor 1 · room 1.1*
+
+**Morten cleared the first room without taking a scratch. Sleep caught all three dogs at the door, and Thunderwave (rerolled with Heroic Inspiration) and two Shocking Grasps finished them.**
+
+- **The room:** 6×8 sq (9×12 m), knee-deep water across the floor (difficult terrain). The owl saw three Mastiffs at the far end, and their noses found him at once.
+- **The plan:** Morten waited one square outside the door, so only one dog at a time could reach him. The water halved their speed, and they had to Dash just to reach the doorway, which left them bunched for Sleep.
+- **Cheese:** Sleep on the pack as it piled up at the door. All three failed the first save. On the second, only Mastiff B fell asleep, but that still bought him the round he needed.
+- **The dice:** Thunderwave fizzled on a natural 2. He spent his Heroic Inspiration on the reroll, which came up 18 (23 vs DC 11), so the spell isn't lost. The 2d8 rolled only 5 dmg: enough to kill the sleeping dog and leave the other two on 3 HP each. Neither dog's bite came close (13 and 6 vs AC 15).
+- **Result:** 20/20 HP, nothing lost, Heroic Inspiration spent. XP 900 → 975. +7 GP from a collar pouch.
+
+**Fight:** 3× Mastiff (CR 1/8, AC 12, 5 HP) · Moderate, 75 XP · cleared (one doorway, three dogs)
+**Result:** XP 900 → 975 · +7 GP
+
+- HP track, Morten: 20 → 20 → 20 → 20 → 20 (of 20 HP)
+- HP track, Mastiff A: 5 → 5 → 3 → 0 → 0 (of 5 HP)
+- HP track, Mastiff B: 5 → 5 → 0 → 0 → 0 (of 5 HP)
+- HP track, Mastiff C: 5 → 5 → 3 → 3 → 0 (of 5 HP)
+
+**Trace**
+
+- R1 · GM: Initiative: the Mastiffs 13, Morten 12. (d20 8 +4 = 12; d20 11 +2 = 13)
+- R1 · Foe: The three Mastiffs Dash through the knee-deep water and bunch at the doorway.
+- R1 · Morten: Sleep holds (22 vs DC 11) on the three dogs at the door. (d20 17 +5 = 22 vs DC 11, CAST)
+- R1 · Foe: WIS saves 11, 5 and 12 vs DC 13: all three fail and are Incapacitated. (d20 8 +3 = 11 vs DC 13; d20 2 +3 = 5 vs DC 13; d20 9 +3 = 12 vs DC 13)
+- R2 · Foe: Second saves 18, 12 and 13: Mastiff B fails and falls Unconscious; A and C shake it off. (d20 15 +3 = 18 vs DC 13; d20 9 +3 = 12 vs DC 13; d20 10 +3 = 13 vs DC 13)
+- R2 · Morten: Thunderwave fizzles (7 vs DC 11); the Heroic Inspiration reroll holds (23). (d20 2 +5 = 7 vs DC 11, FIZZLE; d20 18 +5 = 23 vs DC 11, CAST)
+- R2 · Foe: CON saves 15, 5 and 16 vs DC 13: A and C save, B fails. (d20 14 +1 = 15 vs DC 13, SAVE; d20 4 +1 = 5 vs DC 13, FAIL; d20 15 +1 = 16 vs DC 13, SAVE)
+- R2 · Morten: 5 thunder dmg (2 on a save). Mastiff B 5 → 0 HP, dead. Mastiff A 5 → 3 HP. Mastiff C 5 → 3 HP. (2d8: 2+3 = 5, SAVE)
+- R3 · Foe: Mastiff A bites: 13 vs AC 15, miss. (d20 10 +3 = 13 vs AC 15, MISS)
+- R3 · Morten: Shocking Grasp holds and hits (20 vs AC 12) for 8 lightning dmg. Mastiff A 3 → 0 HP, dead. (d20 15 +5 = 20 vs AC 12, HIT; d8 8)
+- R4 · Foe: Mastiff C bites: 6 vs AC 15, miss. (d20 3 +3 = 6 vs AC 15, MISS)
+- R4 · Morten: Shocking Grasp hits (16 vs AC 12) for 8 lightning dmg. Mastiff C 3 → 0 HP, dead. (d20 11 +5 = 16 vs AC 12; d8 8)
+
+*After: 20/20 HP · XP 900 · 7 SP 5 CP · lost: nothing*
+
+---

@@ -1,0 +1,516 @@
+{
+ "v": 1,
+ "seq": 4,
+ "kind": "fight",
+ "month": 1,
+ "day": 1,
+ "clock": "09:30",
+ "hex": "C5",
+ "where": "Floor 1 · room 1.1",
+ "title": "Room 1.1 · 3 Mastiffs (CR 1/8 each) · Moderate, 75 XP · cleared, untouched",
+ "headline": "Morten cleared the first room without taking a scratch. Sleep caught all three dogs at the door, and Thunderwave (rerolled with Heroic Inspiration) and two Shocking Grasps finished them.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "The room",
+   "text": "6×8 sq (9×12 m), knee-deep water across the floor (difficult terrain). The owl saw three Mastiffs at the far end, and their noses found him at once."
+  },
+  {
+   "label": "The plan",
+   "text": "Morten waited one square outside the door, so only one dog at a time could reach him. The water halved their speed, and they had to Dash just to reach the doorway, which left them bunched for Sleep."
+  },
+  {
+   "label": "Cheese",
+   "text": "Sleep on the pack as it piled up at the door. All three failed the first save. On the second, only Mastiff B fell asleep, but that still bought him the round he needed."
+  },
+  {
+   "label": "The dice",
+   "text": "Thunderwave fizzled on a natural 2. He spent his Heroic Inspiration on the reroll, which came up 18 (23 vs DC 11), so the spell isn't lost. The 2d8 rolled only 5 dmg: enough to kill the sleeping dog and leave the other two on 3 HP each. Neither dog's bite came close (13 and 6 vs AC 15)."
+  },
+  {
+   "label": "Result",
+   "text": "20/20 HP, nothing lost, Heroic Inspiration spent. XP 900 → 975. +7 GP from a collar pouch."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Initiative: the Mastiffs 13, Morten 12.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+4",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 4,
+     "total": 12,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+2",
+     "faces": [
+      11
+     ],
+     "kept": [
+      11
+     ],
+     "mod": 2,
+     "total": 13,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "The three Mastiffs Dash through the knee-deep water and bunch at the doorway.",
+   "who": "foe",
+   "kind": "move",
+   "round": 1,
+   "dice": []
+  },
+  {
+   "text": "Sleep holds (22 vs DC 11) on the three dogs at the door.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      17
+     ],
+     "kept": [
+      17
+     ],
+     "mod": 5,
+     "total": 22,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "WIS saves 11, 5 and 12 vs DC 13: all three fail and are Incapacitated.",
+   "who": "foe",
+   "kind": "save",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 3,
+     "total": 11,
+     "vs": "DC 13",
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+3",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 3,
+     "total": 5,
+     "vs": "DC 13",
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+3",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 3,
+     "total": 12,
+     "vs": "DC 13",
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Second saves 18, 12 and 13: Mastiff B fails and falls Unconscious; A and C shake it off.",
+   "who": "foe",
+   "kind": "save",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 3,
+     "total": 18,
+     "vs": "DC 13",
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+3",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 3,
+     "total": 12,
+     "vs": "DC 13",
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20+3",
+     "faces": [
+      10
+     ],
+     "kept": [
+      10
+     ],
+     "mod": 3,
+     "total": 13,
+     "vs": "DC 13",
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Thunderwave fizzles (7 vs DC 11); the Heroic Inspiration reroll holds (23).",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      2
+     ],
+     "kept": [
+      2
+     ],
+     "mod": 5,
+     "total": 7,
+     "vs": "DC 11",
+     "result": "fizzle",
+     "nat": null
+    },
+    {
+     "expr": "1d20+5",
+     "faces": [
+      18
+     ],
+     "kept": [
+      18
+     ],
+     "mod": 5,
+     "total": 23,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "CON saves 15, 5 and 16 vs DC 13: A and C save, B fails.",
+   "who": "foe",
+   "kind": "save",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+1",
+     "faces": [
+      14
+     ],
+     "kept": [
+      14
+     ],
+     "mod": 1,
+     "total": 15,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      4
+     ],
+     "kept": [
+      4
+     ],
+     "mod": 1,
+     "total": 5,
+     "vs": "DC 13",
+     "result": "fail",
+     "nat": null
+    },
+    {
+     "expr": "1d20+1",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 1,
+     "total": 16,
+     "vs": "DC 13",
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "5 thunder dmg (2 on a save). Mastiff B 5 → 0 HP, dead. Mastiff A 5 → 3 HP. Mastiff C 5 → 3 HP.",
+   "who": "morten",
+   "kind": "damage",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "2d8",
+     "faces": [
+      2,
+      3
+     ],
+     "kept": [
+      2,
+      3
+     ],
+     "mod": 0,
+     "total": 5,
+     "vs": null,
+     "result": "save",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Mastiff A bites: 13 vs AC 15, miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      10
+     ],
+     "kept": [
+      10
+     ],
+     "mod": 3,
+     "total": 13,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Shocking Grasp holds and hits (20 vs AC 12) for 8 lightning dmg. Mastiff A 3 → 0 HP, dead.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 3,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      15
+     ],
+     "kept": [
+      15
+     ],
+     "mod": 5,
+     "total": 20,
+     "vs": "AC 12",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d8",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 0,
+     "total": 8,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Mastiff C bites: 6 vs AC 15, miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20+3",
+     "faces": [
+      3
+     ],
+     "kept": [
+      3
+     ],
+     "mod": 3,
+     "total": 6,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Shocking Grasp hits (16 vs AC 12) for 8 lightning dmg. Mastiff C 3 → 0 HP, dead.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 4,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      11
+     ],
+     "kept": [
+      11
+     ],
+     "mod": 5,
+     "total": 16,
+     "vs": "AC 12",
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d8",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 0,
+     "total": 8,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 900,
+  "coins": "7 SP 5 CP",
+  "lost": []
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Mastiff",
+    "cr": "1/8",
+    "ac": 12,
+    "hp": 5,
+    "maxHp": 5,
+    "speed": "8 sq (12 m)",
+    "attacks": [
+     "Bite +3, 1d6+1 piercing, knocks Prone"
+    ],
+    "notes": "Darkvision 18 m; Passive Perception 15",
+    "count": 3
+   }
+  ],
+  "difficulty": "Moderate",
+  "budget": 225,
+  "xp": 75,
+  "initiative": [
+   "Mastiffs 13",
+   "Morten 12"
+  ],
+  "rounds": 4,
+  "outcome": "cleared",
+  "verdict": "one doorway, three dogs",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     20,
+     20,
+     20
+    ]
+   },
+   {
+    "name": "Mastiff A",
+    "max": 5,
+    "hp": [
+     5,
+     5,
+     3,
+     0,
+     0
+    ]
+   },
+   {
+    "name": "Mastiff B",
+    "max": 5,
+    "hp": [
+     5,
+     5,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "name": "Mastiff C",
+    "max": 5,
+    "hp": [
+     5,
+     5,
+     3,
+     3,
+     0
+    ]
+   }
+  ],
+  "loot": "+7 GP",
+  "lost": [],
+  "potion": false,
+  "xpBefore": 900,
+  "xpAfter": 975
+ },
+ "domain": null,
+ "words": []
+}

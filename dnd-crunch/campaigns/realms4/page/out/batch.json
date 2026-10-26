@@ -1,0 +1,18 @@
+{
+ "writes": [
+  {
+   "op": "set",
+   "collection": "game",
+   "doc_id": "morten",
+   "file_path": "/home/user/rpg/dnd-crunch/campaigns/realms4/page/out/game/morten.json",
+   "if_version": 3
+  },
+  {
+   "op": "set",
+   "collection": "game",
+   "doc_id": "state",
+   "file_path": "/home/user/rpg/dnd-crunch/campaigns/realms4/page/out/game/state.json",
+   "if_version": 8
+  }
+ ]
+}

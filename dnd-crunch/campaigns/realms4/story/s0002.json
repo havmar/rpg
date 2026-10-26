@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "seq": 2,
+ "kind": "orders",
+ "month": 1,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "C5",
+ "where": "the tower (C5)",
+ "title": "Month 1's orders",
+ "headline": "Morten stays home and delves floor 1 under the tower. The tower declares its first goal, an alliance with the Humans next door, and keeps its 100 GP.",
+ "prose": [
+  "**Morten (GM):** \"Floor 1 first. It's level-1 XP under my own wards, with no wandering checks and no realm to anger. The Orcs' break-the-tower clock is at 0, so a Strike on them now would take nothing off it. That waits until they have marks to lose.\"",
+  "**Morten (GM):** \"The Humans are a good realm that fights tyrants. They border the Orcs and already like us. If they become an ally, they never aim a goal at the tower and they add a mark a month to any *take* goal later. Contacting them next month is DC 10.\""
+ ],
+ "bullets": [
+  {
+   "label": "Travel",
+   "text": "none; he stays in C5."
+  },
+  {
+   "label": "Mission",
+   "text": "Delve floor 1 under C5."
+  },
+  {
+   "label": "The tower's goal",
+   "text": "*ally the Humans*, a clock of 3. Marks come from a Contact (+1), an Aid (+2) or a 200 GP gift (+1)."
+  },
+  {
+   "label": "The purse",
+   "text": "nothing. Works cost 300 GP and the tower has 100 GP."
+  },
+  {
+   "label": "Give",
+   "text": "none."
+  }
+ ],
+ "trace": [],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 900,
+  "coins": "47 GP 7 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": []
+}
