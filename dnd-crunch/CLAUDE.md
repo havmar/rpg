@@ -11,13 +11,14 @@ self-contained. Paths in this file are relative to the repo root (where the sess
 ```
 dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
-  realms-v3.md           overworld rules, Realms v3 (goal clocks, standing, a ladder): the current rules
+  hotel.md               the Hotel: the current game, a megadungeon that is a hotel (rules and design, one page)
+  realms-v3.md           legacy: Realms v3 overworld rules (goal clocks, standing, a ladder)
   realms.md              Realms v2 rules (WWN-style factions with assets), kept for the `realms2` and `realms3` campaigns
   realms-v1.md           Realms v1 rules, kept for the `realms` campaign
   realms-plan.md         the design record of Realms v1
   realms-v2-plan.md      the design record of Realms v2 (implemented)
   realms-v3-plan.md      the design record of Realms v3 (implemented)
-  table-plan.md          the design record of the table: the game played from a page (built)
+  table-plan.md          the design record of the table: the game played from a page (built, legacy)
   agents/player.md       instructions for the AI player who runs Morten
   web/                   the table's page: sources, build, dist/table.html, dev harness, e2e
                          (web/README.md: the data contract, the GM's turn, publishing)
@@ -375,7 +376,21 @@ it's fastest:
 - XP: award monster XP for defeated or bypassed foes, and track it toward the next level in
   `Level Advancement.md`.
 
-## Realms (overworld)
+## The Hotel
+
+The current game is **the Hotel**, `dnd-crunch/hotel.md`: a 20-floor megadungeon that is
+a hotel, every room a random SRD guest in pyjamas, searched room by room for the bricks of
+the Cornerstone. It adds reaction rolls, three factions with a standing each (the Staff,
+the Residents, the Ark), housekeeping (restocking) and a d6 of events after each Long
+Rest, and nothing else: no map, no page, no world turn. It is played in chat, in Markdown.
+Its header replaces the Realms one: **Day 3 · 14:20 · Room 412 (floor 4) · Bricks 7 ·
+Staff 0 · Residents +1 · Ark −1**. Read `hotel.md` whole; it is short.
+
+## Realms (overworld, legacy)
+
+Realms is the previous overworld game, kept for its campaigns (`realms`, `realms2`,
+`realms3`). Don't start new Realms games unless the human asks for one. The rest of this
+section applies only when resuming one of those campaigns.
 
 A campaign with a `realms.json` is played by the rules of its version, which add to this
 file (and win where they differ). Version 3 is `dnd-crunch/realms-v3.md` (Realms v3,
@@ -451,13 +466,13 @@ rendered from it by `tools/table.py`: `morten.json` (the sheet; `character.md` i
 (the page's record; `state.md` is rendered), `live/` (the open section's beats) and `page/`
 (the batches). Don't edit the rendered files by hand; change the record with the verbs.
 
-## The table (playing from a page)
+## The table (playing from a page, legacy)
 
-New campaigns are played at **the table**: one claude.ai page per campaign (`web/`,
-`web/README.md`), read and played from a phone, with the GM's play streamed onto it as it
-happens and the GM reachable from it (`table-plan.md` is the design). Campaigns started in
-chat (`realms`, `realms2`, `realms3`) stay in chat and in Markdown; everything above holds
-for them as it always has.
+The table is the page-based way of playing that the `realms3` campaign used: one
+claude.ai page per campaign (`web/`, `web/README.md`), with the GM's play streamed onto
+it (`table-plan.md` is the design). **New campaigns are played in chat, in Markdown**;
+the human found the page too heavy a thing to change the game around. The rest of this
+section applies only when resuming a table campaign.
 
 - **The page is the record of play.** Sections (the GM's story first, the dice under a
   fold), beats while a section is played, the world's turn set apart, asides, the sheet,
@@ -491,47 +506,40 @@ for them as it always has.
 When the human asks for a new game, start it with these defaults without asking. The
 human can change any of them, before or during play.
 
-- **Adventure:** a Realms v3 overworld campaign (`realms-v3.md`), with a new world from
-  `realms3.py new --seed N --campaign dnd-crunch/campaigns/<name> --level 3`. Roll the
-  seed with `roll.py 1d100`.
-- **Name:** the next free `realmsN` (`realms3` was the first game started this way).
+- **Adventure:** a Hotel campaign (`hotel.md`), all 20 floors from
+  `gen_dungeon.py --seed N` into `gm-secrets.md`, with the GM's marks (section 9). Roll
+  the seed with `roll.py 1d100`.
+- **Name:** the next free `hotelN`.
 - **Morten:** a fresh pre-built Wizard 3 (Evoker) with 900 XP, his starting gear and
-  47 GP 7 SP 5 CP. At the table his sheet is `morten.json`, from `table.py new --sheet
-  fresh`; in chat, copy `templates/character-wizard3.md` as his sheet.
+  47 GP 7 SP 5 CP: copy `templates/character-wizard3.md` as his sheet.
 - **Who plays Morten:** the GM.
 - **Style:** cheese everything. Scout, use rituals and Mage Hand, use oil, Sleep then
-  point-blank crits, hold chokepoints, retreat to reset, and leave the purse in the tower
-  before a risky fight.
+  point-blank crits, hold chokepoints, retreat to reset, and spend the purse before a
+  risky fight (there is no bank; death takes the coins).
 - **Table mode:** open.
-- **Report style:** the defaults in **Report style** (summary for fights, domain turns and
-  events, key rolls only, live updates every round).
-- **Campaign rules:** copy `templates/realms-rules.md` (v3) and fill in the name, seed and
-  the tower's hex. It holds the Delve, mission, mission-fight, death, purse and downtime
-  rules.
-- **Start:** Month 1 · Day 1 · 08:00, in the tower, rested.
-- **Played at the table:** a new page published for the campaign (`web/README.md`, The
-  first publish), the wake on, the dials at their defaults (the GM moves Morten, stop at
-  the next month's orders, fights live, the world's turn as a story, key rolls, open
-  table). The human can ask to play in chat instead.
+- **Report style:** the defaults in **Report style** (summary for fights and events, key
+  rolls only, live updates every round).
+- **Campaign rules:** a short `rules.md` by hand: the Hotel's name, the seed, and anything
+  this campaign does differently from `hotel.md`.
+- **Start:** Day 1 · 08:00, in room 101, rested, bill at zero, all three standings at 0.
+- **Played in chat**, in Markdown, as **Campaign files** says.
 
 ## How to run a session
 
 1. For a new game, use the defaults above, or what the human asked for instead. A
    hand-made dungeon crawl (rooms are discrete and mechanical) is the other option the
    human may pick.
-2. Write `character.md`, `rules.md`, `state.md` and `transcript.md`. For a Realms game,
-   `realms3.py new` writes `realms.json`, `world.md`, `map.json` and the floors in
-   `gm-secrets.md`; the table's Realm tab is the map (a v2 campaign in chat builds the map
-   page instead, `ui/README.md`, and puts its link in `state.md`). For a hand-made
-   dungeon, write `gm-secrets.md` yourself. A 5–10 room dungeon
-   is a good one-session size, with encounters budgeted for one character and at least one
-   short-rest opportunity.
-3. Open with the first reply: the world, Rumours, the Month 1 orders as **Morten (GM):**
-   lines, then the first scene in the format above. Play one reply per human action.
+2. Write `character.md`, `rules.md`, `state.md` and `transcript.md`. For a Hotel game,
+   `gm-secrets.md` is the generator's 20 floors plus the GM's marks and the Cornerstone's
+   secret (`hotel.md` section 9). For a hand-made dungeon, write `gm-secrets.md`
+   yourself. A 5–10 room dungeon is a good one-session size, with encounters budgeted for
+   one character and at least one short-rest opportunity.
+3. Open with the first reply: the premise in a few lines, the lobby, room 101, then the
+   first door in the format above. Play one reply per human action.
 4. If the session is resumed by a fresh GM, read `state.md`, `character.md`,
    `gm-secrets.md` and the end of `transcript.md`, then continue.
 
-At the table, steps 2 and 3 become: `rules.md` and the world with `realms3.py new`, and
+For a legacy table campaign, steps 2 and 3 become: `rules.md` and the world with `realms3.py new`, and
 Morten's sheet from `table.py new --sheet fresh` (`tools/morten-wizard3.json`, the template
 sheet as `morten.json`); publish the page and seed it (`web/README.md`, The first publish), where the opening
 section is the first reply (the world, Rumours, the Month 1 orders); then play one GM's
