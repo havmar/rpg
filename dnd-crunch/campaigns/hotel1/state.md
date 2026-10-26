@@ -1,57 +1,58 @@
 # Hotel 1 · state
 
-**Day 1 · 10:30 · Room 103 (floor 1) · Bricks 1 · Staff 0 · Residents 0 · Ark 0**
+**Day 2 · 10:51 · Room 101 (floor 1) · Bricks 4 · Staff −1 · Residents 0 · Ark 0**
 
-Stopped mid-fight: Morten is at half HP (house rule). Resume from "Combat" below.
+Morten died a second time at the door of 201 (Day 2, 02:51, two Giant Wolf Spiders) and has
+just woken in room 101: full HP, all spells, counts as a Long Rest. The goal is 10 rooms
+searched; 7 are done.
 
 ## Morten
 
-- **HP 4/20** (half) · AC 12 (Mage Armor not cast: its free use is unspent this Long Rest) ·
-  Speed 6 sq (9 m) · Hit Dice 3d6 (all 3 unspent) · Exhaustion 0 · Conditions: none
-- **Lost until Long Rest:** Magic Missile (fizzled, then the mishap)
-- **Prepared, unspent:** Shield, Thunderwave, Sleep, Misty Step, Scorching Ray, Mage Armor
-  (free once per Long Rest). Cantrips: Fire Bolt, Ray of Frost, Shocking Grasp, Light, Mage Hand
+- **HP 20/20** · AC 12 (Mage Armor's free use is unspent this Long Rest) · Speed 6 sq (9 m) ·
+  Hit Dice 3d6 (all 3 unspent) · Exhaustion 0 · Conditions: none
+- **Lost until Long Rest:** none
+- **Prepared:** Shield, Thunderwave, Sleep, Web, Scorching Ray, Magic Missile, Mage Armor
+  (free once per Long Rest). Misty Step swapped out for Web on Day 2. He may change
+  prepared spells now (just finished a Long Rest).
+  Cantrips: Fire Bolt, Ray of Frost, Shocking Grasp, Light, Mage Hand
 - **Arcane Recovery:** unused · **Heroic Inspiration:** 1 (Resourceful) · **Concentration:** none
-- **Potion of Healing:** 1, unused (bonus action, 2d4+2)
-- **Light:** lamp unlit (oil ×10, 6 h a flask) · torches ×7 (1 h each) · tinderbox
-- **Rations:** 4 (one a day; none due yet, no Long Rest taken)
-- **Coins:** 47 GP 7 SP 5 CP
-- **XP:** 975 (900 + 25 Blood Hawk + 50 room 102). Level 4 at 2,700, so 1,725 to go.
-- **Deaths:** 0
-
-## Combat (room 103, Round 5)
-
-- Initiative: Dretch 14 › Morten 12
-- **Morten:** action spent this turn (Magic Missile, fizzled). Bonus action and movement unused.
-- **Dretch:** 6/18 HP (Bloodied) · AC 11 · Speed 4 sq (6 m) · Fetid Cloud spent (1/day) ·
-  awake (Sleep ends when it takes damage)
-- **Positions:** the door of 103 is at C1, the room south of it. Morten C-2 (corridor, 3 sq
-  north of the door). Dretch C-1, adjacent to him.
+- **Potion of Healing:** none
+- **Light:** lamp (oil ×10; the flask in it burnt about 1 h) · torches ×7 (1 h each) · tinderbox
+- **Rations:** 4 (one due today, not eaten yet)
+- **Coins:** 0 (10 GP lost on the second death)
+- **Knick-knacks:** a horseshoe key ring (2 GP, from 204)
+- **Key tags:** the Warhorse's (CR 1/2: 12 GP 5 SP bounty) and a Giant Wolf Spider's (CR 1/4:
+  10 GP), for the Ark
+- **XP:** 1,425. Level 4 at 2,700, so 1,275 to go.
+- **Deaths:** 2
+- **Next Long Rest:** from 02:51 on Day 3 (16 hours after this one ended)
 
 ## The Hotel
 
-- **Bricks:** 1 (room 102)
-- **Searched on floor 1:** 101 (no brick), 102 (brick). Word travels: −2 on floor 1.
-- **Standing:** Staff 0 · Residents 0 · Ark 0
+- **Bricks:** 4 (102, 103, 105, 203)
+- **Searched on floor 1:** 101, 102, 103, 104, 105 (all). Word travels: −3.
+- **Searched on floor 2:** 203, 204. Word travels: −2.
+- **Standing:** Staff −1 (the Blink Dogs' complaint) · Residents 0 · Ark 0
 - **Checked in:** room 101, with his key · **Bill:** 0 GP · **Unpaid:** none
-- **Dead guests:** a Blood Hawk from 104, its body in room 102 (dragged there, so no Staff deed)
-- **Luggage left in 102:** two Mastiff suitcases (5 GP, a snow globe of the Hotel, a
-  monogrammed toothbrush), not taken: taking it while the guests live is robbery.
-- **Rooms:** 101 searched, no brick · 102 searched, brick · 103 in progress · 104 unsearched
-  (2 Blood Hawks left) · 105 unsearched · floor 2 unsearched
+- **Known:** 202 is the Ark (Dretches; a bounty for the first kill of each kind of guest, on
+  the key tag), from the Guards of 203.
+- **Floor 2 rooms:** 201 unsearched, 2 Giant Wolf Spiders (Hostile; they killed him) ·
+  202 unsearched (several Dretches, the Ark) · 203 searched, brick, 4 Guards (Helpful) ·
+  204 searched, no brick; restocked with 4 Stirges (new guests) · 205 unsearched (big birds
+  clacking beaks)
 
 ## Time
 
-Day 1 · 10:30. Search counts: 101 and 102 done. Exploration checks rolled so far: 7 (one
-encounter: a Mastiff passed 101 at 09:00).
+Day 2 · 10:51. Day 2 so far: 204 searched (01:45–02:45), killed at 201's door (02:51),
+respawned at 10:51.
 
 ## Next
 
-Morten's turn in Round 5 resumes (bonus action, movement, the Dretch's position). The fight
-goes on until the Dretch is dead, out, or asleep; then the search of 103.
+Morten in room 101. Three more rooms for the goal of 10: 201, 205, 202 (or floor 3 rooms
+in place of any of them).
 
 ## Modes
 
-- Who plays Morten: the GM (Claude)
+- Who plays Morten: the GM (Claude). Goal: search 10 rooms. Low HP is not a stop; a death is.
 - Table mode: open
 - Report style: fights summary, domain n/a, events summary, dice key rolls, live updates every round

@@ -33,13 +33,13 @@ Updated after every room.
 |---|---|---|
 | 101 | none (row 1.1 checked out) | searched, no brick |
 | 102 | 2× Mastiff (1.2) | searched, brick. One Mastiff went past 101 (wary); the other ignored him. Dead Blood Hawk (from 104) in the room. Luggage left: two suitcases |
-| 103 | 1× Dretch (1.3) | in progress: Dretch 6/18 HP, out in the corridor, awake |
-| 104 | 3× Blood Hawk (1.4) | unsearched; one hawk dead (in 102), two left |
-| 105 | 2× Blink Dog (1.5) | unsearched |
-| 201 | 3× Giant Wolf Spider (2.1) | unsearched |
-| 202 | 4× Dretch, the Ark (2.2, A) | unsearched |
-| 203 | 4× Guard (2.3) | unsearched |
-| 204 | 1× Warhorse (2.4) | unsearched |
+| 103 | 1× Dretch (1.3) | searched, brick. Dretch dead (body in 103) |
+| 104 | 3× Blood Hawk (1.4) | searched, no brick. All three dead (one in 102, two in 104) |
+| 105 | 2× Blink Dog (1.5) | searched, brick. Both alive; paid 10 GP; complained at the desk (Day 2 event) |
+| 201 | 3× Giant Wolf Spider (2.1) | unsearched. One spider killed in 204 (Day 2, 02:00); two left, they killed Morten at the 201 door (Day 2, 02:51), unhurt |
+| 202 | 4× Dretch, the Ark (2.2, A) | unsearched. One Dretch killed Morten in 204 (Day 1, 17:31), unhurt, back in 202 |
+| 203 | 4× Guard (2.3) | searched, brick. Guards Helpful (12); the Warhorse's body in their water |
+| 204 | 1× Warhorse (2.4) | searched, no brick (Day 2). Warhorse dead in 203, a Giant Wolf Spider dead in 204. **Restocked** (Day 2 respawn): 4× Stirge (CR 1/8 each, `gen_dungeon --seed 77 --floors 2`, row 2.1), 100 XP, 10 GP luggage, new guests who don't know him |
 | 205 | 3× Axe Beak (2.5) | unsearched |
 
 ## The floors (the generator's output, seed 10)

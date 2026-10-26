@@ -327,8 +327,11 @@ it's fastest:
 - **GM plays Morten.** The GM decides Morten's turns as well as the world's, using only what
   Morten has seen (the transcript), never what's in `gm-secrets.md`. Choose what a careful,
   clever wizard would do and keep moving: play on until something matters (a new room or
-  monster, a real choice such as loot or parley, Morten at half HP or dying, or a death),
-  then stop and report. Show his choices as **Morten (GM):** lines with one line of reasoning.
+  monster, a real choice such as loot or parley, or a death), then stop and report. Low HP
+  is never a stop: Morten plays on and cheeses his way out (the potion, Misty Step, a
+  retreat to a chokepoint, Sleep, a Short Rest), and a death is a respawn. When the human
+  sets a goal ("search 10 rooms"), new rooms and monsters aren't stops either: play on to
+  the goal or a death. Show his choices as **Morten (GM):** lines with one line of reasoning.
 
 - **AI player mode.** Morten is played by a `general-purpose` subagent following
   `dnd-crunch/agents/player.md`, so the GM's secrets never leak into his decisions. Spawn it
