@@ -1,6 +1,8 @@
 # The Realms map page
 
-`realms-map.html` is the page the human reads a Realms v2 campaign by: one vanilla
+`realms-map.html` is the page the human reads a Realms v2 campaign played in chat by
+(`realms2`, `realms3`); a Realms v3 campaign (`realms-v3.md`) is played at the table and
+has no map page: its Realm tab is the map. It is one vanilla
 HTML/CSS/JS file with no build step, no library and no external script. It's designed for
 a phone first (412 px, a bottom bar, every tap target 44 px or more) and works side by side on a
 desktop. It knows no rules: every string it shows comes worded in the data.
