@@ -29,9 +29,11 @@ sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import realms as R  # noqa: E402
+import realms3 as R3  # noqa: E402
 import table as T  # noqa: E402
 
 PRIVATE_KEYS = {"rng", "next_id", "dissident", "since", "against"}
+PRIVATE_KEYS3 = {"rng", "next_id"}   # v3 hides nothing else: dissidents and clocks are public
 GM_MARKERS = ["(GM: all)", "hidden events too", "GM secrets ·"]
 
 
@@ -41,11 +43,13 @@ def word(s):
 
 def public_text(d):
     """Text the player may know anyway: the public rules and the engine's fight lists."""
-    bits = [(T.GAME / f).read_text() for f in ("CLAUDE.md", "realms.md") if (T.GAME / f).exists()]
+    bits = [(T.GAME / f).read_text() for f in ("CLAUDE.md", "realms.md", "realms-v3.md") if (T.GAME / f).exists()]
     if (d / "rules.md").exists():
         bits.append((d / "rules.md").read_text())
     names = {m for A in R.ASSETS.values() for m in A["fight"] or []}
     names |= {m for v in R.BEASTS.values() for m in v} | set(R.SEAT_FIGHT)
+    names |= {m for v in R3.GARRISON_FIGHT.values() for m in v} | {m for v in R3.WORKS_FIGHT.values() for m in v}
+    names |= {m for v in R3.BEASTS.values() for m in v} | set(R3.SEAT_FIGHT) | set(R3.WALLS_FIGHT)
     # unwrapped: the rules are hard-wrapped Markdown ("3 Venomous\nSnakes"), the page's copy is not
     return re.sub(r"[ \t]*\n[ \t]*(?=\S)", " ", "\n".join(bits)) + "\n" + "\n".join(sorted(names))
 
@@ -86,7 +90,9 @@ def secrets(d):
     hidden_ids = set()
     st = json.loads((d / "realms.json").read_text()) if (d / "realms.json").exists() else None
     mp = json.loads((d / "map.json").read_text()) if (d / "map.json").exists() else None
-    if st and mp:
+    if st and st.get("version") == 3:  # v3: every site, goal and clock is open; only the dice are the GM's
+        pats.append(("realms.json's rng", re.compile(r"\b" + str(st.get("rng")) + r"\b")))
+    elif st and mp:
         shown = {a["id"] for h in mp["hexes"] for a in h["assets"]}
         shown_kind = {(a["owner"], a["name"], h["id"]) for h in mp["hexes"] for a in h["assets"]}
         shown_ok = {(a["owner"], a["name"]) for h in mp["hexes"] for a in h["assets"]}
@@ -140,11 +146,11 @@ def check_floors(name, doc, floors):
     return bad
 
 
-def check_doc(name, doc, pats, floors):
+def check_doc(name, doc, pats, floors, keys=PRIVATE_KEYS):
     bad = []
     for path, key, text in walk(doc):
         if key is not None:
-            if key in PRIVATE_KEYS:
+            if key in keys:
                 bad.append((name, path, f"realms.json's private key '{key}'"))
             continue
         for what, p in pats:
@@ -190,8 +196,9 @@ def main(argv=None):
         print(f"error: {e}", file=sys.stderr)
         return 2
     bad = []
+    v3 = T.is_v3(json.loads((d / "map.json").read_text())) if (d / "map.json").exists() else False
     for name, doc in docs:
-        bad += check_doc(name, doc, pats, floors)
+        bad += check_doc(name, doc, pats, floors, PRIVATE_KEYS3 if v3 else PRIVATE_KEYS)
     for name, path, what in bad:
         print(f"SECRET in {name} at {path}: {what}")
     if bad:

@@ -11,10 +11,12 @@ self-contained. Paths in this file are relative to the repo root (where the sess
 ```
 dnd-crunch/
   CLAUDE.md              this file: how to run the game at this table
-  realms.md              overworld rules, Realms v2 (WWN-style factions with assets)
+  realms-v3.md           overworld rules, Realms v3 (goal clocks, standing, a ladder): the current rules
+  realms.md              Realms v2 rules (WWN-style factions with assets), kept for the `realms2` and `realms3` campaigns
   realms-v1.md           Realms v1 rules, kept for the `realms` campaign
   realms-plan.md         the design record of Realms v1
   realms-v2-plan.md      the design record of Realms v2 (implemented)
+  realms-v3-plan.md      the design record of Realms v3 (implemented)
   table-plan.md          the design record of the table: the game played from a page (built)
   agents/player.md       instructions for the AI player who runs Morten
   web/                   the table's page: sources, build, dist/table.html, dev harness, e2e
@@ -23,7 +25,9 @@ dnd-crunch/
   ui/table-mockup.html   the table's look as first sketched, a clickable mockup (ui/README.md)
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest; --keep DIR for the page)
   tools/gen_dungeon.py   demo-dungeon generator: random SRD monsters, one floor per level
-  tools/realms.py        Realms v2 engine: world, domain turns, mission fights, sim, map.json
+  tools/realms3.py       Realms v3 engine: world, the world's turn, mission fights, sim, map.json
+  tools/test_realms3.py  tests for realms3.py
+  tools/realms.py        Realms v2 engine, for the `realms2` and `realms3` campaigns
   tools/realms_v1.py     Realms v1 engine, for the `realms` campaign
   tools/realms_page.py   builds a campaign's map page (page.html) from its map.json
   tools/table.py         the table's GM side: the record (morten.json, story/, live/, page.json),
@@ -373,35 +377,43 @@ it's fastest:
 
 ## Realms (overworld)
 
-A campaign with a `realms.json` is played by `dnd-crunch/realms.md` (Realms v2), which adds
-to this file (and wins where they differ): a hex map of six realms, each realm and Morten's
-tower a faction with assets on the map, monthly domain turns run by `tools/realms.py`.
-The `realms` campaign still plays **v1** (`realms-v1.md`, `tools/realms_v1.py`); its
-`rules.md` says so. Field replies change in two ways:
+A campaign with a `realms.json` is played by the rules of its version, which add to this
+file (and win where they differ). Version 3 is `dnd-crunch/realms-v3.md` (Realms v3,
+`tools/realms3.py`): a hex map of six static realms, each working on one goal with a
+clock, Morten's missions moving the clocks, the tower with one goal of its own, standing
+with each realm and a ladder of tiers; the world's turn is one sentence per realm.
+Version 2 is `realms.md` (`tools/realms.py`: factions with assets on the map, the
+`realms2` and `realms3` campaigns), version 1 `realms-v1.md` (`tools/realms_v1.py`, the
+`realms` campaign); each campaign's `rules.md` says which. Field replies change in two
+ways:
 
 - The header adds month, day and hex, e.g. **Month 3 · Day 4 · C2 (L9, forest, Elves)**.
 - A **Rumours** section appears when Morten is in or next to a realm's hex.
 
 **Heads-up: the human enjoys the dungeon fight reports but finds the domain turns hard to
-follow.** The bare roll log of a domain turn isn't enough. The v2 report is built for this
-(`realms.md` section 9): in chat, give it in its order and keep the roll log for
+follow.** The bare roll log of a world's turn isn't enough. The v3 report is built for
+this (`realms-v3.md` section 12): the world's turn is **one sentence per realm**, with the
+**tower's goal line first**. In chat, give it in its order and keep the roll log for
 `transcript.md`:
-- **The plan:** what Morten's mission and the tower's action were for (pass the why with
-  `--plan`).
-- **What happened:** one bullet per event near the tower, its allies and Morten, each
-  leader as *label: verb* and the goal it served; the rest in one Elsewhere line.
+- **The plan:** what Morten's mission, the tower's goal and its purse actions were for
+  (pass the why with `--plan`).
+- **What happened:** the tower's goal and its clock first, then one sentence per realm,
+  each ruler as *label: verb*, its goal, the roll in two words, the marks now and the
+  effect if it fired; realms far away that rolled nothing in one Elsewhere line.
 - **The tower now**, then **Next month:** threats, chances and the open choices.
 
 The **Report style** dials say how plainly to write each part (domain **summary** by
 default).
 
 Leaders are always shown as *label: verb* ("bad: takes land"), never a bare tag. The report
-holds only what the tower can know: never paste `--gm` output or `realms.json` into chat.
+holds only what the tower can know: never paste `realms.json` (or v2's `--gm` output) into
+chat.
 
-**The map page** shows the domain at a glance: after every domain turn, run
-`python3 dnd-crunch/tools/realms_page.py dnd-crunch/campaigns/<name>` and republish the
-page; its link is in `state.md`. A campaign played at the table has no map page: its Realm
-tab is the map, refreshed with `table.py realm` after every domain turn.
+**The map page** (v2 campaigns played in chat) shows the domain at a glance: after every
+domain turn, run `python3 dnd-crunch/tools/realms_page.py dnd-crunch/campaigns/<name>`
+and republish the page; its link is in `state.md`. A campaign played at the table has no
+map page: its Realm tab is the map, refreshed with `table.py realm` after every world's
+turn. A v3 campaign is played at the table.
 
 Fights and domain turns are reported by the **Report style** dials (fights **outcome**
 when the human asks for outcome-only fights).
@@ -425,7 +437,8 @@ Each campaign lives in `dnd-crunch/campaigns/<name>/`:
   DCs, treasure. Only the GM reads it. Write it before the first scene and mark rooms
   explored as the wizard reaches them.
 - Realms campaigns add `realms.json` (the script's), `world.md` and `map.json` (open: the
-  tower's view) and the map page's link in `state.md` (`realms.md` section 9).
+  tower's view) (`realms-v3.md` section 12; v2's `realms.md` section 9, with the map page's
+  link in `state.md`).
 
 This is a cloud session, so the container is wiped when the session ends. **After every GM
 reply**, update `state.md`, append to `transcript.md`, then commit and push the campaign
@@ -478,12 +491,13 @@ for them as it always has.
 When the human asks for a new game, start it with these defaults without asking. The
 human can change any of them, before or during play.
 
-- **Adventure:** a Realms v2 overworld campaign (`realms.md`), with a new world from
-  `realms.py new --seed N --campaign dnd-crunch/campaigns/<name> --level 3`. Roll the seed
-  with `roll.py 1d100`.
+- **Adventure:** a Realms v3 overworld campaign (`realms-v3.md`), with a new world from
+  `realms3.py new --seed N --campaign dnd-crunch/campaigns/<name> --level 3`. Roll the
+  seed with `roll.py 1d100`.
 - **Name:** the next free `realmsN` (`realms3` was the first game started this way).
 - **Morten:** a fresh pre-built Wizard 3 (Evoker) with 900 XP, his starting gear and
-  47 GP 7 SP 5 CP. Copy `templates/character-wizard3.md` as his sheet.
+  47 GP 7 SP 5 CP. At the table his sheet is `morten.json`, from `table.py new --sheet
+  fresh`; in chat, copy `templates/character-wizard3.md` as his sheet.
 - **Who plays Morten:** the GM.
 - **Style:** cheese everything. Scout, use rituals and Mage Hand, use oil, Sleep then
   point-blank crits, hold chokepoints, retreat to reset, and leave the purse in the tower
@@ -491,8 +505,9 @@ human can change any of them, before or during play.
 - **Table mode:** open.
 - **Report style:** the defaults in **Report style** (summary for fights, domain turns and
   events, key rolls only, live updates every round).
-- **Campaign rules:** copy `templates/realms-rules.md` and fill in the name, seed and the
-  tower's hex. It holds the Delve, mission-fight, death, purse and downtime rules.
+- **Campaign rules:** copy `templates/realms-rules.md` (v3) and fill in the name, seed and
+  the tower's hex. It holds the Delve, mission, mission-fight, death, purse and downtime
+  rules.
 - **Start:** Month 1 · Day 1 · 08:00, in the tower, rested.
 - **Played at the table:** a new page published for the campaign (`web/README.md`, The
   first publish), the wake on, the dials at their defaults (the GM moves Morten, stop at
@@ -505,9 +520,10 @@ human can change any of them, before or during play.
    hand-made dungeon crawl (rooms are discrete and mechanical) is the other option the
    human may pick.
 2. Write `character.md`, `rules.md`, `state.md` and `transcript.md`. For a Realms game,
-   `realms.py new` writes `realms.json`, `world.md`, `map.json` and the floors in
-   `gm-secrets.md`. Build the map page and publish it (`ui/README.md`), and put its link in
-   `state.md`. For a hand-made dungeon, write `gm-secrets.md` yourself. A 5–10 room dungeon
+   `realms3.py new` writes `realms.json`, `world.md`, `map.json` and the floors in
+   `gm-secrets.md`; the table's Realm tab is the map (a v2 campaign in chat builds the map
+   page instead, `ui/README.md`, and puts its link in `state.md`). For a hand-made
+   dungeon, write `gm-secrets.md` yourself. A 5–10 room dungeon
    is a good one-session size, with encounters budgeted for one character and at least one
    short-rest opportunity.
 3. Open with the first reply: the world, Rumours, the Month 1 orders as **Morten (GM):**
@@ -515,10 +531,12 @@ human can change any of them, before or during play.
 4. If the session is resumed by a fresh GM, read `state.md`, `character.md`,
    `gm-secrets.md` and the end of `transcript.md`, then continue.
 
-At the table, steps 2 and 3 become: `rules.md` and the world with `realms.py new`, and
+At the table, steps 2 and 3 become: `rules.md` and the world with `realms3.py new`, and
 Morten's sheet from `table.py new --sheet fresh` (`tools/morten-wizard3.json`, the template
 sheet as `morten.json`); publish the page and seed it (`web/README.md`, The first publish), where the opening
 section is the first reply (the world, Rumours, the Month 1 orders); then play one GM's
-turn per wake or call. A fresh GM resuming a table campaign reads `state.md` (rendered),
+turn per wake or call. The v3 fixture's script, `web/dev/fixture-campaign/play-v3.sh`, is
+a first month played verb by verb on the GM's side: the worked example to read before
+the first one. A fresh GM resuming a table campaign reads `state.md` (rendered),
 `page.json` for the link, takes the page's watch with `ArtifactComments`, and plays the
 next GM's turn from step 1.

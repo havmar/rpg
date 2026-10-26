@@ -67,6 +67,7 @@ HERE = Path(__file__).resolve().parent
 GAME = HERE.parent  # dnd-crunch/
 sys.path.insert(0, str(HERE))
 import realms as R  # noqa: E402
+import realms3 as R3  # noqa: E402
 from gen_dungeon import THRESHOLD  # noqa: E402
 from roll import RESULTS, die as make_die, parse as parse_expr  # noqa: E402
 
@@ -101,6 +102,13 @@ MISSIONS = ("strike", "rob", "contact", "delve")
 ACTION = re.compile(r"^(buy:[a-z_ ]+(@[A-D][1-5])?|raise:(force|cunning|wealth)|repair:(a\d+|tower)"
                     r"|move:a\d+>[A-D][1-5](,a\d+>[A-D][1-5])*"
                     r"|attack:a\d+>(a\d+|[A-Za-z]+)(,a\d+>(a\d+|[A-Za-z]+))*|seize:[A-D][1-5])$")
+# Realms v3 (realms-v3.md, tools/realms3.py): the orders move's mission types, goal and the
+# purse's option strings, as `realms3.py turn` takes them
+MISSIONS3 = ("strike", "rob", "aid", "contact", "delve")
+GOAL3 = re.compile(r"^(take:[A-D][1-5]|ally:[A-Za-z]+|topple:[A-Za-z]+|drop)$")
+ACTION3 = re.compile(r"^--(buy (garrison|walls|works)@[A-D][1-5]|buy mend|(back|hinder) [A-Za-z]+"
+                     r"|set [A-Za-z]+=(take:[A-D][1-5]|fortify:[A-D][1-5]|raise|squeeze"
+                     r"|(raid|press|break):[A-Za-z]+))$")
 MAX_TEXT = 4000
 COIN = {"PP": 1000, "GP": 100, "EP": 50, "SP": 10, "CP": 1}
 
@@ -136,6 +144,57 @@ KIND_GLYPH = {"thugs": "fight", "militia": "shield", "beasts": "skull", "walls":
 ATTR_WORD = {"F": "Force", "C": "Cunning", "W": "Wealth"}
 TIER_FIGHT = {1: "Low", 2: "Moderate", 3: "High"}
 
+# ---- game/realm words for Realms v3 (goal clocks, standing, the ladder; realms-v3.md) ----
+WORDS3 = {
+    "force": "Force 1 to 5: a realm's army. It sets the tier of its fights, and its goal roll is "
+             "+1 against a weaker realm, −1 against a stronger one.",
+    "standing": "Standing: how a realm treats the tower, from −2 (enemy: refuses Contact) through "
+                "0 (neutral) to +2 (ally: a mark a month on the tower's goal). It moves only by deeds.",
+    "clock": "A clock: a goal's marks out of its size. Each month a realm rolls a d6 for its goal: "
+             "a 1 loses a mark, 3 to 5 add one, 6 adds two; a full clock fires the goal.",
+    "hold": "Hold: the tower's three boxes. A realm's break-the-tower goal that fires takes one box "
+            "and half the tower's gold; at 0 boxes it takes a hex instead. Mend a box for 200 GP.",
+    "renown": "Renown: the tower's hexes beyond its own, plus its allies, plus 2 for each ruler "
+              "toppled. It is read off the map, never bought.",
+    "tier": "The tower's tier, by Renown: Hermit (0), Lord of the hex (2), Warden of the marches "
+            "(5), A power in the land (9), Master of the twenty hexes (14). Each brings a power.",
+    "site": "A site is a realm's seat, garrison, works or walls in a hex: the thing Morten can "
+            "strike. It never moves and never attacks.",
+    "level": "Level N: floor N lies under it, its wanderers are level-N trouble, and it pays "
+             "N×10 GP a month.",
+    "seat": "The hex the ruler sits in. Its court is the realm's hardest fight; a Strike there "
+            "costs 2 standing.",
+    "ally": "An ally is a realm at standing +2: the tower's ally goal done for it, or a ruler the "
+            "tower put on the throne.",
+}
+SITE3 = {  # by the site's name in map.json: glyph, kind, what, its tier in words, its effect
+    "Seat": ("crown", "seat", "the ruler's court", "the realm's tier +1 (at most 3)",
+             "A Strike here costs them 2 standing (1 elsewhere) and takes marks off their goal."),
+    "Garrison": ("shield", "garrison", "soldiers at home", "the realm's tier",
+                 "−1 to goal rolls aimed at this hex."),
+    "Farms": ("globe", "works", "farmland and its folk", "the realm's tier −1 (at least 1)",
+              "Income +50 GP a month; a Rob takes 100 GP × their Force from it."),
+    "Mine": ("gear", "works", "a working mine", "the realm's tier −1 (at least 1)",
+             "Income +50 GP a month; a Rob takes 100 GP × their Force from it."),
+    "Caravans": ("cart", "works", "traders on the road", "the realm's tier −1 (at least 1)",
+                 "Income +50 GP a month; a Rob takes 100 GP × their Force from it."),
+    "Walls": ("door", "walls", "stone walls", "the realm's tier",
+              "−1 to goal rolls aimed at this hex; a take against it needs 6 marks."),
+}
+GOAL_WORDS = {  # what a goal does when its clock fills (realms-v3.md, the catalogue)
+    "take": "the hex changes hands with its sites",
+    "fortify": "walls go up there (300 GP)",
+    "raise": "Force +1 (200 GP × the new Force)",
+    "raid": "takes 100 GP × its Force from the target's treasury",
+    "press": "its Force +1, the target's Force −1",
+    "squeeze": "100 GP a hex into its treasury; Contact there is DC +4 for 3 months",
+    "break": "the target's Force −1",
+    "break_tower": "the tower loses a Hold box and half its gold (a hex, at Hold 0)",
+    "court": "its standing with the tower +1",
+    "ally": "the realm is the tower's ally (standing +2); Renown +1",
+    "topple": "the dissident takes the throne as a good ruler and an ally; Renown +2",
+}
+
 # ---- game/rules: (id, title, file, heading) cut by heading, so they never drift ----
 RULES = [("cast", "Roll to cast", "CLAUDE.md", "### Roll to cast"),
          ("death", "Death and the respawn", "CLAUDE.md", "### Death is a respawn"),
@@ -145,6 +204,15 @@ RULES = [("cast", "Roll to cast", "CLAUDE.md", "### Roll to cast"),
          ("actions", "The world's turn: actions and prices", "realms.md", "## 5. The domain turn"),
          ("leaders", "Leaders and their labels", "realms.md", "## 8. Leaders"),
          ("report", "Report style", "CLAUDE.md", "## Report style")]
+RULES3 = [RULES[0], RULES[1], RULES[2],
+          ("sites", "Sites: what Morten can strike", "realms-v3.md", "## 4. Sites"),
+          ("goals", "Goals and clocks", "realms-v3.md", "## 5. Goals and clocks"),
+          ("standing", "Standing, Hold, Renown and the ladder", "realms-v3.md", "## 7. Standing"),
+          ("purse", "Purse actions", "realms-v3.md", "## 8. Purse actions"),
+          ("missions", "Morten's month: travel and missions", "realms-v3.md", "## 9. Morten's month"),
+          ("goal", "The tower's goal", "realms-v3.md", "## 10. The tower's goal"),
+          ("rulers", "Rulers", "realms-v3.md", "## 6. Rulers"),
+          RULES[-1]]
 
 
 class Bad(Exception):
@@ -768,9 +836,11 @@ def hex_name(mp, h, extra=None):
         return extra[h]
     x = hex_by_id(mp)[h]
     holder = x["holder"]
-    # "the Elves' mountains", but "Goblinkind's savanna" (a people named in the singular)
-    who = ("the tower's" if holder == "tower" else
-           f"the {R.poss(holder)}" if holder.endswith("s") else R.poss(holder))
+    if is_v3(mp):   # the engine's own article: "the Goblinkind's taiga", as its lines say
+        who = R3.poss(holder)
+    else:   # v2: "the Elves' mountains", but "Goblinkind's savanna" (a people named in the singular)
+        who = ("the tower's" if holder == "tower" else
+               f"the {R.poss(holder)}" if holder.endswith("s") else R.poss(holder))
     return f"{who} {x['biome']}" + (" with its lake" if x.get("lake") else "")
 
 
@@ -811,10 +881,63 @@ def event_text(e, mp):
     return f"{who}: {act} {tgt} ({res})."
 
 
+def is_v3(mp):
+    """A Realms v3 map.json (tools/realms3.py); else v2's (tools/realms.py)."""
+    return bool(mp) and mp.get("version") == 3
+
+
+def strip_site_ids(t):
+    """v3's site ids ("the Gnomes' Garrison s14") are not for the reader."""
+    return re.sub(r"\s+s\d+\b", "", t or "").replace("*", "")
+
+
+def event_text3(e):
+    who = "Morten" if e["actor"] == "tower" else f"The {e['actor']}"
+    tgt, res = strip_site_ids(e.get("target")), e.get("result") or ""
+    to = e.get("to_hex")
+    act = e.get("action")
+    if act in ("Strike", "Rob", "Aid", "Contact"):
+        verb = {"Strike": "struck", "Rob": "robbed", "Aid": "aided", "Contact": "contacted"}[act]
+        return f"Morten {verb} {tgt} in {to}: {res}."
+    if act == "Delve":
+        return f"Morten delved {tgt} under {to}."
+    if act == "Goal":
+        return (f"The tower's goal: {tgt} ({res})." if e["actor"] == "tower"
+                else f"{who} finished {tgt}: {res}.")
+    if act == "Buy":
+        return f"The tower built {tgt} at {to} ({res})."
+    if act == "Mend":
+        return f"The tower mended its Hold: {res}."
+    if act == "Give":
+        return f"The tower gave {res} to {tgt}."
+    if act in ("Back", "Hinder"):
+        return f"The tower {'backed' if act == 'Back' else 'hindered'} {tgt}: {res}."
+    if act == "Set":
+        return f"The tower set a goal for {tgt}: {res}."
+    if act == "Tier":
+        return f"The tower is now {tgt} ({res})."
+    return f"{who}: {act} {tgt} ({res})."
+
+
 def events_words(mp):
+    text = event_text3 if is_v3(mp) else (lambda e: event_text(e, mp))
     return [{"n": i, "who": e["actor"], "from": e.get("from_hex"), "to": e.get("to_hex"),
-             "action": e.get("action"), "text": event_text(e, mp)}
+             "action": e.get("action"), "text": text(e)}
             for i, e in enumerate(mp.get("events", []), 1)]
+
+
+def world3(c):
+    """realms.json of a v3 campaign (nothing in it is hidden from the tower but the rng)."""
+    st = jload(c.d / "realms.json")
+    if not isinstance(st, dict) or st.get("version") != 3:
+        raise Bad(f"map.json is Realms v3 but {c.d / 'realms.json'} is not (the engine writes both)")
+    return st
+
+
+def rumours3(st):
+    """The engine's rumours from each hex: the Threat and Chance lines that name a realm or
+    hex nearby, and a line per realm near (ruler, goal, clock, standing)."""
+    return {h: [strip_site_ids(x) for x in R3.rumours(st, h)] for h in R3.HEXES}
 
 
 def rumours_of(mp, at):
@@ -848,6 +971,24 @@ def kinds():
             "counter": f"hits back {A['ctr']}" if A["ctr"] else "doesn't hit back",
             "upkeep": A["upkeep"], "income": A["income"], "moves": A["move"],
             "special": A["special"], "fight": TIER_FIGHT[A["tier"]] + " fight"}
+    return out
+
+
+def kinds3():
+    """The four sites, by the name map.json gives them (a works is Farms, Mine or Caravans):
+    the glyph, the kind, what it is, its tier in words, its fight list and its effect."""
+    out = {}
+    for name, (glyph, kind, what, tier_words, effect) in SITE3.items():
+        if kind == "seat":
+            fight = ", ".join(R3.SEAT_FIGHT)
+        elif kind == "garrison":
+            fight = " · ".join(f"tier {t}: {', '.join(v)}" for t, v in sorted(R3.GARRISON_FIGHT.items()))
+        elif kind == "works":
+            fight = ", ".join(R3.WORKS_FIGHT[name])
+        else:
+            fight = ", ".join(R3.WALLS_FIGHT)
+        out[name] = {"glyph": glyph, "type": kind, "what": what, "tierWords": tier_words,
+                     "fight": fight, "effect": effect}
     return out
 
 
@@ -950,11 +1091,17 @@ def next_words(mp, line):
     return t
 
 
+def next_words3(line):
+    """v3's Next-month line for the page. realms3.py prints it in words already (no site ids,
+    no option syntax); this only makes sure no id or asterisk slips through."""
+    return strip_site_ids(line)
+
+
 def dissidents(c):
     """The dissidents the tower has found (a won Contact names one): public to the tower."""
     st = jload(c.d / "realms.json") or {}
     out = []
-    for n, f in (st.get("factions") or {}).items():
+    for n, f in (st.get("realms") or st.get("factions") or {}).items():
         d = f.get("dissident") if isinstance(f, dict) else None
         if isinstance(d, dict) and d.get("name"):
             out.append({"realm": n, "name": d["name"], "hex": d.get("hex")})
@@ -964,14 +1111,23 @@ def dissidents(c):
 def proj_realm(c):
     mp = copy.deepcopy(c.need_map())
     extra = c.page.get("realm", {})
-    rum = {h["id"]: rumours_of(mp, h["id"]) + extra.get("rumours", {}).get(h["id"], [])
-           for h in mp["hexes"]}
-    return {"v": 1, **mp, "words": WORDS, "kinds": kinds(), "rumours": rum,
+    nxt = (mp.get("report") or {}).get("next", [])
+    if is_v3(mp):
+        heard = rumours3(world3(c))
+        rum = {h["id"]: heard.get(h["id"], []) + extra.get("rumours", {}).get(h["id"], [])
+               for h in mp["hexes"]}
+        words, kinds_, next_ = WORDS3, kinds3(), [next_words3(x) for x in nxt]
+        more = {"goalWords": GOAL_WORDS}
+    else:
+        rum = {h["id"]: rumours_of(mp, h["id"]) + extra.get("rumours", {}).get(h["id"], [])
+               for h in mp["hexes"]}
+        words, kinds_, next_, more = WORDS, kinds(), [next_words(mp, x) for x in nxt], {}
+    return {"v": 1, **mp, "words": words, "kinds": kinds_, "rumours": rum,
             "floors": floors_public(c), "days": days_from(mp, mp["morten"]["hex"]),
-            "eventsWords": events_words(mp),
-            "nextWords": [next_words(mp, x) for x in (mp.get("report") or {}).get("next", [])],
+            "eventsWords": events_words(mp), "nextWords": next_,
             "dissidents": dissidents(c),
-            "hexNames": {h["id"]: hex_name(mp, h["id"], extra.get("hexNames")) for h in mp["hexes"]}}
+            "hexNames": {h["id"]: hex_name(mp, h["id"], extra.get("hexNames")) for h in mp["hexes"]},
+            **more}
 
 
 def cut(text, heading):
@@ -1047,7 +1203,7 @@ def player_md(md):
 
 def proj_rules(c):
     secs = []
-    for sid_, title, src, heading in RULES:
+    for sid_, title, src, heading in (RULES3 if is_v3(c.map) else RULES):
         p = (c.d / src) if src == "rules.md" else (GAME / src)
         if not p.exists():
             continue
@@ -1140,14 +1296,146 @@ def orders_auto(c):
                               f"+{fmt_int(tower.get('income', 0))} GP income before the tower acts"}}
 
 
+def orders_auto3(c):
+    """v3's orders form: the missions in every hex (each with the engine's `turn` flag),
+    the tower's goal choices, the purse actions as `realms3.py turn` options, Give."""
+    mp, m = c.need_map(), c.need_morten()
+    st = world3(c)
+    H = hex_by_id(mp)
+    here, level = mp["morten"]["hex"], st["morten"]["level"]
+    days = days_from(mp, here)
+    extra = c.page.get("realm", {}).get("hexNames")
+    tower = next(f for f in mp["factions"] if f["tower"])
+    T, tier, step = st["tower"], R3.tier_now(st), R3.mark_step(st)
+    floors = floors_public(c)
+    hexes = sorted(({"id": h, "name": hex_name(mp, h, extra), "days": days[h]} for h in H),
+                   key=lambda x: (x["days"], x["id"]))
+    missions = []
+    for hx in hexes:
+        h, d = hx["id"], hx["days"]
+        for s in R3.sites_of(st, hex=h):
+            if s["owner"] == R3.TOWER:
+                continue
+            fight = R3.fight_word(st, s, level)
+            missions.append({"type": "strike", "target": s["id"], "hex": h, "days": d,
+                             "turn": f"--strike {s['id']}",
+                             "label": f"Strike {R3.poss(s['owner'])} {s['name']} in {h} "
+                                      f"({fight}; {step} marks off their goal)"})
+            if s["kind"] == "works":
+                f = st["realms"][s["owner"]]
+                gp = min(R3.ROB_GP * f["force"], f["treasury"])
+                missions.append({"type": "rob", "target": s["id"], "hex": h, "days": d,
+                                 "turn": f"--rob {s['id']}",
+                                 "label": f"Rob {R3.poss(s['owner'])} {s['name']} in {h} "
+                                          f"({fight}; up to {fmt_int(gp)} GP)"})
+        for n, f in st["realms"].items():
+            g = f["goal"]
+            if g and g["target"] != R3.TOWER and R3.aim_hex(st, n) == h and not g.get("waits"):
+                missions.append({"type": "aid", "target": n, "hex": h, "days": d, "turn": f"--aid {n}",
+                                 "label": f"Aid {R3.the(n)} with {R3.goal_text(st, g)} in {h} "
+                                          f"({R3.fight_word(st, n, level)}; {step} marks on it)"})
+        holder = H[h]["holder"]
+        if holder in st["realms"] and st["realms"][holder]["standing"] > -2:
+            missions.append({"type": "contact", "target": holder, "hex": h, "days": d,
+                             "turn": f"--contact {holder}",
+                             "label": f"Contact {R3.the(holder)} in {h} (Persuasion DC "
+                                      f"{R3.contact_dc(st, holder)})"})
+        fl = floors.get(h)
+        if fl:
+            state = " (cleared)" if fl["cleared"] else ""
+            missions.append({"type": "delve", "target": f"floor {fl['floor']}", "hex": h, "days": d,
+                             "turn": "--delve", "label": f"Delve floor {fl['floor']} under {h}{state}"})
+    # the tower's goal: every valid take, ally and topple; the current one is the form's "keep"
+    cur = T["goal"]
+    goals = []
+    for h in sorted(R3.HEXES, key=lambda x: (days[x], x)):
+        holder = st["hexes"][h]["holder"]
+        if holder == R3.TOWER:
+            continue
+        f = st["realms"][holder]
+        size = R3.TOWER_CLOCK["take"] + f["force"] + (R3.WALLED_TOWER_TAKE if R3.walled(st, h) else 0)
+        goals.append({"goal": f"take:{h}", "kind": "take", "target": holder, "hex": h, "size": size,
+                      "label": f"Take {h} from {R3.the(holder)} (a clock of {size}"
+                               f"{'; walled' if R3.walled(st, h) else ''})"})
+    for n, f in st["realms"].items():
+        if not R3.is_ally(f):
+            goals.append({"goal": f"ally:{n}", "kind": "ally", "target": n, "hex": None,
+                          "size": R3.TOWER_CLOCK["ally"],
+                          "label": f"Ally {R3.the(n)} (a clock of {R3.TOWER_CLOCK['ally']}; standing "
+                                   f"{f['standing']:+d}, {R3.standing_word(f['standing'])})"})
+    for n, f in st["realms"].items():
+        if f.get("dissident"):
+            size = R3.TOWER_CLOCK["topple"] + f["force"]
+            L = f["leader"]
+            goals.append({"goal": f"topple:{n}", "kind": "topple", "target": n, "hex": f["seat"], "size": size,
+                          "label": f"Topple {L['title']} {L['name']} of {R3.the(n)} (a clock of {size}; "
+                                   f"{f['dissident']['name']} waits in {f['dissident']['hex']})"})
+    goal_now = None
+    if cur:
+        goals = [g for g in goals if (g["kind"], g["target"], g["hex"]) != (cur["kind"], cur["target"], cur["hex"])]
+        goals.append({"goal": "drop", "kind": "drop", "target": None, "hex": None, "size": None,
+                      "label": f"Drop {R3.goal_text(st, cur)} (its {cur['marks']} marks are lost)"})
+        goal_now = {"goal": f"{cur['kind']}:{cur['hex'] if cur['kind'] == 'take' else cur['target']}",
+                    "text": R3.goal_text(st, cur), "marks": cur["marks"], "size": cur["size"]}
+    # the purse: paid before the month's income lands, so the treasury alone affords them
+    funds = T["treasury"]
+    actions = []
+
+    def act(opt, label, cost):
+        actions.append({"action": opt, "label": label, "cost": cost, "affordable": cost <= funds})
+    for h in R3.hexes_of(st, R3.TOWER):
+        garrison = R3.site_at(st, h, "garrison", R3.TOWER)
+        if tier >= R3.LORD and not garrison:
+            act(f"--buy garrison@{h}", f"Garrison {h}", R3.PRICE["garrison"])
+        if tier >= R3.LORD and garrison and not R3.site_at(st, h, "walls", R3.TOWER):
+            act(f"--buy walls@{h}", f"Walls at {h}", R3.PRICE["walls"])
+        if not R3.site_at(st, h, "works", R3.TOWER):
+            works = R3.WORKS_BIOME.get(st["hexes"][h]["biome"], "Farms")
+            act(f"--buy works@{h}", f"{works} at {h}", R3.PRICE["works"])
+    if T["hold"] < R3.HOLD:
+        act("--buy mend", f"Mend a Hold box ({T['hold']} of {R3.HOLD})", R3.PRICE["mend"])
+    if tier >= R3.WARDEN:
+        for n in st["realms"]:
+            act(f"--back {n}", f"Back {R3.the(n)}: +1 on their roll", R3.PRICE["back"])
+            act(f"--hinder {n}", f"Hinder {R3.the(n)}: −1 on their roll", R3.PRICE["back"])
+    if tier >= R3.MASTER:
+        for n, f in st["realms"].items():
+            if not R3.is_ally(f):
+                continue
+            opts = [("squeeze", "squeeze their people")]
+            if f["force"] < R3.MAX_FORCE:
+                opts.insert(0, ("raise", "raise their Force"))
+            opts += [(f"fortify:{h}", f"fortify {h}") for h in f["hexes"] if not R3.walled(st, h)]
+            for o in R3.neighbours_of(st, n):
+                if o != R3.TOWER:
+                    opts += [(f"{k}:{o}", f"{k} {R3.the(o)}") for k in ("raid", "press", "break")]
+            seats = {x["seat"] for x in st["realms"].values()} | {st["warded"]}
+            border = sorted({b for h in f["hexes"] for b in R3.nbrs(h)
+                             if st["hexes"][b]["holder"] not in (n, R3.TOWER) and b not in seats})
+            opts += [(f"take:{h}", f"take {h} from {R3.the(st['hexes'][h]['holder'])}") for h in border]
+            for g, w in opts:
+                act(f"--set {n}={g}", f"Set {R3.poss(n)} goal: {w}", 0)
+    realms_ = [f["name"] for f in sorted((f for f in mp["factions"] if not f["tower"]),
+                                         key=lambda f: (not f["ally"], f["name"]))]
+    income = tower.get("income", 0)
+    return {"version": 3, "hexes": hexes, "missions": missions, "goals": goals, "goal": goal_now,
+            "actions": actions, "realms": realms_,
+            "funds": {"treasury": T["treasury"], "income": income,
+                      "onMorten": m.get("coins", {}).get("on", "none"),
+                      "text": f"{fmt_int(T['treasury'])} GP in the treasury; the purse pays before "
+                              f"the month's +{fmt_int(income)} GP income lands"}}
+
+
 # ---- moves ----
 
 def is_str(x, empty=True):
     return isinstance(x, str) and (empty or x.strip()) and len(x) <= MAX_TEXT
 
 
-def validate_move(m, hexes=None):
-    """(errors, warnings) for one move against the README's move table."""
+def validate_move(m, hexes=None, version=2):
+    """(errors, warnings) for one move against the README's move table (version: the
+    campaign's Realms version, which sets the orders move's shape)."""
+    v3 = version == 3
     errs, warn = [], []
     if not isinstance(m, dict):
         return ["not an object"], []
@@ -1159,7 +1447,8 @@ def validate_move(m, hexes=None):
         errs.append("at must be a time string")
     k = m.get("kind")
     fields = {"say": ("text", "ooc"), "play": ("scope", "text"),
-              "orders": ("travel", "mission", "action", "give", "plan"),
+              "orders": ("travel", "mission", "goal", "actions", "give", "plan") if v3
+              else ("travel", "mission", "action", "give", "plan"),
               "fight": ("choice", "text"), "turn": ("text",), "table": ("table",),
               "take": ("who",)}
     if k not in fields:
@@ -1184,12 +1473,27 @@ def validate_move(m, hexes=None):
                 hexes is None and not re.fullmatch(r"[A-D][1-5]", t or "")):
             errs.append("orders.travel must be a hex id on the map")
         mi = m.get("mission")
-        if mi is not None and not (isinstance(mi, dict) and mi.get("type") in MISSIONS
+        kinds_ = MISSIONS3 if v3 else MISSIONS
+        if mi is not None and not (isinstance(mi, dict) and mi.get("type") in kinds_
                                    and is_str(mi.get("target"), False)):
-            errs.append(f"orders.mission must be null or {{type: {'/'.join(MISSIONS)}, target}}")
-        ac = m.get("action")
-        if ac is not None and not (isinstance(ac, str) and ACTION.match(ac)):
-            errs.append("orders.action must be null or the engine's --action (e.g. buy:farms@B5)")
+            errs.append(f"orders.mission must be null or {{type: {'/'.join(kinds_)}, target}}")
+        if v3:
+            g = m.get("goal")
+            if g is not None and not (isinstance(g, str) and GOAL3.match(g)):
+                errs.append("orders.goal must be null (kept) or take:HEX, ally:REALM, topple:REALM or drop")
+            ac = m.get("actions")
+            if not (isinstance(ac, list) and all(isinstance(x, str) and ACTION3.match(x) for x in ac)):
+                errs.append("orders.actions must be a list of the engine's purse options "
+                            "(--buy works@B5, --buy mend, --back REALM, --hinder REALM, --set REALM=GOAL)")
+            else:
+                if len(set(ac)) != len(ac):
+                    errs.append("orders.actions repeats an option")
+                if sum(x.startswith(("--back ", "--hinder ")) for x in ac) > 1:
+                    errs.append("orders.actions: one back or hinder a month")
+        else:
+            ac = m.get("action")
+            if ac is not None and not (isinstance(ac, str) and ACTION.match(ac)):
+                errs.append("orders.action must be null or the engine's --action (e.g. buy:farms@B5)")
         g = m.get("give")
         if g is not None and not (isinstance(g, dict) and is_str(g.get("realm"), False)
                                   and isinstance(g.get("gp"), int) and not isinstance(g.get("gp"), bool)
@@ -1197,9 +1501,9 @@ def validate_move(m, hexes=None):
             errs.append("orders.give must be null or {realm, gp ≥ 1}")
         if not is_str(m.get("plan")):
             errs.append("orders.plan must be a string")
-        for key in ("mission", "action", "give"):
+        for key in (("mission", "goal", "actions", "give") if v3 else ("mission", "action", "give")):
             if key not in m:
-                errs.append(f"orders.{key} is missing (null for none)")
+                errs.append(f"orders.{key} is missing ({'[]' if key == 'actions' else 'null'} for none)")
     elif k == "fight":
         if m.get("choice") not in ("fight", "avoid", "plan"):
             errs.append("fight.choice must be fight, avoid or plan")
@@ -1242,9 +1546,13 @@ def move_words(m, mp=None):
         if mp and t in hex_by_id(mp):
             name = f" ({hex_name(mp, t)}, {days_from(mp, mp['morten']['hex'])[t]} days)"
         bits = [f"travel to {t}{name}",
-                f"mission {mi['type']} {mi['target']}" if mi else "no mission",
-                f"tower action {m.get('action')}" if m.get("action") else "no tower action",
-                f"give {g['gp']} GP to the {g['realm']}" if g else "no gift"]
+                f"mission {mi['type']} {mi['target']}" if mi else "no mission"]
+        if "actions" in m:  # v3: the goal and the purse as realms3.py turn takes them
+            bits.append(f"goal {m['goal']}" if m.get("goal") else "goal kept")
+            bits.append(f"purse {' '.join(m['actions'])}" if m.get("actions") else "no purse action")
+        else:
+            bits.append(f"tower action {m.get('action')}" if m.get("action") else "no tower action")
+        bits.append(f"give {g['gp']} GP to the {g['realm']}" if g else "no gift")
         return "orders: " + " · ".join(bits) + (f"; plan {q(m['plan'])}" if m.get("plan") else "")
     if k == "fight":
         return f"before the fight: {m.get('choice')}" + (f", {q(m['text'])}" if m.get("text") else "")
@@ -1291,12 +1599,24 @@ def move_text(m, c=None):
             f = next((x for x in form.get("missions", []) if x.get("type") == mi.get("type")
                       and x.get("target") == mi.get("target")), None)
             bits.append(f["label"] if f else f"{mi.get('type')} {mi.get('target')}")
-        act = m.get("action")
-        if act:
-            f = next((x for x in form.get("actions", []) if x.get("action") == act), None)
-            bits.append(f"the tower: {f['label'] if f else act}")
+        if "actions" in m:  # v3
+            g3 = m.get("goal")
+            if g3:
+                f = next((x for x in form.get("goals", []) if x.get("goal") == g3), None)
+                bits.append(f"the goal: {f['label'] if f else g3}")
+            acts = m.get("actions") or []
+            if acts:
+                bits.append("the purse: " + ", ".join(
+                    next((x["label"] for x in form.get("actions", []) if x.get("action") == a), a) for a in acts))
+            else:
+                bits.append("the purse saves")
         else:
-            bits.append("the tower saves")
+            act = m.get("action")
+            if act:
+                f = next((x for x in form.get("actions", []) if x.get("action") == act), None)
+                bits.append(f"the tower: {f['label'] if f else act}")
+            else:
+                bits.append("the tower saves")
         g = m.get("give")
         if g:
             bits.append(f"give {fmt_int(g.get('gp'))} GP to the {g.get('realm')}")
@@ -1449,7 +1769,8 @@ def apply_state_opts(c, a):
     if a.awaiting:
         aw = {"kind": a.awaiting, "prompt": a.prompt or "", "orders": None, "fight": None, "turn": None}
         if a.awaiting == "orders":
-            aw["orders"] = orders_auto(c) if (a.orders or "auto") == "auto" else jarg(a.orders)
+            auto = orders_auto3 if is_v3(c.map) else orders_auto
+            aw["orders"] = auto(c) if (a.orders or "auto") == "auto" else jarg(a.orders)
         if a.awaiting == "fight":
             if not a.fight:
                 raise Bad("--awaiting fight needs --fight {title, foes, difficulty, xp}")
@@ -1777,14 +2098,17 @@ def build_domain(fm, parts, c):
 
     plan = bul("the plan", "plan")
     hap = []
+    v3 = is_v3(mp)
     for b in bul("what happened", "happened")[1]:
-        mm = re.match(r"^n=(\d+)(?:\s+who=(\S+))?:\s*(.+)$", b)
-        if not mm:
-            raise Bad(f"what happened: '{b[:50]}…' must start with n=N: (an event of map.json)")
-        n = int(mm.group(1))
-        if n not in ev:
+        # v3's sentences are one per realm, most with no event behind them: who=REALM: does
+        mm = re.match(r"^(?:n=(\d+))?(?:\s*who=(\S+))?:\s*(.+)$", b)
+        if not mm or (mm.group(1) is None and not (v3 and mm.group(2))):
+            raise Bad(f"what happened: '{b[:50]}…' must start with n=N: (an event of map.json)"
+                      + (" or who=REALM:" if v3 else ""))
+        n = int(mm.group(1)) if mm.group(1) else None
+        if n is not None and n not in ev:
             raise Bad(f"what happened: no event {n} in map.json (1–{len(ev)})")
-        e = ev[n]
+        e = ev[n] if n is not None else {"who": mm.group(2), "from": None, "to": None}
         who = mm.group(2) or e["who"]
         f = faction(mp, who)
         lab = (f or {}).get("leader", {})
@@ -2127,7 +2451,7 @@ def cmd_moves(a):
         if did in c.page["answered"]:
             stale.append(did)
             continue
-        errs, warn = validate_move(body, hexes)
+        errs, warn = validate_move(body, hexes, 3 if is_v3(mp) else 2)
         if isinstance(body, dict) and isinstance(body.get("seq"), int) and did != sid("m", body["seq"]):
             errs.append(f"doc id {did} does not match seq {body['seq']}")
         if not re.fullmatch(r"m\d{4,}", str(did)):
@@ -2422,6 +2746,23 @@ def tower_lines(mp):
             f"Hostile: {', '.join(hostile) or 'nobody'} · Allies: {', '.join(allies) or 'none'}"]
 
 
+def tower_lines3(mp):
+    t = next((f for f in mp["factions"] if f["tower"]), None)
+    if not t:
+        return []
+    sites = [f"{a['name']} in {h['id']} (tier {a['tier']})"
+             for h in mp["hexes"] for a in h["assets"] if a["owner"] == "tower"]
+    allies = [f["name"] for f in mp["factions"] if not f["tower"] and f.get("ally")]
+    enemies = [f["name"] for f in mp["factions"] if not f["tower"] and (f.get("standing") or 0) <= -2]
+    g = t.get("goal")
+    goal = f"{g['text']}, {g['marks']} of {g['size']}" if g else "none"
+    return [f"Tower: {t.get('tierName')} (tier {t.get('tier')}, Renown {t.get('renown')}) · Hold "
+            f"{t.get('hold')} of {t.get('maxHold')} · {fmt_int(t['treasury'])} GP (+{t.get('income', 0)} GP "
+            f"a month) · hexes {' '.join(t['hexes'])} · goal {goal}",
+            "Sites: " + (", ".join(sites) or "none"),
+            f"Allies: {', '.join(allies) or 'none'} · Enemies: {', '.join(enemies) or 'nobody'}"]
+
+
 def render_state(c):
     s, m, mp = c.state, c.morten, c.map
     t = {**DEFAULT_TABLE, **(s.get("table") or {})}
@@ -2464,12 +2805,16 @@ def render_state(c):
             "", "## Habits", ""]
     out += [f"- {h}" for h in m.get("habits", [])] or ["- none"]
     if mp:
-        out += ["", "## Domain (Realms v2)", ""] + [f"- {x}" for x in tower_lines(mp)]
+        v3 = is_v3(mp)
+        out += ["", f"## Domain (Realms v{3 if v3 else 2})", ""]
+        out += [f"- {x}" for x in (tower_lines3(mp) if v3 else tower_lines(mp))]
         aw = (s.get("awaiting") or {})
         if aw.get("kind") == "orders":
-            out.append(f"- Month {s.get('month')} orders: not declared yet (mission, tower action, Give)")
+            out.append(f"- Month {s.get('month')} orders: not declared yet "
+                       f"({'mission, the goal, the purse, Give' if v3 else 'mission, tower action, Give'})")
         out.append("- Full state: `world.md` and `map.json` (open: the tower's view) and `realms.json` "
-                   "(the script's; holds the hidden Cunning assets)")
+                   + ("(the script's; nothing in it is hidden but the dice)" if v3 else
+                      "(the script's; holds the hidden Cunning assets)"))
         out += ["", "## Known dungeon", ""]
         known = [(h, f) for h, f in floors_public(c).items() if f["rooms"]]
         for h, f in sorted(known, key=lambda x: x[1]["floor"]):
@@ -2709,7 +3054,7 @@ def main(argv=None):
     p.set_defaults(fn=cmd_morten)
 
     p = verb("realm", "game/realm from map.json with the words, kinds, rumours, floors, days",
-             "Rewrite game/realm: map.json as realms.py wrote it (the tower's view) plus words, "
+             "Rewrite game/realm: map.json as realms3.py or realms.py wrote it (the tower's view) plus words, "
              "kinds, rumours by hex, floors (explored rooms from gm-secrets.md; the rest unknown), "
              "days from Morten by hex, eventsWords and hexNames. Run after a world's turn, a reveal, "
              "a room explored.")

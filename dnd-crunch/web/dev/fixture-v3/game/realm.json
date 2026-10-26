@@ -1,0 +1,1406 @@
+{
+ "v": 1,
+ "version": 3,
+ "campaign": "fixture-campaign-v3",
+ "month": 2,
+ "layout": {
+  "cols": 4,
+  "rows": 5,
+  "orientation": "flat-top",
+  "shift": "odd"
+ },
+ "hexes": [
+  {
+   "id": "A1",
+   "col": 0,
+   "row": 0,
+   "level": 18,
+   "biome": "taiga",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": "Tieflings",
+   "warded": false,
+   "income": 180,
+   "neighbours": [
+    "A2",
+    "B1"
+   ],
+   "assets": [
+    {
+     "id": "s16",
+     "owner": "Tieflings",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "A2",
+   "col": 0,
+   "row": 1,
+   "level": 16,
+   "biome": "taiga",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 160,
+   "neighbours": [
+    "A1",
+    "A3",
+    "B1",
+    "B2"
+   ],
+   "assets": [
+    {
+     "id": "s5",
+     "owner": "Elves",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "A3",
+   "col": 0,
+   "row": 2,
+   "level": 12,
+   "biome": "forest",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 120,
+   "neighbours": [
+    "A2",
+    "A4",
+    "B2",
+    "B3"
+   ],
+   "assets": [
+    {
+     "id": "s6",
+     "owner": "Elves",
+     "name": "Farms",
+     "type": "works",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "A4",
+   "col": 0,
+   "row": 3,
+   "level": 19,
+   "biome": "savanna",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": "Gnomes",
+   "warded": false,
+   "income": 190,
+   "neighbours": [
+    "A3",
+    "A5",
+    "B3",
+    "B4"
+   ],
+   "assets": [
+    {
+     "id": "s13",
+     "owner": "Gnomes",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "A5",
+   "col": 0,
+   "row": 4,
+   "level": 8,
+   "biome": "mountains",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 80,
+   "neighbours": [
+    "A4",
+    "B4",
+    "B5"
+   ],
+   "assets": [
+    {
+     "id": "s14",
+     "owner": "Gnomes",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "B1",
+   "col": 1,
+   "row": 0,
+   "level": 7,
+   "biome": "tundra",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 70,
+   "neighbours": [
+    "A1",
+    "A2",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "assets": [
+    {
+     "id": "s18",
+     "owner": "Tieflings",
+     "name": "Farms",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "B2",
+   "col": 1,
+   "row": 1,
+   "level": 20,
+   "biome": "mountains",
+   "people": "Elves",
+   "holder": "Elves",
+   "lake": false,
+   "seat_of": "Elves",
+   "warded": false,
+   "income": 200,
+   "neighbours": [
+    "A2",
+    "A3",
+    "B1",
+    "B3",
+    "C2",
+    "C3"
+   ],
+   "assets": [
+    {
+     "id": "s4",
+     "owner": "Elves",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "B3",
+   "col": 1,
+   "row": 2,
+   "level": 4,
+   "biome": "plains",
+   "people": "Gnomes",
+   "holder": "Gnomes",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 40,
+   "neighbours": [
+    "A3",
+    "A4",
+    "B2",
+    "B4",
+    "C3",
+    "C4"
+   ],
+   "assets": [
+    {
+     "id": "s15",
+     "owner": "Gnomes",
+     "name": "Caravans",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "B4",
+   "col": 1,
+   "row": 3,
+   "level": 15,
+   "biome": "hills",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": true,
+   "seat_of": "Orcs",
+   "warded": false,
+   "income": 150,
+   "neighbours": [
+    "A4",
+    "A5",
+    "B3",
+    "B5",
+    "C4",
+    "C5"
+   ],
+   "assets": [
+    {
+     "id": "s10",
+     "owner": "Orcs",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "B5",
+   "col": 1,
+   "row": 4,
+   "level": 1,
+   "biome": "mountains",
+   "people": "tower folk",
+   "holder": "tower",
+   "lake": false,
+   "seat_of": "tower",
+   "warded": true,
+   "income": 10,
+   "neighbours": [
+    "A5",
+    "B4",
+    "C5"
+   ],
+   "assets": []
+  },
+  {
+   "id": "C1",
+   "col": 2,
+   "row": 0,
+   "level": 10,
+   "biome": "tundra",
+   "people": "Tieflings",
+   "holder": "Tieflings",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 100,
+   "neighbours": [
+    "B1",
+    "C2",
+    "D1"
+   ],
+   "assets": [
+    {
+     "id": "s17",
+     "owner": "Tieflings",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "C2",
+   "col": 2,
+   "row": 1,
+   "level": 6,
+   "biome": "taiga",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 60,
+   "neighbours": [
+    "B1",
+    "B2",
+    "C1",
+    "C3",
+    "D1",
+    "D2"
+   ],
+   "assets": [
+    {
+     "id": "s8",
+     "owner": "Goblinkind",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "C3",
+   "col": 2,
+   "row": 2,
+   "level": 17,
+   "biome": "hills",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": "Goblinkind",
+   "warded": false,
+   "income": 170,
+   "neighbours": [
+    "B2",
+    "B3",
+    "C2",
+    "C4",
+    "D2",
+    "D3"
+   ],
+   "assets": [
+    {
+     "id": "s7",
+     "owner": "Goblinkind",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "C4",
+   "col": 2,
+   "row": 3,
+   "level": 9,
+   "biome": "swamp",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 90,
+   "neighbours": [
+    "B3",
+    "B4",
+    "C3",
+    "C5",
+    "D3",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "s2",
+     "owner": "Humans",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "C5",
+   "col": 2,
+   "row": 4,
+   "level": 14,
+   "biome": "jungle",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 140,
+   "neighbours": [
+    "B4",
+    "B5",
+    "C4",
+    "D4",
+    "D5"
+   ],
+   "assets": [
+    {
+     "id": "s11",
+     "owner": "Orcs",
+     "name": "Garrison",
+     "type": "garrison",
+     "tier": 2
+    }
+   ]
+  },
+  {
+   "id": "D1",
+   "col": 3,
+   "row": 0,
+   "level": 3,
+   "biome": "mountains",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": true,
+   "seat_of": null,
+   "warded": false,
+   "income": 30,
+   "neighbours": [
+    "C1",
+    "C2",
+    "D2"
+   ],
+   "assets": [
+    {
+     "id": "s9",
+     "owner": "Goblinkind",
+     "name": "Mine",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "D2",
+   "col": 3,
+   "row": 1,
+   "level": 2,
+   "biome": "forest",
+   "people": "Goblinkind",
+   "holder": "Goblinkind",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 20,
+   "neighbours": [
+    "C2",
+    "C3",
+    "D1",
+    "D3"
+   ],
+   "assets": []
+  },
+  {
+   "id": "D3",
+   "col": 3,
+   "row": 2,
+   "level": 13,
+   "biome": "swamp",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": "Humans",
+   "warded": false,
+   "income": 130,
+   "neighbours": [
+    "C3",
+    "C4",
+    "D2",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "s1",
+     "owner": "Humans",
+     "name": "Seat",
+     "type": "seat",
+     "tier": 3
+    }
+   ]
+  },
+  {
+   "id": "D4",
+   "col": 3,
+   "row": 3,
+   "level": 5,
+   "biome": "plains",
+   "people": "Humans",
+   "holder": "Humans",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 50,
+   "neighbours": [
+    "C4",
+    "C5",
+    "D3",
+    "D5"
+   ],
+   "assets": [
+    {
+     "id": "s3",
+     "owner": "Humans",
+     "name": "Caravans",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  },
+  {
+   "id": "D5",
+   "col": 3,
+   "row": 4,
+   "level": 11,
+   "biome": "desert",
+   "people": "Orcs",
+   "holder": "Orcs",
+   "lake": false,
+   "seat_of": null,
+   "warded": false,
+   "income": 110,
+   "neighbours": [
+    "C5",
+    "D4"
+   ],
+   "assets": [
+    {
+     "id": "s12",
+     "owner": "Orcs",
+     "name": "Farms",
+     "type": "works",
+     "tier": 1
+    }
+   ]
+  }
+ ],
+ "rivers": [
+  [
+   "B1",
+   "C1"
+  ],
+  [
+   "C1",
+   "C2"
+  ],
+  [
+   "C1",
+   "D1"
+  ],
+  [
+   "B4",
+   "C5"
+  ],
+  [
+   "C4",
+   "C5"
+  ],
+  [
+   "C5",
+   "D4"
+  ],
+  [
+   "D4",
+   "D5"
+  ]
+ ],
+ "factions": [
+  {
+   "name": "Humans",
+   "tower": false,
+   "leader": {
+    "name": "Galen",
+    "title": "Reeve",
+    "label": "good",
+    "tag": "Liberator",
+    "verb": "fights tyrants"
+   },
+   "income": 320,
+   "force": 3,
+   "tier": 2,
+   "treasury": 590,
+   "seat": "D3",
+   "hexes": [
+    "C4",
+    "D3",
+    "D4"
+   ],
+   "standing": 1,
+   "standingWord": "friendly",
+   "ally": false,
+   "goal": {
+    "text": "fortify D3",
+    "kind": "fortify",
+    "target": null,
+    "hex": "D3",
+    "marks": 1,
+    "size": 3,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Elves",
+   "tower": false,
+   "leader": {
+    "name": "Erevan",
+    "title": "Archon",
+    "label": "good",
+    "tag": "Liberator",
+    "verb": "fights tyrants"
+   },
+   "income": 530,
+   "force": 5,
+   "tier": 3,
+   "treasury": 1010,
+   "seat": "B2",
+   "hexes": [
+    "A2",
+    "A3",
+    "B2"
+   ],
+   "standing": 1,
+   "standingWord": "friendly",
+   "ally": false,
+   "goal": {
+    "text": "break the Gnomes",
+    "kind": "break",
+    "target": "Gnomes",
+    "hex": null,
+    "marks": 2,
+    "size": 4,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Goblinkind",
+   "tower": false,
+   "leader": {
+    "name": "Blix",
+    "title": "Warchief",
+    "label": "bad",
+    "tag": "Slaver",
+    "verb": "takes people for soldiers"
+   },
+   "income": 330,
+   "force": 3,
+   "tier": 2,
+   "treasury": 610,
+   "seat": "C3",
+   "hexes": [
+    "C2",
+    "C3",
+    "D1",
+    "D2"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "press the Humans",
+    "kind": "press",
+    "target": "Humans",
+    "hex": null,
+    "marks": 1,
+    "size": 3,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Orcs",
+   "tower": false,
+   "leader": {
+    "name": "Vorga",
+    "title": "Chief",
+    "label": "bad",
+    "tag": "Slaver",
+    "verb": "takes people for soldiers"
+   },
+   "income": 450,
+   "force": 4,
+   "tier": 2,
+   "treasury": 850,
+   "seat": "B4",
+   "hexes": [
+    "B4",
+    "C5",
+    "D5"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "press the Humans",
+    "kind": "press",
+    "target": "Humans",
+    "hex": null,
+    "marks": 0,
+    "size": 3,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Gnomes",
+   "tower": false,
+   "leader": {
+    "name": "Fizwick",
+    "title": "Mayor",
+    "label": "bad",
+    "tag": "Raider",
+    "verb": "robs its neighbours"
+   },
+   "income": 360,
+   "force": 3,
+   "tier": 2,
+   "treasury": 670,
+   "seat": "A4",
+   "hexes": [
+    "A4",
+    "A5",
+    "B3"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "raid the Elves",
+    "kind": "raid",
+    "target": "Elves",
+    "hex": null,
+    "marks": 0,
+    "size": 2,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "Tieflings",
+   "tower": false,
+   "leader": {
+    "name": "Damaia",
+    "title": "Hierarch",
+    "label": "bad",
+    "tag": "Raider",
+    "verb": "robs its neighbours"
+   },
+   "income": 400,
+   "force": 4,
+   "tier": 2,
+   "treasury": 750,
+   "seat": "A1",
+   "hexes": [
+    "A1",
+    "B1",
+    "C1"
+   ],
+   "standing": 0,
+   "standingWord": "neutral",
+   "ally": false,
+   "goal": {
+    "text": "raid the Elves",
+    "kind": "raid",
+    "target": "Elves",
+    "hex": null,
+    "marks": 1,
+    "size": 2,
+    "waits": 0,
+    "since": 1
+   },
+   "dissident": null,
+   "squeezed": false
+  },
+  {
+   "name": "tower",
+   "tower": true,
+   "leader": {
+    "name": "Morten",
+    "title": "Wizard",
+    "label": null,
+    "tag": null,
+    "verb": null
+   },
+   "income": 10,
+   "treasury": 115,
+   "seat": "B5",
+   "hexes": [
+    "B5"
+   ],
+   "standing": null,
+   "standingWord": null,
+   "ally": false,
+   "goal": null,
+   "tier": 0,
+   "tierName": "Hermit",
+   "renown": 0,
+   "hold": 3,
+   "maxHold": 3,
+   "toppled": 0,
+   "won": null
+  }
+ ],
+ "morten": {
+  "hex": "B5",
+  "level": 3
+ },
+ "events": [
+  {
+   "month": 1,
+   "actor": "tower",
+   "action": "Delve",
+   "from_hex": "B5",
+   "to_hex": "B5",
+   "target": "floor 1",
+   "result": "delved"
+  }
+ ],
+ "report": {
+  "month": 1,
+  "plan": [
+   "Morten: Delve floor 1 under B5.",
+   "Floor 1 first: safe XP under the wards; the tower keeps its gold and declares no goal yet.",
+   "Tower: no goal, no purse action."
+  ],
+  "happened": [
+   {
+    "who": "Elves",
+    "label": "good: fights tyrants",
+    "goal": "break the Gnomes",
+    "roll": "rolled a 7 (6 +1)",
+    "marks": 2,
+    "size": 4,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Elves (good: fights tyrants), *break the Gnomes*: rolled a 7 (6 +1): **2 of 4**."
+   },
+   {
+    "who": "Orcs",
+    "label": "bad: takes people for soldiers",
+    "goal": "press the Humans",
+    "roll": "rolled a natural 1, a setback",
+    "marks": 0,
+    "size": 3,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Orcs (bad: takes people for soldiers), *press the Humans*: rolled a natural 1, a setback: **0 of 3**."
+   },
+   {
+    "who": "Tieflings",
+    "label": "bad: robs its neighbours",
+    "goal": "raid the Elves",
+    "roll": "rolled a 5 (6 −1)",
+    "marks": 1,
+    "size": 2,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Tieflings (bad: robs its neighbours), *raid the Elves*: rolled a 5 (6 −1): **1 of 2**."
+   },
+   {
+    "who": "Gnomes",
+    "label": "bad: robs its neighbours",
+    "goal": "raid the Elves",
+    "roll": "rolled a 2 (3 −1)",
+    "marks": 0,
+    "size": 2,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Gnomes (bad: robs its neighbours), *raid the Elves*: rolled a 2 (3 −1): **0 of 2**."
+   },
+   {
+    "who": "Humans",
+    "label": "good: fights tyrants",
+    "goal": "fortify D3",
+    "roll": "rolled a 4",
+    "marks": 1,
+    "size": 3,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Humans (good: fights tyrants), *fortify D3*: rolled a 4: **1 of 3**."
+   },
+   {
+    "who": "Goblinkind",
+    "label": "bad: takes people for soldiers",
+    "goal": "press the Humans",
+    "roll": "rolled a 5",
+    "marks": 1,
+    "size": 3,
+    "fired": false,
+    "far": false,
+    "waits": 0,
+    "new": null,
+    "text": "The Goblinkind (bad: takes people for soldiers), *press the Humans*: rolled a 5: **1 of 3**."
+   }
+  ],
+  "tower": [
+   "Hermit (tier 0, Renown 0) · Hold 3 of 3 · 115 GP · income 10 GP a month · Morten level 3 in B5",
+   "Hexes: B5 (B5 warded)",
+   "Sites: none",
+   "Allies: none · enemies: none",
+   "Goal: none yet (declared with the month's orders)"
+  ],
+  "next": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: and 4 more chances on the map.",
+   "Open: Morten is in B5, the tower (level 1, mountains). Travel is a day a hex; each day away from the tower a d6, and a 1 is a wandering encounter.",
+   "Open: missions here in B5: Delve floor 1.",
+   "Open: the purse holds 115 GP: Works on a hex of the tower's (300 GP); a gift to a realm (200 GP or more counts for a month).",
+   "Open: no goal yet. Declare one: take a hex (its holder's Force + 2 marks, +2 if walled), ally a realm (3 marks; any of the six), or topple a ruler (needs a dissident; none named yet)."
+  ],
+  "notes": []
+ },
+ "words": {
+  "force": "Force 1 to 5: a realm's army. It sets the tier of its fights, and its goal roll is +1 against a weaker realm, −1 against a stronger one.",
+  "standing": "Standing: how a realm treats the tower, from −2 (enemy: refuses Contact) through 0 (neutral) to +2 (ally: a mark a month on the tower's goal). It moves only by deeds.",
+  "clock": "A clock: a goal's marks out of its size. Each month a realm rolls a d6 for its goal: a 1 loses a mark, 3 to 5 add one, 6 adds two; a full clock fires the goal.",
+  "hold": "Hold: the tower's three boxes. A realm's break-the-tower goal that fires takes one box and half the tower's gold; at 0 boxes it takes a hex instead. Mend a box for 200 GP.",
+  "renown": "Renown: the tower's hexes beyond its own, plus its allies, plus 2 for each ruler toppled. It is read off the map, never bought.",
+  "tier": "The tower's tier, by Renown: Hermit (0), Lord of the hex (2), Warden of the marches (5), A power in the land (9), Master of the twenty hexes (14). Each brings a power.",
+  "site": "A site is a realm's seat, garrison, works or walls in a hex: the thing Morten can strike. It never moves and never attacks.",
+  "level": "Level N: floor N lies under it, its wanderers are level-N trouble, and it pays N×10 GP a month.",
+  "seat": "The hex the ruler sits in. Its court is the realm's hardest fight; a Strike there costs 2 standing.",
+  "ally": "An ally is a realm at standing +2: the tower's ally goal done for it, or a ruler the tower put on the throne."
+ },
+ "kinds": {
+  "Seat": {
+   "glyph": "crown",
+   "type": "seat",
+   "what": "the ruler's court",
+   "tierWords": "the realm's tier +1 (at most 3)",
+   "fight": "Noble, Spy, Tough, Guard, Knight, Guard Captain",
+   "effect": "A Strike here costs them 2 standing (1 elsewhere) and takes marks off their goal."
+  },
+  "Garrison": {
+   "glyph": "shield",
+   "type": "garrison",
+   "what": "soldiers at home",
+   "tierWords": "the realm's tier",
+   "fight": "tier 1: Guard, Scout, Guard Captain · tier 2: Knight, Warrior Veteran, Warhorse · tier 3: Berserker, Warrior Veteran, Gladiator, Ogre",
+   "effect": "−1 to goal rolls aimed at this hex."
+  },
+  "Farms": {
+   "glyph": "globe",
+   "type": "works",
+   "what": "farmland and its folk",
+   "tierWords": "the realm's tier −1 (at least 1)",
+   "fight": "Guard, Mastiff, Scout",
+   "effect": "Income +50 GP a month; a Rob takes 100 GP × their Force from it."
+  },
+  "Mine": {
+   "glyph": "gear",
+   "type": "works",
+   "what": "a working mine",
+   "tierWords": "the realm's tier −1 (at least 1)",
+   "fight": "Tough, Guard, Tough Boss",
+   "effect": "Income +50 GP a month; a Rob takes 100 GP × their Force from it."
+  },
+  "Caravans": {
+   "glyph": "cart",
+   "type": "works",
+   "what": "traders on the road",
+   "tierWords": "the realm's tier −1 (at least 1)",
+   "fight": "Guard, Scout, Warrior Veteran, Mastiff",
+   "effect": "Income +50 GP a month; a Rob takes 100 GP × their Force from it."
+  },
+  "Walls": {
+   "glyph": "door",
+   "type": "walls",
+   "what": "stone walls",
+   "tierWords": "the realm's tier",
+   "fight": "Animated Armor, Guard, Gargoyle",
+   "effect": "−1 to goal rolls aimed at this hex; a take against it needs 6 marks."
+  }
+ },
+ "rumours": {
+  "A1": [
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (good: fights tyrants), Archon Erevan: break the Gnomes, 2 of 4; standing +1, friendly.",
+   "The Tieflings (bad: robs its neighbours), Hierarch Damaia: raid the Elves, 1 of 2; standing 0, neutral."
+  ],
+  "A2": [
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (good: fights tyrants), Archon Erevan: break the Gnomes, 2 of 4; standing +1, friendly.",
+   "The Tieflings (bad: robs its neighbours), Hierarch Damaia: raid the Elves, 1 of 2; standing 0, neutral."
+  ],
+  "A3": [
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (good: fights tyrants), Archon Erevan: break the Gnomes, 2 of 4; standing +1, friendly.",
+   "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral."
+  ],
+  "A4": [
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (good: fights tyrants), Archon Erevan: break the Gnomes, 2 of 4; standing +1, friendly.",
+   "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral.",
+   "The Orcs (bad: takes people for soldiers), Chief Vorga: press the Humans, 0 of 3; standing 0, neutral."
+  ],
+  "A5": [
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral.",
+   "The Orcs (bad: takes people for soldiers), Chief Vorga: press the Humans, 0 of 3; standing 0, neutral."
+  ],
+  "B1": [
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (good: fights tyrants), Archon Erevan: break the Gnomes, 2 of 4; standing +1, friendly.",
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Tieflings (bad: robs its neighbours), Hierarch Damaia: raid the Elves, 1 of 2; standing 0, neutral."
+  ],
+  "B2": [
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (good: fights tyrants), Archon Erevan: break the Gnomes, 2 of 4; standing +1, friendly.",
+   "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Tieflings (bad: robs its neighbours), Hierarch Damaia: raid the Elves, 1 of 2; standing 0, neutral."
+  ],
+  "B3": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans' caravans in D4: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (good: fights tyrants), Archon Erevan: break the Gnomes, 2 of 4; standing +1, friendly.",
+   "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Galen: fortify D3, 1 of 3; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Chief Vorga: press the Humans, 0 of 3; standing 0, neutral."
+  ],
+  "B4": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans' caravans in D4: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Galen: fortify D3, 1 of 3; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Chief Vorga: press the Humans, 0 of 3; standing 0, neutral."
+  ],
+  "B5": [
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral.",
+   "The Orcs (bad: takes people for soldiers), Chief Vorga: press the Humans, 0 of 3; standing 0, neutral."
+  ],
+  "C1": [
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Tieflings (bad: robs its neighbours), Hierarch Damaia: raid the Elves, 1 of 2; standing 0, neutral."
+  ],
+  "C2": [
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (good: fights tyrants), Archon Erevan: break the Gnomes, 2 of 4; standing +1, friendly.",
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Tieflings (bad: robs its neighbours), Hierarch Damaia: raid the Elves, 1 of 2; standing 0, neutral."
+  ],
+  "C3": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+   "Chance: the Humans' caravans in D4: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "Chance: the Elves (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Elves (good: fights tyrants), Archon Erevan: break the Gnomes, 2 of 4; standing +1, friendly.",
+   "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Galen: fortify D3, 1 of 3; standing +1, friendly."
+  ],
+  "C4": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans' caravans in D4: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Gnomes' caravans in B3: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Gnomes (bad: robs its neighbours), Mayor Fizwick: raid the Elves, 0 of 2; standing 0, neutral.",
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Galen: fortify D3, 1 of 3; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Chief Vorga: press the Humans, 0 of 3; standing 0, neutral."
+  ],
+  "C5": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans' caravans in D4: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Humans (good: fights tyrants), Reeve Galen: fortify D3, 1 of 3; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Chief Vorga: press the Humans, 0 of 3; standing 0, neutral."
+  ],
+  "D1": [
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Tieflings (bad: robs its neighbours), Hierarch Damaia: raid the Elves, 1 of 2; standing 0, neutral."
+  ],
+  "D2": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: the Humans' caravans in D4: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Galen: fortify D3, 1 of 3; standing +1, friendly."
+  ],
+  "D3": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: the Humans' caravans in D4: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Goblinkind (bad: takes people for soldiers), Warchief Blix: press the Humans, 1 of 3; standing 0, neutral.",
+   "The Humans (good: fights tyrants), Reeve Galen: fortify D3, 1 of 3; standing +1, friendly."
+  ],
+  "D4": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans' caravans in D4: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Humans (good: fights tyrants), Reeve Galen: fortify D3, 1 of 3; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Chief Vorga: press the Humans, 0 of 3; standing 0, neutral."
+  ],
+  "D5": [
+   "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+   "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans' caravans in D4: a Rob takes 300 GP (a Low fight, 1 Scout and 2 Guards).",
+   "Chance: the Humans (good: fights tyrants) are friendly: an ally goal is 3 marks, Contact at DC 10.",
+   "The Humans (good: fights tyrants), Reeve Galen: fortify D3, 1 of 3; standing +1, friendly.",
+   "The Orcs (bad: takes people for soldiers), Chief Vorga: press the Humans, 0 of 3; standing 0, neutral."
+  ]
+ },
+ "floors": {
+  "B5": {
+   "floor": 1,
+   "rooms": [
+    {
+     "n": "1.1",
+     "monster": "Draft Horse",
+     "cr": "1/4",
+     "state": "cleared",
+     "xp": "50",
+     "difficulty": "Moderate",
+     "size": "12×12 sq (18×18 m)",
+     "feature": "burning braziers (bright light, fire)",
+     "note": null
+    },
+    {
+     "n": "1.2",
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
+    },
+    {
+     "n": "1.3",
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
+    },
+    {
+     "n": "1.4",
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
+    },
+    {
+     "n": "1.5",
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
+    },
+    {
+     "n": "1.6",
+     "monster": null,
+     "cr": null,
+     "state": "unknown"
+    }
+   ],
+   "cleared": false
+  },
+  "D2": {
+   "floor": 2,
+   "rooms": [],
+   "cleared": false
+  },
+  "D1": {
+   "floor": 3,
+   "rooms": [],
+   "cleared": false
+  },
+  "B3": {
+   "floor": 4,
+   "rooms": [],
+   "cleared": false
+  },
+  "D4": {
+   "floor": 5,
+   "rooms": [],
+   "cleared": false
+  },
+  "C2": {
+   "floor": 6,
+   "rooms": [],
+   "cleared": false
+  },
+  "B1": {
+   "floor": 7,
+   "rooms": [],
+   "cleared": false
+  },
+  "A5": {
+   "floor": 8,
+   "rooms": [],
+   "cleared": false
+  },
+  "C4": {
+   "floor": 9,
+   "rooms": [],
+   "cleared": false
+  },
+  "C1": {
+   "floor": 10,
+   "rooms": [],
+   "cleared": false
+  },
+  "D5": {
+   "floor": 11,
+   "rooms": [],
+   "cleared": false
+  },
+  "A3": {
+   "floor": 12,
+   "rooms": [],
+   "cleared": false
+  },
+  "D3": {
+   "floor": 13,
+   "rooms": [],
+   "cleared": false
+  },
+  "C5": {
+   "floor": 14,
+   "rooms": [],
+   "cleared": false
+  },
+  "B4": {
+   "floor": 15,
+   "rooms": [],
+   "cleared": false
+  },
+  "A2": {
+   "floor": 16,
+   "rooms": [],
+   "cleared": false
+  },
+  "C3": {
+   "floor": 17,
+   "rooms": [],
+   "cleared": false
+  },
+  "A1": {
+   "floor": 18,
+   "rooms": [],
+   "cleared": false
+  },
+  "A4": {
+   "floor": 19,
+   "rooms": [],
+   "cleared": false
+  },
+  "B2": {
+   "floor": 20,
+   "rooms": [],
+   "cleared": false
+  }
+ },
+ "days": {
+  "A1": 5,
+  "A2": 4,
+  "A3": 3,
+  "A4": 2,
+  "A5": 1,
+  "B1": 4,
+  "B2": 3,
+  "B3": 2,
+  "B4": 1,
+  "B5": 0,
+  "C1": 5,
+  "C2": 4,
+  "C3": 3,
+  "C4": 2,
+  "C5": 1,
+  "D1": 5,
+  "D2": 4,
+  "D3": 3,
+  "D4": 2,
+  "D5": 2
+ },
+ "eventsWords": [
+  {
+   "n": 1,
+   "who": "tower",
+   "from": "B5",
+   "to": "B5",
+   "action": "Delve",
+   "text": "Morten delved floor 1 under B5."
+  }
+ ],
+ "nextWords": [
+  "Chance: an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+  "Chance: an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+  "Chance: the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+  "Chance: and 4 more chances on the map.",
+  "Open: Morten is in B5, the tower (level 1, mountains). Travel is a day a hex; each day away from the tower a d6, and a 1 is a wandering encounter.",
+  "Open: missions here in B5: Delve floor 1.",
+  "Open: the purse holds 115 GP: Works on a hex of the tower's (300 GP); a gift to a realm (200 GP or more counts for a month).",
+  "Open: no goal yet. Declare one: take a hex (its holder's Force + 2 marks, +2 if walled), ally a realm (3 marks; any of the six), or topple a ruler (needs a dissident; none named yet)."
+ ],
+ "dissidents": [],
+ "hexNames": {
+  "A1": "the Tieflings' taiga",
+  "A2": "the Elves' taiga",
+  "A3": "the Elves' forest",
+  "A4": "the Gnomes' savanna",
+  "A5": "the Gnomes' mountains",
+  "B1": "the Tieflings' tundra",
+  "B2": "the Elves' mountains",
+  "B3": "the Gnomes' plains",
+  "B4": "the Orcs' hills with its lake",
+  "B5": "the tower's mountains",
+  "C1": "the Tieflings' tundra",
+  "C2": "the Goblinkind's taiga",
+  "C3": "the Goblinkind's hills",
+  "C4": "the Humans' swamp",
+  "C5": "the Orcs' jungle",
+  "D1": "the Goblinkind's mountains with its lake",
+  "D2": "the Goblinkind's forest",
+  "D3": "the Humans' swamp",
+  "D4": "the Humans' plains",
+  "D5": "the Orcs' desert"
+ },
+ "goalWords": {
+  "take": "the hex changes hands with its sites",
+  "fortify": "walls go up there (300 GP)",
+  "raise": "Force +1 (200 GP × the new Force)",
+  "raid": "takes 100 GP × its Force from the target's treasury",
+  "press": "its Force +1, the target's Force −1",
+  "squeeze": "100 GP a hex into its treasury; Contact there is DC +4 for 3 months",
+  "break": "the target's Force −1",
+  "break_tower": "the tower loses a Hold box and half its gold (a hex, at Hold 0)",
+  "court": "its standing with the tower +1",
+  "ally": "the realm is the tower's ally (standing +2); Renown +1",
+  "topple": "the dissident takes the throne as a good ruler and an ally; Renown +2"
+ }
+}

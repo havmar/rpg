@@ -1,0 +1,138 @@
+{
+ "v": 1,
+ "seq": 7,
+ "kind": "domain",
+ "month": 1,
+ "day": 30,
+ "clock": "20:00",
+ "hex": "B5",
+ "where": "the tower (B5)",
+ "title": "Month 1 · the world's turn",
+ "headline": "The tower has no goal yet, so the clocks moved without it: the Elves' break the Gnomes at 2 of 4; the Tieflings' raid the Elves at 1 of 2; the Humans' fortify D3 at 1 of 3; the Goblinkind's press the Humans at 1 of 3.",
+ "prose": [],
+ "bullets": [],
+ "trace": [],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 950,
+  "coins": "47 GP 7 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": {
+  "plan": [
+   "Morten: Delve floor 1 under B5.",
+   "Floor 1 first: safe XP under the wards; the tower keeps its gold and declares no goal yet.",
+   "Tower: no goal, no purse action."
+  ],
+  "happened": [
+   {
+    "n": null,
+    "who": "Elves",
+    "label": "good",
+    "verb": "fights tyrants",
+    "text": "The Elves (good: fights tyrants), break the Gnomes: rolled a 7 (6 +1): 2 of 4.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Orcs",
+    "label": "bad",
+    "verb": "takes people for soldiers",
+    "text": "The Orcs (bad: takes people for soldiers), press the Humans: rolled a natural 1, a setback: 0 of 3.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Tieflings",
+    "label": "bad",
+    "verb": "robs its neighbours",
+    "text": "The Tieflings (bad: robs its neighbours), raid the Elves: rolled a 5 (6 −1): 1 of 2.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Gnomes",
+    "label": "bad",
+    "verb": "robs its neighbours",
+    "text": "The Gnomes (bad: robs its neighbours), raid the Elves: rolled a 2 (3 −1): 0 of 2.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Humans",
+    "label": "good",
+    "verb": "fights tyrants",
+    "text": "The Humans (good: fights tyrants), fortify D3: rolled a 4: 1 of 3.",
+    "from": null,
+    "to": null
+   },
+   {
+    "n": null,
+    "who": "Goblinkind",
+    "label": "bad",
+    "verb": "takes people for soldiers",
+    "text": "The Goblinkind (bad: takes people for soldiers), press the Humans: rolled a 5: 1 of 3.",
+    "from": null,
+    "to": null
+   }
+  ],
+  "elsewhere": "",
+  "tower": [
+   {
+    "what": "Gold",
+    "before": "105 GP",
+    "after": "115 GP"
+   },
+   {
+    "what": "Tier",
+    "before": "Hermit (Renown 0)",
+    "after": "Hermit (Renown 0)"
+   },
+   {
+    "what": "Hold",
+    "before": "3 of 3",
+    "after": "3 of 3"
+   },
+   {
+    "what": "Morten's XP",
+    "before": "900",
+    "after": "950"
+   }
+  ],
+  "next": {
+   "threats": [],
+   "chances": [
+    "an Aid in D3 (a Moderate fight, 1 Mastiff and 2 Warhorses) finishes the Humans' fortify D3, 1 of 3.",
+    "an Aid in A4 (a Moderate fight, 2 Warhorses) finishes the Elves' break the Gnomes, 2 of 4.",
+    "the Orcs' farms in D5: a Rob takes 400 GP (a Low fight, 1 Scout and 2 Guards).",
+    "and 4 more chances on the map."
+   ],
+   "open": [
+    "Morten is in B5, the tower (level 1, mountains). Travel is a day a hex; each day away from the tower a d6, and a 1 is a wandering encounter.",
+    "missions here in B5: Delve floor 1.",
+    "the purse holds 115 GP: Works on a hex of the tower's (300 GP); a gift to a realm (200 GP or more counts for a month).",
+    "no goal yet. Declare one: take a hex (its holder's Force + 2 marks, +2 if walled), ally a realm (3 marks; any of the six), or topple a ruler (needs a dissident; none named yet)."
+   ]
+  },
+  "income": [],
+  "log": [
+   "Morten: Delve floor 1 under B5 (the dungeon game; no domain effect).",
+   "Morten: deposit 5 GP → tower 105 GP.",
+   "Order: Elves Force 5 (d6 4) · Orcs Force 4 (d6 4) · Tieflings Force 4 (d6 1) · Gnomes Force 3 (d6 6) · Humans Force 3 (d6 6) · Goblinkind Force 3 (d6 2).",
+   "The Elves, break the Gnomes: d6 6 +1 (Force 5 over 3) = 7 → two marks: 2 of 4.",
+   "The Orcs, press the Humans: d6 1 +1 (Force 4 over 3) = 2 → setback: 0 of 3.",
+   "The Tieflings, raid the Elves: d6 6 −1 (Force 4 under 5) = 5 → one mark: 1 of 2.",
+   "The Gnomes, raid the Elves: d6 3 −1 (Force 3 under 5) = 2 → nothing: 0 of 2.",
+   "The Humans, fortify D3: d6 4 = 4 → one mark: 1 of 3.",
+   "The Goblinkind, press the Humans: d6 5 = 5 → one mark: 1 of 3."
+  ]
+ },
+ "words": []
+}

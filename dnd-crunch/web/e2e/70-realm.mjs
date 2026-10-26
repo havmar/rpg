@@ -38,10 +38,16 @@ export const checks = [
       // a hex's tap target is 44 px and more
       const bb = await page.locator('#realm svg.map .hit[data-hex]').first().boundingBox();
       t.expect(bb && bb.width >= 44 && bb.height >= 44, `hex target ${JSON.stringify(bb)}`);
-      // the tower card: regime and the three attributes in words
+      // the tower card: v2's regime and three attributes in words; v3's tier, Renown and Hold
       const tower = await page.locator('#realm .tower').innerText();
-      t.expect(/Regime \d+\/\d+/.test(tower), `tower card regime: ${tower.slice(0, 200)}`);
-      t.expect(/Force/.test(tower) && /Cunning/.test(tower) && /Wealth/.test(tower), 'tower card names Force, Cunning, Wealth');
+      if (realm.version === 3) {
+        const tw = realm.factions.find((f) => f.tower);
+        t.expect(tower.includes(tw.tierName) && new RegExp(`Renown ${tw.renown}\\b`).test(tower), `tower card names the tier and Renown: ${tower.slice(0, 200)}`);
+        t.expect(new RegExp(`Hold ${tw.hold} of ${tw.maxHold}`).test(tower), `tower card gives Hold: ${tower.slice(0, 200)}`);
+      } else {
+        t.expect(/Regime \d+\/\d+/.test(tower), `tower card regime: ${tower.slice(0, 200)}`);
+        t.expect(/Force/.test(tower) && /Cunning/.test(tower) && /Wealth/.test(tower), 'tower card names Force, Cunning, Wealth');
+      }
       t.expect(/GP/.test(tower) && /a month/.test(tower), 'tower card gives gold and income');
       // badges for last month's moves, and Moves hides them
       const nev = realm.eventsWords.filter((e) => e.from || e.to).length;
@@ -85,7 +91,8 @@ export const checks = [
         const rows = await page.locator('#realm .entry .piece').count();
         t.expect(rows === withPieces.assets.length, `piece rows ${rows} for ${withPieces.assets.length}`);
         const p = await page.locator('#realm .entry .piece').first().innerText();
-        t.expect(/\d+\/\d+ HP/.test(p) && /Strike/.test(p), `piece row: ${p}`);
+        if (realm.version === 3) t.expect(/tier \d · a (Low|Moderate|High) fight/.test(p) && /Strike/.test(p), `site row: ${p}`);
+        else t.expect(/\d+\/\d+ HP/.test(p) && /Strike/.test(p), `piece row: ${p}`);
         await t.shot(page, 'phone-realm-entry');
       }
     },
@@ -142,7 +149,8 @@ export const checks = [
       const realm = await realmDoc(t);
       const owner = realm.hexes.flatMap((h) => h.assets || []).map((a) => a.owner).find((o) => o && o !== 'tower');
       if (!owner) return;
-      const factions = realm.factions.map((f) => (f.name === owner ? { ...f, hostile: 2, ally: false } : f));
+      const v3 = realm.version === 3;
+      const factions = realm.factions.map((f) => (f.name === owner ? (v3 ? { ...f, standing: -2, standingWord: 'enemy', ally: false } : { ...f, hostile: 2, ally: false }) : f));
       await t.api.write({ op: 'update', collection: 'game', doc_id: 'realm', data: { factions } });
       const page = await openRealm(t, { colorScheme: 'dark' });
       await t.waitFor(() => page.locator('#realm svg.map .tokn.hos').count().then((n) => n > 0), 'hostile tokens');
@@ -150,7 +158,8 @@ export const checks = [
       const tower = await page.locator('#realm .tower').innerText();
       t.expect(tower.includes(owner), `the tower card names the hostile ${owner}`);
       const row = await page.locator(`#realm .rrow[data-realm="${owner}"]`).innerText();
-      t.expect(/hostile/i.test(row) && /2 months left/i.test(row), `the row says hostile: ${row.slice(0, 200)}`);
+      if (v3) t.expect(/enemy/i.test(row), `the row says enemy: ${row.slice(0, 200)}`);
+      else t.expect(/hostile/i.test(row) && /2 months left/i.test(row), `the row says hostile: ${row.slice(0, 200)}`);
       await t.shot(page, 'phone-realm-hostile-dark');
     },
   },
@@ -195,6 +204,50 @@ export const checks = [
       await t.waitFor(() => page.evaluate(() => T.app.view().state.status === 'playing'), 'the state change');
       await page.waitForTimeout(100);
       t.expect(!(await page.locator('#realm [data-travel-here]').count()), 'no Travel here while the GM plays');
+    },
+  },
+  {
+    name: 'realm (v3): the tower card shows the tier, Hold boxes and the goal; a realm row shows its clock',
+    async run(t) {
+      const realm = await realmDoc(t);
+      if (realm.version !== 3) {
+        console.log('        (a v2 fixture; skipped)');
+        return;
+      }
+      const tw = realm.factions.find((f) => f.tower);
+      const page = await openRealm(t);
+      const tower = page.locator('#realm .tower');
+      t.expect(await tower.locator('.tierline').innerText().then((s) => s.includes(tw.tierName)), 'the tier name on the tower card');
+      t.expect(await tower.locator('.hold i').count() === tw.maxHold, `${tw.maxHold} Hold boxes`);
+      t.expect(await tower.locator('.hold i.on').count() === tw.hold, `${tw.hold} of them filled`);
+      // every realm row shows ruler, Force, the standing word and its goal as a clock
+      for (const f of realm.factions.filter((x) => !x.tower)) {
+        const row = page.locator(`#realm .rrow[data-realm="${f.name}"]`);
+        const txt = await row.innerText();
+        t.expect(txt.includes(`${f.leader.label}: ${f.leader.verb}`), `${f.name}: label: verb`);
+        t.expect(new RegExp(`Force ${f.force}\\b`).test(txt), `${f.name}: Force`);
+        t.expect(new RegExp(f.standingWord, 'i').test(txt), `${f.name}: the standing word (shown in capitals)`);
+        if (f.goal) {
+          t.expect(txt.includes(f.goal.text), `${f.name}: the goal ${f.goal.text}`);
+          t.expect(await row.locator('.clock i').count() === f.goal.size, `${f.name}: a clock of ${f.goal.size}`);
+          t.expect(await row.locator('.clock i.on').count() === f.goal.marks, `${f.name}: ${f.goal.marks} marks`);
+        }
+      }
+      // the tower's goal, once declared, is a clock on the tower card
+      const take = realm.hexes.find((h) => h.holder && h.holder !== 'tower');
+      const goal = { text: `take ${take.id} from the ${take.holder}`, kind: 'take', target: take.holder, hex: take.id, marks: 2, size: 5, waits: 0, since: 1 };
+      await t.api.write({ op: 'update', collection: 'game', doc_id: 'realm', data: { factions: realm.factions.map((f) => (f.tower ? { ...f, goal } : f)) } });
+      await t.waitFor(() => tower.locator('.goal .clock').count(), "the tower's goal clock");
+      t.expect(await tower.locator('.goal .clock i.on').count() === 2, '2 of 5 marks on it');
+      t.expect(/Take .* from the/.test(await tower.innerText()), 'the goal in words');
+      // the hex entry lists sites with their fight tier, and the clock aimed at the hex
+      await page.locator(`#realm svg.map .hit[data-hex="${take.id}"]`).click();
+      await t.waitFor(() => page.evaluate((id) => document.querySelector('#realm .entry').dataset.hex === id, take.id), 'the entry');
+      const entry = await page.locator('#realm .entry').innerText();
+      t.expect(/Sites here/i.test(entry), 'the entry heads its sites');
+      t.expect(await page.locator('#realm .entry .piece.site').count() === take.assets.length, `${take.assets.length} site rows`);
+      await t.shot(page, 'phone-realm-v3');
+      await noSideScroll(t, page, '412 px, v3');
     },
   },
   {

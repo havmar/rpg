@@ -170,3 +170,33 @@
 #realm .travel-here button { min-height: var(--tap); padding: 6px 14px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
 #realm .travel-here button small { font-family: var(--mono); font-size: .7rem; font-weight: 400; opacity: .85; }
 #realm .travel-here button .ic { color: currentColor; }
+
+/* ---------- Realms v3: clocks, Hold, the ladder, sites ---------- */
+#realm .clock, #realm .hold { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; font-family: var(--mono); font-size: .74rem; color: var(--ink-2); vertical-align: middle; }
+#realm .clock .boxes, #realm .hold .boxes { display: inline-flex; gap: 2px; }
+#realm .clock i, #realm .hold i { width: 9px; height: 9px; border: 1.5px solid var(--ink-3); border-radius: 2px; background: var(--track); }
+#realm .clock i.on { background: var(--accent); border-color: var(--accent); }
+#realm .hold i { width: 12px; height: 12px; }
+#realm .hold i.on { background: var(--good); border-color: var(--good); }
+#realm .clock b, #realm .hold b { font-weight: 600; color: var(--ink); }
+#realm .clock small { color: var(--ink-3); }
+#realm .tower .tierline, #realm .tower .holdline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+#realm .tower .tierline .ic, #realm .tower .holdline .ic { color: var(--accent); width: 18px; height: 18px; }
+#realm .tower .tierline b { font-family: var(--display); font-size: 1.15rem; font-weight: 700; }
+#realm .tower .tierline small { font: 500 .74rem var(--mono); color: var(--ink-3); }
+#realm .tower .goal { display: flex; gap: 6px; align-items: baseline; }
+#realm .tower .goal .ic { color: var(--accent); flex: none; }
+#realm .tower .goal > span { display: grid; gap: 4px; }
+#realm .piece .tok-big.site { box-shadow: 0 0 0 2px var(--panel), 0 0 0 3.5px var(--rule); }
+#realm .piece.hostile .tok-big.site { box-shadow: 0 0 0 2px var(--panel), 0 0 0 3.5px var(--bad); }
+#realm .keyover .ktok.site { box-shadow: 0 0 0 2px var(--rule); }
+#realm .map .tokn.site .ring { stroke: var(--halo); }
+#realm .rrow.v3 .rhead .goalrow { grid-column: 2; }
+#realm .rrow.v3 .rhead .chev { grid-row: 1 / span 3; }
+#realm .rrow.v3 .goalline { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: .88rem; color: var(--ink-2); }
+#realm .rrow.v3 .goalline .ic { color: var(--accent); flex: none; }
+#realm .rrow.v3 .goalline > span { font-style: italic; }
+#realm .rrow .standing, #realm .rrow .dis { font-size: .88rem; }
+#realm .rrow .dis { display: flex; gap: 6px; align-items: baseline; }
+#realm .rrow .dis .ic { color: var(--ink-3); flex: none; }
+#realm .aimed li span b { font-style: italic; font-weight: 600; }

@@ -1,0 +1,5 @@
+[
+ {"v": 1, "seq": 1, "at": "2026-10-26T09:03:00Z", "kind": "orders", "travel": "B5",
+  "mission": {"type": "delve", "target": "floor 1"}, "goal": null, "actions": [], "give": null,
+  "plan": "Floor 1 first: safe XP under the wards, and the 100 GP stays put."}
+]

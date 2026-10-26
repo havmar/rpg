@@ -1,0 +1,56 @@
+{
+ "v": 1,
+ "seq": 3,
+ "kind": "orders",
+ "month": 1,
+ "day": 1,
+ "clock": "08:00",
+ "hex": "B5",
+ "where": "the tower (B5)",
+ "title": "Month 1's orders",
+ "headline": "Morten stays home and delves floor 1 under the tower; the tower keeps its 100 GP and declares no goal yet.",
+ "prose": [
+  "Floor 1 is a level-1 floor under his own warded hex: XP toward level 4 with no wandering checks and no realm to anger. The Gnomes' Garrison in A5 (a Moderate fight) waits until he has seen what a Strike buys."
+ ],
+ "bullets": [
+  {
+   "label": "Travel",
+   "text": "none; he stays in B5."
+  },
+  {
+   "label": "Mission",
+   "text": "Delve floor 1 under B5."
+  },
+  {
+   "label": "The tower's goal",
+   "text": "none yet. A *take A5* would be a clock of 5 (the Gnomes are Force 3)."
+  },
+  {
+   "label": "The purse",
+   "text": "nothing. Works at B5 cost 300 GP; the tower has 100 GP."
+  },
+  {
+   "label": "Give",
+   "text": "none."
+  }
+ ],
+ "trace": [],
+ "answered": [
+  "m0001"
+ ],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 900,
+  "coins": "47 GP 7 SP 5 CP",
+  "lost": []
+ },
+ "fight": null,
+ "domain": null,
+ "words": [
+  {
+   "move": "m0001",
+   "text": "Orders: to the tower's mountains (B5) · Delve floor 1 under B5 · the purse saves. Floor 1 first: safe XP under the wards, and the 100 GP stays put."
+  }
+ ]
+}

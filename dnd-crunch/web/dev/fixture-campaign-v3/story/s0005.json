@@ -1,0 +1,225 @@
+{
+ "v": 1,
+ "seq": 5,
+ "kind": "fight",
+ "month": 1,
+ "day": 1,
+ "clock": "09:20",
+ "hex": "B5",
+ "where": "Floor 1 · room 1.1",
+ "title": "Room 1.1 · Draft Horse (CR 1/4) · Moderate, 50 XP · cleared, untouched",
+ "headline": "Fire Bolt and Magic Missile dropped the horse before its hooves reached him.",
+ "prose": [],
+ "bullets": [
+  {
+   "label": "The room",
+   "text": "12×12 sq (18×18 m), burning braziers for bright light; the horse at the far wall, 10 sq off."
+  },
+  {
+   "label": "The dice",
+   "text": "both casts held (17 and 14 against DC 10 and 11); the horse's one charge missed on a 10."
+  },
+  {
+   "label": "Result",
+   "text": "20/20 HP, nothing lost. XP 900 → 950. +5 GP from a saddlebag."
+  }
+ ],
+ "trace": [
+  {
+   "text": "Initiative: Morten 15, the horse 8.",
+   "who": "gm",
+   "kind": "roll",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+2",
+     "faces": [
+      13
+     ],
+     "kept": [
+      13
+     ],
+     "mod": 2,
+     "total": 15,
+     "vs": null,
+     "result": null,
+     "nat": null
+    },
+    {
+     "expr": "1d20",
+     "faces": [
+      8
+     ],
+     "kept": [
+      8
+     ],
+     "mod": 0,
+     "total": 8,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Fire Bolt: the cast holds (17) and hits AC 10 for 7 fire dmg. Draft Horse 15 → 8 HP.",
+   "who": "morten",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      12
+     ],
+     "kept": [
+      12
+     ],
+     "mod": 5,
+     "total": 17,
+     "vs": "AC 10",
+     "result": "hit",
+     "nat": null
+    },
+    {
+     "expr": "1d10",
+     "faces": [
+      7
+     ],
+     "kept": [
+      7
+     ],
+     "mod": 0,
+     "total": 7,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "The horse charges and kicks: 10 vs AC 15, miss.",
+   "who": "foe",
+   "kind": "attack",
+   "round": 1,
+   "dice": [
+    {
+     "expr": "1d20+6",
+     "faces": [
+      4
+     ],
+     "kept": [
+      4
+     ],
+     "mod": 6,
+     "total": 10,
+     "vs": "AC 15",
+     "result": "miss",
+     "nat": null
+    }
+   ]
+  },
+  {
+   "text": "Magic Missile holds (14): 3 darts, 9 force dmg. Draft Horse 8 → 0 HP, dead.",
+   "who": "morten",
+   "kind": "cast",
+   "round": 2,
+   "dice": [
+    {
+     "expr": "1d20+5",
+     "faces": [
+      9
+     ],
+     "kept": [
+      9
+     ],
+     "mod": 5,
+     "total": 14,
+     "vs": "DC 11",
+     "result": "cast",
+     "nat": null
+    },
+    {
+     "expr": "3d4+3",
+     "faces": [
+      2,
+      3,
+      1
+     ],
+     "kept": [
+      2,
+      3,
+      1
+     ],
+     "mod": 3,
+     "total": 9,
+     "vs": null,
+     "result": null,
+     "nat": null
+    }
+   ]
+  }
+ ],
+ "answered": [],
+ "after": {
+  "hp": 20,
+  "maxHp": 20,
+  "xp": 950,
+  "coins": "52 GP 7 SP 5 CP",
+  "lost": []
+ },
+ "fight": {
+  "foes": [
+   {
+    "name": "Draft Horse",
+    "cr": "1/4",
+    "ac": 10,
+    "hp": 15,
+    "maxHp": 15,
+    "speed": "8 sq (12 m)",
+    "attacks": [
+     "Hooves +6, 1d4+4 bludgeoning"
+    ],
+    "notes": "Large",
+    "count": 1
+   }
+  ],
+  "difficulty": "Moderate",
+  "budget": 150,
+  "xp": 50,
+  "initiative": [
+   "Morten 15",
+   "Draft Horse 8"
+  ],
+  "rounds": 2,
+  "outcome": "cleared",
+  "verdict": "two casts, two hits",
+  "hpTrack": [
+   {
+    "name": "Morten",
+    "max": 20,
+    "hp": [
+     20,
+     20,
+     20
+    ]
+   },
+   {
+    "name": "Draft Horse",
+    "max": 15,
+    "hp": [
+     15,
+     8,
+     0
+    ]
+   }
+  ],
+  "loot": "+5 GP",
+  "lost": [],
+  "potion": false,
+  "xpBefore": 900,
+  "xpAfter": 950
+ },
+ "domain": null,
+ "words": []
+}

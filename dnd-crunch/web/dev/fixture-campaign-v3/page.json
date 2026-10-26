@@ -1,0 +1,32 @@
+{
+ "v": 1,
+ "campaign": "fixture-v3",
+ "url": null,
+ "lastSeq": 7,
+ "lastMove": 1,
+ "versions": {
+  "story/s0001": 1,
+  "game/morten": 4,
+  "game/realm": 2,
+  "game/rules": 1,
+  "game/state": 12,
+  "story/s0003": 1,
+  "story/s0004": 1,
+  "story/s0005": 1,
+  "story/s0006": 1,
+  "story/s0007": 1
+ },
+ "pending": [],
+ "moves": {},
+ "answered": [
+  "m0001"
+ ],
+ "ticks": 1,
+ "wake": {
+  "on": true
+ },
+ "realm": {
+  "rumours": {},
+  "hexNames": {}
+ }
+}
