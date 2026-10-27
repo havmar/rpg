@@ -26,3 +26,7 @@ and the GM's marks are in `gm-secrets.md`.
   the latch by housekeeping: they open. (Day 1, room 105.)
 - **Mage Hand theft** still needs the Sleight of Hand check against the guest's passive
   Perception: the hand is visible. It lets him reach into an open suitcase from up to 9 m.
+- **A Friendly wanderer** can walk Morten back to its own room and answer the door itself:
+  its reaction stands for that door. (Day 2, a Skeleton from 202.)
+- **A guest that knows it was charmed** (Charm Person ends, `Spells/Level 1/Charm Person.md`)
+  is Hostile to Morten afterwards: its reaction to him is 5 at best. (Day 2, the Pirate in 201.)

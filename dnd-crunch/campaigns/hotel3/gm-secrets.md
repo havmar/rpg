@@ -51,17 +51,18 @@ Luggage: `—` until rolled, then the item or `nothing magic`. Updated after eve
 |---|---|---|---|
 | 101 | none (row 1.1 checked out) | — | searched, no brick (Day 1, 10:50) |
 | 102 | 1× Axe Beak (1.2), alive | Eyes of Charming: **stolen by Mage Hand, unnoticed** · left: 5 GP and a knick-knack (a feather duster, 5 GP) | searched, no brick (Day 1 12:10; a 5 GP gift) |
-| 103 | 1× Giant Lizard (1.3), dead | Spell Scroll of Charm Person (taken) · 5 GP · a tin of scale polish (taken) | searched, no brick (Day 1 13:20) |
+| 103 | 1× Giant Lizard (1.3), dead | Spell Scroll of Charm Person (taken) · 5 GP · a tin of scale polish (taken) | searched, no brick (Day 1 13:20) · **restocked Day 2 ~18:00: 1× Boar** (CR 1/4, `gen_dungeon.py --floors 1 --seed 90` row 1; braziers come with it, the room stays 6×8 sq) · luggage — · doesn't know Morten |
 | 104 | 1× Black Bear (1.4), dead | nothing magic · 10 GP · a rubber duck with a monocle (taken) | searched, brick (Day 1 14:40) |
 | 105 | 1× Violet Fungus (1.5), dead | nothing magic · 5 GP · a violet pressed-flower bookmark (taken) | searched, no brick (Day 1 16:50) |
-| 201 | 1× Pirate (2.1) | — | unsearched · **holds a brick** (the bar's rumour, Day 1: `roll.py 1d8` = 5 over 102–105, 201–204) |
-| 202 | 3× Skeleton (2.2) | — | unsearched |
-| 203 | 2× Giant Wolf Spider (2.3) | — | unsearched |
+| 201 | 1× Pirate (2.1), alive | Spell Scroll of False Life (**stolen** by hand, unnoticed) · 20 GP and a knick-knack left | searched, brick (the rumour's) Day 2 08:30. Charmed (Eyes of Charming) 07:30–08:30; the charm ended and **he knows Morten charmed him: Hostile to Morten**, reaction capped at 5 |
+| 202 | 3× Skeleton (2.2), alive | nothing magic · 15 GP and a knick-knack left | searched, no brick (Day 2 09:40). One skeleton met as a wanderer, reaction 9, Friendly; it let him in |
+| 203 | 2× Giant Wolf Spider (2.3), alive | Potion of Growth (Uncommon, 200 GP; in the suitcase, unseen) · 10 GP | unsearched. Met Day 2 09:50, reaction 5; they killed Morten in the corridor. 8 hours later (GM's call): both back in 203 at full HP, 11/11 |
 | 204 | 1× Copper Dragon Wyrmling (2.4) | — | unsearched |
 | 403 | 1× Goblin Boss, Resident (4.3, R) | — (sure, band up) | unsearched |
 | 407 | 2× Sahuagin Warrior, the Ark (4.7, A) | — (sure, band up) | unsearched |
 
-Floors 3 and up (other than the marked suites): add rows as Morten reaches them.
+**Lost and found** (Day 2 respawn, event d6 5, floor 1 rolled): a Bead of Nourishment (Common,
+50 GP). Floors 3 and up (other than the marked suites): add rows as Morten reaches them.
 
 ## The floors (the generator's output, seed 45)
 
