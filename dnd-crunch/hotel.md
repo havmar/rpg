@@ -1,10 +1,15 @@
 # The Hotel
 
 The Hotel rules for D&D Crunch: a megadungeon that is a hotel, searched room by room by one
-wizard who is also a guest. These add to `dnd-crunch/CLAUDE.md` (the crunch, the house
+character who is also a guest. These add to `dnd-crunch/CLAUDE.md` (the crunch, the house
 rules, the report style, the GM) and win where they differ. Everything here is public:
 Morten may know all of it. The design is this page; there is no engine, no page and no
-map. The dice are `tools/roll.py`, the rooms come from `tools/gen_dungeon.py`.
+map. The dice are `tools/roll.py`, the rooms come from `tools/gen_dungeon.py`, the magic
+items from `tools/loot.py`.
+
+Morten is **two party members in one body**: a class of his own and a wizard's spellbook
+cast by the roll, levelling together (section 11). Guests' luggage holds **magic items**
+(section 12). `hotel1` predates both: its `rules.md` says what it plays instead.
 
 ## 1. The premise
 
@@ -38,7 +43,8 @@ Morten is a registered guest. He has a room on floor 1, a key, and a bill.
   do. Sizes stay as generated; the Hotel is bigger inside.
 - **The lobby** is the ground floor: the **desk** (the bill, the register, lost and
   found), the **gift shop** (anything in `reference/srd/Equipment/` at list price, Potions
-  of Healing 50 GP, buys gear at half, gems at full), the **bar** (a truce by policy: no
+  of Healing 50 GP, buys gear at half, gems at full, and a shelf and a window of magic
+  items, section 12), the **bar** (a truce by policy: no
   violence; one true rumour per drink, 1 GP), and the **lift**, which stops at every floor
   Morten has already stood on. Nobody sleeps in the lobby.
 - **Morten's room** is 101, a safe Long Rest while the Staff are not Hostile.
@@ -55,7 +61,7 @@ Every room is handled the same way, door to door.
    rules they are *unwilling* until he offers something; then they are *hesitant* and he
    rolls the Influence check, DC 15 or the guest's Intelligence if higher
    (`Glossary/Influence.md`). Deception and Persuasion need a guest that understands him
-   (Common, Draconic or Elvish, or *Comprehend Languages*); Intimidation and Performance
+   (a language on his sheet, or *Comprehend Languages*); Intimidation and Performance
    work on anyone with a language; Animal Handling coaxes a Beast or Monstrosity. A
    **gift** (coins or a knick-knack worth 5 GP × floor) moves the reaction one row up,
    once per door.
@@ -78,8 +84,8 @@ Every room is handled the same way, door to door.
    corridors give their XP as normal. Every guest has luggage: the generator's coins (a
    tenth of the XP) in a suitcase, plus one **knick-knack** the GM names in a few words (a
    snow globe of the Hotel, a monogrammed toothbrush, a brass key to nothing) worth
-   1d6 × floor GP at the gift shop or to a Friendly guest. Taking luggage while the guest
-   lives is robbery: the reaction drops to 2.
+   1d6 × floor GP at the gift shop or to a Friendly guest, and sometimes a **magic item**
+   (section 12). Taking luggage while the guest lives is robbery: the reaction drops to 2.
 
 **Word travels.** Reaction rolls on a floor take **−1 for every room Morten has searched
 there**, to a maximum of −3. The talky rooms are easiest first; by the end of a floor the
@@ -202,8 +208,9 @@ crunch rules. Dead guests stay dead.
 
 ## 8. Events
 
-After every Long Rest, roll **1d6**. On a **6**, roll 1d12 on the table. One event at a
-time; it plays out over the next day. "A visited floor" is a random floor Morten has
+After every Long Rest, roll **1d6**. On a **5**, something turns up at lost and found
+(section 12). On a **6**, roll 1d12 on the table. One event at a time; it plays out over
+the next day. "A visited floor" is a random floor Morten has
 stood on.
 
 | d12 | Event |
@@ -217,7 +224,7 @@ stood on.
 | 7 | **Power cut.** A visited floor is dark for a day: darkness in corridors and rooms. |
 | 8 | **Room service.** A cart outside his door: a Potion of Healing and two days of rations, compliments of a faction (1–2 Staff, 3–4 Residents, 5–6 the Ark), who will mention it. |
 | 9 | **A complaint.** A guest he searched or slighted complains at the desk: Staff −1 (Residents −1 if it was a Resident). |
-| 10 | **Lost and found.** A magic item turns up at the desk: a random Common or Uncommon item from `reference/srd/Magic Items/`. The Staff sell it to the first guest who asks, 100 GP (Common) or 300 GP (Uncommon). |
+| 10 | **Mislaid luggage.** A suitcase stands in a corridor on a visited floor: one sure item of that floor (`loot.py --floor N --sure`) and a knick-knack. Its owner, a random guest of the floor, is looking for it. Bringing it back is +2 on that guest's reaction roll; keeping it, if they find out, is robbery. |
 | 11 | **The walls hum.** A Resident, or a dream if none is Friendly, names one unsearched room that holds a brick. |
 | 12 | **New resident.** A random guest on a visited floor checks in permanently: a name, pyjamas, an ask. The Residents are now six. |
 
@@ -227,7 +234,9 @@ stood on.
   **A** rooms, each room's state (unsearched · searched, brick · searched, empty ·
   restocked by …), and the Cornerstone's secret. `state.md` adds one line each for
   **bricks**, **rooms searched per floor** (the word-travels penalty), **standing** with
-  the three factions, **checked in or out**, and **unpaid bills**. `rules.md` names the
+  the three factions, **checked in or out**, **unpaid bills**, and the **magic items**
+  carried, with the attuned ones marked (three at most) and what the shop window and lost
+  and found hold. `rules.md` names the
   Hotel, the seed and anything this campaign does differently. `transcript.md` as always.
   Whether a room holds a brick is rolled when it is searched, so it is never a secret in
   advance.
@@ -239,7 +248,8 @@ stood on.
   bullets (the door and its roll, the price or the fight, the noise check, the brick, the
   luggage). A fight is a fight. There are no domain turns to report; the factions appear
   only as what guests say and do.
-- **New game.** Roll the seed (`roll.py 1d100`), generate all 20 floors into
+- **New game.** Roll Morten's class (`roll.py 1d12`, section 11) and build his sheet.
+  Roll the seed (`roll.py 1d100`), generate all 20 floors into
   `gm-secrets.md`, mark five **R** rooms and one **A** suite at random (the Ark's suite
   holds Fiends: reroll the suite's guests from the SRD's Fiends if the generator put a
   Camel there), write the Cornerstone's secret, and open with Morten in room 101 on
@@ -250,7 +260,159 @@ stood on.
 
 ## 10. What is deliberately not here
 
-No overworld, no hexes, no map, no page, no world turn, no clocks, no ownership ladder.
+No overworld, no hexes, no map, no page, no world turn, no clocks, no ownership ladder, no
+crafting of magic items beyond the SRD's scrolls and potions, no item economy beyond list
+prices.
 Factions never act unprompted; the only things that move on their own are housekeeping
 (section 6) and the d6 after a Long Rest (section 8). If the game needs more world than
 that, add one card or one table row, not a system.
+
+## 11. The Class and the Book (two in one body)
+
+Morten is **two party members in one body**: the **Class**, any of the twelve SRD classes
+played by its own rules, and the **Book**, a wizard's spellbook cast from by the crunch
+rules' *Roll to cast*. One body, one set of ability scores, one XP total, one turn a
+round. This is D&D 3.5's *gestalt* character, made for parties too small to survive; the
+body still gets one turn a round, so the action economy that kills a party of one is
+untouched. The design record is `hotel-v2-plan.md`.
+
+- **The class is rolled** at a new game, 1d12, each with the SRD's one subclass:
+  1 Barbarian (Berserker), 2 Bard (Lore), 3 Cleric (Life), 4 Druid (Land), 5 Fighter
+  (Champion), 6 Monk (Open Hand), 7 Paladin (Devotion), 8 Ranger (Hunter), 9 Rogue
+  (Thief), 10 Sorcerer (Draconic), 11 Warlock (Fiend), 12 Wizard (Evoker). A 12 makes the
+  **double wizard** below.
+- **Levels.** Every level is a level in the Class **and** in the Book: at 900 XP he is,
+  say, Sorcerer 3 + Book 3. XP, character level and proficiency bonus are one track
+  (`Level Advancement.md`). Level 20 is Class 20 + Book 20.
+- **Building him.** The 2024 character creation rules with the standard array
+  (15/14/13/12/10/8): 13 or more in the Class's primary ability and in Intelligence, as
+  for multiclassing. He starts at level 3 with 900 XP, the Class's and the background's
+  starting equipment, the Book's spellbook and a wand (an Arcane Focus, 10 GP), and one
+  Common magic item (`Starting at Higher Levels.md`; `loot.py --rarity Common`).
+- **The body is the Class's.** Hit Dice, hit points, saving throws, skills, weapons,
+  armour training and every class and subclass feature, Ability Score Improvements and
+  feats included, come from the Class. The Book adds none of these.
+- **The Book is the Wizard's Spellcasting feature and nothing else:** cantrips and
+  prepared spells by the Wizard table at his level (3 cantrips and 6 prepared at level 3),
+  a spellbook of six level 1 wizard spells plus two per level after 1 (ten at level 3),
+  spells up to the highest level the Wizard table's slots would give (level 2 at 3, 3 at
+  5, 4 at 7, 5 at 9, 6 at 11, 7 at 13, 8 at 15, 9 at 17), Intelligence as its ability
+  (save DC 8 + INT + PB, attack INT + PB), an Arcane Focus or the spellbook as its focus,
+  and copying found spells at 2 hours and 50 GP a level. **Not** Arcane Recovery, Ritual
+  Adept, Scholar, a subclass, Memorize Spell, Spell Mastery or Signature Spells. A Ritual
+  spell he has prepared can still be cast as a Ritual, with no check (`Spells.md`).
+- **Book spells are always cast by the roll:** the casting check, a fizzled spell lost
+  until a Long Rest, the mishap on a 1, the double on a 20. The Book has no slots and no
+  slot ever casts a Book spell. With no Arcane Recovery, a lost Book spell stays lost
+  until the Long Rest. Spells from an origin feat (*Magic Initiate*) are cast by the roll
+  too, with the feat's chosen ability; the feat's free casting once per Long Rest needs no
+  check, and a Class with slots may cast the feat's level 1 spell from a slot with no
+  check, as the feat says.
+- **A Class that casts** (Bard, Cleric, Druid, Paladin, Ranger, Sorcerer, Warlock) keeps
+  its own Spellcasting or Pact Magic exactly as written: its slots, its list, its
+  ability, no check. Its slots never cast Book spells and the Book never casts its
+  spells. A spell on both lists is prepared on one of them. Concentration is one spell
+  at a time across both.
+- **One slot a turn** (`Spells.md: One Spell with a Spell Slot per Turn`) limits only
+  slots, so Book spells are never held back by it: a Book spell with the Magic action and
+  a Bonus Action Book spell can share a turn, and a Fighter's Action Surge is a second
+  Magic action for a second spell.
+- **Features that work on "a spell you cast"** work on Book spells too (a Sorcerer's
+  Metamagic, an Evoker's Sculpt Spells). **Features that spend a spell slot** (Divine
+  Smite, Font of Magic, a *Pearl of Power*) never touch the Book.
+- **Components are real** (`Spells.md: Components`). A Somatic component needs a hand to
+  gesture with, a Material component a free hand or the focus held in one. A shortsword
+  in one hand and a wand in the other casts anything; a sword and a shield cast nothing
+  with S or M until one is put away; a two-handed bow holds in one hand between shots.
+  Armour he has training in doesn't stop casting; armour he lacks training in does.
+- **One AC formula at a time and Extra Attack once,** as `Multiclassing.md` says: *Mage
+  Armor*, Draconic Resilience or Unarmored Defense, not two.
+- **The double wizard** (a 12 on the class roll) is the Wizard class as written, with
+  spell slots, Arcane Recovery, Ritual Adept, Scholar and the Evoker, **plus** the Book.
+  One spellbook and **one list of prepared spells** (the Wizard table's number, not
+  twice), and every prepared spell can be cast either way: from a slot, with no check, as
+  written; or by the roll. A spell lost to a failed roll can still be cast from a slot; it
+  was the improvising that misfired. Arcane Recovery restores slots as written, or lost
+  spells as the crunch house rule has it, his choice each time.
+- **The sheet** keeps the Class and the Book in separate sections, with the header
+  **Morten · Sorcerer 3 (Draconic) + Book 3 · 900 XP**.
+
+## 12. Luggage and magic items
+
+Every guest's luggage holds the generator's coins and a knick-knack as before, and
+**sometimes a magic item**, at about twice one character's share of what the 2024 DMG
+expects, and fully random.
+
+- **The luggage roll.** When a group of guests is first met (at the door, in a corridor,
+  at the bar), the GM rolls **1d20** on its floor's row for the room's luggage, and on a
+  hit takes a random item of that rarity from `reference/srd/Magic Items/`:
+  `python3 dnd-crunch/tools/loot.py --floor N` does both and prints the item, its
+  attunement, its price and its file. One roll per room, not per guest. Guests who
+  restock a room bring a fresh roll. A **Resident's suite** and the **Ark's suite** always
+  hold an item, rolled one band up: `--sure --band-up` (floors 17–20 stay on their row).
+  The result is the GM's until Morten sees the item; write it in `gm-secrets.md`.
+
+| Floors | Nothing | Common | Uncommon | Rare | Very Rare | Legendary |
+|---|---|---|---|---|---|---|
+| 1–4 | 1–10 | 11–16 | 17–19 | 20 | — | — |
+| 5–10 | 1–9 | 10–12 | 13–17 | 18–20 | — | — |
+| 11–16 | 1–8 | 9 | 10–12 | 13–16 | 17–19 | 20 |
+| 17–20 | 1–8 | — | 9 | 10–12 | 13–17 | 18–20 |
+
+- **Common** is a d6: 1–2 *Potion of Healing*, 3 *Potion of Climbing*, 4 *Bead of
+  Nourishment*, 5–6 a **Spell Scroll** of a random level 1 wizard spell. Every other
+  rarity is any file in its folder, with the *Varies* items spread into their rarities
+  (a *+1 Weapon* is Uncommon, *+1 Armor* Rare, the *Ioun Stones*, *Figurines* and
+  *Feather Tokens* by their own lines, scrolls by spell level). A magic weapon or armour
+  of no fixed kind gets a random base from `Equipment/`. Anything can turn up anywhere:
+  a Camel's suitcase can hold a *Trident of Fish Command*.
+- **The guest uses what it can.** A permanent item the guest could wear or wield (armour
+  or a weapon it would use, boots, a cloak, a ring, a wand if it casts spells) is in use
+  when the door opens, and in its open-table stat line once it can be seen. A guest with
+  Intelligence 6 or more drinks its potion when Bloodied. Everything else is in the
+  suitcase.
+- **Spellbooks.** A guest whose stat block casts wizard spells (a Mage, an Archmage)
+  keeps a spellbook in its luggage with those spells, besides the roll.
+- **Getting at it** is as before: the guest dead, out, fled, asleep or robbed. A theft
+  under its nose is a **Sleight of Hand check against the guest's passive Perception**
+  while it is busy (a chat at the door, a Helpful guest's tour of the room), or *Mage
+  Hand* (4.5 kg: the item, not the suitcase). Noticed, it is robbery: the reaction drops
+  to 2.
+- **Knowing what it does** (`Equipment/Magic Items.md`): *Identify* reveals it, so does
+  an item held through a Short Rest, and a sip names a potion. Curses are never revealed
+  that way (`Cursed Items.md`). Attunement takes another Short Rest, **three items at
+  most**, and ends on death: after a respawn he re-attunes, one Short Rest an item.
+- **Scrolls** are the Book's best friend: cast with no check if the spell is on his list
+  and of a level he can cast (the crunch house rule), or with the SRD's INT check if it is
+  higher; or copied into the spellbook (an Arcana check, DC 10 + the spell's level; the
+  scroll is used up either way, `Varies/Spell Scroll.md`). A Class caster reads scrolls
+  of its own list too.
+- **Prices** are the SRD's rarity values (`Magic Item Rarity.md`): Common 100 GP,
+  Uncommon 400, Rare 4,000, Very Rare 40,000, Legendary 200,000. A consumable is half
+  (a *Potion of Healing* stays 50 GP); a Spell Scroll is twice its scribing cost (a
+  level 1 scroll 50 GP, level 2 200, level 3 300); a magic weapon or armour adds its base
+  item's price. The gift shop buys at half, Staff Friendly or not.
+- **The gift shop's shelf** holds Potions of Healing (50 GP) and three Spell Scrolls,
+  `loot.py --scroll 1 --count 3`, restocked every 7 days. Its **window** holds one magic
+  item at list price, `loot.py --rarity Uncommon`, rerolled every 7 days or when sold.
+  From the day Morten first stands on floor 5, roll 1d6 at each reroll: on a 6 the window
+  holds a Rare instead. Staff Friendly: a quarter off the window. Staff Hostile: no shop.
+- **Lost and found** at the desk: on a 5 on the d6 after a Long Rest (section 8), an item
+  turns up, `loot.py --floor N --sure` for a random visited floor. The Staff sell it at
+  list price to the first guest who asks, half price at Staff Friendly. Claiming it
+  ("that's mine") is Deception, DC 15: it's his for nothing, or Staff −1 on a failure.
+  One item waits at a time; an unclaimed one is sold to a guest after 7 days.
+- **Guests sell.** A Friendly guest (9 or more on the reaction) sells an item from its
+  luggage at list price, or trades it for a knick-knack and the difference in coins. A
+  Helpful guest's true thing about a neighbour can be an item ("the Harpy in 305 keeps a
+  wand"), and so can a rumour at the bar.
+- **The factions pay in items.** A **Resident's** finished ask pays one item of their
+  floor's band (`--floor N --sure`) instead of a knick-knack. **The Ark** pays its bounties
+  in coins or in potions, poisons and scrolls at list value, and puts an item on the kills
+  it asks for: an Uncommon below floor 11, a Rare from 11 up (`--rarity`). A **Staff job**
+  finished pays a Common item (`--rarity Common`) from floor 5 up.
+- **Crafting** in the quiet hours is the SRD's: scribing a Spell Scroll
+  (`Equipment/Scribing Spell Scrolls.md`: a level 1 scroll is 1 day and 25 GP, needs
+  Arcana or Calligrapher's Supplies and the spell prepared) and brewing Potions of Healing
+  (Herbalism Kit). A day of work is 8 hours in room 101 or a searched room.
+- **Death** keeps items, as before: the Hotel returns luggage. Attunement ends, as above.
