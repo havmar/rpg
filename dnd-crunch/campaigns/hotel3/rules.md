@@ -30,3 +30,9 @@ and the GM's marks are in `gm-secrets.md`.
   its reaction stands for that door. (Day 2, a Skeleton from 202.)
 - **A guest that knows it was charmed** (Charm Person ends, `Spells/Level 1/Charm Person.md`)
   is Hostile to Morten afterwards: its reaction to him is 5 at best. (Day 2, the Pirate in 201.)
+- **Housekeeping takes knick-knacks** at their gift-shop value toward the damages: they are
+  Staff, like the shop. (Day 2, room 203.)
+- **16 hours between Long Rests** (`Glossary/Long Rest.md`): the respawn counts as one, so
+  after a death the next Long Rest can start 16 hours after he wakes.
+- **Forcing a locked door** is DC 20 (`Equipment/Carpenter's Tools.md`, Smith's Tools), a
+  crowbar giving Advantage; a slammed door is otherwise opened by Knock, a key, or the guest.

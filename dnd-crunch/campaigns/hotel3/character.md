@@ -1,6 +1,6 @@
 # Morten — Sorcerer 3 (Draconic) + Book 3
 
-Human (Medium), male (he/him). Background: Acolyte. XP 1,500 (level 4 at 2,700).
+Human (Medium), male (he/him). Background: Acolyte. XP 1,800 (level 4 at 2,700).
 Two party members in one body (`hotel.md` section 11): the **Class** is a Sorcerer, who
 casts with slots and no check; the **Book** is a wizard's spellbook cast by the roll.
 
@@ -132,8 +132,9 @@ lists (Web, Invisibility, Detect Magic and others) is prepared on one of them.
 | Item | Rarity | Attuned | Notes |
 |---|---|---|---|
 | Potion of Healing | Common | — | 0.5 kg; Bonus Action to drink or give to a creature within 1.5 m (`Equipment/Potion of Healing.md`): regain 2d4 + 2 HP. The starting Common item (`loot.py --rarity Common`) |
-| Eyes of Charming | Uncommon | — (attuned Day 1, ended by the death on Day 2; a Short Rest re-attunes) | 2/3 charges until dawn. 3 charges, regain all at dawn: cast Charm Person (save DC 13), 1 charge for level 1, +1 level per extra charge. From room 102 |
-| Spell Scroll: False Life | Common | — | level 1 wizard spell: cast with no check, or copy it (Arcana DC 11). From room 201 |
+| Eyes of Charming | Uncommon | ✓ (re-attuned Day 2 evening) | 2/3 charges until dawn. 3 charges, regain all at dawn: cast Charm Person (save DC 13), 1 charge for level 1, +1 level per extra charge. From room 102 |
+| Potion of Growth | Uncommon | — | identified by a sip. 1d4 hours: Enlarge (Large, Advantage on STR checks and saves, weapons +1d4 damage). From room 203 |
+| A glaive with an Evocation aura | ? | — | unidentified (hold it through a Short Rest). 2.7 kg, heavy, reach, two-handed; martial, so Morten isn't proficient. From room 204 |
 | Spell Scroll: Charm Person | Common | — | level 1 wizard spell: cast with no check, or copy it into the spellbook (Arcana DC 11, the scroll is used up either way). From room 103 |
 
 ## Inventory
@@ -160,8 +161,8 @@ lists (Web, Invisibility, Detect Magic and others) is prepared on one of them.
 | Torch ×10 | 4.5 | 1 h, 6 m bright + 6 m dim |
 | Waterskin (full) | 2.3 | |
 
-**Coins:** 0 GP (the bill: 29 GP lost to the death on Day 2).
+**Coins:** 15 GP (the False Life scroll sold for 25 GP, 10 GP given as a gift at 204).
 
-**Knick-knacks:** a tin of scale polish (6 GP) · a rubber duck with a monocle (5 GP) · a violet
-pressed-flower bookmark (3 GP). **Key tags:** 103 (Giant Lizard), 104 (Black Bear), 105
-(Violet Fungus), proof for the Ark's bounties. **Bricks:** 2.
+**Knick-knacks:** a rubber duck with a monocle (5 GP). **Key tags:** 103 (Giant Lizard), 104
+(Black Bear), 105 (Violet Fungus), 203 ×2 (Giant Wolf Spiders), proof for the Ark's bounties.
+**Bricks:** 3.

@@ -163,3 +163,56 @@ Morten died on floor 2. He charmed the Pirate, pulled the rumoured brick out of 
 **Next.** Floor 2 has 203, with the spiders at full HP, and 204, which nobody has opened. Lost and found is waiting at the desk; he can claim it with Deception at DC 15 or buy it. The fish-men in 407 pay for his three key tags, but 407 is two floors up and he is broke. It is evening, so a Short Rest would re-attune the Eyes before tomorrow.
 
 Short Rest to re-attune, visit the desk, then back to 203 with Sleep first?
+
+## 4. Floor 2, finished
+
+**Human:** yes, play on please
+
+**The roll log**
+- Day 2 18:00 Short Rest in 101: wandering d6 [1]; which floor 1 room d2 [1] = 102, the Axe Beak (already met, ignores him); the rest holds. Eyes of Charming re-attuned.
+- Desk 19:10: lost and found, a bead. Guidance (Subtle Spell, 1 SP) cast d20 [7] +5 = 12 vs DC 10, holds. Deception d20 [6] +3 + d4 [4] = 13 vs DC 15, FAIL. Staff −1.
+- Corridor: 101 → stair (turn 1), floor 2 corridor to 203 (turn 2).
+- 203 (19:30): Initiative Morten d20 [4] +3 = 7, Spiders d20 [19] +3 = 22. R1 Spiders hold. Morten: Innate Sorcery (Bonus Action, DC 14, Advantage on Sorcerer spell attacks), Sleep (L1 slot): WIS saves A d20 [4] +1 = 5 FAIL (Incapacitated), B d20 [14] +1 = 15 SAVE. R2 Spider B charges: Bite d20 [3] +5 = 8 vs AC 14, MISS. Spider A end-of-turn save d20 [16] +1 = 17, SAVE, awake. Morten drops Sleep; Magic Missile (L2 slot, 4 darts) at B: 1d4+1 [2] 3, [3] 4, [1] 2, [3] 4 = 13 force, B 11 → 0, dead. R3 Spider A charges: Bite d20 [19] +5 = 24, HIT → 1d4 [1] +3 = 4 piercing + 2d4 [4, 2] = 6 poison (Morten 23 → 13 HP). Morten: Scorching Ray (last L2 slot), adjacent (Disadvantage) and Innate Sorcery (Advantage) cancel: ray 1 d20 [14] +5 = 19 vs AC 13 HIT → 2d6 [1, 6] = 7; ray 2 d20 [17] +5 = 22 HIT → 2d6 [5, 1] = 6. A 11 → 0, dead. Bodies dragged into 203. Search 20:30–21:30: noise d6 [2], housekeeping: damages 20 GP paid with 10 GP and knick-knacks (scale polish 6, bookmark 3, the room's spool 2). Brick d6 [1] **BRICK**. Knick-knack d6 [1] × 2 = 2 GP. Potion sipped: Potion of Growth. +100 XP.
+- Short Rest in 203, 21:30–22:30: wandering d6 [1]; which room d3 [2] = 202, a Friendly skeleton, walks on. Hit Dice 1d6 [2] +2 = 4, 1d6 [4] +2 = 6 (13 → 23 HP).
+- Corridor 203 → 204 (turn 3): wandering d6 [6] (rolled late, before the knock).
+- 204 (22:30): reaction 2d6 [5, 1] −3 = 3. Initiative Morten d20 [1] +3 = 4, Wyrmling d20 [9] +3 = 12: it slams and locks the door. Forcing it is DC 20 (Carpenter's Tools), out of reach.
+- Lift to the lobby and back: Spell Scroll of False Life sold, +25 GP. 204 again (22:50): gift 10 GP, the reaction one row up (6–8). Guidance (Subtle, 1 SP) d20 [14] +5 = 19, holds. Persuasion in Draconic d20 [13] +5 + d4 [2] = 20 vs DC 15, SUCCESS: he may search. Search 22:50–23:50: noise d6 [5]. Detect Magic as a Ritual: an Evocation aura in the suitcase. Guidance (Subtle, 1 SP) d20 [20] +5 = 25, NAT 20: 2d4. Mage Hand d20 [11] +4 = 15, holds. Sleight of Hand d20 [11] +1 + 2d4 [2, 4] = 18 vs passive Perception 14, unnoticed: a glaive, slid out under the door. Brick d6 [6] no. +200 XP.
+
+**Day 2 · 23:50 · Room 204 (floor 2) · Bricks 3 · Staff −1 · Residents 0 · Ark 0**
+
+Floor 2 is done, and Morten has three bricks. He got his revenge on the spiders and took a third brick from their wall. Then he talked his way past a hostile dragon in its own language and lifted a magic glaive out of its suitcase without it noticing. The one bad roll was at the desk, where a failed bluff cost a point with the Staff.
+
+**The evening**
+- **Short Rest in room 101:** the wandering check was a 1. It was the Axe Beak from 102, on its way to the bar, and it ignores him, so the rest went on and the Eyes were re-attuned.
+- **Lost and found:** a bead was waiting at the desk. Morten cast Guidance subtly for 1 Sorcery Point and claimed it was his. Deception came to 13 against DC 15, so the clerk kept it and the **Staff dropped to −1**. The bead is for sale at 50 GP.
+
+**Room 203 · 2 Giant Wolf Spiders (CR 1/4 each) · 100 XP · killed, brick**
+- **Prep:** Innate Sorcery raised his Sorcerer spell DC to 14 and gave Advantage on his Sorcerer spell attacks. Then he cast Sleep on both spiders from 6 m down the corridor.
+- **The dice:** one spider shook off Sleep at once on a 15. The other failed and then woke on its second save, a 17. So it was another straight fight.
+- **How it ended:** the first spider charged and missed. Magic Missile from a level 2 slot put four darts into it for 13 force, and it died. The second bit him for 10, leaving him on 13/23 HP. Adjacent, his Disadvantage and Innate Sorcery's Advantage cancelled out, so Scorching Ray rolled straight, and two rays for 13 fire killed it.
+- **Search:** he dragged both bodies into the room first, because a body in a corridor costs the Staff. The noise check was a 2, so housekeeping came and the floor 2 damages were 20 GP. He paid with the room's 10 GP plus three knick-knacks, which housekeeping took at shop value. The brick check was a 1, so a brick came out. In the suitcase was a potion he identified with a sip: a **Potion of Growth**.
+- **Short Rest in 203:** the wandering check was a 1 again. A Friendly skeleton from 202 nodded and walked on. Two Hit Dice healed 10 HP, so he is on 23/23.
+
+**Room 204 · Copper Dragon Wyrmling (CR 1) · 200 XP · searched, no brick**
+- **The door:** reaction 3. The wyrmling won initiative and slammed and locked the door before he could cast. Forcing a door is DC 20, which is hopeless with STR −1.
+- **The way round:** he sold the Spell Scroll of False Life in the lobby for 25 GP and came back with a 10 GP gift. The gift moved the reaction up a row, so it was willing to talk. In Draconic, with Guidance, Persuasion came to 20 against DC 15, and it let him search.
+- **The theft:** Detect Magic as a Ritual showed a strong Evocation aura in the suitcase. Guidance rolled a natural 20, which doubled its bonus to 2d4. Mage Hand held, and Sleight of Hand came to 18 against passive Perception 14. The hand slid a **glaive** out under the door. The wyrmling never noticed, though it will find the glaive gone the next time it opens its suitcase.
+- **The search:** the noise check was quiet, and there was no brick.
+
+**Where Morten stands**
+- **HP 23/23** · 1 of 3 Hit Dice · level 1 slots 3/4, level 2 slots 0/2 · Sorcery Points 0/3 · Innate Sorcery 1/2 · nothing lost · Heroic Inspiration 1 · the free Cure Wounds unspent · Deaths 1.
+- **XP 1,800** of 2,700.
+- **Items:** Potion of Healing · Eyes of Charming, attuned, 2 of 3 charges until dawn · Potion of Growth · Spell Scroll of Charm Person · the glaive, unidentified.
+- **Carrying:** 15 GP · a rubber duck with a monocle · key tags for four first kills: a Giant Lizard, a Black Bear, a Violet Fungus and Giant Wolf Spiders.
+- **The Hotel:** 3 bricks · Staff −1, with one more point making them Hostile · floors 1 and 2 at −3 · the Pirate in 201 is Hostile to him.
+
+**Rulings made on this run**
+- Housekeeping accepts knick-knacks at their shop value toward the damages.
+- After a Long Rest he must wait 16 hours before the next (`Glossary/Long Rest.md`). He woke at 18:00, so his next Long Rest can start at 10:00 on Day 3.
+- A locked door takes DC 20 to force, with Advantage from a crowbar.
+
+**What worked:** Innate Sorcery before Sleep, the gift-and-talk route through a slammed door, and Guidance on every theft. **What didn't:** Sleep again, with three of the four saves made. The desk bluff was a bad bet with the Staff at 0.
+
+**Next.** He can't Long Rest until 10:00, so a Short Rest now would identify the glaive. A magic glaive could sell for a fortune at the gift shop, but he isn't proficient with glaives, and coins are lost on death. The four key tags are worth about 40 GP at the Ark in 407. The lift goes up only to floor 2, so floor 3 is up the stairs, and its rooms are unknown.
+
+Short Rest to identify the glaive, sleep from 10:00, then floor 3?
