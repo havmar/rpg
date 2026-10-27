@@ -408,6 +408,30 @@ world turn. It is played in chat, in Markdown.
 Its header replaces the Realms one: **Day 3 · 14:20 · Room 412 (floor 4) · Bricks 7 ·
 Staff 0 · Residents +1 · Ark −1**. Read `hotel.md` whole before play.
 
+### This works: the known-good baseline
+
+**The human's verdict (2026-10-27, after floors 1 and 2 of `hotel3`): this game works very
+well for them.** "This checkpoint" is the whole of it as it stood then:
+
+- the Hotel (`hotel.md`, sections 1 to 12), with the Class and the Book and the luggage;
+- the crunch house rules in this file (roll to cast, death is a respawn);
+- the **New game defaults** below: the GM plays Morten, cheese everything, an open table,
+  and the **Report style** defaults (fights as a summary, events as a summary, key rolls,
+  live updates every round), played in chat in Markdown;
+- the pace: the human sets a goal ("play on until floor 1 is done"), the GM plays to it
+  or to a death, and reports with the stakes and one question at the end.
+
+`hotel3` is the reference play: `campaigns/hotel3/transcript.md` shows the voice and the
+pace, and `campaigns/hotel3/rules.md` lists the rulings made along the way. Those rulings
+are campaign rules for now; fold one into `hotel.md` only when the human asks.
+
+Treat this as the baseline. Don't redesign it. Add to it the way `hotel.md` section 10
+says (one card or one table row, not a system), and only when the human asks. A change that
+alters how play feels (the report style, who plays Morten, the casting roll) is asked about
+first. If a later change makes the game worse, this checkpoint is the one to go back to:
+the git tag `hotel-baseline-2026-10-27` on `main`, if it has been made, or the merged PR
+titled "dnd-crunch: hotel3, and the Hotel marked as the known-good baseline".
+
 ## Realms (overworld, legacy)
 
 Realms is the previous overworld game, kept for its campaigns (`realms`, `realms2`,
