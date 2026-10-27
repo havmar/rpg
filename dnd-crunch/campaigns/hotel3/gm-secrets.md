@@ -50,10 +50,10 @@ Luggage: `—` until rolled, then the item or `nothing magic`. Updated after eve
 | Room | Guests (generator row) | Luggage | State |
 |---|---|---|---|
 | 101 | none (row 1.1 checked out) | — | searched, no brick (Day 1, 10:50) |
-| 102 | 1× Axe Beak (1.2) | Eyes of Charming (Uncommon, attunement, 400 GP; in the suitcase, the Beak can't use them) · 5 GP · knick-knack unnamed yet | unsearched; met Day 1 11:00, reaction 7 (wary) |
-| 103 | 1× Giant Lizard (1.3) | — | unsearched |
-| 104 | 1× Black Bear (1.4) | — | unsearched |
-| 105 | 1× Violet Fungus (1.5) | — | unsearched |
+| 102 | 1× Axe Beak (1.2), alive | Eyes of Charming: **stolen by Mage Hand, unnoticed** · left: 5 GP and a knick-knack (a feather duster, 5 GP) | searched, no brick (Day 1 12:10; a 5 GP gift) |
+| 103 | 1× Giant Lizard (1.3), dead | Spell Scroll of Charm Person (taken) · 5 GP · a tin of scale polish (taken) | searched, no brick (Day 1 13:20) |
+| 104 | 1× Black Bear (1.4), dead | nothing magic · 10 GP · a rubber duck with a monocle (taken) | searched, brick (Day 1 14:40) |
+| 105 | 1× Violet Fungus (1.5), dead | nothing magic · 5 GP · a violet pressed-flower bookmark (taken) | searched, no brick (Day 1 16:50) |
 | 201 | 1× Pirate (2.1) | — | unsearched · **holds a brick** (the bar's rumour, Day 1: `roll.py 1d8` = 5 over 102–105, 201–204) |
 | 202 | 3× Skeleton (2.2) | — | unsearched |
 | 203 | 2× Giant Wolf Spider (2.3) | — | unsearched |

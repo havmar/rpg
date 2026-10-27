@@ -16,3 +16,13 @@ and the GM's marks are in `gm-secrets.md`.
   room (one hour, a noise check, a brick check), and it counts toward the rooms he has
   searched on floor 1.
 - **Find Familiar's component** is 10 GP of incense, sold by the gift shop.
+
+## Rulings made in play
+
+- **Paying the damages on the spot** at a noise check (10 GP × floor) only avoids the Staff
+  −1. It is not the "+1 pay a damage bill" deed, which is for a bill left unpaid and settled
+  later at the desk; otherwise every search would buy standing. (Day 1, room 102.)
+- **Doors of guests that can't work a lock** (no hands, Intelligence 2 or less) are left on
+  the latch by housekeeping: they open. (Day 1, room 105.)
+- **Mage Hand theft** still needs the Sleight of Hand check against the guest's passive
+  Perception: the hand is visible. It lets him reach into an open suitcase from up to 9 m.

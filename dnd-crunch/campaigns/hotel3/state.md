@@ -1,17 +1,16 @@
 # Hotel 3 · state
 
-**Day 1 · 11:00 · Room 102, at the door (floor 1) · Bricks 0 · Staff 0 · Residents 0 · Ark 0**
+**Day 1 · 16:50 · Room 105 (floor 1) · Bricks 1 · Staff 0 · Residents 0 · Ark 0**
 
-Morten has knocked at 102. An Axe Beak (CR 1/4) stands in the doorway passage, reaction 7
-(wary, Indifferent). Morten (GM)'s plan: a 5 GP gift (reaction one row up, "ignores him"),
-then the hour's search with the owl watching. Waiting on the human's word to go on.
+Floor 1 is done: all five rooms searched, one brick (104). Morten stands in 105 with no
+slots left. Waiting on the human: the GM's offer is a Long Rest in room 101, then floor 2.
 
 ## Morten
 
-- **Sorcerer 3 (Draconic) + Book 3** · XP 900 (level 4 at 2,700) · Deaths: 0
-- **HP 23/23** · AC 14 (Draconic Resilience) · Speed 6 sq (9 m) · Hit Dice 3d6 (all 3
+- **Sorcerer 3 (Draconic) + Book 3** · XP 1,150 (level 4 at 2,700) · Deaths: 0
+- **HP 11/23** · AC 14 (Draconic Resilience) · Speed 6 sq (9 m) · Hit Dice 3d6 (2 of 3
   unspent) · Exhaustion 0 · Conditions: none
-- **Sorcerer:** slots level 1 4/4, level 2 2/2 · Sorcery Points 3/3 · Innate Sorcery 2/2 ·
+- **Sorcerer:** slots level 1 0/4, level 2 0/2 · Sorcery Points 1/3 · Innate Sorcery 2/2 ·
   Cure Wounds free cast unspent
 - **Sorcerer prepared:** Shield, Magic Missile, Sleep, Misty Step, Scorching Ray, Hold
   Person; Draconic: Command, Chromatic Orb (no diamond), Alter Self, Dragon's Breath.
@@ -22,31 +21,37 @@ then the hour's search with the owl watching. Waiting on the human's word to go 
 - **Book spells lost until Long Rest:** none
 - **Heroic Inspiration:** 1 (Resourceful) · **Concentration:** none
 - **Familiar:** an owl (Find Familiar, Ritual, Day 1 09:50): AC 11, HP 1/1, fly 12 sq
-  (18 m), darkvision 36 m, Perception +5, Stealth +5, telepathy 30 m. With Morten at 102.
-- **Magic items** (attuned 0/3): Potion of Healing
+  (18 m), darkvision 36 m, Perception +5, Stealth +5, telepathy 30 m. With Morten.
+- **Magic items** (attuned 0/3): Potion of Healing · Eyes of Charming (identified, 3/3
+  charges, not attuned: needs a Short Rest) · Spell Scroll of Charm Person
 - **Light:** torches ×10 · tinderbox · Light (Book cantrip). Corridors and rooms lit so far.
-- **Rations:** 10 (one due today, not yet eaten)
-- **Coins:** 24 GP (36, −10 incense, −2 two drinks)
-- **Knick-knacks:** none · **Key tags:** none
+- **Rations:** 9 (today's eaten)
+- **Coins:** 29 GP
+- **Knick-knacks:** a tin of scale polish (6 GP) · a rubber duck with a monocle (5 GP) · a
+  violet pressed-flower bookmark (3 GP) · **Key tags:** 103 (Giant Lizard), 104 (Black
+  Bear), 105 (Violet Fungus): unclaimed first-kill bounties, if he finds the Ark
 
 ## The Hotel
 
-- **Bricks:** 0
-- **Searched:** floor 1: 101 (no brick). Word travels: floor 1 −1, every other floor 0.
+- **Bricks:** 1 (104)
+- **Searched:** floor 1: 101, 102, 103, 104, 105 (all; brick in 104). Word travels: floor 1
+  −3, every other floor 0.
+- **Guests left on floor 1:** the Axe Beak in 102 (alive, never noticed the theft).
 - **Rumours heard:** "Room 201 hums. The Pirate in there hasn't noticed." · "104 is a
-  Black Bear who keeps the bath full."
+  Black Bear who keeps the bath full." (true; dead now)
 - **Standing:** Staff 0 · Residents 0 · Ark 0
-- **Checked in:** room 101, with his key · **Bill:** 0 GP · **Unpaid:** none
+- **Checked in:** room 101, with his key · **Bill:** 0 GP · **Unpaid:** none (102's damages
+  paid on the spot)
 - **Gift shop** (seen Day 1, restocks Day 8): shelf Potions of Healing 50 GP, Spell Scrolls
   of Unseen Servant, Detect Magic, Detect Magic (50 GP each); window Necklace of Adaptation
   (Uncommon, attunement) 400 GP. **Lost and found:** empty.
-- **Floor 1:** five rooms, 101 to 105, off one corridor, a stair at each end. Met: 102 (an
-  Axe Beak, reaction 7).
-- **Corridor turns since the last wandering check:** 0 (checked at 10:50 → 11:00, d6 5).
+- **Bodies:** three, each in its own room (103, 104, 105). None in a corridor.
+- **Corridor turns since the last wandering check:** 0 (checked 15:50, d6 5).
 
 ## Time
 
-Day 1 · 11:00. Awake since 08:00. Next Long Rest: after 16 hours awake.
+Day 1 · 16:50. Awake since 08:00. A Long Rest is due; after it, roll housekeeping
+(section 6: 1 in 6 for 103, 104, 105, each now empty) and the d6 of events (section 8).
 
 ## Modes
 

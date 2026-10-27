@@ -1,6 +1,6 @@
 # Morten — Sorcerer 3 (Draconic) + Book 3
 
-Human (Medium), male (he/him). Background: Acolyte. XP 900 (level 4 at 2,700).
+Human (Medium), male (he/him). Background: Acolyte. XP 1,150 (level 4 at 2,700).
 Two party members in one body (`hotel.md` section 11): the **Class** is a Sorcerer, who
 casts with slots and no check; the **Book** is a wizard's spellbook cast by the roll.
 
@@ -131,6 +131,8 @@ lists (Web, Invisibility, Detect Magic and others) is prepared on one of them.
 | Item | Rarity | Attuned | Notes |
 |---|---|---|---|
 | Potion of Healing | Common | — | 0.5 kg; Bonus Action to drink or give to a creature within 1.5 m (`Equipment/Potion of Healing.md`): regain 2d4 + 2 HP. The starting Common item (`loot.py --rarity Common`) |
+| Eyes of Charming | Uncommon | — (not yet; needs a Short Rest) | identified (held through a Short Rest, Day 1). 3 charges, regain all at dawn: cast Charm Person (save DC 13), 1 charge for level 1, +1 level per extra charge. From room 102 |
+| Spell Scroll: Charm Person | Common | — | level 1 wizard spell: cast with no check, or copy it into the spellbook (Arcana DC 11, the scroll is used up either way). From room 103 |
 
 ## Inventory
 
@@ -150,10 +152,14 @@ lists (Web, Invisibility, Detect Magic and others) is prepared on one of them.
 | Caltrops (bag) | 0.9 | cover a 1.5 m square |
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
 | Oil ×2 | 0.9 | thrown or poured for fire |
-| Rations ×10 | 9.1 | 1 per day |
+| Rations ×9 | 8.2 | 1 per day |
 | Rope, 15 m | 2.3 | |
 | Tinderbox | 0.5 | light a torch: Bonus Action |
 | Torch ×10 | 4.5 | 1 h, 6 m bright + 6 m dim |
 | Waterskin (full) | 2.3 | |
 
-**Coins:** 36 GP (the Sorcerer's 28 GP and the Acolyte's 8 GP).
+**Coins:** 29 GP.
+
+**Knick-knacks:** a tin of scale polish (6 GP) · a rubber duck with a monocle (5 GP) · a violet
+pressed-flower bookmark (3 GP). **Key tags:** 103 (Giant Lizard), 104 (Black Bear), 105
+(Violet Fungus), proof for the Ark's bounties. **Bricks:** 1.
