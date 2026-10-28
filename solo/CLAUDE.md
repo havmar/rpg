@@ -14,7 +14,8 @@ solo/
   campaigns/<name>/   one folder per campaign (layout below)
 ```
 
-**Active campaign:** none yet. (Update this line when a campaign starts or changes.)
+**Active campaign:** `campaigns/yared/` (Yared Tewolde, Ancalia). Update this line when a
+campaign starts or changes.
 
 ## Who is who
 
