@@ -216,3 +216,82 @@ Floor 2 is done, and Morten has three bricks. He got his revenge on the spiders 
 **Next.** He can't Long Rest until 10:00, so a Short Rest now would identify the glaive. A magic glaive could sell for a fortune at the gift shop, but he isn't proficient with glaives, and coins are lost on death. The four key tags are worth about 40 GP at the Ark in 407. The lift goes up only to floor 2, so floor 3 is up the stairs, and its rooms are unknown.
 
 Short Rest to identify the glaive, sleep from 10:00, then floor 3?
+
+## 5. Floor 3, the first four rooms
+
+**Human:** play on please
+
+**The roll log**
+- CORRECTION: the reaction roll adds Morten's CHA mod, +3 for this Sorcerer (`hotel.md` section 4 wrote "+0" for the old CHA 10 wizard). Floors 1 and 2 left it out; their doors stand as rolled. From here on it is added.
+- Day 2 23:50 lift to the lobby, Short Rest in 101 (00:00–01:00): wandering d6 [1]; which floor 1 room d2 [1] = 102, the Axe Beak, passes. The glaive held through the rest: **Flame Tongue Glaive** (Rare, attunement, 4,020 GP). Kept unsold.
+- Bar 01:10, 3 GP: rumours d6 [2] room d9 [7], d6 [2] room d9 [5], d6 [1] (a hum) room d9 [7]: 307 holds a brick.
+- Long Rest in 101, Day 3 10:00–18:00. Housekeeping: 104 d6 [3], 105 d6 [5], 203 d6 [1] new guest (`gen_dungeon.py --floors 2 --seed` d100 [59]). Event d6 [6] → d12 [1] Convention, floor d2 [1]; kind `--floors 1 --seed` d100 [82] row 1: Mules, two in each of 104 and 105.
+- Desk 18:00: a job, towels to room d9 [2] = 302. Lift to floor 2, stair to floor 3 (corridor turn 1).
+- 301 (18:20): reaction 2d6 [2, 1] +3 = 6, wary. Luggage d20 [2], nothing magic. Search 18:20–19:20: noise d6 [3], brick d6 [4] no. Mage Hand d20 [9] +4 = 13 vs DC 10, holds. Sleight of Hand d20 [12] +1 = 13 vs passive Perception 11, unnoticed: 10 GP and a knick-knack d6 [2] × 3 = 6 GP. +100 XP.
+- 302 (19:30, turn 2): reaction 2d6 [6, 2] +3 −1 = 10, Friendly. Luggage d20 [4], nothing magic. Towels delivered: job done, Staff −1 → 0. Search 19:30–20:30: noise d6 [4], brick d6 [2] **BRICK**. +400 XP.
+- Corridor to 303 (turn 3): wandering d6 [1]; which room d9 [9] = 309, the Lion. Reaction 2d6 [4, 3] +3 −2 = 8, wary; it passes, to the bar. Luggage d20 [10], nothing magic. (303's reaction pre-rolled 2d6 [3, 6] = 9; luggage d20 [8], nothing magic.)
+- To 309 (turn 4), door on the latch. Lion's return d6 [2]: back during the search. Search 20:40–21:40: noise d6 [1], a guest comes to look: room d7 [6] = 307, three Giant Wolf Spiders, reaction 2d6 [1, 4] +3 −2 −2 = 4 (attack if approached); they stand at the door. Luggage d20 [2], nothing magic. Brick d6 [2] (owed when the search ends).
+- 309 fight (~21:20): Innate Sorcery (Bonus Action, 1/2 left) as the owl warns. Initiative Morten d20 [11] +3 = 14, Lion d20 [1] +2 = 3. Morten E6, Lion at the door C1. R1 Sleep (L1 slot, Lion only): WIS save d20 [17] +1 = 18 vs DC 14, SAVE. Lion to E5: Rend d20 [15] +5 = 20 vs AC 14, HIT (Shield would make 19, not cast) → 1d8 [8] +3 = 11 slashing (Morten 23 → 12 HP). Rend d20 [5] +5 = 10, MISS. R2 Morten: Scorching Ray (L2 slot), adjacent Disadvantage and Innate Advantage cancel: d20 [10] +5 = 15, [10] +5 = 15, [14] +5 = 19 vs AC 12, three HITS → 2d6 [2, 1] 3, [1, 4] 5, [4, 6] 10 = 18 fire (Lion 22 → 4 HP). Morale WIS d20 [13] +1 = 14 vs DC 10, holds. Lion: Rend d20 [1] NAT 1, MISS; Rend d20 [9] +5 = 14, Shield (L1 slot) → AC 19, MISS. R3 Magic Missile (L1 slot) 3d4+3 [4, 1, 1] +3 = 9 force: Lion dead. The spiders hold their ground and go home when the noise ends. Search done: **BRICK**. 20 GP, knick-knack d6 [3] × 3 = 9 GP. +200 XP.
+- Short Rest in 309 (21:40–22:40): wandering d6 [6]. Hit Die 1d6 [2] +2 = 4; Cure Wounds (Magic Initiate, free, no check) 2d8 [2, 2] +3 = 7 (12 → 23 HP).
+- 303 (22:50, turn 5): reaction 9 +3 −3 = 9, Friendly; chat in Elvish. Search 22:50–23:50: noise d6 [4], brick d6 [2] **BRICK**. +200 XP: 2,700, **level 4**.
+
+**Day 3 · 23:50 · Room 303 (floor 3) · Bricks 6 · Staff 0 · Residents 0 · Ark 0**
+
+Morten took three bricks out of four rooms on floor 3 in one evening, and he has reached level 4. Floor 3 turned out to be a talky floor: a towel job got him into the sphinxes' room, and the satyrs were Friendly. The one fight came from a Lion that went to the bar. Morten searched its room while it was out, it came home early, and three spiders from 307 watched the fight from the doorway.
+
+**A correction first.** The reaction roll adds Morten's CHA mod. That's +3 for this Sorcerer, and it was left out on floors 1 and 2, because `hotel.md`'s "+0" was written for the old CHA 10 wizard. It counts from floor 3 on, and the past doors stand as rolled.
+
+**The night and the day (Day 3, 00:00 to 18:00)**
+- **Short Rest in 101:** the wandering check was a 1. It was the Axe Beak from 102 again, just passing. Holding the glaive through the rest identified it: a **Flame Tongue Glaive** (Rare, needs attunement, 4,020 GP; the gift shop pays 2,010). Its wielder can light it with a Bonus Action for +2d6 fire on a hit and 12 m of bright light.
+- **Morten (GM):** he keeps it unsold. He isn't proficient with glaives, but a death takes his coins and never his items, so the glaive is his bank. He'll sell it on the day he has something to buy.
+- **Bar, 3 GP:** "The two satyrs in 305 play pipes all night on the mezzanine bed." "307 is three spiders in a flooded bathroom." And "**307 hums**", which was the 1 on the d6, so 307 holds a brick for sure. It's spiders again.
+- **Long Rest in 101** from 10:00 to 18:00, once the 16 hours were up. The Eyes recharged at dawn.
+- **Housekeeping:** room 203 has a new guest, on a 1. Rooms 104 and 105 stayed empty.
+- **Event: Convention.** Floor 1 fills up, with two Mules wearing name badges in each of 104 and 105. They're harmless, and the rooms stay searched.
+- **The desk:** he asked for a job and got one, fresh towels for **302**.
+
+**Room 301 · Giant Seahorse (CR 1/2) · 100 XP · searched, no brick**
+- The room is flooded 3 m deep, with a 1.5 m ledge around it. The reaction was 3 + 3 = 6, so the seahorse was wary. A wary beast can be walked around, and this one can't leave the water anyway.
+- He searched along the ledge while the owl watched the water. The noise check was a 3, and there was no brick.
+- Mage Hand held on a 13 and took the suitcase's 10 GP and a conch-shell doorbell (6 GP) from 9 m away. Sleight of Hand came to 13 against passive Perception 11, so the seahorse never noticed.
+
+**Room 302 · 2 Sphinxes of Wonder (CR 1 each) · 400 XP · searched, brick**
+- "Housekeeping, towels." The reaction was 8 + 3 − 1 = 10, Friendly. Delivering the towels finished the job, so **the Staff went from −1 back to 0**. After a chat in Common they let him search.
+- The noise check was a 4, and a brick came out on a 2. He left their 40 GP alone, because Friendly CR 1 neighbours are worth more than a robbery in their own room.
+
+**The corridor: the Lion goes out**
+- On the way to 303 the wandering check was a 1. It was the **Lion from 309**, on its way to the bar. Its reaction was 7 + 3 − 2 = 8, wary, so he stepped aside and it padded past.
+- **Morten (GM):** a lion at the bar isn't in its room. He left 303 for later and went straight to 309, and the door was on the latch, since a lion can't work a lock.
+
+**Room 309 · Lion (CR 1) · Moderate, 200 XP · killed, brick**
+- **The trouble:** the noise check was a 1. The three Giant Wolf Spiders from 307 (CR 1/4 each) came to look and stood at the door. Their reaction was 4, which means they attack if approached, so he kept well away from the door. Then, 40 minutes in, the owl saw the Lion coming back.
+- **Prep:** as soon as the owl warned him, Innate Sorcery, for DC 14 and Advantage on his Sorcerer spell attacks.
+- **Round 1 · Morten 14 › Lion 3:** Sleep from a slot, aimed at the Lion alone, since Sleep picks its targets. It saved on an 18. It crossed the room in one bound, and its first Rend came up 20, which Shield's +5 couldn't beat. That was 11 dmg, and Morten went from **23 to 12 HP**. The second Rend missed.
+- **Round 2:** Scorching Ray from a level 2 slot. At point blank, Disadvantage and Innate Sorcery's Advantage cancelled out, and all three rays hit anyway (15, 15 and 19 against AC 12) for 18 fire: **Lion 22 → 4 HP**. It stood its ground (morale 14 against DC 10). Its next Rend was a natural 1, and Shield turned the one after, a 14, into a miss.
+- **Round 3:** Magic Missile from a level 1 slot made a sure kill with 9 force.
+- **After:** the spiders went home when the noise stopped, and the brick came out on a 2. The luggage held 20 GP and a tin of mane pomade (9 GP).
+- **Short Rest in 309:** a quiet 6 on the wandering check. His last Hit Die gave 4 HP and the free Cure Wounds gave 7, which put him back on **23/23 HP**.
+
+**Room 303 · 2 Satyrs (CR 1/2 each) · 200 XP · searched, brick**
+- The reaction was 9 + 3 − 3 = 9, Friendly, even with the floor's word at its −3 cap. After a chat in Elvish they let him search. The noise check was a 4, and a brick came out on a 2. He left their 20 GP.
+- **That makes 2,700 XP: level 4.**
+
+**Where Morten stands**
+- **HP 23/23** · Hit Dice 0 of 3 · level 1 slots 1/4 · level 2 slots 1/2 · Sorcery Points 3/3 · Innate Sorcery 1/2 · the free Cure Wounds spent · nothing lost from the Book · Heroic Inspiration 1 · Eyes 3/3 · Deaths 1.
+- **XP 2,700**, enough for level 4 (level 5 is at 6,500).
+- **Carrying:** **42 GP** · the Flame Tongue Glaive (his bank: 2,010 GP at the shop) · Potion of Healing · Potion of Growth · Spell Scroll of Charm Person · three knick-knacks worth 20 GP · key tags for five first kills (Giant Lizard, Black Bear, Violet Fungus, Giant Wolf Spider, Lion), about 67 GP at the Ark.
+- **The Hotel:** 6 bricks · the Staff back at 0 · floor 3's word at −3 · it's almost midnight, and his next Long Rest can start at 10:00.
+
+**Rulings made on this run**
+- The reaction roll adds Morten's CHA mod (the correction above).
+- A guest who came to look at the noise goes home when the noise stops, unless it was provoked.
+
+**What worked:** a towel job as a key to a door, a high CHA at every door, and searching a room while its guest was at the bar. **What didn't:** Sleep failed again, this time on an 18. It has put only one of the five creatures he has cast it on to sleep.
+
+**Next.** Floor 3 still has 304, 305 (the piping satyrs), 306, 307 (three spiders, and a brick for sure) and 308. Every door there is at −3 now. He's down to two slots, so he'd wait out the night in 101 and rest from 10:00. Floor 4 has the Ark in 407, where the key tags pay.
+
+**Level 4 is a choice.** As Sorcerer 4 + Book 4 he gains 7 HP (to 30), a fifth Sorcerer cantrip and a seventh prepared spell, a fourth Book cantrip, a seventh prepared Book spell and two new spellbook spells. The SRD's only general feats are Ability Score Improvement and Grappler, so it's an ASI:
+- **CHA 17 → 18, INT 14 → 15:** Sorcerer save DC 14, spell attack +6, AC 15, and +4 on reaction rolls and Persuasion.
+- **INT 14 → 16:** the Book casts at +5 with save DC 13, so it fizzles less.
+
+Which one? The GM will pick the new spells unless you'd rather choose them.

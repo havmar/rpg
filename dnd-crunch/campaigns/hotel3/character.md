@@ -1,6 +1,6 @@
 # Morten — Sorcerer 3 (Draconic) + Book 3
 
-Human (Medium), male (he/him). Background: Acolyte. XP 1,800 (level 4 at 2,700).
+Human (Medium), male (he/him). Background: Acolyte. XP 2,700: **level 4 reached, pending the ASI choice** (level 5 at 6,500).
 Two party members in one body (`hotel.md` section 11): the **Class** is a Sorcerer, who
 casts with slots and no check; the **Book** is a wizard's spellbook cast by the roll.
 
@@ -132,9 +132,9 @@ lists (Web, Invisibility, Detect Magic and others) is prepared on one of them.
 | Item | Rarity | Attuned | Notes |
 |---|---|---|---|
 | Potion of Healing | Common | — | 0.5 kg; Bonus Action to drink or give to a creature within 1.5 m (`Equipment/Potion of Healing.md`): regain 2d4 + 2 HP. The starting Common item (`loot.py --rarity Common`) |
-| Eyes of Charming | Uncommon | ✓ (re-attuned Day 2 evening) | 2/3 charges until dawn. 3 charges, regain all at dawn: cast Charm Person (save DC 13), 1 charge for level 1, +1 level per extra charge. From room 102 |
+| Eyes of Charming | Uncommon | ✓ (re-attuned Day 2 evening) | 3/3 charges until dawn. 3 charges, regain all at dawn: cast Charm Person (save DC 13), 1 charge for level 1, +1 level per extra charge. From room 102 |
 | Potion of Growth | Uncommon | — | identified by a sip. 1d4 hours: Enlarge (Large, Advantage on STR checks and saves, weapons +1d4 damage). From room 203 |
-| A glaive with an Evocation aura | ? | — | unidentified (hold it through a Short Rest). 2.7 kg, heavy, reach, two-handed; martial, so Morten isn't proficient. From room 204 |
+| Flame Tongue Glaive | Rare | — | identified Day 3 (held through a Short Rest). Bonus Action command word: ablaze, +2d6 fire on a hit, bright light 12 m + dim 12 m. 2.7 kg, heavy, reach, two-handed; martial, so Morten isn't proficient. 4,020 GP; the shop pays 2,010. Kept as his bank (items survive death). From room 204 |
 | Spell Scroll: Charm Person | Common | — | level 1 wizard spell: cast with no check, or copy it into the spellbook (Arcana DC 11, the scroll is used up either way). From room 103 |
 
 ## Inventory
@@ -155,14 +155,15 @@ lists (Web, Invisibility, Detect Magic and others) is prepared on one of them.
 | Caltrops (bag) | 0.9 | cover a 1.5 m square |
 | Crowbar | 2.3 | Advantage on STR checks where leverage helps |
 | Oil ×2 | 0.9 | thrown or poured for fire |
-| Rations ×8 | 7.3 | 1 per day |
+| Rations ×7 | 6.4 | 1 per day |
 | Rope, 15 m | 2.3 | |
 | Tinderbox | 0.5 | light a torch: Bonus Action |
 | Torch ×10 | 4.5 | 1 h, 6 m bright + 6 m dim |
 | Waterskin (full) | 2.3 | |
 
-**Coins:** 15 GP (the False Life scroll sold for 25 GP, 10 GP given as a gift at 204).
+**Coins:** 42 GP.
 
-**Knick-knacks:** a rubber duck with a monocle (5 GP). **Key tags:** 103 (Giant Lizard), 104
-(Black Bear), 105 (Violet Fungus), 203 ×2 (Giant Wolf Spiders), proof for the Ark's bounties.
-**Bricks:** 3.
+**Knick-knacks:** a rubber duck with a monocle (5 GP), a conch-shell doorbell (6 GP), a tin of
+mane pomade (9 GP). **Key tags:** 103 (Giant Lizard), 104 (Black Bear), 105 (Violet Fungus),
+203 ×2 (Giant Wolf Spiders), 309 (Lion), proof for the Ark's bounties.
+**Bricks:** 6.

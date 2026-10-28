@@ -52,18 +52,29 @@ Luggage: `—` until rolled, then the item or `nothing magic`. Updated after eve
 | 101 | none (row 1.1 checked out) | — | searched, no brick (Day 1, 10:50) |
 | 102 | 1× Axe Beak (1.2), alive | Eyes of Charming: **stolen by Mage Hand, unnoticed** · left: 5 GP and a knick-knack (a feather duster, 5 GP) | searched, no brick (Day 1 12:10; a 5 GP gift) |
 | 103 | 1× Giant Lizard (1.3), dead | Spell Scroll of Charm Person (taken) · 5 GP · a tin of scale polish (taken) | searched, no brick (Day 1 13:20) · **restocked Day 2 ~18:00: 1× Boar** (CR 1/4, `gen_dungeon.py --floors 1 --seed 90` row 1; braziers come with it, the room stays 6×8 sq) · luggage — · doesn't know Morten |
-| 104 | 1× Black Bear (1.4), dead | nothing magic · 10 GP · a rubber duck with a monocle (taken) | searched, brick (Day 1 14:40) |
-| 105 | 1× Violet Fungus (1.5), dead | nothing magic · 5 GP · a violet pressed-flower bookmark (taken) | searched, no brick (Day 1 16:50) |
+| 104 | 1× Black Bear (1.4), dead | nothing magic · 10 GP · a rubber duck with a monocle (taken) | searched, brick (Day 1 14:40) · **Convention (Day 3 event, d12 1): 2× Mule with name badges** (CR 1/8, `gen_dungeon.py --floors 1 --seed 82` row 1) · luggage — · don't know Morten |
+| 105 | 1× Violet Fungus (1.5), dead | nothing magic · 5 GP · a violet pressed-flower bookmark (taken) | searched, no brick (Day 1 16:50) · **Convention (Day 3 event, d12 1): 2× Mule with name badges** (CR 1/8, `gen_dungeon.py --floors 1 --seed 82` row 1) · luggage — · don't know Morten |
 | 201 | 1× Pirate (2.1), alive | Spell Scroll of False Life (**stolen** by hand, unnoticed) · 20 GP and a knick-knack left | searched, brick (the rumour's) Day 2 08:30. Charmed (Eyes of Charming) 07:30–08:30; the charm ended and **he knows Morten charmed him: Hostile to Morten**, reaction capped at 5 |
 | 202 | 3× Skeleton (2.2), alive | nothing magic · 15 GP and a knick-knack left | searched, no brick (Day 2 09:40). One skeleton met as a wanderer, reaction 9, Friendly; it let him in |
-| 203 | 2× Giant Wolf Spider (2.3), dead (Day 2 ~20:30; bodies dragged into the room) | Potion of Growth (taken, sipped: identified) · 10 GP (taken, paid to housekeeping) · a spool of silk thread, 2 GP (paid to housekeeping) | searched, brick (Day 2 21:30). Noise d6 2: housekeeping, damages 20 GP paid in coins and knick-knacks |
+| 203 | 2× Giant Wolf Spider (2.3), dead (Day 2 ~20:30; bodies dragged into the room) | Potion of Growth (taken, sipped: identified) · 10 GP (taken, paid to housekeeping) · a spool of silk thread, 2 GP (paid to housekeeping) | searched, brick (Day 2 21:30). Noise d6 2: housekeeping, damages 20 GP paid in coins and knick-knacks  · **restocked Day 3 ~18:00: 1× Copper Dragon Wyrmling** (CR 1, `gen_dungeon.py --floors 2 --seed 59` row 1; braziers come with it, the room stays 10×12 sq) · luggage — · doesn't know Morten |
 | 204 | 1× Copper Dragon Wyrmling (2.4), alive | Flame Tongue Glaive (Rare, attunement, 4,020 GP: **stolen by Mage Hand, unnoticed**, Day 2 ~23:00) · 20 GP and a knick-knack left | searched, no brick (Day 2 23:50). Reaction 3, then a 10 GP gift and Persuasion 20 in Draconic. **When it next opens its suitcase** (GM's call: after its next Long Rest), it finds the glaive gone: reaction to Morten 2 if it learns who |
+| 301 | 1× Giant Seahorse (3.1), alive | nothing magic · 10 GP and a conch-shell doorbell (6 GP), **taken by Mage Hand, unnoticed** | searched, no brick (Day 3 18:20–19:20). Reaction 3 +3 = 6, wary; walked around |
+| 302 | 2× Sphinx of Wonder (3.2), alive | nothing magic · 40 GP and a knick-knack left | searched, brick (Day 3 19:30–20:30). The towel job; reaction 8 +3 −1 = 10, Friendly |
+| 303 | 2× Satyr (3.3), alive | nothing magic · 20 GP and a knick-knack left | searched, brick (Day 3 22:50–23:50). Reaction 9 +3 −3 = 9, Friendly |
+| 304 | 1× Imp (3.4), the Ark's member | — | unsearched |
+| 305 | 2× Satyr (3.5) | — | unsearched. Rumour (Day 3): they play pipes all night on the mezzanine bed |
+| 306 | 2× Sahuagin Warrior (3.6), the Ark's members | — | unsearched |
+| 307 | 3× Giant Wolf Spider (3.7), alive | nothing magic (rolled Day 3, met at 309's door) | unsearched · **rumoured brick (Day 3): a brick with no roll** · came to look at 309's noise, reaction 5 +3 −2 −2 = 4 (attacks if approached), went home |
+| 308 | 1× Pirate (3.8) | — | unsearched |
+| 309 | 1× Lion (3.9), dead (Day 3 ~21:20, in its room) | nothing magic · 20 GP and a tin of mane pomade (9 GP), taken | searched, brick (Day 3 20:40–21:40). Met as a wanderer going to the bar (reaction 7 +3 −2 = 8, wary); searched while it was out; it came back and fought |
 | 403 | 1× Goblin Boss, Resident (4.3, R) | — (sure, band up) | unsearched |
 | 407 | 2× Sahuagin Warrior, the Ark (4.7, A) | — (sure, band up) | unsearched |
 
 **Lost and found** (Day 2 respawn, event d6 5, floor 1 rolled): a Bead of Nourishment (Common,
 50 GP). Morten's claim failed (Deception 13 vs DC 15, Staff −1); it is for sale at list price
-until Day 9, then sold to a guest. Floors 3 and up (other than the marked suites): add rows as Morten reaches them.
+until Day 9, then sold to a guest. Floors 4 and up (other than the marked suites): add rows as Morten reaches them.
+
+**Desk job** (Day 3 18:00): towels to 302, finished Day 3 19:30 (Staff +1).
 
 ## The floors (the generator's output, seed 45)
 
