@@ -12,7 +12,8 @@ campaigns.
   adapt it, rather than pointing at the other game's files.
 - Don't put game-specific rules in this file.
 
-Games so far: `godbound/` (Godbound), `dnd-crunch/` (D&D 2024, mechanics-only, solo wizard).
+Games so far: `godbound/` (Godbound), `dnd-crunch/` (D&D 2024, mechanics-only, solo wizard),
+`solo/` (Godbound, solo: Claude narrates as the hero and runs the GM).
 
 Rulebooks are large. Never read one whole; use the game's own index and `grep -n`.
 
