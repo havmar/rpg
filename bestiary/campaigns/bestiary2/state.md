@@ -4,7 +4,7 @@
 - **Level 3**, 900 XP (next at 2,700).
 - **Hilde Ashgrove** (PC): 27/27 HP, Hit Dice 3/3, slots 1st 4/4, 2nd 2/2, Channel Divinity
   2/2, Shield (free) 1/1, Stonecunning 2/2. 55 GP 6 SP. 7 rations + Bead of Nourishment.
-- **Oda Fenn** (companion): 24/24 HP, Hit Dice 3/3, Focus 3/3, Uncanny Metabolism 1/1,
-  Heroic Inspiration 1. 27 GP. 10 rations. Potion of Climbing.
+- **Oda Fenn** (companion): 31/31 HP, Hit Dice 3d10 3/3, Second Wind 2/2, Action Surge 1/1,
+  Heroic Inspiration 1. 18 GP. 10 rations. Potion of Climbing.
 - **Omen:** Winter Wolf → place: Frost Hollow (dm/ch01.md).
 - **Dropped:** nothing.

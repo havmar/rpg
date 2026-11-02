@@ -19,7 +19,9 @@ don't carry over. What came from where:
   scene or adventure. (The rules call it the **omen**; the name and its tool are the
   DM's.)
 - The player has **one NPC party member** (the companion).
-- The PC and the companion are **random classes from the Twins' Front and Back lists**.
+- The PC and the companion are **random classes from the Twins' Front and Back lists**,
+  **one from each list** (a d2 picks which list is the PC's, then a d6 on each). bestiary2
+  first rolled a d12 for each and got two Front classes; the human corrected it.
 - ~~The Hotel's narration style~~ (changed after bestiary1 chapter 1): **simple and
   concise, mechanics and concrete things**; no ornament; the player's words shown; NPCs
   named like "Peter the smith" (Chris McDowall's advice).

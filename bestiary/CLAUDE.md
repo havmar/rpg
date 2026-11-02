@@ -116,11 +116,11 @@ Look things up by file name and `grep -n`; never read a big file whole.
 
 Two characters: the **PC** (the player's) and the **companion** (the DM's).
 
-- **Classes are rolled** from the Twins' two lists, each character on its own: **1d12**,
-  1 to 6 the Front list, 7 to 12 the Back list (7 is Wizard, 12 Druid), each with its SRD
-  subclass. The companion rerolls a match with the PC.
+- **Classes are rolled** from the Twins' two lists, **one character from each**: **1d2**
+  says which list the PC takes (1 Front, 2 Back) and the companion takes the other; then
+  **1d6** on its list for each, each class with its SRD subclass.
 
-| d6 | Front (1–6) | Back (7–12) |
+| d6 | Front | Back |
 |---|---|---|
 | 1 | Barbarian (Berserker) | Wizard (Evoker) |
 | 2 | Fighter (Champion) | Sorcerer (Draconic) |
@@ -254,7 +254,7 @@ commit and push (`git add bestiary/campaigns/<name>`).
 ## New game
 
 - **Name:** the next free `bestiaryN`.
-- **The party:** roll both classes (1d12 each) and the scores; the DM sends the player its
+- **The party:** roll the classes (1d2 for the PC's list, then 1d6 each) and the scores; the DM sends the player its
   class and scores, and the player builds the PC's choices (species, background, name,
   pronouns, skills, spells, gear options); the DM builds the companion.
 - **The world:** a short page in `dm/`: the town (a few named people by job), two or
