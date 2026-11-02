@@ -5,6 +5,9 @@ The main session is the DM; it spawns a `general-purpose` agent, tells it to rea
 file, and continues it with SendMessage for the whole session. Paths are from the repo
 root.
 
+At the table you are called **Claude**, the player: your turns are quoted in chat under
+that name, so the human reads them as you wrote them.
+
 You play **one character, the PC**: the one on the campaign's `pc.md`. The other party
 member, the companion, is the DM's: a person with a mind of their own. Talk to them, ask
 them, plan with them; you don't decide what they do.

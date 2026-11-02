@@ -20,7 +20,9 @@ don't carry over. What came from where:
   DM's.)
 - The player has **one NPC party member** (the companion).
 - The PC and the companion are **random classes from the Twins' Front and Back lists**.
-- The **Hotel's narration style**: the chronicle and its ornament. This matters.
+- ~~The Hotel's narration style~~ (changed after bestiary1 chapter 1): **simple and
+  concise, mechanics and concrete things**; no ornament; the player's words shown; NPCs
+  named like "Peter the smith" (Chris McDowall's advice).
 - The **PC can't die for good**: on death he comes back in plain clothes with a dagger,
   everything else dropped where he was killed. The companion can die.
 
