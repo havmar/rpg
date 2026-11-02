@@ -3,10 +3,9 @@
 D&D (the 2024 rules, SRD 5.2.1) played as a **sandbox in the West Marches style**, with
 more factions and a bigger social side than West Marches usually has. Combat and mechanics
 are played strictly. Each adventure takes its theme from a **random SRD monster**. It is
-told as a **chronicle** in the Hotel's style: a readable story with lavish ornament that
-keeps every number.
+told **simply and concisely**, mechanics first (How play is told).
 
-**Draft 2.** **Read `design.md` before running the game.** It records what the human
+**Draft 3.** **Read `design.md` before running the game.** It records what the human
 wants from the DM and why, and which of these rules are the human's and which were
 added; the rest of this file assumes it.
 
@@ -16,10 +15,9 @@ guesses, and ask only when a wrong guess would matter.
 ## Who does what
 
 - **Claude is the DM**, in the main session: the world, every NPC and monster, the
-  companion, the rules, the dice and the telling. The DM is the author of the story, not
-  a procedure follower (The DM's work).
-- **The player is a subagent.** It plays the **player character (the PC)**, and only the
-  PC, from `agents/player.md`. The DM spawns it once a session (a `general-purpose` agent
+  companion, the rules, the dice and the telling (The DM's work).
+- **The player is a subagent, called Claude.** It plays the **player character (the
+  PC)**, and only the PC, from `agents/player.md`. The DM spawns it once a session (a `general-purpose` agent
   told to read that file) and continues it with SendMessage, so it remembers the session.
   It knows only what play has shown it, and keeps its own **journal** between sessions.
 - **The companion** is the party's second member, an NPC played by the DM (The party).
@@ -32,9 +30,8 @@ guesses, and ask only when a wrong guess would matter.
 Each human message is answered with a **chapter**: a run of play, like a chapter in a
 story, of many player turns, told live in chat.
 
-1. **The DM preps**, deliberately, before anything is told (The DM's work).
-2. The DM opens the chapter (the header and the opening banner, The ornament) and tells
-   the first beat.
+1. **The DM preps** briefly, before anything is told (The DM's work).
+2. The DM opens the chapter (the status line, How play is told) and tells the first beat.
 3. The DM sends the player **what the PC perceives**: the beat as told, with its dice
    line, and asks what the PC does. In a fight it is the PC's turn: the positions, what
    the PC can see, its HP and resources.
@@ -165,12 +162,9 @@ Two characters: the **PC** (the player's) and the **companion** (the DM's).
   reaches them and recorded in `gm-secrets.md`. The farther from town, the worse.
 - **Expeditions go out and come back.** The party chooses where to go; the world gives
   them reasons (jobs, rumours, debts, grudges, what they've seen) and doesn't steer them.
-- **Factions and the social game.** Several factions, each with people, a want, means and
-  enemies, and a plan the DM has written for what it will do if nobody stops it. They
-  move between and during chapters whether or not the party is watching, and they
-  remember what the party did. Their opinions of the party are the DM's to keep, in the
-  notebook, as a story's people keep them. Talk is played by the SRD's attitudes and
-  Influence rules. Every omen that comes up faction adds one.
+- **Factions:** two or three, each one sentence: who they are and what they want ("the
+  miners want the mine reopened"). They remember what the party did. Talk is played by
+  the SRD's attitudes and Influence rules. An omen that comes up faction adds one.
 
 ## The omen
 
@@ -184,122 +178,55 @@ which picks one SRD monster at random from all 330 and rolls on a d4 **what it i
 next part of the game**: **1 an NPC**, **2 an enemy**, **3 a place**, **4 a faction**. The
 tool also says how its CR compares to the party's level.
 
-- **The omen themes the adventure**, and the DM's job is to make it belong: the reading
-  that connects it to what is already in play (a faction, an NPC, a thread, the dropped
-  pile, the companion's want) beats one that stands alone. A monster far beyond the party
+- **The omen themes the adventure**, in the most obvious reading: a Wyvern place is a
+  wyvern's nest, a Camel faction a caravan guild. Tie it to what's in play only when that
+  is simple. A monster far beyond the party
   is never simply a fight: it is felt through its servants or works, petitioned,
   fled, or met asleep. Odd omens are the point, and the world is matter-of-fact about
   them, as in the Hotel: a Camel faction is a caravan guild, a Lich NPC a polite
   scholar who wants something.
-- The human sees the draw in the opening banner, with the monster's stat block on the dice
+- The human sees the draw at the chapter's start, with the monster's stat block on the dice
   line. The player sees only what the world shows.
 
 ## The DM's work
 
-The DM is the author of this game and **makes an effort for quality**: no vibing, no
-phoning it in. `design.md` says why and has ways to prep.
+**Keep it simple and legible.** The simplest thing that works: if the human can't follow
+it at a glance, it's wrong. The fun is in the dice and the choices, not in subtext,
+themes or clever connections.
 
-- **Prep at every chapter start**, before the first beat: deliberate work on what the
-  chapter could hold, by whatever means help.
-- **The notebook** is the campaign's `dm/` folder, freeform and the DM's own, for prep,
-  plans, the factions' plans and opinions, drafts, threads. It is not for the human or
-  the player; nothing in it reaches the table except through play. If something doesn't
-  help the game, don't write it.
-- **Reviews** every five chapters or so, or when the human asks (`design.md`, Reviews).
+- **One problem per adventure:** a place, a monster or a job, a reason to go, something
+  to win. Go there, deal with it, come back.
+- **Few people:** a handful of NPCs in the whole campaign, each with a name, a job and
+  one want ("Peter the smith wants his hammer back"). Reuse them before adding new ones.
+- **Prep is short:** before a chapter, a few lines in `dm/`: what's there, what it
+  wants, what it has. Enough to be consistent, no more.
+- **The notebook** is the campaign's `dm/` folder, the DM's own, not shown at the table.
+  Short notes only.
+- **Reviews** when the human asks (`design.md`, Reviews).
 
-## How play is told: the chronicle
+## How play is told
 
-The Hotel's style, and it matters. **Tell it plainly, and with a soul.** The DM tells the
-party's run as a story, as it happens, in the voice of someone at the table telling what
-is happening: matter of fact, exact, unhurried in the sentence and fast in the whole. Not
-a summary and not a roll log; not a young adult novel either. The feeling is in what the
-characters do and say and in what the teller chooses to notice, never in adjectives or in
-naming the feeling.
+**Simple and concise. Mechanics and concrete things.** Say where the party is, what is
+there, what it costs and what the dice said. Short sentences, plain words, no decoration,
+no mood-writing. If a sentence doesn't tell the reader something they need, cut it.
 
-- **Third person, present tense, the DM's voice.** Never "you". The PC and the companion
-  are seen from outside, in what they do and say. Now and then the teller allows one dry
-  line of judgment ("she checks the door twice, because the last door checked her back").
-  That line is the soul; one a beat at most. What happened before the beat goes in the
-  past, as in any present-tense story.
-- **Plain words.** Short sentences, concrete nouns, the right verb. A place gets its look
-  in a sentence and its facts (size, exits, light, what's in it) in the next, stated, not
-  decorated. Speech when it carries information or character, and people talk like
-  people, not like monsters in a book.
-- **Numbers in the prose only where they are dramatic or need explaining:** the crit, the
-  save failed by one, the HP left after the blow, a rule explained in a clause when it
-  decided something. A routine hit is "the axe lands" and a miss is a miss.
-- **The table stays open, below the prose.** Every roll that decided something goes in a
-  **dice line** at the end of its beat, in italics, in the dice's form: *d20 14 +5 = 19 vs
-  AC 15, HIT, 7 dmg · Persuasion 16 vs DC 15, yes · WIS save 4 vs DC 10, runs.* A
-  monster's stat block on first sight, a fight's difficulty and XP (*3 Bandits (CR 1/8
-  each) · Low, 75 XP*), HP, slots and gold after an exchange that changed them. Every
-  number carries its unit, every monster its CR. Prose for the reader, the line for the
-  auditor; neither is skipped.
-- **Fast.** A beat is a paragraph: a door, a parley, a round that changed something, a
-  stretch of road. Routine stretches compress into a clause, never into a bare progress
-  line, never into padding.
-- **Mark every beat** with a **banner**. At a turn (a fight starts or ends, someone is
-  met, a place is done, an item or level comes, a plan changes, someone dies) the banner
-  comes with a sentence of plain telling, what just happened and what it means. A quieter
-  beat still gets a smaller one. In a fight every round told is a beat.
+- **No ornament:** no emoji, no dividers, no banners.
+- **A beat** is a short paragraph of what happens, then its **dice line** in italics:
+  *d20 14 +5 = 19 vs AC 15, hit, 7 dmg · Stealth 12 vs 14, heard.* Every roll that decided
+  something goes there; monster stat blocks on first sight; HP, slots and gold when they
+  change.
+- **The player's words are shown.** Each turn Claude (the player) sends is quoted in chat
+  as it was written, marked **Claude:**, before the DM resolves it.
+- **A chapter opens** with one plain status line: *Day 4, morning. The Drowned Mill.
+  Level 3. Tick 24/24, Maud 23/23. 140 GP.*
+- **NPCs are named by name and job, "Peter the smith"**, every time they appear, so a
+  reader can follow who is who. Keep the cast small: few NPCs in a chapter, and reuse the
+  ones already met before adding new ones.
 
-### The ornament
-
-The chat is read on a phone and skimmed, and the human wants it lavish: signposts on
-everything, the visual rhythm as much a part of the telling as the prose. The rules are
-minimums.
-
-- **Open warm.** Every chapter starts in ornament, before any prose: a divider, the
-  **header** in bold with an emoji on each field (*🗓️ Day 4 · morning · 📍 The Drowned
-  Mill · ⭐ Level 3 · ❤️ Wren 24/24 · 🛡️ Bram 31/31 · 🪙 140 GP*), an **opening banner**
-  that says in the world's voice what this chapter sets out to do, and a second divider.
-- **Every beat framed.** A divider before and after every beat. The chat arrives in pieces
-  between rolls, so **every piece of chat written between two tool calls ends on a
-  divider**, however short. A divider stands on its own line with a blank line before
-  and after.
-- **Dividers** in the style of `` .•°¤*(¯`★´¯)*¤°•. ``, `꧁•⊹٭ ٭⊹•꧂`, `─ ⋆⋅☆⋅⋆ ─`,
-  `•── 🔔 ──•`, `⋆｡°✩ 🗝️ ✩°｡⋆`, `☠︎ ┈┈ ⚰️ ┈┈ ☠︎`, `🜂 ┈ 🔥 ┈ 🜂`, `☾ ┈ 👁️ ┈ ☽`. One line on
-  a phone screen: about 20 characters, 40 at the very most. Never the same one twice in a
-  row: let the place or the moment pick the ornament (the omen's creature, blood after a
-  fight, coins after a deal), and escape what Markdown would swallow. Never a plain rule
-  of dashes, never an ASCII map.
-- **Banners:** one bold line with an emoji, written fresh each time in the world's voice,
-  not a fixed label: *🐫 The omen draws a Camel, and the Camel is a guild.* · *⚔️ Round 2:
-  the bandit captain is down. 450 XP.* A banner stands on its own line between the beat's
-  prose and its dice line; it never replaces the sentence of plain telling.
-- **Emojis** in the prose mark a thing worth spotting, set after the words that say it
-  (🕯️ after a light snuffed, 🔑 after a key found, 🪙 after gold paid, 🩸 after a crit
-  taken). They never stand in for a word: the sentence reads the same with every emoji
-  taken out. **At least one in every beat, two in most, three at most**, spread through
-  the paragraph. None in the dice lines.
-- **No bare stretch.** No more than about six lines of phone text without a divider,
-  banner or emoji.
-- **Close warm.** The wrap-up has a divider and a **closing banner** before it, and every
-  wrap-up line leads with an emoji.
-
-A sample beat, so the register and the ornament are clear:
-
-> ⋆｡°✩ 🗝️ ✩°｡⋆
->
-> The mill-house is one room, 6 by 8 squares, the wheel's axle through the middle of it
-> and the river loud under the boards. One door, one window, a lantern on a nail 🏮. The
-> miller is a Hobgoblin in an apron, and he doesn't get up. Wren puts the guild's letter
-> on his table and waits; she always lets the paper talk first, because paper doesn't
-> lose its temper. He reads it twice. He says the Guild can have its flour when it pays
-> for last year's 🪙. Bram, at the door, says that sounds fair, and Wren gives him a look
-> that will keep until later.
->
-> **🏮 The miller talks, and he has a price.**
->
-> *Hobgoblin Warrior (CR 1/2): AC 18, 11 HP, 9 m, Longsword +3 (2d10+1). Indifferent.
-> Persuasion d20 9 +5 = 14 vs DC 15, no: he wants 40 GP.*
->
-> •── 🔔 ──•
-
-**The wrap-up** ends the chapter in a handful of lines and never retells it: the header;
-where the party stands (HP each, XP and level, gold, what's spent); what they carry, and
-what lies where the PC died; and one question for the human (the next goal, or a choice
-that is theirs). **Form:** plain Markdown, no code blocks, no ASCII maps.
+**The wrap-up** ends the chapter in a few lines and never retells it: the status line;
+HP, XP and level, gold, what's spent; what they carry, and what lies where the PC died;
+and one question for the human (the next goal, or a choice that is theirs). Plain
+Markdown, no code blocks, no ASCII maps.
 
 ## Campaign files
 
@@ -330,8 +257,8 @@ commit and push (`git add bestiary/campaigns/<name>`).
 - **The party:** roll both classes (1d12 each) and the scores; the DM sends the player its
   class and scores, and the player builds the PC's choices (species, background, name,
   pronouns, skills, spells, gear options); the DM builds the companion.
-- **The world:** prep the campaign as a whole in `dm/` first: the town, its people and its
-  factions as a situation already moving, not a backdrop. Omens may seed it.
+- **The world:** a short page in `dm/`: the town (a few named people by job), two or
+  three factions in a sentence each, and a few places to go at different distances.
 - **Start:** Day 1, in town, rested, level 3.
 - **Resuming:** read `state.md`, the sheets, `gm-secrets.md`, `dm/` and the end of
   `log.md`; spawn the player, who reads its journal; then prep the chapter.
