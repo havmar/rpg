@@ -28,8 +28,8 @@ don't carry over. What came from where:
 
 **Agreed in discussion (Day 0):**
 
-- The DM does **deliberate prep** at every chapter start, keeps a **notebook**, and the
-  game is **reviewed** periodically (below).
+- The DM does **short prep** at every chapter start (it was "deliberate prep" until the
+  Day 1 review), keeps a **notebook**, and the game is **reviewed** when the human asks.
 - The player keeps a **journal** of its own, and sees the **dice lines** (the open table).
 - The party starts at **level 3**.
 - **Death has no cost by rule** beyond the drop: if the PC dies the companion is likely
@@ -37,83 +37,44 @@ don't carry over. What came from where:
   good) and any change in how the world sees the PC are **narrative**, the DM's to decide.
   The revival is there because rolling a new character to continue the story is more
   jarring than a revival.
-- **Factions are the DM's to write**, with plans and opinions in the notebook, not run by
-  clocks, standing numbers or dice.
+- **Factions are the DM's to write**, kept to two or three, not run by clocks, standing
+  numbers or dice.
 - **No travel or event tables.** The draft had them; the human didn't ask for them.
 
 **The DM's own additions**, kept light: the omen tool's CR note, `loot.py` for when chance
 should choose an item, the SRD's encounter budgets for two. Anything else procedural that
 creeps in should earn its place at a review.
 
-## The human's view of an LLM DM
+## What the human wants from the DM
 
-The human's general problem with Claude as a DM: **Claude jumps into a story and vibes.**
-It doesn't do the work of DM preparation, and it shows. The stories come out cliché or
-dreamlike, with no felt intention behind them: things happen because something had to
-happen next, not because someone meant them, and they don't add up.
+**Simple, legible, concise.** The human has to be able to follow the game at a glance:
+who is who, where the party is, what they're trying to do, what the dice said. The fun is
+the dice and the choices.
 
-What the human wants is **a DM who makes an effort for quality and doesn't phone it in.**
+The first try (bestiary1, Day 1) went wrong the other way. The rules told the DM to
+"make an effort for quality", and the DM read that as **depth**: four factions, about
+fifteen named people in one chapter, a charter with clauses, a devil's bank, ground-rent
+economics and themes under everything. A second reader made it worse, fixing the
+economics by adding more of them. The human found it convoluted and unfun, couldn't
+follow who was who, and couldn't see the player at all.
 
-- **Not more instructions.** The human doesn't want to fix the DM's storytelling with
-  rules about storytelling. A list of "don't be cliché" lines makes a DM obey a list, not
-  think.
-- **A self-harness for the DM's own work.** Claude should use whatever helps it DM
-  better: notes, plans, drafts, content written ahead, anything. It is for the story and
-  the game, **not for the human to look at**; the human cares about the quality of what
-  reaches the table, not the DM's process. If nothing extra helps, use nothing. The test
-  is the game, not the paperwork.
-- **Deliberate prep at the start of each chapter** is the one concrete practice asked for.
-- **Procedures are not the answer.** The Hotel and the Twins tried to design the DM's work
-  away: tables and generators were the base of the game, so the LLM only had to follow
-  them. The human finds that this makes games dull and constrained and wastes what an
-  LLM DM could be. Here the mechanics are the SRD's and the omen is the one strong
-  random input; the story is the DM's to author.
-- **Periodic reviews** look at the game as a whole for bigger changes than prep can make.
+So:
 
-## What prep is for
-
-Prep is how intention gets into the game. By the first beat the DM should know things the
-table doesn't: who wants what in this scene and why now, what each faction will do if
-the party does nothing, what the omen's monster means here, what was set up earlier that
-can pay off, what the party could lose, what winning would cost. A prepared scene
-surprises the players and still makes sense afterwards. A scene improvised from nothing
-drifts to the average story, which is the cliché, or to whatever the last sentence
-suggested, which is the dream.
-
-Ways to prep (a toolbox, not a checklist; use what helps, drop what doesn't):
-
-- **Write the situation, not the plot:** who and what is present, what each wants, what
-  each will do, and what happens if nobody stops it. Decide nothing about the party.
-- **Tie the omen in.** A random monster is a constraint, and a constraint is fuel. Look
-  for the reading that connects it to something already in play rather than one that
-  stands alone. If the obvious reading came first, find a second and choose.
-- **Look back before looking forward.** Reread the end of the log, the notebook and what
-  the player has shown it cares about: what was promised, foreshadowed or left hanging,
-  and what can come back now, changed.
-- **Make people specific:** a name, a manner, a want, a thing they won't do, a way of
-  talking. Specific details beat atmospheric ones.
-- **Prepare the hard parts:** a fight's ground and the enemy's tactics; a negotiation's
-  real terms and what each side would settle for; a mystery's clues, with more than one
-  route to each conclusion.
-- **Know the stakes:** what each outcome changes in the world, so the result matters
-  whichever way the dice go.
-- **Draft what deserves care:** a letter, a speech, a notice, a history, a song.
-- **Get a second reader.** Hand the chapter's prep (not the human's chat) to a fresh
-  subagent and ask it plainly what is generic, what is unmotivated, and what a player
-  would see coming; then revise. It costs tokens, so keep it for the prep that matters
-  most: a campaign's start, a new faction, a big scene.
-- **Leave yourself a line** at a chapter's end: what landed, what fell flat, what the
-  player went for. That is next chapter's prep's first input.
-
-The notebook is the campaign's `dm/` folder, freeform. It is committed with the
-campaign because the container is wiped, but it is the DM's and isn't shown at the table.
+- **The simplest thing that works.** One problem per adventure. A few NPCs, named like
+  "Peter the smith". Two or three factions in one sentence each. The obvious reading of
+  the omen.
+- **Short prep.** Enough to be consistent: what's there, what it wants, what it has.
+  Not a world bible, not subtext.
+- **Plain telling.** Mechanics and concrete things; no mood-writing, no ornament.
+- **Show the player.** Its turns are quoted as Claude, the player.
+- "If I had more time, I would have written a shorter letter." The cutting is the DM's
+  work.
 
 ## Reviews
 
-Every five chapters or so, at a natural pause, or when the human asks, the DM reviews the
-game apart from play and records it below. The question is whether the game is good and
-what bigger change would make it better: a rule, the player's brief, the chapter's shape,
-the narration, a constraint.
+When the human asks, the DM reviews the game apart from play and records it below. The
+question is whether the game is fun and easy to follow, and what change would make it
+better. Usually the answer is to cut something.
 
 Methods that may help:
 
@@ -133,4 +94,8 @@ Methods that may help:
 
 ### Review log
 
-(None yet.)
+- **bestiary1, after chapter 1 (the human's verdict):** convoluted and unfun; too many
+  NPCs to follow; the player invisible; ornament noise. Changed: plain concise style, no
+  emoji/dividers/banners, the player's words shown as Claude, NPCs named by job, "keep it
+  simple" instead of "effort for quality", short prep, two or three factions. The
+  campaign is to be restarted in a new session.

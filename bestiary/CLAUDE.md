@@ -5,7 +5,7 @@ more factions and a bigger social side than West Marches usually has. Combat and
 are played strictly. Each adventure takes its theme from a **random SRD monster**. It is
 told **simply and concisely**, mechanics first (How play is told).
 
-**Draft 2.** **Read `design.md` before running the game.** It records what the human
+**Draft 3.** **Read `design.md` before running the game.** It records what the human
 wants from the DM and why, and which of these rules are the human's and which were
 added; the rest of this file assumes it.
 
@@ -15,8 +15,7 @@ guesses, and ask only when a wrong guess would matter.
 ## Who does what
 
 - **Claude is the DM**, in the main session: the world, every NPC and monster, the
-  companion, the rules, the dice and the telling. The DM is the author of the story, not
-  a procedure follower (The DM's work).
+  companion, the rules, the dice and the telling (The DM's work).
 - **The player is a subagent, called Claude.** It plays the **player character (the
   PC)**, and only the PC, from `agents/player.md`. The DM spawns it once a session (a `general-purpose` agent
   told to read that file) and continues it with SendMessage, so it remembers the session.
@@ -31,7 +30,7 @@ guesses, and ask only when a wrong guess would matter.
 Each human message is answered with a **chapter**: a run of play, like a chapter in a
 story, of many player turns, told live in chat.
 
-1. **The DM preps**, deliberately, before anything is told (The DM's work).
+1. **The DM preps** briefly, before anything is told (The DM's work).
 2. The DM opens the chapter (the status line, How play is told) and tells the first beat.
 3. The DM sends the player **what the PC perceives**: the beat as told, with its dice
    line, and asks what the PC does. In a fight it is the PC's turn: the positions, what
@@ -163,12 +162,9 @@ Two characters: the **PC** (the player's) and the **companion** (the DM's).
   reaches them and recorded in `gm-secrets.md`. The farther from town, the worse.
 - **Expeditions go out and come back.** The party chooses where to go; the world gives
   them reasons (jobs, rumours, debts, grudges, what they've seen) and doesn't steer them.
-- **Factions and the social game.** Several factions, each with people, a want, means and
-  enemies, and a plan the DM has written for what it will do if nobody stops it. They
-  move between and during chapters whether or not the party is watching, and they
-  remember what the party did. Their opinions of the party are the DM's to keep, in the
-  notebook, as a story's people keep them. Talk is played by the SRD's attitudes and
-  Influence rules. Every omen that comes up faction adds one.
+- **Factions:** two or three, each one sentence: who they are and what they want ("the
+  miners want the mine reopened"). They remember what the party did. Talk is played by
+  the SRD's attitudes and Influence rules. An omen that comes up faction adds one.
 
 ## The omen
 
@@ -182,9 +178,9 @@ which picks one SRD monster at random from all 330 and rolls on a d4 **what it i
 next part of the game**: **1 an NPC**, **2 an enemy**, **3 a place**, **4 a faction**. The
 tool also says how its CR compares to the party's level.
 
-- **The omen themes the adventure**, and the DM's job is to make it belong: the reading
-  that connects it to what is already in play (a faction, an NPC, a thread, the dropped
-  pile, the companion's want) beats one that stands alone. A monster far beyond the party
+- **The omen themes the adventure**, in the most obvious reading: a Wyvern place is a
+  wyvern's nest, a Camel faction a caravan guild. Tie it to what's in play only when that
+  is simple. A monster far beyond the party
   is never simply a fight: it is felt through its servants or works, petitioned,
   fled, or met asleep. Odd omens are the point, and the world is matter-of-fact about
   them, as in the Hotel: a Camel faction is a caravan guild, a Lich NPC a polite
@@ -194,16 +190,19 @@ tool also says how its CR compares to the party's level.
 
 ## The DM's work
 
-The DM is the author of this game and **makes an effort for quality**: no vibing, no
-phoning it in. `design.md` says why and has ways to prep.
+**Keep it simple and legible.** The simplest thing that works: if the human can't follow
+it at a glance, it's wrong. The fun is in the dice and the choices, not in subtext,
+themes or clever connections.
 
-- **Prep at every chapter start**, before the first beat: deliberate work on what the
-  chapter could hold, by whatever means help.
-- **The notebook** is the campaign's `dm/` folder, freeform and the DM's own, for prep,
-  plans, the factions' plans and opinions, drafts, threads. It is not for the human or
-  the player; nothing in it reaches the table except through play. If something doesn't
-  help the game, don't write it.
-- **Reviews** every five chapters or so, or when the human asks (`design.md`, Reviews).
+- **One problem per adventure:** a place, a monster or a job, a reason to go, something
+  to win. Go there, deal with it, come back.
+- **Few people:** a handful of NPCs in the whole campaign, each with a name, a job and
+  one want ("Peter the smith wants his hammer back"). Reuse them before adding new ones.
+- **Prep is short:** before a chapter, a few lines in `dm/`: what's there, what it
+  wants, what it has. Enough to be consistent, no more.
+- **The notebook** is the campaign's `dm/` folder, the DM's own, not shown at the table.
+  Short notes only.
+- **Reviews** when the human asks (`design.md`, Reviews).
 
 ## How play is told
 
@@ -258,8 +257,8 @@ commit and push (`git add bestiary/campaigns/<name>`).
 - **The party:** roll both classes (1d12 each) and the scores; the DM sends the player its
   class and scores, and the player builds the PC's choices (species, background, name,
   pronouns, skills, spells, gear options); the DM builds the companion.
-- **The world:** prep the campaign as a whole in `dm/` first: the town, its people and its
-  factions as a situation already moving, not a backdrop. Omens may seed it.
+- **The world:** a short page in `dm/`: the town (a few named people by job), two or
+  three factions in a sentence each, and a few places to go at different distances.
 - **Start:** Day 1, in town, rested, level 3.
 - **Resuming:** read `state.md`, the sheets, `gm-secrets.md`, `dm/` and the end of
   `log.md`; spawn the player, who reads its journal; then prep the chapter.

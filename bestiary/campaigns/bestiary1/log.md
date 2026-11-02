@@ -16,3 +16,5 @@
   years ago, and Ostry ordered work to go on in bad air. Maud read her grandfather's name.
 - Open: deliver the silver (Moot Hall?); the daybook; Garrow's nephew's whistle; the
   cask by Day 10; Sallow's loan to the council on Day 3.
+
+**Retired after chapter 1** (the human: too convoluted). Kept as a record; the next game is a fresh campaign under draft 3.
