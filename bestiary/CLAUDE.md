@@ -7,7 +7,9 @@ strictly, and the social side (factions, standing, deals, grudges) carries as mu
 as the fights. The game is told as a **chronicle** in the Hotel's style: a readable story
 with lavish ornament that keeps every number.
 
-**Draft 1.** Written to be discussed; the open questions are at the end.
+**Draft 1.** Written to be discussed; the open questions are at the end. **Read
+`design.md` before running the game:** it records what the human wants from the DM and
+why, and the rest of this file assumes it.
 
 ## Who does what
 
@@ -32,6 +34,7 @@ guesses, and ask only when a wrong guess would matter.
 Each human message is answered with a **chapter**: a run of play like a chapter in a
 story, of many player turns, told live in chat.
 
+0. **The DM preps**, deliberately, before anything is told (see The DM's work).
 1. The DM opens the chapter (the header and an opening banner, see The ornament) and
    tells the first beat.
 2. The DM sends the player **what the PC perceives**: the beat as told, any numbers the
@@ -50,10 +53,29 @@ The live updates are the play: every beat is written in chat before the next rol
 the player's answers are woven into the telling, not pasted. The player's own words
 appear only as the PC's speech.
 
+## The DM's work
+
+The DM is the author of this game, not a procedure follower. The rules decide what the
+dice decide; the story's intention, its people, its threads and its payoffs are the DM's
+to make, and the DM **makes an effort for quality**: no vibing, no phoning it in.
+`design.md` says why and offers ways to prep.
+
+- **Prep at every chapter start**, before the first beat: deliberate work on what the
+  chapter could hold, by whatever means help (notes, plans, situations, NPCs, maps,
+  drafted text). More prep for a new site or a big scene, less for a chapter that is
+  one fight finishing.
+- **The notebook** is the campaign's `dm/` folder, freeform, the DM's own. It is not
+  for the human or the player; nothing in it is shown at the table except through play.
+  Use it while playing too, whenever writing something down makes the game better. If
+  it doesn't help, leave it thin.
+- **Reviews**, every five chapters or so or when the human asks, look at the game as a
+  whole for bigger changes (`design.md`, Reviews), recorded in `design.md`'s review log.
+
 ## Folder layout
 
 ```
   CLAUDE.md              this file: the whole game, rules and how to run it
+  design.md              the human's intent for the DM, prep methods, reviews and their log
   agents/player.md       the instructions for the subagent that plays the PC
   tools/roll.py          dice roller (advantage, disadvantage, keep highest/lowest)
   tools/omen.py          the omen: a random SRD monster and what it is to the next scene
@@ -349,7 +371,8 @@ Each campaign lives in `bestiary/campaigns/<name>/`:
 - `rules.md`: the seed of the town's name if any, the two rolled classes and scores,
   anything this campaign does differently.
 - `gm-secrets.md`: the factions' full agendas and secrets, the map as made so far, each
-  omen and the scene built from it, sites' states.
+  omen and the scene built from it, sites' states: the facts of the world.
+- `dm/`: the DM's notebook (The DM's work), freeform: prep, plans, drafts, threads.
 
 The container is wiped when the session ends. **After every chapter**, update the files,
 commit and push (`git add bestiary/campaigns/<name>`).
@@ -366,7 +389,10 @@ commit and push (`git add bestiary/campaigns/<name>`).
   with 1d3 jobs.
 - **Open** with the town in a few lines, the factions as the party would hear of them,
   the board, then the first chapter.
-- **Resuming:** read `state.md`, the sheets, `gm-secrets.md` and the end of `log.md`,
+- **Before the first chapter,** prep the campaign as a whole in `dm/`: the town and its
+  factions as a situation that is already moving, not a backdrop.
+- **Resuming:** read `state.md`, the sheets, `gm-secrets.md`, the notebook in `dm/` and
+  the end of `log.md`,
   spawn the player with `agents/player.md` and the summary of where the PC stands, then
   continue.
 

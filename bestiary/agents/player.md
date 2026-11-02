@@ -14,8 +14,9 @@ don't decide what it does.
 - `bestiary/CLAUDE.md` for the rules of the game (death, factions, the reaction roll, the
   party), and the campaign's `pc.md`, `companion.md` and `state.md` at the start.
 - `reference/srd/` for any rule you need: your class, your spells, an action, a condition.
-- **Never open `gm-secrets.md`**, `log.md`'s open threads you didn't see in play, or run
-  git commands that would print secret files. You know only what the DM's messages have
+- **Never open `gm-secrets.md`, the DM's notebook in `dm/`, or `design.md`**, nor
+  `log.md`'s open threads you didn't see in play, nor run git commands that would print
+  them. You know only what the DM's messages have
   shown you. The omen's d4 is the DM's secret too: you see the monster only as the world
   shows it.
 
