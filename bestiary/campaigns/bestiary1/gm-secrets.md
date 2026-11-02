@@ -23,33 +23,53 @@
     He may not hinder it.
   - Either party breaking the terms is forfeit to the House's enforcer. (The dragon is
     bound too, which is why she has been a good landlady for 80 years.)
+  - The charter may be amended "by consent of Lessor and Lessees, witnessed, upon payment
+    of a thing the Lessor desires". Public, in both copies. Nobody has tried in 80 years.
+- **The founders own the ground.** The three houses hold every plot in Lessing as
+  freehold and lease it to everyone else: the commons pay **ground-rent** to the
+  founders, and the founders pay the dragon. A town of renters renting from renters.
 
 ## Lessing
 
-- About 600 people, on the ford of the river **Tamber**. A palisade, a stone gatehouse,
+- About 600 people in about 130 households, on the ford of the river **Tamber**. A palisade, a stone gatehouse,
   grey-stone houses with slate roofs. No thatch allowed, by town law since the dragon's
   one warning fire in year 12.
 - **The Square:** the Rent Office (squat stone, iron door, a brass claw plaque), the Moot
   Hall, and across from the Rent Office the Witness's office: a neat painted sign,
   "Sallow, Notary. Wills, Deeds, Loans Arranged".
-- **The Tally House** by the gate: where expeditions sell their finds. Assessor **Dobbin
-  Reede**, a fat honest clerk, takes the Fifth for the rent box and buys at the SRD's
-  sell price (half).
+- **The Tally House** by the gate: where expeditions sell their finds. Assessor **Joss
+  Crane**, Ibbet's great-nephew, 19, quick, takes the Fifth for the rent box and buys at
+  the SRD's sell price (half).
 - **The Lantern** (inn, by the ford), run by **Gil Harrowby**: rooms 5 SP a night,
   adventurers' notice board.
 - **Tasker's tannery** downriver, stinking, where the Commons meet.
 
-## The rent box (as of Day 1)
+## The money (as of Day 1)
 
-- In it: **2,450 GP**. Needed: **4,000 GP**. Short: **1,550 GP**.
-- Why: the **Old Tally silver mine** (8 km E), which paid ~1,500 GP a year in silver
-  tax, closed two years ago after the deep level broke into something. Eleven miners died,
-  among them Pell Tasker.
-- To come: the head-tax (1 GP a household, roughly 500 GP), due on Day 20; the Fifth on
-  whatever adventurers sell.
-- **The Old Tally strongroom** still holds the last two months' smelted ingots, worth
-  **800 GP**. Nobody has gone back for them. What else is down there is set by the omen
-  when the party goes.
+- **The town's rent budget, normally:** ground-rents about 1,600 GP (130 households at
+  about 12 GP a year, due by the Feast), the ford toll about 900 GP, the Old Tally's
+  silver royalty about 1,500 GP. Total about 4,000: no margin, ever.
+- **The Old Tally silver mine** (8 km E) closed two years ago after the deep level broke
+  into something. Eleven miners died, among them Pell Tasker. The royalty is gone, so the
+  town is now **short about 1,500 GP every year**, structurally, until the mine reopens
+  or someone changes who pays.
+- **Last year** the founders made up the gap from their reserves and from **Aldous
+  Ferrant's personal loan from the House of Accounts: 900 GP, secured on the Ferrant
+  house**, due next Feast too (Day 30), with 1,000 GP to repay. Maud doesn't know. It's in
+  Sallow's ledger.
+- **In the box now: 1,700 GP** (the toll, the founders' last coin, the ground-rent from
+  the few who've paid early).
+- **Still due: about 1,100 GP of ground-rent**, which the commons are withholding (the
+  strike). Due by Day 20 by custom.
+- **So:** strike holds → short 2,300 GP. Strike settled → short 1,200 GP. And next year,
+  the same again.
+- **The Old Tally strongroom** still holds the last two months' ingots, worth **800 GP**,
+  the founders' property. Two crews went for them last spring; neither came back. What's
+  down there is set by the omen when the party goes.
+- **Hesketh Ostry** has 500 GP in coin hidden under the floor of his wool store, his
+  family's money to run with on Day 29 if it comes to that. He has told no one.
+- **The Burnt Road toll-house** kobolds collect a toll for the Landlady on everything
+  going north; their strongbox holds about 200 GP at any time.
 
 ## The calendar
 
@@ -86,5 +106,5 @@ See `dm/campaign.md` for who wants what and the plans. The facts:
 - **The Commons:** **Wenna Tasker**, tanner, 30, leads the tax strike. Her brother Pell
   died in the Old Tally.
 - **Corvin Sallow**, Witness of the House of Accounts, human, 40s, in Lessing six years.
-  His clerk is an imp, **Nib**, usually a raven.
+  His clerk is an imp, **Nib**, who lives as a spider in the ledger cabinet.
 - **The Erinyes** (CR 12), the House's enforcer, comes only at a breach.

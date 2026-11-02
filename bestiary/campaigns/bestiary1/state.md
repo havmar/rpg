@@ -8,6 +8,6 @@
     Recovery 1/1, Heroic Inspiration 1. 55 GP. Clerk the owl with her.
 - **Deal:** Maud has hired Tick: 20 GP and a share of the Old Tally bounty.
 - **Rations:** Tick 5 days (and the Bead). Maud none packed.
-- **Rent box:** 2,450 / 4,000 GP.
+- **Rent box:** 1,700 / 4,000 GP (ground-rent strike: ~1,100 withheld).
 - **Dropped:** nothing.
 - **Omen:** none drawn yet for play.
