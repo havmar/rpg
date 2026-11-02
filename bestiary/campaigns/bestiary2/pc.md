@@ -1,48 +1,50 @@
-# Hilde Ashgrove (she/her) · Dwarf Cleric 3 (Life Domain) · Sage
+# Hilde Ashgrove (she/her) · Dwarf Wizard 3 (Evoker) · Sage
 
-Level 3, 900 XP. Proficiency +2. Hit Dice 3d8. Speed 9 m (6 sq). Size Medium.
-Who: a temple archivist of the Hearth Mother who left her books to heal people where no one else will. Want: open a proper infirmary in this frontier town, which takes gold and the town's trust.
+Level 3, 900 XP. Proficiency +2. Hit Dice 3d6. Speed 9 m (6 sq). Size Medium.
+Who: a temple archivist who read one book too many and taught herself evocation. Want: fill her spellbook with magic the lowlands have lost, which the old ruins of the Greywood are said to hold.
 
 ## Scores
-Rolled 9, 9, 15, 11, 14, 11; placed Str 11, Dex 11, Con 14, Int 9, Wis 15, Cha 9; Sage +2 Wis, +1 Con.
+Rolled 9, 9, 15, 11, 14, 11; placed Str 9, Dex 11, Con 14, Int 15, Wis 11, Cha 9; Sage +2 Int, +1 Con.
 
 | Str | Dex | Con | Int | Wis | Cha |
 |---|---|---|---|---|---|
-| 11 (+0) | 11 (+0) | 15 (+2) | 9 (-1) | 17 (+3) | 9 (-1) |
+| 9 (-1) | 11 (+0) | 15 (+2) | 17 (+3) | 11 (+0) | 9 (-1) |
 
-- **HP 27** (8 + 5 + 5, +2 Con ×3, +3 Dwarven Toughness). **AC 16** (Scale Mail 14 + Shield 2; Disadvantage on Stealth). Initiative +0. Passive Perception 13.
-- **Saves:** Str +0, Dex +0, Con +2, Int -1, **Wis +5, Cha +1**.
-- **Skills:** Arcana +4 (prof +1, Thaumaturge +3), History +1, Insight +5, Medicine +5, Religion +2 (Thaumaturge), Perception +3. Others by ability.
+- **HP 23** (6 + 4 + 4, +2 Con ×3, +3 Dwarven Toughness). **AC 10**, **13 with Mage Armor** (8 h). Initiative +0. Passive Perception 10.
+- **Saves:** Str -1, Dex +0, Con +2, **Int +5, Wis +2**, Cha -1.
+- **Skills:** Arcana +7 (Expertise, Scholar), History +5, Investigation +5, Insight +2. Others by ability.
 - **Tools:** Calligrapher's Supplies. **Languages:** Common, Dwarvish, Goblin.
-- **Armor/weapons:** Light and Medium armor, Shields; Simple weapons. Mace +2, 1d6 bludgeoning (Sap).
+- **Weapons:** Simple. Dagger +2, 1d4-1 piercing (Finesse, Light, Thrown 6/18 m, Nick); Quarterstaff +1, 1d6-1 (Versatile 1d8, Topple).
 
 ## Origin
-- **Species, Dwarf:** Darkvision 36 m; Resistance to Poison, Advantage on saves vs Poisoned; Dwarven Toughness; Stonecunning (Bonus Action, Tremorsense 18 m for 10 min while on/touching stone, 2/Long Rest).
-- **Background, Sage:** Arcana, History, Calligrapher's Supplies; origin feat **Magic Initiate (Wizard)**, Wisdom: Fire Bolt, Minor Illusion, Shield (once per Long Rest free, or with my slots).
+- **Species, Dwarf:** Darkvision 36 m; Resistance to Poison, Advantage on saves vs Poisoned; Dwarven Toughness; Stonecunning (Bonus Action, Tremorsense 18 m for 10 min while on or touching stone, 2/Long Rest).
+- **Background, Sage:** Arcana, History, Calligrapher's Supplies; origin feat **Magic Initiate (Wizard)**, Int: Light, Minor Illusion, **Mage Armor** (always prepared; once per Long Rest free, or with a slot).
 
-## Cleric features
-- **Divine Order: Thaumaturge** (extra cantrip; +3 to Int (Arcana or Religion) checks).
-- **Spellcasting (Wis):** save DC 13, spell attack +5. Focus: Holy Symbol (emblem on shield).
-- **Channel Divinity 2/Long Rest** (1 back on Short Rest): Divine Spark (9 m, 1d8+3 heal, or Con save for necrotic/radiant), Turn Undead (9 m, Wis save), **Preserve Life** (15 HP split among Bloodied creatures within 9 m, up to half their max).
-- **Disciple of Life:** slot-cast healing adds 2 + slot level HP.
+## Wizard features
+- **Spellcasting (Int):** save DC 13, spell attack +5. Focus: Quarterstaff (arcane focus) or spellbook.
+- **Ritual Adept:** cast any Ritual spell in my spellbook as a ritual (+10 min), unprepared, reading from the book.
+- **Arcane Recovery:** once per Long Rest, after a Short Rest, regain slots totalling 2 levels (one 2nd or two 1st).
+- **Scholar:** Expertise in Arcana.
+- **Evocation Savant:** Scorching Ray and Shatter added free.
+- **Potent Cantrip:** a missed attack cantrip, or a saved-against one, still deals half damage (no extra effect).
 
 ## Spells
 - **Slots:** 1st 4, 2nd 2.
-- **Cantrips (4 Cleric + 2 Wizard):** Guidance, Sacred Flame, Spare the Dying, Light; Fire Bolt (+5, 1d10, 36 m), Minor Illusion.
-- **Always prepared (Life Domain):** Aid, Bless, Cure Wounds, Lesser Restoration. **Magic Initiate:** Shield.
-- **Prepared (6):** Healing Word, Guiding Bolt, Shield of Faith, Command, Spiritual Weapon, Hold Person.
+- **Cantrips (3 Wizard + 2 Magic Initiate):** Fire Bolt (+5, 1d10 fire, 36 m), Shocking Grasp (+5, 1d8 lightning, target loses its Opportunity Attacks), Mage Hand; Light, Minor Illusion.
+- **Spellbook (12):** L1: Shield, Magic Missile, Sleep, Find Familiar (R), Detect Magic (R), Alarm (R), Grease, Fog Cloud. L2: Web, Misty Step, Scorching Ray, Shatter.
+- **Prepared (6):** Shield, Magic Missile, Sleep, Web, Misty Step, Scorching Ray. Plus Mage Armor (Magic Initiate). Rituals from the book: Find Familiar, Detect Magic, Alarm.
 
-## Equipment (Cleric option B, 110 GP; Sage option B, 50 GP; bought at list price)
+## Equipment (Wizard option A; Sage option B, 50 GP; bought at list price)
 | Item | kg |
 |---|---|
-| Scale Mail (worn) | 20.25 |
-| Shield with Holy Symbol emblem | 2.7 |
-| Mace | 1.8 |
-| Priest's Pack: Backpack, Blanket, Holy Water, Lamp, 7 days Rations, Robe, Tinderbox | 13.05 |
-| Rope (15 m) | 2.25 |
-| Waterskin (full) | 2.25 |
-| Oil, 2 flasks | 0.9 |
+| Quarterstaff (arcane focus) | 1.8 |
+| 2 Daggers | 0.9 |
+| Robe (worn) | 1.8 |
+| Spellbook | 1.35 |
+| Scholar's Pack: Backpack, Book, Ink, Ink Pen, Lamp, 10 flasks Oil, 10 sheets Parchment, Tinderbox | 9.9 |
+| Rope (15 m), Waterskin (full) | 4.5 |
+| Incense, 10 GP (for Find Familiar) | 0 |
 | Bead of Nourishment (Common, 1 day of Rations when eaten) | 0 |
-| **Total** | **43.2** (capacity 74.25) |
+| **Total** | **20.25** (capacity 60.75) |
 
-Spent 104 GP 4 SP. **Gold: 55 GP 6 SP.**
+Bought rope 1 GP, waterskin 2 SP, incense 10 GP. No rations: the Bead covers one day. **Gold: 43 GP 8 SP.**
