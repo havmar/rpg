@@ -53,7 +53,8 @@ Rolled 12, 9, 12, 15, 13, 11 (the reroll; see `rules.md`). Criminal +1 Dex, Con,
 
 Total about 27 kg. Carrying capacity 15 × Str 9 = 135 lb, about 61 kg.
 
-- **Gold: 58 GP**
+- **Gold: 73 GP**
+- **Potion of Climbing** (Common). Oil: 6 flasks. Rations: 4 days. The foreman's daybook; Daff Pike's whistle, R. Voss's tag, Ansel's letter (to return).
 - Attunement: none (0/3)
 
 ## Who she is

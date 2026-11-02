@@ -59,7 +59,7 @@ Rolled 15, 13, 16, 9, 14, 11. Sage +2 Int, +1 Con.
 | Her copy of the Charter of Lessing (Common text only) | — |
 | **Potion of Healing** (Common, 2d4+2) | 0.2 |
 
-- **Gold: 55 GP**
+- **Gold: 60.5 GP** · Bedroll (from the Old Tally dead)
 - Attunement: none (0/3)
 
 ## Who she is

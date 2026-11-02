@@ -93,6 +93,31 @@
 - Campaign seed: **Erinyes** (CR 12) as an enemy → the charter's enforcer, and her House's
   Witness in town, Corvin Sallow.
 
+- Chapter 1: **Water Elemental** (CR 5) as an NPC → **Old Tamber**, the river at the
+  ford. Kept the ford shallow 80 years for a cask of southern red and a thank-you at each
+  Feast; the council cut the cask two years ago (Ostry's motion); the ford rose on Day 1.
+  Restored by Clemency and Tick's promise: one cask poured, the second owed on the barge
+  (~Day 10) on **Tick's own word**. From now on the cup is "not the council's".
+- Chapter 1: **Wyvern** (CR 6) as a place → **the Old Tally is its lair.** The deep level
+  fell into a natural cavern two years ago (a mine accident, bad air; props had been
+  halved by council order). Last winter the hilltop fell in to the hall; a wyvern took the
+  pit. It hunts dawn and dusk, sleeps in the hall. One egg. The strongroom emptied by the
+  party on Day 1; the egg is still there.
+
+## The foreman's daybook (now Tick's)
+
+Hobb Garside, foreman. 4th of Sowing two years ago: council letter under seal, props in
+the deep heading at four yards not two, signed H. Ostry, C. Dunmore, A. Ferrant, mayor;
+he protested, overruled. 9th: warm water and bad air at the face, told Ostry, "keep on".
+11th: sixteen bars to the strongroom. Then the collapse. (Clemency signed too; she was
+outvoted on the cask, not on the props.)
+
+## The dead of the Old Tally crews
+
+R. Voss (Tamberlund levy tag; downriver crew), Ansel (letter to his mother in
+Tamberlund), Daff Pike (Garrow's nephew; his whistle), and four more unnamed. Their other
+gear still in the hall: a longsword at 45 m in the adit, a bitten chain shirt.
+
 ## People and factions
 
 See `dm/campaign.md` for who wants what and the plans. The facts:
