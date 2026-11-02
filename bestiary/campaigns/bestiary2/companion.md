@@ -1,7 +1,7 @@
 # Oda Fenn · the companion (played by the DM)
 
 Human (Medium), Fighter 3 (Champion), Soldier background. She/her, about 30.
-XP 900. Proficiency +2.
+XP 1,650. Proficiency +2.
 
 **Who she is:** ten years a pikeman in a river lord's company, paid off when the war
 ended. Few words, blunt, dry. Loyal once she's decided you're worth it.
@@ -31,7 +31,7 @@ ended. Few words, blunt, dry. Loyal once she's decided you're worth it.
   target's speed by 3 m until her next turn.
 - **Shortbow** +3, 1d6+1 Piercing, 24/96 m. Mastery Vex: a hit gives her Advantage on
   her next attack against that target.
-- Spear and Flail carried, not mastered.
+- Spear and Flail carried, not mastered. 7 javelins left (1 lost at Frost Hollow).
 
 ## Features
 
@@ -54,4 +54,4 @@ ended. Few words, blunt, dry. Loyal once she's decided you're worth it.
   tinderbox, waterskin, 15 m hempen rope, 2 flasks of oil
 - Healer's Kit (10 uses, 1.4 kg), Dice set, Traveler's Clothes (1.8 kg)
 - **Potion of Climbing** (Common)
-- **18 GP**
+- **127 GP 2 SP**

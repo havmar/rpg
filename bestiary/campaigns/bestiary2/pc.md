@@ -1,6 +1,6 @@
 # Hilde Ashgrove (she/her) · Dwarf Wizard 3 (Evoker) · Sage
 
-Level 3, 900 XP. Proficiency +2. Hit Dice 3d6. Speed 9 m (6 sq). Size Medium.
+Level 3, 1,650 XP. Proficiency +2. Hit Dice 3d6. Speed 9 m (6 sq). Size Medium.
 Who: a temple archivist who read one book too many and taught herself evocation. Want: fill her spellbook with magic the lowlands have lost, which the old ruins of the Greywood are said to hold.
 
 ## Scores
@@ -45,6 +45,7 @@ Rolled 9, 9, 15, 11, 14, 11; placed Str 9, Dex 11, Con 14, Int 15, Wis 11, Cha 9
 | Rope (15 m), Waterskin (full) | 4.5 |
 | Incense, 10 GP (for Find Familiar) | 0 |
 | Bead of Nourishment (Common, 1 day of Rations when eaten) | 0 |
+| Bronze ring with a green stone (magic, Transmutation aura; unidentified, not attuned) | 0 |
 | **Total** | **20.25** (capacity 60.75) |
 
-Bought rope 1 GP, waterskin 2 SP, incense 10 GP. No rations: the Bead covers one day. **Gold: 43 GP 8 SP.**
+Bought rope 1 GP, waterskin 2 SP, incense 10 GP. No rations: the Bead covers one day. **Gold: 150 GP 7 SP** (after Day 1). Incense used on Find Familiar (owl).
