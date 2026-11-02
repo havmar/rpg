@@ -178,13 +178,14 @@ a villain except, professionally, Sallow, and even he has a reason.
 
 | Day | If nobody does anything |
 |---|---|
-| 1 | Bounty for the Old Tally posted. Wenna announces the strike at the Lantern. |
+| 1 | Bounty for the Old Tally posted. The strike notice nailed to the Rent Office door at dawn. |
 | 3 | Sallow's loan offered to the council in writing. |
 | 5–15 | Other adventurers try the marches; most come back with little. |
 | 18 | Council vote: the loan passes 2-1. |
-| 19 | Garrow's people storm the Moot Hall for the loan papers. |
-| 20 | Head-tax day; the strike holds; the watch goes out to collect. |
-| 30 | Sundown: Ibbet counts. Midnight: the Erinyes. Dawn: the Landlady. |
+| 19 | Garrow's people break into the Moot Hall to burn the land rolls. |
+| 20 | Ground-rent day; the strike holds; the watch goes out to collect. |
+| 29 | Ostry's family slips out with the 500 GP. |
+| 30 | Sundown: Ibbet counts. Midnight: the Erinyes. Dawn: the Landlady. Sallow takes the Ferrant house. |
 
 ## Chapter 1 opening (Day 1)
 
