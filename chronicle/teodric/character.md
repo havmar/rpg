@@ -1,6 +1,6 @@
 # Teodric Ashmantle
 
-Dwarf Ranger 1, Sage background. Built from the SRD: class, species and background rolled
+Dwarf Ranger 1 (XP 150), Sage background. Built from the SRD: class, species and background rolled
 (1d12 Ranger, 1d9 Dwarf, 1d4 Sage); Standard Array, Sage +2 Wis, +1 Con.
 
 An archive-keeper of the dwarven hold of Kharn Duvel who went up to the surface to copy the
@@ -44,7 +44,7 @@ Ranger, Wisdom. Save DC 13, attack +5. Slots: level 1 2/2.
 
 ## Equipment
 
-Studded leather armour, scimitar, shortsword, longbow, quiver with 20 arrows, druidic focus
+Studded leather armour, scimitar, shortsword, longbow, quiver with 11 arrows, druidic focus
 (sprig of mistletoe), explorer's pack, quarterstaff, calligrapher's supplies, a book of
 history (the hold's own *Register of the Greyway*), 8 sheets of parchment, robe, a pouch of
 sand (for Sleep).
