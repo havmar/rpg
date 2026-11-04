@@ -1,6 +1,8 @@
-# Teodric Ashmantle
+# Teodric Ashmantle (deceased)
 
-Dwarf Ranger 1 (XP 150), Sage background. Built from the SRD: class, species and background rolled
+Died at Wending, chapter 3: dropped to 0 HP by a zombie, then a critical hit while dying.
+
+Dwarf Ranger 1 (XP 200), Sage background. Built from the SRD: class, species and background rolled
 (1d12 Ranger, 1d9 Dwarf, 1d4 Sage); Standard Array, Sage +2 Wis, +1 Con.
 
 An archive-keeper of the dwarven hold of Kharn Duvel who went up to the surface to copy the

@@ -112,3 +112,80 @@ would kill no more, and that she should set a watch anyway. Then I took the road
 Wending.
 
 - Teodric: long rest on the islet. HP 13/13, all resources full. 11 arrows. 15 GP.
+
+## 3. The names the water took
+
+### The road east
+
+Two days on the Greyway, and nothing on it but carters and rain. I walked fast, because
+whoever wore the hobnailed boots had a day on me and knew where they were going. Nothing
+troubled me on the road or in my camp under a hedge. That only made me walk faster.
+
+### Wending
+
+Wending is twenty houses, a mill and a millpond at the edge of the fen. I knew before I got
+there. Where the stone should have stood by the mill bridge there was a square of pale
+grass and a cart's ruts going away south (Survival 16).
+
+The miller, Daw Fenner, told me straight off that he'd sold it. A woman came three days ago,
+he said, small, in good boots, with a cart and two hired men in hoods who did all the
+lifting and never once sat down to eat. She said she was Mistress Orla Penn of the
+Collegium at Harrowgate, and that the stone was wanted for study. She paid him five silver
+for an old lump nobody looked at.
+
+It wasn't five silver (Insight 15). I told him I didn't care what he'd been paid, only what
+she'd said, and he softened (Persuasion 13). Three gold crowns. And she'd asked him about the
+back of the stone, which nobody in Wending reads any more: the names. The Wending stone
+carried a list of names on its back, eighty of them, the people of old Wending that the fen
+took when it came up over the old road. Mistress Penn copied every one before her men lifted
+it, and she asked Daw whether the millpond had ever been dredged. It hasn't. Old Wending is
+under it.
+
+I told Daw what I'd found in the Fenwood. He went grey. His wife Marrit made up a bed for me
+in the mill loft, which looks over the pond, and I said I'd keep the window that night.
+
+### The millpond
+
+Some time after midnight I heard the water move (Perception 14). Three of them came up out of
+the pond, the way you'd climb out of a bath: slow, streaming, weed in their hair. Not bog
+leather like the Fenwood dead. These had been in the water a long time, and they walked up
+the bank towards the houses as if they knew the way home. One of them was a child's size.
+I put that out of my mind and took the biggest.
+
+The Mark, then an arrow into its chest (11 damage). It didn't stop. Another (11), and it
+should have been dead, and wasn't (Undead Fortitude, natural 18). The other two had reached
+Daw's cottage door and were beating on it with their fists. My third arrow put the first one
+down for good, and I moved the Mark to the second at the door.
+
+I hit it twice (12, 12). Twice it should have fallen, and twice it stood up again (Undead
+Fortitude, 21 and 14). Behind it the door gave way. I heard Marrit scream, and Daw shouting,
+and then Daw stopped shouting.
+
+I went down the ladder and ran across the yard. The one I'd been shooting turned in the
+doorway and met me there, and its fist cracked my helmetless head (5 damage). Inside I could
+see Daw on the floor, and the other one standing over Marrit, and Marrit going down. I cut
+the thing in the doorway clean through the middle (9 damage), and by every right it should
+have fallen, and it stood there in the door with one arrow in its eye and my sword in its
+belly and would not fall (Undead Fortitude, 15). It hit me again (9 damage) and the
+world went sideways.
+
+---
+
+*The rest is written by Brother Aldo, priest at Wending, at the telling of Wenna Fenner,
+aged eleven, who hid under the table that night and was not found.*
+
+The dwarf fell in the doorway. Wenna says the drowned one hit him once more as he lay there,
+and that was the end of him. Then the neighbours came with torches and forks, and between
+them they beat the thing in the door down to the ground three times, and three times it got
+up. It did not fight them. Neither did the other. They walked past the people of Wending
+as if they were not there, down to the pond, and into it, and the water closed over them.
+
+Daw and Marrit Fenner died before morning. The dwarf was dead when we lifted him. We have
+buried the three of them in the churchyard, the dwarf under his own name, which we found
+written inside the cover of this book, *Teodric Ashmantle, of Kharn Duvel, his Register*.
+
+I have kept the book, and the bow, and his account of what happened at Tollen, because I
+think somebody ought to come for them. The woman with the cart went south. The pond has
+been quiet since. We have set a watch on it all the same.
+
+- Teodric Ashmantle died at Wending, aged 61, in the third week of autumn. 200 XP.
