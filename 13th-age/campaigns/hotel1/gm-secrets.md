@@ -36,11 +36,36 @@ The Hotel's opinion: it would rather he took the keys.
 
 ## Room state
 
-All 120 rooms unsearched. Updated as play goes: unsearched · searched, brick · searched, empty · restocked by …
+Floors 2 to 10: all unsearched. Floor 1 (all searched by Day 3 08:30):
+
+- 101 searched, brick · empty (xombies dead)
+- 102 searched, brick · imps alive
+- 103 searched, brick · wererat alive (knows; "smelled of cat")
+- 104 searched, none · scorpion dead · restocked by a Fungaloid Creeper (Day 1, seed 37), 35 gp
+- 105 searched, brick · Mr Vellum alive
+- 106 searched, brick · rats dead · restocked by a Skin Devil, **Mrs Gristle** (Day 3, seed 91), 35 gp
+- 107 searched, none · Residents alive
+- 108 searched, none · creeper alive
+- 109 searched, none · empty (xombies dead)
+- 110 searched, brick · fast xombie alive
+- 111 searched, brick (hummed) · skin devil alive
+- 112 searched, none · empty (xombies dead)
 
 ## Luggage rolled
 
-(none yet: rolled when a room's guests are first met)
+- 101: Slayer's Boots (taken by Morten).
+- 102: +1 oil (adventurer). In their luggage.
+- 103: not met yet (the wererat). Roll at first meeting.
+- 104 (new creeper): not met yet.
+- 105 (Ark suite): **Paragon** necklace (recharge 16+: another use of the racial power in a battle; quirk: sometimes speaks the race's lost first language). In his jewel case.
+- 106 rats: Rachis Girdle (taken). 106 Mrs Gristle: +1 rune (adventurer).
+- 107 (Resident suite): **Helm of Psychic Retribution** (helmet, recharge 16+: an enemy that misses him with an attack vs MD takes 10 psychic; quirk: stares into space).
+- 108: nothing magic.
+- 109: healing potion (taken).
+- 110: the mislaid suitcase: Potion of force resistance (adventurer), a tin whistle (2 gp), 30 gp. Returned to it.
+- 111: not met yet.
+- 112: nothing magic.
+- The Ark's reward for the wererat ask: roll `loot.py --true adventurer` when paid.
 
 ## The shop (public, also in state.md)
 
