@@ -196,7 +196,9 @@ def main():
     monsters = [m for m in load_monsters() if is_guest(m)]
     print(f"# The Hotel · seed {a.seed}\n")
     print("Worth: what the room's guests count as for one character (1 = one standard "
-          "monster, Building-Battles.md). Mooks fight as one mob sharing its HP.\n")
+          "monster, Building-Battles.md). Mooks fight as one mob sharing its HP. Fight: the "
+          "room's difficulty, which is also its weight on the heal-up clock (Easy 0.7, "
+          "Normal 1, Hard 1.5 battles; CLAUDE.md, House rules).\n")
     for fl in parse_floors(a.floors):
         print(floor_md(fl, floor_rooms(rng, monsters, fl, a.rooms)))
 

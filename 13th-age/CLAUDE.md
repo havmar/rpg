@@ -86,19 +86,33 @@ These replace the SRD where they differ.
 ### Battles and the heal-up clock
 
 13th Age paces itself by battles: about four to a full heal-up, about three heal-ups to a
-level. At the Hotel the count is kept in `state.md` as **Battles N/4**:
+level, and "tougher battles can mean more frequent heal-ups, and vice versa"
+(`Full-Heal-ups.md`). The Hotel makes that exact: a battle is **weighted by its
+difficulty**, the room's monster equivalents (`Building-Battles.md`), so a Hard room brings
+the heal-up and the level sooner, much like XP.
 
-- **A battle** is a room searched (however Morten got in: talk, stealth or a fight all
-  count once) or a fight outside a room (a wanderer, housekeeping). A room fought and then
-  searched is one battle.
+- **A battle** is a room searched (however Morten got in: talk, stealth or a fight) or a
+  fight outside a room (a wanderer, housekeeping). A room fought and then searched counts
+  once, when its search completes.
+- **Its weight** is the room's difficulty: **Easy 0.7 · Normal 1 · Hard 1.5** battles (the
+  generator's Fight column, `gm-secrets.md`). A fight outside a room weighs its guests'
+  worth for one character, to one decimal: a wanderer is one guest of its room (the room's
+  Worth ÷ its guests), housekeeping is 1. Say the weight whenever a battle is counted:
+  "Room 104 · Hard · +1.5 → Battles 3.2/4 · Progress 7.7/12".
+- **Two counters** in `state.md`, both with one decimal:
+  - **Battles N/4**, since the last full heal-up. At **4 or more** Morten has earned the
+    heal-up: he takes it when he sleeps 8 hours in a bed (`hotel.md` section 7), and
+    anything above 4 carries over (4.5 → 0.5). Searching on past 4 is allowed; the count
+    keeps rising and carries over in the same way.
+  - **Progress N/12**, since the last level. It is never lost.
 - **Quick rest** after each battle, as written (recoveries, recharge rolls).
-- **Full heal-up** when the count reaches 4 and Morten sleeps 8 hours in a bed
-  (`hotel.md` section 7). The count resets to 0.
-- **An early full heal-up** (fewer than 4 battles) is allowed in a bed all the same, but it
-  is a **campaign loss**.
-- **Levels.** Every 4 battles earn an **incremental advance** (taken at once, from the
-  list in `Leveling-Up.md`), and every 12 battles a **level**, as the SRD's three or four
-  heal-ups would. A floor's 12 rooms are one level's worth. Level 10 is the top.
+- **An early full heal-up** (Battles under 4) is allowed in a bed all the same, but it is a
+  **campaign loss**, and Battles resets to 0 (Progress is kept).
+- **Levels.** Each time Progress passes **4** and **8** Morten takes an **incremental
+  advance** (at once, from the list in `Leveling-Up.md`); at **12** he gains a **level**,
+  and the rest carries over (12.4 → 0.4). A floor averages about 1 battle a room (30% Easy,
+  45% Normal, 25% Hard), so its 12 rooms are about a level's worth, sooner if it runs Hard.
+  Level 10 is the top; Progress stops there.
 
 ### The campaign loss
 
@@ -118,7 +132,7 @@ movement: disengage checks, opportunity attacks, and guests who follow.
   back with a recovery), and he dies on the **fourth failed death save** in a battle or at
   **negative half his maximum HP**.
 - When he dies, housekeeping finds him, and he **wakes in his room, 100, 8 hours later** with a
-  full heal-up. Battles go to 0; no campaign loss.
+  full heal-up. Battles go to 0 (Progress is kept); no campaign loss.
 - He **loses all coins and gems he carried**: the bill. He keeps everything else: gear,
   magic items, bricks, levels and advances.
 - The Hotel stays as he left it: dead guests stay dead, searched rooms stay searched, the
@@ -176,7 +190,7 @@ dice, How it ended, Result) only where they have something to say.
 > **Room 104 · Destroying Sword (level 2 wrecker) · Hard, worth 1.5 · cleared, but it cost**
 > - **Plan:** fight it in the narrow hallway so the sword can't get round him.
 > - **The dice:** his daily missed on a natural 4; round 3's natural 20 on the escalation die +2 turned it.
-> - **Result:** cleared on 6/30 HP, two recoveries spent at the quick rest. Battles 3/4. +35 gp.
+> - **Result:** cleared on 6/30 HP, two recoveries spent at the quick rest. +1.5 → Battles 3.2/4 · Progress 7.7/12. +35 gp.
 
 **Events: summary.** A few bullets per stop: the door and its reaction roll, the price or
 the fight, the noise check, the brick, the luggage. Fold routine steps into one line.
@@ -262,7 +276,7 @@ Note the mode in `state.md`.
   10 Paladin, 11 Ranger, 12 Rogue, 13 Sorcerer, 14 Wizard. The Commander is left out: its
   commands are for allies, and he has none. The GM picks the race whose bonus suits the
   class, and the talents and spells a careful solo player would.
-- The sheet's header: **Morten · Level 1 Wizard (High Elf) · Battles 0/4 · Advances 0**.
+- The sheet's header: **Morten · Level 1 Wizard (High Elf) · Battles 0/4 · Progress 0/12 · Advances 0**.
 
 ## Battles for a party of one
 
@@ -316,7 +330,7 @@ any of them.
 - **Style:** play it smart: talk first, fight in the doorway, save the daily for the room
   that needs it, drink the potion before the death saves, spend the purse before a risky
   room (death takes the coins).
-- **Start:** Day 1 · 08:00, in his room, 100, on floor 1, Battles 0/4, bill at zero.
+- **Start:** Day 1 · 08:00, in his room, 100, on floor 1, Battles 0/4, Progress 0/12, bill at zero.
 - **Played in chat**, in Markdown.
 
 ## How to run a session

@@ -28,7 +28,7 @@ Morten is a registered guest. He has a room on floor 1, a key, and a bill.
 ## 2. The building
 
 - **Ten floors**, one per character level: floor N is built for a level N Morten, and
-  its 12 rooms are one level's worth of battles. Floors 1 to 4 are **adventurer** tier,
+  its 12 rooms are about one level's worth of battles. Floors 1 to 4 are **adventurer** tier,
   5 to 7 **champion**, 8 to 10 **epic**: the tier sets the skill DCs, the potions and the
   items found there. Room 3.1 is **room 301**, up to 312; the rooms open off one corridor
   in number order, with a stair at each end. Nothing is locked but doors. Higher floors
@@ -74,8 +74,8 @@ Every room is handled the same way, door to door.
    unsearched room in the Hotel always holds the last brick**; the Hotel knows. Bricks go
    in his bag and are never lost on death.
 6. **The battle and the luggage.** A searched room is **one battle** on the heal-up clock
-   (`CLAUDE.md`, House rules), earned **once, when its search completes**, however he got
-   in. Every guest has luggage: the generator's coins in a suitcase, plus one
+   (`CLAUDE.md`, House rules), weighted by its difficulty (Easy 0.7, Normal 1, Hard 1.5)
+   and earned **once, when its search completes**, however he got in. Every guest has luggage: the generator's coins in a suitcase, plus one
    **knick-knack** the GM names in a few words (a snow globe of the Hotel, a monogrammed
    toothbrush, a brass key to nothing) worth 1d6 × floor gp at the gift shop or to a
    Friendly guest, and sometimes a **magic item** (section 12). Taking luggage while the
@@ -86,7 +86,7 @@ there**, to a maximum of −3. New guests who check in later don't know him yet.
 
 **Corridors.** Walking a corridor is a turn; every 3 turns roll 1d6, and on a 1 a
 **wanderer** comes: a guest from a random occupied room on that floor, on its way to the
-bar or the bathroom, with a reaction roll. A fight with a wanderer is a battle.
+bar or the bathroom, with a reaction roll. A fight with a wanderer is a battle, weighted as one guest of its room.
 
 ## 4. Reaction roll
 
@@ -199,7 +199,7 @@ searching it again (a fight with them is still a battle). Dead guests stay dead.
   Hostile; in a **Resident's suite** with a Friendly Resident, no check; or **squatting** in
   a searched room, with one noise check at the midpoint: on a **1** a new guest's key turns
   in the lock (reaction roll at −2; it's their room now), on a **2** housekeeping finds
-  him (Staff −1 unless Friendly). Under 4 battles since the last one, it is also a
+  him (Staff −1 unless Friendly). With Battles under 4, it is also a
   campaign loss (`CLAUDE.md`). Then the icon dice (section 5), housekeeping (section 6)
   and the event roll (section 8), in that order.
 - **Quick rests** after each battle take a turn, as the SRD's.
@@ -240,7 +240,7 @@ the next day. "A visited floor" is a random floor Morten has stood on.
   shop window and lost and found hold. Whether a room holds a brick is rolled when it is
   searched, so it is never a secret in advance.
 - **Header.** Every reply opens **Day 3 · 14:20 · Room 412 (floor 4) · Bricks 7 ·
-  Staff +1 · Residents +1 · Ark −1 · Battles 2/4**.
+  Staff +1 · Residents +1 · Ark −1 · Battles 2.7/4 · Progress 6.2/12**.
 - **Rumours.** At the bar, one true line per drink: a room's guest, a faction's current
   ask, or on a 1 on 1d6 a brick's hum.
 - **Report style.** The table's dials apply. A search is an **event**: a few bullets (the
