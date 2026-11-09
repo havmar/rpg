@@ -69,19 +69,19 @@ No background; the Automaton species block stands in for it.
 
 ## Inventory
 
-**Caelynn:** studded leather, longbow, quiver with 17 arrows, scimitar, shortsword, 2 daggers,
+**Caelynn:** studded leather, longbow, quiver with 37 arrows, scimitar, shortsword, 2 daggers,
 sprig of mistletoe (druidic focus), thieves' tools, crowbar, 2 pouches, traveller's clothes.
 Explorer's pack: backpack, bedroll, 2 flasks of oil, 10 days of rations, rope (15 m),
 tinderbox, 10 torches, waterskin.
 
 **Lampwick:** leather (integrated), shortbow, quiver with 20 arrows, shortsword, 2 daggers,
 thieves' tools, tinker's tools. Burglar's pack: backpack, ball bearings, bell, 10 candles,
-crowbar, hooded lantern, 3 flasks of oil, 5 days of rations, rope (15 m), tinderbox,
+crowbar, hooded lantern, 13 flasks of oil, healer's kit (10 uses), 5 days of rations, rope (15 m), tinderbox,
 waterskin.
 
-**Gold:** **61 GP** (31 starting, 10 and 20 from the breach).
+**Gold:** **54 GP** (31 starting, 10 and 20 from the breach; 7 spent in Hadley).
 
-**Spent so far:** Lampwick 4 flasks of oil (3 left); Caelynn 3 arrows (17 left).
+**Bought in Hadley (month 1):** healer's kit (5 GP, 10 uses: stabilise with no roll), 20 arrows (1 GP), 10 flasks of oil (1 GP).
 
 **Keepsakes:** a hyena's tooth threaded on plaited grass cord, found where the rift closed (month 1, Hadley).
 

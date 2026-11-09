@@ -28,3 +28,4 @@ The GM writes these as play meets them: the Marshal who sets the board, the chro
 - Month 1: the Bull (Caelynn Brandt, Recruit) and Lampwick sent to a Giant Hyena breach near Hadley, 3 days.
 
 - Hadley (visited month 1, day 5): the ward stone is a squat grey block in the market square, warm to the touch. **Joss Marley**, reeve (he/him): wants the Company to come more often and not only when the board says. **Sister Agnet** of the lazar house (she/her): runs the leper house 400 m outside the ward on the east road, eleven patients; wants someone to come when a breach opens by them, because no one is sent for lepers. **Will Tanner**, farmer (he/him): lost a ewe to the hyena; wants paying for it.
+- The Hound, Neega the Younger (Lancer) and Marlow: closed their sabre-tooth breach east of Hadley on day 6, Neega badly clawed; walked home with the Bull. Neega's running bet on who graduates first is with the Wren (Jorund Pendry); the stake is a horse neither of them owns.

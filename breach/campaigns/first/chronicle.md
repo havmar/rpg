@@ -15,3 +15,5 @@ The Bull went out on the first with Lampwick and shared the road to Hadley with 
 That night, in the corridor of thorns that was turning back into a hedge, the Bull came to the second level.
 
 On the fifth the Bull walked into Hadley. The town was well and its ward stone warm. Outside the ward on the east road the lazar house had frost in its cabbages, blowing in from the Hound's sabre-tooth breach a day further east. Sister Agnet had moved her eleven to the west wall. The Hound had gone through on the third, singing, and hadn't come back yet.
+
+On the sixth the Bull went east to look for the Hound and met him on the road coming back, clawed down one side and laughing about it, with Marlow carrying a sabre-tooth's fang as long as a hand. The frost was going off the lazar house's cabbages by noon. Neega the Younger ate Sister Agnet's soup as promised, and the two pairs walked home to Kingsmere together, arriving on the ninth.

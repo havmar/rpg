@@ -43,3 +43,14 @@ pasture, warm wind, a smell of dust. 300 XP in the breach; 150 is level 2.
 Notes: Flying Snakes are Monstrosities, so *Animal Friendship* won't take them. The hyena is
 a Beast (WIS +1). Thing left behind on closing: a hyena's tooth threaded on grass cord, or
 a brass bell from whatever the snakes stowed away in.
+
+## Month-end foreknowledge
+
+`month.py end` is seeded by campaign seed and month, so its result is fixed in advance (checked
+on a scratch copy, month 1). Month 1's end: the Hare (Rowena Lowry) dies in the Giant Shark
+breach by Kingsmere, the Bear (Aelar Vance) in the Wyvern breach by Hollins; both automatons
+come home. The Raven graduates. Loose next month: Air Elementals near Kingsmere (level 15),
+Wraiths near Goose Green (11), Fire Giants near Barrowden (10), Polar Bears near Barrowden (3),
+Dretches near Barrowden (1). The Bull's month 2 breach: Giant Goat near Goose Green, level 2.
+Play nothing in downtime that contradicts this (the Hare and the Bear are out on their breaches
+until month's end; the Hound lives).
