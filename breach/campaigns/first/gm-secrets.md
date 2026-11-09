@@ -98,3 +98,30 @@ cruel: they will bargain to be shown home (they want the octopus gone first; it 
 them). Thing left on closing: a goblin's brass thimble, or a pressed out-of-season flower.
 
 After `month.py end` for month 2: strike the Goblin Warriors near Goose Green from `loose` in campaign.json by hand (closed by the Bull). No XP (all deported).
+
+## Side breach: month 2, the Ogres by Barrowden (unassigned; the Bull went of its own accord)
+
+`gen_breach.py --seed 621019 --level 3` · near Barrowden, 1 km east of the village · true level 3.
+Principal kind Ogre; the surface is the land scaled up: furrows a cart could lie in, a hall of
+boulders. 1,950 XP in the breach. Caelynn at 500 XP: level 4 at 1,350 (needs 850).
+
+| Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1× Silver Dragon Wyrmling (stowaway) | 2 | 450 | Low | Peaceful: goes home when shown the rift; may help | 9×18 m | giant-sized stacked cargo (half cover) | 45 GP | scouted day 11: it saw Lampwick (Stealth 12 vs PP 14); hissed, Lampwick withdrew. Speaks only Draconic (Caelynn does) |
+| 2 | 2× Swarm of Piranhas (stowaway) | 1 | 400 | Moderate | Mindless: lure through (fitting check DC 15) or destroy | 15×18 m | flooded, 3 m deep, 1.5 m ledge round | 40 GP | |
+| 3 | 1× Ghoul (stowaway) | 1 | 200 | Low | Hostile | 9×9 m | a 3 m ledge along one wall | 20 GP | |
+| 4 | 1× Ogre | 2 | 450 | Low | Hostile | 15×15 m | rubble (difficult terrain, half cover) | 45 GP | |
+| 5 | 1× Ogre | 2 | 450 | High | Hostile | 15×15 m | the rift, 3 m tear at the far end | 45 GP | |
+
+Notes: the wyrmling is a lost child, Lawful Good, frightened of the ogres (they have been trying
+to catch it: they eat dragon). Asked kindly in Draconic it will tell what is deeper (water with
+teeth in it, a dead thing that eats the dead, two big ones) and will fight the ogres beside the
+pair if it can then go home; GM runs it as an ally (Cold Breath, Paralyzing Breath, Rend ×2). Its
+name is Ysskaril. The piranhas can't leave water; lure is impossible except by bucket (GM:
+destroying them is the honest option, or walk the ledge at Stealth/Acrobatics). The ghoul's claws
+paralyse (elves are NOT immune in 2024; check the block before the fight). Ogres: Int 5, 59 HP.
+After `month.py end`: if closed, strike the Ogres near Barrowden from `loose` by hand.
+Thing left on closing: a giant's iron thimble the size of a helm, or a silver scale.
+
+Barrowden, day 10: the tower clue laid (door carved with the Order's gate and twenty animals;
+the stone warm). The village has fire-giant scorch on its north hedges from month 1's loose giants.

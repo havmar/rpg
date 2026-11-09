@@ -93,12 +93,14 @@ sprig of mistletoe (druidic focus), thieves' tools, crowbar, 2 pouches, travelle
 Explorer's pack: backpack, bedroll, 2 flasks of oil, 10 days of rations, rope (15 m),
 tinderbox, 10 torches, waterskin.
 
-**Lampwick:** leather (integrated), shortbow, quiver with 19 arrows, shortsword, 2 daggers,
-thieves' tools, tinker's tools. Burglar's pack: backpack, ball bearings, bell, 10 candles,
-crowbar, hooded lantern, 9 flasks of oil, healer's kit (10 uses), 5 days of rations, rope (15 m), tinderbox,
+**Lampwick:** leather (integrated), shortbow, quiver with 39 arrows, shortsword, 2 daggers,
+thieves' tools, tinker's tools. Potion of Healing. Burglar's pack: backpack, ball bearings, bell, 10 candles,
+crowbar, hooded lantern, 19 flasks of oil, healer's kit (10 uses), 5 days of rations, rope (15 m), tinderbox,
 waterskin.
 
-**Gold:** **104 GP** (31 starting, 30 from month 1's breach, 60 from month 2's and 40 from the Copse Wood goblins; 7 spent in Hadley, 50 in Kingsmere).
+**Gold:** **52 GP** (31 starting, 30 from month 1's breach, 60 from month 2's and 40 from the Copse Wood goblins; 7 spent in Hadley, 50 + 52 in Kingsmere).
+
+**Bought in Kingsmere (month 2, day 8):** a second Potion of Healing (50 GP), carried by Lampwick; 20 arrows (1 GP) and 10 flasks of oil (1 GP) for Lampwick.
 
 **Bought in Kingsmere (month 2):** Potion of Healing (50 GP; Bonus Action to drink or give, 2d4+2 HP), carried by Caelynn.
 
