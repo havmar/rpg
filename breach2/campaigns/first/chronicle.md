@@ -12,3 +12,6 @@ and found three saddled warhorses grazing in a glade, and a path on into fog.
 They went round the horses. Pike trod on a branch near the far side and the horses came about
 and stamped, but let them go. In the fog beyond, a small copper dragon stepped onto the path
 and spoke to them in no language either of them had.
+Ives drew the rift in the air for it, and the dragon understood that well enough: two of
+them, wanting home, walked the pair through the fog to a thorn hedge. Beyond it the owl
+counted eight goblins camped round the rift.

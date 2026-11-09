@@ -255,6 +255,10 @@ spent on one of these is still a day, and its dawn is still rolled.
 
 - Roll every die with `python3 breach2/tools/roll.py` and copy the result. Never invent a
   result. Roll step by step when a result decides the next choice.
+- **No roll without a consequence.** Call for a check only when failing it would change
+  something: a cost, a danger, a door that stays shut, a different scene. If a failure
+  would leave things as they were, or the pair could simply try again, don't roll: say what
+  happens. The same goes for knowledge: if the story needs the pair to know it, they know it.
 - Denizens fight by their stat blocks and their Intelligence; a group that loses half its
   number or its leader checks morale (WIS save DC 10 for the group) and may flee, deeper in
   or out to the street (loose).
