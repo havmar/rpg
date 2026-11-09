@@ -2,7 +2,7 @@
  "name": "first",
  "seed": 731,
  "company": "11th Company",
- "month": 1,
+ "month": 2,
  "player": "Bull",
  "roster": [
   {
@@ -24,7 +24,7 @@
    "since": 1,
    "trait": "deserted once, came back, and was allowed to",
    "role": "Bull",
-   "rank": 1,
+   "rank": 2,
    "automaton": {
     "name": "Lampwick",
     "side": "Back",
@@ -64,7 +64,7 @@
    "since": 0,
    "trait": "is studying the rifts and asks the chronicler for records",
    "role": "Adder",
-   "rank": 2,
+   "rank": 3,
    "automaton": {
     "name": "Pennywhistle",
     "side": "Back",
@@ -104,7 +104,7 @@
    "since": -1,
    "trait": "never takes a stowaway's side and never explains why",
    "role": "Wren",
-   "rank": 3,
+   "rank": 4,
    "automaton": {
     "name": "Basset",
     "side": "Front",
@@ -144,7 +144,7 @@
    "since": -2,
    "trait": "has a running bet with another role on who graduates first",
    "role": "Hound",
-   "rank": 4,
+   "rank": 5,
    "automaton": {
     "name": "Marlow",
     "side": "Back",
@@ -184,7 +184,7 @@
    "since": -3,
    "trait": "collects a knick-knack from every breach and labels them",
    "role": "Heron",
-   "rank": 5,
+   "rank": 6,
    "automaton": {
     "name": "Tamsin",
     "side": "Back",
@@ -224,7 +224,7 @@
    "since": -4,
    "trait": "drinks after every breach, not before",
    "role": "Stag",
-   "rank": 6,
+   "rank": 7,
    "automaton": {
     "name": "Verity",
     "side": "Front",
@@ -246,25 +246,25 @@
    }
   },
   {
-   "name": "Rowena Lowry",
-   "pronouns": "he/him",
-   "species": "Human",
-   "background": "Soldier",
+   "name": "Tana Yarrow",
+   "pronouns": "she/her",
+   "species": "Gnome",
+   "background": "Sage",
    "side": "Front",
-   "class": "Ranger",
-   "subclass": "Hunter",
+   "class": "Monk",
+   "subclass": "Open Hand",
    "scores": {
-    "DEX": 16,
-    "WIS": 15,
-    "CON": 12,
-    "STR": 11,
-    "INT": 11,
-    "CHA": 9
+    "DEX": 15,
+    "WIS": 14,
+    "CON": 13,
+    "STR": 12,
+    "INT": 12,
+    "CHA": 7
    },
-   "since": -5,
-   "trait": "thinks the breaches are a punishment and prays before the board",
+   "since": 2,
+   "trait": "sends every coin home to a village the board never names",
    "role": "Hare",
-   "rank": 7,
+   "rank": 8,
    "automaton": {
     "name": "Gaskell",
     "side": "Back",
@@ -281,7 +281,8 @@
     },
     "built": -5,
     "partners": [
-     "Rowena Lowry"
+     "Rowena Lowry",
+     "Tana Yarrow"
     ]
    }
   },
@@ -304,7 +305,7 @@
    "since": -6,
    "trait": "has buried three partners' cores and visits them",
    "role": "Lynx",
-   "rank": 8,
+   "rank": 9,
    "automaton": {
     "name": "Ives",
     "side": "Back",
@@ -344,7 +345,7 @@
    "since": -7,
    "trait": "was recruited out of a cell and the Company knows it",
    "role": "Badger",
-   "rank": 9,
+   "rank": 10,
    "automaton": {
     "name": "Hollis",
     "side": "Front",
@@ -384,7 +385,7 @@
    "since": -8,
    "trait": "fosters the children of the fallen when no one else will",
    "role": "Fox",
-   "rank": 10,
+   "rank": 11,
    "automaton": {
     "name": "Hobbes",
     "side": "Back",
@@ -424,7 +425,7 @@
    "since": -9,
    "trait": "has never been in a city and talks about the Capital constantly",
    "role": "Otter",
-   "rank": 11,
+   "rank": 12,
    "automaton": {
     "name": "Faraday",
     "side": "Front",
@@ -464,7 +465,7 @@
    "since": -10,
    "trait": "wants the Marshal's job and says so",
    "role": "Owl",
-   "rank": 12,
+   "rank": 13,
    "automaton": {
     "name": "Inchbald",
     "side": "Front",
@@ -504,7 +505,7 @@
    "since": -11,
    "trait": "writes the Company's songs, badly",
    "role": "Ram",
-   "rank": 13,
+   "rank": 14,
    "automaton": {
     "name": "Candlewick",
     "side": "Back",
@@ -526,25 +527,25 @@
    }
   },
   {
-   "name": "Aelar Vance",
+   "name": "Nissa Wick",
    "pronouns": "he/him",
-   "species": "Elf",
+   "species": "Gnome",
    "background": "Criminal",
    "side": "Back",
-   "class": "Druid",
-   "subclass": "Land",
+   "class": "Wizard",
+   "subclass": "Evoker",
    "scores": {
-    "WIS": 18,
-    "CON": 12,
-    "DEX": 12,
-    "INT": 11,
-    "CHA": 11,
-    "STR": 10
+    "INT": 17,
+    "DEX": 15,
+    "CON": 13,
+    "WIS": 10,
+    "CHA": 10,
+    "STR": 8
    },
-   "since": -12,
-   "trait": "believes the automatons are people and treats them so",
+   "since": 2,
+   "trait": "argues with their automaton in public and loses",
    "role": "Bear",
-   "rank": 14,
+   "rank": 15,
    "automaton": {
     "name": "Sedge",
     "side": "Front",
@@ -561,7 +562,8 @@
     },
     "built": -12,
     "partners": [
-     "Aelar Vance"
+     "Aelar Vance",
+     "Nissa Wick"
     ]
    }
   },
@@ -584,7 +586,7 @@
    "since": -13,
    "trait": "trains recruits unasked and is good at it",
    "role": "Wolf",
-   "rank": 15,
+   "rank": 16,
    "automaton": {
     "name": "Wimbourne",
     "side": "Front",
@@ -624,7 +626,7 @@
    "since": -14,
    "trait": "takes the smallest room, eats last, and is adored for it",
    "role": "Lion",
-   "rank": 16,
+   "rank": 17,
    "automaton": {
     "name": "Rookwood",
     "side": "Front",
@@ -664,7 +666,7 @@
    "since": -15,
    "trait": "gambles with the quartermaster's clerks and owes them",
    "role": "Hawk",
-   "rank": 17,
+   "rank": 18,
    "automaton": {
     "name": "Carrow",
     "side": "Back",
@@ -704,7 +706,7 @@
    "since": -16,
    "trait": "wants to graduate before an older sibling who is already in the Capital",
    "role": "Crane",
-   "rank": 18,
+   "rank": 19,
    "automaton": {
     "name": "Alder",
     "side": "Back",
@@ -744,7 +746,7 @@
    "since": -17,
    "trait": "cheats at cards, is caught, is forgiven",
    "role": "Boar",
-   "rank": 19,
+   "rank": 20,
    "automaton": {
     "name": "Dorrit",
     "side": "Front",
@@ -766,25 +768,25 @@
    }
   },
   {
-   "name": "Wrenn Ironside",
-   "pronouns": "he/him",
+   "name": "Alston Greaves",
+   "pronouns": "she/her",
    "species": "Gnome",
    "background": "Soldier",
    "side": "Back",
-   "class": "Druid",
-   "subclass": "Land",
+   "class": "Sorcerer",
+   "subclass": "Draconic",
    "scores": {
-    "WIS": 16,
-    "CON": 15,
-    "DEX": 14,
+    "CHA": 16,
+    "CON": 14,
+    "DEX": 12,
+    "WIS": 11,
     "INT": 10,
-    "CHA": 9,
-    "STR": 7
+    "STR": 10
    },
-   "since": -18,
-   "trait": "keeps a tally of deportations and thinks kills are a failure of manners",
+   "since": 2,
+   "trait": "lost a settlement to a loose breach and hasn't forgiven the board",
    "role": "Raven",
-   "rank": 20,
+   "rank": 1,
    "automaton": {
     "name": "Abbott",
     "side": "Front",
@@ -801,7 +803,8 @@
     },
     "built": -18,
     "partners": [
-     "Wrenn Ironside"
+     "Wrenn Ironside",
+     "Alston Greaves"
     ]
    }
   }
@@ -854,235 +857,316 @@
    }
   ]
  },
- "loose": [],
- "fallen": [],
- "graduated": [],
- "news": [],
- "board": [
+ "loose": [
   {
-   "role": "Raven",
-   "reported": 20,
-   "level": 20,
-   "near": "Barrowden",
-   "days": 3,
-   "seed": 371719,
-   "kind": "Adult Gold Dragon"
-  },
-  {
-   "role": "Boar",
-   "reported": 19,
-   "level": 19,
-   "near": "Hollins",
-   "days": 2,
-   "seed": 966109,
-   "kind": "Roc"
-  },
-  {
-   "role": "Crane",
-   "reported": 18,
-   "level": 18,
-   "near": "Hadley",
-   "days": 3,
-   "seed": 71988,
-   "kind": "Djinni"
-  },
-  {
-   "role": "Hawk",
-   "reported": 17,
-   "level": 18,
-   "near": "Barrowden",
-   "days": 3,
-   "seed": 202362,
-   "kind": "Adult Green Dragon"
-  },
-  {
-   "role": "Lion",
-   "reported": 16,
-   "level": 17,
-   "near": "Nether Wick",
-   "days": 1,
-   "seed": 684381,
-   "kind": "Triceratops"
-  },
-  {
-   "role": "Wolf",
-   "reported": 15,
-   "level": 15,
-   "near": "Goose Green",
-   "days": 4,
-   "seed": 608564,
-   "kind": "Cloud Giant"
-  },
-  {
-   "role": null,
-   "reported": 15,
-   "level": 15,
-   "near": "Kingsmere",
-   "days": 1,
-   "seed": 476488,
-   "kind": "Air Elemental"
-  },
-  {
-   "role": "Bear",
-   "reported": 14,
-   "level": 14,
-   "near": "Hollins",
-   "days": 3,
-   "seed": 72753,
-   "kind": "Wyvern"
-  },
-  {
-   "role": "Ram",
-   "reported": 13,
-   "level": 13,
-   "near": "Fenwick",
-   "days": 1,
-   "seed": 561194,
-   "kind": "Roc"
-  },
-  {
-   "role": "Owl",
-   "reported": 12,
-   "level": 12,
-   "near": "Goose Green",
-   "days": 4,
-   "seed": 976002,
-   "kind": "Bulette"
-  },
-  {
-   "role": "Otter",
-   "reported": 11,
-   "level": 11,
-   "near": "Barrowden",
-   "days": 3,
-   "seed": 817684,
-   "kind": "Deva"
-  },
-  {
-   "role": null,
-   "reported": 11,
-   "level": 11,
-   "near": "Goose Green",
-   "days": 3,
-   "seed": 219809,
-   "kind": "Wraith"
-  },
-  {
-   "role": null,
-   "reported": 10,
-   "level": 10,
-   "near": "Barrowden",
-   "days": 2,
-   "seed": 666256,
-   "kind": "Fire Giant"
-  },
-  {
-   "role": "Fox",
-   "reported": 10,
-   "level": 10,
-   "near": "Hollins",
-   "days": 3,
-   "seed": 785160,
-   "kind": "Giant Scorpion"
-  },
-  {
-   "role": "Badger",
-   "reported": 9,
-   "level": 9,
-   "near": "Nether Wick",
-   "days": 1,
-   "seed": 380839,
-   "kind": "Red Dragon Wyrmling"
-  },
-  {
-   "role": "Lynx",
-   "reported": 8,
-   "level": 9,
-   "near": "Barrowden",
-   "days": 2,
-   "seed": 835285,
-   "kind": "Half-Dragon"
-  },
-  {
-   "role": "Hare",
-   "reported": 7,
+   "kind": "Giant Shark",
    "level": 7,
    "near": "Kingsmere",
-   "days": 0,
-   "seed": 429284,
+   "since": 1,
+   "why": "the Hare fell there"
+  },
+  {
+   "kind": "Wyvern",
+   "level": 14,
+   "near": "Hollins",
+   "since": 1,
+   "why": "the Bear fell there"
+  },
+  {
+   "kind": "Air Elemental",
+   "level": 15,
+   "near": "Kingsmere",
+   "since": 1,
+   "why": "no one was sent"
+  },
+  {
+   "kind": "Wraith",
+   "level": 11,
+   "near": "Goose Green",
+   "since": 1,
+   "why": "no one was sent"
+  },
+  {
+   "kind": "Fire Giant",
+   "level": 10,
+   "near": "Barrowden",
+   "since": 1,
+   "why": "no one was sent"
+  },
+  {
+   "kind": "Polar Bear",
+   "level": 3,
+   "near": "Barrowden",
+   "since": 1,
+   "why": "no one was sent"
+  },
+  {
+   "kind": "Dretch",
+   "level": 1,
+   "near": "Barrowden",
+   "since": 1,
+   "why": "no one was sent"
+  }
+ ],
+ "fallen": [
+  {
+   "role": "Hare",
+   "name": "Rowena Lowry",
+   "rank": 7,
+   "month": 1,
+   "near": "Kingsmere",
    "kind": "Giant Shark"
   },
   {
-   "role": "Stag",
-   "reported": 6,
-   "level": 6,
+   "role": "Bear",
+   "name": "Aelar Vance",
+   "rank": 14,
+   "month": 1,
+   "near": "Hollins",
+   "kind": "Wyvern"
+  }
+ ],
+ "graduated": [
+  {
+   "role": "Raven",
+   "name": "Wrenn Ironside",
+   "month": 1
+  }
+ ],
+ "news": [
+  "The Hare, Rowena Lowry (Sergeant-Major), died in the Giant Shark breach near Kingsmere. The automaton Gaskell came home.",
+  "The new Hare is Tana Yarrow (she/her, Gnome Monk), Cornet, paired with Gaskell.",
+  "The Bear, Aelar Vance (Warden), died in the Wyvern breach near Hollins. The automaton Sedge came home.",
+  "The new Bear is Nissa Wick (he/him, Gnome Wizard), High Warden, paired with Sedge.",
+  "The Raven, Wrenn Ironside, Lord Marshal, has graduated and left for the Capital. Abbott stays with the Company.",
+  "The new Raven is Alston Greaves (she/her, Gnome Sorcerer), Recruit, paired with Abbott.",
+  "Unhandled this month, now loose: Air Elementals (level 15) near Kingsmere; Wraiths (level 11) near Goose Green; Fire Giants (level 10) near Barrowden; Polar Bears (level 3) near Barrowden; Dretches (level 1) near Barrowden."
+ ],
+ "board": [
+  {
+   "role": "Boar",
+   "reported": 20,
+   "level": 20,
+   "near": "Hadley",
+   "days": 3,
+   "seed": 593682,
+   "kind": "Adult White Dragon"
+  },
+  {
+   "role": "Crane",
+   "reported": 19,
+   "level": 19,
    "near": "Fenwick",
    "days": 2,
-   "seed": 883744,
-   "kind": "Otyugh"
+   "seed": 214053,
+   "kind": "Adult Blue Dragon"
+  },
+  {
+   "role": "Hawk",
+   "reported": 18,
+   "level": 18,
+   "near": "Kingsmere",
+   "days": 0,
+   "seed": 224973,
+   "kind": "Giant Ape"
+  },
+  {
+   "role": "Lion",
+   "reported": 17,
+   "level": 17,
+   "near": "Goose Green",
+   "days": 4,
+   "seed": 571782,
+   "kind": "Adult Silver Dragon"
+  },
+  {
+   "role": "Wolf",
+   "reported": 16,
+   "level": 16,
+   "near": "Nether Wick",
+   "days": 2,
+   "seed": 988662,
+   "kind": "Assassin"
+  },
+  {
+   "role": "Bear",
+   "reported": 15,
+   "level": 15,
+   "near": "Fenwick",
+   "days": 2,
+   "seed": 786496,
+   "kind": "Marilith"
+  },
+  {
+   "role": null,
+   "reported": 15,
+   "level": 15,
+   "near": "Hollins",
+   "days": 3,
+   "seed": 856988,
+   "kind": "Chimera"
+  },
+  {
+   "role": "Ram",
+   "reported": 14,
+   "level": 14,
+   "near": "Fenwick",
+   "days": 1,
+   "seed": 948771,
+   "kind": "Fire Elemental"
+  },
+  {
+   "role": null,
+   "reported": 14,
+   "level": 14,
+   "near": "Hadley",
+   "days": 4,
+   "seed": 347704,
+   "kind": "Adult Brass Dragon"
+  },
+  {
+   "role": "Owl",
+   "reported": 13,
+   "level": 13,
+   "near": "Hollins",
+   "days": 2,
+   "seed": 213200,
+   "kind": "Wraith"
+  },
+  {
+   "role": "Otter",
+   "reported": 12,
+   "level": 13,
+   "near": "Fenwick",
+   "days": 1,
+   "seed": 713330,
+   "kind": "Archmage"
+  },
+  {
+   "role": null,
+   "reported": 11,
+   "level": 11,
+   "near": "Fenwick",
+   "days": 2,
+   "seed": 800285,
+   "kind": "Unicorn"
+  },
+  {
+   "role": "Fox",
+   "reported": 11,
+   "level": 11,
+   "near": "Hollins",
+   "days": 3,
+   "seed": 59539,
+   "kind": "Medusa"
+  },
+  {
+   "role": "Badger",
+   "reported": 10,
+   "level": 10,
+   "near": "Kingsmere",
+   "days": 0,
+   "seed": 999777,
+   "kind": "Lamia"
+  },
+  {
+   "role": "Lynx",
+   "reported": 9,
+   "level": 10,
+   "near": "Nether Wick",
+   "days": 2,
+   "seed": 668452,
+   "kind": "Killer Whale"
+  },
+  {
+   "role": "Hare",
+   "reported": 8,
+   "level": 8,
+   "near": "Hollins",
+   "days": 3,
+   "seed": 118728,
+   "kind": "Vampire Familiar"
+  },
+  {
+   "role": "Stag",
+   "reported": 7,
+   "level": 7,
+   "near": "Barrowden",
+   "days": 3,
+   "seed": 805115,
+   "kind": "Young Copper Dragon"
   },
   {
    "role": "Heron",
-   "reported": 5,
-   "level": 5,
-   "near": "Hollins",
-   "days": 2,
-   "seed": 685901,
-   "kind": "Vampire Spawn"
+   "reported": 6,
+   "level": 6,
+   "near": "Goose Green",
+   "days": 4,
+   "seed": 399062,
+   "kind": "Killer Whale"
   },
   {
    "role": "Hound",
-   "reported": 4,
-   "level": 4,
-   "near": "Hadley",
+   "reported": 5,
+   "level": 5,
+   "near": "Hollins",
    "days": 3,
-   "seed": 622828,
-   "kind": "Saber-Toothed Tiger"
-  },
-  {
-   "role": null,
-   "reported": 3,
-   "level": 3,
-   "near": "Barrowden",
-   "days": 2,
-   "seed": 566337,
-   "kind": "Polar Bear"
+   "seed": 779399,
+   "kind": "Wraith"
   },
   {
    "role": "Wren",
+   "reported": 4,
+   "level": 4,
+   "near": "Hollins",
+   "days": 3,
+   "seed": 130979,
+   "kind": "Giant Vulture"
+  },
+  {
+   "role": null,
    "reported": 3,
    "level": 3,
-   "near": "Nether Wick",
-   "days": 1,
-   "seed": 49597,
-   "kind": "Bronze Dragon Wyrmling"
+   "near": "Barrowden",
+   "days": 3,
+   "seed": 621019,
+   "kind": "Ogre"
   },
   {
    "role": "Adder",
+   "reported": 3,
+   "level": 3,
+   "near": "Kingsmere",
+   "days": 1,
+   "seed": 768515,
+   "kind": "Warhorse"
+  },
+  {
+   "role": "Bull",
    "reported": 2,
    "level": 2,
    "near": "Goose Green",
-   "days": 4,
-   "seed": 361015,
-   "kind": "Swarm of Insects"
+   "days": 3,
+   "seed": 255881,
+   "kind": "Giant Goat"
   },
   {
    "role": null,
    "reported": 1,
    "level": 1,
-   "near": "Barrowden",
-   "days": 2,
-   "seed": 581012,
-   "kind": "Dretch"
+   "near": "Goose Green",
+   "days": 3,
+   "seed": 101120,
+   "kind": "Goblin Warrior"
   },
   {
-   "role": "Bull",
+   "role": "Raven",
    "reported": 1,
    "level": 1,
-   "near": "Hadley",
+   "near": "Hollins",
    "days": 3,
-   "seed": 152302,
-   "kind": "Giant Hyena"
+   "seed": 901350,
+   "kind": "Stirge"
   }
  ]
 }

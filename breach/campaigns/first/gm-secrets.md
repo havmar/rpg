@@ -29,22 +29,29 @@ Clues, to lay as play goes:
 - The Crown's liaison receives a letter each month naming the top three roles by kills.
 - Lampwick, asked the right question, will recall a garden that it has never seen.
 
-## Current breach: month 1, the Bull
+## Current breach: month 2, the Bull
 
-`gen_breach.py --seed 152302 --level 1 --reported 1` · near Hadley, 3 days · true level 1.
-Principal kind Giant Hyena; the surface is dry grassland and thorn scrub where there was
-pasture, warm wind, a smell of dust. 300 XP in the breach; 150 is level 2.
+`gen_breach.py --seed 255881 --level 2 --reported 2` · near Goose Green, 3 days · true level 2.
+Principal kind Giant Goat; the surface is high upland pasture and scree where there was
+lowland, thin cold air, bells somewhere. 600 XP in the breach; 450 is level 3 (needs 150 more).
 
 | Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | 4× Flying Snake (stowaways, Monstrosity) | 1/8 | 100 | Low | Wild: Animal Handling DC 15 or fight | 12×12 m | 1.5 m entrance (chokepoint) | 10 GP | cleared: all 4 killed (fire at the gap), 100 XP; coins taken |
-| 2 | 1× Giant Hyena | 1 | 200 | High | Wild: Animal Handling DC 15 or fight | 9×18 m | the rift, 3 m tear at the far end | 20 GP | killed at the thorn gap, 200 XP; coins taken. **Breach closed** day 4. |
+| 1 | 4× Grimlock (stowaways) | 1/4 | 200 | Low | Hostile: fights | 15×15 m | a 3 m ledge along one wall (elevation) | 20 GP | unexplored |
+| 2 | 4× Giant Goat | 1/2 | 400 | High | Wild: Animal Handling DC 15 or fight | 9×12 m | the rift, 3 m tear at the far end | 40 GP | unexplored |
 
-Notes: Flying Snakes are Monstrosities, so *Animal Friendship* won't take them. The hyena is
-a Beast (WIS +1). Thing left behind on closing: a hyena's tooth threaded on grass cord, or
-a brass bell from whatever the snakes stowed away in.
+Notes: Grimlocks are blind (blindsight), so darkness and stealth by sight don't fool them;
+noise does. Giant goats are Beasts (Animal Friendship works, one per slot). Thing left behind
+on closing: a goat bell, cracked, or a grimlock's bone flute.
 
-## Month-end foreknowledge
+## Month 1 breach (closed)
+
+Giant Hyena by Hadley, seed 152302, level 1: 4 flying snakes and a giant hyena, all killed,
+closed day 4. Thing left: a hyena's tooth on plaited grass cord. (Secret: the cord was plaited
+by Lampwick's core-memory, not by anyone in the breach: Lampwick did it in the night without
+knowing, as the previous owner of its core's stone used to. It doesn't know this.)
+
+## Month-end foreknowledge (month 1, now resolved)
 
 `month.py end` is seeded by campaign seed and month, so its result is fixed in advance (checked
 on a scratch copy, month 1). Month 1's end: the Hare (Rowena Lowry) dies in the Giant Shark

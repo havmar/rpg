@@ -17,3 +17,11 @@ That night, in the corridor of thorns that was turning back into a hedge, the Bu
 On the fifth the Bull walked into Hadley. The town was well and its ward stone warm. Outside the ward on the east road the lazar house had frost in its cabbages, blowing in from the Hound's sabre-tooth breach a day further east. Sister Agnet had moved her eleven to the west wall. The Hound had gone through on the third, singing, and hadn't come back yet.
 
 On the sixth the Bull went east to look for the Hound and met him on the road coming back, clawed down one side and laughing about it, with Marlow carrying a sabre-tooth's fang as long as a hand. The frost was going off the lazar house's cabbages by noon. Neega the Younger ate Sister Agnet's soup as promised, and the two pairs walked home to Kingsmere together, arriving on the ninth.
+
+**The rest of the month.** The Prentice-to-be told Brother Ambrose the breach down to the smell of the grass, and he copied out the plaited cord twice. Sister Agnet's message went to the Marshal, who said nothing, and to Sir Lucan, who wrote it down. Will Tanner got his form. Most evenings Lampwick and the Bull sat on the wall walk while it asked her questions about the river, as though it were drawing a map. On the twentieth day Gaskell came home without the Hare, and on the twenty-third Sedge came home without the Bear. Both automatons walked straight to Isolde's shed and stood in it. The Raven left for the Capital on the last day with one bag, and Teg shut the gate after him.
+
+The news of month 1: the Hare, Rowena Lowry, Sergeant-Major, died in the Giant Shark breach by Kingsmere; it was the seat Caelynn walked out of, and he was the one who took it. The Bear, Aelar Vance, Warden, died to wyverns by Hollins. The Raven, Wrenn Ironside, graduated. Five breaches went unhandled and their denizens are loose, the worst of them air elementals a short walk from the city.
+
+## Month 2
+
+The Bull, now Prentice, is given a Giant Goat breach by Goose Green, three days out.

@@ -1,12 +1,27 @@
 # The Bull
 
-Rank 1 Recruit of the 11th Company, Harrowdale. Holder since month 1: **Caelynn Brandt**.
+Rank 2 Prentice (month 2) of the 11th Company, Harrowdale. Holder since month 1: **Caelynn Brandt**.
 Partner: **Lampwick**.
 
 ## Caelynn Brandt (she/her)
 
 Wood Elf Ranger 2 · Criminal · Front · XP 300 (level 3 at 450)
 Deserted once, came back, and was allowed to.
+
+**Backstory.** Born in the old wood above Nether Wick a hundred and twelve years ago, which an elf
+counts as young, and left it when a breach took the wood and gave back fen. Forty years on
+the Kingsmere river after that, running untaxed brandy past the ward lines at night; the
+river crews called her Brandt for the cargo and she kept it. She knows the unwarded country
+better than the scouts do, because she spent decades avoiding it. The Crown's excise caught her
+eight months ago and offered her the rope or the Company. She took the Company, was
+chalked into the Hare's seat as a Recruit, and on the second night on the road to her first
+breach she took a boat south and kept going. The breach, a small one by Nether Wick,
+collapsed with no one in it. Whatever came out got into the monastery's brewhouse and
+killed a lay brother called Oswy. Rowena Lowry was put in the Hare's seat that week. Caelynn
+heard about Oswy in a tavern in the south in the spring, and walked back. Teg let her in at the
+gate. Marshal Vane looked at her for a long time and chalked her into the next empty seat,
+the Bull. Nobody in the yard has forgotten it, and the ones who are kind to her about it are the
+hardest to stand.
 
 | STR | DEX | CON | INT | WIS | CHA |
 |---|---|---|---|---|---|
