@@ -94,7 +94,9 @@ thieves' tools, tinker's tools. Burglar's pack: backpack, ball bearings, bell, 1
 crowbar, hooded lantern, 13 flasks of oil, healer's kit (10 uses), 5 days of rations, rope (15 m), tinderbox,
 waterskin.
 
-**Gold:** **54 GP** (31 starting, 10 and 20 from the breach; 7 spent in Hadley).
+**Gold:** **4 GP** (31 starting, 10 and 20 from the breach; 7 spent in Hadley, 50 in Kingsmere).
+
+**Bought in Kingsmere (month 2):** Potion of Healing (50 GP; Bonus Action to drink or give, 2d4+2 HP), carried by Caelynn.
 
 **Bought in Hadley (month 1):** healer's kit (5 GP, 10 uses: stabilise with no roll), 20 arrows (1 GP), 10 flasks of oil (1 GP).
 

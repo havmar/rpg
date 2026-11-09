@@ -25,3 +25,5 @@ The news of month 1: the Hare, Rowena Lowry, Sergeant-Major, died in the Giant S
 ## Month 2
 
 The Bull, now Prentice, is given a Giant Goat breach by Goose Green, three days out.
+
+The Prentice spent all but four of her gold on a single healing potion at the apothecary by the cathedral, and Lampwick said it was the first sensible thing anyone had bought in its presence. The road to Goose Green went past the Aske farm, where the wraiths had been. The village sleeps inside its ward now and the Gridiron bars its doors at dusk. On the fourth morning the low fields beyond the village were mountain: scree, thin cold air, and goat bells somewhere above.

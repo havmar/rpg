@@ -37,7 +37,7 @@ lowland, thin cold air, bells somewhere. 600 XP in the breach; 450 is level 3 (n
 
 | Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | 4× Grimlock (stowaways) | 1/4 | 200 | Low | Hostile: fights | 15×15 m | a 3 m ledge along one wall (elevation) | 20 GP | unexplored |
+| 1 | 4× Grimlock (stowaways) | 1/4 | 200 | Low | Hostile: fights | 15×15 m | a 3 m ledge along one wall (elevation) | 20 GP | scouted; grimlocks heard Lampwick, alert, two on the ledge, all 11/11 HP |
 | 2 | 4× Giant Goat | 1/2 | 400 | High | Wild: Animal Handling DC 15 or fight | 9×12 m | the rift, 3 m tear at the far end | 40 GP | unexplored |
 
 Notes: Grimlocks are blind (blindsight), so darkness and stealth by sight don't fool them;
