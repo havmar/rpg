@@ -12,4 +12,4 @@
 - **Backstory note:** Caelynn deserted from the Hare's seat eight months ago; Rowena Lowry took it, and died this month as the Hare in the Giant Shark breach by Kingsmere. The Giant Sharks are loose near Kingsmere.
 - **Last night:** three wraiths stood at the ward's edge by the pound again till dawn, facing the inn (Hester Quill counted them from the attic).
 - **Side breach (Copse Wood, unassigned):** closed day 5. Giant octopus charmed and led home; 4 goblin warriors talked home by Lampwick. No kills, no XP, 40 GP. Strike the goblins from `loose` after month.py end (see gm-secrets).
-- **Pending:** what next: back to Goose Green tonight (3 km) and home to Kingsmere (day 9), or something else.
+- **Pending:** the human asked to montage to next month unless a breach needs help. Told them: the Ogre breach near Barrowden (scouts level 3, unassigned, 3 days out) needs help, and loose Dretches (1) and Polar Bears (3) are near Barrowden too. Proposed route: Goose Green tonight, Kingsmere day 8 to shop (potion), Barrowden ~day 11. Awaiting yes/no.
