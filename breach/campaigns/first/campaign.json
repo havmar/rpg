@@ -1,0 +1,1088 @@
+{
+ "name": "first",
+ "seed": 731,
+ "company": "11th Company",
+ "month": 1,
+ "player": "Bull",
+ "roster": [
+  {
+   "name": "Caelynn Brandt",
+   "pronouns": "she/her",
+   "species": "Elf",
+   "background": "Criminal",
+   "side": "Front",
+   "class": "Ranger",
+   "subclass": "Hunter",
+   "scores": {
+    "DEX": 16,
+    "WIS": 15,
+    "CON": 14,
+    "STR": 11,
+    "INT": 11,
+    "CHA": 11
+   },
+   "since": 1,
+   "trait": "deserted once, came back, and was allowed to",
+   "role": "Bull",
+   "rank": 1,
+   "automaton": {
+    "name": "Lampwick",
+    "side": "Back",
+    "class": "Rogue",
+    "subclass": "Thief",
+    "protocol_skill": "Perception",
+    "scores": {
+     "DEX": 17,
+     "CON": 16,
+     "INT": 15,
+     "WIS": 14,
+     "CHA": 14,
+     "STR": 9
+    },
+    "built": 1,
+    "partners": [
+     "Caelynn Brandt"
+    ]
+   }
+  },
+  {
+   "name": "Gell Whitlock",
+   "pronouns": "he/him",
+   "species": "Orc",
+   "background": "Criminal",
+   "side": "Front",
+   "class": "Fighter",
+   "subclass": "Champion",
+   "scores": {
+    "STR": 17,
+    "CON": 16,
+    "DEX": 15,
+    "WIS": 12,
+    "INT": 11,
+    "CHA": 10
+   },
+   "since": 0,
+   "trait": "is studying the rifts and asks the chronicler for records",
+   "role": "Adder",
+   "rank": 2,
+   "automaton": {
+    "name": "Pennywhistle",
+    "side": "Back",
+    "class": "Druid",
+    "subclass": "Land",
+    "protocol_skill": "Survival",
+    "scores": {
+     "WIS": 15,
+     "CON": 12,
+     "DEX": 11,
+     "INT": 11,
+     "CHA": 11,
+     "STR": 10
+    },
+    "built": 0,
+    "partners": [
+     "Gell Whitlock"
+    ]
+   }
+  },
+  {
+   "name": "Jorund Pendry",
+   "pronouns": "she/her",
+   "species": "Human",
+   "background": "Sage",
+   "side": "Back",
+   "class": "Warlock",
+   "subclass": "Fiend",
+   "scores": {
+    "CHA": 17,
+    "CON": 14,
+    "DEX": 12,
+    "WIS": 11,
+    "INT": 11,
+    "STR": 11
+   },
+   "since": -1,
+   "trait": "never takes a stowaway's side and never explains why",
+   "role": "Wren",
+   "rank": 3,
+   "automaton": {
+    "name": "Basset",
+    "side": "Front",
+    "class": "Paladin",
+    "subclass": "Devotion",
+    "protocol_skill": "Insight",
+    "scores": {
+     "STR": 16,
+     "CHA": 15,
+     "CON": 15,
+     "WIS": 13,
+     "DEX": 12,
+     "INT": 6
+    },
+    "built": -1,
+    "partners": [
+     "Jorund Pendry"
+    ]
+   }
+  },
+  {
+   "name": "Neega the Younger",
+   "pronouns": "he/him",
+   "species": "Orc",
+   "background": "Soldier",
+   "side": "Front",
+   "class": "Barbarian",
+   "subclass": "Berserker",
+   "scores": {
+    "STR": 15,
+    "CON": 14,
+    "DEX": 13,
+    "WIS": 10,
+    "CHA": 8,
+    "INT": 8
+   },
+   "since": -2,
+   "trait": "has a running bet with another role on who graduates first",
+   "role": "Hound",
+   "rank": 4,
+   "automaton": {
+    "name": "Marlow",
+    "side": "Back",
+    "class": "Bard",
+    "subclass": "Lore",
+    "protocol_skill": "Perception",
+    "scores": {
+     "CHA": 13,
+     "DEX": 11,
+     "CON": 11,
+     "WIS": 10,
+     "INT": 9,
+     "STR": 8
+    },
+    "built": -2,
+    "partners": [
+     "Neega the Younger"
+    ]
+   }
+  },
+  {
+   "name": "Carlin Lowry",
+   "pronouns": "he/him",
+   "species": "Gnome",
+   "background": "Soldier",
+   "side": "Front",
+   "class": "Paladin",
+   "subclass": "Devotion",
+   "scores": {
+    "STR": 15,
+    "CHA": 13,
+    "CON": 12,
+    "WIS": 11,
+    "DEX": 10,
+    "INT": 10
+   },
+   "since": -3,
+   "trait": "collects a knick-knack from every breach and labels them",
+   "role": "Heron",
+   "rank": 5,
+   "automaton": {
+    "name": "Tamsin",
+    "side": "Back",
+    "class": "Bard",
+    "subclass": "Lore",
+    "protocol_skill": "Insight",
+    "scores": {
+     "CHA": 12,
+     "DEX": 11,
+     "CON": 11,
+     "WIS": 11,
+     "INT": 9,
+     "STR": 7
+    },
+    "built": -3,
+    "partners": [
+     "Carlin Lowry"
+    ]
+   }
+  },
+  {
+   "name": "Orryn Brandt",
+   "pronouns": "he/him",
+   "species": "Gnome",
+   "background": "Criminal",
+   "side": "Back",
+   "class": "Bard",
+   "subclass": "Lore",
+   "scores": {
+    "CHA": 16,
+    "DEX": 14,
+    "CON": 14,
+    "WIS": 14,
+    "INT": 12,
+    "STR": 8
+   },
+   "since": -4,
+   "trait": "drinks after every breach, not before",
+   "role": "Stag",
+   "rank": 6,
+   "automaton": {
+    "name": "Verity",
+    "side": "Front",
+    "class": "Monk",
+    "subclass": "Open Hand",
+    "protocol_skill": "Animal Handling",
+    "scores": {
+     "DEX": 16,
+     "WIS": 15,
+     "CON": 12,
+     "STR": 11,
+     "INT": 11,
+     "CHA": 11
+    },
+    "built": -4,
+    "partners": [
+     "Orryn Brandt"
+    ]
+   }
+  },
+  {
+   "name": "Rowena Lowry",
+   "pronouns": "he/him",
+   "species": "Human",
+   "background": "Soldier",
+   "side": "Front",
+   "class": "Ranger",
+   "subclass": "Hunter",
+   "scores": {
+    "DEX": 16,
+    "WIS": 15,
+    "CON": 12,
+    "STR": 11,
+    "INT": 11,
+    "CHA": 9
+   },
+   "since": -5,
+   "trait": "thinks the breaches are a punishment and prays before the board",
+   "role": "Hare",
+   "rank": 7,
+   "automaton": {
+    "name": "Gaskell",
+    "side": "Back",
+    "class": "Wizard",
+    "subclass": "Evoker",
+    "protocol_skill": "Animal Handling",
+    "scores": {
+     "INT": 17,
+     "DEX": 16,
+     "CON": 14,
+     "WIS": 12,
+     "CHA": 10,
+     "STR": 9
+    },
+    "built": -5,
+    "partners": [
+     "Rowena Lowry"
+    ]
+   }
+  },
+  {
+   "name": "Akmenos Greaves",
+   "pronouns": "they/them",
+   "species": "Tiefling",
+   "background": "Criminal",
+   "side": "Front",
+   "class": "Ranger",
+   "subclass": "Hunter",
+   "scores": {
+    "DEX": 16,
+    "WIS": 15,
+    "CON": 14,
+    "STR": 14,
+    "INT": 12,
+    "CHA": 8
+   },
+   "since": -6,
+   "trait": "has buried three partners' cores and visits them",
+   "role": "Lynx",
+   "rank": 8,
+   "automaton": {
+    "name": "Ives",
+    "side": "Back",
+    "class": "Sorcerer",
+    "subclass": "Draconic",
+    "protocol_skill": "Sleight of Hand",
+    "scores": {
+     "CHA": 16,
+     "CON": 15,
+     "DEX": 14,
+     "WIS": 12,
+     "INT": 11,
+     "STR": 10
+    },
+    "built": -6,
+    "partners": [
+     "Akmenos Greaves"
+    ]
+   }
+  },
+  {
+   "name": "Therai Halloran",
+   "pronouns": "he/him",
+   "species": "Tiefling",
+   "background": "Sage",
+   "side": "Back",
+   "class": "Warlock",
+   "subclass": "Fiend",
+   "scores": {
+    "CHA": 14,
+    "CON": 13,
+    "DEX": 13,
+    "WIS": 11,
+    "INT": 10,
+    "STR": 5
+   },
+   "since": -7,
+   "trait": "was recruited out of a cell and the Company knows it",
+   "role": "Badger",
+   "rank": 9,
+   "automaton": {
+    "name": "Hollis",
+    "side": "Front",
+    "class": "Monk",
+    "subclass": "Open Hand",
+    "protocol_skill": "Stealth",
+    "scores": {
+     "DEX": 17,
+     "WIS": 16,
+     "CON": 15,
+     "STR": 14,
+     "INT": 11,
+     "CHA": 6
+    },
+    "built": -7,
+    "partners": [
+     "Therai Halloran"
+    ]
+   }
+  },
+  {
+   "name": "Fonkin of the Fen",
+   "pronouns": "she/her",
+   "species": "Gnome",
+   "background": "Soldier",
+   "side": "Front",
+   "class": "Barbarian",
+   "subclass": "Berserker",
+   "scores": {
+    "STR": 17,
+    "CON": 15,
+    "DEX": 15,
+    "WIS": 13,
+    "CHA": 12,
+    "INT": 10
+   },
+   "since": -8,
+   "trait": "fosters the children of the fallen when no one else will",
+   "role": "Fox",
+   "rank": 10,
+   "automaton": {
+    "name": "Hobbes",
+    "side": "Back",
+    "class": "Sorcerer",
+    "subclass": "Draconic",
+    "protocol_skill": "Arcana",
+    "scores": {
+     "CHA": 17,
+     "CON": 16,
+     "DEX": 15,
+     "WIS": 14,
+     "INT": 13,
+     "STR": 11
+    },
+    "built": -8,
+    "partners": [
+     "Fonkin of the Fen"
+    ]
+   }
+  },
+  {
+   "name": "Rowena Tallow",
+   "pronouns": "she/her",
+   "species": "Human",
+   "background": "Sage",
+   "side": "Back",
+   "class": "Warlock",
+   "subclass": "Fiend",
+   "scores": {
+    "CHA": 17,
+    "CON": 14,
+    "DEX": 14,
+    "WIS": 14,
+    "INT": 12,
+    "STR": 10
+   },
+   "since": -9,
+   "trait": "has never been in a city and talks about the Capital constantly",
+   "role": "Otter",
+   "rank": 11,
+   "automaton": {
+    "name": "Faraday",
+    "side": "Front",
+    "class": "Cleric",
+    "subclass": "Life",
+    "protocol_skill": "Perception",
+    "scores": {
+     "WIS": 18,
+     "CON": 17,
+     "STR": 16,
+     "DEX": 15,
+     "CHA": 8,
+     "INT": 6
+    },
+    "built": -9,
+    "partners": [
+     "Rowena Tallow"
+    ]
+   }
+  },
+  {
+   "name": "Gimble Yarrow",
+   "pronouns": "he/him",
+   "species": "Gnome",
+   "background": "Acolyte",
+   "side": "Back",
+   "class": "Rogue",
+   "subclass": "Thief",
+   "scores": {
+    "DEX": 16,
+    "CON": 13,
+    "INT": 13,
+    "WIS": 9,
+    "CHA": 7,
+    "STR": 6
+   },
+   "since": -10,
+   "trait": "wants the Marshal's job and says so",
+   "role": "Owl",
+   "rank": 12,
+   "automaton": {
+    "name": "Inchbald",
+    "side": "Front",
+    "class": "Barbarian",
+    "subclass": "Berserker",
+    "protocol_skill": "Animal Handling",
+    "scores": {
+     "STR": 16,
+     "CON": 14,
+     "DEX": 13,
+     "WIS": 10,
+     "CHA": 8,
+     "INT": 7
+    },
+    "built": -10,
+    "partners": [
+     "Gimble Yarrow"
+    ]
+   }
+  },
+  {
+   "name": "Ovak Sallow",
+   "pronouns": "he/him",
+   "species": "Orc",
+   "background": "Soldier",
+   "side": "Front",
+   "class": "Fighter",
+   "subclass": "Champion",
+   "scores": {
+    "STR": 14,
+    "CON": 13,
+    "DEX": 13,
+    "WIS": 12,
+    "INT": 11,
+    "CHA": 9
+   },
+   "since": -11,
+   "trait": "writes the Company's songs, badly",
+   "role": "Ram",
+   "rank": 13,
+   "automaton": {
+    "name": "Candlewick",
+    "side": "Back",
+    "class": "Rogue",
+    "subclass": "Thief",
+    "protocol_skill": "Stealth",
+    "scores": {
+     "DEX": 16,
+     "CON": 16,
+     "INT": 15,
+     "WIS": 15,
+     "CHA": 12,
+     "STR": 10
+    },
+    "built": -11,
+    "partners": [
+     "Ovak Sallow"
+    ]
+   }
+  },
+  {
+   "name": "Aelar Vance",
+   "pronouns": "he/him",
+   "species": "Elf",
+   "background": "Criminal",
+   "side": "Back",
+   "class": "Druid",
+   "subclass": "Land",
+   "scores": {
+    "WIS": 18,
+    "CON": 12,
+    "DEX": 12,
+    "INT": 11,
+    "CHA": 11,
+    "STR": 10
+   },
+   "since": -12,
+   "trait": "believes the automatons are people and treats them so",
+   "role": "Bear",
+   "rank": 14,
+   "automaton": {
+    "name": "Sedge",
+    "side": "Front",
+    "class": "Barbarian",
+    "subclass": "Berserker",
+    "protocol_skill": "Medicine",
+    "scores": {
+     "STR": 16,
+     "CON": 14,
+     "DEX": 13,
+     "WIS": 13,
+     "CHA": 13,
+     "INT": 9
+    },
+    "built": -12,
+    "partners": [
+     "Aelar Vance"
+    ]
+   }
+  },
+  {
+   "name": "Ovak Kettering",
+   "pronouns": "he/him",
+   "species": "Orc",
+   "background": "Sage",
+   "side": "Back",
+   "class": "Druid",
+   "subclass": "Land",
+   "scores": {
+    "WIS": 18,
+    "CON": 16,
+    "DEX": 15,
+    "INT": 14,
+    "CHA": 13,
+    "STR": 11
+   },
+   "since": -13,
+   "trait": "trains recruits unasked and is good at it",
+   "role": "Wolf",
+   "rank": 15,
+   "automaton": {
+    "name": "Wimbourne",
+    "side": "Front",
+    "class": "Cleric",
+    "subclass": "Life",
+    "protocol_skill": "Insight",
+    "scores": {
+     "WIS": 16,
+     "CON": 13,
+     "STR": 13,
+     "DEX": 12,
+     "CHA": 10,
+     "INT": 8
+    },
+    "built": -13,
+    "partners": [
+     "Ovak Kettering"
+    ]
+   }
+  },
+  {
+   "name": "Osric Kettering",
+   "pronouns": "she/her",
+   "species": "Human",
+   "background": "Acolyte",
+   "side": "Back",
+   "class": "Bard",
+   "subclass": "Lore",
+   "scores": {
+    "CHA": 15,
+    "DEX": 15,
+    "CON": 14,
+    "WIS": 10,
+    "INT": 7,
+    "STR": 7
+   },
+   "since": -14,
+   "trait": "takes the smallest room, eats last, and is adored for it",
+   "role": "Lion",
+   "rank": 16,
+   "automaton": {
+    "name": "Rookwood",
+    "side": "Front",
+    "class": "Cleric",
+    "subclass": "Life",
+    "protocol_skill": "Stealth",
+    "scores": {
+     "WIS": 15,
+     "CON": 14,
+     "STR": 13,
+     "DEX": 13,
+     "CHA": 12,
+     "INT": 12
+    },
+    "built": -14,
+    "partners": [
+     "Osric Kettering"
+    ]
+   }
+  },
+  {
+   "name": "Ovak Sallow",
+   "pronouns": "he/him",
+   "species": "Orc",
+   "background": "Criminal",
+   "side": "Front",
+   "class": "Monk",
+   "subclass": "Open Hand",
+   "scores": {
+    "DEX": 15,
+    "WIS": 12,
+    "CON": 12,
+    "STR": 11,
+    "INT": 11,
+    "CHA": 10
+   },
+   "since": -15,
+   "trait": "gambles with the quartermaster's clerks and owes them",
+   "role": "Hawk",
+   "rank": 17,
+   "automaton": {
+    "name": "Carrow",
+    "side": "Back",
+    "class": "Rogue",
+    "subclass": "Thief",
+    "protocol_skill": "Insight",
+    "scores": {
+     "DEX": 15,
+     "CON": 11,
+     "INT": 11,
+     "WIS": 11,
+     "CHA": 10,
+     "STR": 9
+    },
+    "built": -15,
+    "partners": [
+     "Ovak Sallow"
+    ]
+   }
+  },
+  {
+   "name": "Galinndan of the Fen",
+   "pronouns": "she/her",
+   "species": "Elf",
+   "background": "Acolyte",
+   "side": "Front",
+   "class": "Cleric",
+   "subclass": "Life",
+   "scores": {
+    "WIS": 17,
+    "CON": 16,
+    "STR": 14,
+    "DEX": 14,
+    "CHA": 12,
+    "INT": 7
+   },
+   "since": -16,
+   "trait": "wants to graduate before an older sibling who is already in the Capital",
+   "role": "Crane",
+   "rank": 18,
+   "automaton": {
+    "name": "Alder",
+    "side": "Back",
+    "class": "Bard",
+    "subclass": "Lore",
+    "protocol_skill": "Insight",
+    "scores": {
+     "CHA": 16,
+     "DEX": 14,
+     "CON": 14,
+     "WIS": 13,
+     "INT": 12,
+     "STR": 9
+    },
+    "built": -16,
+    "partners": [
+     "Galinndan of the Fen"
+    ]
+   }
+  },
+  {
+   "name": "Rieta Rooke",
+   "pronouns": "he/him",
+   "species": "Tiefling",
+   "background": "Acolyte",
+   "side": "Back",
+   "class": "Bard",
+   "subclass": "Lore",
+   "scores": {
+    "CHA": 17,
+    "DEX": 16,
+    "CON": 16,
+    "WIS": 15,
+    "INT": 14,
+    "STR": 12
+   },
+   "since": -17,
+   "trait": "cheats at cards, is caught, is forgiven",
+   "role": "Boar",
+   "rank": 19,
+   "automaton": {
+    "name": "Dorrit",
+    "side": "Front",
+    "class": "Ranger",
+    "subclass": "Hunter",
+    "protocol_skill": "Stealth",
+    "scores": {
+     "DEX": 15,
+     "WIS": 14,
+     "CON": 14,
+     "STR": 13,
+     "INT": 13,
+     "CHA": 12
+    },
+    "built": -17,
+    "partners": [
+     "Rieta Rooke"
+    ]
+   }
+  },
+  {
+   "name": "Wrenn Ironside",
+   "pronouns": "he/him",
+   "species": "Gnome",
+   "background": "Soldier",
+   "side": "Back",
+   "class": "Druid",
+   "subclass": "Land",
+   "scores": {
+    "WIS": 16,
+    "CON": 15,
+    "DEX": 14,
+    "INT": 10,
+    "CHA": 9,
+    "STR": 7
+   },
+   "since": -18,
+   "trait": "keeps a tally of deportations and thinks kills are a failure of manners",
+   "role": "Raven",
+   "rank": 20,
+   "automaton": {
+    "name": "Abbott",
+    "side": "Front",
+    "class": "Cleric",
+    "subclass": "Life",
+    "protocol_skill": "Animal Handling",
+    "scores": {
+     "WIS": 17,
+     "CON": 14,
+     "STR": 14,
+     "DEX": 10,
+     "CHA": 9,
+     "INT": 9
+    },
+    "built": -18,
+    "partners": [
+     "Wrenn Ironside"
+    ]
+   }
+  }
+ ],
+ "county": {
+  "name": "Harrowdale",
+  "seat": "Kingsmere",
+  "settlements": [
+   {
+    "name": "Kingsmere",
+    "kind": "city",
+    "days": 0,
+    "trait": "a mill and a miller who sells rumours"
+   },
+   {
+    "name": "Fenwick",
+    "kind": "town",
+    "days": 1,
+    "trait": "a garrison of six, bored"
+   },
+   {
+    "name": "Nether Wick",
+    "kind": "village",
+    "days": 1,
+    "trait": "a monastery that brews"
+   },
+   {
+    "name": "Barrowden",
+    "kind": "village",
+    "days": 2,
+    "trait": "a tower, empty, that the ward stone sits in"
+   },
+   {
+    "name": "Hollins",
+    "kind": "village",
+    "days": 2,
+    "trait": "a horse fair in spring"
+   },
+   {
+    "name": "Goose Green",
+    "kind": "village",
+    "days": 3,
+    "trait": "a famous inn"
+   },
+   {
+    "name": "Hadley",
+    "kind": "town",
+    "days": 3,
+    "trait": "a leper house outside the ward"
+   }
+  ]
+ },
+ "loose": [],
+ "fallen": [],
+ "graduated": [],
+ "news": [],
+ "board": [
+  {
+   "role": "Raven",
+   "reported": 20,
+   "level": 20,
+   "near": "Barrowden",
+   "days": 3,
+   "seed": 371719,
+   "kind": "Adult Gold Dragon"
+  },
+  {
+   "role": "Boar",
+   "reported": 19,
+   "level": 19,
+   "near": "Hollins",
+   "days": 2,
+   "seed": 966109,
+   "kind": "Roc"
+  },
+  {
+   "role": "Crane",
+   "reported": 18,
+   "level": 18,
+   "near": "Hadley",
+   "days": 3,
+   "seed": 71988,
+   "kind": "Djinni"
+  },
+  {
+   "role": "Hawk",
+   "reported": 17,
+   "level": 18,
+   "near": "Barrowden",
+   "days": 3,
+   "seed": 202362,
+   "kind": "Adult Green Dragon"
+  },
+  {
+   "role": "Lion",
+   "reported": 16,
+   "level": 17,
+   "near": "Nether Wick",
+   "days": 1,
+   "seed": 684381,
+   "kind": "Triceratops"
+  },
+  {
+   "role": "Wolf",
+   "reported": 15,
+   "level": 15,
+   "near": "Goose Green",
+   "days": 4,
+   "seed": 608564,
+   "kind": "Cloud Giant"
+  },
+  {
+   "role": null,
+   "reported": 15,
+   "level": 15,
+   "near": "Kingsmere",
+   "days": 1,
+   "seed": 476488,
+   "kind": "Air Elemental"
+  },
+  {
+   "role": "Bear",
+   "reported": 14,
+   "level": 14,
+   "near": "Hollins",
+   "days": 3,
+   "seed": 72753,
+   "kind": "Wyvern"
+  },
+  {
+   "role": "Ram",
+   "reported": 13,
+   "level": 13,
+   "near": "Fenwick",
+   "days": 1,
+   "seed": 561194,
+   "kind": "Roc"
+  },
+  {
+   "role": "Owl",
+   "reported": 12,
+   "level": 12,
+   "near": "Goose Green",
+   "days": 4,
+   "seed": 976002,
+   "kind": "Bulette"
+  },
+  {
+   "role": "Otter",
+   "reported": 11,
+   "level": 11,
+   "near": "Barrowden",
+   "days": 3,
+   "seed": 817684,
+   "kind": "Deva"
+  },
+  {
+   "role": null,
+   "reported": 11,
+   "level": 11,
+   "near": "Goose Green",
+   "days": 3,
+   "seed": 219809,
+   "kind": "Wraith"
+  },
+  {
+   "role": null,
+   "reported": 10,
+   "level": 10,
+   "near": "Barrowden",
+   "days": 2,
+   "seed": 666256,
+   "kind": "Fire Giant"
+  },
+  {
+   "role": "Fox",
+   "reported": 10,
+   "level": 10,
+   "near": "Hollins",
+   "days": 3,
+   "seed": 785160,
+   "kind": "Giant Scorpion"
+  },
+  {
+   "role": "Badger",
+   "reported": 9,
+   "level": 9,
+   "near": "Nether Wick",
+   "days": 1,
+   "seed": 380839,
+   "kind": "Red Dragon Wyrmling"
+  },
+  {
+   "role": "Lynx",
+   "reported": 8,
+   "level": 9,
+   "near": "Barrowden",
+   "days": 2,
+   "seed": 835285,
+   "kind": "Half-Dragon"
+  },
+  {
+   "role": "Hare",
+   "reported": 7,
+   "level": 7,
+   "near": "Kingsmere",
+   "days": 0,
+   "seed": 429284,
+   "kind": "Giant Shark"
+  },
+  {
+   "role": "Stag",
+   "reported": 6,
+   "level": 6,
+   "near": "Fenwick",
+   "days": 2,
+   "seed": 883744,
+   "kind": "Otyugh"
+  },
+  {
+   "role": "Heron",
+   "reported": 5,
+   "level": 5,
+   "near": "Hollins",
+   "days": 2,
+   "seed": 685901,
+   "kind": "Vampire Spawn"
+  },
+  {
+   "role": "Hound",
+   "reported": 4,
+   "level": 4,
+   "near": "Hadley",
+   "days": 3,
+   "seed": 622828,
+   "kind": "Saber-Toothed Tiger"
+  },
+  {
+   "role": null,
+   "reported": 3,
+   "level": 3,
+   "near": "Barrowden",
+   "days": 2,
+   "seed": 566337,
+   "kind": "Polar Bear"
+  },
+  {
+   "role": "Wren",
+   "reported": 3,
+   "level": 3,
+   "near": "Nether Wick",
+   "days": 1,
+   "seed": 49597,
+   "kind": "Bronze Dragon Wyrmling"
+  },
+  {
+   "role": "Adder",
+   "reported": 2,
+   "level": 2,
+   "near": "Goose Green",
+   "days": 4,
+   "seed": 361015,
+   "kind": "Swarm of Insects"
+  },
+  {
+   "role": null,
+   "reported": 1,
+   "level": 1,
+   "near": "Barrowden",
+   "days": 2,
+   "seed": 581012,
+   "kind": "Dretch"
+  },
+  {
+   "role": "Bull",
+   "reported": 1,
+   "level": 1,
+   "near": "Hadley",
+   "days": 3,
+   "seed": 152302,
+   "kind": "Giant Hyena"
+  }
+ ]
+}
