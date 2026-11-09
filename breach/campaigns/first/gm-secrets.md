@@ -37,7 +37,7 @@ pasture, warm wind, a smell of dust. 300 XP in the breach; 150 is level 2.
 
 | Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | 4× Flying Snake (stowaways, Monstrosity) | 1/8 | 100 | Low | Wild: Animal Handling DC 15 or fight | 12×12 m | 1.5 m entrance (chokepoint) | 10 GP | unexplored |
+| 1 | 4× Flying Snake (stowaways, Monstrosity) | 1/8 | 100 | Low | Wild: Animal Handling DC 15 or fight | 12×12 m | 1.5 m entrance (chokepoint) | 10 GP | scouted, unengaged |
 | 2 | 1× Giant Hyena | 1 | 200 | High | Wild: Animal Handling DC 15 or fight | 9×18 m | the rift, 3 m tear at the far end | 20 GP | unexplored |
 
 Notes: Flying Snakes are Monstrosities, so *Animal Friendship* won't take them. The hyena is
