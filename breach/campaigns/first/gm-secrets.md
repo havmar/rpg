@@ -78,3 +78,21 @@ If the Bull closes the unassigned **Goblin Warrior** breach near Goose Green (le
 
 Don't let the Heron's death be prevented by anything but the human's own choices; if the
 human goes with the Heron, the GM plays it and settles the roster by hand.
+
+## Side breach: month 2, Copse Wood (unassigned; the Bull went of its own accord)
+
+`gen_breach.py --seed 101120 --level 1` · Copse Wood, 3 km north of Goose Green · true level 1.
+Principal kind Goblin Warrior; the surface is a wood that wasn't there, flowers out of season,
+moonlight at noon. 400 XP in the breach. Caelynn at 500 XP gains no level from it (1,350 next).
+
+| Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1× Giant Octopus (stowaway) | 1 | 200 | Moderate | Wild: Animal Handling DC 15 or fight | 15×18 m | flooded: water 3 m deep, a 1.5 m ledge round the edge | 20 GP (on the cistern floor) | scouted day 5: it saw Lampwick (Stealth 12 vs PP 14), lost it again (Hide 19); alert |
+| 2 | 4× Goblin Warrior | 1/4 | 200 | High | Wary: Persuasion/Intimidation DC 15 to go; refused, bargains or fights | 15×18 m | the rift, 3 m tear at the far end | 20 GP | not seen; voices heard (Lampwick Perception 19) |
+
+Notes: the octopus is a Beast (Animal Friendship works; WIS +0). On land it has Speed 3 m, so
+Longbow Slow stops it dead; it holds its breath an hour. It is under 3 m of water: arrows into
+the water from above at disadvantage (GM ruling, by analogy with underwater combat). Ink Cloud
+1/day when damaged underwater. The goblins are Fey, speak Common, and are frightened, not
+cruel: they will bargain to be shown home (they want the octopus gone first; it ate one of
+them). Thing left on closing: a goblin's brass thimble, or a pressed out-of-season flower.

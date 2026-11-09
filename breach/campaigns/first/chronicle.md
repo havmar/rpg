@@ -37,3 +37,5 @@ They rested in the grimlocks' cave, and both came out of it third-level. Lampwic
 At the Gridiron that night the Bull shared a table with the Heron, Carlin Lowry, on his way to a killer whale a day east. He and the dead Hare had grown up together in the Lowry Lane foundling house, and he said he was glad she'd come back, because his brother would have been. He wrote a label for her bell in a small square hand and tied it on.
 
 On the fifth morning Hester Quill unbarred the door and said the wraiths had come to the ward's edge again in the night, three of them by the pound, facing the inn till first light. Beyond the village the mountain was going back to stubble field. The Heron saddled his pony in the yard for the road east.
+
+**Copse Wood.** No one was sent to the goblin breach north of the village, so the Bull went. The copse had become a tall pale wood with primroses in it and a moon overhead at mid-morning. Lampwick went into the hawthorn ring first and found a sunken cistern full of black water, and in the water something large that looked back at it.

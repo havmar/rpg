@@ -1,6 +1,6 @@
 # State: the 11th Company, campaign "first"
 
-- **Month 2, day 5, dawn.** Goose Green, the Gridiron yard. The Heron's pair is saddling to leave east for its killer whale breach (a day out, by Pell's End). The goat breach's mountain is going back to lowland fields.
+- **Month 2, day 5, mid-morning.** Copse Wood, 3 km north of Goose Green: the unassigned goblin breach (scouts: level 1), entered of the Bull's own accord. The Heron left east for Pell's End at dawn.
 - **The role:** the Bull, rank 2 Prentice. Holder Caelynn Brandt (she/her), Wood Elf Ranger 3 (Hunter, Horde Breaker), **XP 500** (level 4 at 1,350). Partner Lampwick, Automaton Rogue 3 (Thief).
 - **Caelynn:** 28/28 HP, AC 16. Spell slots 3/3 (Trance overnight, long rest). Hunter's Mark free casts 2/2. Hit Dice 3/3. 36 arrows. 2 flasks of oil.
 - **Lampwick:** 27/27 HP, AC 15. Hit Dice 3/3. 19 arrows. 9 flasks of oil. Healer's kit (10 uses).
@@ -11,4 +11,5 @@
 - **Deaths in the role so far:** none.
 - **Backstory note:** Caelynn deserted from the Hare's seat eight months ago; Rowena Lowry took it, and died this month as the Hare in the Giant Shark breach by Kingsmere. The Giant Sharks are loose near Kingsmere.
 - **Last night:** three wraiths stood at the ward's edge by the pound again till dawn, facing the inn (Hester Quill counted them from the attic).
-- **Pending:** the human's choice for day 5. Lampwick proposes the unassigned goblin breach in Copse Wood, 3 km north (scouts: level 1; no one sent; it goes loose at month's end). Other paths: home to Kingsmere (3 days, day 8), go east with the Heron, or something else.
+- **Side breach rooms:** room 1, a drowned cistern under hawthorns (water 3 m deep, 1.5 m ledge round it, 15×18 m), holds a giant octopus, now alert to Lampwick, which hid and withdrew. Goblin voices beyond its far arch. Room 2 not seen.
+- **Pending:** the human's call on the octopus: kill it, charm and lead it to the rift, or slip past along the ledge to the goblins first.
