@@ -115,8 +115,11 @@ These replace the SRD where they differ.
 
 ### The breach
 
-- **Few rooms, each a real fight.** `gen_breach.py` builds three to six rooms, every group
-  Moderate or High for two characters, the anchor always High. No filler fights.
+- **Few rooms, each a real fight.** `gen_breach.py` builds three to six rooms, nearly every
+  group Moderate or High for two characters, the anchor always High. No filler fights.
+- **Any SRD monster can turn up.** A group is as many of its kind as fill the room's budget,
+  up to ten: often one or two strong creatures, sometimes a crowd of weak ones. Run a crowd
+  briskly: one initiative, attacks rolled together.
 - Every group has a **disposition** from its SRD alignment: **Peaceful** (goes home when the
   gate is opened; may help), **Wary** (Persuasion or Intimidation DC 15 to go, or it
   bargains or fights), **Wild** (a beast: Animal Handling DC 15 to herd it, or fight),
@@ -307,7 +310,7 @@ campaign folder. This is a cloud session; the container is wiped when it ends.
 Guesses, in one place. The script's are constants at the top of `day.py`: the breach die
 (d20), the spill die (d6) and three spills to empty an unattended breach, the misread (one
 in six), review every 60 days, the other pairs' death (1 in 20) and withdrawal (3 in 20) per
-breach, the 2d6-day vacancy. In `gen_breach.py`: three rooms minimum, Moderate and High
-only. Here: the halved XP table, the call's price, the relic rarity caps, the encounter
+breach, the 2d6-day vacancy. In `gen_breach.py`: three rooms minimum, Moderate and High,
+groups of up to ten, crowds made rarer. Here: the halved XP table, the call's price, the relic rarity caps, the encounter
 die. If the pair outruns its grade, un-halve the XP table first; if the Division isn't
 stretched enough, shorten the breach die.

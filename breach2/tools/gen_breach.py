@@ -9,7 +9,9 @@ the theme. The deepest room is the ANCHOR, where the rift is and where the autom
 open the gate home, with the principal's largest group in it.
 
 Few rooms, each a real fight: Moderate or High by the 2024 budgets for TWO characters, the
-anchor always High, at least three rooms. Rooms add up to at least the SRD's XP from level N
+anchor always High, at least three rooms. A group is as many of its kind as fill the budget,
+up to ten, so weak kinds come in numbers. Kinds are picked so that over levels 1 to 20
+SRD monsters are about equally likely, with crowds the exception (see pool_for). Rooms add up to at least the SRD's XP from level N
 to N+1 (the game halves the thresholds, so killing about half of a breach is a level). Every
 group carries a DISPOSITION from its alignment: whether it will go home through the gate.
 
@@ -39,7 +41,11 @@ BUDGET = [None, (50, 75, 100), (100, 150, 200), (150, 225, 400), (250, 375, 500)
           (4500, 7200, 11700), (5000, 8700, 14200), (5500, 10700, 17200),
           (6400, 13200, 22000)]
 PARTY = 2
-MAX_COUNT = 5
+MAX_COUNT = 10       # weak kinds come in numbers: ten rats, not five
+FILL = 0.8           # a kind fits a level if MAX_COUNT of it reach this share of Moderate
+FILL_L1 = 0.65       # looser at level 1, so ten CR 0 creatures (cats, commoners) can appear
+BIG_GROUP = 4        # groups larger than this are made rarer, by (BIG_GROUP / n) squared
+TOP_SLACK = 1.25     # at level 20 only, one creature may run this far over High
 MIN_ROOMS = 3
 # Few rooms, each dangerous: no Low fights. (Name, weight, index into the budget tuple.)
 DIFFICULTY = [("Moderate", 0.5, 1), ("High", 0.5, 2)]
@@ -145,14 +151,50 @@ def budgets(level):
 
 
 def fits(m, level):
-    """The kind can form at least one legal encounter at this level."""
-    low, _, high = budgets(level)
-    return m["xp"] <= high and m["xp"] * MAX_COUNT >= low
+    """The kind can make a real fight at this level: one of it is not over High, and
+    MAX_COUNT of it are not far under Moderate."""
+    _, mod, high = budgets(level)
+    if level == 20:
+        high *= TOP_SLACK
+    return m["xp"] <= high and m["xp"] * MAX_COUNT >= (FILL_L1 if level == 1 else FILL) * mod
+
+
+def best_count(m, level, budget):
+    """As many of the kind as come nearest the budget without passing High."""
+    high = budgets(level)[2]
+    ok = [n for n in range(1, MAX_COUNT + 1) if n * m["xp"] <= high] or [1]
+    return min(ok, key=lambda n: (abs(n * m["xp"] - budget), -n))
+
+
+_WEIGHT = {}
+
+
+def pool_for(level):
+    """The kinds that fit this level, and their weights. Each kind has the same total
+    weight over levels 1 to 20, so a kind that fits one level is as likely over a career
+    as one that fits twelve. Within its levels a kind's weight leans to those where it
+    comes alone or in a small group (BIG_GROUP / n beyond that), so crowds are the
+    exception. This is as uniform as it gets: a third of the SRD is CR 1/2 or less, and
+    making those fully equal would fill every low level with ten-strong crowds."""
+    if not _WEIGHT:
+        for m in monsters():
+            f = {}
+            for l in range(1, 21):
+                if fits(m, l):
+                    n = best_count(m, l, budgets(l)[1])
+                    f[l] = min(1.0, BIG_GROUP / n) ** 2
+            for l, v in f.items():
+                _WEIGHT[m["name"], l] = v / sum(f.values())
+    pool = [m for m in monsters() if fits(m, level)]
+    return pool, [_WEIGHT[m["name"], level] for m in pool]
 
 
 def group(m, level, diff, rng):
-    budget = budgets(level)[{d: i for d, _, i in DIFFICULTY}[diff]]
-    count = max(1, min(MAX_COUNT, budget // m["xp"]))
+    """The label is what the group actually is, not what was asked for."""
+    _, mod, high = budgets(level)
+    count = best_count(m, level, budgets(level)[{d: i for d, _, i in DIFFICULTY}[diff]])
+    total = m["xp"] * count
+    diff = "High" if total > (mod + high) / 2 else "Moderate" if total >= 0.8 * mod else "Low"
     return {"diff": diff, "name": m["name"], "cr": m["cr"], "xp": m["xp"], "count": count,
             "total": m["xp"] * count, "aquatic": m["aquatic"], "type": m["type"],
             "align": m["align"], "disposition": disposition(m["type"], m["align"])}
@@ -165,14 +207,14 @@ def pick_diff(rng):
 def principal_for(level, seed):
     """The principal kind alone (what the Reader reports). Same RNG start as breach()."""
     rng = random.Random(seed)
-    pool = [m for m in monsters() if fits(m, level)]
-    return rng.choice(pool)
+    pool, weights = pool_for(level)
+    return rng.choices(pool, weights)[0]
 
 
 def breach(level, seed, reported=None):
     rng = random.Random(seed)
-    pool = [m for m in monsters() if fits(m, level)]
-    principal = rng.choice(pool)
+    pool, weights = pool_for(level)
+    principal = rng.choices(pool, weights)[0]
     need = THRESHOLD[min(level + 1, 20)] - THRESHOLD[level] if level < 20 else 50000
 
     rift = group(principal, level, "High", rng)
@@ -184,7 +226,7 @@ def breach(level, seed, reported=None):
         ptotal += g["total"]
         total += g["total"]
     while total < need or len(rooms) + 1 < MIN_ROOMS:
-        g = group(rng.choice(pool), level, pick_diff(rng), rng)
+        g = group(rng.choices(pool, weights)[0], level, pick_diff(rng), rng)
         g["stowaway"] = True
         rooms.append(g)
         total += g["total"]
