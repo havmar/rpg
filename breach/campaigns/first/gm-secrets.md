@@ -61,3 +61,20 @@ Wraiths near Goose Green (11), Fire Giants near Barrowden (10), Polar Bears near
 Dretches near Barrowden (1). The Bull's month 2 breach: Giant Goat near Goose Green, level 2.
 Play nothing in downtime that contradicts this (the Hare and the Bear are out on their breaches
 until month's end; the Hound lives).
+
+## Month-end foreknowledge (month 2)
+
+Checked on a scratch copy: at month 2's end **the Heron, Carlin Lowry, dies in the Killer Whale
+breach near Goose Green**; Tamsin comes home; the new Heron is Loopmottin Quayle (she/her,
+Gnome Fighter) with Tamsin. The Boar (Rieta Rooke) graduates; new Boar Shanairra of the Fen
+(they/them, Elf Wizard). Loose next: Chimeras (15) near Hollins, Adult Brass Dragons (14) near
+Hadley, Unicorns (11) near Fenwick, Ogres (3) near Barrowden, Goblin Warriors (1) near Goose
+Green. Settled: the Giant Sharks near Kingsmere and the Wraiths near Goose Green (GM says
+what became of them). The Bull's month 3 breach: Imp, level 3, near Fenwick, 2 days.
+
+If the Bull closes the unassigned **Goblin Warrior** breach near Goose Green (level 1, seed
+101120, `gen_breach.py --seed 101120 --level 1`) before month's end, strike the goblins from
+`loose` in campaign.json by hand after `month.py end`, and give the XP.
+
+Don't let the Heron's death be prevented by anything but the human's own choices; if the
+human goes with the Heron, the GM plays it and settles the roster by hand.

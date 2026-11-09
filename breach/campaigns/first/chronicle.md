@@ -33,3 +33,5 @@ The Prentice spent all but four of her gold on a single healing potion at the ap
 They rested in the grimlocks' cave, and both came out of it third-level. Lampwick went up to the goats' meadow and came down unseen.
 
 **The goats' meadow.** The Prentice charmed the old nanny with the bell and walked her to the rift with a hand on her neck, talking to her in Sylvan, and the other three came after, bells going. The bell-goat stopped at the tear, looked back once at the Prentice, and went through. The rift shut behind the last of them. Nothing killed, nothing absorbed, forty gold in the grass and a cracked bell where the rift had been. Lampwick said it was the best-resolved matter it had attended so far.
+
+At the Gridiron that night the Bull shared a table with the Heron, Carlin Lowry, on his way to a killer whale a day east. He and the dead Hare had grown up together in the Lowry Lane foundling house, and he said he was glad she'd come back, because his brother would have been. He wrote a label for her bell in a small square hand and tied it on.
