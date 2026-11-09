@@ -38,7 +38,7 @@ pasture, warm wind, a smell of dust. 300 XP in the breach; 150 is level 2.
 | Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | 4× Flying Snake (stowaways, Monstrosity) | 1/8 | 100 | Low | Wild: Animal Handling DC 15 or fight | 12×12 m | 1.5 m entrance (chokepoint) | 10 GP | cleared: all 4 killed (fire at the gap), 100 XP; coins taken |
-| 2 | 1× Giant Hyena | 1 | 200 | High | Wild: Animal Handling DC 15 or fight | 9×18 m | the rift, 3 m tear at the far end | 20 GP | scouted; hyena saw Lampwick, alert, 45/45 HP, Rampage unused |
+| 2 | 1× Giant Hyena | 1 | 200 | High | Wild: Animal Handling DC 15 or fight | 9×18 m | the rift, 3 m tear at the far end | 20 GP | killed at the thorn gap, 200 XP; coins taken. **Breach closed** day 4. |
 
 Notes: Flying Snakes are Monstrosities, so *Animal Friendship* won't take them. The hyena is
 a Beast (WIS +1). Thing left behind on closing: a hyena's tooth threaded on grass cord, or
