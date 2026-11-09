@@ -98,13 +98,13 @@ thieves' tools, tinker's tools. Burglar's pack: backpack, ball bearings, bell, 1
 crowbar, hooded lantern, 9 flasks of oil, healer's kit (10 uses), 5 days of rations, rope (15 m), tinderbox,
 waterskin.
 
-**Gold:** **24 GP** (31 starting, 30 from month 1's breach and 20 from month 2's; 7 spent in Hadley, 50 in Kingsmere).
+**Gold:** **64 GP** (31 starting, 30 from month 1's breach and 60 from month 2's; 7 spent in Hadley, 50 in Kingsmere).
 
 **Bought in Kingsmere (month 2):** Potion of Healing (50 GP; Bonus Action to drink or give, 2d4+2 HP), carried by Caelynn.
 
 **Bought in Hadley (month 1):** healer's kit (5 GP, 10 uses: stabilise with no roll), 20 arrows (1 GP), 10 flasks of oil (1 GP).
 
-**Keepsakes:** a hyena's tooth threaded on plaited grass cord, found where the rift closed (month 1, Hadley).
+**Keepsakes:** a hyena's tooth threaded on plaited grass cord, found where the rift closed (month 1, Hadley). A cracked bronze goat bell with a maker's mark in letters no one can read (month 2, Goose Green).
 
 ## Standing orders
 
