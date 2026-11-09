@@ -50,13 +50,13 @@ the wyrmlings were pulled through with them.
 
 | Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | 3× Warhorse | 1/2 | 300 | Moderate | Wild: Animal Handling DC 15 or fight | 10×10 sq (15×15 m) | open, empty floor: a moonlit glade | 30 GP | seen by the owl from the door (unseen, Stealth 14 vs 11); horses undisturbed |
-| 2 | 2× Copper Dragon Wyrmling | 1 | 400 | High | Peaceful: go home when the gate opens; may help | 10×12 sq (15×18 m) | thick fog (heavily obscured beyond 3 m) | 40 GP | unexplored |
+| 1 | 3× Warhorse | 1/2 | 300 | Moderate | Wild: Animal Handling DC 15 or fight | 10×10 sq (15×15 m) | open, empty floor: a moonlit glade | 30 GP | skirted on day 1; Albert heard (Stealth 9, reroll 3), horses stamped and threatened but did not follow into the fog; still here, alert |
+| 2 | 2× Copper Dragon Wyrmling | 1 | 400 | High | Peaceful: go home when the gate opens; may help | 10×12 sq (15×18 m) | thick fog (heavily obscured beyond 3 m) | 40 GP | entered; one wyrmling (Tuppence) has shown itself at 3 m, curious; Farthing circling unseen behind |
 | 3 | 8× Goblin Warrior | 1/4 | 400 | High | Wary: Persuasion or Intimidation DC 15; refused, bargain or fight | 10×10 sq (15×15 m) | the anchor: the rift, 3 m tear at the far end | 40 GP | unexplored |
 
 Notes: the warhorses are the goblins' stolen mounts, saddled, half wild. The wyrmlings
-(Tuppence and Farthing to the goblins, who are afraid of them) like jokes and riddles and
-will trade one for passage. The goblin boss, Nettle, wants to go home but will not say so
+(Tuppence and Farthing to the goblins, who are afraid of them) like jokes and pranks and
+will trade one for passage. They speak ONLY Draconic (stat block); the pair has none: mime, illusion, music. The goblin boss, Nettle, wants to go home but will not say so
 in front of the band. Relic when closed (Uncommon cap): undecided.
 
 ## Loose (the pair knows these from the ledger)
