@@ -1,0 +1,568 @@
+{
+ "name": "first",
+ "seed": 426,
+ "division": "N Division",
+ "day": 1,
+ "last_review": 1,
+ "player": "Owl",
+ "roster": [
+  {
+   "role": "Owl",
+   "grade": 1,
+   "holder": {
+    "name": "Albert Pike",
+    "pronouns": "they/them",
+    "species": "Human",
+    "background": "Sage",
+    "side": "Front",
+    "class": "Barbarian",
+    "subclass": "Berserker",
+    "scores": {
+     "STR": 14,
+     "CON": 14,
+     "DEX": 13,
+     "WIS": 12,
+     "CHA": 12,
+     "INT": 8
+    },
+    "since": -29,
+    "trait": "walked out once, came back, and was allowed to",
+    "level": 1
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Ives",
+    "side": "Back",
+    "class": "Bard",
+    "subclass": "Lore",
+    "protocol_skill": "Stealth",
+    "scores": {
+     "CHA": 15,
+     "DEX": 12,
+     "CON": 11,
+     "WIS": 10,
+     "INT": 9,
+     "STR": 8
+    },
+    "built": -29,
+    "partners": [
+     "Albert Pike"
+    ]
+   }
+  },
+  {
+   "role": "Raven",
+   "grade": 2,
+   "holder": {
+    "name": "Flo Whitlock",
+    "pronouns": "she/her",
+    "species": "Gnome",
+    "background": "Sage",
+    "side": "Back",
+    "class": "Wizard",
+    "subclass": "Evoker",
+    "scores": {
+     "INT": 15,
+     "DEX": 14,
+     "CON": 13,
+     "WIS": 12,
+     "CHA": 9,
+     "STR": 6
+    },
+    "since": -59,
+    "trait": "closes breaches that aren't theirs and has the reprimands to show for it",
+    "level": 3
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Sedge",
+    "side": "Front",
+    "class": "Ranger",
+    "subclass": "Hunter",
+    "protocol_skill": "Medicine",
+    "scores": {
+     "DEX": 15,
+     "WIS": 13,
+     "CON": 11,
+     "STR": 11,
+     "INT": 9,
+     "CHA": 9
+    },
+    "built": -59,
+    "partners": [
+     "Flo Whitlock"
+    ]
+   }
+  },
+  {
+   "role": "Wren",
+   "grade": 3,
+   "holder": {
+    "name": "Martha Ashcombe",
+    "pronouns": "he/him",
+    "species": "Human",
+    "background": "Acolyte",
+    "side": "Front",
+    "class": "Ranger",
+    "subclass": "Hunter",
+    "scores": {
+     "DEX": 15,
+     "WIS": 13,
+     "CON": 11,
+     "STR": 10,
+     "INT": 9,
+     "CHA": 8
+    },
+    "since": -89,
+    "trait": "is studying the rifts and pesters the Reader for the mast's records",
+    "level": 6
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Evershed",
+    "side": "Back",
+    "class": "Rogue",
+    "subclass": "Thief",
+    "protocol_skill": "Investigation",
+    "scores": {
+     "DEX": 15,
+     "CON": 15,
+     "INT": 14,
+     "WIS": 14,
+     "CHA": 12,
+     "STR": 8
+    },
+    "built": -89,
+    "partners": [
+     "Martha Ashcombe"
+    ]
+   }
+  },
+  {
+   "role": "Wolf",
+   "grade": 4,
+   "holder": {
+    "name": "Thomas Pendry",
+    "pronouns": "he/him",
+    "species": "Human",
+    "background": "Sage",
+    "side": "Back",
+    "class": "Bard",
+    "subclass": "Lore",
+    "scores": {
+     "CHA": 15,
+     "DEX": 13,
+     "CON": 11,
+     "WIS": 9,
+     "INT": 9,
+     "STR": 8
+    },
+    "since": -119,
+    "trait": "sells breach coins to collectors uptown for twice their worth",
+    "level": 7
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Jarvis",
+    "side": "Front",
+    "class": "Cleric",
+    "subclass": "Life",
+    "protocol_skill": "Insight",
+    "scores": {
+     "WIS": 17,
+     "CON": 16,
+     "STR": 11,
+     "DEX": 11,
+     "CHA": 10,
+     "INT": 5
+    },
+    "built": -119,
+    "partners": [
+     "Thomas Pendry"
+    ]
+   }
+  },
+  {
+   "role": "Lion",
+   "grade": 5,
+   "holder": {
+    "name": "Ambrose Marsh",
+    "pronouns": "she/her",
+    "species": "Elf",
+    "background": "Sage",
+    "side": "Back",
+    "class": "Druid",
+    "subclass": "Land",
+    "scores": {
+     "WIS": 16,
+     "CON": 13,
+     "DEX": 12,
+     "INT": 10,
+     "CHA": 9,
+     "STR": 8
+    },
+    "since": -149,
+    "trait": "has buried three partners and visits them on rest days",
+    "level": 10
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Wimbourne",
+    "side": "Front",
+    "class": "Ranger",
+    "subclass": "Hunter",
+    "protocol_skill": "History",
+    "scores": {
+     "DEX": 15,
+     "WIS": 13,
+     "CON": 13,
+     "STR": 13,
+     "INT": 12,
+     "CHA": 8
+    },
+    "built": -149,
+    "partners": [
+     "Ambrose Marsh"
+    ]
+   }
+  },
+  {
+   "role": "Hound",
+   "grade": 6,
+   "holder": {
+    "name": "Sid Thorne",
+    "pronouns": "he/him",
+    "species": "Gnome",
+    "background": "Criminal",
+    "side": "Front",
+    "class": "Monk",
+    "subclass": "Open Hand",
+    "scores": {
+     "DEX": 15,
+     "WIS": 12,
+     "CON": 12,
+     "STR": 11,
+     "INT": 10,
+     "CHA": 10
+    },
+    "since": -179,
+    "trait": "trains probationers unasked and is good at it",
+    "level": 12
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Pennywhistle",
+    "side": "Back",
+    "class": "Rogue",
+    "subclass": "Thief",
+    "protocol_skill": "Athletics",
+    "scores": {
+     "DEX": 17,
+     "CON": 16,
+     "INT": 11,
+     "WIS": 10,
+     "CHA": 9,
+     "STR": 7
+    },
+    "built": -179,
+    "partners": [
+     "Sid Thorne"
+    ]
+   }
+  },
+  {
+   "role": "Hawk",
+   "grade": 7,
+   "holder": {
+    "name": "Albert Whitlock",
+    "pronouns": "she/her",
+    "species": "Human",
+    "background": "Criminal",
+    "side": "Back",
+    "class": "Bard",
+    "subclass": "Lore",
+    "scores": {
+     "CHA": 15,
+     "DEX": 15,
+     "CON": 14,
+     "WIS": 12,
+     "INT": 10,
+     "STR": 6
+    },
+    "since": -209,
+    "trait": "has a running bet with another seat on who reaches Head Office first",
+    "level": 14
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Hollis",
+    "side": "Front",
+    "class": "Paladin",
+    "subclass": "Devotion",
+    "protocol_skill": "Insight",
+    "scores": {
+     "STR": 16,
+     "CHA": 16,
+     "CON": 13,
+     "WIS": 13,
+     "DEX": 10,
+     "INT": 9
+    },
+    "built": -209,
+    "partners": [
+     "Albert Whitlock"
+    ]
+   }
+  },
+  {
+   "role": "Bear",
+   "grade": 8,
+   "holder": {
+    "name": "Minnie Oxley",
+    "pronouns": "she/her",
+    "species": "Gnome",
+    "background": "Acolyte",
+    "side": "Back",
+    "class": "Sorcerer",
+    "subclass": "Draconic",
+    "scores": {
+     "CHA": 16,
+     "CON": 13,
+     "DEX": 13,
+     "WIS": 11,
+     "INT": 9,
+     "STR": 8
+    },
+    "since": -239,
+    "trait": "is deaf in one ear from a musket and says the tin hears for two",
+    "level": 16
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Lowell",
+    "side": "Front",
+    "class": "Paladin",
+    "subclass": "Devotion",
+    "protocol_skill": "Survival",
+    "scores": {
+     "STR": 14,
+     "CHA": 14,
+     "CON": 13,
+     "WIS": 13,
+     "DEX": 10,
+     "INT": 8
+    },
+    "built": -239,
+    "partners": [
+     "Minnie Oxley"
+    ]
+   }
+  },
+  {
+   "role": "Fox",
+   "grade": 9,
+   "holder": {
+    "name": "Faith Baker",
+    "pronouns": "he/him",
+    "species": "Tiefling",
+    "background": "Soldier",
+    "side": "Front",
+    "class": "Monk",
+    "subclass": "Open Hand",
+    "scores": {
+     "DEX": 16,
+     "WIS": 12,
+     "CON": 11,
+     "STR": 11,
+     "INT": 11,
+     "CHA": 11
+    },
+    "since": -269,
+    "trait": "labels a keepsake from every breach and keeps them in a locker",
+    "level": 18
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Alder",
+    "side": "Back",
+    "class": "Wizard",
+    "subclass": "Evoker",
+    "protocol_skill": "Persuasion",
+    "scores": {
+     "INT": 18,
+     "DEX": 14,
+     "CON": 14,
+     "WIS": 12,
+     "CHA": 10,
+     "STR": 10
+    },
+    "built": -269,
+    "partners": [
+     "Faith Baker"
+    ]
+   }
+  },
+  {
+   "role": "Stag",
+   "grade": 10,
+   "holder": {
+    "name": "Jim Vance",
+    "pronouns": "he/him",
+    "species": "Orc",
+    "background": "Sage",
+    "side": "Front",
+    "class": "Paladin",
+    "subclass": "Devotion",
+    "scores": {
+     "STR": 14,
+     "CHA": 14,
+     "CON": 13,
+     "WIS": 9,
+     "DEX": 9,
+     "INT": 8
+    },
+    "since": -299,
+    "trait": "takes the smallest bunk, eats last, and is adored for it",
+    "level": 19
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Fenwick",
+    "side": "Back",
+    "class": "Rogue",
+    "subclass": "Thief",
+    "protocol_skill": "Survival",
+    "scores": {
+     "DEX": 15,
+     "CON": 14,
+     "INT": 14,
+     "WIS": 13,
+     "CHA": 13,
+     "STR": 10
+    },
+    "built": -299,
+    "partners": [
+     "Jim Vance"
+    ]
+   }
+  }
+ ],
+ "district": {
+  "name": "Nine Bridges",
+  "precincts": [
+   {
+    "name": "Chapel Fields",
+    "pos": "NW",
+    "band": "Static",
+    "legs": 2,
+    "trait": "a canal basin crowded with barges"
+   },
+   {
+    "name": "Lime Wharf",
+    "pos": "N",
+    "band": "Fringe",
+    "legs": 1,
+    "trait": "an infirmary, a workhouse and a long queue"
+   },
+   {
+    "name": "Ropewalk",
+    "pos": "NE",
+    "band": "Static",
+    "legs": 2,
+    "trait": "a slaughterhouse and the tanneries downwind"
+   },
+   {
+    "name": "Clock Street",
+    "pos": "W",
+    "band": "Fringe",
+    "legs": 1,
+    "trait": "rows of back-to-back tenements, full"
+   },
+   {
+    "name": "Vinegar Yard",
+    "pos": "Centre",
+    "band": "Core",
+    "legs": 0,
+    "trait": "a brewery everyone smells before they see"
+   },
+   {
+    "name": "Gasworks",
+    "pos": "E",
+    "band": "Fringe",
+    "legs": 1,
+    "trait": "a cemetery, full, with a waiting list"
+   },
+   {
+    "name": "Tallow Row",
+    "pos": "SW",
+    "band": "Static",
+    "legs": 2,
+    "trait": "a music hall and the streets that live off it"
+   },
+   {
+    "name": "Printers' Row",
+    "pos": "S",
+    "band": "Fringe",
+    "legs": 1,
+    "trait": "a hospital run by a nursing order"
+   },
+   {
+    "name": "Needle Street",
+    "pos": "SE",
+    "band": "Static",
+    "legs": 2,
+    "trait": "a covered market that never quite closes"
+   }
+  ]
+ },
+ "ledger": [
+  {
+   "id": 4,
+   "day": 1,
+   "grade": 1,
+   "level": 2,
+   "precinct": "Vinegar Yard",
+   "seed": 583703,
+   "role": "Owl",
+   "due": null,
+   "spills": 0,
+   "withdrawn": false,
+   "kind": "Goblin Warrior"
+  }
+ ],
+ "next_id": 5,
+ "loose": [
+  {
+   "breach": 1,
+   "kind": "Giant Elk",
+   "level": 5,
+   "precinct": "Vinegar Yard",
+   "since": -11,
+   "groups": 1,
+   "why": "from before your time"
+  },
+  {
+   "breach": 2,
+   "kind": "Fire Elemental",
+   "level": 10,
+   "precinct": "Gasworks",
+   "since": -12,
+   "groups": 1,
+   "why": "from before your time"
+  },
+  {
+   "breach": 3,
+   "kind": "Ochre Jelly",
+   "level": 5,
+   "precinct": "Vinegar Yard",
+   "since": -12,
+   "groups": 1,
+   "why": "from before your time"
+  }
+ ],
+ "fallen": [],
+ "graduated": [],
+ "news": [
+  "ASSIGNED TO YOU: #4, grade 1, Goblin Warrior, Vinegar Yard."
+ ]
+}
