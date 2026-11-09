@@ -5,7 +5,7 @@ Partner: **Lampwick**.
 
 ## Caelynn Brandt (she/her)
 
-Wood Elf Ranger 2 · Criminal · Front · XP 300 (level 3 at 450)
+Wood Elf Ranger 3 (Hunter) · Criminal · Front · XP 500 (level 4 at 1,350)
 Deserted once, came back, and was allowed to.
 
 **Backstory.** Born in the old wood above Nether Wick a hundred and twelve years ago, which an elf
@@ -29,7 +29,7 @@ hardest to stand.
 
 Rolled DEX 16 WIS 15 CON 14 STR 11 INT 11 CHA 11; Criminal +2 DEX, +1 CON.
 
-- **HP** 20 · **Hit Dice** 2d10 · **AC** 16 (studded leather) · **Speed** 10.5 m · **Initiative** +6 (Alert)
+- **HP** 28 · **Hit Dice** 3d10 · **AC** 16 (studded leather) · **Speed** 10.5 m · **Initiative** +6 (Alert)
 - **Proficiency** +2 · **Saves** STR +2, DEX +6, CON +2, INT +0, WIS +2, CHA +0
 - **Skills** Animal Handling +4, Insight +4, Perception +4, Sleight of Hand +6, Stealth +8 (Expertise), Survival +4; others at ability modifier
 - **Passive Perception** 14 · **Darkvision** 18 m
@@ -45,17 +45,19 @@ Rolled DEX 16 WIS 15 CON 14 STR 11 INT 11 CHA 11; Criminal +2 DEX, +1 CON.
 **Features**
 - *Elf:* Darkvision 18 m; Fey Ancestry (advantage vs Charmed); Keen Senses (Perception); Trance (Long Rest in 4 hours, can't be put to sleep by magic). Wood Elf lineage: Speed 10.5 m, *Druidcraft* cantrip (WIS).
 - *Alert (origin feat):* add Proficiency to Initiative; swap Initiative with a willing ally after rolling.
-- *Spellcasting (WIS):* spell attack +4, save DC 12. Slots: level 1 ●● (2).
-  - Prepared (3): *Animal Friendship* (a Beast, WIS save or Charmed 24 h; ends if you or an ally damage it), *Cure Wounds* (touch, 2d8+2 HP), *Ensnaring Strike* (Bonus Action, next hit: STR save or Restrained, 1d6 piercing a turn; concentration). May swap one at each Long Rest.
+- *Spellcasting (WIS):* spell attack +4, save DC 12. Slots: level 1 ●●● (3).
+  - Prepared (4): *Animal Friendship* (a Beast, WIS save or Charmed 24 h; ends if you or an ally damage it), *Cure Wounds* (touch, 2d8+2 HP), *Ensnaring Strike* (Bonus Action, next hit: STR save or Restrained, 1d6 piercing a turn; concentration).
+    *Entangle* (90 ft = 27 m range, a 6 m square of grasping plants, difficult terrain; STR save or Restrained; concentration). May swap one at each Long Rest.
 - *Favored Enemy:* *Hunter's Mark* always prepared; cast it 2 times per Long Rest without a slot (Bonus Action, concentration, +1d6 force on hits against the mark).
 - *Weapon Mastery:* Longbow (Slow), Scimitar (Nick).
 - *Deft Explorer (2):* Expertise in Stealth; Sylvan and Draconic.
 - *Fighting Style (2):* Archery, +2 to ranged weapon attack rolls.
-- Level 3 brings the Hunter and a third level-1 slot.
+- *Hunter (3):* Hunter's Lore (a marked creature's immunities, resistances and vulnerabilities are known). Hunter's Prey: **Horde Breaker** (once a turn, one extra attack with the same weapon against a different creature within 1.5 m of the first target); can swap to Colossus Slayer (+1d8 once a turn against a creature missing HP) after any rest.
+- Level 4 brings an Ability Score Improvement or feat.
 
 ## Lampwick
 
-Automaton Rogue 2 · Back · bound to the Bull · built month 1 · partners: Caelynn Brandt
+Automaton Rogue 3 (Thief) · Back · bound to the Bull · built month 1 · partners: Caelynn Brandt
 
 | STR | DEX | CON | INT | WIS | CHA |
 |---|---|---|---|---|---|
@@ -63,7 +65,7 @@ Automaton Rogue 2 · Back · bound to the Bull · built month 1 · partners: Cae
 
 No background; the Automaton species block stands in for it.
 
-- **HP** 19 · **Hit Dice** 2d8 · **AC** 15 (leather, integrated +1) · **Speed** 9 m · **Initiative** +3
+- **HP** 27 · **Hit Dice** 3d8 · **AC** 15 (leather, integrated +1) · **Speed** 9 m · **Initiative** +3
 - **Proficiency** +2 · **Saves** STR −1, DEX +5, CON +3, INT +4, WIS +2, CHA +2
 - **Skills** Perception +6 (Expertise; protocol), Stealth +7 (Expertise), Acrobatics +5, Investigation +4, Persuasion +4; others at ability modifier
 - **Passive Perception** 16
@@ -74,27 +76,29 @@ No background; the Automaton species block stands in for it.
 - Shortbow +5, 1d6+3 piercing, range 24/96 m, two-handed. *Mastery: Vex* (hit: advantage on its next attack against that target).
 - Shortsword +5, 1d6+3 piercing, finesse, light. *Mastery: Vex*.
 - Dagger ×2 +5, 1d4+3 piercing, finesse, light, thrown 6/18 m.
-- **Sneak Attack** +1d6 once per turn, with advantage, or with the Bull within 1.5 m of the target.
+- **Sneak Attack** +2d6 once per turn, with advantage, or with the Bull within 1.5 m of the target.
 
 **Features**
 - *Automaton:* Constructed Resilience (advantage vs Poisoned, resistance to poison, immune to disease, no food, drink, air or sleep); Sentry's Rest (Long Rest is 6 h motionless and aware); Integrated Protection (+1 AC; armour part of the body); Protocol (Perception, Tinker's Tools); Bound (no XP; its partner's level). Core 1 kg.
 - *Expertise:* Perception, Stealth. *Thieves' Cant.* *Weapon Mastery:* Shortbow (Vex), Shortsword (Vex).
 - *Cunning Action (2):* Dash, Disengage or Hide as a Bonus Action.
-- Level 3 brings the Thief.
+- *Steady Aim (3):* Bonus Action, advantage on its next attack this turn if it hasn't moved; Speed 0 after.
+- *Thief (3):* Fast Hands (Bonus Action: Sleight of Hand with thieves' tools, or Utilize, or a magic item's Magic action, e.g. giving the Potion of Healing). Second-Story Work (Climb Speed 9 m; jump distance by DEX).
+- Level 4 brings an Ability Score Improvement or feat.
 
 ## Inventory
 
-**Caelynn:** studded leather, longbow, quiver with 37 arrows, scimitar, shortsword, 2 daggers,
+**Caelynn:** studded leather, longbow, quiver with 36 arrows, scimitar, shortsword, 2 daggers,
 sprig of mistletoe (druidic focus), thieves' tools, crowbar, 2 pouches, traveller's clothes.
 Explorer's pack: backpack, bedroll, 2 flasks of oil, 10 days of rations, rope (15 m),
 tinderbox, 10 torches, waterskin.
 
-**Lampwick:** leather (integrated), shortbow, quiver with 20 arrows, shortsword, 2 daggers,
+**Lampwick:** leather (integrated), shortbow, quiver with 19 arrows, shortsword, 2 daggers,
 thieves' tools, tinker's tools. Burglar's pack: backpack, ball bearings, bell, 10 candles,
-crowbar, hooded lantern, 13 flasks of oil, healer's kit (10 uses), 5 days of rations, rope (15 m), tinderbox,
+crowbar, hooded lantern, 9 flasks of oil, healer's kit (10 uses), 5 days of rations, rope (15 m), tinderbox,
 waterskin.
 
-**Gold:** **4 GP** (31 starting, 10 and 20 from the breach; 7 spent in Hadley, 50 in Kingsmere).
+**Gold:** **24 GP** (31 starting, 30 from month 1's breach and 20 from month 2's; 7 spent in Hadley, 50 in Kingsmere).
 
 **Bought in Kingsmere (month 2):** Potion of Healing (50 GP; Bonus Action to drink or give, 2d4+2 HP), carried by Caelynn.
 

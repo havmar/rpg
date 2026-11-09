@@ -29,3 +29,5 @@ The Bull, now Prentice, is given a Giant Goat breach by Goose Green, three days 
 The Prentice spent all but four of her gold on a single healing potion at the apothecary by the cathedral, and Lampwick said it was the first sensible thing anyone had bought in its presence. The road to Goose Green went past the Aske farm, where the wraiths had been. The village sleeps inside its ward now and the Gridiron bars its doors at dusk. On the fourth morning the low fields beyond the village were mountain: scree, thin cold air, and goat bells somewhere above.
 
 **The grimlocks' cave.** Lampwick soaked the cave mouth and lit it, and the grimlocks were cleverer than oil: three of the four went over the fire on the rock above it. The Prentice had already shot one as they came, and shot the one that walked through the flames. The last two crossed 15 m of scree to Lampwick, missed it three times between them, and she finished both with the scimitar. Not a scratch on either body. Two hundred XP, and the Bull is third level by the next rest.
+
+They rested in the grimlocks' cave, and both came out of it third-level. Lampwick went up to the goats' meadow and came down unseen.
