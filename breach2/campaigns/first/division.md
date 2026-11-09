@@ -13,7 +13,7 @@ You are **the Owl**. This is what you knew when you last reported in. Next revie
 - **4 · Sergeant · the Wolf**: Thomas Pendry (he/him), Human Bard, level 7; with Jarvis, Cleric.
 - **3 · Senior Constable · the Wren**: Martha Ashcombe (he/him), Human Ranger, level 6; with Evershed, Rogue.
 - **2 · Constable · the Raven**: Flo Whitlock (she/her), Gnome Wizard, level 3; with Sedge, Ranger.
-- **1 · Probationer · the Owl** **(you)**: Albert Pike (they/them), Human Barbarian; with Ives, Bard.
+- **1 · Probationer · the Owl** **(you)**: Albert Pike (he/him), Human Barbarian; with Ives, Bard.
 
 ## The ledger
 

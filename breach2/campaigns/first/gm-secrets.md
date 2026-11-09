@@ -36,7 +36,7 @@ whose mast failed is not on any tram map.
 - **Finch** listens to the calls. All of them.
 - **Stubbs** suspects what cores are; the automatons have, in their sleepless hours, half told her.
 - **Vale** is honest and is the only one who would be horrified. He thinks Pike's walk-out hides a misappropriation.
-- **Pike** walked out on day -20 after watching the Raven's pair kill a room of things that were begging. Came back on day -17 because there was nowhere else. The human may overwrite this.
+- **Pike** walked out on day -20 after watching the Raven's pair kill a room of things that were begging. Came back on day -17 because there was nowhere else.
 - **Mary Dunn**, the last Owl, died on day -31 in a grade-1 that was truly a grade 2.
 
 ## Current breach: #4 · Goblin Warrior · Vinegar Yard · reported grade 1, **truly level 2**
@@ -50,7 +50,7 @@ the wyrmlings were pulled through with them.
 
 | Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | 3× Warhorse | 1/2 | 300 | Moderate | Wild: Animal Handling DC 15 or fight | 10×10 sq (15×15 m) | open, empty floor: a moonlit glade | 30 GP | unexplored |
+| 1 | 3× Warhorse | 1/2 | 300 | Moderate | Wild: Animal Handling DC 15 or fight | 10×10 sq (15×15 m) | open, empty floor: a moonlit glade | 30 GP | seen by the owl from the door (unseen, Stealth 14 vs 11); horses undisturbed |
 | 2 | 2× Copper Dragon Wyrmling | 1 | 400 | High | Peaceful: go home when the gate opens; may help | 10×12 sq (15×18 m) | thick fog (heavily obscured beyond 3 m) | 40 GP | unexplored |
 | 3 | 8× Goblin Warrior | 1/4 | 400 | High | Wary: Persuasion or Intimidation DC 15; refused, bargain or fight | 10×10 sq (15×15 m) | the anchor: the rift, 3 m tear at the far end | 40 GP | unexplored |
 

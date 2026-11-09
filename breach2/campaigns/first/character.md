@@ -2,7 +2,7 @@
 
 Pair's purse: **32 GP** (Albert 13 GP, Ives 19 GP). XP: **0** (level 2 at 150). Relics: none.
 
-## Probationer Albert Pike (they/them)
+## Probationer Albert Pike (he/him)
 
 Human Sage · Barbarian 1 (Berserker at level 3) · Front · on the seat since day -29.
 Walked out once, came back, and was allowed to.
