@@ -12,5 +12,5 @@
 - **Backstory note:** Caelynn deserted from the Hare's seat eight months ago; Rowena Lowry took it, and died this month as the Hare in the Giant Shark breach by Kingsmere. The Giant Sharks are loose near Kingsmere.
 - **Last night:** three wraiths stood at the ward's edge by the pound again till dawn, facing the inn (Hester Quill counted them from the attic).
 - **Copse Wood (unassigned):** closed day 5 by deportation (octopus, 4 goblins). No XP, 40 GP. Strike the goblins from `loose` after month.py end.
-- **Ogre breach, Barrowden (unassigned), rooms:** room 1 (9×18 m, giant-sized cargo stacked for cover) holds a silver dragon wyrmling (CR 2), which saw Lampwick and hissed; Lampwick withdrew. A passage beyond smells of water. Rest unseen.
-- **Pending:** the human's call on the wyrmling: talk to it in Draconic (Caelynn speaks it), show it home, ask its help, or kill it.
+- **Ogre breach, Barrowden (unassigned), rooms:** room 1 (9×18 m, giant-sized cargo stacked for cover) holds a silver dragon wyrmling (CR 2), **Ysskaril**, lost, peaceful; Caelynn talked with it in Draconic. It warns of water with teeth (room 2), a dead thing that eats the dead (room 3), and two big ones that want to eat it (rooms 4 and 5; the rift is past them). It offers to fight the big ones beside the pair if it can then go home. Sleeps on 45 GP it calls its hoard. Rest unseen.
+- **Pending:** accept Ysskaril's offer? And how to pass the water (room 2).

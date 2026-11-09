@@ -107,7 +107,7 @@ boulders. 1,950 XP in the breach. Caelynn at 500 XP: level 4 at 1,350 (needs 850
 
 | Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | 1× Silver Dragon Wyrmling (stowaway) | 2 | 450 | Low | Peaceful: goes home when shown the rift; may help | 9×18 m | giant-sized stacked cargo (half cover) | 45 GP | scouted day 11: it saw Lampwick (Stealth 12 vs PP 14); hissed, Lampwick withdrew. Speaks only Draconic (Caelynn does) |
+| 1 | 1× Silver Dragon Wyrmling (stowaway) | 2 | 450 | Low | Peaceful: goes home when shown the rift; may help | 9×18 m | giant-sized stacked cargo (half cover) | 45 GP | scouted day 11: saw Lampwick (Stealth 12 vs PP 14). Caelynn talked with it in Draconic; it told her what lies deeper and offered to fight the ogres beside the pair if it can then go home. Name Ysskaril. |
 | 2 | 2× Swarm of Piranhas (stowaway) | 1 | 400 | Moderate | Mindless: lure through (fitting check DC 15) or destroy | 15×18 m | flooded, 3 m deep, 1.5 m ledge round | 40 GP | |
 | 3 | 1× Ghoul (stowaway) | 1 | 200 | Low | Hostile | 9×9 m | a 3 m ledge along one wall | 20 GP | |
 | 4 | 1× Ogre | 2 | 450 | Low | Hostile | 15×15 m | rubble (difficult terrain, half cover) | 45 GP | |
