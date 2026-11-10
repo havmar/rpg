@@ -86,8 +86,8 @@ These replace the SRD where they differ.
 ### The ladder
 
 - Ten **seats**, one per grade, each with an animal call sign. **Every 60 days is review
-  day: every seat moves up a grade.** The grade-10 holder is called to Head Office and that
-  seat gets a level 1 Probationer.
+  day: every seat moves up a grade.** The grade-10 holder is called to Head Office, their
+  automaton with them, and that seat gets a level 1 Probationer with a new automaton.
 - The other nine are at one of their grade's two levels. **The human's holder is at the
   level their XP gives** (the halved table below).
 - **The quota.** The Board does not order anyone killed. It expects growth: by each review
@@ -96,7 +96,7 @@ These replace the SRD where they differ.
   Director hears about it, and the seat moves up and is sent to its new grade's breaches
   all the same. What follows from being behind is the GM's to play, not a rule.
 - A dead officer's seat is **empty for 2d6 days**, then filled by a transfer at the seat's
-  grade. Breaches of that grade pile up meanwhile. This, and pairs that withdraw, is what
+  grade, who comes with a new automaton. Breaches of that grade pile up meanwhile. This, and pairs that withdraw, is what
   keeps the Division undermanned.
 
 ### XP: absorbed, not awarded
@@ -104,7 +104,12 @@ These replace the SRD where they differ.
 - XP is the magic a breach denizen leaks when it dies, absorbed by the dungeoneer who is
   there. **Only a kill gives XP.** Sending a denizen home gives none. Traps, talk and bypasses give
   none.
-- The automaton absorbs nothing. It is **bound** and gains a level whenever its partner does.
+- The automaton absorbs nothing. He is **bound** to one officer, for that officer's life,
+  and gains a level whenever his partner does.
+- **Help takes its share.** If anyone besides the automaton fights on the pair's side (a
+  Willing denizen, another seat, a hired hand), the XP of every kill in that fight is split
+  evenly between the dungeoneer and each helper, whoever struck the blow. With two helpers
+  the dungeoneer absorbs a third. Help makes a fight safer and a level slower.
 - **Levels come twice as fast as the SRD:** the thresholds are halved.
 
 | Level | XP | Level | XP | Level | XP | Level | XP |
@@ -172,7 +177,8 @@ These replace the SRD where they differ.
   10. Pick below the cap more often than at it. A breach left open, or closed by someone
   else, leaves the pair nothing.
 - A relic **bonds** to whichever of the pair takes it up. It can't be given, sold or bought,
-  and it is dead metal when its holder dies; the automaton's relics stay with the automaton.
+  and it is dead metal when its holder dies. An automaton's relics die with his bond: when
+  his partner dies, or his core is lost.
   Attunement is as written. The GM may also put a consumable in a room where it fits.
 - **Shops sell only mundane things:** anything in `reference/srd/Equipment/` at list price.
 - **Guns are ordinary.** The Pistol and Musket are in the SRD's weapon table; anyone with
@@ -188,14 +194,19 @@ These replace the SRD where they differ.
   view, writes the death into `chronicle.md`, and runs `day.py dawn --player-died`. The seat
   is empty for 2d6 days: the GM runs those dawns as news, briefly, so the human sees what
   the gap cost. Then the human plays the **transfer who takes the seat**, at the seat's
-  grade and the level the script gives, with the **same automaton**. Relics bonded to the
-  dead are gone. The human may rename the newcomer.
+  grade and the level the script gives, with a **new automaton** the script rolls. The
+  human may rename either.
+- **The bond is to one officer and ends with them.** When a dungeoneer dies, their
+  automaton goes dark where he stands. His core can't be bound again, so he can't be
+  rebuilt as himself for anyone else: the core goes back to Head Office and the next
+  holder's automaton is a stranger who knows nothing of the seat. The pair's relics, his
+  and theirs, are dead metal.
 - Dying in a breach leaves it open and unassigned.
 - **The automaton** drops to 0 HP and makes death saves like anyone. Three failures wreck the
   body. Its **core** (fist-sized, 1 kg) survives anything short of disintegration; if the
-  core comes home the fitter rebuilds the body in 1d6+1 days, memory and all, and the pair
-  is off the street meanwhile. A lost core is a new automaton, which knows nothing of the
-  old one's partners.
+  core comes home **and his partner is alive**, the fitter rebuilds the body in 1d6+1 days,
+  memory and all, and the pair is off the street meanwhile. A lost core is a new automaton,
+  bound afresh, which remembers nothing.
 
 ### Fights: the GM plays both bodies
 
@@ -217,11 +228,29 @@ These replace the SRD where they differ.
 - **Open table:** every roll shown with its faces, modifiers, total and target. Monster
   stats are open once seen. Hidden is only what the pair can't perceive.
 
+### Pace
+
+- **A reply runs to the next decision that changes the outcome:** fight or send home, press
+  on or leave, spend something scarce. The GM plays the dungeoneer's routine choices from
+  what the human has said they intend and from the standing orders, carries the talk and
+  the walking through, and ends on that one question. Don't stop to ask what the human
+  would obviously do.
+- **A breach is three to five replies**, not one a room and never one a conversation. Talk
+  with denizens is resolved in the reply where it starts: what was offered, what they
+  answered, where that leaves the pair.
+
 ### Narration
 
-This game is for a story: **prose, brief and plain**, with the mechanics inside it. One
-short paragraph for a new place; speech in character; the district and the station as people,
-soot and weather, not tables. No mood for its own sake, no recap of what the human just read.
+This game is for a story: **prose, brief and plain**, with the mechanics inside it.
+
+- **A room is one short paragraph:** one concrete detail of the place, what is there, what
+  happened. The best detail is where the breach's world meets the building it lodged in (a
+  tide mark across a coal cellar's wall, a pew standing in a marsh).
+- **Speech is a line or two**, in character. The rest of a conversation is told, not quoted.
+- **Denizens get no names and no histories** unless the pair will meet them again. Names
+  and lives are for the seats and the station's people.
+- The district and the station as people, soot and weather, not tables. No mood for its own
+  sake, no recap of what the human just read.
 
 ## Report style
 
@@ -256,7 +285,8 @@ spent on one of these is still a day, and its dawn is still rolled.
 - **Walk a precinct.** Its people, what the breaches have done to it, who is asking why
   the breach on their street has no one.
 - **Spend time with a seat**, by name from the roster, with its trait.
-- **Attend to the automaton.** He remembers every partner. A standing order changes here.
+- **Attend to the automaton.** He remembers every breach the pair has worked. A standing
+  order changes here.
 - **Study the breaches**, with the Reader: the campaign's long question.
 
 ## Characters

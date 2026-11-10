@@ -20,8 +20,10 @@ Head Office's veterans do not write. Head Office believes, with reason, that the
 is ten million people ceasing to exist. Sending denizens home feeds nothing, which is why the
 Board sets a quota of growth and the auditor frowns at "matters resolved".
 
-Ives's core was cut from a Commander of another district. Ives does not know; under stress
-at an anchor it sometimes knows a room it has never seen.
+Ives's core was cut from a Commander of another district; he never knew. It went dark when
+Pike died (day 41) and has gone back to Head Office in the same kind of crate the blank ones
+come in. **Rookwood's** core is another such piece: under stress at an anchor he sometimes
+knows a room he has never seen. A core whose officer dies is not waste to Head Office.
 
 **Clues, in rough order:** the Reader's misreads cluster on days the mast is under load; the
 fitter will not say where blank cores come from, and they arrive warm; an automaton working the
@@ -37,25 +39,68 @@ whose mast failed is not on any tram map.
 - **Stubbs** suspects what cores are; the automatons have, in their sleepless hours, half told her.
 - **Vale** is honest and is the only one who would be horrified. He thinks Pike's walk-out hides a misappropriation.
 - **Pike** walked out on day -20 after watching the Raven's pair kill a room of things that were begging. Came back on day -17 because there was nowhere else.
-- **Mary Dunn**, the last Owl, died on day -31 in a grade-1 that was truly a grade 2.
+- **Mary Dunn**, the Owl before Pike, died on day -31 in a grade-1 that was truly a grade 2.
+- **Stubbs** tried for three days to wake Ives's core and could not; she noticed the crate it left in.
+- **Bob Fletcher** asked for the transfer to get off a Static corner in another district; he means to do his sixty days and put in for the clerks.
 
 ## Current breach
 
-None. #4 closed on day 1 (6 goblins killed; 2 goblins, 2 copper wyrmlings, 3 warhorses sent home).
-Relic: the copper scale (Helm of Comprehending Languages), bonded to Ives.
+**#19 · grade 1 · truly level 2 · seed 727593** (`gen_breach.py --seed 727593 --level 2 --reported 1`).
+The Tun Street public baths, Vinegar Yard. The piece is a hot mangrove coast at a jungle
+river's mouth, the wolf spiders' country. 1,200 XP inside; Pike needs 150 for level 3.
 
-Clues given so far: Nettle said they were *pulled* ("like a fish on a line"); Ives hummed the
-mast's note while working the gizmo, and Albert noticed; Dr Lark admitted #4 was misread and
-let slip that the mast was "pulling hard" (her word, corrected to "under load") the night it opened.
+| Room | Denizens | XP | Disposition | Size | Feature | Coins |
+|---|---|---|---|---|---|---|
+| 1 | 2× Pirate (CR 1) | 400 | Neutral | 15×15 m | wreckage, half cover | 40 GP |
+| 2 | 2× Pirate (CR 1) | 400 | Neutral | 9×18 m | knee-deep water | 40 GP |
+| 3 | 8× Giant Wolf Spider (CR 1/4) | 400 | Neutral | 9×12 m | the anchor | 40 GP |
 
-Station threads: Vale has entered the seven as "not attended to" and wants Pike's month looked
-at; Crane backed the report in front of Vale and privately told Pike that kills are what the
-Board counts; Stubbs heard Ives hum and went quiet.
+- **Room 1, the beach** (the front hall): coral rubble and a stove-in longboat. **Tom Rudd and
+  Will Pegg**, marooned three weeks ago by their own ship for stealing from the purser, with
+  a cask of water and their daggers. They don't want home: home is a beach where they were
+  left to starve. They have looked out of the street door at dawn and seen a city with
+  bread in it. Convincing them to go back would take something real; leaving them is two
+  pirates loose in the Yard (and two men who mostly want a meal and a berth).
+- **Room 2, the creek** (the plunge hall): knee-deep brown water between roots. **Bess
+  Harrow and Ned Coyle**, from the same ship, ashore this morning to fill casks; the ship
+  stood off the bar. They have not been out of the creek and think the fog that came down
+  at dawn is weather; they will not believe the ship is gone without proof. Once they
+  believe it, they want to go home (the ship is there, waiting for them, a few hours). They
+  rowed Rudd and Pegg ashore three weeks ago and left them; the two pairs will fight on
+  sight unless someone stops it.
+- **Room 3, the anchor** (the boiler room): a hollow under a great mangrove, roots for a
+  roof, the floor humming. A brood of **eight giant wolf spiders** on the roots overhead
+  (Stealth +7). Beasts: not argued with. They hunt what moves on the ground and leave what
+  is still; fire and smoke drive them; meat draws them. Ives's *Animal Friendship* works on
+  them (INT 3), one per casting.
+- **Relic** on closing: the GM's pick, Uncommon or below, of this coast.
+
+Marks (day 41, Pike): room 1's castaways were told they must go home, and broke out through
+the street door within the hour: **loose in Vinegar Yard**, with the purser's 40 GP (the
+script's spill of day 47 is this group, relabelled Pirate, since day 41). Room 2's bosun's
+mate and boy were convinced and are **Willing, waiting at the creek**, fed by Mrs Bright;
+healed by now. Room 3: **all eight spiders dead** (four to Pike and the fire, four to the
+sailors). Pike died at the arch, Ives was wrecked; the Raven fetched the body and the core
+on Crane's order and closed nothing.
+
+As it stands on day 47: the anchor is empty; the only XP in the breach is the two willing
+sailors (400). Coins: 40 GP in the jolly boat, 40 GP in the spiders' hollow (a dead
+man's belt in the roots). Bess knows Pike died trying; she kept his battleaxe and will hand it
+to whoever comes with a brass man. If the new Owl turns on them she and the boy fight
+(33 HP each). A lodged piece keeps arriving: the encounter die at the gizmo's start as usual
+(`--encounter 1`).
 
 ## Loose (the pair knows these from the ledger)
 
-Giant Elks (level 5) and Ochre Jellies (level 5) in Vinegar Yard; Fire Elementals (level 10) in Gasworks.
+Berserkers (level 3) in Vinegar Yard, from #6 (closed by the Raven, so here for good); the two
+castaway Pirates (level 2) in Vinegar Yard, from #19, still open, so they could be walked back
+if they would go; Giant Apes (level 17) in Chapel Fields; Pit Fiends (level 18) in Tallow Row,
+from #17, closed. The Gricks: the Lion, day 43.
+Gone: the jellies (scalded out of the brewery drains), the elks (the Stag, day 11), the fire
+elementals (the Bear, day 22).
+
+Clues given in days 2 to 40: Stubbs's blank cores arrived warm, and Ives said so.
 
 ## Unheard news
 
-None. The pair is at the station on day 1.
+None. The new Owl heard the ledger at the station on day 47.

@@ -2,7 +2,7 @@
  "name": "first",
  "seed": 426,
  "division": "N Division",
- "day": 1,
+ "day": 47,
  "last_review": 1,
  "player": "Owl",
  "roster": [
@@ -10,43 +10,43 @@
    "role": "Owl",
    "grade": 1,
    "holder": {
-    "name": "Albert Pike",
+    "name": "Bob Fletcher",
     "pronouns": "he/him",
-    "species": "Human",
-    "background": "Sage",
+    "species": "Orc",
+    "background": "Soldier",
     "side": "Front",
-    "class": "Barbarian",
-    "subclass": "Berserker",
+    "class": "Ranger",
+    "subclass": "Hunter",
     "scores": {
-     "STR": 14,
-     "CON": 14,
-     "DEX": 13,
-     "WIS": 12,
-     "CHA": 12,
-     "INT": 8
+     "DEX": 14,
+     "WIS": 14,
+     "CON": 11,
+     "STR": 10,
+     "INT": 9,
+     "CHA": 8
     },
-    "since": -29,
-    "trait": "walked out once, came back, and was allowed to",
-    "level": 1
+    "since": 47,
+    "trait": "wants out, and is counting the days to the next review",
+    "level": 2
    },
    "arrives": null,
    "automaton": {
-    "name": "Ives",
+    "name": "Rookwood",
     "side": "Back",
-    "class": "Bard",
-    "subclass": "Lore",
-    "protocol_skill": "Stealth",
+    "class": "Druid",
+    "subclass": "Land",
+    "protocol_skill": "Persuasion",
     "scores": {
-     "CHA": 15,
-     "DEX": 12,
-     "CON": 11,
-     "WIS": 10,
-     "INT": 9,
-     "STR": 8
+     "WIS": 16,
+     "CON": 14,
+     "DEX": 13,
+     "INT": 12,
+     "CHA": 11,
+     "STR": 11
     },
-    "built": -29,
+    "built": 47,
     "partners": [
-     "Albert Pike"
+     "Bob Fletcher"
     ]
    }
   },
@@ -515,40 +515,88 @@
    }
   ]
  },
- "ledger": [],
- "next_id": 5,
- "loose": [
+ "ledger": [
   {
-   "breach": 1,
-   "kind": "Giant Elk",
-   "level": 5,
-   "precinct": "Vinegar Yard",
-   "since": -11,
-   "groups": 1,
-   "why": "from before your time"
+   "id": 8,
+   "day": 15,
+   "grade": 5,
+   "level": 9,
+   "precinct": "Lime Wharf",
+   "seed": 38559,
+   "role": null,
+   "due": null,
+   "spills": 2,
+   "withdrawn": true,
+   "kind": "Grick"
   },
   {
-   "breach": 2,
-   "kind": "Fire Elemental",
-   "level": 10,
-   "precinct": "Gasworks",
-   "since": -12,
-   "groups": 1,
-   "why": "from before your time"
-  },
-  {
-   "breach": 3,
-   "kind": "Ochre Jelly",
-   "level": 5,
+   "id": 19,
+   "day": 41,
+   "grade": 1,
+   "level": 2,
    "precinct": "Vinegar Yard",
-   "since": -12,
-   "groups": 1,
-   "why": "from before your time"
+   "seed": 727593,
+   "role": "Owl",
+   "due": null,
+   "spills": 1,
+   "withdrawn": false,
+   "kind": "Giant Wolf Spider"
   }
  ],
- "fallen": [],
+ "next_id": 22,
+ "loose": [
+  {
+   "breach": 6,
+   "kind": "Berserker",
+   "level": 3,
+   "precinct": "Vinegar Yard",
+   "since": 8,
+   "groups": 1,
+   "why": "spilled"
+  },
+  {
+   "breach": 11,
+   "kind": "Giant Ape",
+   "level": 17,
+   "precinct": "Chapel Fields",
+   "since": 24,
+   "groups": 1,
+   "why": "spilled"
+  },
+  {
+   "breach": 17,
+   "kind": "Pit Fiend",
+   "level": 18,
+   "precinct": "Tallow Row",
+   "since": 37,
+   "groups": 1,
+   "why": "spilled"
+  },
+  {
+   "breach": 19,
+   "kind": "Pirate",
+   "level": 2,
+   "precinct": "Vinegar Yard",
+   "since": 41,
+   "groups": 1,
+   "why": "spilled"
+  }
+ ],
+ "fallen": [
+  {
+   "role": "Owl",
+   "name": "Albert Pike",
+   "grade": 1,
+   "day": 41,
+   "precinct": "Vinegar Yard",
+   "kind": "Giant Wolf Spider"
+  }
+ ],
  "graduated": [],
  "news": [
-  "ASSIGNED TO YOU: #4, grade 1, Goblin Warrior, Vinegar Yard."
+  "The new Owl is Bob Fletcher (he/him, Orc Ranger), Probationer, with a new automaton, Rookwood (Druid). THIS IS YOUR SEAT: the human plays them.",
+  "The Wren closed #21 (Grick, Vinegar Yard).",
+  "#19 (Giant Wolf Spider, grade 1) spilled into Vinegar Yard.",
+  "ASSIGNED TO YOU: #19, grade 1, Giant Wolf Spider, Vinegar Yard."
  ]
 }

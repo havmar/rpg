@@ -1,4 +1,4 @@
-# N Division · Nine Bridges · as of day 1
+# N Division · Nine Bridges · as of day 47
 
 You are **the Owl**. This is what you knew when you last reported in. Next review: day 61.
 
@@ -13,20 +13,29 @@ You are **the Owl**. This is what you knew when you last reported in. Next revie
 - **4 · Sergeant · the Wolf**: Thomas Pendry (he/him), Human Bard, level 7; with Jarvis, Cleric.
 - **3 · Senior Constable · the Wren**: Martha Ashcombe (she/her), Human Ranger, level 6; with Evershed, Rogue.
 - **2 · Constable · the Raven**: Flo Whitlock (she/her), Gnome Wizard, level 3; with Sedge, Ranger.
-- **1 · Probationer · the Owl** **(you)**: Albert Pike (he/him), Human Barbarian; with Ives, Bard.
+- **1 · Probationer · the Owl** **(you)**: Bob Fletcher (he/him), Orc Ranger; with Rookwood, Druid.
 
 ## The ledger
 
 Open breaches, as the mast reads them. The Reader is sometimes wrong.
 
-- Nothing open.
+- #8 · grade 5 · Grick · Lime Wharf · open 32 days · **no one** · withdrawn from
+- #19 · grade 1 · Giant Wolf Spider · Vinegar Yard · open 6 days · **you**
 
 ## Loose in the district
 
-- 1. Giant Elks (from a level 5 breach) in Vinegar Yard (from before your time).
-- 2. Fire Elementals (from a level 10 breach) in Gasworks (from before your time).
-- 3. Ochre Jellies (from a level 5 breach) in Vinegar Yard (from before your time).
+- 1. Berserkers (from a level 3 breach) in Vinegar Yard (spilled).
+- 2. Giant Apes (from a level 17 breach) in Chapel Fields (spilled).
+- 3. Pit Fiends (from a level 18 breach) in Tallow Row (spilled).
+- 4. Pirates (from a level 2 breach) in Vinegar Yard (spilled).
 
-## This morning (day 1)
+## This morning (day 47)
 
-- ASSIGNED TO YOU: #4, grade 1, Goblin Warrior, Vinegar Yard.
+- The new Owl is Bob Fletcher (he/him, Orc Ranger), Probationer, with a new automaton, Rookwood (Druid). THIS IS YOUR SEAT: the human plays them.
+- The Wren closed #21 (Grick, Vinegar Yard).
+- #19 (Giant Wolf Spider, grade 1) spilled into Vinegar Yard.
+- ASSIGNED TO YOU: #19, grade 1, Giant Wolf Spider, Vinegar Yard.
+
+## The wall
+
+- Day 41: the Owl, Albert Pike, Probationer, in the Giant Wolf Spider breach at Vinegar Yard.

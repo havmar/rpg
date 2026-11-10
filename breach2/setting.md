@@ -119,7 +119,7 @@ the officer, so a call is short.
 
 An **automaton** is a brass-and-enamel man built by the Board's fitters from a design
 Head Office does not share: every one is made and spoken of as a man, "he", never "it".
-Each is bound to one officer at a time, and from then on he gains what his partner gains: a
+Each is bound to one officer, once, for that officer's life, and from then on he gains what his partner gains: a
 level when they level, nothing when they don't. He absorbs no breach-magic of his own, which
 is the point. The pair is the party.
 
@@ -141,9 +141,15 @@ cheese**: the fitters' protocol of economy makes an automaton propose, always, t
 legal way to end a fight, and he will say so before every fight unless told to hold its
 tongue.
 
-An automaton **remembers**. His core carries every partner he has had, and an officer who
-inherits a dead officer's automaton inherits his grief, expressed as correctness. "The
-previous Fox preferred the left-hand stair. I mention it only for completeness."
+An automaton **remembers** every breach he and his partner have worked, and says so. "The
+Constable preferred the left-hand stair last time. I mention it only for completeness."
+
+**The bond does not pass on.** When an officer dies, their automaton goes dark where he
+stands, and no fitter can wake that core for anyone else: it is crated and sent back to Head
+Office. A wrecked automaton whose partner is alive can be rebuilt from his core, memory and
+all; one whose partner is dead cannot be rebuilt as himself. So a transfer arrives with a
+new automaton, a stranger to the seat, and when a Commander is called to Head Office their
+automaton goes with them.
 
 ### Species: Automaton
 
@@ -159,7 +165,7 @@ For the automaton's character sheet, in place of an SRD species.
   or doff, and it can't be removed against the automaton's will.
 - **Protocol.** Proficiency in one skill (rolled by `day.py`) and with Tinker's Tools.
 - **Bound.** Gains no XP; is always the level of its partner. Its **core** (1 kg) survives the
-  body's destruction and holds its memory.
+  body's destruction and holds its memory while that partner lives; the bond ends with them.
 - **Gizmo.** At a breach's anchor, and nowhere else, he can set up and run the gizmo (see the
   rules). He carries its case (25 kg) and the call box (5 kg) without complaint.
 - **Languages:** Common and one other.

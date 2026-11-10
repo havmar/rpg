@@ -191,7 +191,7 @@ def new_automaton(rng, side, used_names, day, partner):
 
 
 def new_holder(rng, day, grade, used_traits, side=None, level=None):
-    """An officer for a seat. `side` is forced when they inherit an automaton."""
+    """An officer for a seat. `side` is rolled unless given."""
     species = rng.choice(SPECIES)
     if side is None:
         side = "Front" if d(rng, 2) == 1 else "Back"
@@ -268,19 +268,20 @@ def vacate(c, rng, seat, b, news, where):
     seat["holder"] = None
     seat["arrives"] = c["day"] + sum(d(rng, VACANCY[1]) for _ in range(VACANCY[0]))
     news.append(f"The {seat['role']}, {h['name']} ({RANKS[seat['grade']]}), died {where}. "
-                f"{seat['automaton']['name']} came home. The seat is empty until day "
-                f"{seat['arrives']}.")
+                f"{seat['automaton']['name']}, bound to {h['pronouns'].split('/')[1]}, went "
+                f"dark. The seat is empty until day {seat['arrives']}.")
 
 
 def fill(c, rng, seat, news, used_traits, level=None):
-    a = seat["automaton"]
-    h = new_holder(rng, c["day"], seat["grade"], used_traits,
-                   "Back" if a["side"] == "Front" else "Front", level)
-    seat["holder"], seat["arrives"] = h, None
-    a["partners"].append(h["name"])
+    # The bond is to one officer: a new holder comes with a new automaton.
+    h = new_holder(rng, c["day"], seat["grade"], used_traits, level=level)
+    used_names = {s["automaton"]["name"] for s in c["roster"]}
+    a = new_automaton(rng, h["side"], used_names, c["day"], h["name"])
+    seat["holder"], seat["arrives"], seat["automaton"] = h, None, a
     you = " THIS IS YOUR SEAT: the human plays them." if seat["role"] == c["player"] else ""
     news.append(f"The new {seat['role']} is {h['name']} ({h['pronouns']}, {h['species']} "
-                f"{h['class']}), {RANKS[seat['grade']]}, paired with {a['name']}.{you}")
+                f"{h['class']}), {RANKS[seat['grade']]}, with a new automaton, {a['name']} "
+                f"({a['class']}).{you}")
 
 
 def new(path, seed, player_grade):
@@ -345,7 +346,7 @@ def dawn(c, rng, player_died=False):
                 if h:
                     c["graduated"].append({"role": s["role"], "name": h["name"], "day": day})
                     news.append(f"The {s['role']}, {h['name']}, Commander, is called to Head "
-                                f"Office. {s['automaton']['name']} stays with the Division.")
+                                f"Office, and {s['automaton']['name']} with them.")
                 s["grade"] = 1
                 fill(c, rng, s, news, used_traits, level=1)
             else:
@@ -504,8 +505,8 @@ def pair_md(s):
     else:
         lines.append(f"- The seat is empty until day {s['arrives']}.")
     lines.append(f"- Automaton: {a['name']}, {a['side']}: {a['class']} ({a['subclass']}), "
-                 f"protocol skill {a['protocol_skill']}. Scores {asc}. Partners: "
-                 + ", ".join(a["partners"]) + ".")
+                 f"protocol skill {a['protocol_skill']}. Scores {asc}. Bound to "
+                 + a["partners"][-1] + ".")
     return "\n".join(lines)
 
 
