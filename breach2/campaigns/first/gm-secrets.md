@@ -71,7 +71,7 @@ river's mouth, the wolf spiders' country. 1,200 XP inside; Pike needs 150 for le
   them (INT 3), one per casting.
 - **Relic** on closing: the GM's pick, Uncommon or below, of this coast.
 
-Marks: nothing explored.
+Marks: room 1 met at the street door (day 41). Rudd and Pegg told the pair about Bess and Ned up the creek and the spiders past the big tree. They have the purser's 40 GP on them (not mentioned) and will hide it if they think they are being arrested.
 
 ## Loose (the pair knows these from the ledger)
 

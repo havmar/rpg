@@ -59,3 +59,9 @@ Twenty days to review, and Pike still 150 XP short of the level the Board expect
 The ledger at dawn: the Bear closed the Aboleth, the Grick breach spilled again, and **#19**,
 a grade 1, Giant Wolf Spider, opened in Vinegar Yard: the Tun Street public baths. Given to
 the Owl.
+
+Ives knocked on the baths' street door, and a castaway opened it: Tom Rudd, with Will Pegg
+behind him on a beach where the front hall should be, two seamen of the *Kestrel* marooned
+three weeks before for stealing. They had seen the city from that door at dawn and wanted
+none of their beach back. They told the Owl what was further in: two of their old shipmates
+filling casks up the creek, and something in the roots past the big tree.
