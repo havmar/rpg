@@ -106,6 +106,10 @@ These replace the SRD where they differ.
   none.
 - The automaton absorbs nothing. He is **bound** to one officer, for that officer's life,
   and gains a level whenever his partner does.
+- **Help takes its share.** If anyone besides the automaton fights on the pair's side (a
+  Willing denizen, another seat, a hired hand), the XP of every kill in that fight is split
+  evenly between the dungeoneer and each helper, whoever struck the blow. With two helpers
+  the dungeoneer absorbs a third. Help makes a fight safer and a level slower.
 - **Levels come twice as fast as the SRD:** the thresholds are halved.
 
 | Level | XP | Level | XP | Level | XP | Level | XP |
