@@ -217,11 +217,29 @@ These replace the SRD where they differ.
 - **Open table:** every roll shown with its faces, modifiers, total and target. Monster
   stats are open once seen. Hidden is only what the pair can't perceive.
 
+### Pace
+
+- **A reply runs to the next decision that changes the outcome:** fight or send home, press
+  on or leave, spend something scarce. The GM plays the dungeoneer's routine choices from
+  what the human has said they intend and from the standing orders, carries the talk and
+  the walking through, and ends on that one question. Don't stop to ask what the human
+  would obviously do.
+- **A breach is three to five replies**, not one a room and never one a conversation. Talk
+  with denizens is resolved in the reply where it starts: what was offered, what they
+  answered, where that leaves the pair.
+
 ### Narration
 
-This game is for a story: **prose, brief and plain**, with the mechanics inside it. One
-short paragraph for a new place; speech in character; the district and the station as people,
-soot and weather, not tables. No mood for its own sake, no recap of what the human just read.
+This game is for a story: **prose, brief and plain**, with the mechanics inside it.
+
+- **A room is one short paragraph:** one concrete detail of the place, what is there, what
+  happened. The best detail is where the breach's world meets the building it lodged in (a
+  tide mark across a coal cellar's wall, a pew standing in a marsh).
+- **Speech is a line or two**, in character. The rest of a conversation is told, not quoted.
+- **Denizens get no names and no histories** unless the pair will meet them again. Names
+  and lives are for the seats and the station's people.
+- The district and the station as people, soot and weather, not tables. No mood for its own
+  sake, no recap of what the human just read.
 
 ## Report style
 
