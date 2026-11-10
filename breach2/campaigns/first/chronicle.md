@@ -30,3 +30,32 @@ Ives took up the scale. At the station the Director took the report as written, 
 "seven not attended to" in his own book, and Dr Lark owned that the grade had been wrong.
 The afternoon went on steel: a shield and a battleaxe for Pike, studded leather for Ives,
 fitted in the cellar shop by Meg Stubbs, who had him hum for her while she worked.
+
+## Days 2 to 40
+
+Forty days without a grade 1. The Owl reported every dawn and was sent nowhere.
+
+The Wren had the Yard's breaches: a white dragon on day 2 that left frost on the brewery
+roofs for a week, a shark in a cistern, a green dragon, a devil. The Raven's Berserkers, on
+day 7, walked out into Vinegar Yard before she reached them; she closed the breach on day
+10 and the men who had left it are the Yard's for good. The jellies went into the brewery
+drains and the brewers scalded them out with boiling wort. The Stag rode down the elks on a
+rest day, and the Yard ate elk.
+
+On day 16 the Lion came out of the Grick breach in Lime Wharf and would not go back. It has
+been open since with nobody on it, and has spilled twice. On day 22 the Bear put out the
+Gasworks cemetery with a fire-brigade pump. A Giant Ape breach in Chapel Fields waited two
+days for the Fox and spilled; a Pit Fiend in Tallow Row spilled the day after it opened,
+and the Fox closed the breach on the 38th with whatever came out of it still in the
+streets. The music hall shut.
+
+Mr Vale went up to Head Office for the quarter's audit on day 3 and came back on day 38,
+his hour with Pike still in his book. On day 19 a crate of blank cores came down to the
+cellar for Meg Stubbs. Ives carried it, and said on the stair, to nobody, that it was warm.
+
+## Day 41
+
+Twenty days to review, and Pike still 150 XP short of the level the Board expects of him.
+The ledger at dawn: the Bear closed the Aboleth, the Grick breach spilled again, and **#19**,
+a grade 1, Giant Wolf Spider, opened in Vinegar Yard: the Tun Street public baths. Given to
+the Owl.

@@ -30,3 +30,4 @@ N Division's ground: nine precincts under one mast. The station stands under the
 - **The wall**: by the stair, seat, name and day. The last Owl on it is Mary Dunn, day -31.
 
 ## GM notes
+- **Mrs Annie Bright** (human), attendant of the Tun Street public baths, Vinegar Yard: forty years on the towels; wants her baths back before the brewery men's Saturday.

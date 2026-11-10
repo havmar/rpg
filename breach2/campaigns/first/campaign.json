@@ -2,7 +2,7 @@
  "name": "first",
  "seed": 426,
  "division": "N Division",
- "day": 1,
+ "day": 41,
  "last_review": 1,
  "player": "Owl",
  "roster": [
@@ -515,40 +515,79 @@
    }
   ]
  },
- "ledger": [],
- "next_id": 5,
+ "ledger": [
+  {
+   "id": 8,
+   "day": 15,
+   "grade": 5,
+   "level": 9,
+   "precinct": "Lime Wharf",
+   "seed": 38559,
+   "role": null,
+   "due": null,
+   "spills": 2,
+   "withdrawn": true,
+   "kind": "Grick"
+  },
+  {
+   "id": 19,
+   "day": 41,
+   "grade": 1,
+   "level": 2,
+   "precinct": "Vinegar Yard",
+   "seed": 727593,
+   "role": "Owl",
+   "due": null,
+   "spills": 0,
+   "withdrawn": false,
+   "kind": "Giant Wolf Spider"
+  }
+ ],
+ "next_id": 20,
  "loose": [
   {
-   "breach": 1,
-   "kind": "Giant Elk",
-   "level": 5,
+   "breach": 6,
+   "kind": "Berserker",
+   "level": 3,
    "precinct": "Vinegar Yard",
-   "since": -11,
+   "since": 8,
    "groups": 1,
-   "why": "from before your time"
+   "why": "spilled"
   },
   {
-   "breach": 2,
-   "kind": "Fire Elemental",
-   "level": 10,
-   "precinct": "Gasworks",
-   "since": -12,
+   "breach": 11,
+   "kind": "Giant Ape",
+   "level": 17,
+   "precinct": "Chapel Fields",
+   "since": 24,
    "groups": 1,
-   "why": "from before your time"
+   "why": "spilled"
   },
   {
-   "breach": 3,
-   "kind": "Ochre Jelly",
-   "level": 5,
-   "precinct": "Vinegar Yard",
-   "since": -12,
+   "breach": 8,
+   "kind": "Grick",
+   "level": 9,
+   "precinct": "Lime Wharf",
+   "since": 28,
+   "groups": 2,
+   "why": "spilled"
+  },
+  {
+   "breach": 17,
+   "kind": "Pit Fiend",
+   "level": 18,
+   "precinct": "Tallow Row",
+   "since": 37,
    "groups": 1,
-   "why": "from before your time"
+   "why": "spilled"
   }
  ],
  "fallen": [],
  "graduated": [],
  "news": [
-  "ASSIGNED TO YOU: #4, grade 1, Goblin Warrior, Vinegar Yard."
+  "The Bear closed #18 (Aboleth, Chapel Fields).",
+  "#8 (Grick, grade 5) spilled into Lime Wharf.",
+  "NEW BREACH #19: the mast reads grade 1, Giant Wolf Spider, Vinegar Yard.",
+  "ASSIGNED TO YOU: #19, grade 1, Giant Wolf Spider, Vinegar Yard."
  ]
 }
