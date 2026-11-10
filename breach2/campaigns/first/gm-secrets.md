@@ -90,6 +90,16 @@ to whoever comes with a brass man. If the new Owl turns on them she and the boy 
 (33 HP each). A lodged piece keeps arriving: the encounter die at the gizmo's start as usual
 (`--encounter 1`).
 
+**Day 47, the walk in.** Rookwood had told the Owl the castaways are out in the Yard and stay
+there when the piece goes home. Mrs Bright on the step: the street door broken since day 41,
+a sack across it. Room 1: empty, the tide mark on the wall, two sets of boot prints out
+through the sacking. Room 2: Bess (bosun's mate, she, 33 HP) and Ned (the boy, 33 HP), Willing,
+with Pike's battleaxe across Bess's knees, to be handed over when the Owl's business is done.
+They put the two castaways ashore themselves, on orders, and don't like remembering it. Room 3:
+the case is up under the roots; the run has not started; the encounter die is rolled when it does.
+Coins, resolved here: room 1's 40 GP went out with the castaways; room 2's 40 GP is the ship's
+float under the thwart of the jolly boat; room 3's 40 GP is in the dead man's belt in the roots.
+
 ## Loose (the pair knows these from the ledger)
 
 Berserkers (level 3) in Vinegar Yard, from #6 (closed by the Raven, so here for good); the two

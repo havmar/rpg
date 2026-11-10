@@ -2,7 +2,7 @@
 
 **For the GM resuming:** read this, `character.md`, `division.md`, `gm-secrets.md` and the end of `chronicle.md`. Mind the Pace and Narration rules in `breach2/CLAUDE.md` (a reply runs to the next real decision; a breach in three to five replies; no names for throwaway denizens), and the bond rule (a dead officer's automaton is not rebuilt; the transfer has a new one).
 
-- **Place:** the station, Vinegar Yard, the morning of day 47, at the foot of the stair. Breach **#19** is the Owl's again and he has not gone in. Rookwood has offered the economical course (walk into the baths, talk the creek round, the gizmo at the anchor, nobody struck). Crane has said: ledger short, Static quiet, in that order; review in fourteen days.
+- **Place:** the station, Vinegar Yard, the morning of day 47, at the foot of the stair. Breach **#19** is the Owl's again. He has gone in, through the street door, to the anchor: Rookwood has the gizmo case set up under the roots and the run has **not started**. Bess Harrow and Ned Coyle are beside the case, keeping still. The two castaways are out in the Yard, not in the piece. Rookwood has offered the economical course (walk into the baths, talk the creek round, the gizmo at the anchor, nobody struck). Crane has said: ledger short, Static quiet, in that order; review in fourteen days.
 - **The Owl now:** Probationer **Bob Fletcher** (orc, Ranger 2), on the seat since this morning, and **Rookwood** (automaton, Druid 2), built and bound to him today. Albert Pike died in #19 on day 41; Ives went dark with him and his core has gone back to Head Office. Rookwood knows the breach only from the Raven's report.
 - **Bob Fletcher (he/him), level 2:** 18/18 HP, AC 15, slots 2/2, Hunter's Mark free 2/2, Adrenaline Rush 2/2, Relentless Endurance 1/1. XP 150 (level 3 at 450). Hit Dice 2/2 (d10).
 - **Rookwood, level 2:** 17/17 HP, AC 15, slots 3/3, Wild Shape 2/2. Hit Dice 2/2 (d8). Carries the gizmo case and the call box.
@@ -17,4 +17,4 @@
 - **Loose in the district (known):** Berserkers (level 3) and the two castaway Pirates (level 2) in Vinegar Yard; Giant Apes (17) in Chapel Fields; Pit Fiends (18) in Tallow Row.
 - **Standing orders:** none.
 - **Not yet heard:** nothing (division.md is current as of day 47).
-- **Open questions to the human:** keep the names Bob Fletcher and Rookwood or change them (either can be renamed at any time); and what Fletcher does first: the baths now, or the two castaways loose in the Yard.
+- **Open questions to the human:** keep the names Bob Fletcher and Rookwood or change them (either can be renamed at any time); and whether to begin the run now or go out after the two castaways first (once it runs, they stay in the Yard for good).

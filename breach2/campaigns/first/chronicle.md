@@ -151,3 +151,10 @@ Raven's account twice and offered the economical course: walk into the baths, ta
 round, set the apparatus under the tree, and go home with nobody struck. The Director came
 down the stair with his ledger under his arm. Ledger short, Static quiet, in that order;
 review in fourteen days, and he would rather not write the Owl up as behind.
+
+Midday, Tun Street. The Owl went in by the street door, under the sacking, with the brass man
+and the case. The front hall was empty but for the tide mark and two sets of boots going out.
+The creek had two sailors in it who had been waiting six days and stood up when they saw the
+call box. They walked the Owl to the boiler room, and the brass man stopped at the root arch
+and said he had never been in the room and did not need the Raven to tell him what it was.
+The case is up under the roots. The run has not begun.
