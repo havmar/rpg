@@ -78,3 +78,66 @@ lettered NO DIVING. She sat a while with her hand on the tile. Then she asked ho
 Pike told Bess the two thieves were alive; she spat in the creek and stayed by her boat. At
 the big tree he sent the owl into the hollow. It saw nothing, and something took it off a
 root in one bite.
+
+Pike chose to attend to the spiders. Ives oiled the root arch and lit it, and Pike stood in
+the gap. Two bites in the first six seconds took twenty of his twenty-five hit points. He
+killed two and the fire killed one; he went down, Ives sang him up, he killed a fourth and
+went down again, and a spider came over the arch and took Ives to pieces in the water. The
+two sailors from the creek came at Ives's shout and killed the last four with their knives.
+They were twenty seconds too late. **Probationer Albert Pike, the Owl, died at the anchor of
+breach #19 on day 41**, forty-two days on the seat, 500 XP, one breach closed and nobody
+killed in it that he could spare. Ives's body was wrecked beside him.
+
+The two castaways on the beach broke the street door that same hour and are loose in the
+Yard. Mrs Bright ran to the station. The Director sent the Raven in to fetch, not to close:
+she and Sedge brought out Pike, and Ives's core in Sedge's hand. The sailors at the creek
+were told to wait for the next Owl.
+
+### The sheet of Albert Pike, the Owl, days -29 to 41
+
+## Probationer Albert Pike (he/him)
+
+Human Sage · Barbarian 2 (Berserker at level 3) · Front · on the seat since day -29.
+Walked out once, came back, and was allowed to.
+
+- **HP** 25 (d12) · **AC** 14 (Unarmored Defense), **16 with the Shield** · **Speed** 9 m · **Initiative** +1 · **Proficiency** +2
+- **STR** 14 (+2) · **DEX** 13 (+1) · **CON** 16 (+3) · **INT** 8 (−1) · **WIS** 13 (+1) · **CHA** 12 (+1)
+  (rolled 14/13/14/8/12/12; Sage gives CON +2, WIS +1)
+- **Saves:** STR +4, CON +5. **Passive Perception** 13.
+- **Skills:** Athletics +4, Intimidation +3 (class); Perception +3 (Human, Skillful); Arcana +1, History +1 (Sage).
+- **Tools:** Calligrapher's Supplies. **Languages:** Common, Gnomish, Orc.
+- **Rage** 2 per Long Rest (one back on a Short Rest): Bonus Action; Resistance to Bludgeoning,
+  Piercing and Slashing; +2 damage on Strength attacks; Advantage on STR checks and saves; no
+  spells or Concentration while it lasts.
+- **Reckless Attack:** on his first attack of the turn he may take Advantage on Strength attacks this turn; attacks against him have Advantage until his next turn.
+- **Danger Sense:** Advantage on DEX saves unless Incapacitated.
+- **Weapon Mastery:** Greataxe (Cleave), Handaxe (Vex).
+- **Savage Attacker** (Human, Versatile): once a turn on a weapon hit, roll the damage dice twice, keep either.
+- **Resourceful:** Heroic Inspiration after every Long Rest (has it now).
+- **Magic Initiate (Wizard)**, Wisdom: spell attack +3, save DC 11. Cantrips *Light*, *Mage Hand*.
+  *Find Familiar* once per Long Rest free (ritual otherwise, 10 GP of incense).
+  **Familiar: an owl**, already called. 1 HP, AC 11, fly 18 m, Flyby, Darkvision 36 m,
+  Perception +5, Stealth +5. It can't attack; it scouts and can Help. Albert can see through
+  its eyes as a Bonus Action within 30 m.
+
+**Attacks**
+- Greataxe: +4 to hit, 1d12+2 Slashing (+2 raging), two-handed, Cleave.
+- Handaxe: +4 to hit, 1d6+2 Slashing (+2 raging), thrown 6/18 m, Vex.
+- Battleaxe: +4 to hit, 1d8+2 Slashing one-handed with the Shield, 1d10+2 two-handed (+2 raging). No mastery with it yet.
+
+Two ways to stand: **Shield and Battleaxe or Handaxe, AC 16**, or **Greataxe, AC 14**. The Shield takes an action to put on or take off.
+
+**Gear:** Greataxe, 4 Handaxes, Explorer's Pack (backpack, bedroll, 2 flasks of oil, 10 days'
+rations, rope, tinderbox, 10 torches, waterskin), quarterstaff, calligrapher's supplies, a
+history book, 8 sheets of parchment, a robe. Bought day 1: Shield, Battleaxe, a **Potion of Healing** (2d4+2 HP, a Bonus Action to drink), 10 GP of incense (one recasting of *Find Familiar*). 17 GP.
+
+## Days 42 to 47
+
+The seat stood empty six days. Meg Stubbs had Ives on his feet by day 44. The Lion hunted
+down the loose Gricks in Lime Wharf himself, and still would not go back into their breach.
+The Hound closed a Shield Guardian in Lime Wharf; the Wren closed a Grick in the Yard. The
+Tun Street baths stayed a beach, with two sailors in it eating Mrs Bright's bread.
+
+On day 47 the transfer came: **Probationer Bob Fletcher**, an orc, a soldier, a ranger with a
+longbow, who asked the ledger clerk on his first morning how many days there were to review.
+Fourteen. Breach #19 was read out and given to the Owl again.

@@ -1,46 +1,36 @@
 # The Owl · grade 1 · N Division, Nine Bridges
 
-Pair's purse: **17 GP** (Albert 17 GP, Ives 0 GP). XP: **300** (level 3 at 450). Relics: **the copper scale**, bonded to **Ives** (breach #4, day 1): worn against the ear, Ives can cast *Comprehend Languages* from it at will (Helm of Comprehending Languages, Uncommon, no attunement).
+Pair's purse: **21 GP** (Fletcher 21 GP, Ives 0 GP). XP: **150** (level 3 at 450). Relics: **the copper scale**, bonded to **Ives** (breach #4, day 1): worn against the ear, Ives can cast *Comprehend Languages* from it at will (Helm of Comprehending Languages, Uncommon, no attunement).
 
-## Probationer Albert Pike (he/him)
+## Probationer Bob Fletcher (he/him)
 
-Human Sage · Barbarian 2 (Berserker at level 3) · Front · on the seat since day -29.
-Walked out once, came back, and was allowed to.
+Orc Soldier · Ranger 2 (Hunter at level 3) · Front · transferred onto the seat on day 47.
+Wants out, and is counting the days to the next review.
 
-- **HP** 25 (d12) · **AC** 14 (Unarmored Defense), **16 with the Shield** · **Speed** 9 m · **Initiative** +1 · **Proficiency** +2
-- **STR** 14 (+2) · **DEX** 13 (+1) · **CON** 16 (+3) · **INT** 8 (−1) · **WIS** 13 (+1) · **CHA** 12 (+1)
-  (rolled 14/13/14/8/12/12; Sage gives CON +2, WIS +1)
-- **Saves:** STR +4, CON +5. **Passive Perception** 13.
-- **Skills:** Athletics +4, Intimidation +3 (class); Perception +3 (Human, Skillful); Arcana +1, History +1 (Sage).
-- **Tools:** Calligrapher's Supplies. **Languages:** Common, Gnomish, Orc.
-- **Rage** 2 per Long Rest (one back on a Short Rest): Bonus Action; Resistance to Bludgeoning,
-  Piercing and Slashing; +2 damage on Strength attacks; Advantage on STR checks and saves; no
-  spells or Concentration while it lasts.
-- **Reckless Attack:** on his first attack of the turn he may take Advantage on Strength attacks this turn; attacks against him have Advantage until his next turn.
-- **Danger Sense:** Advantage on DEX saves unless Incapacitated.
-- **Weapon Mastery:** Greataxe (Cleave), Handaxe (Vex).
-- **Savage Attacker** (Human, Versatile): once a turn on a weapon hit, roll the damage dice twice, keep either.
-- **Resourceful:** Heroic Inspiration after every Long Rest (has it now).
-- **Magic Initiate (Wizard)**, Wisdom: spell attack +3, save DC 11. Cantrips *Light*, *Mage Hand*.
-  *Find Familiar* once per Long Rest free (ritual otherwise, 10 GP of incense).
-  **Familiar: an owl**, already called. 1 HP, AC 11, fly 18 m, Flyby, Darkvision 36 m,
-  Perception +5, Stealth +5. It can't attack; it scouts and can Help. Albert can see through
-  its eyes as a Bonus Action within 30 m.
+- **HP** 18 (d10) · **AC** 15 (Studded Leather 12 + DEX 3) · **Speed** 9 m · **Initiative** +3 · **Proficiency** +2
+- **STR** 10 (+0) · **DEX** 16 (+3) · **CON** 12 (+1) · **INT** 9 (−1) · **WIS** 14 (+2) · **CHA** 8 (−1)
+  (rolled 10/14/11/9/14/8; Soldier gives DEX +2, CON +1)
+- **Saves:** STR +2, DEX +5. **Passive Perception** 14.
+- **Skills:** Stealth +7 (Expertise, Deft Explorer), Perception +4, Survival +4 (class); Athletics +2, Intimidation +1 (Soldier).
+- **Tools:** Dice. **Languages:** Common, Orc, Goblin, Draconic, Sylvan.
+- **Orc:** Darkvision 36 m. **Adrenaline Rush** 2 per Short or Long Rest: Dash as a Bonus Action and gain 2 Temporary HP. **Relentless Endurance** once per Long Rest: dropped to 0 HP but not killed outright, he is at 1 HP instead.
+- **Savage Attacker** (Soldier): once a turn on a weapon hit, roll the damage dice twice, keep either.
+- **Fighting Style: Archery:** +2 to hit with ranged weapons (counted below).
+- **Weapon Mastery:** Longbow (Slow: a hit takes 3 m off the target's Speed until his next turn), Scimitar (Nick: the extra Light-weapon attack is part of the Attack action).
+- **Favored Enemy:** *Hunter's Mark* always prepared, 2 free castings per Long Rest (Bonus Action, Concentration, 1 hour: +1d6 Force on each weapon hit against the marked creature).
+- **Spellcasting**, Wisdom: spell attack +4, save DC 12. **Slots:** 2 × level 1.
+  Prepared: *Cure Wounds* (2d8+2 HP, touch), *Ensnaring Strike*, *Goodberry* (ten berries, 1 HP each, good for a day).
 
 **Attacks**
-- Greataxe: +4 to hit, 1d12+2 Slashing (+2 raging), two-handed, Cleave.
-- Handaxe: +4 to hit, 1d6+2 Slashing (+2 raging), thrown 6/18 m, Vex.
-- Battleaxe: +4 to hit, 1d8+2 Slashing one-handed with the Shield, 1d10+2 two-handed (+2 raging). No mastery with it yet.
+- Longbow: +7 to hit, 1d8+3 Piercing, 45/180 m, Slow. Quiet.
+- Scimitar: +5 to hit, 1d6+3 Slashing; then the Shortsword in the other hand as part of the same action: +5 to hit, 1d6 Piercing.
+- Spear: +2 to hit, 1d6 Piercing (1d8 two-handed), thrown 6/18 m.
 
-Two ways to stand: **Shield and Battleaxe or Handaxe, AC 16**, or **Greataxe, AC 14**. The Shield takes an action to put on or take off.
-
-**Gear:** Greataxe, 4 Handaxes, Explorer's Pack (backpack, bedroll, 2 flasks of oil, 10 days'
-rations, rope, tinderbox, 10 torches, waterskin), quarterstaff, calligrapher's supplies, a
-history book, 8 sheets of parchment, a robe. Bought day 1: Shield, Battleaxe, a **Potion of Healing** (2d4+2 HP, a Bonus Action to drink), 10 GP of incense (one recasting of *Find Familiar*). 17 GP.
+**Gear:** Studded Leather Armor, Longbow, 40 Arrows, 2 Quivers, Scimitar, Shortsword, Spear, Shortbow, sprig of mistletoe (focus), Explorer's Pack (backpack, bedroll, 2 flasks of oil, 10 days' rations, rope, tinderbox, 10 torches, waterskin), Healer's Kit (10 uses: stabilise a dying creature without a check), dice, traveler's clothes. 21 GP.
 
 ## Ives (he/him; "Ives" to everyone)
 
-Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is his first partner.
+Automaton · Bard 2 (Lore at level 3) · Back · built for this seat. Partners: Albert Pike (died day 41), Bob Fletcher. Body rebuilt by Meg Stubbs, days 41 to 44.
 
 - **HP** 13 (d8) · **AC** 14 (Studded Leather 12 + DEX 1 + Integrated Protection 1) · **Speed** 9 m · **Initiative** +1 · **Proficiency** +2
 - **STR** 8 (−1) · **DEX** 12 (+1) · **CON** 11 (+0) · **INT** 9 (−1) · **WIS** 10 (+0) · **CHA** 15 (+2)
@@ -60,5 +50,5 @@ Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is 
 - Dagger: +3 to hit, 1d4+1 Piercing, thrown 6/18 m.
 
 **Gear:** Studded Leather Armor (fitted day 1, part of the body), 2 Daggers, concertina, Entertainer's Pack (backpack,
-bedroll, bell, bullseye lantern, 3 costumes, mirror, 8 flasks of oil, 9 days' rations,
+bedroll, bell, bullseye lantern, 3 costumes, mirror, 3 flasks of oil, 9 days' rations,
 tinderbox, waterskin), the call box (5 kg). 0 GP.

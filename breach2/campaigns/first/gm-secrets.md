@@ -37,7 +37,9 @@ whose mast failed is not on any tram map.
 - **Stubbs** suspects what cores are; the automatons have, in their sleepless hours, half told her.
 - **Vale** is honest and is the only one who would be horrified. He thinks Pike's walk-out hides a misappropriation.
 - **Pike** walked out on day -20 after watching the Raven's pair kill a room of things that were begging. Came back on day -17 because there was nowhere else.
-- **Mary Dunn**, the last Owl, died on day -31 in a grade-1 that was truly a grade 2.
+- **Mary Dunn**, the Owl before Pike, died on day -31 in a grade-1 that was truly a grade 2.
+- **Ives** now carries Pike. He has not said that the plan at the tree was his.
+- **Bob Fletcher** asked for the transfer to get off a Static corner in another district; he means to do his sixty days and put in for the clerks.
 
 ## Current breach
 
@@ -71,13 +73,27 @@ river's mouth, the wolf spiders' country. 1,200 XP inside; Pike needs 150 for le
   them (INT 3), one per casting.
 - **Relic** on closing: the GM's pick, Uncommon or below, of this coast.
 
-Marks: room 1 met at the street door (day 41); Pike told them they must go home and walked on, unconvinced. **What they do:** once the pair is over the dunes they try the street door, find it locked, and wait; about an hour later Pegg puts his shoulder through it and they are out into Vinegar Yard. Mrs Bright runs for the station. If the pair comes back through room 1 within the hour, they find them still on the beach, arguing. Room 2 met (day 41): Bess and Ned convinced by the tiles in the fog; Willing now. Bess's view of Rudd and Pegg: thieves, and she was the one who voted to maroon them; she won't share the anchor with them without a fight unless someone stands between. The hour on Rudd and Pegg: about 40 minutes gone when the pair reaches the tree. Pike told Bess they are alive; she stays with the boat. Room 3: the owl was seen (Stealth 9 against passive 13), saw nothing (Perception 10 against Stealth 24) and was bitten dead (19 to hit). The spiders have not noticed the pair; all eight are up in the roots. Rudd and Pegg told the pair about Bess and Ned up the creek and the spiders past the big tree. They have the purser's 40 GP on them (not mentioned) and will hide it if they think they are being arrested.
+Marks (day 41, Pike): room 1's castaways were told they must go home, and broke out through
+the street door within the hour: **loose in Vinegar Yard**, with the purser's 40 GP (the
+script's spill of day 47 is this group, relabelled Pirate, since day 41). Room 2's bosun's
+mate and boy were convinced and are **Willing, waiting at the creek**, fed by Mrs Bright;
+healed by now. Room 3: **all eight spiders dead** (four to Pike and the fire, four to the
+sailors). Pike died at the arch, Ives was wrecked; the Raven fetched the body and the core
+on Crane's order and closed nothing.
+
+As it stands on day 47: the anchor is empty; the only XP in the breach is the two willing
+sailors (400). Coins: 40 GP in the jolly boat, 40 GP in the spiders' hollow (a dead
+man's belt in the roots). Bess knows Pike died trying; she kept his battleaxe and will hand it
+to whoever comes with the brass man. If the new Owl turns on them she and the boy fight
+(33 HP each). A lodged piece keeps arriving: the encounter die at the gizmo's start as usual
+(`--encounter 1`).
 
 ## Loose (the pair knows these from the ledger)
 
-Berserkers (level 3) in Vinegar Yard, from #6 (closed by the Raven, so here for good); Giant
-Apes (level 17) in Chapel Fields; two groups of Gricks (level 9) in Lime Wharf, from #8, still
-open, so they can be walked back; Pit Fiends (level 18) in Tallow Row, from #17, closed.
+Berserkers (level 3) in Vinegar Yard, from #6 (closed by the Raven, so here for good); the two
+castaway Pirates (level 2) in Vinegar Yard, from #19, still open, so they could be walked back
+if they would go; Giant Apes (level 17) in Chapel Fields; Pit Fiends (level 18) in Tallow Row,
+from #17, closed. The Gricks: the Lion, day 43.
 Gone: the jellies (scalded out of the brewery drains), the elks (the Stag, day 11), the fire
 elementals (the Bear, day 22).
 
@@ -85,4 +101,4 @@ Clues given in days 2 to 40: Stubbs's blank cores arrived warm, and Ives said so
 
 ## Unheard news
 
-None. The pair heard the ledger at the station on day 41.
+None. The new Owl heard the ledger at the station on day 47.
