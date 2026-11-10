@@ -17,3 +17,8 @@ them, wanting home, walked the pair through the fog to a thorn hedge. Beyond it 
 counted eight goblins camped round the rift.
 Ives offered the goblins the door home and was not believed. Their captain, Nettle, set a
 price instead: their horses, the dragons kept off, and twenty gold for the trouble.
+Pike chose to fight. It lasted two rounds. Ives put the captain to sleep on her feet; a
+sentry's arrow and a scimitar took Pike to 3 HP at the gap, and he cut the goblin with the
+scimitar in half. Then the two dragons came over the hedge and breathed acid down both lines,
+and five goblins died where they stood. Two are left, one dazed and one on his knees. Pike
+absorbed the lot: 300 XP, level 2, and Ives with him.

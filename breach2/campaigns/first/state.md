@@ -1,16 +1,15 @@
 # State · day 1, morning
 
-- **Place:** breach #4 (Harker's Brewery cooperage loft, Malt Lane), far edge of room 2 (the fog), 6 m short of a thorn hedge with one gap. Beyond the gap is the anchor.
+- **Place:** breach #4 (Harker's Brewery cooperage loft, Malt Lane), room 3, the anchor: the hollow under the oak. The fight is over.
 - **Assigned:** #4, grade 1, Goblin Warrior, Vinegar Yard.
-- **Albert Pike (he/him):** 15/15 HP, Rage 2/2, Find Familiar free cast 1/1 (owl back on his shoulder), Heroic Inspiration spent. XP 0.
-- **Ives:** 8/8 HP, slots 2/2, Bardic Inspiration 2/2.
+- **Albert Pike (he/him), level 2:** 13/25 HP, Rage 1/2 (ended), Find Familiar free cast 1/1 (owl alive, in the oak), Heroic Inspiration spent, holds one unused Bardic Inspiration d6 (lasts the hour). XP 300 (level 3 at 450). 2 Hit Dice (d12) unspent.
+- **Ives, level 2:** 13/13 HP, slots 2/3, Bardic Inspiration 1/2. Concentrating on Sleep (Nettle). 2 Hit Dice (d8) unspent.
 - **Purse:** 32 GP (Albert 13 GP, Ives 19 GP).
 - **Current breach:**
-  - Room 1, the glade: 3 Warhorses (CR 1/2), skirted, alert, between the pair and the street door.
-  - Room 2, the fog: 2 Copper Dragon Wyrmlings (CR 1), friendly. Ives showed them the rift as an illusion and they understood: they want to go home. They led the pair to the hedge and are waiting with them. They speak only their own tongue. The goblins are plainly afraid of them.
-  - Room 3, the anchor (15×15 m, a hollow under a huge oak, lit by the rift): seen by the owl, unseen itself. 8 Goblin Warriors (CR 1/4): 2 sentries with bows just inside the gap, 4 round a cook-fire in the middle, 2 by the rift at the far end, one of them in a horse-brass necklace giving the orders. The rift is a 3 m humming tear in the air at the far end. The only way in is the gap in the thorn hedge, 1.5 m wide. The goblins don't know the pair is here.
-- **The parley:** Ives spoke from the gap; Persuasion 8 against DC 15, failed. The goblins did not attack; their leader, Nettle (horse-brass necklace), named a price for going: (1) their three horses brought to the hollow, (2) the dragons kept out of the hollow until the goblins are through, (3) a toll of 20 GP. All eight are on their feet, two bows on the gap, about 6 m inside it. The pair stands in the gap; the dragons are behind in the fog's edge. Surprise is gone.
-- **The knot:** while the gate is open Ives does nothing else, so fetching the horses is Albert's job, alone or before the gate opens (Animal Handling DC 15, Albert +1; the horses are alert).
+  - Room 1, the glade: 3 Warhorses (CR 1/2, 300 XP), skirted, alert, between the pair and the street door.
+  - Room 2, the fog: the 2 Copper Dragon Wyrmlings (CR 1) came out of it to fight for the pair. Unhurt. Now sitting in the hollow, pleased with themselves. They want the gate. Their little hoard is under a root in the fog.
+  - Room 3, the anchor: 6 goblins dead. Two alive: Nettle, the captain, swaying on her feet under Ives's Sleep, and one more (Burdock) who has thrown down his scimitar and shield and is on his knees. A saddlebag by the fire has coins in it. The rift is at the far end, humming.
+- **To close the breach:** no living denizen may remain: the 2 goblins, the 2 dragons, the 3 horses, each killed or sent through the gate.
 - **Standing orders:** none.
 - **Not yet heard:** nothing.
-- **Open question to the human:** take Nettle's terms, haggle, or fight.
+- **Open question to the human:** what to do with the two goblins, and with the horses.
