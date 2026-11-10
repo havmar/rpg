@@ -1,7 +1,7 @@
 # Breach 2
 
-An endless industrial city where realities tear open inside buildings and other worlds leak
-in. The Board of Wards' **Division** in one district keeps ten dungeoneers, each paired with
+An endless industrial city where pieces of other worlds lodge inside buildings, with whoever
+was standing on them. The Board of Wards' **Division** in one district keeps ten dungeoneers, each paired with
 an automaton, and never has enough. Every dawn the dice say which breaches opened; the one
 of your grade is yours. The human plays **one seat** in that Division: not a person but a
 call sign, held by whoever is alive to hold it. When the holder dies, the human plays the
@@ -24,7 +24,7 @@ breach2/
   setting.md           the city, breaches, masts, the Board, automatons (with the species block)
   tools/roll.py        dice roller (advantage, disadvantage, keep highest/lowest)
   tools/day.py         the Division's day: seats, ledger, spills, deaths, arrivals, review
-  tools/gen_breach.py  one breach as a dungeon for a pair, with the denizens' dispositions
+  tools/gen_breach.py  one breach as a dungeon for a pair, with each group's rolled disposition
   campaigns/<name>/    one folder per campaign (see Campaign files)
 ```
 
@@ -69,7 +69,7 @@ These replace the SRD where they differ.
 - A breach is **assigned** to the seat of its grade if that officer is alive and free. If
   not, it waits on the ledger with no one, and spills.
 - **Spill.** Every dawn, each open breach rolls a d6; on a 1 its strongest remaining group
-  gets out and is **loose** in the precinct. For the human's breach the GM picks the group
+  walks out and is **loose** in the precinct. For the human's breach the GM picks the group
   and marks its room empty. This is the price of a Long Rest with a breach half done.
 - **A grade is two levels**: grade N is levels 2N−1 and 2N. The Reader gives only the grade,
   so "a grade 3" is level 5 or 6, and one reading in six is a whole grade too low.
@@ -89,8 +89,12 @@ These replace the SRD where they differ.
   day: every seat moves up a grade.** The grade-10 holder is called to Head Office and that
   seat gets a level 1 Probationer.
 - The other nine are at one of their grade's two levels. **The human's holder is at the
-  level their XP gives** (the halved table below). A dungeoneer behind their grade is sent
-  to their grade's breaches all the same, and everyone notices.
+  level their XP gives** (the halved table below).
+- **The quota.** The Board does not order anyone killed. It expects growth: by each review
+  an officer should have reached the first level of the grade they are moving into, two
+  levels in sixty days. One who hasn't is **behind**: the auditor writes it down, the
+  Director hears about it, and the seat moves up and is sent to its new grade's breaches
+  all the same. What follows from being behind is the GM's to play, not a rule.
 - A dead officer's seat is **empty for 2d6 days**, then filled by a transfer at the seat's
   grade. Breaches of that grade pile up meanwhile. This, and pairs that withdraw, is what
   keeps the Division undermanned.
@@ -98,7 +102,8 @@ These replace the SRD where they differ.
 ### XP: absorbed, not awarded
 
 - XP is the magic a breach denizen leaks when it dies, absorbed by the dungeoneer who is
-  there. **Only a kill gives XP.** Deporting gives none. Traps, talk and bypasses give none.
+  there. **Only a kill gives XP.** Sending a denizen home gives none. Traps, talk and bypasses give
+  none.
 - The automaton absorbs nothing. It is **bound** and gains a level whenever its partner does.
 - **Levels come twice as fast as the SRD:** the thresholds are halved.
 
@@ -111,7 +116,8 @@ These replace the SRD where they differ.
 | 5 | 3,250 | 10 | 32,000 | 15 | 82,500 | 20 | 177,500 |
 
 - A breach holds a full SRD level's worth of denizens, so **killing about half** of one is a
-  level. A grade is two levels and brings about three breaches before the next review.
+  level, and about half its groups will fight whatever is said to them. A grade is two
+  levels and brings about three breaches before the next review, some reviews only one.
 
 ### The breach
 
@@ -120,24 +126,41 @@ These replace the SRD where they differ.
 - **Any SRD monster can turn up.** A group is as many of its kind as fill the room's budget,
   up to ten: often one or two strong creatures, sometimes a crowd of weak ones. Run a crowd
   briskly: one initiative, attacks rolled together.
-- Every group has a **disposition** from its SRD alignment: **Peaceful** (goes home when the
-  gate is opened; may help), **Wary** (Persuasion or Intimidation DC 15 to go, or it
-  bargains or fights), **Wild** (a beast: Animal Handling DC 15 to herd it, or fight),
-  **Mindless** (oozes, plants, constructs, swarms: lure it with a fitting check at DC 15, or
-  destroy it), **Hostile** (will not go).
-- **The gate.** The rift only lets things in. Standing at the **anchor** (the deepest room),
-  the automaton can open the gate home: 1 minute to open, and it stays open while the
-  automaton does nothing else. Anything that passes it is gone; nothing comes back. Peaceful
-  denizens wait to be fetched; wary and wild ones are led or herded, a scene with rolls and
-  the chance of a fight on the way. While the gate is open the dungeoneer fights alone. A
-  wrecked automaton opens no gate.
-- A breach **closes** when it holds no living denizen: the rift shuts and the building is
-  itself again in a day. Tell the script (`day.py close ID`).
+- Every group has a **disposition**, rolled by the generator. Evil kinds are Hostile; every
+  other group rolls a d6: 1 or 2 Hostile, 3 to 5 Neutral, 6 Willing.
+  - **Hostile:** fights, and will not be talked round.
+  - **Neutral:** has no quarrel yet, and no wish to go anywhere. From inside, this is its
+    home and the pair are armed strangers. Whether it can be convinced, and by what, is the
+    **GM's discretion**, played from what the creature is and how clever: a scene, not one
+    roll, and not a quest or a price by default. A beast or a mindless thing isn't argued
+    with; it is calmed, penned, lured or left alone.
+  - **Willing:** knows it is lost, wants to go home, may help.
+- **The gizmo.** The automaton carries it: a 25 kg case that folds out, at the **anchor**
+  (the deepest room) and nowhere else, into the machine that works the piece loose. Setting
+  it up and running it takes **10 minutes in peace**: the automaton does nothing else, and
+  if he is hit or leaves it the run starts over. The dungeoneer guards alone. The whole
+  breach feels it start, and every Hostile group still alive inside comes to the anchor.
+- **Who goes home.** When the run ends the piece goes back, and with it every denizen **of
+  that piece** that is **within 6 m of the gizmo and has kept still for the last minute**. So going home is
+  something a creature does, not something done to it; one that won't stand still can only
+  be sent bound or senseless and laid there, which is allowed and is work.
+- **The rest stay.** The breach is **closed** and the building is itself again in a day. Any
+  denizen alive in it and not sent is left standing in a cellar or a loft, and is **loose**
+  in the precinct. Tell the script (`day.py close ID`, with `--left N` for N groups left
+  behind). An officer who closes a breach and leaves half of it on the street has closed
+  it; the precinct and the Director will have views.
+- A wrecked automaton runs no gizmo: the breach stays open until he is rebuilt.
+- **A breach's contents are never settled.** The generator's table is what was there when
+  the pair walked in. A lodged piece keeps arriving, and loose things wander in from the
+  street; the pair never knows a breach is empty, only that it is quiet.
 - **The encounter die.** Roll a d6: for each leg of travel; for each Short Rest inside a
-  breach; and the first time in a fight that something is loud (a gunshot, Thunder damage,
-  an explosion). **On a 1, an encounter.** In the street it is the loose denizens of that
-  precinct, if the loose list has any, at whatever level they are; the pair may talk, run,
-  or fight. Inside a breach it is the nearest unexplored room's group, coming to look.
+  breach; the first time in a fight that something is loud (a gunshot, Thunder damage, an
+  explosion); and when the gizmo starts. **On a 1, a Hostile encounter**, always possible,
+  whatever has been cleared. Inside a breach it is a **new group**: `gen_breach.py --seed S
+  --level L --encounter N` (the breach's seed and level, N counting up) gives more of the
+  breach's kind or something else. In the street it is the precinct's loose denizens if the
+  list has any, at whatever level they are; if not, a stray nobody has counted, at the
+  pair's level (`--encounter N --street`, any seed). Its kills give XP like any other.
 - **No Long Rest inside a breach.** The pair leaves to sleep, and that is a dawn: the breach
   may spill, the ledger may grow.
 
@@ -179,11 +202,11 @@ These replace the SRD where they differ.
 - **Every fight is autoplayed.** The GM runs the dungeoneer, the automaton and the denizens,
   rules as written, dice from `roll.py`, positions kept in squares (1 square = 1.5 m; say
   metres in the report, never feet). The human reads the result and plays everything that
-  isn't a fight: where to go, whom to talk to, whether to deport or kill, when to rest, when
+  isn't a fight: where to go, whom to talk to, whether to send home or kill, when to rest, when
   to leave.
-- **The automaton calls the plan.** It is programmed for economy: it proposes the cheapest
+- **The automaton calls the plan.** He is programmed for economy: he proposes the cheapest
   legal way to win and the pair follows it unless the human has given a **standing order**
-  ("never open with fire", "deport anything that will go", "no guns indoors"). Standing
+  ("never open with fire", "send home anything that will go", "no guns indoors"). Standing
   orders live in `state.md` and the GM obeys them in every fight.
 - **Cheese is the style.** Scout first, use the room's feature, hold the chokepoint, oil and
   light, Sleep then daggers, kite what's slow, retreat to reset, Short Rest behind a closed
@@ -204,7 +227,7 @@ soot and weather, not tables. No mood for its own sake, no recap of what the hum
 
 **A fight** is reported as a short block when it's over, or live in a line or two per round
 when the human asks to watch. Lead with the headline in a full sentence; say what the
-automaton proposed and why, in its voice; let the dice show in plain words; give both bodies'
+automaton proposed and why, in his voice; let the dice show in plain words; give both bodies'
 HP at the end and what the kills were worth.
 
 > **The hold · 4 Pirates (CR 1 each) · High, 800 XP · cleared, deck on fire.**
@@ -227,12 +250,13 @@ and a line if not; **"skip to the next breach"** runs the dawns as a paragraph o
 spent on one of these is still a day, and its dawn is still rolled.
 
 - **Hunt loose denizens.** One encounter: a room of `gen_breach.py` at the loose group's
-  level, in its precinct. A kill, a bargain, or a walk to an open breach's anchor to send
-  them home. Dealt with, it comes off the list (`day.py clear N`).
+  level, in its precinct. A kill or a bargain. A denizen goes home only with its own
+  piece: a group spilled from a breach that is still open can be walked back to its anchor,
+  and one whose breach is closed is here for good. Dealt with, it comes off the list (`day.py clear N`).
 - **Walk a precinct.** Its people, what the breaches have done to it, who is asking why
   the breach on their street has no one.
 - **Spend time with a seat**, by name from the roster, with its trait.
-- **Attend to the automaton.** It remembers every partner. A standing order changes here.
+- **Attend to the automaton.** He remembers every partner. A standing order changes here.
 - **Study the breaches**, with the Reader: the campaign's long question.
 
 ## Characters
@@ -241,13 +265,14 @@ spent on one of these is still a day, and its dawn is still rolled.
   Probationer; `--player-grade` for another). `day.py` rolls species, background, scores
   (4d6 drop lowest, **placed by the class's priority even when low**), Front or Back, and
   class. The GM writes the sheet from `day.py show --role <Seat>` by the 2024 creation
-  rules, with the class's starting gear. The human may rename them and give their pronouns.
+  rules, with the class's starting gear. The dungeoneer is a man or a woman, as rolled (never
+  "they"); the human may rename them.
 - **Front:** Barbarian (Berserker), Fighter (Champion), Paladin (Devotion), Monk (Open Hand),
   Ranger (Hunter), Cleric (Life). **Back:** Wizard (Evoker), Sorcerer (Draconic), Warlock
   (Fiend), Bard (Lore), Rogue (Thief), Druid (Land).
 - **The automaton** is a full character of the other side's rolled class, species Automaton
-  (`setting.md`), at the dungeoneer's level. It carries the call box. It is a person with a
-  butler's manner, not gear.
+  (`setting.md`), at the dungeoneer's level. He carries the call box. He is a person with a
+  butler's manner, not gear, and always "he".
 - Levelling: as written, at the halved thresholds. Hit points by the fixed value.
 - **Names are plain English names** (`setting.md`), for everyone the GM invents too.
 
@@ -289,7 +314,7 @@ Each campaign is `breach2/campaigns/<name>/`:
 - `chronicle.md`: the Division's record in the GM's voice: each breach, each death, a line
   for the days between. The story file.
 - `gm-secrets.md`: the current breach (the generator's table plus the GM's marks: explored,
-  deported, dead, spilled), the station people's secrets, why the breaches open.
+  convinced, sent home, dead, spilled, left behind), the station people's secrets, why the breaches open.
 
 After every GM reply, update `state.md`, add to `chronicle.md`, then **commit and push** the
 campaign folder. This is a cloud session; the container is wiped when it ends.
@@ -315,6 +340,8 @@ Guesses, in one place. The script's are constants at the top of `day.py`: the br
 (d20), the spill die (d6) and three spills to empty an unattended breach, the misread (one
 in six), review every 60 days, the other pairs' death (1 in 20) and withdrawal (3 in 20) per
 breach, the 2d6-day vacancy. In `gen_breach.py`: three rooms minimum, Moderate and High,
-groups of up to ten, crowds made rarer. Here: the halved XP table, the call's price, the relic rarity caps, the encounter
-die. If the pair outruns its grade, un-halve the XP table first; if the Division isn't
+groups of up to ten, crowds made rarer, and `HOSTILE_ON` (a group that isn't Evil is Hostile
+on a d6 of 1 or 2: about 45% of groups fight at level 1, 60% from level 5; set it to 1 for
+30% and 50%). Here: the halved XP table, the call's price, the relic rarity caps, the encounter
+die and the even odds of what it brings, the gizmo's 10 minutes and 6 m. If the pair outruns its grade, un-halve the XP table first; if the Division isn't
 stretched enough, shorten the breach die.

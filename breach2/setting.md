@@ -7,21 +7,35 @@ viaducts, tenements, and under all of it **the Under**, the cellars, sewers, cul
 closed railway tunnels that nobody has a full map of. People carry pistols and bows, swords
 and spells; the magic is old and the machines are new, and the Board uses both.
 
-Somewhere in the city, every day, the world tears. A **breach** is a place where another
-reality has pushed through and stapled itself onto this one: a pocket of somewhere else,
-with its own weather and its own people, inside a building or a stretch of the Under. Where
+Somewhere in the city, every day, a piece of another world comes loose and lodges here. A
+**breach** is that piece: a pocket of somewhere else, with its own weather and whoever was
+standing on it, stuck inside a building or a stretch of the Under. Nothing came through a
+door. Their ground moved, and they were on it. Where
 pirates come through, a cellar is suddenly a harbour with a ship in it. Where a dryad comes
 through, a tenement's stairwell is a forest and its roof is gone. From the street it may be
 one door that opens on the wrong place; inside, the floors fold into a few large rooms, and
-in the deepest is the **anchor**, where the **rift** is: a humming tear in the air.
+in the deepest is the **anchor**, where the piece is stuck fast: the air is thick there and
+the floor hums.
 
-**The rift only lets things in.** Breach denizens are not invaders. They are stranded. Some
-know it and want to go home; some are frightened and fight; some are hungry; some were
-monsters where they came from and are monsters here. None of them can go back the way they
-came, however good or clever they are, until someone opens a **gate** for them (see
-Automatons). A breach whose denizens have all died or gone home closes, and the building is
-itself again in a day. A breach left alone **spills**: group by group its denizens find the
-street door, and then the precinct has pirates.
+**Denizens are not invaders. They are stranded, and most don't know it.** From inside, the
+harbour is still their harbour; the wrong place is the one beyond the door, and the officer
+walking in with a brass man is an armed stranger in their home. A few have understood and
+want to go back. Some are frightened and fight; some are hungry; some were monsters where
+they came from and are monsters here; some have looked out of the door and seen a city worth
+having. There is no way back to walk to, however clever they are. The only one is the
+Board's **gizmo** (see Automatons), which works the piece loose and lets it go home, and
+takes with it whoever stands by it and keeps still. That is **closing** a breach, and the
+building is itself again in a day. A piece takes home only what is its own, so whatever was
+alive inside and did not go is left behind in an ordinary cellar, in a city that isn't
+theirs, with no way back at all.
+
+A lodged piece is not finished arriving. More of it comes loose after the first, with more
+of whoever lived there, and loose things from other breaches drift in off the street to a
+place that smells of somewhere else. No officer has ever been able to say a breach was empty.
+
+A breach left alone **spills**: group by group its denizens find the street door, and then
+the precinct has pirates. One that has emptied itself onto the street is struck off the
+ledger; nobody is left in it to send, and the Board has other breaches.
 
 Nobody knows why it started, or why a breach's strength follows the mast's reach so exactly.
 Head Office has a department studying it. The answer, if there is one, is the long question
@@ -65,7 +79,9 @@ absorbed by whoever is there, and shared if there are several. That is how a Pro
 becomes a Commander, and it is what the Board is really growing. So a breach is not only a
 danger, it is a ration: the mast reads its grade, and it is assigned to the one officer of
 that grade. Sending two pairs halves it. Letting a senior clear a junior's breach wastes it.
-An officer who closes a breach that was not theirs has **misappropriated** it, whatever the
+The Board does not tell its officers to kill. It sets a **quota** of growth, a grade every
+sixty days, and leaves each officer to work out what that means in a room full of things
+that would rather go home. An officer who closes a breach that was not theirs has **misappropriated** it, whatever the
 street thinks, and the street usually thinks they are a hero. A breach with no one of its
 grade free to take it waits on the ledger, spilling, while the neighbours ask why the
 Board's people walk past it every morning.
@@ -101,27 +117,32 @@ the officer, so a call is short.
 
 ## Automatons
 
-An **automaton** is a brass-and-enamel person built by the Board's fitters from a design
-Head Office does not share. Each is bound to one officer at a time, and from then on it
-gains what its partner gains: a level when they level, nothing when they don't. It absorbs
-no breach-magic of its own, which is the point. The pair is the party.
+An **automaton** is a brass-and-enamel man built by the Board's fitters from a design
+Head Office does not share: every one is made and spoken of as a man, "he", never "it".
+Each is bound to one officer at a time, and from then on he gains what his partner gains: a
+level when they level, nothing when they don't. He absorbs no breach-magic of his own, which
+is the point. The pair is the party.
 
-Its **core** is a small piece of the same thing the masts are. A mast holds the world shut;
-a core, standing at a breach's anchor, can hold it open the other way for a while. That is
-the **gate**, the only door home a denizen will ever get, and it is why an officer without
-an automaton can only kill.
+His **core** is a small piece of the same thing the masts are, and it is what drives the
+**gizmo**: on the forms an Apparatus, Returning; to everyone else the gizmo. Carried, it is a
+heavy case, 25 kg, that only an automaton would want to lug across a precinct. At a breach's
+anchor he folds it out into a thing of struts, dials and a dish the size of a cartwheel,
+couples it to his core and works it for ten minutes, and the piece comes loose and goes
+home. It has to be worked in peace, and it sends only what stands close and keeps still,
+so nobody is sent home against their will without a great deal of rope. An officer without
+an automaton can close nothing.
 
 They are **people**, with the manner of a very good servant: formal, unhurried, dry,
 observant, deferential in address and immovable in opinion. They call their partner by rank
 ("if the Constable would step back"). They narrate tactics as service ("I have taken the
-liberty of oiling the stair"). They count kills as matters attended to and deportations as
+liberty of oiling the stair"). They count kills as matters attended to and denizens sent home as
 matters resolved, and most of them, if asked, prefer the latter. They are **programmed to
 cheese**: the fitters' protocol of economy makes an automaton propose, always, the cheapest
-legal way to end a fight, and it will say so before every fight unless told to hold its
+legal way to end a fight, and he will say so before every fight unless told to hold its
 tongue.
 
-An automaton **remembers**. Its core carries every partner it has had, and an officer who
-inherits a dead officer's automaton inherits its grief, expressed as correctness. "The
+An automaton **remembers**. His core carries every partner he has had, and an officer who
+inherits a dead officer's automaton inherits his grief, expressed as correctness. "The
 previous Fox preferred the left-hand stair. I mention it only for completeness."
 
 ### Species: Automaton
@@ -139,19 +160,21 @@ For the automaton's character sheet, in place of an SRD species.
 - **Protocol.** Proficiency in one skill (rolled by `day.py`) and with Tinker's Tools.
 - **Bound.** Gains no XP; is always the level of its partner. Its **core** (1 kg) survives the
   body's destruction and holds its memory.
-- **Gate.** At a breach's anchor, and nowhere else, it can open the gate home (see the rules).
+- **Gizmo.** At a breach's anchor, and nowhere else, he can set up and run the gizmo (see the
+  rules). He carries its case (25 kg) and the call box (5 kg) without complaint.
 - **Languages:** Common and one other.
 
 ## Names
 
 Everyone has a plain English name. Elves have the grand ones (Percival, Cordelia), orcs the
 short ones (Tom, Meg), gnomes the small ones (Pip, Nell), tieflings the virtues (Prudence,
-Ernest), humans the ordinary ones (Arthur, Mary). Automatons go by a surname, like a butler.
+Ernest), humans the ordinary ones (Arthur, Mary). A dungeoneer is a man or a woman, on a coin
+flip, with a name to match. Automatons are all "he" and go by a surname, like a butler.
 The GM names everyone else the same way.
 
 ## Loose denizens
 
-Whatever a breach spills is **loose** in its precinct: pirates on the canal, an ogre in the
+Whatever a breach spills, or leaves behind when it is closed, is **loose** in its precinct: pirates on the canal, an ogre in the
 goods yard, a swarm in the mill. They are what the pair may meet in the street, at whatever
 level they are, and the only XP outside a breach. Most groups in time go to ground, join the
 city (the pirates run a barge now), or die of it; the GM says which when the script says

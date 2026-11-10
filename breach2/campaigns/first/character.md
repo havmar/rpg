@@ -38,9 +38,9 @@ Two ways to stand: **Shield and Battleaxe or Handaxe, AC 16**, or **Greataxe, AC
 rations, rope, tinderbox, 10 torches, waterskin), quarterstaff, calligrapher's supplies, a
 history book, 8 sheets of parchment, a robe. Bought day 1: Shield, Battleaxe, a **Potion of Healing** (2d4+2 HP, a Bonus Action to drink), 10 GP of incense (one recasting of *Find Familiar*). 17 GP.
 
-## Ives (it; "Ives" to everyone)
+## Ives (he/him; "Ives" to everyone)
 
-Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is its first partner.
+Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is his first partner.
 
 - **HP** 13 (d8) · **AC** 14 (Studded Leather 12 + DEX 1 + Integrated Protection 1) · **Speed** 9 m · **Initiative** +1 · **Proficiency** +2
 - **STR** 8 (−1) · **DEX** 12 (+1) · **CON** 11 (+0) · **INT** 9 (−1) · **WIS** 10 (+0) · **CHA** 15 (+2)
@@ -50,7 +50,7 @@ Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is 
 - **Tools:** Tinker's Tools; concertina, tin whistle, fiddle. **Languages:** Common, Elvish.
 - **Automaton:** Advantage on saves against Poisoned, Resistance to Poison, no food, drink, air
   or sleep, can't be put to sleep by magic; Long Rest is 6 hours motionless and aware; Bound;
-  **Gate** at a breach's anchor (1 minute to open, does nothing else while it's open).
+  **Gizmo** at a breach's anchor (carries the 25 kg case; 10 minutes in peace to set up and run, does nothing else meanwhile).
 - **Bardic Inspiration** 2 per Long Rest: Bonus Action, 18 m, a d6 to add to one failed D20 Test within the hour.
 - **Spellcasting**, Charisma: spell attack +4, save DC 12. **Slots:** 3 × level 1.
   Cantrips: *Vicious Mockery* (18 m, WIS save or 1d6 Psychic and Disadvantage on its next attack), *Minor Illusion*.
