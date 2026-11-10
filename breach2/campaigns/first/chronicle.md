@@ -133,11 +133,14 @@ history book, 8 sheets of parchment, a robe. Bought day 1: Shield, Battleaxe, a 
 
 ## Days 42 to 47
 
-The seat stood empty six days. Meg Stubbs had Ives on his feet by day 44. The Lion hunted
+The seat stood empty six days. Meg Stubbs could not wake Ives's core: it had gone dark
+when Pike did, and no bench can bind a core twice. She kept it three days, then crated it for
+Head Office. The copper scale came off his ear as plain copper. The Lion hunted
 down the loose Gricks in Lime Wharf himself, and still would not go back into their breach.
 The Hound closed a Shield Guardian in Lime Wharf; the Wren closed a Grick in the Yard. The
 Tun Street baths stayed a beach, with two sailors in it eating Mrs Bright's bread.
 
 On day 47 the transfer came: **Probationer Bob Fletcher**, an orc, a soldier, a ranger with a
 longbow, who asked the ledger clerk on his first morning how many days there were to review.
-Fourteen. Breach #19 was read out and given to the Owl again.
+Fourteen. With him came a new automaton, **Rookwood**, a druid, a day old and a stranger to
+the seat. Breach #19, the Tun Street baths, still open, was read out and given to the Owl again.

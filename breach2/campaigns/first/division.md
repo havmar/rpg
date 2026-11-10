@@ -13,7 +13,7 @@ You are **the Owl**. This is what you knew when you last reported in. Next revie
 - **4 · Sergeant · the Wolf**: Thomas Pendry (he/him), Human Bard, level 7; with Jarvis, Cleric.
 - **3 · Senior Constable · the Wren**: Martha Ashcombe (she/her), Human Ranger, level 6; with Evershed, Rogue.
 - **2 · Constable · the Raven**: Flo Whitlock (she/her), Gnome Wizard, level 3; with Sedge, Ranger.
-- **1 · Probationer · the Owl** **(you)**: Bob Fletcher (he/him), Orc Ranger; with Ives, Bard.
+- **1 · Probationer · the Owl** **(you)**: Bob Fletcher (he/him), Orc Ranger; with Rookwood, Druid.
 
 ## The ledger
 
@@ -31,7 +31,7 @@ Open breaches, as the mast reads them. The Reader is sometimes wrong.
 
 ## This morning (day 47)
 
-- The new Owl is Bob Fletcher (he/him, Orc Ranger), Probationer, paired with Ives. THIS IS YOUR SEAT: the human plays them.
+- The new Owl is Bob Fletcher (he/him, Orc Ranger), Probationer, with a new automaton, Rookwood (Druid). THIS IS YOUR SEAT: the human plays them.
 - The Wren closed #21 (Grick, Vinegar Yard).
 - #19 (Giant Wolf Spider, grade 1) spilled into Vinegar Yard.
 - ASSIGNED TO YOU: #19, grade 1, Giant Wolf Spider, Vinegar Yard.

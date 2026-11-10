@@ -20,8 +20,10 @@ Head Office's veterans do not write. Head Office believes, with reason, that the
 is ten million people ceasing to exist. Sending denizens home feeds nothing, which is why the
 Board sets a quota of growth and the auditor frowns at "matters resolved".
 
-Ives's core was cut from a Commander of another district. Ives does not know; under stress
-at an anchor it sometimes knows a room it has never seen.
+Ives's core was cut from a Commander of another district; he never knew. It went dark when
+Pike died (day 41) and has gone back to Head Office in the same kind of crate the blank ones
+come in. **Rookwood's** core is another such piece: under stress at an anchor he sometimes
+knows a room he has never seen. A core whose officer dies is not waste to Head Office.
 
 **Clues, in rough order:** the Reader's misreads cluster on days the mast is under load; the
 fitter will not say where blank cores come from, and they arrive warm; an automaton working the
@@ -38,7 +40,7 @@ whose mast failed is not on any tram map.
 - **Vale** is honest and is the only one who would be horrified. He thinks Pike's walk-out hides a misappropriation.
 - **Pike** walked out on day -20 after watching the Raven's pair kill a room of things that were begging. Came back on day -17 because there was nowhere else.
 - **Mary Dunn**, the Owl before Pike, died on day -31 in a grade-1 that was truly a grade 2.
-- **Ives** now carries Pike. He has not said that the plan at the tree was his.
+- **Stubbs** tried for three days to wake Ives's core and could not; she noticed the crate it left in.
 - **Bob Fletcher** asked for the transfer to get off a Static corner in another district; he means to do his sixty days and put in for the clerks.
 
 ## Current breach
@@ -84,7 +86,7 @@ on Crane's order and closed nothing.
 As it stands on day 47: the anchor is empty; the only XP in the breach is the two willing
 sailors (400). Coins: 40 GP in the jolly boat, 40 GP in the spiders' hollow (a dead
 man's belt in the roots). Bess knows Pike died trying; she kept his battleaxe and will hand it
-to whoever comes with the brass man. If the new Owl turns on them she and the boy fight
+to whoever comes with a brass man. If the new Owl turns on them she and the boy fight
 (33 HP each). A lodged piece keeps arriving: the encounter die at the gizmo's start as usual
 (`--encounter 1`).
 

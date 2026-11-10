@@ -31,22 +31,21 @@
    },
    "arrives": null,
    "automaton": {
-    "name": "Ives",
+    "name": "Rookwood",
     "side": "Back",
-    "class": "Bard",
-    "subclass": "Lore",
-    "protocol_skill": "Stealth",
+    "class": "Druid",
+    "subclass": "Land",
+    "protocol_skill": "Persuasion",
     "scores": {
-     "CHA": 15,
-     "DEX": 12,
-     "CON": 11,
-     "WIS": 10,
-     "INT": 9,
-     "STR": 8
+     "WIS": 16,
+     "CON": 14,
+     "DEX": 13,
+     "INT": 12,
+     "CHA": 11,
+     "STR": 11
     },
-    "built": -29,
+    "built": 47,
     "partners": [
-     "Albert Pike",
      "Bob Fletcher"
     ]
    }
@@ -595,7 +594,7 @@
  ],
  "graduated": [],
  "news": [
-  "The new Owl is Bob Fletcher (he/him, Orc Ranger), Probationer, paired with Ives. THIS IS YOUR SEAT: the human plays them.",
+  "The new Owl is Bob Fletcher (he/him, Orc Ranger), Probationer, with a new automaton, Rookwood (Druid). THIS IS YOUR SEAT: the human plays them.",
   "The Wren closed #21 (Grick, Vinegar Yard).",
   "#19 (Giant Wolf Spider, grade 1) spilled into Vinegar Yard.",
   "ASSIGNED TO YOU: #19, grade 1, Giant Wolf Spider, Vinegar Yard."
