@@ -528,19 +528,6 @@
    "spills": 2,
    "withdrawn": true,
    "kind": "Grick"
-  },
-  {
-   "id": 19,
-   "day": 41,
-   "grade": 1,
-   "level": 2,
-   "precinct": "Vinegar Yard",
-   "seed": 727593,
-   "role": "Owl",
-   "due": null,
-   "spills": 1,
-   "withdrawn": false,
-   "kind": "Giant Wolf Spider"
   }
  ],
  "next_id": 22,

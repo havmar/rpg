@@ -100,6 +100,14 @@ the case is up under the roots; the run has not started; the encounter die is ro
 Coins, resolved here: room 1's 40 GP went out with the castaways; room 2's 40 GP is the ship's
 float under the thwart of the jolly boat; room 3's 40 GP is in the dead man's belt in the roots.
 
+**Day 47, the close.** `day.py close 19` (no `--left`: nothing living was left inside). The run
+took ten minutes; the encounter die came up 2. Bess and Ned were still within six metres and
+went home with the piece; the float and the belt went with it, as the piece's own. Bess gave the
+Owl Pike's battleaxe. Relic: Cloak of the Manta Ray, Uncommon (the cap at grade 1; the two Commons
+in the SRD, Bead of Nourishment and Potion of Climbing, don't fit a coast), on the root where the
+belt lay. Rudd and Pegg were never in the piece: now here for good. Rookwood hummed the mast's note
+the whole run, as the clue says.
+
 ## Loose (the pair knows these from the ledger)
 
 Berserkers (level 3) in Vinegar Yard, from #6 (closed by the Raven, so here for good); the two

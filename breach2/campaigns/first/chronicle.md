@@ -158,3 +158,12 @@ The creek had two sailors in it who had been waiting six days and stood up when 
 call box. They walked the Owl to the boiler room, and the brass man stopped at the root arch
 and said he had never been in the room and did not need the Raven to tell him what it was.
 The case is up under the roots. The run has not begun.
+
+Late morning. The run took ten minutes in the boiler room. The brass man hummed the mast's note
+the whole time, very low, and did not seem to know he was doing it. Bess and Ned stood still on
+their roots and counted. At the ninth minute Bess put Pike's battleaxe into the Owl's hands,
+haft first, and said it was for whoever came with a brass man. The piece went home at the
+tenth, and the two sailors went with it, Ned's last words a message for Will Pegg about a boat.
+The float and the belt went too, because nobody had picked them up. The Owl came out with a
+cloak of grey-green hide, lying on the root where the belt had been. The castaways in the Yard
+are here for good now. The baths are a cellar again, with a tide mark on the brick.
