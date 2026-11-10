@@ -41,13 +41,16 @@ whose mast failed is not on any tram map.
 
 ## Current breach
 
-None. #4 (Goblin Warrior, Vinegar Yard, truly level 2) CLOSED on day 1: 6 goblins killed, 2 goblins,
-2 copper wyrmlings and 3 warhorses sent home through the gate. Relic left: **the copper
-scale** (Helm of Comprehending Languages, Uncommon), shed by Tuppence at the gate; lying on
-the loft floor, not yet taken up, so not yet bonded.
+None. #4 closed on day 1 (6 goblins killed; 2 goblins, 2 copper wyrmlings, 3 warhorses sent home).
+Relic: the copper scale (Helm of Comprehending Languages), bonded to Ives.
 
 Clues given so far: Nettle said they were *pulled* ("like a fish on a line"); Ives hummed the
-mast's note while holding the gate, and Albert noticed.
+mast's note while holding the gate, and Albert noticed; Dr Lark admitted #4 was misread and
+let slip that the mast was "pulling hard" (her word, corrected to "under load") the night it opened.
+
+Station threads: Vale has entered the seven as "not attended to" and wants Pike's month looked
+at; Crane backed the report in front of Vale and privately told Pike that kills are what the
+Board counts; Stubbs heard Ives hum and went quiet.
 
 ## Loose (the pair knows these from the ledger)
 

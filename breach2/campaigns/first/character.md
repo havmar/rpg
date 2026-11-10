@@ -1,6 +1,6 @@
 # The Owl · grade 1 · N Division, Nine Bridges
 
-Pair's purse: **142 GP** (Albert 123 GP, Ives 19 GP). XP: **300** (level 3 at 450). Relics: none.
+Pair's purse: **142 GP** (Albert 123 GP, Ives 19 GP). XP: **300** (level 3 at 450). Relics: **the copper scale**, bonded to **Ives** (breach #4, day 1): worn against the ear, Ives can cast *Comprehend Languages* from it at will (Helm of Comprehending Languages, Uncommon, no attunement).
 
 ## Probationer Albert Pike (he/him)
 

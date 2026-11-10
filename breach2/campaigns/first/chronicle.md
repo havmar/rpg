@@ -26,3 +26,5 @@ Pike would not kill the two that were left, nor the horses. The goblins fetched 
 mounts through the fog; Ives opened the gate, and the captain, the boy, three horses and two
 dragons went home through it. Breach #4 closed before noon on day 1: six attended to, seven
 resolved. It left a copper scale on the loft floor, and 110 GP.
+Ives took up the scale. At the station the Director took the report as written, Mr Vale wrote
+"seven not attended to" in his own book, and Dr Lark owned that the grade had been wrong.
