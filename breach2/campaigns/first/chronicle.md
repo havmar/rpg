@@ -144,3 +144,10 @@ On day 47 the transfer came: **Probationer Bob Fletcher**, an orc, a soldier, a 
 longbow, who asked the ledger clerk on his first morning how many days there were to review.
 Fourteen. With him came a new automaton, **Rookwood**, a druid, a day old and a stranger to
 the seat. Breach #19, the Tun Street baths, still open, was read out and given to the Owl again.
+
+Morning, the station. The Owl came up from the cellar stair with the gizmo case on the flags
+and the call box on Rookwood's strap, and stood a while at the wall. Rookwood had read the
+Raven's account twice and offered the economical course: walk into the baths, talk the creek
+round, set the apparatus under the tree, and go home with nobody struck. The Director came
+down the stair with his ledger under his arm. Ledger short, Static quiet, in that order;
+review in fourteen days, and he would rather not write the Owl up as behind.
