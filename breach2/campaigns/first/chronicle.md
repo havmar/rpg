@@ -74,3 +74,7 @@ two who had rowed it in.
 Pike told them where they were. Bess Harrow didn't believe it until Ives rowed her down the
 creek into the fog and the jolly boat's bow knocked against white tiles and a brass rail
 lettered NO DIVING. She sat a while with her hand on the tile. Then she asked how to get home.
+
+Pike told Bess the two thieves were alive; she spat in the creek and stayed by her boat. At
+the big tree he sent the owl into the hollow. It saw nothing, and something took it off a
+root in one bite.
