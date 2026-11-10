@@ -101,12 +101,13 @@ the officer, so a call is short.
 
 ## Automatons
 
-An **automaton** is a brass-and-enamel person built by the Board's fitters from a design
-Head Office does not share. Each is bound to one officer at a time, and from then on it
-gains what its partner gains: a level when they level, nothing when they don't. It absorbs
-no breach-magic of its own, which is the point. The pair is the party.
+An **automaton** is a brass-and-enamel man built by the Board's fitters from a design
+Head Office does not share: every one is made and spoken of as a man, "he", never "it".
+Each is bound to one officer at a time, and from then on he gains what his partner gains: a
+level when they level, nothing when they don't. He absorbs no breach-magic of his own, which
+is the point. The pair is the party.
 
-Its **core** is a small piece of the same thing the masts are. A mast holds the world shut;
+His **core** is a small piece of the same thing the masts are. A mast holds the world shut;
 a core, standing at a breach's anchor, can hold it open the other way for a while. That is
 the **gate**, the only door home a denizen will ever get, and it is why an officer without
 an automaton can only kill.
@@ -117,11 +118,11 @@ observant, deferential in address and immovable in opinion. They call their part
 liberty of oiling the stair"). They count kills as matters attended to and deportations as
 matters resolved, and most of them, if asked, prefer the latter. They are **programmed to
 cheese**: the fitters' protocol of economy makes an automaton propose, always, the cheapest
-legal way to end a fight, and it will say so before every fight unless told to hold its
+legal way to end a fight, and he will say so before every fight unless told to hold its
 tongue.
 
-An automaton **remembers**. Its core carries every partner it has had, and an officer who
-inherits a dead officer's automaton inherits its grief, expressed as correctness. "The
+An automaton **remembers**. His core carries every partner he has had, and an officer who
+inherits a dead officer's automaton inherits his grief, expressed as correctness. "The
 previous Fox preferred the left-hand stair. I mention it only for completeness."
 
 ### Species: Automaton
@@ -146,7 +147,8 @@ For the automaton's character sheet, in place of an SRD species.
 
 Everyone has a plain English name. Elves have the grand ones (Percival, Cordelia), orcs the
 short ones (Tom, Meg), gnomes the small ones (Pip, Nell), tieflings the virtues (Prudence,
-Ernest), humans the ordinary ones (Arthur, Mary). Automatons go by a surname, like a butler.
+Ernest), humans the ordinary ones (Arthur, Mary). A dungeoneer is a man or a woman, on a coin
+flip, with a name to match. Automatons are all "he" and go by a surname, like a butler.
 The GM names everyone else the same way.
 
 ## Loose denizens

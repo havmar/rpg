@@ -99,7 +99,7 @@
    "grade": 3,
    "holder": {
     "name": "Martha Ashcombe",
-    "pronouns": "he/him",
+    "pronouns": "she/her",
     "species": "Human",
     "background": "Acolyte",
     "side": "Front",
@@ -187,7 +187,7 @@
    "grade": 5,
    "holder": {
     "name": "Ambrose Marsh",
-    "pronouns": "she/her",
+    "pronouns": "he/him",
     "species": "Elf",
     "background": "Sage",
     "side": "Back",
@@ -275,7 +275,7 @@
    "grade": 7,
    "holder": {
     "name": "Albert Whitlock",
-    "pronouns": "she/her",
+    "pronouns": "he/him",
     "species": "Human",
     "background": "Criminal",
     "side": "Back",
@@ -363,7 +363,7 @@
    "grade": 9,
    "holder": {
     "name": "Faith Baker",
-    "pronouns": "he/him",
+    "pronouns": "she/her",
     "species": "Tiefling",
     "background": "Soldier",
     "side": "Front",

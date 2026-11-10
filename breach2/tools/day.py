@@ -59,30 +59,32 @@ PRIORITY = {
 }
 
 # Plain English names. Elves get the grand ones, orcs the short ones, gnomes the small ones,
-# tieflings the virtues.
+# tieflings the virtues. Each species has (men's names, women's names); a dungeoneer is one
+# or the other on a coin flip. Automatons are all "he".
 NAMES = {
-    "Elf": ["Percival", "Cordelia", "Evelyn", "Sebastian", "Arabella", "Julian", "Rosalind",
-            "Leopold", "Beatrice", "Ambrose", "Genevieve", "Montgomery", "Octavia", "Lionel",
-            "Vivian", "Cecily"],
-    "Gnome": ["Archie", "Nell", "Pip", "Dot", "Alfie", "Tilly", "Bertie", "Minnie", "Wally",
-              "Flo", "Ned", "Posy", "Gus", "Kit", "Midge", "Sid"],
-    "Human": ["Arthur", "Mary", "Thomas", "Alice", "Henry", "Ruth", "Walter", "Edith", "George",
-              "Martha", "Albert", "Clara", "Frank", "Agnes", "Harold", "Ivy"],
-    "Orc": ["Tom", "Meg", "Bob", "Jack", "Peg", "Joe", "Bess", "Sam", "Kate", "Bill", "Nan",
-            "Dan", "Moll", "Jim", "Sal", "Ben"],
-    "Tiefling": ["Prudence", "Ernest", "Hope", "Constance", "Felix", "Verity", "Clement",
-                 "Patience", "Victor", "Grace", "Faith", "Christian", "Mercy", "Honor", "Amity",
-                 "Chance"],
+    "Elf": (["Percival", "Sebastian", "Julian", "Leopold", "Ambrose", "Montgomery", "Lionel",
+             "Crispin"],
+            ["Cordelia", "Evelyn", "Arabella", "Rosalind", "Beatrice", "Genevieve", "Octavia",
+             "Vivian", "Cecily"]),
+    "Gnome": (["Archie", "Pip", "Alfie", "Bertie", "Wally", "Ned", "Gus", "Sid"],
+              ["Nell", "Dot", "Tilly", "Minnie", "Flo", "Posy", "Kit", "Midge"]),
+    "Human": (["Arthur", "Thomas", "Henry", "Walter", "George", "Albert", "Frank", "Harold"],
+              ["Mary", "Alice", "Ruth", "Edith", "Martha", "Clara", "Agnes", "Ivy"]),
+    "Orc": (["Tom", "Bob", "Jack", "Joe", "Sam", "Bill", "Dan", "Jim", "Ben"],
+            ["Meg", "Peg", "Bess", "Kate", "Nan", "Moll", "Sal"]),
+    "Tiefling": (["Ernest", "Felix", "Clement", "Victor", "Christian", "Chance"],
+                 ["Prudence", "Hope", "Constance", "Verity", "Patience", "Grace", "Faith",
+                  "Mercy", "Honor", "Amity"]),
 }
 SURNAMES = ["Ashcombe", "Baker", "Carter", "Cooper", "Dunmore", "Fairweather", "Greaves",
             "Hargreaves", "Kettering", "Lowry", "Marsh", "Northcote", "Oxley", "Pendry",
             "Quayle", "Rooke", "Sallow", "Thorne", "Underhill", "Vance", "Whitlock", "Yarrow",
             "Tanner", "Chandler", "Fletcher", "Mercer", "Sawyer", "Wainwright", "Hobbs", "Pike"]
-PRONOUNS = ["he/him"] * 9 + ["she/her"] * 9 + ["they/them"] * 2
+PRONOUNS = ["he/him", "she/her"]
 
 AUTOMATON_NAMES = ["Alder", "Basset", "Carrow", "Dunstan", "Ellery", "Fenwick", "Garrow",
                    "Hollis", "Ives", "Jessop", "Kemble", "Lowell", "Marlow", "Nettle", "Oakes",
-                   "Pennywhistle", "Quill", "Rookwood", "Sedge", "Tamsin", "Upton", "Verity",
+                   "Pennywhistle", "Quill", "Rookwood", "Sedge", "Tamworth", "Upton", "Vickers",
                    "Wimbourne", "Yately", "Abbott", "Brisket", "Candlewick", "Dorrit", "Evershed",
                    "Faraday", "Gaskell", "Hobbes", "Inchbald", "Jarvis", "Kettle", "Lampwick"]
 PROTOCOL_SKILLS = ["Perception", "Insight", "Medicine", "History", "Investigation", "Survival",
@@ -97,7 +99,7 @@ TRAITS = [
     "labels a keepsake from every breach and keeps them in a locker",
     "thinks the breaches are a punishment and prays before the ledger is read",
     "is courting someone in the Static and takes the long way home",
-    "argues with their automaton in public and loses",
+    "argues with the automaton in public and loses",
     "has buried three partners and visits them on rest days",
     "wants the Director's job and says so",
     "writes the Division's songs, badly",
@@ -106,12 +108,11 @@ TRAITS = [
     "looks after the children of the fallen when no one else will",
     "never takes a stowaway's side and never explains why",
     "has a running bet with another seat on who reaches Head Office first",
-    "closes breaches that aren't theirs and has the reprimands to show for it",
+    "closes other seats' breaches and has the reprimands to show for it",
     "trains probationers unasked and is good at it",
     "believes the automatons are people and treats them so",
     "lost a street to a spill and hasn't forgiven the ledger",
     "is the Director's favourite and hates it",
-    "walked out once, came back, and was allowed to",
     "speaks to every peaceful denizen first, whatever the risk",
     "sells breach coins to collectors uptown for twice their worth",
     "has a map of every breach the Division has closed, pinned to a wall",
@@ -196,8 +197,9 @@ def new_holder(rng, day, grade, used_traits, side=None, level=None):
     cls, sub = rng.choice(FRONT if side == "Front" else BACK)
     trait = rng.choice([t for t in TRAITS if t not in used_traits] or TRAITS)
     used_traits.add(trait)
-    return {"name": f"{rng.choice(NAMES[species])} {rng.choice(SURNAMES)}",
-            "pronouns": rng.choice(PRONOUNS), "species": species,
+    sex = rng.randrange(2)
+    return {"name": f"{rng.choice(NAMES[species][sex])} {rng.choice(SURNAMES)}",
+            "pronouns": PRONOUNS[sex], "species": species,
             "background": rng.choice(BACKGROUNDS), "side": side, "class": cls, "subclass": sub,
             "scores": scores(rng, cls), "since": day, "trait": trait,
             "level": level or 2 * grade - d(rng, 2) + 1}

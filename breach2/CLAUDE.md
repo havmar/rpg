@@ -181,7 +181,7 @@ These replace the SRD where they differ.
   metres in the report, never feet). The human reads the result and plays everything that
   isn't a fight: where to go, whom to talk to, whether to deport or kill, when to rest, when
   to leave.
-- **The automaton calls the plan.** It is programmed for economy: it proposes the cheapest
+- **The automaton calls the plan.** He is programmed for economy: he proposes the cheapest
   legal way to win and the pair follows it unless the human has given a **standing order**
   ("never open with fire", "deport anything that will go", "no guns indoors"). Standing
   orders live in `state.md` and the GM obeys them in every fight.
@@ -204,7 +204,7 @@ soot and weather, not tables. No mood for its own sake, no recap of what the hum
 
 **A fight** is reported as a short block when it's over, or live in a line or two per round
 when the human asks to watch. Lead with the headline in a full sentence; say what the
-automaton proposed and why, in its voice; let the dice show in plain words; give both bodies'
+automaton proposed and why, in his voice; let the dice show in plain words; give both bodies'
 HP at the end and what the kills were worth.
 
 > **The hold · 4 Pirates (CR 1 each) · High, 800 XP · cleared, deck on fire.**
@@ -232,7 +232,7 @@ spent on one of these is still a day, and its dawn is still rolled.
 - **Walk a precinct.** Its people, what the breaches have done to it, who is asking why
   the breach on their street has no one.
 - **Spend time with a seat**, by name from the roster, with its trait.
-- **Attend to the automaton.** It remembers every partner. A standing order changes here.
+- **Attend to the automaton.** He remembers every partner. A standing order changes here.
 - **Study the breaches**, with the Reader: the campaign's long question.
 
 ## Characters
@@ -241,13 +241,14 @@ spent on one of these is still a day, and its dawn is still rolled.
   Probationer; `--player-grade` for another). `day.py` rolls species, background, scores
   (4d6 drop lowest, **placed by the class's priority even when low**), Front or Back, and
   class. The GM writes the sheet from `day.py show --role <Seat>` by the 2024 creation
-  rules, with the class's starting gear. The human may rename them and give their pronouns.
+  rules, with the class's starting gear. The dungeoneer is a man or a woman, as rolled (never
+  "they"); the human may rename them.
 - **Front:** Barbarian (Berserker), Fighter (Champion), Paladin (Devotion), Monk (Open Hand),
   Ranger (Hunter), Cleric (Life). **Back:** Wizard (Evoker), Sorcerer (Draconic), Warlock
   (Fiend), Bard (Lore), Rogue (Thief), Druid (Land).
 - **The automaton** is a full character of the other side's rolled class, species Automaton
-  (`setting.md`), at the dungeoneer's level. It carries the call box. It is a person with a
-  butler's manner, not gear.
+  (`setting.md`), at the dungeoneer's level. He carries the call box. He is a person with a
+  butler's manner, not gear, and always "he".
 - Levelling: as written, at the halved thresholds. Hit points by the fixed value.
 - **Names are plain English names** (`setting.md`), for everyone the GM invents too.
 

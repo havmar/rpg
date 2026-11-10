@@ -38,9 +38,9 @@ Two ways to stand: **Shield and Battleaxe or Handaxe, AC 16**, or **Greataxe, AC
 rations, rope, tinderbox, 10 torches, waterskin), quarterstaff, calligrapher's supplies, a
 history book, 8 sheets of parchment, a robe. Bought day 1: Shield, Battleaxe, a **Potion of Healing** (2d4+2 HP, a Bonus Action to drink), 10 GP of incense (one recasting of *Find Familiar*). 17 GP.
 
-## Ives (it; "Ives" to everyone)
+## Ives (he/him; "Ives" to everyone)
 
-Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is its first partner.
+Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is his first partner.
 
 - **HP** 13 (d8) · **AC** 14 (Studded Leather 12 + DEX 1 + Integrated Protection 1) · **Speed** 9 m · **Initiative** +1 · **Proficiency** +2
 - **STR** 8 (−1) · **DEX** 12 (+1) · **CON** 11 (+0) · **INT** 9 (−1) · **WIS** 10 (+0) · **CHA** 15 (+2)

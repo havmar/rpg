@@ -26,7 +26,7 @@ N Division's ground: nine precincts under one mast. The station stands under the
 - **The Reader, Dr Edith Lark** (gnome): sits under the ears with a slide rule and cold tea; wants a month of readings nobody argues with.
 - **The ledger clerk, Walter Finch** (human): reads the ledger out at dawn in a chapel voice and runs the exchange; wants every officer to call in, and to keep it short.
 - **The fitter, Meg Stubbs** (orc): rebuilds automatons in the cellar shop and talks to them more than to people; wants cores brought home, whatever state the rest is in.
-- **The auditor, Mr Ernest Vale** (tiefling): the Board's man, counts breaches closed against wages paid; wants to know why Probationer Pike walked out, and why they were let back.
+- **The auditor, Mr Ernest Vale** (tiefling): the Board's man, counts breaches closed against wages paid; wants to know why Probationer Pike walked out, and why he was let back.
 - **The wall**: by the stair, seat, name and day. The last Owl on it is Mary Dunn, day -31.
 
 ## GM notes
