@@ -515,21 +515,7 @@
    }
   ]
  },
- "ledger": [
-  {
-   "id": 4,
-   "day": 1,
-   "grade": 1,
-   "level": 2,
-   "precinct": "Vinegar Yard",
-   "seed": 583703,
-   "role": "Owl",
-   "due": null,
-   "spills": 0,
-   "withdrawn": false,
-   "kind": "Goblin Warrior"
-  }
- ],
+ "ledger": [],
  "next_id": 5,
  "loose": [
   {

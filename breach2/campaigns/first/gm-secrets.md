@@ -39,25 +39,15 @@ whose mast failed is not on any tram map.
 - **Pike** walked out on day -20 after watching the Raven's pair kill a room of things that were begging. Came back on day -17 because there was nowhere else.
 - **Mary Dunn**, the last Owl, died on day -31 in a grade-1 that was truly a grade 2.
 
-## Current breach: #4 · Goblin Warrior · Vinegar Yard · reported grade 1, **truly level 2**
+## Current breach
 
-Seed 583703: `python3 breach2/tools/gen_breach.py --seed 583703 --level 2 --reported 1`
+None. #4 (Goblin Warrior, Vinegar Yard, truly level 2) CLOSED on day 1: 6 goblins killed, 2 goblins,
+2 copper wyrmlings and 3 warhorses sent home through the gate. Relic left: **the copper
+scale** (Helm of Comprehending Languages, Uncommon), shed by Tuppence at the gate; lying on
+the loft floor, not yet taken up, so not yet bonded.
 
-Where: the **cooperage loft of Harker's Brewery**, Malt Lane, ten minutes from the station.
-From the street: a wood under a roof, flowers through the floorboards, moonlight in the
-windows at noon. 1,100 XP in it. A stranded goblin band out of a fey wood; the horses and
-the wyrmlings were pulled through with them.
-
-| Room | Denizens | CR | XP | Difficulty | Disposition | Size | Feature | Coins | Status |
-|---|---|---|---|---|---|---|---|---|---|
-| 1 | 3× Warhorse | 1/2 | 300 | Moderate | Wild: Animal Handling DC 15 or fight | 10×10 sq (15×15 m) | open, empty floor: a moonlit glade | 30 GP | skirted on day 1; Albert heard (Stealth 9, reroll 3), horses stamped and threatened but did not follow into the fog; still here, alert |
-| 2 | 2× Copper Dragon Wyrmling | 1 | 400 | High | Peaceful: go home when the gate opens; may help | 10×12 sq (15×18 m) | thick fog (heavily obscured beyond 3 m) | 40 GP | befriended by Ives's illusion of the rift (no roll); both wyrmlings escorted the pair to the hedge and wait there; JOINED THE FIGHT (d6=1) and killed 5 goblins; both unhurt, Acid Breath spent (recharge 5-6); will go through a gate; goblins fear them (Advantage on Intimidation while they are in sight); hoard not seen |
-| 3 | 8× Goblin Warrior | 1/4 | 400 | High | Wary | 10×10 sq (15×15 m) | the anchor: the rift, 3 m tear at the far end | 40 GP (in a saddlebag by the fire, not yet taken) | FOUGHT day 1: 6 dead (1 to Albert's axe, 5 to the wyrmlings' acid), morale failed (5 vs DC 10). 2 alive: Nettle (asleep-dazed, Sleep still on her: repeat save pending, Ives concentrating) and Burdock (surrendered). Both will go through a gate now without argument |
-
-Notes: the warhorses are the goblins' stolen mounts, saddled, half wild. The wyrmlings
-(Tuppence and Farthing to the goblins, who are afraid of them) like jokes and pranks and
-will trade one for passage. They speak ONLY Draconic (stat block); the pair has none: mime, illusion, music. The goblin boss, Nettle, wants to go home but will not say so
-in front of the band. Relic when closed (Uncommon cap): undecided.
+Clues given so far: Nettle said they were *pulled* ("like a fish on a line"); Ives hummed the
+mast's note while holding the gate, and Albert noticed.
 
 ## Loose (the pair knows these from the ledger)
 

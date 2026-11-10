@@ -1,6 +1,6 @@
 # The Owl · grade 1 · N Division, Nine Bridges
 
-Pair's purse: **32 GP** (Albert 13 GP, Ives 19 GP). XP: **300** (level 3 at 450). Relics: none.
+Pair's purse: **142 GP** (Albert 123 GP, Ives 19 GP). XP: **300** (level 3 at 450). Relics: none.
 
 ## Probationer Albert Pike (he/him)
 
@@ -33,7 +33,7 @@ Walked out once, came back, and was allowed to.
 
 **Gear:** Greataxe, 4 Handaxes, Explorer's Pack (backpack, bedroll, 2 flasks of oil, 10 days'
 rations, rope, tinderbox, 10 torches, waterskin), quarterstaff, calligrapher's supplies, a
-history book, 8 sheets of parchment, a robe. 13 GP.
+history book, 8 sheets of parchment, a robe. 123 GP.
 
 ## Ives (it; "Ives" to everyone)
 

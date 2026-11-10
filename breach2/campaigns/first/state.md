@@ -1,15 +1,11 @@
-# State · day 1, morning
+# State · day 1, late morning
 
-- **Place:** breach #4 (Harker's Brewery cooperage loft, Malt Lane), room 3, the anchor: the hollow under the oak. The fight is over.
-- **Assigned:** #4, grade 1, Goblin Warrior, Vinegar Yard.
-- **Albert Pike (he/him), level 2:** 13/25 HP, Rage 1/2 (ended), Find Familiar free cast 1/1 (owl alive, in the oak), Heroic Inspiration spent, holds one unused Bardic Inspiration d6 (lasts the hour). XP 300 (level 3 at 450). 2 Hit Dice (d12) unspent.
-- **Ives, level 2:** 13/13 HP, slots 2/3, Bardic Inspiration 1/2. Concentrating on Sleep (Nettle). 2 Hit Dice (d8) unspent.
-- **Purse:** 32 GP (Albert 13 GP, Ives 19 GP).
-- **Current breach:**
-  - Room 1, the glade: 3 Warhorses (CR 1/2, 300 XP), skirted, alert, between the pair and the street door.
-  - Room 2, the fog: the 2 Copper Dragon Wyrmlings (CR 1) came out of it to fight for the pair. Unhurt. Now sitting in the hollow, pleased with themselves. They want the gate. Their little hoard is under a root in the fog.
-  - Room 3, the anchor: 6 goblins dead. Two alive: Nettle, the captain, swaying on her feet under Ives's Sleep, and one more (Burdock) who has thrown down his scimitar and shield and is on his knees. A saddlebag by the fire has coins in it. The rift is at the far end, humming.
-- **To close the breach:** no living denizen may remain: the 2 goblins, the 2 dragons, the 3 horses, each killed or sent through the gate.
+- **Place:** Harker's Brewery, Malt Lane, Vinegar Yard: the cooperage loft, which is a loft again (hoops, staves, flowers dying in the floorboards).
+- **Assigned:** nothing. #4 is closed (`day.py close` and `report` run; division.md is current as of day 1).
+- **Albert Pike (he/him), level 2:** 19/25 HP, Rage 1/2, Find Familiar free cast 1/1 (owl out), Heroic Inspiration spent, one unused Bardic Inspiration d6 (until about noon). XP 300 (level 3 at 450). Hit Dice 2/2 (d12).
+- **Ives, level 2:** 13/13 HP, slots 1/3, Bardic Inspiration 1/2. Hit Dice 2/2 (d8).
+- **Purse:** 142 GP (Albert 123 GP, Ives 19 GP): 110 GP from the breach (the goblins' saddlebag 40 GP, the dragons' heap 40 GP, a saddle-roll in the glade 30 GP).
+- **Relic:** a copper scale the size of a hand, on the loft floor where the rift was. Worn against the ear it lets the wearer cast Comprehend Languages at will (Helm of Comprehending Languages, Uncommon). Not yet taken up; it bonds to whoever does.
 - **Standing orders:** none.
 - **Not yet heard:** nothing.
-- **Open question to the human:** what to do with the two goblins, and with the horses.
+- **Open question to the human:** who takes the scale; then the report to the station (expected), and what to do with the rest of day 1 before the Long Rest.

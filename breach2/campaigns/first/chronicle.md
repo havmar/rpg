@@ -22,3 +22,7 @@ sentry's arrow and a scimitar took Pike to 3 HP at the gap, and he cut the gobli
 scimitar in half. Then the two dragons came over the hedge and breathed acid down both lines,
 and five goblins died where they stood. Two are left, one dazed and one on his knees. Pike
 absorbed the lot: 300 XP, level 2, and Ives with him.
+Pike would not kill the two that were left, nor the horses. The goblins fetched their own
+mounts through the fog; Ives opened the gate, and the captain, the boy, three horses and two
+dragons went home through it. Breach #4 closed before noon on day 1: six attended to, seven
+resolved. It left a copper scale on the loft floor, and 110 GP.

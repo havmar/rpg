@@ -19,7 +19,7 @@ You are **the Owl**. This is what you knew when you last reported in. Next revie
 
 Open breaches, as the mast reads them. The Reader is sometimes wrong.
 
-- #4 · grade 1 · Goblin Warrior · Vinegar Yard · open 0 days · **you**
+- Nothing open.
 
 ## Loose in the district
 
