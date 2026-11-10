@@ -5,15 +5,16 @@ piece of the Under, as a dungeon for one officer and their automaton (a party of
 A breach has a PRINCIPAL kind: the SRD monster whose reality intruded. It fills at least half
 the breach's XP and decides what the breach has done to the place (the street hint). The
 other rooms hold STOWAWAYS: random SRD kinds that came through with it; the GM fits them to
-the theme. The deepest room is the ANCHOR, where the rift is and where the automaton can
-open the gate home, with the principal's largest group in it.
+the theme. The deepest room is the ANCHOR, where the piece is lodged and where the automaton
+can set up the gizmo that sends it home, with the principal's largest group in it.
 
 Few rooms, each a real fight: Moderate or High by the 2024 budgets for TWO characters, the
 anchor always High, at least three rooms. A group is as many of its kind as fill the budget,
 up to ten, so weak kinds come in numbers. Kinds are picked so that over levels 1 to 20
 SRD monsters are about equally likely, with crowds the exception (see pool_for). Rooms add up to at least the SRD's XP from level N
 to N+1 (the game halves the thresholds, so killing about half of a breach is a level). Every
-group carries a DISPOSITION from its alignment: whether it will go home through the gate.
+group carries a DISPOSITION: Evil kinds are Hostile; every other group rolls a d6 (1-2
+Hostile, 3-5 Neutral, 6 Willing; a mindless kind is Neutral on a 6 too).
 
 Usage:
   python3 breach2/tools/gen_breach.py --seed 4812 --level 3
@@ -62,8 +63,12 @@ FEATURES = [
     "no roof: open sky that is not the city's sky",
 ]
 FLOODED = "flooded: water 3 m deep, a 1.5 m ledge around the edge"
-ANCHOR = ("the anchor: the rift, a 3 m tear in the air at the far end, humming, one way in; "
-          "the automaton can open the gate home here and nowhere else")
+ANCHOR = ("the anchor: where the piece is lodged; the air is thick and the floor hums; "
+          "the gizmo is set up here and nowhere else")
+HOSTILE_ON = 2       # a group that isn't Evil is Hostile anyway on a d6 roll this low
+HOSTILE = "Hostile: fights; will not be talked round"
+NEUTRAL = "Neutral: no quarrel yet; will not go home unless convinced (GM's discretion)"
+WILLING = "Willing: wants to go home; may help"
 
 SURFACE = {
     "Beast": "their country indoors: a tenement whose stairwells are forest, a depot gone to marsh",
@@ -100,17 +105,16 @@ def parse_type(line):
     return base, align.strip()
 
 
-def disposition(base, align):
-    """How the denizens take to being sent home."""
-    if base in ("Swarm", "Ooze", "Plant", "Construct"):
-        return "Mindless: lure it through the gate (a fitting check, DC 15, GM's call) or destroy it"
-    if align == "Unaligned":
-        return "Wild: herd it through the gate (Animal Handling DC 15) or fight"
-    if "Good" in align:
-        return "Peaceful: goes home when the gate is opened; may help"
+def disposition(base, align, rng):
+    """How the group takes to the pair, and to being sent home."""
     if "Evil" in align:
-        return "Hostile: will not go; fights"
-    return "Wary: Persuasion or Intimidation DC 15 to go; refused, it bargains or fights"
+        return HOSTILE
+    roll = rng.randint(1, 6)
+    if roll <= HOSTILE_ON:
+        return HOSTILE
+    if roll == 6 and base not in ("Swarm", "Ooze", "Plant", "Construct"):
+        return WILLING
+    return NEUTRAL
 
 
 def load_monsters():
@@ -197,7 +201,7 @@ def group(m, level, diff, rng):
     diff = "High" if total > (mod + high) / 2 else "Moderate" if total >= 0.8 * mod else "Low"
     return {"diff": diff, "name": m["name"], "cr": m["cr"], "xp": m["xp"], "count": count,
             "total": m["xp"] * count, "aquatic": m["aquatic"], "type": m["type"],
-            "align": m["align"], "disposition": disposition(m["type"], m["align"])}
+            "align": m["align"]}
 
 
 def pick_diff(rng):
@@ -217,9 +221,9 @@ def breach(level, seed, reported=None):
     principal = rng.choices(pool, weights)[0]
     need = THRESHOLD[min(level + 1, 20)] - THRESHOLD[level] if level < 20 else 50000
 
-    rift = group(principal, level, "High", rng)
-    rooms, total = [], rift["total"]
-    ptotal = rift["total"]
+    anchor = group(principal, level, "High", rng)
+    rooms, total = [], anchor["total"]
+    ptotal = anchor["total"]
     while ptotal < need / 2:
         g = group(principal, level, pick_diff(rng), rng)
         rooms.append(g)
@@ -231,15 +235,17 @@ def breach(level, seed, reported=None):
         rooms.append(g)
         total += g["total"]
     rng.shuffle(rooms)
-    rooms.append(rift)
+    rooms.append(anchor)
     for i, r in enumerate(rooms, 1):
         w, h = rng.choice(SIZES)
         r["room"] = f"{w}×{h} sq ({w * 1.5:g}×{h * 1.5:g} m)"
         r["feature"] = FLOODED if r.pop("aquatic") else rng.choice(FEATURES)
-        if r is rift:
+        if r is anchor:
             r["feature"] = ANCHOR
         r["gp"] = r["total"] // 10
         r["n"] = i
+    for r in rooms:  # rolled last, so a seed's rooms are what they were before dispositions
+        r["disposition"] = disposition(r["type"], r["align"], rng)
     return {"level": level, "reported": reported or grade_of(level), "seed": seed, "need": need,
             "total": total, "principal": principal, "rooms": rooms,
             "surface": SURFACE.get(principal["type"], SURFACE["Monstrosity"])}

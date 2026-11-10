@@ -6,7 +6,8 @@ and the review. Every die of the day that isn't the player's is rolled here.
   python3 breach2/tools/day.py show breach2/campaigns/<name> [--role Wren]
   python3 breach2/tools/day.py ledger breach2/campaigns/<name>      # the GM's view, true levels
   python3 breach2/tools/day.py dawn breach2/campaigns/<name> [--player-died]
-  python3 breach2/tools/day.py close breach2/campaigns/<name> ID    # the player closed it
+  python3 breach2/tools/day.py close breach2/campaigns/<name> ID [--left N]  # the player closed
+                                    # it; N living groups were left behind and are loose
   python3 breach2/tools/day.py take breach2/campaigns/<name> ID     # the player is sent to it
   python3 breach2/tools/day.py clear breach2/campaigns/<name> N     # loose group N is dealt with
   python3 breach2/tools/day.py report breach2/campaigns/<name>      # rewrite division.md
@@ -92,7 +93,7 @@ PROTOCOL_SKILLS = ["Perception", "Insight", "Medicine", "History", "Investigatio
 
 TRAITS = [
     "wants to reach Head Office before an older sibling who is already there",
-    "keeps a tally of deportations and thinks kills are a failure of manners",
+    "keeps a tally of denizens sent home and thinks kills are a failure of manners",
     "plays cards with the ledger clerks and owes them",
     "sends every coin home to a precinct the Director has written off",
     "was recruited out of a cell and the Division knows it",
@@ -104,7 +105,7 @@ TRAITS = [
     "wants the Director's job and says so",
     "writes the Division's songs, badly",
     "drinks after every breach, not before",
-    "is studying the rifts and pesters the Reader for the mast's records",
+    "is studying the breaches and pesters the Reader for the mast's records",
     "looks after the children of the fallen when no one else will",
     "never takes a stowaway's side and never explains why",
     "has a running bet with another seat on who reaches Head Office first",
@@ -113,7 +114,7 @@ TRAITS = [
     "believes the automatons are people and treats them so",
     "lost a street to a spill and hasn't forgiven the ledger",
     "is the Director's favourite and hates it",
-    "speaks to every peaceful denizen first, whatever the risk",
+    "speaks to every denizen first, whatever the risk",
     "sells breach coins to collectors uptown for twice their worth",
     "has a map of every breach the Division has closed, pinned to a wall",
     "is deaf in one ear from a musket and says the tin hears for two",
@@ -534,6 +535,7 @@ def main():
     ap.add_argument("--player-grade", type=int, default=1)
     ap.add_argument("--role")
     ap.add_argument("--player-died", action="store_true")
+    ap.add_argument("--left", type=int, default=0)
     a = ap.parse_args()
 
     if a.verb == "new":
@@ -583,7 +585,11 @@ def main():
             sys.exit(f"no open breach #{a.n}")
         if a.verb == "close":
             c["ledger"].remove(b)
-            print(f"#{b['id']} ({b['kind']}, {b['precinct']}) is closed.")
+            for _ in range(a.left):
+                go_loose(c, b, "left behind")
+            print(f"#{b['id']} ({b['kind']}, {b['precinct']}) is closed."
+                  + (f" {a.left} group(s) left behind are loose in {b['precinct']}."
+                     if a.left else ""))
         else:
             b["role"], b["due"], b["withdrawn"] = c["player"], None, False
             print(f"#{b['id']} is yours.")

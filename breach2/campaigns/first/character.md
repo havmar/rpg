@@ -50,7 +50,7 @@ Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is 
 - **Tools:** Tinker's Tools; concertina, tin whistle, fiddle. **Languages:** Common, Elvish.
 - **Automaton:** Advantage on saves against Poisoned, Resistance to Poison, no food, drink, air
   or sleep, can't be put to sleep by magic; Long Rest is 6 hours motionless and aware; Bound;
-  **Gate** at a breach's anchor (1 minute to open, does nothing else while it's open).
+  **Gizmo** at a breach's anchor (carries the 25 kg case; 10 minutes in peace to set up and run, does nothing else meanwhile).
 - **Bardic Inspiration** 2 per Long Rest: Bonus Action, 18 m, a d6 to add to one failed D20 Test within the hour.
 - **Spellcasting**, Charisma: spell attack +4, save DC 12. **Slots:** 3 × level 1.
   Cantrips: *Vicious Mockery* (18 m, WIS save or 1d6 Psychic and Disadvantage on its next attack), *Minor Illusion*.
