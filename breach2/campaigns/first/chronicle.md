@@ -65,3 +65,8 @@ behind him on a beach where the front hall should be, two seamen of the *Kestrel
 three weeks before for stealing. They had seen the city from that door at dawn and wanted
 none of their beach back. They told the Owl what was further in: two of their old shipmates
 filling casks up the creek, and something in the roots past the big tree.
+
+Pike told them plainly that the beach would go home and they would have to go with it, and
+walked on. Rudd said "Aye", in the voice of a man who has been told things by officers
+before. Over the dunes, at the creek's mouth, the Owl found the *Kestrel*'s jolly boat and the
+two who had rowed it in.
