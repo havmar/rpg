@@ -15,3 +15,5 @@ and spoke to them in no language either of them had.
 Ives drew the rift in the air for it, and the dragon understood that well enough: two of
 them, wanting home, walked the pair through the fog to a thorn hedge. Beyond it the owl
 counted eight goblins camped round the rift.
+Ives offered the goblins the door home and was not believed. Their captain, Nettle, set a
+price instead: their horses, the dragons kept off, and twenty gold for the trouble.
