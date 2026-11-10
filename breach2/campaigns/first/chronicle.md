@@ -70,3 +70,7 @@ Pike told them plainly that the beach would go home and they would have to go wi
 walked on. Rudd said "Aye", in the voice of a man who has been told things by officers
 before. Over the dunes, at the creek's mouth, the Owl found the *Kestrel*'s jolly boat and the
 two who had rowed it in.
+
+Pike told them where they were. Bess Harrow didn't believe it until Ives rowed her down the
+creek into the fog and the jolly boat's bow knocked against white tiles and a brass rail
+lettered NO DIVING. She sat a while with her hand on the tile. Then she asked how to get home.
