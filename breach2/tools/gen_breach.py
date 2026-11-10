@@ -19,6 +19,10 @@ Hostile, 3-5 Neutral, 6 Willing; a mindless kind is Neutral on a 6 too).
 Usage:
   python3 breach2/tools/gen_breach.py --seed 4812 --level 3
   python3 breach2/tools/gen_breach.py --seed 4812 --level 5 --reported 2   # the Reader said grade 2
+  python3 breach2/tools/gen_breach.py --seed 4812 --level 5 --encounter 1  # the breach's 1st
+      # encounter: a new Hostile group, more of the principal kind or something else (even odds)
+  python3 breach2/tools/gen_breach.py --seed 77 --level 3 --encounter 1 --street  # a stray
+      # in the street, any kind, at the pair's level; any seed
 
 day.py imports breach() and principal_for(); keep the RNG call order if you change them.
 """
@@ -251,6 +255,23 @@ def breach(level, seed, reported=None):
             "surface": SURFACE.get(principal["type"], SURFACE["Monstrosity"])}
 
 
+def encounter(level, seed, n, street=False):
+    """A new Hostile group for the encounter die. The table breach() prints is only what was
+    there at the start: a lodged piece keeps arriving, and things wander in from the street.
+    Inside a breach it is more of the principal kind or some other kind, even odds; in the
+    street it is any kind. Moderate or High, like a room."""
+    rng = random.Random(f"{seed}:encounter:{n}")
+    pool, weights = pool_for(level)
+    if street or rng.random() < 0.5:
+        m, where = rng.choices(pool, weights)[0], "a stray" if street else "newly arrived, or in from the street"
+    else:
+        m, where = principal_for(level, seed), "more of the piece has arrived"
+    g = group(m, level, pick_diff(rng), rng)
+    return (f"**Encounter {n}:** {g['count']}× {g['name']} (CR {g['cr']}, {g['type']}), "
+            f"{g['total']:,} XP, {g['diff']} at level {level}, Hostile; {where}. "
+            f"Coins {g['total'] // 10:,} GP.")
+
+
 def breach_md(b):
     p = b["principal"]
     out = [f"## Breach (seed {b['seed']}) · level {b['level']} (grade {grade_of(b['level'])})"
@@ -275,7 +296,12 @@ def main():
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--level", type=int, required=True)
     ap.add_argument("--reported", type=int, help="the grade the Reader reported, if wrong")
+    ap.add_argument("--encounter", type=int, help="print the Nth encounter instead")
+    ap.add_argument("--street", action="store_true", help="with --encounter: a stray, any kind")
     a = ap.parse_args()
+    if a.encounter:
+        print(encounter(a.level, a.seed, a.encounter, a.street))
+        return
     print(breach_md(breach(a.level, a.seed, a.reported)))
 
 

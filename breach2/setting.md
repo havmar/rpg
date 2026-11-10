@@ -25,8 +25,13 @@ they came from and are monsters here; some have looked out of the door and seen 
 having. There is no way back to walk to, however clever they are. The only one is the
 Board's **gizmo** (see Automatons), which works the piece loose and lets it go home, and
 takes with it whoever stands by it and keeps still. That is **closing** a breach, and the
-building is itself again in a day. Whatever was alive inside and did not go is left behind in
-an ordinary cellar, in a city that isn't theirs.
+building is itself again in a day. A piece takes home only what is its own, so whatever was
+alive inside and did not go is left behind in an ordinary cellar, in a city that isn't
+theirs, with no way back at all.
+
+A lodged piece is not finished arriving. More of it comes loose after the first, with more
+of whoever lived there, and loose things from other breaches drift in off the street to a
+place that smells of somewhere else. No officer has ever been able to say a breach was empty.
 
 A breach left alone **spills**: group by group its denizens find the street door, and then
 the precinct has pirates. One that has emptied itself onto the street is struck off the

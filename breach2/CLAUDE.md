@@ -140,8 +140,8 @@ These replace the SRD where they differ.
   it up and running it takes **10 minutes in peace**: the automaton does nothing else, and
   if he is hit or leaves it the run starts over. The dungeoneer guards alone. The whole
   breach feels it start, and every Hostile group still alive inside comes to the anchor.
-- **Who goes home.** When the run ends the piece goes back, and with it every denizen that
-  is **within 6 m of the gizmo and has kept still for the last minute**. So going home is
+- **Who goes home.** When the run ends the piece goes back, and with it every denizen **of
+  that piece** that is **within 6 m of the gizmo and has kept still for the last minute**. So going home is
   something a creature does, not something done to it; one that won't stand still can only
   be sent bound or senseless and laid there, which is allowed and is work.
 - **The rest stay.** The breach is **closed** and the building is itself again in a day. Any
@@ -150,12 +150,17 @@ These replace the SRD where they differ.
   behind). An officer who closes a breach and leaves half of it on the street has closed
   it; the precinct and the Director will have views.
 - A wrecked automaton runs no gizmo: the breach stays open until he is rebuilt.
+- **A breach's contents are never settled.** The generator's table is what was there when
+  the pair walked in. A lodged piece keeps arriving, and loose things wander in from the
+  street; the pair never knows a breach is empty, only that it is quiet.
 - **The encounter die.** Roll a d6: for each leg of travel; for each Short Rest inside a
-  breach; and the first time in a fight that something is loud (a gunshot, Thunder damage,
-  an explosion). **On a 1, an encounter.** In the street it is the loose denizens of that
-  precinct, if the loose list has any, at whatever level they are; the pair may talk, run,
-  or fight. Inside a breach it is the nearest living group the pair hasn't settled with,
-  met or not, coming to look; if there is none, nothing comes.
+  breach; the first time in a fight that something is loud (a gunshot, Thunder damage, an
+  explosion); and when the gizmo starts. **On a 1, a Hostile encounter**, always possible,
+  whatever has been cleared. Inside a breach it is a **new group**: `gen_breach.py --seed S
+  --level L --encounter N` (the breach's seed and level, N counting up) gives more of the
+  breach's kind or something else. In the street it is the precinct's loose denizens if the
+  list has any, at whatever level they are; if not, a stray nobody has counted, at the
+  pair's level (`--encounter N --street`, any seed). Its kills give XP like any other.
 - **No Long Rest inside a breach.** The pair leaves to sleep, and that is a dawn: the breach
   may spill, the ledger may grow.
 
@@ -245,8 +250,9 @@ and a line if not; **"skip to the next breach"** runs the dawns as a paragraph o
 spent on one of these is still a day, and its dawn is still rolled.
 
 - **Hunt loose denizens.** One encounter: a room of `gen_breach.py` at the loose group's
-  level, in its precinct. A kill, a bargain, or a walk to the anchor of a breach about to
-  be closed: they can go with it, to a world that isn't theirs, and few will. Dealt with, it comes off the list (`day.py clear N`).
+  level, in its precinct. A kill or a bargain. A denizen goes home only with its own
+  piece: a group spilled from a breach that is still open can be walked back to its anchor,
+  and one whose breach is closed is here for good. Dealt with, it comes off the list (`day.py clear N`).
 - **Walk a precinct.** Its people, what the breaches have done to it, who is asking why
   the breach on their street has no one.
 - **Spend time with a seat**, by name from the roster, with its trait.
@@ -337,5 +343,5 @@ breach, the 2d6-day vacancy. In `gen_breach.py`: three rooms minimum, Moderate a
 groups of up to ten, crowds made rarer, and `HOSTILE_ON` (a group that isn't Evil is Hostile
 on a d6 of 1 or 2: about 45% of groups fight at level 1, 60% from level 5; set it to 1 for
 30% and 50%). Here: the halved XP table, the call's price, the relic rarity caps, the encounter
-die, the gizmo's 10 minutes and 6 m. If the pair outruns its grade, un-halve the XP table first; if the Division isn't
+die and the even odds of what it brings, the gizmo's 10 minutes and 6 m. If the pair outruns its grade, un-halve the XP table first; if the Division isn't
 stretched enough, shorten the breach die.
