@@ -122,3 +122,18 @@ Clues given in days 2 to 40: Stubbs's blank cores arrived warm, and Ives said so
 ## Unheard news
 
 None. The new Owl heard the ledger at the station on day 47.
+
+**Day 47, the hunt for the castaways (midday).** The loose list says Pirates (level 2) in the
+Yard, and the hunt is one room at that level in the precinct. Rolled seed 676 at level 2
+(1d1000): stirges, satyrs and axe beaks, not the castaways, so the hideout is built by hand from
+their own room in #19. The brewery's malt loft over the mash tuns, up a ladder at the back of
+the mash house. Sacks of malt stacked by a hoist (half cover), a bucket fire, a loaf torn in
+two. **Tom Rudd** (2× Pirate, CR 1, 200 XP each; Neutral; will do the talking) and **Will Pegg**
+(the other; knows the boat). The purser's 40 GP is in a sack under the sacks. They were told by
+Pike to go home and broke out instead. Mrs Bright sent them up Brewer's Lane with a loaf each.
+A kill gives 400 XP: the Owl would reach level 3 (450) and be on quota. A bargain must be
+something other than home: bread, a berth, drays to load at the brewery. Ned's message is the
+lever on Pegg.
+
+**Berserkers** (level 3, from the Raven's #6, loose since day 8): location unknown, not yet
+hunted. Rookwood said so; Mrs Bright hasn't seen them and says she'd like to keep it that way.

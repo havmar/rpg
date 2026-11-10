@@ -167,3 +167,11 @@ tenth, and the two sailors went with it, Ned's last words a message for Will Peg
 The float and the belt went too, because nobody had picked them up. The Owl came out with a
 cloak of grey-green hide, lying on the root where the belt had been. The castaways in the Yard
 are here for good now. The baths are a cellar again, with a tide mark on the brick.
+
+Midday. The Owl sat an hour on the root with the cloak across his shoulders and came up
+attuned, with the damp gone out of it. On the step Mrs Bright said the two from the beach had
+come by for bread and asked where a man might sleep dry, and she had sent them up Brewer's Lane
+to the malt loft. Asked after the Berserkers, the brass man said they were loose in the Yard
+since day eight, from the Raven's breach, and that the ledger reads them out each dawn. Nobody
+has seen them. Mrs Bright would like it to stay that way. The Owl went up the lane towards
+the brewery.
