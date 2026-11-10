@@ -1,13 +1,13 @@
 # The Owl · grade 1 · N Division, Nine Bridges
 
-Pair's purse: **142 GP** (Albert 123 GP, Ives 19 GP). XP: **300** (level 3 at 450). Relics: **the copper scale**, bonded to **Ives** (breach #4, day 1): worn against the ear, Ives can cast *Comprehend Languages* from it at will (Helm of Comprehending Languages, Uncommon, no attunement).
+Pair's purse: **17 GP** (Albert 17 GP, Ives 0 GP). XP: **300** (level 3 at 450). Relics: **the copper scale**, bonded to **Ives** (breach #4, day 1): worn against the ear, Ives can cast *Comprehend Languages* from it at will (Helm of Comprehending Languages, Uncommon, no attunement).
 
 ## Probationer Albert Pike (he/him)
 
 Human Sage · Barbarian 2 (Berserker at level 3) · Front · on the seat since day -29.
 Walked out once, came back, and was allowed to.
 
-- **HP** 25 (d12) · **AC** 14 (Unarmored Defense) · **Speed** 9 m · **Initiative** +1 · **Proficiency** +2
+- **HP** 25 (d12) · **AC** 14 (Unarmored Defense), **16 with the Shield** · **Speed** 9 m · **Initiative** +1 · **Proficiency** +2
 - **STR** 14 (+2) · **DEX** 13 (+1) · **CON** 16 (+3) · **INT** 8 (−1) · **WIS** 13 (+1) · **CHA** 12 (+1)
   (rolled 14/13/14/8/12/12; Sage gives CON +2, WIS +1)
 - **Saves:** STR +4, CON +5. **Passive Perception** 13.
@@ -30,16 +30,19 @@ Walked out once, came back, and was allowed to.
 **Attacks**
 - Greataxe: +4 to hit, 1d12+2 Slashing (+2 raging), two-handed, Cleave.
 - Handaxe: +4 to hit, 1d6+2 Slashing (+2 raging), thrown 6/18 m, Vex.
+- Battleaxe: +4 to hit, 1d8+2 Slashing one-handed with the Shield, 1d10+2 two-handed (+2 raging). No mastery with it yet.
+
+Two ways to stand: **Shield and Battleaxe or Handaxe, AC 16**, or **Greataxe, AC 14**. The Shield takes an action to put on or take off.
 
 **Gear:** Greataxe, 4 Handaxes, Explorer's Pack (backpack, bedroll, 2 flasks of oil, 10 days'
 rations, rope, tinderbox, 10 torches, waterskin), quarterstaff, calligrapher's supplies, a
-history book, 8 sheets of parchment, a robe. 123 GP.
+history book, 8 sheets of parchment, a robe. Bought day 1: Shield, Battleaxe, a **Potion of Healing** (2d4+2 HP, a Bonus Action to drink), 10 GP of incense (one recasting of *Find Familiar*). 17 GP.
 
 ## Ives (it; "Ives" to everyone)
 
 Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is its first partner.
 
-- **HP** 13 (d8) · **AC** 13 (Leather 11 + DEX 1 + Integrated Protection 1) · **Speed** 9 m · **Initiative** +1 · **Proficiency** +2
+- **HP** 13 (d8) · **AC** 14 (Studded Leather 12 + DEX 1 + Integrated Protection 1) · **Speed** 9 m · **Initiative** +1 · **Proficiency** +2
 - **STR** 8 (−1) · **DEX** 12 (+1) · **CON** 11 (+0) · **INT** 9 (−1) · **WIS** 10 (+0) · **CHA** 15 (+2)
   (an automaton has no background: no score increases, no origin feat)
 - **Saves:** DEX +3, CHA +4. **Passive Perception** 12.
@@ -56,6 +59,6 @@ Automaton · Bard 2 (Lore at level 3) · Back · built for this seat; Albert is 
 **Attacks**
 - Dagger: +3 to hit, 1d4+1 Piercing, thrown 6/18 m.
 
-**Gear:** Leather Armor (part of the body), 2 Daggers, concertina, Entertainer's Pack (backpack,
+**Gear:** Studded Leather Armor (fitted day 1, part of the body), 2 Daggers, concertina, Entertainer's Pack (backpack,
 bedroll, bell, bullseye lantern, 3 costumes, mirror, 8 flasks of oil, 9 days' rations,
-tinderbox, waterskin), the call box (5 kg). 19 GP.
+tinderbox, waterskin), the call box (5 kg). 0 GP.
