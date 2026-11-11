@@ -177,3 +177,5 @@ has seen them. Mrs Bright would like it to stay that way. The Owl went up the la
 the brewery.
 
 Afternoon-ish, the malt loft. The Owl put the first arrow into the broad one with the cutlass, and the brass man laid the plants out under the two of them, as he had proposed. The plants held nobody. The broad one threw daggers from too far off and missed twice, and the thin one put two daggers into the brass man, who went down on the cobbles with the second one, and the plants went back into the boards with his concentration. The broad one is at nine hitpoints and marked. The thin one is whole and at the hoist door. The Owl is still on his feet.
+
+The broad one fell to the Owl's second arrow, a critical, with the brass man still on the cobbles beside him. The thin one looked at his friend, and at the Owl, and put the dagger down on the sacks. He asked that Tom Rudd be buried where the drain could not have him, and that the Owl leave him alone. He will work the brewery drays for the Saturday pay. The brass man is breathing, if not much, and will be kitted by the Owl next. The purser's money is still under the sacks, and nobody has said a word about it.
