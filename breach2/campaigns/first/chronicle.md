@@ -195,3 +195,10 @@ arrows and a flame into him, and he tore free in round two. The other two came t
 plants with their axes. Round three: two greataxes met the brass man in the mouth of the arch,
 and he went down among them, unconscious, with a point of his life left. The Owl is standing
 in the Yard with the three of them in front of him.
+
+The brass man took a hit from the first man in the mouth of the arch that wrecked him, and the
+Owl brought him up again with a prayer and a handful of spells, and the second man took him down
+again. The third came up through the mouth of the arch with his axe and finished it. The Owl ran.
+He ran west through the Yard, past the brewery and the cooper's, and nothing followed him past
+the sacks. Behind him, the three men stood over what was left of Rookwood, at the mouth of the
+arch, and the brass man's core is still in the wreck with his case.

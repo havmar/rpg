@@ -194,3 +194,11 @@ Produce Flame on A: 21, hit, 4. Fletcher on A: 25, hit, 2d8 keep 6 +3 = 9, Mark 
 Round 3: Berserkers first. A (already adjacent) 24, hit, 15. B moved and attacked Rookwood: 22, hit,
 15. C 11, miss. Rookwood 17 to 0 with 13 excess (not an instant death). Death save at his turn:
 11, a success. Fletcher is next. Berserkers don't yet reach Fletcher.
+
+**Day 48, the coal arch, rounds 3 and 4.** Fletcher's Cure Wounds (2d8+2): 3, 2, +2 = 7; Rookwood
+up at 7 HP. Fletcher's Adrenaline Rush: Dash, 12 squares west, 2 temporary HP. Round 4 (B 21,
+C 14, A 13): B 20 to hit (natural 20), critical, 2d12+3 = 16; Rookwood 7 to 0, excess 9. C
+against an unconscious target, advantage, 13 with 5, hit for 18, critical, 2d12+3 = 11: 0 HP,
+two death-save failures. A, advantage, 19 with 5, hit for 24, critical: two more failures, so
+four in all: dead as a body. The core is in the wreck at (0,3), with the gizmo case and the
+call box. Rookwood's body is "wrecked", not "dead": the core survives short of disintegration.
