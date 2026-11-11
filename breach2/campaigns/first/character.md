@@ -1,6 +1,6 @@
 # The Owl · grade 1 · N Division, Nine Bridges
 
-Pair's purse: **30 GP** (Fletcher 21 GP, Rookwood 9 GP). XP: **150** (level 3 at 450). Relics: the Cloak of the Manta Ray from #19, attuned to Fletcher on day 47. (The copper scale was Ives's, and went dead with his bond on day 41.)
+Pair's purse: **30 GP** (Fletcher 21 GP, Rookwood 9 GP). XP: **350** (level 3 at 450). Relics: the Cloak of the Manta Ray from #19, attuned to Fletcher on day 47. (The copper scale was Ives's, and went dead with his bond on day 41.)
 
 ## Probationer Bob Fletcher (he/him)
 

@@ -149,3 +149,13 @@ hit, 7 and 6: Rookwood 17 to 4. Round 2: Fletcher hit Rudd again (15; 2d8 keep 7
 hit at 0 HP a death-save failure. Concentration ended, so Entangle went. Fletcher's Wisdom save
 against Enthralling Panache was rolled in round 1 (16 against DC 12); Rudd used daggers instead,
 so it was never needed.
+
+**Day 47, round 3.** Fletcher's longbow on Rudd (9 HP): 27, a natural 20, critical. Damage set 1
+2d8 = 10 and set 2 = 6, keep 10, +3 = 13; Mark 2d6 = 10. Rudd dead, 200 XP to Fletcher (350).
+Pegg's morale (WIS save DC 10, 1d20+1): 16, stays. The talk: Fletcher offered Ned's message, bread
+from Mrs Bright, the brewery drays for the week's loading, and no shot if he put the dagger down.
+Pegg took it, on two terms: Rudd buried, and to be left alone. He keeps the purser's 40 GP; he
+didn't ask for it, and the pair hasn't taken it. Pegg is loose as a labourer, not a fighter; the
+group is struck from the loose list (`day.py clear 4`). Rookwood's death save at his turn: 18,
+a success (1 failure, 1 success). The kit can't be used the same turn as the longbow; it's an
+action (Utilize).

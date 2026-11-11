@@ -558,15 +558,6 @@
    "since": 37,
    "groups": 1,
    "why": "spilled"
-  },
-  {
-   "breach": 19,
-   "kind": "Pirate",
-   "level": 2,
-   "precinct": "Vinegar Yard",
-   "since": 41,
-   "groups": 1,
-   "why": "spilled"
   }
  ],
  "fallen": [
