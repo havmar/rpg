@@ -159,3 +159,8 @@ didn't ask for it, and the pair hasn't taken it. Pegg is loose as a labourer, no
 group is struck from the loose list (`day.py clear 4`). Rookwood's death save at his turn: 18,
 a success (1 failure, 1 success). The kit can't be used the same turn as the longbow; it's an
 action (Utilize).
+
+**Day 47, round 4.** Fletcher stepped one square and knelt by Rookwood (the kit needs reach),
+then used the Healer's Kit (a Utilize action, no check): Rookwood stable, death-save count
+cleared. Rookwood wakes at 1 HP in 1 hour (1d4 = 1). Pegg went from the hoist door to Tom Rudd's
+body by the sacks; no roll, no threat, the deal stands.
