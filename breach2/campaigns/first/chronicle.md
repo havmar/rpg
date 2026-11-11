@@ -175,3 +175,5 @@ to the malt loft. Asked after the Berserkers, the brass man said they were loose
 since day eight, from the Raven's breach, and that the ledger reads them out each dawn. Nobody
 has seen them. Mrs Bright would like it to stay that way. The Owl went up the lane towards
 the brewery.
+
+Afternoon-ish, the malt loft. The Owl put the first arrow into the broad one with the cutlass, and the brass man laid the plants out under the two of them, as he had proposed. The plants held nobody. The broad one threw daggers from too far off and missed twice, and the thin one put two daggers into the brass man, who went down on the cobbles with the second one, and the plants went back into the boards with his concentration. The broad one is at nine hitpoints and marked. The thin one is whole and at the hoist door. The Owl is still on his feet.
