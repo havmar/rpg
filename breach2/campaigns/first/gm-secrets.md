@@ -137,3 +137,15 @@ lever on Pegg.
 
 **Berserkers** (level 3, from the Raven's #6, loose since day 8): location unknown, not yet
 hunted. Rookwood said so; Mrs Bright hasn't seen them and says she'd like to keep it that way.
+
+**Day 47, the fight in the malt loft, rounds 1 and 2.** Initiative: Fletcher 18, Rookwood 12,
+Rudd 10, Pegg 8. Fletcher marked Rudd and hit him with the longbow (19 vs AC 14; 2d8 keep 1 +3
+= 4, Mark 6: 10). Rookwood's Entangle over the pair: STR saves 16 and 16 vs DC 13, both stood;
+the square was difficult ground. Rudd's two daggers at Fletcher, from 10.5 m, at disadvantage,
+both missed (6 with a natural 1; 11). Pegg's two daggers at Rookwood, from 4.5 m: 21 and 18, both
+hit, 7 and 6: Rookwood 17 to 4. Round 2: Fletcher hit Rudd again (15; 2d8 keep 7 +3 = 10, Mark
+4: 14), Rudd 9/33. Rookwood Cure Wounds on himself (1d8+3 = 4): 8. Rudd's two daggers missed
+(10, 8). Pegg: 25 (natural 20), critical, 2d4+3 = 9; and 16, 1d4+3 = 5. Rookwood to 0, the second
+hit at 0 HP a death-save failure. Concentration ended, so Entangle went. Fletcher's Wisdom save
+against Enthralling Panache was rolled in round 1 (16 against DC 12); Rudd used daggers instead,
+so it was never needed.
