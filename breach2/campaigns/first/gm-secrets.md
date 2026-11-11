@@ -164,3 +164,12 @@ action (Utilize).
 then used the Healer's Kit (a Utilize action, no check): Rookwood stable, death-save count
 cleared. Rookwood wakes at 1 HP in 1 hour (1d4 = 1). Pegg went from the hoist door to Tom Rudd's
 body by the sacks; no roll, no threat, the deal stands.
+
+**Day 47 to 48, the rest.** Pegg buried Tom Rudd by the mash-house wall, day 47. Rookwood woke
+at 1 HP after one hour (1d4 = 1). The pair walked to the station (no legs). `day.py report` on
+day 47 (the close, Rudd dead, the castaways bargained); the Long Rest at the station; `day.py dawn`
+gives day 48: #22 (Spirit Naga, true level 18, grade 9, Needle Street, 2 legs) assigned to the
+Fox, due day 49. The Pit Fiends are "no longer a problem": GM says they went to ground in the
+ice-house under the Tallow Row music hall and the cellar door is bolted from the inside. Stubbs's
+"warm" is the clue. The Berserkers (level 3, unseen since day 8) are still loose in the Yard and
+can be hunted (a room at level 3, in the precinct, one encounter).
