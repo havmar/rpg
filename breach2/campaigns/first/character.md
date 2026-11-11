@@ -26,7 +26,7 @@ Wants out, and is counting the days to the next review.
 - Scimitar: +5 to hit, 1d6+3 Slashing; then the Shortsword in the other hand as part of the same action: +5 to hit, 1d6 Piercing.
 - Spear: +2 to hit, 1d6 Piercing (1d8 two-handed), thrown 6/18 m.
 
-**Gear:** Studded Leather Armor, Longbow, 40 Arrows, 2 Quivers, Scimitar, Shortsword, Spear, Shortbow, Pike's battleaxe (from Bess Harrow), Cloak of the Manta Ray (attuned: breathes underwater, swims 18 m), sprig of mistletoe (focus), Explorer's Pack (backpack, bedroll, 2 flasks of oil, 10 days' rations, rope, tinderbox, 10 torches, waterskin), Healer's Kit (10 uses: stabilise a dying creature without a check), dice, traveler's clothes. 21 GP.
+**Gear:** Studded Leather Armor, Longbow, 40 Arrows, 2 Quivers, Scimitar, Shortsword, Spear, Shortbow, Pike's battleaxe (from Bess Harrow), Cloak of the Manta Ray (attuned: breathes underwater, swims 18 m), sprig of mistletoe (focus), Explorer's Pack (backpack, bedroll, 2 flasks of oil, 10 days' rations, rope, tinderbox, 10 torches, waterskin), Healer's Kit (9 of 10 uses left: stabilise a dying creature without a check), dice, traveler's clothes. 21 GP.
 
 ## Rookwood (he/him)
 
