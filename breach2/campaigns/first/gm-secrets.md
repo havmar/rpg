@@ -184,3 +184,13 @@ read, the pair reaches the mouth unseen, and the Berserkers are not yet alert. C
 arch; the men carry the brewery's own sacks. Their group is here for good (#6 is closed).
 Bargain = the drays, as with Pegg. Kill = 1,350 XP, but three Berserkers are 201 HP against the
 pair's 35.
+
+**Day 48, the coal arch, rounds 1 to 3.** Initiative: B 21, C 14, A 13, Rookwood 11, Fletcher 4.
+The three were surprised (the trail brought the pair unseen). Round 1: Rookwood's Entangle over the
+three (5 to 8 by 1 to 4): STR saves A 10 (fails), B 16, C 19. Fletcher's longbow on A with
+advantage (2d20 keep 18, +7 = 25), 2d8 keep 8 +3 = 11, Mark 4: 15. Round 2: A's escape (1d20+3,
+DC 13) 18, and he moved to (1,2) with the action spent; B and C pushed through the plants. Rookwood's
+Produce Flame on A: 21, hit, 4. Fletcher on A: 25, hit, 2d8 keep 6 +3 = 9, Mark 5: 14. A at 34.
+Round 3: Berserkers first. A (already adjacent) 24, hit, 15. B moved and attacked Rookwood: 22, hit,
+15. C 11, miss. Rookwood 17 to 0 with 13 excess (not an instant death). Death save at his turn:
+11, a success. Fletcher is next. Berserkers don't yet reach Fletcher.

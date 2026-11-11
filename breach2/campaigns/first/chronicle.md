@@ -188,3 +188,10 @@ Day 48, midday. The Owl went out to hunt the Berserkers the Raven had left in th
 read the trail through the soot on the first try, and it led to the old coal arch under the
 viaduct at the west end of the Yard, where three men have been living on brewery sacks since
 day 7. They had not seen the pair come. The arch is quiet but for a fire and a whetstone.
+
+Midday. The brass man and the Owl came up on the coal arch with the three men inside, and the
+Owl opened with his bow before they were awake. The plants took one of them, and the Owl put two
+arrows and a flame into him, and he tore free in round two. The other two came through the
+plants with their axes. Round three: two greataxes met the brass man in the mouth of the arch,
+and he went down among them, unconscious, with a point of his life left. The Owl is standing
+in the Yard with the three of them in front of him.
