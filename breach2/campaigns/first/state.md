@@ -16,4 +16,4 @@
 - **Breaches:** #22 (grade 9, Spirit Naga, Needle Street) is the Fox's, due day 49. #8 (grade 5, Grick, Lime Wharf) open, no one.
 - **The quota:** review on day 61, thirteen days off. Fletcher at 350 XP; level 3 needs 450.
 - **Standing orders:** none.
-- **Open question to the human:** Fletcher's action (round 3, turn 4). Cure Wounds on Rookwood (he stands at once, but he is still next to three men), the Healer's Kit (stabilises him, but an attack on an unconscious creature within reach is an automatic hit), or fall back and leave him.
+- **Open question to the human:** Fletcher's action (round 3, turn 4). Cure Wounds on Rookwood (he stands at once, but he is still next to three men), the Healer's Kit (stabilises him, but attacks against an unconscious creature within reach have Advantage and crit on a hit), or fall back and leave him.
