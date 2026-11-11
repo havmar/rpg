@@ -207,3 +207,9 @@ Midday. The Owl turned back east across the Yard, and walked until he was out of
 three men at the arch mouth, nine squares short of it. He stopped there, with the rush spent on
 the way out and the bow across his back, and looked at the wreck the length of the Yard away.
 Nobody came out after him.
+
+Midday. The Owl went back in on the Rush and took the brass man's core out of the wreck, under the
+men's noses, and fell back. They came after him as far as the street and caught him. The first
+took two points of his life off and the second took the rest, and the Owl dropped to one point,
+and the core is in his pack. The men stand over him now, with their axes, and the arch behind
+them has the brass man's case in it.

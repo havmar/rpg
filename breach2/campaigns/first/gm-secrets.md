@@ -210,3 +210,11 @@ then they reach him on their turn (B first, initiative 21). The gizmo case is 25
 the 50 lb of STR 10, so speed drops 2 squares: with it, no escape in the same turn. Relentless
 Endurance is the net for one round of three greataxes (only a hit that leaves him at 0 with less
 than 18 damage over would be saved; the rest is death).
+
+**Day 48, the core (rounds 6 and 7).** Round 6: the Berserkers held at the mouth (no roll). Fletcher
+Rushed (Dash, 12 squares), reached the wreck's edge at (-1,3), took the core (one action), and fell
+back four squares to (-5,3), six from the men (inside their reach). Round 7: B 18, hit, 1d12+3 = 13
+(2 temporary HP absorb 2, so 11 to HP); C natural 20, critical, 2d12+3 = 11, Fletcher to 0 with 4
+over, so Relentless Endurance drops him to 1 HP (used); A 14, miss. The men came out to (-4,2),
+(-4,3), (-4,4). The "distraction" (a flask of oil) would have cost the core's action; the men are
+inside six squares of the wreck and of Fletcher, so a distraction doesn't pull anyone out of reach.
