@@ -202,3 +202,8 @@ again. The third came up through the mouth of the arch with his axe and finished
 He ran west through the Yard, past the brewery and the cooper's, and nothing followed him past
 the sacks. Behind him, the three men stood over what was left of Rookwood, at the mouth of the
 arch, and the brass man's core is still in the wreck with his case.
+
+Midday. The Owl turned back east across the Yard, and walked until he was out of reach of the
+three men at the arch mouth, nine squares short of it. He stopped there, with the rush spent on
+the way out and the bow across his back, and looked at the wreck the length of the Yard away.
+Nobody came out after him.

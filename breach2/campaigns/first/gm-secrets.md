@@ -202,3 +202,11 @@ against an unconscious target, advantage, 13 with 5, hit for 18, critical, 2d12+
 two death-save failures. A, advantage, 19 with 5, hit for 24, critical: two more failures, so
 four in all: dead as a body. The core is in the wreck at (0,3), with the gizmo case and the
 call box. Rookwood's body is "wrecked", not "dead": the core survives short of disintegration.
+
+**Day 48, the return (round 5).** Fletcher walked 6 squares east to 9 squares from the mouth. No
+roll. The three hold at the mouth over the wreck and do not come out. The raid (next turn): Rush
+(Dash, 12 squares) to (-1,3), adjacent to the wreck at (0,3); the core is taken with one action;
+then they reach him on their turn (B first, initiative 21). The gizmo case is 25 kg (55 lb), over
+the 50 lb of STR 10, so speed drops 2 squares: with it, no escape in the same turn. Relentless
+Endurance is the net for one round of three greataxes (only a hit that leaves him at 0 with less
+than 18 damage over would be saved; the rest is death).
