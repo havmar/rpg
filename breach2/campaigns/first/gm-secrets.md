@@ -173,3 +173,14 @@ Fox, due day 49. The Pit Fiends are "no longer a problem": GM says they went to 
 ice-house under the Tallow Row music hall and the cellar door is bolted from the inside. Stubbs's
 "warm" is the clue. The Berserkers (level 3, unseen since day 8) are still loose in the Yard and
 can be hunted (a room at level 3, in the precinct, one encounter).
+
+**Day 48, the hunt for the Berserkers.** The loose group: 3 Berserkers (1d2+1 = 3; CR 2, 450 XP
+each, 67 HP, AC 13, greataxe, Bloodied Frenzy); disposition Neutral (1d6 = 3). Seed 659 at level
+3 gave quasits and a cultist, not Berserkers, so the hideout is built by hand. The room: the
+disused coal arch under the viaduct at the Yard's west end, about 10 squares deep, coal drops on
+both sides, a fire at the far (east) end. The three are inside, one by the fire, one asleep, one
+at a whetstone. Fletcher's Survival (1d20+4 vs DC 12) rolled 24, a natural 20: the trail is
+read, the pair reaches the mouth unseen, and the Berserkers are not yet alert. Coins: none in the
+arch; the men carry the brewery's own sacks. Their group is here for good (#6 is closed).
+Bargain = the drays, as with Pegg. Kill = 1,350 XP, but three Berserkers are 201 HP against the
+pair's 35.

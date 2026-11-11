@@ -183,3 +183,8 @@ The broad one fell to the Owl's second arrow, a critical, with the brass man sti
 Round four, the yard. The Owl knelt by the brass man and used the kit on him, and the brass man stopped going down. He will wake in an hour with a point of his life back, and no more than that. Pegg came to the hoist door, looked down at them both, and went back to Tom Rudd by the sacks. Nobody has said yet whether Tom is going into the ground or into the brewery's dung cart.
 
 The Owl took Rudd's body to the yard's corner with Pegg and two brewery men holding the lantern, and Pegg put him in the ground by the mash-house wall without a word, with Mrs Bright's loaf on the stone. Rookwood came round an hour later, asked very politely whether the Probationer had been hit, and remembered he had. The station took the report in the morning, and Crane said Lime Wharf had a grade five standing open with nobody to take it, and that he would not ask the Owl. Yet. At dawn Finch read out the day's news: a grade nine at Needle Street that the Fox will take; the Pit Fiends of Tallow Row gone off the list, and the cellar of the music hall bolted from the inside; the Berserkers still loose in the Yard; and Lime Wharf still standing open. Stubbs watched the brass man over her tea, and said, to nobody, that he was warm.
+
+Day 48, midday. The Owl went out to hunt the Berserkers the Raven had left in the Yard. Fletcher
+read the trail through the soot on the first try, and it led to the old coal arch under the
+viaduct at the west end of the Yard, where three men have been living on brewery sacks since
+day 7. They had not seen the pair come. The arch is quiet but for a fire and a whetstone.
