@@ -1,4 +1,4 @@
-# N Division · Nine Bridges · as of day 47
+# N Division · Nine Bridges · as of day 48
 
 You are **the Owl**. This is what you knew when you last reported in. Next review: day 61.
 
@@ -19,22 +19,18 @@ You are **the Owl**. This is what you knew when you last reported in. Next revie
 
 Open breaches, as the mast reads them. The Reader is sometimes wrong.
 
-- #8 · grade 5 · Grick · Lime Wharf · open 32 days · **no one** · withdrawn from
-- #19 · grade 1 · Giant Wolf Spider · Vinegar Yard · open 6 days · **you**
+- #8 · grade 5 · Grick · Lime Wharf · open 33 days · **no one** · withdrawn from
+- #22 · grade 9 · Spirit Naga · Needle Street · open 0 days · the Fox
 
 ## Loose in the district
 
 - 1. Berserkers (from a level 3 breach) in Vinegar Yard (spilled).
 - 2. Giant Apes (from a level 17 breach) in Chapel Fields (spilled).
-- 3. Pit Fiends (from a level 18 breach) in Tallow Row (spilled).
-- 4. Pirates (from a level 2 breach) in Vinegar Yard (spilled).
 
-## This morning (day 47)
+## This morning (day 48)
 
-- The new Owl is Bob Fletcher (he/him, Orc Ranger), Probationer, with a new automaton, Rookwood (Druid). THIS IS YOUR SEAT: the human plays them.
-- The Wren closed #21 (Grick, Vinegar Yard).
-- #19 (Giant Wolf Spider, grade 1) spilled into Vinegar Yard.
-- ASSIGNED TO YOU: #19, grade 1, Giant Wolf Spider, Vinegar Yard.
+- NEW BREACH #22: the mast reads grade 9, Spirit Naga, Needle Street.
+- The Pit Fiends loose in Tallow Row are no longer a problem; the GM says what became of them.
 
 ## The wall
 
