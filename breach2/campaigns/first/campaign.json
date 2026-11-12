@@ -26,8 +26,8 @@
      "INT": 11
     },
     "since": 57,
-    "trait": "argues with the automaton in public and loses",
-    "level": 2
+    "level": 2,
+    "quirk": "has a nod for every lamplighter"
    },
    "arrives": null,
    "automaton": {
@@ -70,8 +70,8 @@
      "STR": 6
     },
     "since": -59,
-    "trait": "closes breaches that aren't theirs and has the reprimands to show for it",
-    "level": 3
+    "level": 3,
+    "quirk": "remembers everyone's tea"
    },
    "arrives": null,
    "automaton": {
@@ -114,8 +114,8 @@
      "CHA": 8
     },
     "since": -89,
-    "trait": "is studying the rifts and pesters the Reader for the mast's records",
-    "level": 6
+    "level": 6,
+    "quirk": "walks on the kerb's edge"
    },
    "arrives": null,
    "automaton": {
@@ -183,8 +183,8 @@
      "STR": 8
     },
     "since": -149,
-    "trait": "has buried three partners and visits them on rest days",
-    "level": 10
+    "level": 10,
+    "quirk": "has a whistle that stops dogs"
    },
    "arrives": null,
    "automaton": {
@@ -227,8 +227,8 @@
      "CHA": 10
     },
     "since": -179,
-    "trait": "trains probationers unasked and is good at it",
-    "level": 12
+    "level": 12,
+    "quirk": "wears odd socks on purpose"
    },
    "arrives": null,
    "automaton": {
@@ -271,8 +271,8 @@
      "STR": 6
     },
     "since": -209,
-    "trait": "has a running bet with another seat on who reaches Head Office first",
-    "level": 14
+    "level": 14,
+    "quirk": "takes the stairs two at a time"
    },
    "arrives": null,
    "automaton": {
@@ -315,8 +315,8 @@
      "STR": 8
     },
     "since": -239,
-    "trait": "is deaf in one ear from a musket and says the tin hears for two",
-    "level": 16
+    "level": 16,
+    "quirk": "whistles on stairs"
    },
    "arrives": null,
    "automaton": {
@@ -359,8 +359,8 @@
      "CHA": 11
     },
     "since": -269,
-    "trait": "labels a keepsake from every breach and keeps them in a locker",
-    "level": 18
+    "level": 18,
+    "quirk": "hates pigeons and says so"
    },
    "arrives": null,
    "automaton": {
@@ -403,8 +403,8 @@
      "INT": 8
     },
     "since": -299,
-    "trait": "takes the smallest bunk, eats last, and is adored for it",
-    "level": 19
+    "level": 19,
+    "quirk": "refuses to step on a drain cover"
    },
    "arrives": null,
    "automaton": {

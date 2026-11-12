@@ -14,7 +14,8 @@ up to ten, so weak kinds come in numbers. Kinds are picked so that over levels 1
 SRD monsters are about equally likely, with crowds the exception (see pool_for). Rooms add up to at least the SRD's XP from level N
 to N+1 (the game halves the thresholds, so killing about half of a breach is a level). Every
 group carries a DISPOSITION: Evil kinds are Hostile; every other group rolls a d6 (1-2
-Hostile, 3-5 Neutral, 6 Willing; a mindless kind is Neutral on a 6 too).
+Hostile, 3-5 Neutral, 6 Willing; a mindless kind is Neutral on a 6 too). The gizmo sends
+home anything Willing or held, so a disposition says what it takes, not whether.
 
 Usage:
   python3 breach2/tools/gen_breach.py --seed 4812 --level 3
@@ -23,6 +24,8 @@ Usage:
       # encounter: a new Hostile group, more of the principal kind or something else (even odds)
   python3 breach2/tools/gen_breach.py --seed 77 --level 3 --encounter 1 --street  # a stray
       # in the street, any kind, at the pair's level; any seed
+  python3 breach2/tools/gen_breach.py --seed 8053 --level 3 --kind Berserker  # a hunt: one
+      # loose group of a NAMED kind where it has gone to ground (`day.py ledger` prints the line)
 
 day.py imports breach() and principal_for(); keep the RNG call order if you change them.
 """
@@ -70,9 +73,18 @@ FLOODED = "flooded: water 3 m deep, a 1.5 m ledge around the edge"
 ANCHOR = ("the anchor: where the piece is lodged; the air is thick and the floor hums; "
           "the gizmo is set up here and nowhere else")
 HOSTILE_ON = 2       # a group that isn't Evil is Hostile anyway on a d6 roll this low
-HOSTILE = "Hostile: fights; will not be talked round"
-NEUTRAL = "Neutral: no quarrel yet; will not go home unless convinced (GM's discretion)"
+HOSTILE = "Hostile: fights; will not be talked round; goes home only held"
+NEUTRAL = "Neutral: no quarrel yet; will not go home unless convinced (GM's discretion) or held"
 WILLING = "Willing: wants to go home; may help"
+# Where a loose group has gone to ground in the city (a hunt).
+HIDEOUTS = [
+    "a coal cellar under a terrace", "a railway arch, bricked up and broken open again",
+    "the loft of an empty warehouse", "a culvert in the Under, ankle-deep",
+    "a derelict chapel", "a boiler house gone cold", "a canal barge tied up and stripped",
+    "the back rooms of a shut public house", "a tram shed at the end of a closed line",
+    "a tenement the landlord has given up on", "a mill's dye works, vats and all",
+    "a builder's yard behind a hoarding",
+]
 
 SURFACE = {
     "Beast": "their country indoors: a tenement whose stairwells are forest, a depot gone to marsh",
@@ -272,6 +284,39 @@ def encounter(level, seed, n, street=False):
             f"Coins {g['total'] // 10:,} GP.")
 
 
+def find_kind(name):
+    """An SRD monster by name, forgiving of case and a plural s."""
+    want = name.strip().lower()
+    forms = {want, want.rstrip("s"), want[:-2] if want.endswith("es") else want,
+             want[:-3] + "f" if want.endswith("ves") else want,
+             want[:-3] + "y" if want.endswith("ies") else want}
+    for m in monsters():
+        if m["name"].lower() in forms:
+            return m
+    near = [m["name"] for m in monsters() if want.rstrip("s") in m["name"].lower()]
+    raise SystemExit(f"no SRD monster named {name!r}"
+                     + (f"; did you mean: {', '.join(near)}?" if near else ""))
+
+
+def hunt(level, seed, kind):
+    """One loose group of a named kind, where it has gone to ground: the same group a room
+    of its breach would hold (Moderate or High for the pair at the breach's level), with a
+    hideout, a room, a feature and a disposition. A kind too strong for the level comes
+    alone; one too weak comes ten strong."""
+    rng = random.Random(f"{seed}:hunt:{kind.lower()}")
+    m = find_kind(kind)
+    g = group(m, level, pick_diff(rng), rng)
+    w, h = rng.choice(SIZES)
+    feature = FLOODED if g["aquatic"] else rng.choice(FEATURES[:-1])  # the city's own sky
+    disp = disposition(g["type"], g["align"], rng)
+    over = "" if m["xp"] <= budgets(level)[2] else " (over High: one alone is more than a room)"
+    return (f"**Hunt:** {g['count']}× {g['name']} (CR {g['cr']}, {g['type']}, {g['align']}), "
+            f"{g['total']:,} XP, {g['diff']} at level {level}{over}.\n"
+            f"**Gone to ground in:** {rng.choice(HIDEOUTS)}; {w}×{h} sq "
+            f"({w * 1.5:g}×{h * 1.5:g} m); {feature}.\n"
+            f"**Disposition:** {disp}. Coins {g['total'] // 10:,} GP.")
+
+
 def breach_md(b):
     p = b["principal"]
     out = [f"## Breach (seed {b['seed']}) · level {b['level']} (grade {grade_of(b['level'])})"
@@ -298,7 +343,11 @@ def main():
     ap.add_argument("--reported", type=int, help="the grade the Reader reported, if wrong")
     ap.add_argument("--encounter", type=int, help="print the Nth encounter instead")
     ap.add_argument("--street", action="store_true", help="with --encounter: a stray, any kind")
+    ap.add_argument("--kind", help="a hunt: one loose group of this SRD kind, gone to ground")
     a = ap.parse_args()
+    if a.kind:
+        print(hunt(a.level, a.seed, a.kind))
+        return
     if a.encounter:
         print(encounter(a.level, a.seed, a.encounter, a.street))
         return

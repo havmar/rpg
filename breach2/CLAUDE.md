@@ -24,7 +24,8 @@ breach2/
   setting.md           the city, breaches, masts, the Board, automatons (with the species block)
   tools/roll.py        dice roller (advantage, disadvantage, keep highest/lowest)
   tools/day.py         the Division's day: seats, ledger, spills, deaths, arrivals, review
-  tools/gen_breach.py  one breach as a dungeon for a pair, with each group's rolled disposition
+  tools/gen_breach.py  one breach as a dungeon for a pair, with each group's rolled disposition;
+                       also one encounter, or a hunt for a named loose group (--kind)
   campaigns/<name>/    one folder per campaign (see Campaign files)
 ```
 
@@ -51,8 +52,8 @@ Never read a big file whole; find the file by name and `grep -n`.
 
 A day is one turn. **Dawn**: `day.py dawn` rolls the day; at the station the ledger is read
 out. **Out**: the legs to the precinct, an encounter die each. **The breach**: room by room
-until it's closed, left, or the dungeoneer is dead. **Report**: back at the station, or by a
-call. Then a Long Rest ends the day, and the next dawn is rolled.
+until it's closed, left, or the dungeoneer is dead. **Report**: back at the station. Then
+a Long Rest ends the day, and the next dawn is rolled.
 
 There is no fixed month. Time is the resource: every dawn can put a new breach on the pair's
 desk, and every dawn an open one can spill.
@@ -73,11 +74,9 @@ These replace the SRD where they differ.
   and marks its room empty. This is the price of a Long Rest with a breach half done.
 - **A grade is two levels**: grade N is levels 2N−1 and 2N. The Reader gives only the grade,
   so "a grade 3" is level 5 or 6, and one reading in six is a whole grade too low.
-- **The ledger is known only at the station or by a call.** A call from the field costs
-  10 GP × the pair's grade and tells the pair the ledger as it stands. Without one, the
-  pair learns the morning's news when it walks in. The GM runs `dawn` every day regardless
-  and keeps what the pair hasn't heard to itself; `day.py report` rewrites `division.md`
-  when they do hear.
+- **The ledger is known only at the station.** There is no calling in: the pair learns the
+  morning's news when it walks in. The GM runs `dawn` every day regardless and keeps what
+  the pair hasn't heard to itself; `day.py report` rewrites `division.md` when they do hear.
 - **Assigned work comes first.** The pair is expected to report after a breach, not wander.
   Closing a breach that isn't theirs is misappropriation (`setting.md`): the GM plays the
   consequences, there is no rule for them. The Director may also send the pair to any
@@ -133,28 +132,35 @@ These replace the SRD where they differ.
   briskly: one initiative, attacks rolled together.
 - Every group has a **disposition**, rolled by the generator. Evil kinds are Hostile; every
   other group rolls a d6: 1 or 2 Hostile, 3 to 5 Neutral, 6 Willing.
-  - **Hostile:** fights, and will not be talked round.
+  - **Hostile:** fights, and will not be talked round. It goes home held, or it dies.
   - **Neutral:** has no quarrel yet, and no wish to go anywhere. From inside, this is its
     home and the pair are armed strangers. Whether it can be convinced, and by what, is the
     **GM's discretion**, played from what the creature is and how clever: a scene, not one
     roll, and not a quest or a price by default. A beast or a mindless thing isn't argued
-    with; it is calmed, penned, lured or left alone.
+    with; it is calmed, penned, lured or netted.
   - **Willing:** knows it is lost, wants to go home, may help.
-- **The gizmo.** The automaton carries it: a 25 kg case that folds out, at the **anchor**
-  (the deepest room) and nowhere else, into the machine that works the piece loose. Setting
-  it up and running it takes **10 minutes in peace**: the automaton does nothing else, and
-  if he is hit or leaves it the run starts over. The dungeoneer guards alone. The whole
-  breach feels it start, and every Hostile group still alive inside comes to the anchor.
-- **Who goes home.** When the run ends the piece goes back, and with it every denizen **of
-  that piece** that is **within 6 m of the gizmo and has kept still for the last minute**. So going home is
-  something a creature does, not something done to it; one that won't stand still can only
-  be sent bound or senseless and laid there, which is allowed and is work.
-- **The rest stay.** The breach is **closed** and the building is itself again in a day. Any
-  denizen alive in it and not sent is left standing in a cellar or a loft, and is **loose**
-  in the precinct. Tell the script (`day.py close ID`, with `--left N` for N groups left
-  behind). An officer who closes a breach and leaves half of it on the street has closed
-  it; the precinct and the Director will have views.
-- A wrecked automaton runs no gizmo: the breach stays open until he is rebuilt.
+- **Everything goes.** A denizen is a piece of another world walking about in this one, and
+  the world wears thin around it. None may stay: there is no leaving one be and no settling
+  one in the city. Every denizen ends **sent home or dead**, and those are the only two.
+- **The gizmo.** The automaton carries it, a 25 kg case, and it does two things.
+  - **Sending**, anywhere, in a breach or in the street: the automaton works it for
+    **1 minute** and does nothing else, and every denizen within 6 m that is **willing or
+    held** for that whole minute goes home, whether its piece is still lodged or long gone.
+    Held is Restrained, Paralyzed, Unconscious, or bound hand and foot. Nothing else is
+    sent: not one that is merely cornered, Grappled or frightened. If the automaton is hit
+    or leaves it, the minute starts over.
+  - **Closing**, at the **anchor** (the deepest room) and nowhere else: **10 minutes in
+    peace**, under the same terms, and the piece itself works loose and goes home, taking
+    every denizen within 6 m that is willing or held as it ends. The dungeoneer guards
+    alone. The whole breach feels a closing start, and every Hostile group still alive
+    inside comes to the anchor.
+- **The rest are loose.** The breach is **closed** and the building is itself again in a
+  day. Any denizen alive in it and not sent is left standing in a cellar or a loft, **loose**
+  in the precinct, and still has to go: a hunt, and then a sending or a kill. Tell the
+  script (`day.py close ID`, with `--left N` for N groups left behind). An officer who
+  closes a breach and leaves half of it on the street has closed it; the precinct and the
+  Director will have views.
+- A wrecked automaton runs no gizmo: nothing is sent and nothing closed until he is rebuilt.
 - **A breach's contents are never settled.** The generator's table is what was there when
   the pair walked in. A lodged piece keeps arriving, and loose things wander in from the
   street; the pair never knows a breach is empty, only that it is quiet.
@@ -176,10 +182,17 @@ These replace the SRD where they differ.
   grade: Uncommon at grades 1 and 2, Rare at 3 to 5, Very Rare at 6 to 8, Legendary at 9 and
   10. Pick below the cap more often than at it. A breach left open, or closed by someone
   else, leaves the pair nothing.
-- A relic **bonds** to whichever of the pair takes it up. It can't be given, sold or bought,
-  and it is dead metal when its holder dies. An automaton's relics die with his bond: when
-  his partner dies, or his core is lost.
-  Attunement is as written. The GM may also put a consumable in a room where it fits.
+- A relic **bonds to the seat**, not the person: it works for the seat's holder and the
+  seat's automaton and for nobody else, and can't be given, sold or bought. Attunement is
+  as written. The GM may also put a consumable in a room where it fits.
+- **The seat keeps its relics.** An automaton's core takes in the pattern of every relic the
+  pair carries. When the dungeoneer dies, or the automaton is wrecked, the core sends those
+  patterns to the station through the mast in the moment it goes dark, and the originals
+  crumble where they lie. Nothing has to be carried home. The Mechanic's fabricator builds
+  them again, layer by layer, and they are on the bench for **the next holder of the seat**
+  (or for the rebuilt automaton). Only relics come back: coins and mundane gear stay where
+  they fell. A Commander called to Head Office takes the seat's relics along; the new
+  Probationer starts with none.
 - **Shops sell only mundane things:** anything in `reference/srd/Equipment/` at list price.
 - **Guns are ordinary.** The Pistol and Musket are in the SRD's weapon table; anyone with
   martial weapon proficiency uses them as written. At creation a character may swap a
@@ -199,13 +212,13 @@ These replace the SRD where they differ.
 - **The bond is to one officer and ends with them.** When a dungeoneer dies, their
   automaton goes dark where he stands. His core can't be bound again, so he can't be
   rebuilt as himself for anyone else: the core goes back to Head Office and the next
-  holder's automaton is a stranger who knows nothing of the seat. The pair's relics, his
-  and theirs, are dead metal.
+  holder's automaton is a stranger who knows nothing of the seat. What passes on is the
+  seat's **relics** (see Relics and gear): the transfer finds them built and waiting.
 - Dying in a breach leaves it open and unassigned.
 - **The automaton** drops to 0 HP and makes death saves like anyone. Three failures wreck the
   body. Its **core** (fist-sized, 1 kg) survives anything short of disintegration; if the
-  core comes home **and his partner is alive**, the fitter rebuilds the body in 1d6+1 days,
-  memory and all, and the pair is off the street meanwhile. A lost core is a new automaton,
+  core comes home **and his partner is alive**, the Mechanic rebuilds the body in 1d6+1 days,
+  memory and all, his relics rebuilt with him, and the pair is off the street meanwhile. A lost core is a new automaton,
   bound afresh, which remembers nothing.
 
 ### Fights: the GM plays both bodies
@@ -247,8 +260,14 @@ This game is for a story: **prose, brief and plain**, with the mechanics inside 
   happened. The best detail is where the breach's world meets the building it lodged in (a
   tide mark across a coal cellar's wall, a pew standing in a marsh).
 - **Speech is a line or two**, in character. The rest of a conversation is told, not quoted.
-- **Denizens get no names and no histories** unless the pair will meet them again. Names
-  and lives are for the seats and the station's people.
+- **Titles, not names.** The station's people have no names at all: the Director, the
+  Reader, the Clerk, the Mechanic, the Auditor. Another seat is its call sign ("the Fox is
+  late"), and its automaton is "the Fox's automaton". So: "his core survives, and the
+  Mechanic can rebuild him", never a surname. Personal names are for the human's own pair
+  and for the wall.
+- **Denizens get no names and no histories**, and nobody gets a backstory. A seat has a
+  call sign, a rank and one small **quirk** (a d100 in `day.py`): a habit to recognise it
+  by, nothing that decides who it is.
 - The district and the station as people, soot and weather, not tables. No mood for its own
   sake, no recap of what the human just read.
 
@@ -278,13 +297,15 @@ Most days the ledger has nothing for the pair. Such a day is a scene if the huma
 and a line if not; **"skip to the next breach"** runs the dawns as a paragraph of news. A day
 spent on one of these is still a day, and its dawn is still rolled.
 
-- **Hunt loose denizens.** One encounter: a room of `gen_breach.py` at the loose group's
-  level, in its precinct. A kill or a bargain. A denizen goes home only with its own
-  piece: a group spilled from a breach that is still open can be walked back to its anchor,
-  and one whose breach is closed is here for good. Dealt with, it comes off the list (`day.py clear N`).
+- **Hunt loose denizens.** One encounter, with the group that is actually on the list:
+  `day.py ledger` prints the line (`gen_breach.py --seed S --level L --kind "<Kind>"`),
+  which gives that kind in its numbers, where it has gone to ground, the room and its
+  disposition. Don't roll a breach or a stray for it. It ends in a kill or a sending (the
+  gizmo works anywhere on the willing and the held); then it comes off the list
+  (`day.py clear N`).
 - **Walk a precinct.** Its people, what the breaches have done to it, who is asking why
   the breach on their street has no one.
-- **Spend time with a seat**, by name from the roster, with its trait.
+- **Spend time with a seat**, by call sign from the roster, with its quirk.
 - **Attend to the automaton.** He remembers every breach the pair has worked. A standing
   order changes here.
 - **Study the breaches**, with the Reader: the campaign's long question.
@@ -301,10 +322,11 @@ spent on one of these is still a day, and its dawn is still rolled.
   Ranger (Hunter), Cleric (Life). **Back:** Wizard (Evoker), Sorcerer (Draconic), Warlock
   (Fiend), Bard (Lore), Rogue (Thief), Druid (Land).
 - **The automaton** is a full character of the other side's rolled class, species Automaton
-  (`setting.md`), at the dungeoneer's level. He carries the call box. He is a person with a
+  (`setting.md`), at the dungeoneer's level. He is a person with a
   butler's manner, not gear, and always "he".
 - Levelling: as written, at the halved thresholds. Hit points by the fixed value.
-- **Names are plain English names** (`setting.md`), for everyone the GM invents too.
+- **Names are plain English names** (`setting.md`), and few people need one: see Titles,
+  not names.
 
 ## The GM
 
@@ -334,8 +356,8 @@ Each campaign is `breach2/campaigns/<name>/`:
 - `division.md`: rendered by `day.py report`: the seats, the ledger, what's loose, the news,
   the wall, as of the pair's last report. The human's view.
 - `district.md`: the nine precincts, written once by the script; the GM adds the station's
-  people and notes by hand.
-- `character.md`: the human's pair: both full sheets, relics and who they're bonded to,
+  people (by title) and notes by hand.
+- `character.md`: the human's pair: both full sheets, the seat's relics and who carries each,
   inventory, gold, XP. Rewritten when the seat changes hands; the old sheet goes to
   `chronicle.md`.
 - `state.md`: the live state, rewritten after every reply: day, place, both bodies' HP and
@@ -358,7 +380,7 @@ campaign folder. This is a cloud session; the container is wiped when it ends.
    `gm-secrets.md` with the campaign's answer to the breaches and the first breach (`day.py
    ledger` prints the `gen_breach.py` line), `state.md` and an empty `chronicle.md`.
 3. Open at the station at dawn: the ledger read out, the human's seat called, the automaton
-   at their elbow with the call box. Then the street.
+   at their elbow with the gizmo's case. Then the street.
 4. Play by the rules above. `day.py close ID` when a breach closes, `day.py dawn` after each
    Long Rest, `day.py report` when the pair hears the ledger.
 5. A fresh GM resuming reads `state.md`, `character.md`, `division.md`, `gm-secrets.md` and
@@ -370,8 +392,8 @@ Guesses, in one place. The script's are constants at the top of `day.py`: the br
 (d20), the spill die (d6) and three spills to empty an unattended breach, the misread (one
 in six), review every 60 days, the other pairs' death (1 in 20) and withdrawal (3 in 20) per
 breach, the 2d6-day vacancy. In `gen_breach.py`: three rooms minimum, Moderate and High,
-groups of up to ten, crowds made rarer, and `HOSTILE_ON` (a group that isn't Evil is Hostile
+groups of up to ten (`PARTY` = 2 scales every budget to the pair), crowds made rarer, and `HOSTILE_ON` (a group that isn't Evil is Hostile
 on a d6 of 1 or 2: about 45% of groups fight at level 1, 60% from level 5; set it to 1 for
-30% and 50%). Here: the halved XP table, the call's price, the relic rarity caps, the encounter
-die and the even odds of what it brings, the gizmo's 10 minutes and 6 m. If the pair outruns its grade, un-halve the XP table first; if the Division isn't
+30% and 50%). Here: the halved XP table, the relic rarity caps, the encounter
+die and the even odds of what it brings, the gizmo's 1 minute to send, 10 to close, and 6 m. If the pair outruns its grade, un-halve the XP table first; if the Division isn't
 stretched enough, shorten the breach die.

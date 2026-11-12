@@ -35,13 +35,15 @@ whose mast failed is not on any tram map.
 
 - **Crane** knows what Head Office does with Commanders and has decided not to think about it. He let Pike back because a seat empty twice in two months is an audit.
 - **Dr Lark** has noticed the load pattern and has stopped writing it down.
-- **Finch** listens to the calls. All of them.
+- **Finch** (the Clerk) reads every officer's report before the Director does, and keeps copies. (There are no calls any more: the call box left the game on day 57.)
 - **Stubbs** suspects what cores are; the automatons have, in their sleepless hours, half told her.
 - **Vale** is honest and is the only one who would be horrified. He thinks Pike's walk-out hides a misappropriation.
 - **Pike** walked out on day -20 after watching the Raven's pair kill a room of things that were begging. Came back on day -17 because there was nowhere else.
 - **Mary Dunn**, the Owl before Pike, died on day -31 in a grade-1 that was truly a grade 2.
 - **Stubbs** tried for three days to wake Ives's core and could not; she noticed the crate it left in.
 - **Bob Fletcher** asked for the transfer to get off a Static corner in another district; he means to do his sixty days and put in for the clerks.
+
+- **Rules from day 57:** no denizen settles. Any still living in the city from earlier days (Will Pegg, labouring in Vinegar Yard) is owed a sending or a death, and the mast hears him; put him on the Owl's desk when it suits. Station people are spoken of by title in play: Crane the Director, Lark the Reader, Finch the Clerk, Stubbs the Mechanic, Vale the Auditor.
 
 ## Current breach
 

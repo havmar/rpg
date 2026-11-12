@@ -14,7 +14,7 @@ and the review. Every die of the day that isn't the player's is rolled here.
 
 `dawn` moves the day on by one and prints the day's news for the GM. It does NOT rewrite
 division.md: that file is what the player's pair knew when they last reported in (at the
-station or by a call), and `report` rewrites it.
+station), and `report` rewrites it.
 
 The player's breach is generated from the ledger's seed; `ledger` prints the line to run.
 """
@@ -37,7 +37,8 @@ NPC_DAYS = 3         # another pair settles its breach 1dN dawns after it's assi
 NPC_DEATH = 1        # d20: this or lower, the officer dies in it
 NPC_WITHDRAW = 4     # d20: this or lower (above death), the pair withdraws and it stays open
 VACANCY = (2, 6)     # a dead officer's replacement arrives in 2d6 days
-SETTLE_DIE = 20      # each dawn, per loose group older than a week: gone on a 1
+SETTLE_DIE = 20      # each dawn, per loose group older than a week: on a 1 someone has sent
+                     # it home or killed it (nothing loose ever settles in the city)
 # ------------------------------------------------------------------------------------------
 
 ROLES = ["Lion", "Wolf", "Bear", "Stag", "Hawk", "Raven", "Owl", "Fox", "Hound", "Wren"]
@@ -91,37 +92,50 @@ AUTOMATON_NAMES = ["Alder", "Basset", "Carrow", "Dunstan", "Ellery", "Fenwick", 
 PROTOCOL_SKILLS = ["Perception", "Insight", "Medicine", "History", "Investigation", "Survival",
                    "Persuasion", "Arcana", "Athletics", "Stealth", "Animal Handling", "Sleight of Hand"]
 
-TRAITS = [
-    "wants to reach Head Office before an older sibling who is already there",
-    "keeps a tally of denizens sent home and thinks kills are a failure of manners",
-    "plays cards with the ledger clerks and owes them",
-    "sends every coin home to a precinct the Director has written off",
-    "was recruited out of a cell and the Division knows it",
-    "labels a keepsake from every breach and keeps them in a locker",
-    "thinks the breaches are a punishment and prays before the ledger is read",
-    "is courting someone in the Static and takes the long way home",
-    "argues with the automaton in public and loses",
-    "has buried three partners and visits them on rest days",
-    "wants the Director's job and says so",
-    "writes the Division's songs, badly",
-    "drinks after every breach, not before",
-    "is studying the breaches and pesters the Reader for the mast's records",
-    "looks after the children of the fallen when no one else will",
-    "never takes a stowaway's side and never explains why",
-    "has a running bet with another seat on who reaches Head Office first",
-    "closes other seats' breaches and has the reprimands to show for it",
-    "trains probationers unasked and is good at it",
-    "believes the automatons are people and treats them so",
-    "lost a street to a spill and hasn't forgiven the ledger",
-    "is the Director's favourite and hates it",
-    "speaks to every denizen first, whatever the risk",
-    "sells breach coins to collectors uptown for twice their worth",
-    "has a map of every breach the Division has closed, pinned to a wall",
-    "is deaf in one ear from a musket and says the tin hears for two",
-    "takes the smallest bunk, eats last, and is adored for it",
-    "wants out, and is counting the days to the next review",
-    "files every form in triplicate and is never, ever reprimanded",
+# A d100 of minor quirks: a habit to recognise a seat by, nothing that decides who they are.
+QUIRKS = [
+    "whistles on stairs", "always has a boiled sweet in one cheek", "counts doors under the breath",
+    "polishes the badge with a thumb while thinking", "never sits with their back to a door",
+    "hums the same four bars, never the fifth", "keeps a pencil behind one ear and loses it there",
+    "eats standing up", "says 'right' before every decision", "cracks the knuckles one at a time",
+    "wears the cap a size too large", "takes tea black and scalding", "writes notes on a shirt cuff",
+    "taps every lamp post in passing", "carries a pocket watch that runs four minutes fast",
+    "laughs a beat late", "ties every knot twice", "sneezes in threes", "walks on the kerb's edge",
+    "names the weather before saying good morning", "saves the crusts for pigeons",
+    "always knows the tram times", "folds the newspaper into eighths", "chews a matchstick",
+    "wears odd socks on purpose", "salutes with the wrong hand when tired",
+    "never finishes a cup of tea", "reads the last page first", "keeps a pressed flower in the warrant card",
+    "sharpens things that are already sharp", "is early for everything", "is two minutes late for everything",
+    "rolls the sleeves to exactly the elbow", "smells faintly of camphor", "carries string, always",
+    "talks to cats in the street", "mutters sums while walking", "stands on one leg to think",
+    "collects tram tickets", "has ink on the same finger every day", "blows on dice that aren't there",
+    "buttons the coat to the throat in any weather", "says 'much obliged' to doors held open and to doors",
+    "keeps a lucky farthing in the left boot", "yawns before a fight, never after",
+    "scratches one ear when lying", "refuses to step on a drain cover", "keeps the bootlaces waxed",
+    "squints at anything written down", "can't pass a street organ without stopping",
+    "drums two fingers on the holster", "wears a scarf somebody clearly knitted for them",
+    "carries a tin of peppermints and offers them round", "starts sentences with 'now then'",
+    "peels an apple in one strip", "wipes the feet on mats that aren't there", "snores, by all accounts",
+    "always picks the chair by the stove", "knows one joke and tells it well",
+    "hates pigeons and says so", "winds the station clock unasked", "keeps the hair cut very short",
+    "wears a flower in the buttonhole on Mondays", "tests a floor with one foot before trusting it",
+    "is forever lending a handkerchief", "says grace over a sandwich", "shadow-boxes while waiting",
+    "eats pickled onions from the jar", "sings in the wash house", "keeps a diary in a code of ticks",
+    "steps over thresholds left foot first", "reads the notices on every wall",
+    "calls every dog 'sergeant'", "holds the breath going past a cemetery", "ends the day by shining the boots",
+    "wears spectacles on a cord and never on the nose", "stirs tea anticlockwise",
+    "has a nod for every lamplighter", "saves buttons in a jar", "is always a little sunburnt or a little chilled",
+    "sits on steps rather than chairs", "smokes a pipe that is never lit", "keeps the gloves on indoors",
+    "says the day and date aloud on waking", "takes the stairs two at a time",
+    "stops to watch any machine working", "carries a bent spoon and won't say why",
+    "is a soft touch for a street singer", "chalks a tally mark inside the locker door",
+    "slices bread too thick", "is always first to smell rain", "stands very straight when unsure",
+    "checks the pockets in the same order, every time", "has a whistle that stops dogs",
+    "can't abide a crooked picture", "rubs the bridge of the nose before speaking",
+    "wears the collar turned up", "ends every report with 'that's the lot'",
+    "keeps a clean handkerchief for the automaton's faceplate", "remembers everyone's tea",
 ]
+assert len(QUIRKS) == 100 and len(set(QUIRKS)) == 100
 
 DISTRICTS = ["Ironmongers' Reach", "Coldharbour", "the Tenters", "Nine Bridges", "Cinder Hill",
              "Saltmarket", "the Lows", "Bell Fields"]
@@ -190,19 +204,19 @@ def new_automaton(rng, side, used_names, day, partner):
             "scores": scores(rng, cls), "built": day, "partners": [partner]}
 
 
-def new_holder(rng, day, grade, used_traits, side=None, level=None):
+def new_holder(rng, day, grade, used_quirks, side=None, level=None):
     """An officer for a seat. `side` is rolled unless given."""
     species = rng.choice(SPECIES)
     if side is None:
         side = "Front" if d(rng, 2) == 1 else "Back"
     cls, sub = rng.choice(FRONT if side == "Front" else BACK)
-    trait = rng.choice([t for t in TRAITS if t not in used_traits] or TRAITS)
-    used_traits.add(trait)
+    quirk = rng.choice([q for q in QUIRKS if q not in used_quirks] or QUIRKS)
+    used_quirks.add(quirk)
     sex = rng.randrange(2)
     return {"name": f"{rng.choice(NAMES[species][sex])} {rng.choice(SURNAMES)}",
             "pronouns": PRONOUNS[sex], "species": species,
             "background": rng.choice(BACKGROUNDS), "side": side, "class": cls, "subclass": sub,
-            "scores": scores(rng, cls), "since": day, "trait": trait,
+            "scores": scores(rng, cls), "since": day, "quirk": quirk,
             "level": level or 2 * grade - d(rng, 2) + 1}
 
 
@@ -272,9 +286,9 @@ def vacate(c, rng, seat, b, news, where):
                 f"dark. The seat is empty until day {seat['arrives']}.")
 
 
-def fill(c, rng, seat, news, used_traits, level=None):
+def fill(c, rng, seat, news, used_quirks, level=None):
     # The bond is to one officer: a new holder comes with a new automaton.
-    h = new_holder(rng, c["day"], seat["grade"], used_traits, level=level)
+    h = new_holder(rng, c["day"], seat["grade"], used_quirks, level=level)
     used_names = {s["automaton"]["name"] for s in c["roster"]}
     a = new_automaton(rng, h["side"], used_names, c["day"], h["name"])
     seat["holder"], seat["arrives"], seat["automaton"] = h, None, a
@@ -286,12 +300,12 @@ def fill(c, rng, seat, news, used_traits, level=None):
 
 def new(path, seed, player_grade):
     rng = random.Random(seed)
-    used_names, used_traits = set(), set()
+    used_names, used_quirks = set(), set()
     grades = list(range(1, 11))
     rng.shuffle(grades)
     roster = []
     for role, grade in zip(ROLES, grades):
-        h = new_holder(rng, 1 - 30 * grade, grade, used_traits,
+        h = new_holder(rng, 1 - 30 * grade, grade, used_quirks,
                        level=2 * grade - 1 if grade == player_grade else None)
         roster.append({"role": role, "grade": grade, "holder": h, "arrives": None,
                        "automaton": new_automaton(rng, h["side"], used_names, 1 - 30 * grade,
@@ -327,7 +341,7 @@ def dawn(c, rng, player_died=False):
     news = []
     c["day"] += 1
     day = c["day"]
-    used_traits = {s["holder"]["trait"] for s in c["roster"] if s["holder"]}
+    used_quirks = {s["holder"]["quirk"] for s in c["roster"] if s["holder"]}
     player = seat_of(c, c["player"])
 
     if player_died and player["holder"]:
@@ -348,7 +362,7 @@ def dawn(c, rng, player_died=False):
                     news.append(f"The {s['role']}, {h['name']}, Commander, is called to Head "
                                 f"Office, and {s['automaton']['name']} with them.")
                 s["grade"] = 1
-                fill(c, rng, s, news, used_traits, level=1)
+                fill(c, rng, s, news, used_quirks, level=1)
             else:
                 s["grade"] += 1
                 if h and s["role"] != c["player"]:
@@ -357,7 +371,7 @@ def dawn(c, rng, player_died=False):
 
     for s in c["roster"]:
         if not s["holder"] and s["arrives"] is not None and s["arrives"] <= day:
-            fill(c, rng, s, news, used_traits)
+            fill(c, rng, s, news, used_quirks)
 
     # The other pairs' breaches that come due today.
     for b in list(c["ledger"]):
@@ -405,8 +419,8 @@ def dawn(c, rng, player_died=False):
     still = []
     for lo in c["loose"]:
         if day - lo["since"] > 7 and d(rng, SETTLE_DIE) == 1:
-            news.append(f"The {plural(lo['kind'])} loose in {lo['precinct']} are no longer a "
-                        "problem; the GM says what became of them.")
+            news.append(f"The {plural(lo['kind'])} loose in {lo['precinct']} have been dealt "
+                        "with: sent home or killed. The GM says by whom.")
         else:
             still.append(lo)
     c["loose"] = still
@@ -487,8 +501,8 @@ def district_md(c):
         out.append("")
     out += ["## People of the station", "",
             "The GM writes these as play meets them: the Director, the Reader, the ledger "
-            "clerk, the fitter, the Board's auditor. One line each: who they are and what they "
-            "want.", "", "## GM notes", ""]
+            "Clerk, the Mechanic, the Auditor. By title, no names. One line each: what they "
+            "are like and what they want.", "", "## GM notes", ""]
     return "\n".join(out) + "\n"
 
 
@@ -501,7 +515,7 @@ def pair_md(s):
         lines += [f"- Dungeoneer: {h['name']} ({h['pronouns']}), {h['species']} "
                   f"{h['background']}, {h['side']}: {h['class']} ({h['subclass']}), level "
                   f"{h['level']}, since day {h['since']}. Scores {sc}.",
-                  f"- {h['trait'][0].upper()}{h['trait'][1:]}."]
+                  f"- Quirk: {h['quirk']}."]
     else:
         lines.append(f"- The seat is empty until day {s['arrives']}.")
     lines.append(f"- Automaton: {a['name']}, {a['side']}: {a['class']} ({a['subclass']}), "
@@ -562,6 +576,10 @@ def main():
         for i, lo in enumerate(c["loose"], 1):
             print(f"loose {i} · {lo['groups']}× group of {plural(lo['kind'])} · level "
                   f"{lo['level']} · {lo['precinct']} · since day {lo['since']}")
+            # A hunt for it; a second group of the same kind takes the next seed up.
+            print(f"    python3 breach2/tools/gen_breach.py --seed "
+                  f"{lo['breach'] * 1000 + abs(lo['since'])} --level {lo['level']} --kind "
+                  f"\"{lo['kind']}\"")
         return
     if a.verb == "report":
         (a.campaign / "division.md").write_text(division_md(c))
