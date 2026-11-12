@@ -2,7 +2,7 @@
  "name": "first",
  "seed": 426,
  "division": "N Division",
- "day": 48,
+ "day": 57,
  "last_review": 1,
  "player": "Owl",
  "roster": [
@@ -10,43 +10,43 @@
    "role": "Owl",
    "grade": 1,
    "holder": {
-    "name": "Bob Fletcher",
+    "name": "Tom Thorne",
     "pronouns": "he/him",
     "species": "Orc",
     "background": "Soldier",
     "side": "Front",
-    "class": "Ranger",
-    "subclass": "Hunter",
+    "class": "Barbarian",
+    "subclass": "Berserker",
     "scores": {
+     "STR": 15,
+     "CON": 15,
      "DEX": 14,
      "WIS": 14,
-     "CON": 11,
-     "STR": 10,
-     "INT": 9,
-     "CHA": 8
+     "CHA": 12,
+     "INT": 11
     },
-    "since": 47,
-    "trait": "wants out, and is counting the days to the next review",
+    "since": 57,
+    "trait": "argues with the automaton in public and loses",
     "level": 2
    },
    "arrives": null,
    "automaton": {
-    "name": "Rookwood",
+    "name": "Hobbes",
     "side": "Back",
-    "class": "Druid",
-    "subclass": "Land",
-    "protocol_skill": "Persuasion",
+    "class": "Sorcerer",
+    "subclass": "Draconic",
+    "protocol_skill": "Medicine",
     "scores": {
-     "WIS": 16,
-     "CON": 14,
+     "CHA": 16,
+     "CON": 15,
      "DEX": 13,
+     "WIS": 13,
      "INT": 12,
-     "CHA": 11,
      "STR": 11
     },
-    "built": 47,
+    "built": 57,
     "partners": [
-     "Bob Fletcher"
+     "Tom Thorne"
     ]
    }
   },
@@ -141,27 +141,8 @@
   {
    "role": "Wolf",
    "grade": 4,
-   "holder": {
-    "name": "Thomas Pendry",
-    "pronouns": "he/him",
-    "species": "Human",
-    "background": "Sage",
-    "side": "Back",
-    "class": "Bard",
-    "subclass": "Lore",
-    "scores": {
-     "CHA": 15,
-     "DEX": 13,
-     "CON": 11,
-     "WIS": 9,
-     "INT": 9,
-     "STR": 8
-    },
-    "since": -119,
-    "trait": "sells breach coins to collectors uptown for twice their worth",
-    "level": 7
-   },
-   "arrives": null,
+   "holder": null,
+   "arrives": 61,
    "automaton": {
     "name": "Jarvis",
     "side": "Front",
@@ -517,49 +498,40 @@
  },
  "ledger": [
   {
-   "id": 8,
-   "day": 15,
-   "grade": 5,
-   "level": 9,
+   "id": 24,
+   "day": 55,
+   "grade": 4,
+   "level": 7,
    "precinct": "Lime Wharf",
-   "seed": 38559,
+   "seed": 201703,
    "role": null,
    "due": null,
-   "spills": 2,
+   "spills": 0,
    "withdrawn": true,
-   "kind": "Grick"
+   "kind": "Knight"
   },
   {
-   "id": 22,
-   "day": 48,
-   "grade": 9,
-   "level": 18,
-   "precinct": "Needle Street",
-   "seed": 868469,
-   "role": "Fox",
-   "due": 49,
+   "id": 25,
+   "day": 56,
+   "grade": 5,
+   "level": 11,
+   "precinct": "Clock Street",
+   "seed": 218346,
+   "role": "Lion",
+   "due": 58,
    "spills": 0,
    "withdrawn": false,
-   "kind": "Spirit Naga"
+   "kind": "Chimera"
   }
  ],
- "next_id": 23,
+ "next_id": 26,
  "loose": [
   {
-   "breach": 6,
-   "kind": "Berserker",
-   "level": 3,
-   "precinct": "Vinegar Yard",
-   "since": 8,
-   "groups": 1,
-   "why": "spilled"
-  },
-  {
-   "breach": 11,
-   "kind": "Giant Ape",
-   "level": 17,
-   "precinct": "Chapel Fields",
-   "since": 24,
+   "breach": 8,
+   "kind": "Grick",
+   "level": 9,
+   "precinct": "Lime Wharf",
+   "since": 53,
    "groups": 1,
    "why": "spilled"
   }
@@ -572,11 +544,27 @@
    "day": 41,
    "precinct": "Vinegar Yard",
    "kind": "Giant Wolf Spider"
+  },
+  {
+   "role": "Owl",
+   "name": "Bob Fletcher",
+   "grade": 1,
+   "day": 49,
+   "precinct": null,
+   "kind": null
+  },
+  {
+   "role": "Wolf",
+   "name": "Thomas Pendry",
+   "grade": 4,
+   "day": 56,
+   "precinct": "Lime Wharf",
+   "kind": "Knight"
   }
  ],
  "graduated": [],
  "news": [
-  "NEW BREACH #22: the mast reads grade 9, Spirit Naga, Needle Street.",
-  "The Pit Fiends loose in Tallow Row are no longer a problem; the GM says what became of them."
+  "The new Owl is Tom Thorne (he/him, Orc Barbarian), Probationer, with a new automaton, Hobbes (Sorcerer). THIS IS YOUR SEAT: the human plays them.",
+  "The Berserkers loose in Vinegar Yard are no longer a problem; the GM says what became of them."
  ]
 }

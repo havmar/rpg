@@ -218,3 +218,17 @@ back four squares to (-5,3), six from the men (inside their reach). Round 7: B 1
 over, so Relentless Endurance drops him to 1 HP (used); A 14, miss. The men came out to (-4,2),
 (-4,3), (-4,4). The "distraction" (a flask of oil) would have cost the core's action; the men are
 inside six squares of the wreck and of Fletcher, so a distraction doesn't pull anyone out of reach.
+
+**Day 48 to 57, the vacancy.** Fletcher died in the coal-arch street (round 9). `day.py dawn
+--player-died` (day 49): the seat empty until day 57. The vacancy's dawns: day 50 quiet; 51 #23
+(Dragon Turtle, Tallow Row, grade 8) and the Giant Apes gone from Chapel Fields (the canal men
+took them down the canal to the Ropewalk slaughterhouse, and the bargemen are paid); 52 the Bear
+closed #23; 53 #8 spilled into Lime Wharf and struck (its Gricks are Lime Wharf's problem); 55 #24
+(Knight, grade 4, truly level 7, Lime Wharf); 56 the Wolf (Thomas Pendry) died in #24, Jarvis went
+dark, the Wolf's seat empty until day 61; #25 (Chimera, grade 5, truly level 11, Clock Street)
+opened, the Lion's, due day 58. Day 57: Tom Thorne (orc Barbarian 2) and Hobbes (Sorcerer 2) to the
+Owl's seat. The Berserkers: the GM's line is that the three went down the railway cutting and into
+the Under the morning after the death, and nobody has seen them since; the gizmo case stayed at the
+coal-arch mouth and is still there, unless the Under has it. Rookwood's core went home with the
+body at dusk on day 48 (the Raven fetched it, on Crane's order); the bond ends with Fletcher, so
+the core is Head Office's now.
