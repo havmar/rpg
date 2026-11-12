@@ -104,7 +104,7 @@ addressed by rank and spoken of by seat: "the Fox is late".
 
 **The station** has: the **Director**, who runs the Division and decides which breach gets
 whom, and which precinct can wait; the **Reader**, the scientist who sits under the ears
-and turns the mast's readings into a grade, a kind and a precinct, and is wrong about one
+and turns the mast's readings into a grade, a kind and a precinct, and misses something about one
 time in six; the **Clerk**, who keeps the ledger and reads it out; the
 **Mechanic**, who rebuilds automatons, runs the fabricator and talks to both more than to
 people; the **Auditor**, the Board's, who counts; and the **wall**, where the fallen are named by seat, name and day.

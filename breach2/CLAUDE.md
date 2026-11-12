@@ -73,7 +73,10 @@ These replace the SRD where they differ.
   walks out and is **loose** in the precinct. For the human's breach the GM picks the group
   and marks its room empty. This is the price of a Long Rest with a breach half done.
 - **A grade is two levels**: grade N is levels 2N−1 and 2N. The Reader gives only the grade,
-  so "a grade 3" is level 5 or 6, and one reading in six is a whole grade too low.
+  so "a grade 3" is level 5 or 6. The grade is never wrong, but **one breach in six has an
+  anomaly** the Reader can't see: one room, never the anchor, holds something from a level
+  higher: more than a High room here, never more than a High room for the next level.
+  It is unforeseen and harder, and meant to be beatable.
 - **The ledger is known only at the station.** There is no calling in: the pair learns the
   morning's news when it walks in. The GM runs `dawn` every day regardless and keeps what
   the pair hasn't heard to itself; `day.py report` rewrites `division.md` when they do hear.
@@ -340,7 +343,7 @@ spent on one of these is still a day, and its dawn is still rolled.
   number or its leader checks morale (WIS save DC 10 for the group) and may flee, deeper in
   or out to the street (loose).
 - The Reader's grade is on the ledger; the true level is in `campaign.json` and the
-  generator's heading. Don't tell the human a breach is misread; let the first room say it.
+  generator's heading. Don't tell the human a breach has an anomaly; let its room say it.
 - The Director's choices are the GM's: who is sent over their grade, which precinct waits.
   Make them defensible and sometimes wrong.
 - Ask before a big retcon. A fixable error is corrected in the next line with `CORRECTION:`.
@@ -389,8 +392,8 @@ campaign folder. This is a cloud session; the container is wiped when it ends.
 ## Dials
 
 Guesses, in one place. The script's are constants at the top of `day.py`: the breach die
-(d20), the spill die (d6) and three spills to empty an unattended breach, the misread (one
-in six), review every 60 days, the other pairs' death (1 in 20) and withdrawal (3 in 20) per
+(d20), the spill die (d6) and three spills to empty an unattended breach, the anomaly (one
+in six; its size is `ANOMALY_OVER` in `gen_breach.py`), review every 60 days, the other pairs' death (1 in 20) and withdrawal (3 in 20) per
 breach, the 2d6-day vacancy. In `gen_breach.py`: three rooms minimum, Moderate and High,
 groups of up to ten (`PARTY` = 2 scales every budget to the pair), crowds made rarer, and `HOSTILE_ON` (a group that isn't Evil is Hostile
 on a d6 of 1 or 2: about 45% of groups fight at level 1, 60% from level 5; set it to 1 for

@@ -31,7 +31,7 @@ import gen_breach  # noqa: E402
 BREACH_DIE = 20      # each dawn, per grade: a breach on a 1
 SPILL_DIE = 6        # each dawn, per open breach: a group gets out on a 1
 SPILLS_TO_EMPTY = 3  # an unattended breach that has spilled this often is empty: struck off
-MISREAD_DIE = 6      # the Reader is a grade too low on a 6
+ANOMALY_DIE = 6      # on a 6 the breach has an anomaly: one room from a level higher
 REVIEW_DAYS = 60     # the whole ladder moves up a grade
 NPC_DAYS = 3         # another pair settles its breach 1dN dawns after it's assigned
 NPC_DEATH = 1        # d20: this or lower, the officer dies in it
@@ -230,14 +230,15 @@ def new_district(rng):
 
 def new_breach(c, rng, grade):
     """A breach the mast reads as `grade`. Its level is one of the grade's two; on a 6 the
-    Reader is a grade too low. It opens in the band the grade belongs to."""
-    true_grade = min(10, grade + 1) if d(rng, MISREAD_DIE) == MISREAD_DIE else grade
-    level = 2 * true_grade - d(rng, 2) + 1
+    breach has an anomaly the Reader can't see: one room holds something from a level
+    higher. It opens in the band the grade belongs to."""
+    anomaly = d(rng, ANOMALY_DIE) == ANOMALY_DIE
+    level = 2 * grade - d(rng, 2) + 1
     p = rng.choice([p for p in c["district"]["precincts"] if p["band"] == BAND_OF_GRADE[grade]])
     seed = rng.randrange(1, 1_000_000)
     b = {"id": c["next_id"], "day": c["day"], "grade": grade, "level": level,
          "precinct": p["name"], "seed": seed, "role": None, "due": None, "spills": 0,
-         "withdrawn": False, "kind": gen_breach.principal_for(level, seed)["name"]}
+         "withdrawn": False, "anomaly": anomaly, "kind": gen_breach.principal_for(level, seed)["name"]}
     c["next_id"] += 1
     c["ledger"].append(b)
     return b
@@ -452,7 +453,7 @@ def division_md(c):
             who = f"*empty until day {s['arrives']}*; {a['name']} waits"
         out.append(f"- **{s['grade']} · {RANKS[s['grade']]} · the {s['role']}**{you}: {who}.")
     out += ["", "## The ledger", "",
-            "Open breaches, as the mast reads them. The Reader is sometimes wrong.", ""]
+            "Open breaches, as the mast reads them. The Reader does not see everything.", ""]
     if not c["ledger"]:
         out.append("- Nothing open.")
     for b in sorted(c["ledger"], key=lambda b: b["id"]):
@@ -529,13 +530,13 @@ def ledger_lines(c):
     for b in sorted(c["ledger"], key=lambda b: b["id"]):
         who = f"the {b['role']}" if b["role"] else "no one"
         legs = next(p["legs"] for p in c["district"]["precincts"] if p["name"] == b["precinct"])
-        out.append(f"#{b['id']} · grade {b['grade']} (truly level {b['level']}) · {b['kind']} · "
+        out.append(f"#{b['id']} · grade {b['grade']} (level {b['level']}{', anomaly' if b.get('anomaly') else ''}) · {b['kind']} · "
                    f"{b['precinct']}, {legs} leg(s) · open since day {b['day']} · {who}"
                    + (f" · due day {b['due']}" if b["due"] else "")
                    + (f" · spills {b['spills']}" if b["spills"] else ""))
         if b["role"] == c["player"]:
             out.append(f"    python3 breach2/tools/gen_breach.py --seed {b['seed']} --level "
-                       f"{b['level']} --reported {b['grade']}")
+                       f"{b['level']}" + (" --anomaly" if b.get("anomaly") else ""))
     return out or ["Nothing open."]
 
 
