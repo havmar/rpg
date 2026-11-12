@@ -5,9 +5,10 @@
 - **Place:** the station, Vinegar Yard, dawn of day 111. The Clerk has read the ledger out, and the human has heard the montage of days 58 to 110 as the mornings came in. `division.md` is rewritten to day 111.
 - **The Owl now:** Constable **Tom Thorne** (he/him, orc Barbarian 2), grade 2 since the day 61 review, on the seat since day 57; level 2, 150 XP. **Behind the quota**: the Auditor wrote it down (a Constable's first level is 3, 450 XP). Hobbes (automaton, Sorcerer 2), bound since day 57. Full sheets in `character.md`. Names stand as written unless the human says otherwise.
 - **The breach:** #44 · grade 2 (truly level 4) · Giant Hyena · Vinegar Yard · open since day 111 · **the Owl**. The station's own precinct: no legs. Five rooms (`gm-secrets.md`); the Owl is two levels under it, and rooms 1, 3 and 5 are High.
-- **The cloak:** the Cloak of the Manta Ray is still on the Mechanic's bench, unattuned. Whoever takes it up does so as written.
+- **The cloak:** attuned to Tom Thorne on day 111 (a Short Rest at the bench). Breathes underwater; Swim Speed 18 m while worn. One of his three attunement slots.
 - **Seats now:** the Stag (Probationer, Tiefling Fighter, since day 61, Rogue automaton) and the Wolf (Station Sergeant, Tiefling Barbarian, since day 105, Wizard automaton; the Wolf before her, Ruth Pike, died day 98). The Wren (Sergeant, Druid, since day 100; the Wren before her, Martha Ashcombe, died day 94). Review next on day 121.
 - **The wall:** Thomas Pendry (the Wolf, day 56, Lime Wharf); Martha Ashcombe (the Wren, day 94, Lime Wharf); Ruth Pike (the Wolf, day 98, Lime Wharf).
 - **Loose in the district:** Knights, Werebears, Frost Giants (Lime Wharf); Aboleths (Gasworks); Trolls (Vinegar Yard, the station's own precinct); a Shield Guardian (Needle Street, level 18). Hunt lines from `day.py ledger`. The Ankhegs of #24 are in the wharf's sewers.
 - **Standing orders:** none.
-- **Question out to the human:** does the Owl take #44 now (up the Yard, no legs), or first take up the cloak at the bench?
+- **Where the pair is:** the door of #44's room 1 (fog, 12×12 m; two Polar Bears, Neutral, in the steam). Hobbes proposes the left wall, quiet. The human has said: get the cloak, then the Hyena. The breach is in progress.
+- **Question out to the human:** walk the left wall past the bears (Hobbes's way), or straight across the middle to the far door, where the steam is thickest?

@@ -103,6 +103,10 @@ Closed by the Lion on day 58. Nothing recorded inside.
   netted. Hyenas hunt what moves and leave what's still; meat draws them.
 - Relic on closing: grade 2, so the cap is Uncommon.
 - The Yard is the station's own precinct: no legs. The breach is up the street.
+- **Day 111, marks.** The Owl attuned the cloak (a Short Rest at the bench). Walked up the Yard; the
+  depot's doors open onto room 1's fog, which is warm and wet. The pair is in the door of room 1
+  with two Polar Bears somewhere in the steam, Neutral, asleep or near it. Rooms 2 to 5 unexplored.
+  Closing brings every Hostile group still alive to the anchor (room 2's Hobgoblins, room 4's Claws).
 
 ## Closed: #19, the Tun Street baths (day 47)
 

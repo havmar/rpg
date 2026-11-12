@@ -320,3 +320,10 @@ Days 103 to 106: the Basilisks, the Frost Giants and the Trolls spilled and were
 Days 107 to 110: quiet mornings, with the coal in the wharf's sheds burning down.
 
 Day 111, dawn: the mast reads grade two, a Giant Hyena breach, in Vinegar Yard, the station's own precinct, no legs. The Clerk read the line out with the Owl's name against it.
+
+## Day 111, the cloak and the depot
+
+The Owl took the cloak up at the Mechanic's bench: an hour on the stool with it in hand, and nobody
+to speak to. It settled onto the shoulders like it had been there before. Then up through the
+brewery gate and the back lane to a carter's depot whose wide doors stood open on warm green fog,
+and a marsh on the other side of them. Hobbes said the lane had got wetter since morning.

@@ -1,6 +1,6 @@
 # The Owl · grade 2 · N Division, Nine Bridges
 
-Pair's purse: **30 GP** (Thorne 21 GP, Hobbes 9 GP). XP: **150** (level 3 at 450). **The seat's relics:** the **Cloak of the Manta Ray** (Uncommon, from #19; breathe underwater, Swim Speed 18 m with the hood up), rebuilt by the fabricator from the pattern Rookwood's core sent on day 48, on the Mechanic's bench for the new Owl; carried by nobody yet; whoever takes it attunes as written. Pike's battleaxe was plain steel and stayed where it fell. The old sheet is in `chronicle.md`.
+Pair's purse: **30 GP** (Thorne 21 GP, Hobbes 9 GP). XP: **150** (level 3 at 450). **The seat's relics:** the **Cloak of the Manta Ray** (Uncommon, from #19; breathe underwater, Swim Speed 18 m while worn), rebuilt by the fabricator from the pattern Rookwood's core sent on day 48, on the Mechanic's bench for the new Owl; attuned to Tom Thorne on day 111, a Short Rest on the stool at the Mechanic's bench. CORRECTION: the SRD cloak has no hood condition; while worn it gives both. Pike's battleaxe was plain steel and stayed where it fell. The old sheet is in `chronicle.md`.
 
 ## Constable Tom Thorne (he/him)
 
