@@ -107,6 +107,10 @@ Closed by the Lion on day 58. Nothing recorded inside.
   depot's doors open onto room 1's fog, which is warm and wet. The pair is in the door of room 1
   with two Polar Bears somewhere in the steam, Neutral, asleep or near it. Rooms 2 to 5 unexplored.
   Closing brings every Hostile group still alive to the anchor (room 2's Hobgoblins, room 4's Claws).
+- **Ruling (day 111), the bears.** Beasts are never Willing, so only a held bear can be sent: Restrained
+  by a net, rope or a pen it can't get out of, or bound hand and foot. Calmed or lured is not held and
+  is not sent. Tying one starts the fight (Neutral, no quarrel yet). Left alive at closing, it is
+  loose in the Yard. Killing a bear is 450 XP; sending gives none.
 
 ## Closed: #19, the Tun Street baths (day 47)
 
