@@ -10,5 +10,5 @@
 - **The wall:** Thomas Pendry (the Wolf, day 56, Lime Wharf); Martha Ashcombe (the Wren, day 94, Lime Wharf); Ruth Pike (the Wolf, day 98, Lime Wharf).
 - **Loose in the district:** Knights, Werebears, Frost Giants (Lime Wharf); Aboleths (Gasworks); Trolls (Vinegar Yard, the station's own precinct); a Shield Guardian (Needle Street, level 18). Hunt lines from `day.py ledger`. The Ankhegs of #24 are in the wharf's sewers.
 - **Standing orders:** none.
-- **Where the pair is:** the door of #44's room 1 (fog, 12×12 m; two Polar Bears, Neutral, in the steam). Hobbes proposes the left wall, quiet. The human has said: get the cloak, then the Hyena. The breach is in progress.
-- **Question out to the human:** walk the left wall past the bears (Hobbes's way), or straight across the middle to the far door, where the steam is thickest?
+- **Where the pair is:** the lane outside #44's room 1, nine metres back from the depot door, in the sun. A ration sack (Tom's, from the Explorer's Pack) is on the sill, laid there by Hobbes's Mage Hand. The two Polar Bears (Neutral) are in the fog inside, drawn by the smell. The pair plans to open on the first bear that steps into the light (Hobbes's plan: Fire Bolt on the nearer one, javelins if it closes, no slot spent on the second). Heavily Obscured: nothing in the fog can be seen past 3 m, so no shots go into the room (Unseen Attackers: disadvantage, and a miss if it isn't where you aimed).
+- **Question out to the human:** open on the first bear on the sill now, or wait until both are standing in the light?
