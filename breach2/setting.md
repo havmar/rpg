@@ -23,11 +23,16 @@ walking in with a brass man is an armed stranger in their home. A few have under
 want to go back. Some are frightened and fight; some are hungry; some were monsters where
 they came from and are monsters here; some have looked out of the door and seen a city worth
 having. There is no way back to walk to, however clever they are. The only one is the
-Board's **gizmo** (see Automatons), which works the piece loose and lets it go home, and
-takes with it whoever stands by it and keeps still. That is **closing** a breach, and the
-building is itself again in a day. A piece takes home only what is its own, so whatever was
-alive inside and did not go is left behind in an ordinary cellar, in a city that isn't
-theirs, with no way back at all.
+Board's **gizmo** (see Automatons). It **sends** home whoever stands by it willing, or lies
+by it held, wherever they are; and at the anchor it works the whole piece loose and lets it
+go, which is **closing** a breach, and the building is itself again in a day.
+
+**None of them can stay.** A denizen is a piece of somewhere else walking about in the
+city, and the city does not hold its shape around it: clocks disagree on the street where
+one is living, the gaslight leans, and the mast's ears hear it like a stone in a shoe. Leave
+enough of them long enough and the next breach opens there. So the Board's rule has no
+exceptions and no kind version: whatever was alive in a breach and was not sent is hunted
+until it is sent or dead.
 
 A lodged piece is not finished arriving. More of it comes loose after the first, with more
 of whoever lived there, and loose things from other breaches drift in off the street to a
@@ -99,25 +104,22 @@ addressed by rank and spoken of by seat: "the Fox is late".
 
 **The station** has: the **Director**, who runs the Division and decides which breach gets
 whom, and which precinct can wait; the **Reader**, the scientist who sits under the ears
-and turns the mast's readings into a grade, a kind and a precinct, and is wrong about one
-time in six; the **ledger clerk**, who keeps the ledger and the telephone exchange; the
-**fitter**, who rebuilds automatons and talks to them more than to people; the **Board's
-auditor**, who counts; and the **wall**, where the fallen are named by seat, name and day.
-The GM writes these people in `district.md` as play meets them, one line each: who they are,
-what they want.
+and turns the mast's readings into a grade, a kind and a precinct, and misses something about one
+time in six; the **Clerk**, who keeps the ledger and reads it out; the
+**Mechanic**, who rebuilds automatons, runs the fabricator and talks to both more than to
+people; the **Auditor**, the Board's, who counts; and the **wall**, where the fallen are named by seat, name and day.
+They are **titles, not names**: nobody in the story calls the Mechanic anything else. The
+GM writes them in `district.md` as play meets them, one line each: what they are like, what
+they want.
 
 **The ledger** is the Division's list of open breaches: each one's number, the grade the
 Reader gave it, its kind, its precinct, and the seat it is assigned to or nobody. It is read
 out at the station every dawn. An officer in the field does not know what the morning added
-to it unless they come in or call.
-
-**The call box** is a field telephone in an oak case, 5 kg, carried by the automaton, which
-clips onto the Board's wires at any street corner. Its cells are costly and the Board bills
-the officer, so a call is short.
+to it until they come in.
 
 ## Automatons
 
-An **automaton** is a brass-and-enamel man built by the Board's fitters from a design
+An **automaton** is a brass-and-enamel man built by the Board's mechanics from a design
 Head Office does not share: every one is made and spoken of as a man, "he", never "it".
 Each is bound to one officer, once, for that officer's life, and from then on he gains what his partner gains: a
 level when they level, nothing when they don't. He absorbs no breach-magic of his own, which
@@ -125,19 +127,19 @@ is the point. The pair is the party.
 
 His **core** is a small piece of the same thing the masts are, and it is what drives the
 **gizmo**: on the forms an Apparatus, Returning; to everyone else the gizmo. Carried, it is a
-heavy case, 25 kg, that only an automaton would want to lug across a precinct. At a breach's
-anchor he folds it out into a thing of struts, dials and a dish the size of a cartwheel,
-couples it to his core and works it for ten minutes, and the piece comes loose and goes
-home. It has to be worked in peace, and it sends only what stands close and keeps still,
-so nobody is sent home against their will without a great deal of rope. An officer without
-an automaton can close nothing.
+heavy case, 25 kg, that only an automaton would want to lug across a precinct. Folded out it
+is a thing of struts, dials and a dish the size of a cartwheel, coupled to his core. Worked
+for a minute, anywhere, it sends home whoever is beside it and willing, or beside it and
+held fast: asleep, netted, in irons. Worked for ten minutes at a breach's anchor, the piece
+itself comes loose and goes. Either way it has to be worked in peace. An officer without an
+automaton can send nothing and close nothing.
 
 They are **people**, with the manner of a very good servant: formal, unhurried, dry,
 observant, deferential in address and immovable in opinion. They call their partner by rank
 ("if the Constable would step back"). They narrate tactics as service ("I have taken the
 liberty of oiling the stair"). They count kills as matters attended to and denizens sent home as
 matters resolved, and most of them, if asked, prefer the latter. They are **programmed to
-cheese**: the fitters' protocol of economy makes an automaton propose, always, the cheapest
+cheese**: the mechanics' protocol of economy makes an automaton propose, always, the cheapest
 legal way to end a fight, and he will say so before every fight unless told to hold its
 tongue.
 
@@ -145,11 +147,18 @@ An automaton **remembers** every breach he and his partner have worked, and says
 Constable preferred the left-hand stair last time. I mention it only for completeness."
 
 **The bond does not pass on.** When an officer dies, their automaton goes dark where he
-stands, and no fitter can wake that core for anyone else: it is crated and sent back to Head
+stands, and no mechanic can wake that core for anyone else: it is crated and sent back to Head
 Office. A wrecked automaton whose partner is alive can be rebuilt from his core, memory and
 all; one whose partner is dead cannot be rebuilt as himself. So a transfer arrives with a
 new automaton, a stranger to the seat, and when a Commander is called to Head Office their
 automaton goes with them.
+
+**What passes on is the relics.** A core holds the pattern of every relic its pair carries,
+and in the moment it goes dark it sends them home through the mast. In the station's cellar
+the **fabricator**, the Mechanic's other charge, a glass-fronted cabinet the size of a
+wardrobe, starts ticking, and builds each one again a layer at a time. They are on the
+bench when the transfer walks in. The Board calls this continuity of equipment. The
+Division calls it the inheritance.
 
 ### Species: Automaton
 
@@ -167,7 +176,7 @@ For the automaton's character sheet, in place of an SRD species.
 - **Bound.** Gains no XP; is always the level of its partner. Its **core** (1 kg) survives the
   body's destruction and holds its memory while that partner lives; the bond ends with them.
 - **Gizmo.** At a breach's anchor, and nowhere else, he can set up and run the gizmo (see the
-  rules). He carries its case (25 kg) and the call box (5 kg) without complaint.
+  rules). He carries its case (25 kg) without complaint.
 - **Languages:** Common and one other.
 
 ## Names
@@ -176,15 +185,16 @@ Everyone has a plain English name. Elves have the grand ones (Percival, Cordelia
 short ones (Tom, Meg), gnomes the small ones (Pip, Nell), tieflings the virtues (Prudence,
 Ernest), humans the ordinary ones (Arthur, Mary). A dungeoneer is a man or a woman, on a coin
 flip, with a name to match. Automatons are all "he" and go by a surname, like a butler.
-The GM names everyone else the same way.
+Names are used sparingly: the story speaks of seats by call sign and of the station's people
+by title, and a name is mostly for the human's own pair and for the wall.
 
 ## Loose denizens
 
 Whatever a breach spills, or leaves behind when it is closed, is **loose** in its precinct: pirates on the canal, an ogre in the
 goods yard, a swarm in the mill. They are what the pair may meet in the street, at whatever
-level they are, and the only XP outside a breach. Most groups in time go to ground, join the
-city (the pirates run a barge now), or die of it; the GM says which when the script says
-they're no longer a problem.
+level they are, and the only XP outside a breach. None of them settles: a loose group is
+hunted, by the pair or by another seat between breaches, until it is sent home or dead, and
+the script says when one that wasn't the pair's has been dealt with.
 
 ## Coins and relics
 
@@ -193,5 +203,6 @@ from, which the city's moneychangers take at face because the Board vouches for 
 
 A breach that closes leaves one **relic** behind, a thing of its reality with its magic
 still in it: a ship's bell, a basilisk's dulled eye, a ring off a dead king. A relic **bonds**
-to the first person who takes it up, and works for nobody else, ever; when its holder dies it
-is a curio. So relics are never bought or sold. The shops sell steel, powder and rope.
+to the seat whose pair took it up, and works for that seat's holder and automaton and nobody
+else, ever. When the holder dies it is rebuilt at the station for the next one (see
+Automatons). So relics are never bought or sold. The shops sell steel, powder and rope.

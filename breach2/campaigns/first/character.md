@@ -1,6 +1,6 @@
 # The Owl · grade 1 · N Division, Nine Bridges
 
-Pair's purse: **30 GP** (Thorne 21 GP, Hobbes 9 GP). XP: **150** (level 3 at 450). Relics: none. The Cloak of the Manta Ray and Pike's battleaxe went with Bob Fletcher; the cloak is in the Raven's hands at the station, bonded to no one (attunement can be done again by whoever takes it up). The old sheet is in `chronicle.md`.
+Pair's purse: **30 GP** (Thorne 21 GP, Hobbes 9 GP). XP: **150** (level 3 at 450). **The seat's relics:** the **Cloak of the Manta Ray** (Uncommon, from #19; breathe underwater, Swim Speed 18 m with the hood up), rebuilt by the fabricator from the pattern Rookwood's core sent on day 48, on the Mechanic's bench for the new Owl; carried by nobody yet; whoever takes it attunes as written. Pike's battleaxe was plain steel and stayed where it fell. The old sheet is in `chronicle.md`.
 
 ## Probationer Tom Thorne (he/him)
 
@@ -33,9 +33,9 @@ Automaton · Sorcerer 2 (Draconic) · Back · bound to Tom Thorne on day 57. A n
 - **STR** 11 (+0) · **DEX** 13 (+1) · **CON** 15 (+2) · **INT** 12 (+1) · **WIS** 13 (+1) · **CHA** 16 (+3)
 - **Saves:** CON +4, CHA +5. **Passive Perception** 11.
 - **Skills:** Medicine +3 (protocol). **Tools:** Tinker's Tools. **Languages:** Common, Draconic.
-- **Automaton:** Advantage on saves against Poisoned, Resistance to Poison, no food, drink, air or sleep, can't be put to sleep by magic; Long Rest is 6 hours motionless and aware; Bound; **Gizmo** at a breach's anchor (carries the 25 kg case; 10 minutes in peace to set up and run, does nothing else meanwhile).
+- **Automaton:** Advantage on saves against Poisoned, Resistance to Poison, no food, drink, air or sleep, can't be put to sleep by magic; Long Rest is 6 hours motionless and aware; Bound; **Gizmo** (carries the 25 kg case): 1 minute anywhere sends home the willing and the held within 6 m; 10 minutes in peace at a breach's anchor closes it; he does nothing else meanwhile.
 - **Sorcery Points** 2. **Draconic Resilience:** +1 HP per level; AC 13 + DEX when not wearing armour.
 - **Spellcasting**, Charisma: spell attack +5, save DC 13. **Slots:** 2 × level 1.
   Cantrips: *Fire Bolt* (1d10 Fire, 36 m), *Light*, *Mage Hand*, *Prestidigitation*. Known: *Magic Missile*, *Shield*.
 
-**Gear:** a dagger, a gizmo case (the Board's spare, 25 kg), the call box (5 kg), Tinker's Tools, traveler's clothes. 9 GP.
+**Gear:** a dagger, a gizmo case (the Board's spare, 25 kg), Tinker's Tools, traveler's clothes. 9 GP.

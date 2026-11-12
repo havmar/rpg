@@ -14,15 +14,19 @@ up to ten, so weak kinds come in numbers. Kinds are picked so that over levels 1
 SRD monsters are about equally likely, with crowds the exception (see pool_for). Rooms add up to at least the SRD's XP from level N
 to N+1 (the game halves the thresholds, so killing about half of a breach is a level). Every
 group carries a DISPOSITION: Evil kinds are Hostile; every other group rolls a d6 (1-2
-Hostile, 3-5 Neutral, 6 Willing; a mindless kind is Neutral on a 6 too).
+Hostile, 3-5 Neutral, 6 Willing; a mindless kind is Neutral on a 6 too). The gizmo sends
+home anything Willing or held, so a disposition says what it takes, not whether.
 
 Usage:
   python3 breach2/tools/gen_breach.py --seed 4812 --level 3
-  python3 breach2/tools/gen_breach.py --seed 4812 --level 5 --reported 2   # the Reader said grade 2
+  python3 breach2/tools/gen_breach.py --seed 4812 --level 5 --anomaly  # one room (never the
+      # anchor) holds something from a level higher, over this level's High
   python3 breach2/tools/gen_breach.py --seed 4812 --level 5 --encounter 1  # the breach's 1st
       # encounter: a new Hostile group, more of the principal kind or something else (even odds)
   python3 breach2/tools/gen_breach.py --seed 77 --level 3 --encounter 1 --street  # a stray
       # in the street, any kind, at the pair's level; any seed
+  python3 breach2/tools/gen_breach.py --seed 8053 --level 3 --kind Berserker  # a hunt: one
+      # loose group of a NAMED kind where it has gone to ground (`day.py ledger` prints the line)
 
 day.py imports breach() and principal_for(); keep the RNG call order if you change them.
 """
@@ -52,6 +56,7 @@ FILL_L1 = 0.65       # looser at level 1, so ten CR 0 creatures (cats, commoners
 BIG_GROUP = 4        # groups larger than this are made rarer, by (BIG_GROUP / n) squared
 TOP_SLACK = 1.25     # at level 20 only, one creature may run this far over High
 MIN_ROOMS = 3
+ANOMALY_OVER = 1.25  # an anomaly room is worth at least this many times the level's High
 # Few rooms, each dangerous: no Low fights. (Name, weight, index into the budget tuple.)
 DIFFICULTY = [("Moderate", 0.5, 1), ("High", 0.5, 2)]
 
@@ -70,9 +75,18 @@ FLOODED = "flooded: water 3 m deep, a 1.5 m ledge around the edge"
 ANCHOR = ("the anchor: where the piece is lodged; the air is thick and the floor hums; "
           "the gizmo is set up here and nowhere else")
 HOSTILE_ON = 2       # a group that isn't Evil is Hostile anyway on a d6 roll this low
-HOSTILE = "Hostile: fights; will not be talked round"
-NEUTRAL = "Neutral: no quarrel yet; will not go home unless convinced (GM's discretion)"
+HOSTILE = "Hostile: fights; will not be talked round; goes home only held"
+NEUTRAL = "Neutral: no quarrel yet; will not go home unless convinced (GM's discretion) or held"
 WILLING = "Willing: wants to go home; may help"
+# Where a loose group has gone to ground in the city (a hunt).
+HIDEOUTS = [
+    "a coal cellar under a terrace", "a railway arch, bricked up and broken open again",
+    "the loft of an empty warehouse", "a culvert in the Under, ankle-deep",
+    "a derelict chapel", "a boiler house gone cold", "a canal barge tied up and stripped",
+    "the back rooms of a shut public house", "a tram shed at the end of a closed line",
+    "a tenement the landlord has given up on", "a mill's dye works, vats and all",
+    "a builder's yard behind a hoarding",
+]
 
 SURFACE = {
     "Beast": "their country indoors: a tenement whose stairwells are forest, a depot gone to marsh",
@@ -219,7 +233,7 @@ def principal_for(level, seed):
     return rng.choices(pool, weights)[0]
 
 
-def breach(level, seed, reported=None):
+def breach(level, seed, anomaly=False):
     rng = random.Random(seed)
     pool, weights = pool_for(level)
     principal = rng.choices(pool, weights)[0]
@@ -250,9 +264,36 @@ def breach(level, seed, reported=None):
         r["n"] = i
     for r in rooms:  # rolled last, so a seed's rooms are what they were before dispositions
         r["disposition"] = disposition(r["type"], r["align"], rng)
-    return {"level": level, "reported": reported or grade_of(level), "seed": seed, "need": need,
+    if anomaly and level < 20:
+        make_anomaly(rooms[:-1], level, seed)
+    return {"level": level, "anomaly": anomaly and level < 20, "seed": seed, "need": need,
             "total": total, "principal": principal, "rooms": rooms,
             "surface": SURFACE.get(principal["type"], SURFACE["Monstrosity"])}
+
+
+def make_anomaly(rooms, level, seed):
+    """The anomaly: one room that isn't the anchor holds a stowaway from a level higher: a
+    kind that fits the next level, in numbers worth at least the next level's Moderate and
+    at least ANOMALY_OVER times this level's High. Harder than the Reader's grade promised,
+    not hopeless. Its own RNG, so the rest of the seed's breach is what it would have been."""
+    rng = random.Random(f"{seed}:anomaly")
+    r = rng.choice(rooms)
+    pool, weights = pool_for(level + 1)
+    high, cap = budgets(level)[2], budgets(level + 1)[2]
+    target = max(budgets(level + 1)[1], ANOMALY_OVER * high)
+    for _ in range(200):  # a kind whose numbers can land over this level's High
+        m = rng.choices(pool, weights)[0]
+        ok = [n for n in range(1, MAX_COUNT + 1) if high < n * m["xp"] <= cap]
+        if ok:
+            break
+    count = min(ok or [1], key=lambda n: abs(n * m["xp"] - target))
+    total = m["xp"] * count
+    r.update(name=m["name"], cr=m["cr"], xp=m["xp"], count=count, total=total, type=m["type"],
+             align=m["align"], stowaway=True, anomaly=True, gp=total // 10,
+             diff=f"Anomaly ({total / high:.1f}× High)",
+             disposition=disposition(m["type"], m["align"], rng))
+    if m["aquatic"]:
+        r["feature"] = FLOODED
 
 
 def encounter(level, seed, n, street=False):
@@ -272,11 +313,43 @@ def encounter(level, seed, n, street=False):
             f"Coins {g['total'] // 10:,} GP.")
 
 
+def find_kind(name):
+    """An SRD monster by name, forgiving of case and a plural s."""
+    want = name.strip().lower()
+    forms = {want, want.rstrip("s"), want[:-2] if want.endswith("es") else want,
+             want[:-3] + "f" if want.endswith("ves") else want,
+             want[:-3] + "y" if want.endswith("ies") else want}
+    for m in monsters():
+        if m["name"].lower() in forms:
+            return m
+    near = [m["name"] for m in monsters() if want.rstrip("s") in m["name"].lower()]
+    raise SystemExit(f"no SRD monster named {name!r}"
+                     + (f"; did you mean: {', '.join(near)}?" if near else ""))
+
+
+def hunt(level, seed, kind):
+    """One loose group of a named kind, where it has gone to ground: the same group a room
+    of its breach would hold (Moderate or High for the pair at the breach's level), with a
+    hideout, a room, a feature and a disposition. A kind too strong for the level comes
+    alone; one too weak comes ten strong."""
+    rng = random.Random(f"{seed}:hunt:{kind.lower()}")
+    m = find_kind(kind)
+    g = group(m, level, pick_diff(rng), rng)
+    w, h = rng.choice(SIZES)
+    feature = FLOODED if g["aquatic"] else rng.choice(FEATURES[:-1])  # the city's own sky
+    disp = disposition(g["type"], g["align"], rng)
+    over = "" if m["xp"] <= budgets(level)[2] else " (over High: one alone is more than a room)"
+    return (f"**Hunt:** {g['count']}× {g['name']} (CR {g['cr']}, {g['type']}, {g['align']}), "
+            f"{g['total']:,} XP, {g['diff']} at level {level}{over}.\n"
+            f"**Gone to ground in:** {rng.choice(HIDEOUTS)}; {w}×{h} sq "
+            f"({w * 1.5:g}×{h * 1.5:g} m); {feature}.\n"
+            f"**Disposition:** {disp}. Coins {g['total'] // 10:,} GP.")
+
+
 def breach_md(b):
     p = b["principal"]
     out = [f"## Breach (seed {b['seed']}) · level {b['level']} (grade {grade_of(b['level'])})"
-           + (f", the Reader said grade {b['reported']}"
-              if b["reported"] != grade_of(b["level"]) else ""),
+           + (", with an anomaly the Reader did not see" if b["anomaly"] else ""),
            "",
            f"**Principal kind:** {p['name']} (CR {p['cr']}, {p['type']}, {p['align']}). "
            f"**From the street:** {b['surface']}.",
@@ -285,7 +358,8 @@ def breach_md(b):
            "| Room | Denizens | CR | XP | Difficulty | Disposition | Room size | Feature | Coins |",
            "|---|---|---|---|---|---|---|---|---|"]
     for r in b["rooms"]:
-        who = f"{r['count']}× {r['name']}" + (" (stowaway)" if r.get("stowaway") else "")
+        who = f"{r['count']}× {r['name']}" + (" (anomaly)" if r.get("anomaly") else
+                                              " (stowaway)" if r.get("stowaway") else "")
         out.append(f"| {r['n']} | {who} | {r['cr']} | {r['total']:,} | {r['diff']} "
                    f"| {r['disposition']} | {r['room']} | {r['feature']} | {r['gp']:,} GP |")
     return "\n".join(out) + "\n"
@@ -295,14 +369,19 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--level", type=int, required=True)
-    ap.add_argument("--reported", type=int, help="the grade the Reader reported, if wrong")
+    ap.add_argument("--anomaly", action="store_true",
+                    help="one room holds something from a level higher")
     ap.add_argument("--encounter", type=int, help="print the Nth encounter instead")
     ap.add_argument("--street", action="store_true", help="with --encounter: a stray, any kind")
+    ap.add_argument("--kind", help="a hunt: one loose group of this SRD kind, gone to ground")
     a = ap.parse_args()
+    if a.kind:
+        print(hunt(a.level, a.seed, a.kind))
+        return
     if a.encounter:
         print(encounter(a.level, a.seed, a.encounter, a.street))
         return
-    print(breach_md(breach(a.level, a.seed, a.reported)))
+    print(breach_md(breach(a.level, a.seed, a.anomaly)))
 
 
 if __name__ == "__main__":
