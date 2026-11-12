@@ -1,12 +1,12 @@
 # The Owl · grade 2 · N Division, Nine Bridges
 
-Pair's purse: **30 GP** (Thorne 21 GP, Hobbes 9 GP). XP: **150** (level 3 at 450). **The seat's relics:** the **Cloak of the Manta Ray** (Uncommon, from #19; breathe underwater, Swim Speed 18 m while worn), rebuilt by the fabricator from the pattern Rookwood's core sent on day 48, on the Mechanic's bench for the new Owl; attuned to Tom Thorne on day 111, a Short Rest on the stool at the Mechanic's bench. CORRECTION: the SRD cloak has no hood condition; while worn it gives both. Pike's battleaxe was plain steel and stayed where it fell. The old sheet is in `chronicle.md`.
+Pair's purse: **30 GP** (Thorne 21 GP, Hobbes 9 GP). XP: **600** (level 3 at 450; level 4 at 1,350). Level 3 on day 111, from the first Polar Bear. **The seat's relics:** the **Cloak of the Manta Ray** (Uncommon, from #19; breathe underwater, Swim Speed 18 m while worn), rebuilt by the fabricator from the pattern Rookwood's core sent on day 48, on the Mechanic's bench for the new Owl; attuned to Tom Thorne on day 111, a Short Rest on the stool at the Mechanic's bench. CORRECTION: the SRD cloak has no hood condition; while worn it gives both. Pike's battleaxe was plain steel and stayed where it fell. The old sheet is in `chronicle.md`.
 
 ## Constable Tom Thorne (he/him)
 
-Orc Soldier · Barbarian 2 (Berserker at level 3) · Front · on the seat since day 57. Constable since the day 61 review; behind the quota (level 2 where a Constable's first level is 3).
+Orc Soldier · Barbarian 3 (Berserker) · Front · on the seat since day 57. Level 3 on day 111: HP max 32 (+9 with CON), current HP up by the same; Frenzy to be written up. Constable since the day 61 review; behind the quota (level 2 where a Constable's first level is 3).
 
-- **HP** 23 (d12, fixed value) · **AC** 14 (Unarmored Defense: 10 + DEX 2 + CON 2; 16 with a shield, not with the Greataxe) · **Speed** 9 m · **Initiative** +2 · **Proficiency** +2
+- **HP** 32 max (level 3, d12 fixed value + CON; 19 of 23 before, 28 now) · **AC** 14 (Unarmored Defense: 10 + DEX 2 + CON 2; 16 with a shield, not with the Greataxe) · **Speed** 9 m · **Initiative** +2 · **Proficiency** +2
 - **STR** 15 (+2) · **DEX** 14 (+2) · **CON** 15 (+2) · **INT** 11 (+0) · **WIS** 14 (+2) · **CHA** 12 (+1)
 - **Saves:** STR +4, CON +4. **Passive Perception** 12.
 - **Skills:** Athletics +4, Intimidation +3 (Soldier); Perception +4, Survival +4 (class).

@@ -327,3 +327,7 @@ The Owl took the cloak up at the Mechanic's bench: an hour on the stool with it 
 to speak to. It settled onto the shoulders like it had been there before. Then up through the
 brewery gate and the back lane to a carter's depot whose wide doors stood open on warm green fog,
 and a marsh on the other side of them. Hobbes said the lane had got wetter since morning.
+
+## Day 111, the depot's first fight
+
+The Owl put a ration sack on the sill of the depot and stood nine metres off in the sun. Two Polar Bears came to it through the steam. The first stood on the sill and the Owl opened on it: a javelin, then the Greataxe, with the Fire Bolt from the lane. It took three rounds. The bear got two blows in, and one of them put the Owl down four. When the first bear fell the second one looked at it, looked at the Owl, and went back into the fog, past its mate, toward the far door. The Owl is level 3 now, the first step the Board asked for, and nobody has written up what Frenzy means for him yet.

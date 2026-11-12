@@ -111,6 +111,7 @@ Closed by the Lion on day 58. Nothing recorded inside.
   by a net, rope or a pen it can't get out of, or bound hand and foot. Calmed or lured is not held and
   is not sent. Tying one starts the fight (Neutral, no quarrel yet). Left alive at closing, it is
   loose in the Yard. Killing a bear is 450 XP; sending gives none.
+- **Day 111, the fight at the sill.** Initiative: Tom 17, Hobbes 8, bear 4. Round 1: Tom raged, javelin 23 hit, 9 (Savage 5, +4); Hobbes Fire Bolt 9, miss; bear 1 rends to Tom: hit 16, 4 after Rage (3 + 5 halved), rend 2 natural 1. Bear A 33/42, Tom 19/23. Round 2: Tom Greataxe 23 hit, 16 (Savage 12, +4); Hobbes Fire Bolt 23 hit, 7; bear rends 1 (natural 1) and 11, both miss. Bear A 10/42. Round 3: Tom Greataxe 22 hit, 13. Bear A dead, 450 XP to Tom (now 600, level 3). Bear B (unhurt, 42/42) failed its morale check (4 vs DC 10) and ran back into the fog, past its mate and toward room 1's far door. Its fate is open: it may come back to the rations on the sill.
 
 ## Closed: #19, the Tun Street baths (day 47)
 
