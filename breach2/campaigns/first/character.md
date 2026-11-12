@@ -1,10 +1,10 @@
-# The Owl · grade 1 · N Division, Nine Bridges
+# The Owl · grade 2 · N Division, Nine Bridges
 
 Pair's purse: **30 GP** (Thorne 21 GP, Hobbes 9 GP). XP: **150** (level 3 at 450). **The seat's relics:** the **Cloak of the Manta Ray** (Uncommon, from #19; breathe underwater, Swim Speed 18 m with the hood up), rebuilt by the fabricator from the pattern Rookwood's core sent on day 48, on the Mechanic's bench for the new Owl; carried by nobody yet; whoever takes it attunes as written. Pike's battleaxe was plain steel and stayed where it fell. The old sheet is in `chronicle.md`.
 
-## Probationer Tom Thorne (he/him)
+## Constable Tom Thorne (he/him)
 
-Orc Soldier · Barbarian 2 (Berserker at level 3) · Front · on the seat since day 57.
+Orc Soldier · Barbarian 2 (Berserker at level 3) · Front · on the seat since day 57. Constable since the day 61 review; behind the quota (level 2 where a Constable's first level is 3).
 
 - **HP** 23 (d12, fixed value) · **AC** 14 (Unarmored Defense: 10 + DEX 2 + CON 2; 16 with a shield, not with the Greataxe) · **Speed** 9 m · **Initiative** +2 · **Proficiency** +2
 - **STR** 15 (+2) · **DEX** 14 (+2) · **CON** 15 (+2) · **INT** 11 (+0) · **WIS** 14 (+2) · **CHA** 12 (+1)

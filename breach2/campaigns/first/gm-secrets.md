@@ -45,7 +45,7 @@ whose mast failed is not on any tram map.
 
 - **Rules from day 57:** no denizen settles. Any still living in the city from earlier days (Will Pegg, labouring in Vinegar Yard) is owed a sending or a death, and the mast hears him; put him on the Owl's desk when it suits. Station people are spoken of by title in play: Crane the Director, Lark the Reader, Finch the Clerk, Stubbs the Mechanic, Vale the Auditor.
 
-## Open: #24, Lime Wharf (Knight, grade 4, truly level 7, seed 201703)
+## Struck off: #24, Lime Wharf (Knight, grade 4, truly level 7, seed 201703)
 
 `gen_breach.py --seed 201703 --level 7`. Four rooms, the anchor last. 11,100 XP inside.
 
@@ -73,10 +73,36 @@ whose mast failed is not on any tram map.
 - **Relic on closing:** grade 4, so the cap is Rare; pick below it more often than at it.
   A knight's shield, pennon or blade, of a reality with knights in it; the GM's pick.
 
-## Open: #25, Clock Street (Chimera, grade 5, truly level 11, seed 218346)
+**Resolved (days 63 to 72).** Day 63: the room 1 Knights walked out of the piece into the wharf.
+The Raven went in after them and fetched the Wolf's body and Jarvis's core from the floor; the body
+went to the Board's undertakers, the core to Head Office in the crate. Days 64 and 72: the room 2
+and room 4 Knights walked out. Room 3's Ankhegs were never counted by the ledger: they went down the
+chasm and into the wharf's sewers on day 72 and have not come up. Day 72: struck off, nothing left
+inside.
 
-The Lion's, due day 58. Nobody has been inside. The table is `gen_breach.py --seed 218346 --level 11`
-when it matters; the Lion's dawn resolves it first. Going there now is misappropriation.
+## Closed: #25, Clock Street (Chimera, the Lion's, truly level 11, seed 218346)
+
+Closed by the Lion on day 58. Nothing recorded inside.
+
+## Open: #44, Vinegar Yard (Giant Hyena, grade 2, truly level 4, seed 227155): the Owl's
+
+`gen_breach.py --seed 227155 --level 4`. Five rooms, the anchor last. 4,400 XP inside. No anomaly.
+
+| Room | Denizens | XP | Disposition | Size | Feature | Coins |
+|---|---|---|---|---|---|---|
+| 1 | 2× Polar Bear (stowaway), CR 2 | 900 | Neutral, High | 12×12 m | thick fog or steam (heavily obscured beyond 3 m) | 90 GP |
+| 2 | 8× Hobgoblin Warrior (stowaway), CR 1/2 | 800 | Hostile, Moderate | 12×12 m | machinery, statues or stacked cargo (half cover) | 80 GP |
+| 3 | 5× Giant Hyena, CR 1 | 1,000 | Neutral, High | 18×18 m | pillars, boilers or masts (full cover) | 100 GP |
+| 4 | 1× Swarm of Crawling Claws (stowaway), CR 3 | 700 | Hostile, Moderate | 9×9 m | pillars, boilers or masts (full cover) | 70 GP |
+| 5 (anchor) | 5× Giant Hyena, CR 1 | 1,000 | Neutral, High | 9×12 m | the anchor: thick air, humming floor; the gizmo works here and nowhere else | 100 GP |
+
+- The Owl is **two levels under** this breach (level 2 against a level 4). The rooms are rated for a
+  level 4 pair, so the three High rooms (1, 3, 5) are where the Owl gets hurt. Room 2's Hobgoblins
+  are the fight they can win; room 4's Crawling Claws the one they can't walk away from.
+- The Polar Bears and the Hyenas are beasts: not argued with. They are calmed, penned, lured or
+  netted. Hyenas hunt what moves and leave what's still; meat draws them.
+- Relic on closing: grade 2, so the cap is Uncommon.
+- The Yard is the station's own precinct: no legs. The breach is up the street.
 
 ## Closed: #19, the Tun Street baths (day 47)
 
@@ -145,18 +171,21 @@ the whole run, as the clue says.
 
 ## Loose (the pair knows these from the ledger)
 
-The Gricks (level 9), spilled from #8 into Lime Wharf on day 53: the only loose group on the
-list (`gen_breach.py --seed 8053 --level 9 --kind "Grick"`, from `day.py ledger`).
-Gone, by the GM's word: the Berserkers (the three went down the railway cutting into the Under
-the morning after the coal arch; the gizmo case stayed at the arch mouth); the Giant Apes (down
-the canal to the Ropewalk slaughterhouse, day 51; the bargemen are paid); the Pit Fiends (in the
-ice-house under Tallow Row, cellar bolted from inside); the jellies, the elks, the fire elementals.
+The ledger's loose list, as of day 111 (`day.py ledger` prints the hunt lines):
 
-Clues given in days 2 to 40: Stubbs's blank cores arrived warm, and Ives said so.
+- **Knights**, 3 groups, level 7, Lime Wharf, since day 63: #24's rooms 1, 2 and 4.
+- **Werebears**, 3 groups, level 10, Lime Wharf, since day 81 (from #29).
+- **Aboleths**, 3 groups, level 13, Gasworks, since day 81 (from #30).
+- **Trolls**, 3 groups, level 5, Vinegar Yard, since day 87 (from #34): the station's own precinct.
+- **Shield Guardian**, 1 group, level 18, Needle Street, since day 96 (from #39, which the Bear closed the next day with the rest of it left out).
+- **Frost Giants**, 3 groups, level 9, Lime Wharf, since day 99 (from #38).
+- The Ankhegs of #24's room 3 are not on the list: loose in the wharf's sewers since day 72. The GM may bring them up in a drain (Hostile; they don't leave).
+
+Dealt with, by the GM's word: the Gricks (day 61, the Commander, on the wharf with the gizmo, before he went up to Head Office); the Bandit Captains (day 93, the Raven); the Basilisks (day 103, the new Wren); the Stone Golems (day 106, the Fox). Gone to ground, not in the ledger: the Berserkers (into the Under by the railway cutting, the morning after the coal arch; the gizmo case stayed at the arch mouth); the Giant Apes (down the canal to the Ropewalk slaughterhouse, day 51); the Pit Fiends (in the ice-house under Tallow Row).
 
 ## Unheard news
 
-None. The pair has the day 57 ledger (`division.md` was rewritten on day 57).
+None. The pair has heard every morning's ledger at the station, days 58 to 111.
 
 **Day 47, the hunt for the castaways (midday).** The loose list says Pirates (level 2) in the
 Yard, and the hunt is one room at that level in the precinct. Rolled seed 676 at level 2

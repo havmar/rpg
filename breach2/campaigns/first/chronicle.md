@@ -300,3 +300,23 @@ Day 57, dawn: the Board's transfer office sent up a Probationer, Tom Thorne, an 
 Upstairs the Director does not get up. He says there is nothing at the Owl's grade this morning. There is a grade four at Lime Wharf that the Wolf went into and did not come out of, and a grade five at Clock Street that is the Lion's. The Raven's report is that there are armoured men in the first room of the Wharf breach, standing on the floor where the Wolf went down, and that they have not come out. "I can send you," the Director says. "I'd rather you didn't go. The Board has never once asked me what I'd rather."
 
 Hobbes, at the door: "I'm sorry for the Wolf's brass man, sir. I mention it only for completeness."
+
+## Days 58 to 111
+
+The Lion closed the Chimera at Clock Street on day 58, and the station said nothing about it. On day 59 an Ancient Black Dragon came up in Needle Street, grade ten, and the Commander closed it on day 60. The Board will be telling people about that for a month.
+
+Day 61, the review. The Commander was called up to Head Office with his automaton, and the Stag went to a Probationer from the transfer office, a Tiefling Fighter with a Rogue for a brass man. Every seat moved up a grade. The Owl moved to the Constable's grade, and the Auditor wrote him down as behind: a Constable's first level is three, and the Owl is two, with 150 XP where three wants 450. The Gricks loose on the wharf were dealt with that same morning. The Commander did it on his way out, with the gizmo, and told nobody how.
+
+Day 62, an Ochre Jelly opened at Clock Street, and the Wolf closed it on day 63. The same morning the room in the Lime Wharf breach emptied itself: its Knights walked out into the wharf. The Raven went in after them and fetched the Wolf's body and Jarvis's core from the floor. The body went to the Board's undertakers; the core went to Head Office in the crate the blank ones come in. The Knights were the wharf's now, and then two more groups came out on days 64 and 72. On day 72 the breach was struck off with nothing left inside. Its third room had been a chasm, and nobody had counted what was in it. They went down into the wharf's sewers, and no one has seen them come up.
+
+Days 73 to 79 were quiet, apart from the Bear, who closed a Vampire in Needle Street on day 73.
+
+Days 80 to 91 were the bad fortnight. A Werebear breach at Lime Wharf that the Wolf withdrew from spilled, and spilled again, and was struck off. An Aboleth at Gasworks went the same way, after the Hound let it go. The Fox closed a Stone Golem in Tallow Row on day 83. Bandit Captains came up in the Yard on day 84; they spilled into it, and the Raven closed them on day 87. The same day a Troll came up in the Yard and went out into it, and the Raven took it on, and gave it up on day 90 with it still in the Yard. The Wolf closed an Earth Elemental in Gasworks on day 91.
+
+Day 94: a Basilisk at Lime Wharf took the Wren, Martha Ashcombe, Sergeant, and her automaton went dark with her. The seat was empty until day 100, when a Druid came up from the transfer office with a Barbarian's automaton. Day 95 brought a Frost Giant to Lime Wharf and a Shield Guardian to Needle Street. The Shield Guardian spilled into the street on day 96 before the Bear closed the rest of it on day 97, and the group that walked out is still in the street; it is eighteen, and the Board does not like to say so. Day 98: the Frost Giant took the Wolf, Ruth Pike, Station Sergeant. Her automaton went dark with her. The seat was empty until day 105. The Stag closed a Kobold Warrior in the Yard on day 100.
+
+Days 103 to 106: the Basilisks, the Frost Giants and the Trolls spilled and were struck off, and the Basilisks were dealt with on day 103 by the new Wren. An Ankylosaurus came up at Lime Wharf on day 101 with nobody free to take it; the Wolf closed it on day 106. A Nalfeshnee came up at Lime Wharf on day 104, and the Hound closed it on day 106. On day 105 the new Wolf came up from the transfer office, a Tiefling Barbarian with a Wizard's brass man. The Stone Golems loose in Tallow Row were dealt with on day 106, by the Fox.
+
+Days 107 to 110: quiet mornings, with the coal in the wharf's sheds burning down.
+
+Day 111, dawn: the mast reads grade two, a Giant Hyena breach, in Vinegar Yard, the station's own precinct, no legs. The Clerk read the line out with the Owl's name against it.

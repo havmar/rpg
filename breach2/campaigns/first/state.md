@@ -1,13 +1,13 @@
-# State · day 57, mid-morning, the station (the Owl: Tom Thorne, first morning)
+# State · day 111, dawn, the station (the Owl: Tom Thorne, Constable)
 
-**For the GM resuming:** read this, `character.md`, `division.md`, `gm-secrets.md` and the end of `chronicle.md`. Mind the Pace and Narration rules in `breach2/CLAUDE.md` (a reply runs to the next real decision; a breach in three to five replies; titles, not names, for the station's people; no names for throwaway denizens), and the bond rule (a dead officer's automaton is not rebuilt; the transfer has a new one).
+**For the GM resuming:** read this, `character.md`, `division.md`, `gm-secrets.md` and the end of `chronicle.md`. Mind the Pace and Narration rules in `breach2/CLAUDE.md` (a reply runs to the next real decision; a breach in three to five replies; titles, not names, for the station's people and the other seats; no names for throwaway denizens), and the bond rule (a dead officer's automaton is not rebuilt; the transfer has a new one).
 
-- **Place:** the station, Vinegar Yard, day 57, mid-morning. The ledger has been read out and `division.md` rewritten to match. The Mechanic has the Cloak of the Manta Ray laid out on the bench for the new Owl. The Director has spoken to the Owl upstairs and has not sent them anywhere. Hobbes is at the Owl's elbow with the Board's case.
-- **The Owl now:** Probationer **Tom Thorne** (he/him, orc Barbarian 2), on the seat since day 57, and **Hobbes** (automaton, Sorcerer 2), bound to him since day 57. Full sheets are in `character.md`. Names stand as written unless the human says otherwise (asked once; not pressed).
-- **The Owl's options, as the Director put it:** Lime Wharf (#24, grade 4, nobody on it; the Director can send the Owl over grade and "would rather not"). Clock Street (#25) is the Lion's; going there is misappropriation. Or the station a while longer: the Mechanic's bench, the wall, the Director.
-- **Breaches:** #24 · grade 4 (truly level 7) · Knight · Lime Wharf · open since day 55 · no one. Room 1 holds the Wolf's body and Jarvis's core, under four Hostile Knights (see `gm-secrets.md`). #25 · grade 5 (truly level 11) · Chimera · Clock Street · the Lion, due day 58.
-- **Loose in the district (known):** the Gricks (level 9) at Lime Wharf (from #8, spilled day 53). Berserkers and Giant Apes are gone (see `gm-secrets.md`).
-- **The seats:** the Wolf, Thomas Pendry (a Sergeant), died in #24 on day 56; Jarvis went dark with him; that seat is empty until day 61. Review is on day 61: the Owl's first review is four days in. The Owl's wall line reads "day 49" in the ledger (the dawn that recorded Bob Fletcher's death) and "day 48" in the chronicle (the day he died). Both are right.
-- **Standing orders:** none (a new pair).
-- **Relics:** the Cloak of the Manta Ray is on the Mechanic's bench for the Owl. Nobody has attuned to it yet; whoever takes it up does so as written. Pike's battleaxe and Fletcher's gear were left where they fell.
-- **Question out to the human:** where does the Owl go this morning?
+- **Place:** the station, Vinegar Yard, dawn of day 111. The Clerk has read the ledger out, and the human has heard the montage of days 58 to 110 as the mornings came in. `division.md` is rewritten to day 111.
+- **The Owl now:** Constable **Tom Thorne** (he/him, orc Barbarian 2), grade 2 since the day 61 review, on the seat since day 57; level 2, 150 XP. **Behind the quota**: the Auditor wrote it down (a Constable's first level is 3, 450 XP). Hobbes (automaton, Sorcerer 2), bound since day 57. Full sheets in `character.md`. Names stand as written unless the human says otherwise.
+- **The breach:** #44 · grade 2 (truly level 4) · Giant Hyena · Vinegar Yard · open since day 111 · **the Owl**. The station's own precinct: no legs. Five rooms (`gm-secrets.md`); the Owl is two levels under it, and rooms 1, 3 and 5 are High.
+- **The cloak:** the Cloak of the Manta Ray is still on the Mechanic's bench, unattuned. Whoever takes it up does so as written.
+- **Seats now:** the Stag (Probationer, Tiefling Fighter, since day 61, Rogue automaton) and the Wolf (Station Sergeant, Tiefling Barbarian, since day 105, Wizard automaton; the Wolf before her, Ruth Pike, died day 98). The Wren (Sergeant, Druid, since day 100; the Wren before her, Martha Ashcombe, died day 94). Review next on day 121.
+- **The wall:** Thomas Pendry (the Wolf, day 56, Lime Wharf); Martha Ashcombe (the Wren, day 94, Lime Wharf); Ruth Pike (the Wolf, day 98, Lime Wharf).
+- **Loose in the district:** Knights, Werebears, Frost Giants (Lime Wharf); Aboleths (Gasworks); Trolls (Vinegar Yard, the station's own precinct); a Shield Guardian (Needle Street, level 18). Hunt lines from `day.py ledger`. The Ankhegs of #24 are in the wharf's sewers.
+- **Standing orders:** none.
+- **Question out to the human:** does the Owl take #44 now (up the Yard, no legs), or first take up the cloak at the bench?

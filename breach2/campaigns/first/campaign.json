@@ -2,13 +2,57 @@
  "name": "first",
  "seed": 426,
  "division": "N Division",
- "day": 57,
- "last_review": 1,
+ "day": 111,
+ "last_review": 61,
  "player": "Owl",
  "roster": [
   {
-   "role": "Owl",
+   "role": "Stag",
    "grade": 1,
+   "holder": {
+    "name": "Chance Hobbs",
+    "pronouns": "he/him",
+    "species": "Tiefling",
+    "background": "Criminal",
+    "side": "Front",
+    "class": "Fighter",
+    "subclass": "Champion",
+    "scores": {
+     "STR": 17,
+     "CON": 15,
+     "DEX": 13,
+     "WIS": 13,
+     "INT": 11,
+     "CHA": 9
+    },
+    "since": 61,
+    "quirk": "wears a scarf somebody clearly knitted for them",
+    "level": 1
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Kettle",
+    "side": "Back",
+    "class": "Rogue",
+    "subclass": "Thief",
+    "protocol_skill": "Investigation",
+    "scores": {
+     "DEX": 15,
+     "CON": 14,
+     "INT": 11,
+     "WIS": 10,
+     "CHA": 9,
+     "STR": 7
+    },
+    "built": 61,
+    "partners": [
+     "Chance Hobbs"
+    ]
+   }
+  },
+  {
+   "role": "Owl",
+   "grade": 2,
    "holder": {
     "name": "Tom Thorne",
     "pronouns": "he/him",
@@ -52,7 +96,7 @@
   },
   {
    "role": "Raven",
-   "grade": 2,
+   "grade": 3,
    "holder": {
     "name": "Flo Whitlock",
     "pronouns": "she/her",
@@ -70,7 +114,7 @@
      "STR": 6
     },
     "since": -59,
-    "level": 3,
+    "level": 5,
     "quirk": "remembers everyone's tea"
    },
    "arrives": null,
@@ -96,76 +140,95 @@
   },
   {
    "role": "Wren",
-   "grade": 3,
+   "grade": 4,
    "holder": {
-    "name": "Martha Ashcombe",
+    "name": "Martha Mercer",
     "pronouns": "she/her",
     "species": "Human",
-    "background": "Acolyte",
-    "side": "Front",
-    "class": "Ranger",
-    "subclass": "Hunter",
+    "background": "Sage",
+    "side": "Back",
+    "class": "Druid",
+    "subclass": "Land",
     "scores": {
-     "DEX": 15,
-     "WIS": 13,
-     "CON": 11,
-     "STR": 10,
-     "INT": 9,
-     "CHA": 8
+     "WIS": 15,
+     "CON": 14,
+     "DEX": 13,
+     "INT": 10,
+     "CHA": 8,
+     "STR": 8
     },
-    "since": -89,
-    "level": 6,
-    "quirk": "walks on the kerb's edge"
+    "since": 100,
+    "quirk": "is always a little sunburnt or a little chilled",
+    "level": 8
    },
    "arrives": null,
    "automaton": {
-    "name": "Evershed",
-    "side": "Back",
-    "class": "Rogue",
-    "subclass": "Thief",
-    "protocol_skill": "Investigation",
+    "name": "Jarvis",
+    "side": "Front",
+    "class": "Barbarian",
+    "subclass": "Berserker",
+    "protocol_skill": "Animal Handling",
     "scores": {
-     "DEX": 15,
-     "CON": 15,
-     "INT": 14,
-     "WIS": 14,
-     "CHA": 12,
-     "STR": 8
+     "STR": 16,
+     "CON": 14,
+     "DEX": 13,
+     "WIS": 12,
+     "CHA": 9,
+     "INT": 7
     },
-    "built": -89,
+    "built": 100,
     "partners": [
-     "Martha Ashcombe"
+     "Martha Mercer"
     ]
    }
   },
   {
    "role": "Wolf",
-   "grade": 4,
-   "holder": null,
-   "arrives": 61,
-   "automaton": {
-    "name": "Jarvis",
+   "grade": 5,
+   "holder": {
+    "name": "Prudence Vance",
+    "pronouns": "she/her",
+    "species": "Tiefling",
+    "background": "Criminal",
     "side": "Front",
-    "class": "Cleric",
-    "subclass": "Life",
-    "protocol_skill": "Insight",
+    "class": "Barbarian",
+    "subclass": "Berserker",
     "scores": {
-     "WIS": 17,
-     "CON": 16,
-     "STR": 11,
+     "STR": 15,
+     "CON": 13,
      "DEX": 11,
-     "CHA": 10,
-     "INT": 5
+     "WIS": 11,
+     "CHA": 7,
+     "INT": 6
     },
-    "built": -119,
+    "since": 105,
+    "quirk": "buttons the coat to the throat in any weather",
+    "level": 9
+   },
+   "arrives": null,
+   "automaton": {
+    "name": "Faraday",
+    "side": "Back",
+    "class": "Wizard",
+    "subclass": "Evoker",
+    "protocol_skill": "Sleight of Hand",
+    "scores": {
+     "INT": 16,
+     "DEX": 16,
+     "CON": 15,
+     "WIS": 14,
+     "CHA": 13,
+     "STR": 8
+    },
+    "built": 105,
     "partners": [
-     "Thomas Pendry"
+     "Prudence Vance"
     ]
    }
   },
   {
    "role": "Lion",
-   "grade": 5,
+   "grade": 6,
    "holder": {
     "name": "Ambrose Marsh",
     "pronouns": "he/him",
@@ -183,7 +246,7 @@
      "STR": 8
     },
     "since": -149,
-    "level": 10,
+    "level": 12,
     "quirk": "has a whistle that stops dogs"
    },
    "arrives": null,
@@ -209,7 +272,7 @@
   },
   {
    "role": "Hound",
-   "grade": 6,
+   "grade": 7,
    "holder": {
     "name": "Sid Thorne",
     "pronouns": "he/him",
@@ -227,7 +290,7 @@
      "CHA": 10
     },
     "since": -179,
-    "level": 12,
+    "level": 14,
     "quirk": "wears odd socks on purpose"
    },
    "arrives": null,
@@ -253,7 +316,7 @@
   },
   {
    "role": "Hawk",
-   "grade": 7,
+   "grade": 8,
    "holder": {
     "name": "Albert Whitlock",
     "pronouns": "he/him",
@@ -271,7 +334,7 @@
      "STR": 6
     },
     "since": -209,
-    "level": 14,
+    "level": 16,
     "quirk": "takes the stairs two at a time"
    },
    "arrives": null,
@@ -297,7 +360,7 @@
   },
   {
    "role": "Bear",
-   "grade": 8,
+   "grade": 9,
    "holder": {
     "name": "Minnie Oxley",
     "pronouns": "she/her",
@@ -315,7 +378,7 @@
      "STR": 8
     },
     "since": -239,
-    "level": 16,
+    "level": 18,
     "quirk": "whistles on stairs"
    },
    "arrives": null,
@@ -341,7 +404,7 @@
   },
   {
    "role": "Fox",
-   "grade": 9,
+   "grade": 10,
    "holder": {
     "name": "Faith Baker",
     "pronouns": "she/her",
@@ -359,7 +422,7 @@
      "CHA": 11
     },
     "since": -269,
-    "level": 18,
+    "level": 20,
     "quirk": "hates pigeons and says so"
    },
    "arrives": null,
@@ -380,50 +443,6 @@
     "built": -269,
     "partners": [
      "Faith Baker"
-    ]
-   }
-  },
-  {
-   "role": "Stag",
-   "grade": 10,
-   "holder": {
-    "name": "Jim Vance",
-    "pronouns": "he/him",
-    "species": "Orc",
-    "background": "Sage",
-    "side": "Front",
-    "class": "Paladin",
-    "subclass": "Devotion",
-    "scores": {
-     "STR": 14,
-     "CHA": 14,
-     "CON": 13,
-     "WIS": 9,
-     "DEX": 9,
-     "INT": 8
-    },
-    "since": -299,
-    "level": 19,
-    "quirk": "refuses to step on a drain cover"
-   },
-   "arrives": null,
-   "automaton": {
-    "name": "Fenwick",
-    "side": "Back",
-    "class": "Rogue",
-    "subclass": "Thief",
-    "protocol_skill": "Survival",
-    "scores": {
-     "DEX": 15,
-     "CON": 14,
-     "INT": 14,
-     "WIS": 13,
-     "CHA": 13,
-     "STR": 10
-    },
-    "built": -299,
-    "partners": [
-     "Jim Vance"
     ]
    }
   }
@@ -498,41 +517,74 @@
  },
  "ledger": [
   {
-   "id": 24,
-   "day": 55,
-   "grade": 4,
-   "level": 7,
-   "precinct": "Lime Wharf",
-   "seed": 201703,
-   "role": null,
+   "id": 44,
+   "day": 111,
+   "grade": 2,
+   "level": 4,
+   "precinct": "Vinegar Yard",
+   "seed": 227155,
+   "role": "Owl",
    "due": null,
    "spills": 0,
-   "withdrawn": true,
-   "kind": "Knight"
-  },
-  {
-   "id": 25,
-   "day": 56,
-   "grade": 5,
-   "level": 11,
-   "precinct": "Clock Street",
-   "seed": 218346,
-   "role": "Lion",
-   "due": 58,
-   "spills": 0,
    "withdrawn": false,
-   "kind": "Chimera"
+   "anomaly": false,
+   "kind": "Giant Hyena"
   }
  ],
- "next_id": 26,
+ "next_id": 45,
  "loose": [
   {
-   "breach": 8,
-   "kind": "Grick",
+   "breach": 24,
+   "kind": "Knight",
+   "level": 7,
+   "precinct": "Lime Wharf",
+   "since": 63,
+   "groups": 3,
+   "why": "spilled"
+  },
+  {
+   "breach": 29,
+   "kind": "Werebear",
+   "level": 10,
+   "precinct": "Lime Wharf",
+   "since": 81,
+   "groups": 3,
+   "why": "spilled"
+  },
+  {
+   "breach": 30,
+   "kind": "Aboleth",
+   "level": 13,
+   "precinct": "Gasworks",
+   "since": 81,
+   "groups": 3,
+   "why": "spilled"
+  },
+  {
+   "breach": 34,
+   "kind": "Troll",
+   "level": 5,
+   "precinct": "Vinegar Yard",
+   "since": 87,
+   "groups": 3,
+   "why": "spilled"
+  },
+  {
+   "breach": 39,
+   "kind": "Shield Guardian",
+   "level": 18,
+   "precinct": "Needle Street",
+   "since": 96,
+   "groups": 1,
+   "why": "spilled"
+  },
+  {
+   "breach": 38,
+   "kind": "Frost Giant",
    "level": 9,
    "precinct": "Lime Wharf",
-   "since": 53,
-   "groups": 1,
+   "since": 99,
+   "groups": 3,
    "why": "spilled"
   }
  ],
@@ -560,11 +612,33 @@
    "day": 56,
    "precinct": "Lime Wharf",
    "kind": "Knight"
+  },
+  {
+   "role": "Wren",
+   "name": "Martha Ashcombe",
+   "grade": 4,
+   "day": 94,
+   "precinct": "Lime Wharf",
+   "kind": "Basilisk"
+  },
+  {
+   "role": "Wolf",
+   "name": "Ruth Pike",
+   "grade": 5,
+   "day": 98,
+   "precinct": "Lime Wharf",
+   "kind": "Frost Giant"
   }
  ],
- "graduated": [],
+ "graduated": [
+  {
+   "role": "Stag",
+   "name": "Jim Vance",
+   "day": 61
+  }
+ ],
  "news": [
-  "The new Owl is Tom Thorne (he/him, Orc Barbarian), Probationer, with a new automaton, Hobbes (Sorcerer). THIS IS YOUR SEAT: the human plays them.",
-  "The Berserkers loose in Vinegar Yard are no longer a problem; the GM says what became of them."
+  "NEW BREACH #44: the mast reads grade 2, Giant Hyena, Vinegar Yard.",
+  "ASSIGNED TO YOU: #44, grade 2, Giant Hyena, Vinegar Yard."
  ]
 }
