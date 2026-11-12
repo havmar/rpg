@@ -45,7 +45,40 @@ whose mast failed is not on any tram map.
 
 - **Rules from day 57:** no denizen settles. Any still living in the city from earlier days (Will Pegg, labouring in Vinegar Yard) is owed a sending or a death, and the mast hears him; put him on the Owl's desk when it suits. Station people are spoken of by title in play: Crane the Director, Lark the Reader, Finch the Clerk, Stubbs the Mechanic, Vale the Auditor.
 
-## Current breach
+## Open: #24, Lime Wharf (Knight, grade 4, truly level 7, seed 201703)
+
+`gen_breach.py --seed 201703 --level 7`. Four rooms, the anchor last. 11,100 XP inside.
+
+| Room | Denizens | XP | Disposition | Size | Feature | Coins |
+|---|---|---|---|---|---|---|
+| 1 | 4× Knight (stowaway), CR 3 | 2,800 | Hostile | 6×18 m | an open, empty floor | 280 GP |
+| 2 | 4× Knight, CR 3 | 2,800 | Neutral | 12×12 m | no roof: open sky that is not the city's | 280 GP |
+| 3 | 6× Ankheg (stowaway), CR 2 | 2,700 | Hostile | 9×12 m | a chasm crossed by a 1.5 m bridge | 270 GP |
+| 4 | 4× Knight, CR 3 | 2,800 | Neutral | 9×18 m | the anchor: thick air, humming floor; the gizmo works here and nowhere else | 280 GP |
+
+- **Day 56, the Wolf.** The Wolf (Thomas Pendry, Sergeant) and Jarvis (his automaton) went in
+  by the street door into room 1. The four Hostile Knights were on them at once, on the open
+  floor. No kill: the Wolf went down in the second round, Jarvis in the same breath. Nobody has
+  reached rooms 2 to 4.
+- **The bodies are in room 1.** The Wolf and Jarvis lie where they fell, under the Knights'
+  feet. The Knights of room 1 have not left it. At dusk on day 56 the Raven went to the street
+  door on the Director's order, saw armoured men in the first room standing over something on
+  the wet boards, and came back with nothing. Jarvis's core is still in the room, so it is not on
+  the bench. If the Wolf's seat holds any relic, its pattern came home when Jarvis went dark, and
+  the Mechanic has it for the Wolf's next holder (day 61). None is recorded.
+- Room 1's Knights are Hostile: they fight, won't be talked round, and go home only held. The
+  Neutral Knights of rooms 2 and 4 don't know the Wolf came. The Ankheg of room 3 are untouched.
+- **Unassigned, so it spills.** Dawns 56 and 57 rolled no spill. Each later dawn is a d6 on a 1:
+  the strongest group walks out into Lime Wharf, which is the room 1 Knights if it comes to that.
+- **Relic on closing:** grade 4, so the cap is Rare; pick below it more often than at it.
+  A knight's shield, pennon or blade, of a reality with knights in it; the GM's pick.
+
+## Open: #25, Clock Street (Chimera, grade 5, truly level 11, seed 218346)
+
+The Lion's, due day 58. Nobody has been inside. The table is `gen_breach.py --seed 218346 --level 11`
+when it matters; the Lion's dawn resolves it first. Going there now is misappropriation.
+
+## Closed: #19, the Tun Street baths (day 47)
 
 **#19 · grade 1 · truly level 2 · seed 727593** (`gen_breach.py --seed 727593 --level 2 --reported 1`).
 The Tun Street public baths, Vinegar Yard. The piece is a hot mangrove coast at a jungle
@@ -112,18 +145,18 @@ the whole run, as the clue says.
 
 ## Loose (the pair knows these from the ledger)
 
-Berserkers (level 3) in Vinegar Yard, from #6 (closed by the Raven, so here for good); the two
-castaway Pirates (level 2) in Vinegar Yard, from #19, still open, so they could be walked back
-if they would go; Giant Apes (level 17) in Chapel Fields; Pit Fiends (level 18) in Tallow Row,
-from #17, closed. The Gricks: the Lion, day 43.
-Gone: the jellies (scalded out of the brewery drains), the elks (the Stag, day 11), the fire
-elementals (the Bear, day 22).
+The Gricks (level 9), spilled from #8 into Lime Wharf on day 53: the only loose group on the
+list (`gen_breach.py --seed 8053 --level 9 --kind "Grick"`, from `day.py ledger`).
+Gone, by the GM's word: the Berserkers (the three went down the railway cutting into the Under
+the morning after the coal arch; the gizmo case stayed at the arch mouth); the Giant Apes (down
+the canal to the Ropewalk slaughterhouse, day 51; the bargemen are paid); the Pit Fiends (in the
+ice-house under Tallow Row, cellar bolted from inside); the jellies, the elks, the fire elementals.
 
 Clues given in days 2 to 40: Stubbs's blank cores arrived warm, and Ives said so.
 
 ## Unheard news
 
-None. The new Owl heard the ledger at the station on day 47.
+None. The pair has the day 57 ledger (`division.md` was rewritten on day 57).
 
 **Day 47, the hunt for the castaways (midday).** The loose list says Pirates (level 2) in the
 Yard, and the hunt is one room at that level in the precinct. Rolled seed 676 at level 2

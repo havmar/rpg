@@ -284,3 +284,19 @@ where he stood. The core was the only warm thing left in the Yard, and it was in
 
 The Raven fetched the body and the core at dusk on Crane's order, as she had fetched Pike, and
 closed nothing. The men were gone from the arch by the next morning. Nobody has seen them since.
+
+## Days 49 to 57
+
+The Owl's seat stood empty for eight days, which is what the Board's dice came to. The station ran as it runs.
+
+Day 49, the dawn after the coal arch: the wall took Bob Fletcher's name under Albert Pike's. The Raven had fetched the body the dusk before. Day 50 was quiet. On day 51 a Dragon Turtle opened in Tallow Row, and the Giant Apes went out of Chapel Fields down the canal to the Ropewalk slaughterhouse; the bargemen were paid and nobody asked what for. The Bear closed the Turtle on day 52. On day 53 the Grick breach at Lime Wharf (#8) spilled out onto the wharf and was struck off the ledger; its Gricks are the wharf's problem now.
+
+Day 55: a Knight opened at Lime Wharf, grade four, the Reader's figure, with nobody to take it. On day 56 the Wolf, Thomas Pendry, Sergeant, went into it by the street door with Jarvis, his brass man. They did not come out. The Raven went to the door at dusk on the Director's order and came back with nothing but what she had seen. A Chimera opened at Clock Street the same day, grade five, and the Lion's.
+
+Day 57, dawn: the Board's transfer office sent up a Probationer, Tom Thorne, an orc out of the ranks, with a Sorcerer's automaton called Hobbes. Hobbes had the Board's spare case on his back and had never seen a breach. He knows nothing of the seat.
+
+**Day 57, the station, mid-morning.** The Mechanic has the cloak on the bench in the cellar shop, laid out under a lamp the way one lays out a dead man's coat. It is grey oilskin, soft and cold, and the room has the mast's note in it. "Uncommon," the Mechanic says, "and made for the last one. It's been waiting." Hobbes stands by the fabricator with the case at his feet and does not touch the cloak.
+
+Upstairs the Director does not get up. He says there is nothing at the Owl's grade this morning. There is a grade four at Lime Wharf that the Wolf went into and did not come out of, and a grade five at Clock Street that is the Lion's. The Raven's report is that there are armoured men in the first room of the Wharf breach, standing on the floor where the Wolf went down, and that they have not come out. "I can send you," the Director says. "I'd rather you didn't go. The Board has never once asked me what I'd rather."
+
+Hobbes, at the door: "I'm sorry for the Wolf's brass man, sir. I mention it only for completeness."
