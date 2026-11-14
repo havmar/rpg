@@ -35,7 +35,7 @@ crb/
 | Species, backgrounds, creation, levelling | `reference/srd/Species/`, `Backgrounds/`, `Character Creation/` |
 | Combat, checks, damage, rests | `reference/srd/Playing/` |
 | Conditions and rules terms | `reference/srd/Glossary/` |
-| Encounter budgets | `reference/srd/Gameplay/Combat Encounters.md` (`rate` does the sum) |
+| Encounter budgets | `reference/srd/Gameplay/Combat Encounters.md` (`rate LEVEL NAME [N] ...` does the sum) |
 | A monster | `reference/srd/Monsters/<Name>.md` |
 | Which monsters live where | `reference/srd/Monsters by Setting.md`, as changed under The world |
 | Gear, prices, lodging, services | `reference/srd/Equipment/`, `Services/` |
@@ -45,25 +45,10 @@ Never read a big file whole; find the file by name and `grep -n`.
 
 ## The tool
 
-`python3 crb/tools/crb.py VERB ...`, from the repo root. `DIR` is the campaign folder, `HEX`
-a hex such as `C2`. Every roll is printed. `--seed N` makes any command repeatable. Below, a
-verb in code type (`encounter`) means this tool.
-
-| Verb | What it does |
-|---|---|
-| `map` | prints the map |
-| `new DIR` | rolls a campaign: leaders, known dungeons, the pair |
-| `around HEX [DIR]` | the hexes round HEX by direction; with DIR, their leaders and, for the GM, the quest counts |
-| `folk HEX` | the hex's speaking monsters, by CR |
-| `rate LEVEL [NAME [N] ...]` | CR, XP and difficulty of those monsters for a pair of that level; with no monsters, the level's budgets |
-| `encounter HEX [--coast]` | a travel or camp encounter, with its reaction |
-| `hunt HEX LEVEL [low\|moderate\|high]` | a levelled hunt |
-| `quest DIR HEX` | records one deposing quest done; the last one deposes the leader |
-| `dungeon DIR ID` | stocks a dungeon the first time, prints the same ever after |
-| `cleared DIR ID` | marks a dungeon cleared |
-| `search DIR HEX` | one day's search for a hidden dungeon |
-| `item RARITY` | a random magic item |
-| `pc DIR`, `robot DIR` | a new master, or Benedict rebuilt, after a death |
+`python3 crb/tools/crb.py VERB ...`, from the repo root; run with no verb, it lists them
+all. `DIR` is the campaign folder, `HEX` a hex such as `C2`. Every roll is printed, and
+`--seed N` makes any command repeatable. Below, a verb in code type (`encounter`) means this
+tool.
 
 ## The world
 
@@ -223,18 +208,17 @@ die.
 - Each hex has **two known dungeons**, one of level d4 and one of level d10, and up to
   **three hidden** ones. A day spent searching finds one on a 1 in 6 (`search`), of level
   d20. When the three are found, the hex has no more.
-- **Nature**, d6 per dungeon: 1–2 **good** (good or neutral creatures: guardians, to be
-  talked past, helped or left alone), 3–4 **corrupted** (the same kinds turned evil: same
-  stat blocks, reaction −2, and curing the corruption counts as beating them), 5–6 **evil**
-  (the biome's evil and dangerous creatures). Heaven has no evil dungeons and Hell no good
-  ones.
+- **Nature**, d6 per dungeon: 1–2 **good** (good or neutral creatures), 3–4 **corrupted**
+  (the same kinds turned evil: same stat blocks, reaction −2, and curing the corruption
+  counts as beating them), 5–6 **evil** (the biome's evil and dangerous creatures). Heaven
+  has no evil dungeons and Hell no good ones.
 - **Level** sets the rooms. Together they hold the XP one character needs to go from that
   level to the next, so half a level each for a pair of that level. `dungeon` stocks them
   the first time; the GM gives the rooms a place and a reason. A cleared room stays cleared;
   `cleared` marks the whole dungeon done.
 - **Its monster** is rolled separately: d20, the monster of nearest CR among those its
-  nature allows. It can be far above or below the dungeon's level, so no dungeon is ever
-  just a chore. It holds the dungeon's magic item, and its XP is on top of the rooms'.
+  nature allows, so it can be far above or below the dungeon's level. It holds the
+  dungeon's magic item, and its XP is on top of the rooms'.
 - **Everything in a dungeon gets a reaction roll**, rooms and monster alike, rolled when it
   is stocked and fixed after. So a dungeon far above the pair can still be tried: a CR 17
   dragon in a level 2 ruin is someone to talk to, sneak past or come back for.
@@ -244,9 +228,9 @@ die.
 - Normal XP, split between the two.
 - **Any solution earns the XP.** Talking a monster down, tricking it, or getting past it for
   good is worth its full XP; a partial result, part.
-- A freeform quest is worth a High encounter for the pair at their level (`rate LEVEL` prints
-  the figure), once, split like any XP, on top of any fights in it. A leader is worth its XP
-  however it is deposed.
+- A freeform quest is worth a High encounter for the pair at their level (`rate LEVEL`
+  alone prints the figure), once, split like any XP, on top of any fights in it. A leader
+  is worth its XP however it is deposed.
 
 ### Magic items
 
@@ -288,8 +272,7 @@ for two characters (the table is not in the SRD):
 
 ## Telling it
 
-- `setting.md` has samples of a place, a person, a report, Benedict's reading of a threat, a
-  plan and a fight block. They are the model.
+- `setting.md` has samples of play. They are the model.
 - **One reply is one scene**, run to the next decision that changes the outcome. Play the
   master's routine choices from what the human has said.
 - **Units on every number:** HP, damage, AC, XP, metres (never feet). A monster's CR beside
