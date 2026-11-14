@@ -1,11 +1,11 @@
 # GM notes
 
-## C2 City: the Rakshasa (CR 13), problem, 0/3
+## C2 City: the Rakshasa (CR 13), tyrant, 0/3
 
 Rules disguised as a human, **Provost Malachar**, from the Gilt Tower. The oppression: the
 **night levy**. Each household owes a silver tithe a month; a house that can't pay gives up
 one person "to service in the Tower", and they are not seen again (he eats them).
-Lieutenants: the levy is run by a Doppelganger (CR 3), **Master Venn**, who wears whatever
+Lieutenants: the levy is run by a Doppelganger (CR 3), **Bailiff Venn**, who wears whatever
 face a door will open to; his collectors are bandits and toughs. The City Watch serves the
 Provost out of fear, under a Guard Captain (CR 4).
 Opposition: none organised yet. Old Mother Hesk, a priest (CR 2) of the lamplit shrine in
@@ -17,7 +17,7 @@ collectors: a Tough (CR 1/2) and three Bandits (CR 1/8): 175 XP, Moderate for le
 quest, worth a High encounter (200 XP) on top. Not yet a deposing quest; it puts the pair in
 touch with Mother Hesk, who can become the opposition.
 
-## Other problem leaders (decide each when play first reaches it)
+## Other tyrants (decide each when play first reaches it)
 
 - C3 Savannah: Gnoll (Assassin stat block, CR 8), 0/2.
 - D1 Graveyard: Vampire (CR 13), 0/3.

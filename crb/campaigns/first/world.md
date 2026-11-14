@@ -4,22 +4,22 @@ Written by `crb.py`; don't edit. The butler knows all of this.
 
 | Hex | Biome | Side | Leader | CR | Rule | Quests to depose |
 |---|---|---|---|---|---|---|
-| A1 | Heaven | good | Couatl | 4 | **problem** | 0/1 |
-| B1 | Mountain | good | Adult Silver Dragon | 16 | quiet | – |
-| C1 | Arctic | evil | Young White Dragon | 6 | quiet | – |
-| D1 | Graveyard | evil | Vampire | 13 | **problem** | 0/3 |
-| A2 | Underdark | good | Behir | 11 | quiet | – |
-| B2 | Forest | good | Adult Green Dragon | 15 | **problem** | 0/3 |
-| C2 | City | good | Rakshasa | 13 | **problem** | 0/3 |
-| D2 | Wizard's Tower | good | Mage | 6 | quiet | – |
-| A3 | Hills | good | Young Copper Dragon | 7 | quiet | – |
-| B3 | Swamp | evil | Adult Black Dragon | 14 | quiet | – |
-| C3 | Savannah | evil | Gnoll (Assassin stat block) | 8 | **problem** | 0/2 |
-| D3 | Abyss | evil | Marilith | 16 | **problem** | 0/3 |
-| A4 | Jungle | good | Jungle clansman (Mage stat block) | 6 | **problem** | 0/2 |
-| B4 | Desert | good | Sphinx of Wonder | 1 | quiet | – |
-| C4 | Volcano | evil | Young Red Dragon | 10 | quiet | – |
-| D4 | Hell | evil | Ice Devil | 14 | **problem** | 0/3 |
+| A1 | Heaven | good | Couatl | 4 | **tyrant** | 0/1 |
+| B1 | Mountain | good | Adult Silver Dragon | 16 | ruler | – |
+| C1 | Arctic | evil | Young White Dragon | 6 | ruler | – |
+| D1 | Graveyard | evil | Vampire | 13 | **tyrant** | 0/3 |
+| A2 | Underdark | good | Behir | 11 | ruler | – |
+| B2 | Forest | good | Adult Green Dragon | 15 | **tyrant** | 0/3 |
+| C2 | City | good | Rakshasa | 13 | **tyrant** | 0/3 |
+| D2 | Wizard's Tower | good | Mage | 6 | ruler | – |
+| A3 | Hills | good | Young Copper Dragon | 7 | ruler | – |
+| B3 | Swamp | evil | Adult Black Dragon | 14 | ruler | – |
+| C3 | Savannah | evil | Gnoll (Assassin stat block) | 8 | **tyrant** | 0/2 |
+| D3 | Abyss | evil | Marilith | 16 | **tyrant** | 0/3 |
+| A4 | Jungle | good | Jungle clansman (Mage stat block) | 6 | **tyrant** | 0/2 |
+| B4 | Desert | good | Sphinx of Wonder | 1 | ruler | – |
+| C4 | Volcano | evil | Young Red Dragon | 10 | ruler | – |
+| D4 | Hell | evil | Ice Devil | 14 | **tyrant** | 0/3 |
 
 ## Dungeons
 
@@ -60,4 +60,4 @@ Written by `crb.py`; don't edit. The butler knows all of this.
 
 ## The pair
 
-The lord is Back, the butler Front.
+The master is Back, the butler Front.

@@ -13,7 +13,7 @@
   python3 crb/tools/crb.py search DIR HEX              one day's search for a hidden dungeon
   python3 crb/tools/crb.py dungeon DIR ID              stock a dungeon (once; then it is fixed)
   python3 crb/tools/crb.py item RARITY                 a random magic item of that rarity
-  python3 crb/tools/crb.py pc DIR                      a new lord after a death (same side, random)
+  python3 crb/tools/crb.py pc DIR                      a new master after a death (same side, random)
   python3 crb/tools/crb.py robot DIR                   the butler rebuilt (same side, new class)
 
 Every roll is printed. --seed N on any command makes it repeatable.
@@ -66,7 +66,7 @@ PRIORITY = {
 }
 SPECIES = ["Elf", "Gnome", "Human", "Orc", "Tiefling"]
 BACKGROUNDS = ["Acolyte", "Criminal", "Sage", "Soldier"]
-NAMES = {   # the lord is always a man; names by what the species sounds like
+NAMES = {   # the master is always a man; names by what the species sounds like
     "Elf": ["Percival", "Sebastian", "Julian", "Leopold", "Ambrose", "Montgomery", "Lionel", "Crispin"],
     "Gnome": ["Archie", "Pip", "Alfie", "Bertie", "Wally", "Ned", "Gus", "Sid"],
     "Human": ["Arthur", "Thomas", "Henry", "Walter", "George", "Albert", "Frank", "Harold"],
@@ -82,9 +82,9 @@ NATURE = {1: "good", 2: "good", 3: "corrupted", 4: "corrupted", 5: "evil", 6: "e
 def scores(cls):
     rolled = sorted((sum(sorted(R.randint(1, 6) for _ in range(4))[1:]) for _ in range(6)), reverse=True)
     return ", ".join(f"{k} {v}" for k, v in zip(PRIORITY[cls].split(), rolled))
-def new_lord(side):
+def new_master(side):
     sp = R.choice(SPECIES); cls, sub = R.choice(SIDES[side])
-    return (f"The lord: {R.choice(NAMES[sp])} {R.choice(SURNAMES)}, {sp} {cls} ({sub}), {side}, "
+    return (f"The master: {R.choice(NAMES[sp])} {R.choice(SURNAMES)}, {sp} {cls} ({sub}), {side}, "
             f"background {R.choice(BACKGROUNDS)}. Scores before background: {scores(cls)}.")
 def new_butler(side):
     cls, sub = R.choice(SIDES[side])
@@ -201,13 +201,13 @@ def save(dirn, w):
     L = ["# The world", "", "Written by `crb.py`; don't edit. The butler knows all of this.", "",
          "| Hex | Biome | Side | Leader | CR | Rule | Quests to depose |", "|---|---|---|---|---|---|---|"]
     for h, x in w["hexes"].items():
-        rule = "**problem**" if x["problem"] and not x["deposed"] else "deposed" if x["deposed"] else "quiet"
+        rule = "**tyrant**" if x["problem"] and not x["deposed"] else "deposed" if x["deposed"] else "ruler"
         q = f"{x['done']}/{x['stages']}" if x["problem"] else "–"
         L.append(f"| {h} | {x['biome']} | {'evil' if x['biome'] in EVIL else 'good'} | {x['leader']} | {x['cr']} | {rule} | {q} |")
     L += ["", "## Dungeons", "", "| ID | Land | Level | Its monster | CR | Nature | State |", "|---|---|---|---|---|---|---|"]
     for i, x in w["dungeons"].items():
         L.append(f"| {i} | {x['hex']} {MAP[x['hex']]} | {x['level']} | {x['monster']} | {MON[x['monster']]['cr']} | {x['nature']} | {x['state']} |")
-    L += ["", "## The pair", "", f"The lord is {w['lord']}, the butler {w['butler']}."]
+    L += ["", "## The pair", "", f"The master is {w['lord']}, the butler {w['butler']}."]
     open(f"{dirn}/world.md", "w").write("\n".join(L) + "\n")
 
 def add_dungeon(w, h, level, state):
@@ -245,7 +245,7 @@ def main(a):
                                  stages=stages(crv(cr)), done=0, deposed=False, hidden_found=0)
             for die in KNOWN_DICE: add_dungeon(w, h, d(die), "known")
         save(a[0], w); print(open(f"{a[0]}/world.md").read())
-        print(new_lord(side)); print(new_butler(other))
+        print(new_master(side)); print(new_butler(other))
     elif cmd == "around":
         h = hexarg(a[0]); w = world(a[1]) if len(a) > 1 else None
         def line(x):
@@ -253,7 +253,7 @@ def main(a):
             if w:
                 q = w["hexes"][x]
                 s += f": {q['leader']}, CR {q['cr']}, " + ("deposed" if q["deposed"] else
-                     f"PROBLEM, {q['done']}/{q['stages']} quests done" if q["problem"] else "quiet")
+                     f"TYRANT, {q['done']}/{q['stages']} quests done" if q["problem"] else "ruler")
             return s
         print("Here:", line(h))
         for k, x in around(h).items():
@@ -287,11 +287,11 @@ def main(a):
         print("; ".join(tag(m, n) for m, n in g)); print(f"Total {xp} XP ({xp // 2} each): {word} for a pair of level {level}.")
     elif cmd == "quest":
         w = world(a[0]); h = hexarg(a[1]); q = w["hexes"][h]
-        if not q["problem"] or q["deposed"]: sys.exit("no problem leader there")
+        if not q["problem"] or q["deposed"]: sys.exit("no tyrant there")
         q["done"] += 1; q["deposed"] = q["done"] >= q["stages"]; save(a[0], w)
         left = sum(1 for x in w["hexes"].values() if x["problem"] and not x["deposed"])
         print(f"{h} {q['biome']}: {q['leader']} " + ("DEPOSED" if q["deposed"] else f"{q['done']}/{q['stages']}") +
-              f". Problem leaders left: {left}." + (" THE GAME IS WON." if not left else ""))
+              f". Tyrants left: {left}." + (" THE GAME IS WON." if not left else ""))
     elif cmd == "cleared":
         w = world(a[0]); w["dungeons"][a[1]]["state"] = "cleared"; save(a[0], w); print(a[1], "cleared")
     elif cmd == "search":
@@ -334,7 +334,7 @@ def main(a):
         print(f"{rar}: {R.choice(fs)}  (reference/srd/Magic Items/{rar}/ or Varies/)")
     elif cmd in ("pc", "robot"):
         w = world(a[0])
-        print(new_lord(w["lord"]) if cmd == "pc" else new_butler(w["butler"]))
+        print(new_master(w["lord"]) if cmd == "pc" else new_butler(w["butler"]))
     else: sys.exit(__doc__)
 
 if __name__ == "__main__": main(sys.argv[1:])

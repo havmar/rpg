@@ -2,7 +2,7 @@
 
 Level 1 each. Proficiency bonus +2. XP 0 each (300 for level 2).
 
-## The lord: Bertie Tanner
+## The master: Bertie Tanner
 
 Gnome (Forest Gnome, Intelligence) Wizard 1, Back. Background Soldier. Small. Speed 9 m.
 
