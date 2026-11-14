@@ -1,7 +1,8 @@
 # State
 
-**Day 1, night, after the eighth bell.** City (C2), Tanners' Row, Marta Ostler's house.
-Marta has offered her kitchen floor for the night (free). Curfew at the ninth bell.
+**Day 2, dawn.** City (C2), Tanners' Row, leaving Marta Ostler's house for the road. Long
+rest taken on her kitchen floor (nothing spent anyway). Choosing a road: waiting for the
+human.
 
 ## The pair
 

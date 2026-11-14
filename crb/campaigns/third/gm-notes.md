@@ -10,6 +10,8 @@ Benedict does not know any of this unless it has been seen or said in play.
   1 SP out), curfew at the ninth bell, debtors and loud mouths sent to the North Quarry in
   chains, the Watch living off the markets. She keeps the Watch inside the walls: farms
   outside don't pay the wall tax, so she won't defend them against the northmen.
+  - The Old Barbican: the gatehouse fort of the City's first wall, left standing in the
+    middle of town when the City grew past it; now her residence, treasury and barracks.
   - Guard: the Watch (Guards, CR 1/8, everywhere); her household guard in the Old
     Barbican, sergeants (Warrior Veterans, CR 3). Lieutenant: Sergeant Corlis Dane, who runs
     the gates and the tax. Opposition: Mother Edda of the Lantern Temple, who feeds the
