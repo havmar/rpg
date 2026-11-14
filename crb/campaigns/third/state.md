@@ -1,9 +1,7 @@
 # State
 
-**Day 1, early afternoon.** City (C2), at Hollin's mill on the Cold Brook, an hour north of
-the North Gate. Encounter die for the day rolled: 6, nothing. Curfew in the City at the
-ninth bell; the gate charges 2 SP a head coming in. Hollin offers supper and a bed at the
-mill tonight (outside the settlement: a night encounter die if they stay).
+**Day 1, evening, about the seventh bell.** City (C2), Tanners' Row, in Marta Ostler's
+kitchen. Back through the North Gate (4 SP, Tom paid). Curfew at the ninth bell.
 
 ## The pair
 
@@ -14,14 +12,11 @@ mill tonight (outside the settlement: a night encounter die if they stay).
 
 ## Open quest
 
-None. Hollin's mill done (bought off: Brann took 10 GP and the flour north). High award,
-200 XP, 100 each.
+Offered: Jory Ostler, Marta's son (15), taken by the Watch this morning for singing a song
+about the Lord-Captain. Held overnight in the Tanners' Row watch-house; goes to the North
+Quarry with the dawn chain from the North Gate barbican. Waiting for the human.
 
-## The mill
-
-Stone, two storeys, the wheel on the brook side. One door on the yard, 1.5 m wide; a loft
-door above the wheel, 3 m up. Yard 15 m across, the millpond wall (waist high) 12 m from the
-door. One clansman on watch on a stool in the doorway, half asleep. Pig roasting inside.
+Hollin's mill done (day 1): 200 XP, 100 each.
 
 ## Dungeon in progress
 

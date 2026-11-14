@@ -27,6 +27,17 @@ Benedict does not know any of this unless it has been seen or said in play.
   flour; they went north over the moor. Brann now owes Tom something and knows it. Ulfrun
   will hear a story about a singing orc and a metal man; she may send someone to look.
 
+- **Jory's song** (open, level 1). Jory Ostler, 15, sang "The Captain's Purse" in the
+  market; the Lord-Captain made songs against the Watch a quarry offence, no fine. Held in
+  the Tanners' Row watch-house: a front room and one cell behind, a back room with bunks.
+  At night: Corporal Hask and one guard awake in front, two asleep in the back (4 Guards,
+  CR 1/8: 100 XP, Low). Keys on Hask's belt. Hask is lazy, in debt at dice, and could be
+  bribed (5 GP and a DC 13 Persuasion, or more gold and less talk); he'd want a story for
+  the morning ("the boy picked the lock"). The dawn chain: Sergeant Dane, a Warrior Veteran
+  (CR 3) and six guards, ten prisoners: Beyond the pair. Breaking Jory out by force makes the
+  pair wanted by the Watch; a quiet bribe doesn't. Mother Edda of the Lantern Temple will be
+  at the barbican at dawn to plead, as always, and fail. Award: High.
+
 ## People met
 
 - **Piet Hollin**, miller from north of the wall; wants his mill back and his daughter
@@ -35,3 +46,6 @@ Benedict does not know any of this unless it has been seen or said in play.
   trouble he would have to report.
 - **Brann**, leader of a band of Ulfrun's raiders (Tough, CR 1/2); took the gold and
   went home. Wants to come home a hero and not to lose his hands; owes Tom a turn.
+- **Wenna Hollin**, Piet's daughter, about 12; sharp, sits on the stairs and listens.
+- **Marta Ostler**, Wenna's aunt, a tanner, widow; wants her son Jory back.
+- **Jory Ostler**, 15, Marta's son, a singer of rude songs; in the watch-house cell.
