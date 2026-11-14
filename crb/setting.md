@@ -98,6 +98,8 @@ lives in each.
 Each ruin has one creature that holds what the builders left there: a magic item. It can be
 far stronger than the rest of the ruin, a dragon asleep under a small shrine. It is not
 always hostile. It can be bargained with, crept past, or left for another year.
+Nobody knows what holds a ruin until they have seen it, Benedict included. That is why
+ruins are dangerous.
 
 ## Benedict
 

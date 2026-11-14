@@ -269,7 +269,27 @@
    "level": 1,
    "nature": "corrupted",
    "monster": "Treant",
-   "state": "known"
+   "state": "known",
+   "reactions": [
+    "reaction 2d6 [4+3]-2 = 5: hostile: threatens, drives the pair off, attacks if pressed",
+    "reaction 2d6 [1+5]-2 = 4: hostile: threatens, drives the pair off, attacks if pressed"
+   ],
+   "rooms": [
+    [
+     [
+      "Sprite",
+      3
+     ]
+    ],
+    [
+     [
+      "Giant Owl",
+      3
+     ]
+    ]
+   ],
+   "total": 300,
+   "reaction": "reaction 2d6 [5+4]-2 = 7: wary: keeps its distance"
   },
   "B2-2": {
    "hex": "B2",

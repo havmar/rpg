@@ -23,6 +23,13 @@ Benedict does not know any of this unless it has been seen or said in play.
   turned out on the ice. Lives in the hall at Hvitmark. Guard: her own sworn axes (more
   berserkers).
 
+## Rulers in play
+
+- **Forest (B2), Grandfather Ashenroot** (Treant, CR 9), ruler, decent. The settlement is
+  Thornmoot: houses in and under great oaks round a mossy clearing, a centaur-run lodge
+  (the Long Barn, 5 SP a night), satyr musicians, sprites, druids. Ashenroot stands at the
+  clearing's edge and speaks slowly, rarely.
+
 ## Quest threads
 
 - **Hollin's mill** (done, day 1). Tom bought Brann's band off with 10 GP and a sack of
@@ -41,6 +48,21 @@ Benedict does not know any of this unless it has been seen or said in play.
   next first-of-month is day 13, then every 30 days (43, 73, ...). In the confrontation, this is where and when she can be caught.
   Not a quest edge by the count (CR 4 has one quest, the confrontation itself), but it
   decides where that confrontation happens.
+
+- **The Greenwell** (ruin B2-1, level 1, corrupted, stocked day 2). An old shrine of the
+  builders: a ring of standing stones round a spring, half a day north of Thornmoot, with a
+  root-cellar vault beneath. Its keeper was Mossmother (Treant, CR 9), Ashenroot's sister;
+  since spring the well has gone sour (a black thread in the water) and so have she and
+  her keepers. Rooms: (1) the stone ring, 3 Sprites, hostile (5): they shoot at anyone who
+  comes in; (2) the yew-hall above the vault, 3 Giant Owls, hostile (4): drive off, attack
+  if pressed. Mossmother in the vault by the spring, wary (7): keeps her distance, holds the
+  item. All corrupted: can be cured as well as killed (the cause is the GM's: something
+  dropped into the spring by the builders' last keeper, a cracked black stone; lift it out
+  and purify the well, e.g. with holy water or Benedict's prayer, and the keepers come
+  right). Thornmoot says: "the Greenwell's gone sour; the sprites shoot at folk; nobody's
+  seen Mossmother since spring." Ashenroot would be grateful (quest award on top).
+- **A young green dragon** (CR 8) watches the road from the City; met day 2, wary. Lives in
+  the Forest; it noticed the pair. Name unknown.
 
 ## People met
 

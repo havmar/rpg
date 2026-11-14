@@ -11,6 +11,7 @@
   python3 crb/tools/crb.py encounter HEX [--coast]     travel/rest encounter, with reaction roll
   python3 crb/tools/crb.py hunt HEX LEVEL [low|moderate|high]   a levelled hunt
   python3 crb/tools/crb.py quest DIR HEX               one leader quest done (the last one deposes)
+  python3 crb/tools/crb.py seen DIR ID                 the pair has seen a dungeon's monster
   python3 crb/tools/crb.py cleared DIR ID              mark a dungeon cleared
   python3 crb/tools/crb.py search DIR HEX              one day's search for a hidden dungeon
   python3 crb/tools/crb.py dungeon DIR ID              stock a dungeon (once; then it is fixed)
@@ -206,9 +207,11 @@ def save(dirn, w):
     for h, x in w["hexes"].items():
         rule = "**tyrant**" if x["tyrant"] and not x["deposed"] else "deposed" if x["deposed"] else "ruler"
         L.append(f"| {h} | {x['biome']} | {'evil' if x['biome'] in EVIL else 'good'} | {x['leader']} | {x['cr']} | {rule} |")
-    L += ["", "## Dungeons", "", "| ID | Land | Level | Its monster | CR | Nature | State |", "|---|---|---|---|---|---|---|"]
+    L += ["", "## Dungeons", "", "Its monster shows only once the pair has seen it (`seen`).", "",
+          "| ID | Land | Level | Nature | State | Its monster | CR |", "|---|---|---|---|---|---|---|"]
     for i, x in w["dungeons"].items():
-        L.append(f"| {i} | {x['hex']} {MAP[x['hex']]} | {x['level']} | {x['monster']} | {MON[x['monster']]['cr']} | {x['nature']} | {x['state']} |")
+        m, cr = (x["monster"], MON[x["monster"]]["cr"]) if x.get("seen") or x["state"] == "cleared" else ("?", "?")
+        L.append(f"| {i} | {x['hex']} {MAP[x['hex']]} | {x['level']} | {x['nature']} | {x['state']} | {m} | {cr} |")
     L += ["", "## The pair", "", f"The master is {w['master']}, the butler {w['butler']}."]
     open(f"{dirn}/world.md", "w").write("\n".join(L) + "\n")
 
@@ -296,6 +299,8 @@ def main(a):
         left = sum(1 for x in w["hexes"].values() if x["tyrant"] and not x["deposed"])
         print(f"{h} {q['biome']}: {q['leader']} " + ("DEPOSED" if q["deposed"] else f"{q['done']}/{q['quests']}") +
               f". Tyrants left: {left}." + (" THE GAME IS WON." if not left else ""))
+    elif cmd == "seen":
+        w = world(a[0]); w["dungeons"][a[1]]["seen"] = True; save(a[0], w); print(a[1], "monster seen")
     elif cmd == "cleared":
         w = world(a[0]); w["dungeons"][a[1]]["state"] = "cleared"; save(a[0], w); print(a[1], "cleared")
     elif cmd == "search":

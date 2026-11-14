@@ -1,8 +1,8 @@
 # State
 
-**Day 2, dawn.** City (C2), Tanners' Row, leaving Marta Ostler's house for the road. Long
-rest taken on her kitchen floor (nothing spent anyway). Choosing a road: waiting for the
-human.
+**Day 2, dusk.** Forest (B2), Thornmoot, the Long Barn (5 SP, Tom paid). Day encounter
+die 2: a young green dragon on the road, wary, kept its distance, gone. Leader: Grandfather
+Ashenroot (Treant, CR 9), ruler.
 
 ## The pair
 
@@ -13,8 +13,9 @@ human.
 
 ## Open quest
 
-None. Done today: Hollin's mill (200 XP) and Jory's song (Hask bribed with 5 GP lost at
-dice, Persuasion 22 against DC 13; 200 XP). 100 + 100 each.
+Offered: the Greenwell (ruin B2-1, level 1, corrupted), half a day north. Thornmoot says its
+sprites shoot at folk and its keeper Mossmother hasn't been seen since spring. Waiting for
+the human.
 
 ## Dungeon in progress
 

@@ -51,7 +51,7 @@ Soldier increases: DEX +2, CON +1.
 set, healer's kit (10 uses), entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
 5 days' rations, waterskin, disguise kit), traveller's clothes.
 
-**Gold:** 27 GP 4 SP.
+**Gold:** 26 GP 9 SP.
 
 **XP:** 200 / 300 for level 2.
 
