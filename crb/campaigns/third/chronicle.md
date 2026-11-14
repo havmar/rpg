@@ -13,3 +13,14 @@ Brann wanted silver to show in Ulfrun's hall, and Tom paid him ten gold rather t
 The northmen went home with the flour and the coin, and Hollin got his mill back without a
 hole in it. He paid the ten gold back out of his own strongbox and promised them a bed for
 as long as there was a mill.
+
+## Day 1: Jory's song
+
+Back in the City, carrying word to Hollin's daughter Wenna, they found her aunt Marta Ostler
+with an empty cup on the shelf. Her son Jory, fifteen, had sung a song in the market about
+where the wall tax goes, and under the Lord-Captain's law that meant the quarry. Before
+curfew Tom went down to the Tanners' Row watch-house with his dice, lost five gold to
+Corporal Hask with great good humour, and asked for the boy. Hask let him go. Benedict
+scratched the cell lock with a pick so that it would look as if the boy had opened it
+himself. Jory was home before the ninth bell, and Hask, who now had friends he didn't want,
+told them over the last throw when the Lord-Captain leaves her Barbican.

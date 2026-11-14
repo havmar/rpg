@@ -27,16 +27,18 @@ Benedict does not know any of this unless it has been seen or said in play.
   flour; they went north over the moor. Brann now owes Tom something and knows it. Ulfrun
   will hear a story about a singing orc and a metal man; she may send someone to look.
 
-- **Jory's song** (open, level 1). Jory Ostler, 15, sang "The Captain's Purse" in the
-  market; the Lord-Captain made songs against the Watch a quarry offence, no fine. Held in
-  the Tanners' Row watch-house: a front room and one cell behind, a back room with bunks.
-  At night: Corporal Hask and one guard awake in front, two asleep in the back (4 Guards,
-  CR 1/8: 100 XP, Low). Keys on Hask's belt. Hask is lazy, in debt at dice, and could be
-  bribed (5 GP and a DC 13 Persuasion, or more gold and less talk); he'd want a story for
-  the morning ("the boy picked the lock"). The dawn chain: Sergeant Dane, a Warrior Veteran
-  (CR 3) and six guards, ten prisoners: Beyond the pair. Breaking Jory out by force makes the
-  pair wanted by the Watch; a quiet bribe doesn't. Mother Edda of the Lantern Temple will be
-  at the barbican at dawn to plead, as always, and fail. Award: High.
+- **Jory's song** (done, day 1). Tom lost 5 GP to Corporal Hask at dice and asked for the
+  boy (Persuasion 22 against DC 13). Hask let Jory out; Benedict scratched the cell lock
+  with thieves' tools so it looks picked. Story for the morning: the boy picked the lock.
+  Nobody else saw. The pair is not wanted. Hask is now their man in the Watch, for gold.
+- **What Hask told them about the Lord-Captain** (true): she lives in the Old Barbican with
+  her household guard and rarely leaves it. On the first day of each month she rides out in
+  person behind the wall-tax chest to the Barbican treasury, from the North Gate, with
+  Sergeant Dane and a handful of guards: the one time she's in the street with few men round
+  her. Today is day 1 of the campaign; the month's calendar is the GM's to fix (say the next
+  first-of-month is day 30). In the confrontation, this is where and when she can be caught.
+  Not a quest edge by the count (CR 4 has one quest, the confrontation itself), but it
+  decides where that confrontation happens.
 
 ## People met
 
@@ -49,3 +51,5 @@ Benedict does not know any of this unless it has been seen or said in play.
 - **Wenna Hollin**, Piet's daughter, about 12; sharp, sits on the stairs and listens.
 - **Marta Ostler**, Wenna's aunt, a tanner, widow; wants her son Jory back.
 - **Jory Ostler**, 15, Marta's son, a singer of rude songs; in the watch-house cell.
+- **Corporal Hask**, of the Tanners' Row watch-house; lazy, in debt at dice, owes Tom a
+  favour and will sell what he knows for a game he wins.

@@ -51,9 +51,9 @@ Soldier increases: DEX +2, CON +1.
 set, healer's kit (10 uses), entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
 5 days' rations, waterskin, disguise kit), traveller's clothes.
 
-**Gold:** 32 GP 4 SP.
+**Gold:** 27 GP 4 SP.
 
-**XP:** 100 / 300 for level 2.
+**XP:** 200 / 300 for level 2.
 
 ## Benedict — the butler
 
@@ -108,7 +108,7 @@ traveller's clothes, and a butler's black coat over all of it.
 
 **Gold:** 25 GP.
 
-**XP:** 100 / 300 for level 2.
+**XP:** 200 / 300 for level 2.
 
 ## Magic items
 
