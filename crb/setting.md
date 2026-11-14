@@ -140,7 +140,8 @@ starts. How Benedict chose him is not played.
 ## How it is told
 
 These samples are one pair at level 1: Tom Carter, an orc soldier (Fighter 1), and Benedict
-as a wizard. In this campaign the Hills are led by a hobgoblin captain, a ruler.
+as a wizard. In this campaign the Hills are led by a hobgoblin captain, a ruler. They are
+written in the third person; in play the master is "you" (see `CLAUDE.md`, Telling it).
 
 **Arriving somewhere.**
 

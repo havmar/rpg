@@ -296,6 +296,9 @@ for two characters (the table is not in the SRD):
 ## Telling it
 
 - `setting.md` has samples of play. They are the model.
+- **Second person.** The master is "you": "You hammer on the wall with your sword hilt."
+  Benedict still calls him "sir", and everyone else still says his name. The samples are
+  written in the third person; tell it the same way, with the master as "you".
 - **One reply is one scene**, run to the next decision that changes the outcome. Play the
   master's routine choices from what the human has said.
 - **Units on every number:** HP, damage, AC, XP, metres (never feet). A monster's CR beside
