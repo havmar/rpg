@@ -3,7 +3,8 @@
 
   python3 crb/tools/crb.py map                         the 16 lands, compact, bricks offset
   python3 crb/tools/crb.py new DIR [--seed N]          roll a campaign: leaders, known dungeons, the pair
-  python3 crb/tools/crb.py around HEX [DIR]            the hexes around HEX (with leaders if DIR)
+  python3 crb/tools/crb.py around HEX [DIR]            the hexes around HEX (with leaders if DIR;
+                                                       the quest counts are for the GM only)
   python3 crb/tools/crb.py folk HEX                    the biome's speaking monsters, by CR
   python3 crb/tools/crb.py rate LEVEL NAME [N] ...     CR, XP and difficulty for the pair
   python3 crb/tools/crb.py encounter HEX [--coast]     travel/rest encounter, with reaction roll
@@ -88,7 +89,8 @@ def new_master(side):
             f"background {R.choice(BACKGROUNDS)}. Scores before background: {scores(cls)}.")
 def new_butler(side):
     cls, sub = R.choice(SIDES[side])
-    return f"The butler: {BUTLER}, Celestial Robot {cls} ({sub}), {side}. Scores before background: {scores(cls)}."
+    return (f"The butler: {BUTLER}, Celestial Robot {cls} ({sub}), {side}, "
+            f"background {R.choice(BACKGROUNDS)} (mechanics only). Scores before background: {scores(cls)}.")
 
 R = random.Random()
 def d(n, what=""):
@@ -199,11 +201,10 @@ def world(dirn): return json.load(open(f"{dirn}/world.json"))
 def save(dirn, w):
     json.dump(w, open(f"{dirn}/world.json", "w"), indent=1)
     L = ["# The world", "", "Written by `crb.py`; don't edit. The butler knows all of this.", "",
-         "| Hex | Biome | Side | Leader | CR | Rule | Quests to depose |", "|---|---|---|---|---|---|---|"]
+         "| Hex | Biome | Side | Leader | CR | Rule |", "|---|---|---|---|---|---|"]
     for h, x in w["hexes"].items():
         rule = "**tyrant**" if x["problem"] and not x["deposed"] else "deposed" if x["deposed"] else "ruler"
-        q = f"{x['done']}/{x['stages']}" if x["problem"] else "–"
-        L.append(f"| {h} | {x['biome']} | {'evil' if x['biome'] in EVIL else 'good'} | {x['leader']} | {x['cr']} | {rule} | {q} |")
+        L.append(f"| {h} | {x['biome']} | {'evil' if x['biome'] in EVIL else 'good'} | {x['leader']} | {x['cr']} | {rule} |")
     L += ["", "## Dungeons", "", "| ID | Land | Level | Its monster | CR | Nature | State |", "|---|---|---|---|---|---|---|"]
     for i, x in w["dungeons"].items():
         L.append(f"| {i} | {x['hex']} {MAP[x['hex']]} | {x['level']} | {x['monster']} | {MON[x['monster']]['cr']} | {x['nature']} | {x['state']} |")
