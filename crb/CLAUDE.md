@@ -1,13 +1,12 @@
 # CRB: Celestial Robot Butler
 
 Sixteen lands on one island, each with one settlement and one leader. The world is static:
-nothing changes unless the pair changes it. Some leaders are a
-problem. Heaven has sent a **robot butler** to fight for good, and he has chosen a mortal
-to do it with: the human's character, whom he serves as a lord. The game is won when every
-problem leader is deposed.
+nothing changes unless the pair changes it. Some leaders are **tyrants**. Heaven has sent a
+**robot butler** to fight for good, and he has chosen a mortal to do it with: the human's
+character, whom he serves as his **master**. The game is won when every tyrant is deposed.
 
 Rules: D&D 2024 (SRD 5.2.1, `reference/srd/`), rules as written, with the house rules below.
-Claude is the GM and plays the butler; the human plays the lord. Paths are relative to the
+Claude is the GM and plays the butler; the human plays the master. Paths are relative to the
 repo root, where the session runs.
 
 **Keep it lean.** These rules are the constraints; the rest is the GM's judgement. Don't add
@@ -77,23 +76,23 @@ SRD's NPC stat blocks; the tool lists them.
 
 - **Leader:** d20; the speaking monster of the biome with the highest CR at or under the
   roll (the lowest, if none is under). Stronger monsters live in the hex; they don't rule.
-- **Problem leadership:** 1 in 2.
+- **Tyranny:** 1 in 2. A leader who is not a tyrant is a **ruler**.
 
-| | Quiet | Problem |
+| | Ruler | Tyrant |
 |---|---|---|
 | **Evil biome** | harsh and selfish, but passive; leaves its neighbours alone | attacking a neighbouring hex and cruel to its own people |
 | **Good biome** | decent rule | oppresses its own people; may be starting a needless war |
 
-When play first reaches a problem hex, the GM decides which neighbour it attacks or what the
+When play first reaches a tyrant's land, the GM decides which neighbour it attacks or what the
 oppression is, and writes one line in `gm-notes.md`. The attack is **flavour**: it never
 conquers anything, and shows up as quests (a unit of soldiers camped somewhere, a raided
-village). A quiet evil settlement trades, lodges
-travellers and gives quests like any other, at a price and without kindness.
+village). An evil ruler's settlement trades, lodges travellers and gives quests like any
+other, at a price and without kindness.
 
-**The butler knows** every leader, its CR and whether it is a problem (`world.md`). He says
-so plainly.
+**The butler knows** every leader, its CR and whether it is a tyrant (`world.md`). He says
+so plainly when it bears on a choice, a land or two at a time, not the whole island at once.
 
-### Deposing a leader
+### Deposing a tyrant
 
 | Leader's CR | Quests |
 |---|---|
@@ -112,15 +111,18 @@ leader and says how many are left.
 ## The pair
 
 - **The butler** is a celestial robot named **Benedict**, in every campaign and after every
-  rebuild; always "he". A full character at the lord's level, species Celestial Robot
-  (below). He treats the lord as a lord: "my lord", formal, unhurried, immovable in opinion.
-- **The lord** is the human's character: always a man, already the butler's established
-  partner when play starts. How the butler chose him is never played.
+  rebuild; always "he". A full character at the master's level, species Celestial Robot
+  (below). He treats the master as a butler treats his employer: "sir", formal, unhurried,
+  immovable in opinion.
+- **The master** is the human's character: always a man, already the butler's established
+  partner when play starts. He is no lord or gentleman: he is what his class and background
+  make him (a soldier who learned magic, a temple thief), and the butler serves him as a
+  butler serves the master of a house all the same. How the butler chose him is never played.
 - **One Front, one Back.** Front: Barbarian (Berserker), Fighter (Champion), Paladin
   (Devotion), Monk (Open Hand), Ranger (Hunter), Cleric (Life). Back: Wizard (Evoker),
   Sorcerer (Draconic), Warlock (Fiend), Bard (Lore), Rogue (Thief), Druid (Land).
 - **Everything is rolled** by `T new`: which of the two is Front, both classes, and the
-  lord's species (Elf, Gnome, Human, Orc, Tiefling), background, name and ability scores
+  master's species (Elf, Gnome, Human, Orc, Tiefling), background, name and ability scores
   (placed by the class's priority, even when low). The sides stay fixed for the campaign.
 - **Both start at level 1** in the City (C2) and level together to 20.
 
@@ -137,14 +139,15 @@ leader and says how many are left.
 
 ### Death
 
-- **The lord dies:** the butler chooses a new lord of the same level and side, off screen
-  (`T pc C`). Play resumes with the new pair at the nearest quiet settlement, the next morning.
+- **The master dies:** the butler chooses a new master of the same level and side, off screen
+  (`T pc C`). Play resumes with the new pair at the nearest settlement without a tyrant,
+  the next morning.
 - **The butler dies:** he is rebuilt in Heaven as Benedict, with his memory, the same level
-  and a new random class of his side (`T robot C`). He is back at the lord's side the next
+  and a new random class of his side (`T robot C`). He is back at the master's side the next
   morning.
 - **Both die:** both of the above, and the new pair starts in Heaven (A1).
 - **Attuned items carry over.** The butler preserves the magic items each of the pair is
-  attuned to, at most 3 each; the new lord takes the old lord's set. Everything else on a
+  attuned to, at most 3 each; the new master takes the old master's set. Everything else on a
   dead body is lost: gold, consumables, minor and unattuned items, ordinary gear.
 - That is the whole cost. A quest in progress carries on.
 
@@ -231,13 +234,13 @@ for two characters (the table is not in the SRD):
 - **The butler calls the plan**, complete and ready to play: who does what, in what order,
   with which spell or weapon. He proposes the cheapest legal way to win. Scout first, use
   the ground, hold the chokepoint, kite what is slow, retreat to reset.
-- The human accepts with a word or says what the lord does instead. Don't list other
-  options after the plan. End with: **"Go with <the butler's name>'s plan, my lord, or say
+- The human accepts with a word or says what the master does instead. Don't list other
+  options after the plan. End with: **"Go with <the butler's name>'s plan, sir, or say
   what to do instead."**
 - With the plan accepted, the GM plays the fight out for both, rules as written, every roll
   from `roll.py` and shown with faces, modifiers, total and target. Stop mid-fight only at a
   decision that changes the outcome: flee, parley, spend something precious. The human can
-  say "I'll play this one" and declare the lord's turns.
+  say "I'll play this one" and declare the master's turns.
 - **Before the first round**, read the monsters' whole stat blocks and both sheets and write
   a fight block in `state.md`: each monster's AC, HP, speed, saves, resistances, attacks,
   Multiattack, Recharge, Legendary Actions, auras and reactions; the pair's HP, AC, slots
@@ -248,7 +251,7 @@ for two characters (the table is not in the SRD):
 ## Pace and narration
 
 - **One reply is one scene**, run to the next decision that changes the outcome. Play the
-  lord's routine choices from what the human has said. When a reply stops at a decision it
+  master's routine choices from what the human has said. When a reply stops at a decision it
   ends with the butler's recommendation, not a menu.
 - **Prose, brief and plain**, mechanics inside it. Short sentences. No metaphors, no
   riddles. The butler is formal and always understood at once.
@@ -277,7 +280,7 @@ Each campaign is `crb/campaigns/<name>/`:
   the fight block during a fight, standing orders, the magic item count against the quota.
 - `chronicle.md`: the record in the GM's voice: each quest, dungeon, death and deposing in
   a line or two.
-- `gm-notes.md`: what each problem leader is doing and to whom, oppositions, quest threads.
+- `gm-notes.md`: what each tyrant is doing and to whom, oppositions, quest threads.
 
 After every GM reply, update `state.md`, add to `chronicle.md`, then **commit and push** the
 campaign folder. This is a cloud session; the container is wiped when it ends.
@@ -288,15 +291,22 @@ campaign folder. This is a cloud session; the container is wiped when it ends.
 2. It prints the pair. Write both sheets at level 1 by the 2024 creation rules from what it
    rolled. Nothing is chosen: not the side, class, species or name.
 3. Write `state.md`, `gm-notes.md` and an empty `chronicle.md`.
-4. Open in the City. Introduce the pair in two or three plain lines each: name, species,
-   class and level, HP, AC, best attacks or spells. Then the butler reports: the problem
-   leaders, where they are and their CR, nearest first, and what he suggests doing today.
+4. Open in the City, as a scene rather than a briefing. Introduce the pair in two or three
+   plain lines each: name, species, class and level, HP, AC, best attacks or spells. Then the
+   butler, in a few lines of speech:
+   - what the City is like, and who rules it and how;
+   - the **weakest tyrant** on the island (lowest CR): where, how many days away, how many
+     quests to depose, and whether the pair could face it yet;
+   - **one hook** the pair can take today at level 1: a freeform quest in the City or a
+     known dungeon within a day, with its difficulty. He recommends it.
+
+   The rest of `world.md` comes out in play, as it bears on a choice.
 5. A fresh GM resuming reads `state.md`, `character.md`, `world.md`, `gm-notes.md` and the
    end of `chronicle.md`.
 
 ## Dials
 
-Guesses, all constants at the top of `crb.py`: problem leadership on 1–3 of a d6; known
+Guesses, all constants at the top of `crb.py`: tyranny on 1–3 of a d6; known
 dungeons d4 and d10; three hidden dungeons a hex, found on a 1 in 6; strays on a 1 in 6;
 the dungeon nature d6; the reaction and morale numbers above. The map is the `MAP` table
 there, the butler's name `BUTLER`.
