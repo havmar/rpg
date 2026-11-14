@@ -114,10 +114,13 @@ edge in the confrontation, named when it is won: fewer guards, the leader caught
 lair, an ally in the fight, or the opposition able to finish it without a fight. A deposed
 leader need not be dead. `quest` records each quest done.
 
-**The count is the GM's.** In the world there is no such number. Benedict talks about what
-stands between the pair and the tyrant (its guard, a lieutenant, a stronghold, a rival who
-could be armed), and after a quest about what it changed. The count is kept in `world.json`;
-`around` shows it to the GM.
+The count is the GM's tool, not something anyone in the world says. Benedict talks about
+what stands between the pair and the tyrant (its guard, a lieutenant, a stronghold, a rival
+who could be armed), and after a quest about what it changed. `world.json` keeps the count
+and `around` shows it.
+
+Each of these quests is a quest like any other for XP (below). The leader gives its own XP
+only if it is beaten in a fight.
 
 ## The pair
 
@@ -131,6 +134,9 @@ could be armed), and after a quest about what it changed. The count is kept in `
   backgrounds, and the master's species (Elf, Gnome, Human, Orc, Tiefling), name and ability
   scores (placed by the class's priority, even when low). Front and Back stay fixed for the
   campaign.
+- **Everything else is the GM's.** What the dice don't settle (skills, spells, feats,
+  starting gear, and every level-up choice for both) the GM decides as a good player of
+  that class would, without asking, and reports a level-up in a line or two.
 - **Benedict's background is mechanics only.** He takes everything an SRD background gives
   by the 2024 rules (ability increases, skills, tool, Origin feat, equipment), but it is not
   a history: it is how he was built. On his sheet it reads "Background (mechanics): <name>".
@@ -169,9 +175,9 @@ could be armed), and after a quest about what it changed. The count is kept in `
   random class from his Front or Back list and a new random background (`robot`). He is back
   at the master's side the next morning.
 - **Both die:** both of the above, and the new pair starts in Heaven (A1).
-- **Attuned items carry over.** Benedict preserves the magic items each of the pair is
-  attuned to, at most 3 each; the new master takes the old master's set. Everything else on
-  a dead body is lost: gold, consumables, unattuned items, ordinary gear.
+- **Magic items carry over**, attuned or not, unless they are consumables. Benedict
+  preserves them, and the new master takes the old master's. Everything else on a dead body
+  is lost: gold, consumables, ordinary gear.
 - That is the whole cost. A quest in progress carries on.
 
 ## What there is to do
@@ -184,12 +190,18 @@ could be armed), and after a quest about what it changed. The count is kept in `
 
 ### Travel, rest and encounters
 
-- One **encounter die** (d6) per day of travel and per night camped outside a settlement:
-  on a 1 or 2 travelling, a 1 camping, run `encounter`. It picks a monster of the hex (1 in
-  6 it has strayed from a neighbour, an evil one if there is one), a number, and its
-  reaction. Encounters are **not levelled**: anything in the biome can turn up.
+- One **encounter die** (d6) for each day spent outside a settlement, whatever the pair
+  does with it (travelling to the next hex, hunting, searching, going to a dungeon), and
+  one for each night camped outside one. On a 1 or 2 by day, a 1 by night, run `encounter`.
+  It picks a monster of the hex (1 in 6 it has strayed from a neighbour, an evil one if
+  there is one), a number, and its reaction. Encounters are **not levelled**: anything in
+  the biome can turn up.
 - **Reaction** (2d6, evil −2, good +2), unless the story has already decided it: 3 or less
   attacks; 4–5 hostile; 6–8 wary; 9–10 indifferent; 11+ friendly. Most things don't attack.
+- **The roll outranks the stat block's alignment.** A good creature that attacks has a
+  reason: a mistake, an order, something it guards, the start of corruption. An evil one
+  that is friendly wants something. The GM supplies the reason, and the creature is then
+  an opponent or a contact like any other.
 - **Morale.** A creature or group checks when it is first Bloodied or has lost half its
   number, and again when its leader falls: one Wisdom save for the group, DC 10, or it flees
   or yields. Mindless things (oozes, zombies, constructs) and anything cornered in its lair
@@ -200,8 +212,7 @@ could be armed), and after a quest about what it changed. The count is kept in `
 
 `hunt` makes one levelled encounter from a hex's evil and unaligned monsters; give it an
 evil neighbour's hex for something that has strayed over. Reroll a quarry that is no danger
-to anyone. Hunts never run out. Finding the quarry is a day in the hex, with its encounter
-die.
+to anyone. Hunts never run out. Finding the quarry is a day in the hex.
 
 ### Dungeons
 
@@ -209,28 +220,38 @@ die.
   **three hidden** ones. A day spent searching finds one on a 1 in 6 (`search`), of level
   d20. When the three are found, the hex has no more.
 - **Nature**, d6 per dungeon: 1–2 **good** (good or neutral creatures), 3–4 **corrupted**
-  (the same kinds turned evil: same stat blocks, reaction −2, and curing the corruption
-  counts as beating them), 5–6 **evil** (the biome's evil and dangerous creatures). Heaven
-  has no evil dungeons and Hell no good ones.
+  (the same kinds turned evil: same stat blocks, reaction −2, and they can be cured as well
+  as killed), 5–6 **evil** (the biome's evil and dangerous creatures). Heaven has no evil
+  dungeons and Hell no good ones.
 - **Level** sets the rooms. Together they hold the XP one character needs to go from that
-  level to the next, so half a level each for a pair of that level. `dungeon` stocks them
-  the first time; the GM gives the rooms a place and a reason. A cleared room stays cleared;
-  `cleared` marks the whole dungeon done.
+  level to the next, so half a level each for a pair that fights through all of them.
+  `dungeon` stocks them the first time; the GM gives the rooms a place and a reason. A room
+  is done when what is in it no longer stands in the way, and it stays done.
 - **Its monster** is rolled separately: d20, the monster of nearest CR among those its
   nature allows, so it can be far above or below the dungeon's level. It holds the
   dungeon's magic item, and its XP is on top of the rooms'.
 - **Everything in a dungeon gets a reaction roll**, rooms and monster alike, rolled when it
   is stocked and fixed after. So a dungeon far above the pair can still be tried: a CR 17
   dragon in a level 2 ruin is someone to talk to, sneak past or come back for.
+- **A dungeon is cleared** when its monster no longer holds the item, by whatever means:
+  killed, driven off, cured, bargained with, robbed (`cleared`).
 
 ### XP
 
-- Normal XP, split between the two.
-- **Any solution earns the XP.** Talking a monster down, tricking it, or getting past it for
-  good is worth its full XP; a partial result, part.
-- A freeform quest is worth a High encounter for the pair at their level (`rate LEVEL`
-  alone prints the figure), once, split like any XP, on top of any fights in it. A leader
-  is worth its XP however it is deposed.
+XP comes two ways. Both are split between the two.
+
+- **Kills.** A monster beaten in a fight is worth its XP: killed, driven off for good, or
+  made to yield.
+- **Achievements.** A problem solved any other way is rewarded in free form, by what was
+  achieved and not by the XP of the creatures in it. The GM picks the size from the pair's
+  own level (`rate LEVEL` alone prints the three figures):
+  - **Low:** a small thing done well. A guard talked round, a room crept past for good.
+  - **Moderate:** a real obstacle removed. A ruin's guardian bargained with, a raid turned
+    back by a trick.
+  - **High:** a quest finished, or anything of that weight.
+- A quest's award is on top of whatever was killed along the way. Otherwise a thing pays
+  once: its XP or an award, not both.
+- Something that was never in the way earns nothing.
 
 ### Magic items
 
@@ -254,13 +275,15 @@ for two characters (the table is not in the SRD):
 
 - **Benedict proposes the plan** before a fight, complete and ready to play: who does what,
   in what order, with which spell or weapon. He looks for the cheapest legal way to win:
-  scout first, use the ground, hold the chokepoint, kite what is slow, retreat to reset. The
-  human agrees or says what the master does instead.
-- With the plan agreed, the GM plays the fight out for both, rules as written, and stops
-  mid-fight only at a decision that changes the outcome: flee, parley, spend something
-  precious. The human can say "I'll play this one" and declare the master's turns.
-- **Standing orders** can be given at any time ("never kill what yields", "don't ask me
-  about anything Low or easier"). They live in `state.md` and Benedict plans within them.
+  scout first, use the ground, hold the chokepoint, kite what is slow, retreat to reset.
+- **Low or easier, the plan is simply followed:** the GM plays the fight through and
+  reports it. **Moderate or harder, the reply stops on the plan,** and the human agrees or
+  says what the master does instead.
+- The GM plays the fight out for both, rules as written, and stops mid-fight only at a
+  decision that changes the outcome: flee, parley, spend something precious. The human can
+  say "I'll play this one" and declare the master's turns.
+- **Standing orders** can be given at any time ("never kill what yields", "ask me before
+  every fight"). They live in `state.md` and Benedict plans within them.
 - **Before the first round**, read the monsters' stat blocks whole and both sheets, and
   write a fight block in `state.md`: for each monster what will matter (AC, HP, speed,
   saves, resistances, attacks, Multiattack, Recharge, Legendary Actions, auras, reactions);
@@ -286,8 +309,8 @@ for two characters (the table is not in the SRD):
 - Monsters fight by their stat blocks and their Intelligence.
 - Quests and hunts are fitted to the pair's level. Leaders, dungeons and encounters are
   what they are.
-- Keep out of chat what Benedict doesn't know: `gm-notes.md`, the quest counts, a dungeon's
-  stock before it is seen.
+- Keep out of chat what Benedict doesn't know: `gm-notes.md`, and a dungeon's stock before
+  it is seen.
 - Ask before a big retcon. A fixable error is corrected in the next line with `CORRECTION:`.
 
 ## Campaign files
@@ -312,9 +335,13 @@ container is wiped when it ends.
 
 ## New game
 
+Each campaign stands alone. Don't read another campaign's folder, to start one or to run
+one.
+
 1. Roll a seed (`roll.py 1d1000`) and run `new crb/campaigns/<name> --seed N`.
 2. It prints the pair. Write both sheets at level 1 by the 2024 creation rules from what it
-   rolled. Nothing is chosen: not Front or Back, class, species, background or name.
+   rolled. The human chooses nothing: the dice give Front or Back, class, species,
+   background and name, and the GM fills in the rest.
 3. Write `state.md`, `gm-notes.md` and an empty `chronicle.md`.
 4. Open in the City with a scene, not a briefing: the pair somewhere in it, and something
    happening that they can take up today at level 1 (a freeform quest, or word of a known

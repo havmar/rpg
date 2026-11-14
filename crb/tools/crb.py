@@ -3,8 +3,8 @@
 
   python3 crb/tools/crb.py map                         the 16 lands, compact, bricks offset
   python3 crb/tools/crb.py new DIR [--seed N]          roll a campaign: leaders, known dungeons, the pair
-  python3 crb/tools/crb.py around HEX [DIR]            the hexes around HEX (with leaders if DIR;
-                                                       the quest counts are for the GM only)
+  python3 crb/tools/crb.py around HEX [DIR]            the hexes around HEX (with leaders and
+                                                       quest counts if DIR)
   python3 crb/tools/crb.py folk HEX                    the biome's speaking monsters, by CR
   python3 crb/tools/crb.py rate LEVEL [NAME [N] ...]   CR, XP and difficulty for the pair;
                                                        with no monsters, the level's budgets

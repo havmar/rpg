@@ -88,10 +88,11 @@ Older peoples built on the island before the present ones: vaults, shrines, mine
 Every land has two that everyone knows about and a few that nobody has found. Something
 lives in each.
 
-- A **good** ruin is still kept by its guardians. They are not enemies. They can be talked
-  to, helped, or left alone.
-- A **corrupted** ruin had such guardians and they have gone wrong. Putting them right
-  counts as much as killing them.
+- A **good** ruin is still kept by its guardians. They are not enemies by nature and can
+  be talked to, helped or left alone. But they guard what they guard, and one may take the
+  pair for thieves, or have orders, or have begun to turn.
+- A **corrupted** ruin had such guardians and they have gone wrong. They can be put right
+  as well as killed.
 - An **evil** ruin has been taken over by the worst of its land.
 
 Each ruin has one creature that holds what the builders left there: a magic item. It can be
@@ -164,7 +165,8 @@ as a wizard. In this campaign the Hills are led by a hobgoblin captain, a ruler.
 > "A few goblins, sir, on the word of two people who did not count them," Benedict said.
 > "The farm is an hour's walk. I should like to look before I say more."
 
-**What Benedict sees, and his plan.** The reply ends on the plan. The human answers it.
+**What Benedict sees, and his plan.** The fight is Moderate, so the reply ends on the plan
+and the human answers it. A Low fight would be played straight through.
 
 > From the wall of the top field they could see into the yard. Three goblin warriors (CR
 > 1/4 each; Moderate for the pair) sat round a fire just inside the byre, with a goat on a
@@ -186,6 +188,17 @@ as a wizard. In this campaign the Hills are led by a hobgoblin captain, a ruler.
 > bolt. An arrow from inside hit the trough. The third had seen two fall. It failed its
 > morale save, 6 against DC 10, dropped its bow and ran for the hill. Tom 7/12 HP, Benedict
 > 8/8 HP. 150 XP for the three, the runaway included: 75 each, 75 of the 300 for level 2.
+
+**A problem solved without a fight.**
+
+> The goblins in the byre had cousins. Next morning six goblin warriors (CR 1/4 each; Deadly
+> for the pair) stood on the hill above Dunn's farm with their bows strung. Tom walked up
+> alone with his hands empty and Dunn's best goat on a rope. Persuasion, 14 against DC 13.
+> Their leader took the goat and gave her word that the farm would be left alone till
+> spring. Benedict said it was cheaper than a funeral.
+>
+> That is the end of Dunn's trouble, and of the quest: a High award, 200 XP, 100 each. Tom
+> and Benedict are on 175 of the 300 for level 2.
 
 **On the road.** Most things met are not a fight.
 
