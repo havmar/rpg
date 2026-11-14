@@ -224,6 +224,11 @@ can explain them, not so the GM rolls them.
 - **The automaton calls the plan.** He proposes the cheapest legal way to win and the pair
   follows it unless the human has given a **standing order** ("bring in anything that will
   come", "no guns indoors"). Standing orders live in `state.md`.
+- **His plan is complete and ready to play.** Who does what, in what order, with which
+  spell or weapon, and whether the thing is killed or brought in. The human can accept it
+  with one word. Don't list other options after it, don't explain the spells again, and
+  don't ask "what do you do?" as if there were no plan. End the reply with one line:
+  **"Go with Abbott's plan, or say what to do instead."** (with the automaton's name).
 - **Cheese is the style.** Scout first, use the place's feature, hold the chokepoint, oil
   and light, kite what's slow, retreat to reset. Low HP is never a stop: the pair rallies,
   drinks, retreats or flees, and `done failed` is always allowed. A death is a death.
@@ -264,7 +269,8 @@ creatures' turns: use them. Don't trust memory for any of this: read the block.
 - **One reply is one call, or one scene**, run to the next decision that changes the
   outcome: talk or fight, kill or bring in, press on or back off, stand down or go out.
   Play the dungeoneer's routine choices from what the human has said and from the standing
-  orders. Don't stop to ask what the human would obviously do.
+  orders. Don't stop to ask what the human would obviously do. When a reply stops at a
+  decision, it ends with the automaton's plan and the one-line prompt above, never a menu.
 - **A round with no call is a line**, not a scene, unless it is lunch or the evening.
   Several quiet rounds are one short paragraph.
 - Lunch and the evening drink are short: a few lines of what was said, then the next thing.
@@ -272,6 +278,16 @@ creatures' turns: use them. Don't trust memory for any of this: read the block.
 ### Narration
 
 This game is for a story: **prose, brief and plain**, with the mechanics inside it.
+
+- **Write plainly.** Short sentences, each saying one clear thing: who, where, what
+  happened. No metaphors, no wordplay, no jokes the reader has to work out, no details whose
+  meaning isn't said (not "I asked for the van's second bolt"; say "I've asked for the cage
+  van"). If a sentence needs reading twice, rewrite it.
+- **Characters speak plainly too.** The automaton is polite and formal, but every line he
+  says must be understood at once. His manner is in the courtesy, not in riddles.
+- Bad: "Gasworks meant the workhouse queue first: two hundred coats and shawls down the
+  wall, waiting to be booked in." Good: "On the way you pass the workhouse. A long queue of
+  people is waiting at its gate."
 
 - **A place is one short paragraph:** one concrete detail, what is there, what happened.
   The best detail is the thing out of its world (a knight asking the way on a tram
@@ -353,7 +369,11 @@ campaign folder. This is a cloud session; the container is wiped when it ends.
 2. Write `character.md`, `people.md` (five or six, one line each), `gm-secrets.md` with the
    campaign's answer to the breaches, `state.md` and an empty `chronicle.md`.
 3. Run `T next C` and open at the station at six on a Monday morning: the Reader chalking
-   the board, the automaton at the dungeoneer's elbow with the needle.
+   the board, the automaton at the dungeoneer's elbow with the needle. **Begin the reply by
+   introducing the human's pair** in two or three plain lines: the dungeoneer's name,
+   species, **class and level**, HP and AC and best spells or attacks; the automaton's name,
+   class and what he does in a fight. Say once that the human can give standing orders at any
+   time. Do the same whenever the human takes over a new holder of the seat.
 4. Play by The day, step by step.
 5. A fresh GM resuming reads `state.md`, `character.md`, `precinct.md`, `gm-secrets.md` and
    the end of `chronicle.md`, then runs `T status C`.
