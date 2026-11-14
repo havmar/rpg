@@ -21,7 +21,7 @@ folder for anything else (`Grapple`, `Darkvision`, `Poisoned`).
 
 | Folder | Contents |
 | --- | --- |
-| `Monsters/` | 330 stat blocks, animals included. [Monsters by CR](Monsters%20by%20CR.md) lists them by challenge rating, with type, AC and HP |
+| `Monsters/` | 330 stat blocks, animals included. [Monsters by CR](Monsters%20by%20CR.md) lists them by challenge rating, with type, AC and HP; [Monsters by Setting](Monsters%20by%20Setting.md) sorts them into 20 settings whose monsters can share a place (hand-made, not rewritten by a refresh) |
 | `Gameplay/` | The GM's toolbox: combat encounters, traps, poison, curses, environment, fear, travel pace, monster rules |
 | `Glossary/` | The rules glossary: conditions, actions, and every rules term |
 | `Playing/` | Playing the game: D20 tests, actions, combat, damage and healing, exploration, social interaction |
