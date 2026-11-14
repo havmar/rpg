@@ -2,7 +2,7 @@
 
 Written by `crb.py`; don't edit. The butler knows all of this.
 
-| Hex | Biome | Side | Leader | CR | Rule |
+| Hex | Biome | Good/evil | Leader | CR | Rule |
 |---|---|---|---|---|---|
 | A1 | Heaven | good | Couatl | 4 | **tyrant** |
 | B1 | Mountain | good | Adult Silver Dragon | 16 | ruler |

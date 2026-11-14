@@ -3,10 +3,11 @@
 
   python3 crb/tools/crb.py map                         the 16 lands, compact, bricks offset
   python3 crb/tools/crb.py new DIR [--seed N]          roll a campaign: leaders, known dungeons, the pair
-  python3 crb/tools/crb.py around HEX [DIR]            the hexes around HEX (with leaders if DIR;
-                                                       the quest counts are for the GM only)
+  python3 crb/tools/crb.py around HEX [DIR]            the hexes around HEX (with leaders and
+                                                       quest counts if DIR)
   python3 crb/tools/crb.py folk HEX                    the biome's speaking monsters, by CR
-  python3 crb/tools/crb.py rate LEVEL NAME [N] ...     CR, XP and difficulty for the pair
+  python3 crb/tools/crb.py rate LEVEL [NAME [N] ...]   CR, XP and difficulty for the pair;
+                                                       with no monsters, the level's budgets
   python3 crb/tools/crb.py encounter HEX [--coast]     travel/rest encounter, with reaction roll
   python3 crb/tools/crb.py hunt HEX LEVEL [low|moderate|high]   a levelled hunt
   python3 crb/tools/crb.py quest DIR HEX               one leader quest done (the last one deposes)
@@ -23,7 +24,7 @@ import json, os, random, re, sys
 
 SRD = "reference/srd"
 # ---- dials -------------------------------------------------------------------
-PROBLEM_ON = 3          # d6 <= this: the hex's leadership is problematic (1 in 2)
+TYRANT_ON = 3           # d6 <= this: the hex's leader is a tyrant (1 in 2)
 KNOWN_DICE = (4, 10)    # levels of a hex's two known dungeons
 HIDDEN_MAX = 3          # hidden dungeons a hex can ever give up
 FIND_ON = 1             # d6 <= this finds one, per day of searching
@@ -146,7 +147,7 @@ def hexarg(h):
     if h not in MAP: sys.exit(f"no hex {h}; hexes are A1..D4")
     return h
 
-def stages(cr): return 1 if cr < 6 else 2 if cr <= 10 else 3
+def quests(cr): return 1 if cr < 6 else 2 if cr <= 10 else 3
 
 def closest(pool, level, key):
     """The entries nearest under `level`; if none are under, the lowest."""
@@ -201,14 +202,14 @@ def world(dirn): return json.load(open(f"{dirn}/world.json"))
 def save(dirn, w):
     json.dump(w, open(f"{dirn}/world.json", "w"), indent=1)
     L = ["# The world", "", "Written by `crb.py`; don't edit. The butler knows all of this.", "",
-         "| Hex | Biome | Side | Leader | CR | Rule |", "|---|---|---|---|---|---|"]
+         "| Hex | Biome | Good/evil | Leader | CR | Rule |", "|---|---|---|---|---|---|"]
     for h, x in w["hexes"].items():
-        rule = "**tyrant**" if x["problem"] and not x["deposed"] else "deposed" if x["deposed"] else "ruler"
+        rule = "**tyrant**" if x["tyrant"] and not x["deposed"] else "deposed" if x["deposed"] else "ruler"
         L.append(f"| {h} | {x['biome']} | {'evil' if x['biome'] in EVIL else 'good'} | {x['leader']} | {x['cr']} | {rule} |")
     L += ["", "## Dungeons", "", "| ID | Land | Level | Its monster | CR | Nature | State |", "|---|---|---|---|---|---|---|"]
     for i, x in w["dungeons"].items():
         L.append(f"| {i} | {x['hex']} {MAP[x['hex']]} | {x['level']} | {x['monster']} | {MON[x['monster']]['cr']} | {x['nature']} | {x['state']} |")
-    L += ["", "## The pair", "", f"The master is {w['lord']}, the butler {w['butler']}."]
+    L += ["", "## The pair", "", f"The master is {w['master']}, the butler {w['butler']}."]
     open(f"{dirn}/world.md", "w").write("\n".join(L) + "\n")
 
 def add_dungeon(w, h, level, state):
@@ -236,14 +237,14 @@ def main(a):
         os.makedirs(a[0], exist_ok=True)
         if os.path.exists(f"{a[0]}/world.json"): sys.exit("world.json exists")
         side = R.choice(["Front", "Back"]); other = "Back" if side == "Front" else "Front"
-        w = dict(hexes={}, dungeons={}, lord=side, butler=other)
+        w = dict(hexes={}, dungeons={}, master=side, butler=other)
         for h, b in MAP.items():
-            prob = d(6) <= PROBLEM_ON
+            tyr = d(6) <= TYRANT_ON
             roll = d(20)
             label, block = R.choice(closest(folk(b), roll, lambda p: crv(MON[p[1]]["cr"])))
             cr = MON[block]["cr"]
-            w["hexes"][h] = dict(biome=b, problem=prob, roll=roll, leader=label, block=block, cr=cr,
-                                 stages=stages(crv(cr)), done=0, deposed=False, hidden_found=0)
+            w["hexes"][h] = dict(biome=b, tyrant=tyr, roll=roll, leader=label, block=block, cr=cr,
+                                 quests=quests(crv(cr)), done=0, deposed=False, hidden_found=0)
             for die in KNOWN_DICE: add_dungeon(w, h, d(die), "known")
         save(a[0], w); print(open(f"{a[0]}/world.md").read())
         print(new_master(side)); print(new_butler(other))
@@ -254,7 +255,7 @@ def main(a):
             if w:
                 q = w["hexes"][x]
                 s += f": {q['leader']}, CR {q['cr']}, " + ("deposed" if q["deposed"] else
-                     f"TYRANT, {q['done']}/{q['stages']} quests done" if q["problem"] else "ruler")
+                     f"TYRANT, {q['done']}/{q['quests']} quests done" if q["tyrant"] else "ruler")
             return s
         print("Here:", line(h))
         for k, x in around(h).items():
@@ -269,6 +270,8 @@ def main(a):
             if a[i] not in MON: sys.exit(f"unknown monster {a[i]!r}")
             groups.append((a[i], n)); i += 2 if n > 1 or (i + 1 < len(a) and a[i + 1].isdigit()) else 1
         xp, word, (lo, mo, hi) = rate(level, groups)
+        if not groups:
+            print(f"A pair of level {level}: Low {lo} XP, Moderate {mo} XP, High {hi} XP."); return
         print("; ".join(tag(m, n) for m, n in groups))
         print(f"Total {xp} XP ({xp // 2} each). For a pair of level {level} (Low {lo}, Moderate {mo}, High {hi}): {word}.")
     elif cmd == "encounter":
@@ -288,10 +291,10 @@ def main(a):
         print("; ".join(tag(m, n) for m, n in g)); print(f"Total {xp} XP ({xp // 2} each): {word} for a pair of level {level}.")
     elif cmd == "quest":
         w = world(a[0]); h = hexarg(a[1]); q = w["hexes"][h]
-        if not q["problem"] or q["deposed"]: sys.exit("no tyrant there")
-        q["done"] += 1; q["deposed"] = q["done"] >= q["stages"]; save(a[0], w)
-        left = sum(1 for x in w["hexes"].values() if x["problem"] and not x["deposed"])
-        print(f"{h} {q['biome']}: {q['leader']} " + ("DEPOSED" if q["deposed"] else f"{q['done']}/{q['stages']}") +
+        if not q["tyrant"] or q["deposed"]: sys.exit("no tyrant there")
+        q["done"] += 1; q["deposed"] = q["done"] >= q["quests"]; save(a[0], w)
+        left = sum(1 for x in w["hexes"].values() if x["tyrant"] and not x["deposed"])
+        print(f"{h} {q['biome']}: {q['leader']} " + ("DEPOSED" if q["deposed"] else f"{q['done']}/{q['quests']}") +
               f". Tyrants left: {left}." + (" THE GAME IS WON." if not left else ""))
     elif cmd == "cleared":
         w = world(a[0]); w["dungeons"][a[1]]["state"] = "cleared"; save(a[0], w); print(a[1], "cleared")
@@ -335,7 +338,7 @@ def main(a):
         print(f"{rar}: {R.choice(fs)}  (reference/srd/Magic Items/{rar}/ or Varies/)")
     elif cmd in ("pc", "robot"):
         w = world(a[0])
-        print(new_master(w["lord"]) if cmd == "pc" else new_butler(w["butler"]))
+        print(new_master(w["master"]) if cmd == "pc" else new_butler(w["butler"]))
     else: sys.exit(__doc__)
 
 if __name__ == "__main__": main(sys.argv[1:])

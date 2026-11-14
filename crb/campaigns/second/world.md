@@ -2,7 +2,7 @@
 
 Written by `crb.py`; don't edit. The butler knows all of this.
 
-| Hex | Biome | Side | Leader | CR | Rule |
+| Hex | Biome | Good/evil | Leader | CR | Rule |
 |---|---|---|---|---|---|
 | A1 | Heaven | good | Gold Dragon Wyrmling | 3 | ruler |
 | B1 | Mountain | good | Silver Dragon Wyrmling | 2 | **tyrant** |
