@@ -1,7 +1,7 @@
 # The Owl: the pair
 
-Seat: **the Owl**. Rank: Probationer. Level 1, 0 XP (level 2 at 300). Day off: Saturday.
-Purse (shared): **36 GP**. Relics: none yet.
+Seat: **the Owl**. Rank: Probationer. Level 1, 200 XP (level 2 at 300). Day off: Saturday.
+Purse (shared): **56 GP**. Relics: none yet.
 
 ## Verity Sallow · Wizard (Evoker) 1 · she/her
 
@@ -35,7 +35,7 @@ at level 3). Sculpt Spells at 6, Empowered Evocation at 10,
 Overchannel at 14.
 
 **Weapons:** 4 Daggers (1d4 Piercing, Finesse, Light, Thrown 6/18 m, Nick). +5 to hit,
-1d4+3 Piercing. Simple weapons only.
+1d4+3 Piercing. Simple weapons only. After call #1: two daggers at -1 to hit (Corrosive Form), two clean.
 
 **Carries:** spellbook (3 lb), quarterstaff (Arcane Focus), robe, 4 daggers, Thieves' Tools,
 crowbar, 2 pouches, traveler's clothes, Scholar's Pack (backpack, book, ink, ink pen, lamp,
@@ -62,7 +62,7 @@ Bonus Action to enter. Lasts to the end of his next turn; extend with a Bonus Ac
 
 **Weapons:**
 - Greataxe (Heavy, Two-Handed): +4 to hit, 1d12+2 Slashing (+2 while raging).
-- 4 Handaxes (Light, Thrown 6/18 m): +4 to hit, 1d6+2 Slashing.
+- 4 Handaxes (Light, Thrown 6/18 m): +4 to hit, 1d6+2 Slashing. After call #1: three at -1 to hit (Corrosive Form), one clean.
 
 **Automaton:** Constructed Resilience (advantage against Poisoned, Resistance to Poison,
 immune to disease, needs no food, drink or air, doesn't sleep). Sentry's Rest (a Long Rest

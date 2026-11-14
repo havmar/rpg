@@ -1,30 +1,15 @@
 # State · Saltmarket Precinct
 
-- **Day and round:** day 1 (Monday), MORNING 6 am done. Call #1 is open; it is settled before the next round, MID-MORNING.
-- **The Owl:** Verity 8/8 HP, AC 13 (16 with Mage Armor, not cast), 2 of 2 level 1 spell slots (none spent), Arcane Recovery ready. Abbott 14/14 HP, AC 14, 2 of 2 Rages (none used), 4 handaxes, greataxe unmarked. Fresh.
-- **Purse:** 36 GP (Verity 21, Abbott 15). No relics. No drops.
-- **Open call:** #1, a reading of under 1 in Gasworks. The Owl is on the goods platform behind the siding, in sight of the monster. `shift.py done ... kill|sent|failed` still to run.
-- **The monster (now seen by the pair):** 2 Gray Oozes, CR 1/2 each (`reference/srd/Monsters/Gray Ooze.md`). Neutral; mindless (Int 1). No attacks yet.
-  - Each: AC 9 (11 behind the crates), HP 22, speed 3 m, climb 3 m, Blindsight 18 m, Initiative -2.
-  - Saves: Str +1, Dex -2, Con +3, Int -5, Wis -2, Cha -4.
-  - Resists Acid, Cold, Fire (Fire Bolt and Ray of Frost halved).
-  - Immune to Blinded, Charmed, Deafened, Exhaustion, Frightened, Grappled, Prone, Restrained. A net does not hold it.
-  - **Sleep does not work on them.** CORRECTED: an earlier note said it would. Sleep's text says a creature immune to Exhaustion succeeds automatically, and these are.
-  - **Held** therefore means Unconscious, by Knocking Out a Creature (a melee hit that would take it to 0 HP leaves it at 1 HP, Unconscious, for a Short Rest, or until it regains HP or someone administers first aid), then penned in the cage van. Paralysis: the Owl has none.
-  - Corrosive Form: nonmagical ammunition is destroyed on a hit. Any nonmagical weapon takes a cumulative -1 to attack per hit and is destroyed at -5. Handaxes and daggers are weapons, not ammunition; the greataxe is at risk too.
-  - Pseudopod: +3, reach 1.5 m, 2d8+1 Acid (avg 10). Nonmagical armour worn takes -1 AC per hit. Abbott's body is not armour; Verity wears a robe.
-- **Abbott's plan (proposed, awaiting the human):** Verity's Magic Missile at the nearer ooze from 6 m; Abbott raging, throws handaxes at it from 6 m; Abbott closes and finishes it with a handaxe in melee (Knocking Out). Then the same against the second ooze with Verity's second Magic Missile. Pen both in the cage van. Verity keeps 6 m from both at all times.
-- **Fight block (drafted; roll initiative when round 1 starts):**
-  - Platform: 6 squares wide (A to F) by 12 long (rows 1 to 12); 1 square = 1.5 m. Entry from the siding at row 1.
-  - Terrain: drain cover at C5 (Verity steps round it; difficult for nothing else). Stacked crates at E8 to F9: half cover to anything north of them.
-  - Positions: Verity B1, Abbott C1, Ooze A C7 (open ground), Ooze B E10 (behind the crates).
-  - Initiative: Verity +5, Abbott +1, Ooze A -2, Ooze B -2. Roll d20 each when round 1 starts.
-  - Verity: 8/8 HP, AC 13, 2 level 1 slots, Magic Missile prepared, no concentration. Keeps out of reach (1.5 m) of the oozes; her daggers are not used, since they corrode.
-  - Abbott: 14/14 HP, AC 14, 2 Rages (0 used), handaxes x4 (Vex), greataxe (Cleave). Rage is a Bonus Action.
-  - Ooze A: 22/22 HP. Ooze B: 22/22 HP.
-- **Standing orders:** none yet. Abbott's plan awaits a "go" or a change.
+- **Day and round:** day 1 (Monday) closed: evening drink and the night's Long Rest done. Next: MORNING, day 2 (Tuesday), 6 am.
+- **The Owl:** Verity 8/8 HP, AC 13 (16 with Mage Armor, not cast). Level 1 spell slots 2 of 2 after the Long Rest; Arcane Recovery ready again. Abbott 14/14 HP, AC 14, 2 of 2 Rages. Fresh.
+  - Weapons after call #1: Verity's daggers: two at -1 to hit (Corrosive Form), two clean. Abbott's handaxes: three at -1, one clean. Greataxe clean.
+- **Purse:** 56 GP (Verity 21, Abbott 15, plus 20 from the oozes). No relics. No drops.
+- **XP:** 200 total, level 2 at 300. Still Probationer, level 1.
+- **Open call:** none. Call #1 (Gasworks, under 1) killed; both Gray Oozes dead.
+- **Board for the morning:** #2 reads 8 (Gasworks); #3 reads 8 (Gasworks); #4 reads 2 (Brick Fields). The Wren (level 10) is the only seat that can take the 8s. The Fox (level 4) takes the 2 (lowest free seat that can). The Owl can take readings of 1 or under only, until level 2.
+- **Fight block:** ended. Call #1 finished. Round log: both oozes killed by round 4, the pair took no damage.
+- **Standing orders:** none yet. The human chose "kill, not bring in" for call #1; that is a one-off unless the human says otherwise.
 - **Notes for a fresh GM:**
-  - The pair walks out through Gasworks (workhouse queue, gasholder) to the goods platform behind the siding. The drain cover is between Verity and Ooze A; she steps round it.
-  - A knocked-out ooze stays out for a Short Rest (one hour). The walk back to the station is inside that, unless the human wants a complication.
+  - Gray Oozes: Sleep does not hold them (Exhaustion immunity). Knocking Out is the only way to hold one, and this call was a kill, so no need.
+  - Lunch is a Short Rest; the night is a Long Rest. Verity's slots and Abbott's Rages refill tonight.
   - The Owl's day off is Saturday. The Wren and the Fox are off on Sundays, the Lion on Saturdays.
-  - Lunch is a Short Rest: Verity's Arcane Recovery comes back then.

@@ -1,4 +1,4 @@
-# Saltmarket Precinct · day 1, Monday, morning
+# Saltmarket Precinct · day 1, Monday, night
 
 ## The seats
 
@@ -7,18 +7,22 @@
 | the Wren | Inspector | 10 | Fighter and Druid automaton; taps every lamp post in passing | Sunday | in |
 | the Lion | Sergeant | 7 | Druid and Fighter automaton; shadow-boxes while waiting | Saturday | in |
 | the Fox | Constable | 4 | Rogue and Monk automaton; takes the stairs two at a time | Sunday | in |
-| the Owl **(you)** | Probationer | 1 | Wizard and Barbarian automaton; refuses to step on a drain cover | Saturday | out on #1 |
+| the Owl **(you)** | Probationer | 1 | Wizard and Barbarian automaton; refuses to step on a drain cover | Saturday | in |
 
 ## The board
 
 | # | Reads | Where | Since | Who | Notes |
 |---|---|---|---|---|---|
-| 1 | under 1 | Gasworks | Monday 6 am | the Owl |  |
+| 2 | 8 | Gasworks | Monday 6 pm | no one |  |
+| 3 | 8 | Gasworks | Monday 6 pm | no one |  |
+| 4 | 2 | Brick Fields | Monday 6 pm | no one |  |
 
 ## Last heard
 
-- MORNING · day 1, Monday, 6 am
-- NEW READING #1: reads under 1, Gasworks.
+- EVENING · day 1, Monday, 6 pm
+- NEW READING #2: reads 8, Gasworks.
+- NEW READING #3: reads 8, Gasworks.
+- NEW READING #4: reads 2, Brick Fields.
 
 ## The neighbourhoods
 
