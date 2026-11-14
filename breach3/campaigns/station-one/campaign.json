@@ -1,0 +1,235 @@
+{
+ "name": "station-one",
+ "seed": 870,
+ "day": 1,
+ "round": 1,
+ "precinct": "Saltmarket",
+ "seats": [
+  {
+   "n": 1,
+   "role": "Owl",
+   "off": "Saturday",
+   "holder": {
+    "name": "Verity Sallow",
+    "pronouns": "she/her",
+    "species": "Tiefling",
+    "background": "Criminal",
+    "side": "Back",
+    "class": "Wizard",
+    "subclass": "Evoker",
+    "scores": {
+     "INT": 15,
+     "DEX": 15,
+     "CON": 14,
+     "WIS": 14,
+     "CHA": 12,
+     "STR": 9
+    },
+    "since": 0,
+    "quirk": "refuses to step on a drain cover",
+    "xp": 0
+   },
+   "automaton": {
+    "name": "Abbott",
+    "side": "Front",
+    "class": "Barbarian",
+    "subclass": "Berserker",
+    "protocol_skill": "History",
+    "scores": {
+     "STR": 15,
+     "CON": 14,
+     "DEX": 13,
+     "WIS": 10,
+     "CHA": 10,
+     "INT": 8
+    }
+   },
+   "arrives": null,
+   "back": 0
+  },
+  {
+   "n": 2,
+   "role": "Fox",
+   "off": "Sunday",
+   "holder": {
+    "name": "Midge Rooke",
+    "pronouns": "she/her",
+    "species": "Gnome",
+    "background": "Acolyte",
+    "side": "Back",
+    "class": "Rogue",
+    "subclass": "Thief",
+    "scores": {
+     "DEX": 16,
+     "CON": 14,
+     "INT": 13,
+     "WIS": 12,
+     "CHA": 12,
+     "STR": 10
+    },
+    "since": -120,
+    "quirk": "takes the stairs two at a time",
+    "xp": 3184
+   },
+   "automaton": {
+    "name": "Ellery",
+    "side": "Front",
+    "class": "Monk",
+    "subclass": "Open Hand",
+    "protocol_skill": "Stealth",
+    "scores": {
+     "DEX": 16,
+     "WIS": 14,
+     "CON": 14,
+     "STR": 13,
+     "INT": 11,
+     "CHA": 9
+    }
+   },
+   "arrives": null,
+   "back": 0
+  },
+  {
+   "n": 3,
+   "role": "Lion",
+   "off": "Saturday",
+   "holder": {
+    "name": "Archie Quayle",
+    "pronouns": "he/him",
+    "species": "Gnome",
+    "background": "Acolyte",
+    "side": "Back",
+    "class": "Druid",
+    "subclass": "Land",
+    "scores": {
+     "WIS": 17,
+     "CON": 16,
+     "DEX": 13,
+     "INT": 11,
+     "CHA": 11,
+     "STR": 9
+    },
+    "since": -210,
+    "quirk": "shadow-boxes while waiting",
+    "xp": 27740
+   },
+   "automaton": {
+    "name": "Hollis",
+    "side": "Front",
+    "class": "Fighter",
+    "subclass": "Champion",
+    "protocol_skill": "Stealth",
+    "scores": {
+     "STR": 15,
+     "CON": 14,
+     "DEX": 12,
+     "WIS": 10,
+     "INT": 9,
+     "CHA": 5
+    }
+   },
+   "arrives": null,
+   "back": 0
+  },
+  {
+   "n": 4,
+   "role": "Wren",
+   "off": "Sunday",
+   "holder": {
+    "name": "Martha Thorne",
+    "pronouns": "she/her",
+    "species": "Human",
+    "background": "Soldier",
+    "side": "Front",
+    "class": "Fighter",
+    "subclass": "Champion",
+    "scores": {
+     "STR": 16,
+     "CON": 14,
+     "DEX": 13,
+     "WIS": 12,
+     "INT": 8,
+     "CHA": 3
+    },
+    "since": -300,
+    "quirk": "taps every lamp post in passing",
+    "xp": 65222
+   },
+   "automaton": {
+    "name": "Lowell",
+    "side": "Back",
+    "class": "Druid",
+    "subclass": "Land",
+    "protocol_skill": "Perception",
+    "scores": {
+     "WIS": 17,
+     "CON": 17,
+     "DEX": 16,
+     "INT": 12,
+     "CHA": 11,
+     "STR": 10
+    }
+   },
+   "arrives": null,
+   "back": 0
+  }
+ ],
+ "board": [
+  {
+   "id": 1,
+   "reads": "under 1",
+   "n": 0,
+   "kind": "Gray Ooze",
+   "cr": "1/2",
+   "count": 2,
+   "xp": 200,
+   "type": "Ooze",
+   "align": "Unaligned",
+   "size": "Medium",
+   "street": "Gasworks",
+   "spot": "a goods platform",
+   "room": "6\u00d712 sq (9\u00d718 m)",
+   "feature": "machinery, carts or stacked cargo (half cover)",
+   "disposition": "Neutral: no quarrel yet; will not come in unless convinced (GM's discretion) or held",
+   "born": 2,
+   "pair": "Owl",
+   "tried": [],
+   "notes": [],
+   "seen": false
+  }
+ ],
+ "next_id": 2,
+ "wall": [],
+ "retired": [],
+ "news": [
+  "MORNING \u00b7 day 1, Monday, 6 am",
+  "NEW READING #1: reads under 1, Gasworks."
+ ],
+ "streets": [
+  {
+   "name": "the Shambles",
+   "trait": "a newspaper that dislikes the Board"
+  },
+  {
+   "name": "Printers' Row",
+   "trait": "a cotton mill with a thousand hands"
+  },
+  {
+   "name": "Vinegar Yard",
+   "trait": "a slaughterhouse and the tanneries downwind"
+  },
+  {
+   "name": "Gasworks",
+   "trait": "an infirmary, a workhouse and a long queue"
+  },
+  {
+   "name": "Brick Fields",
+   "trait": "a music hall and the streets that live off it"
+  },
+  {
+   "name": "Soap Lane",
+   "trait": "a street of clockmakers and gunsmiths"
+  }
+ ],
+ "player": "Owl"
+}
