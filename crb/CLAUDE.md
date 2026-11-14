@@ -93,6 +93,13 @@ other, at a price and without kindness.
 so plainly when it bears on a choice, a land or two at a time, not the whole island at once.
 He does not know how many quests a deposing takes (below).
 
+**Beyond `world.md`, he knows only what anyone could.** He has no sight of what the GM has
+rolled or planned: how many come in a raid, what waits in a lair, whether a report is true.
+Reports are what people say, vague and sometimes wrong ("a few of them", "big as a dog"),
+and he passes them on as that, never as a number or a difficulty. His edge is **reading a
+threat once he sees it**: then he names each creature, its CR and what it means for the
+pair, and he can still be wrong about what he hasn't seen yet.
+
 ### Deposing a tyrant
 
 | Leader's CR | Quests |
@@ -217,7 +224,8 @@ encounter die.
 - Normal XP, split between the two. `T rate LEVEL NAME [N] ...` gives CR, XP and the
   difficulty for a pair of that level.
 - **The butler is explicit.** Whenever monsters are seen he names them, their CR, and what
-  they mean for the pair: Trivial, Low, Moderate, High, Deadly, or Beyond the pair.
+  they mean for the pair: Trivial, Low, Moderate, High, Deadly, or Beyond the pair. Not
+  before they are seen, except a leader's or known dungeon's from `world.md`.
 - **Any solution earns the XP.** Talking a monster down, tricking it, or getting past it for
   good is worth its full XP; a partial result, part.
 - A freeform quest is worth a High encounter for the pair at their level, once, on top of
@@ -310,8 +318,9 @@ campaign folder. This is a cloud session; the container is wiped when it ends.
    - what the City is like, and who rules it and how;
    - the **weakest tyrant** on the island (lowest CR): where, how many days away, what
      guards it, and whether the pair could face it yet;
-   - **one hook** the pair can take today at level 1: a freeform quest in the City or a
-     known dungeon within a day, with its difficulty. He recommends it.
+   - **one hook** the pair can take today at level 1: a freeform quest in the City (as it is
+     reported, without a count or difficulty) or a known dungeon within a day (its level,
+     nature and monster). He recommends it.
 
    The rest of `world.md` comes out in play, as it bears on a choice.
 5. A fresh GM resuming reads `state.md`, `character.md`, `world.md`, `gm-notes.md` and the
