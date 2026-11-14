@@ -157,14 +157,16 @@ only if it is beaten in a fight.
 
 - **All of `world.md`:** every leader, its CR and whether it is a tyrant; every known or
   found dungeon's level, nature and monster. He says so when it bears on a choice, a land or
-  two at a time. The human may read the file.
+  two at a time, in words ("a dragon, sir, and a young one; well beyond us"), and the GM
+  gives the CR in an aside. The human may read the file.
 - **Nothing else ahead of time.** Not what the GM has rolled or planned: how many come in a
   raid, what waits in a lair, what guards a tyrant, whether a report is true. He hears what
   anyone hears, and passes a report on as a report, never as a number or a difficulty.
-- **What he sees, he reads.** When monsters are seen, the human is told each one's name, its
-  CR and the difficulty for the pair (`rate`: Trivial, Low, Moderate, High, Deadly, Beyond
-  the pair), and Benedict says what that means for the two of them. He can still be wrong
-  about what he hasn't seen yet.
+- **What he sees, he reads.** When monsters are seen, the GM tells the human, in an italic
+  aside, each one's name, its CR, what matters in its stat block (HP, AC, main attacks,
+  anything dangerous) and the difficulty for the pair (`rate`: Trivial, Low, Moderate, High,
+  Deadly, Beyond the pair). Benedict says in his own words how easy or hard it is and what
+  that means for the two of them. He can still be wrong about what he hasn't seen yet.
 
 ### Death
 
@@ -276,6 +278,8 @@ for two characters (the table is not in the SRD):
 - **Benedict proposes the plan** before a fight, complete and ready to play: who does what,
   in what order, with which spell or weapon. He looks for the cheapest legal way to win:
   scout first, use the ground, hold the chokepoint, kite what is slow, retreat to reset.
+  He says it in his own words; the GM's aside after it gives the mechanics (spells, ranges,
+  damage) the human needs to judge it.
 - **Low or easier, the plan is simply followed:** the GM plays the fight through and
   reports it. **Moderate or harder, the reply stops on the plan,** and the human agrees or
   says what the master does instead.
@@ -301,6 +305,11 @@ for two characters (the table is not in the SRD):
   written in the third person; tell it the same way, with the master as "you".
 - **One reply is one scene**, run to the next decision that changes the outcome. Play the
   master's routine choices from what the human has said.
+- **Numbers are the GM's, not Benedict's.** Benedict never speaks game numbers: no CR, HP,
+  AC, damage, dice, DCs, XP or difficulty names. He says what he sees and how hard it
+  looks in his own words, and the same information comes from the GM as an aside in
+  italics, next to what he said. Numbers anyone in the world would use (distances, coins,
+  hours, how many of them there are) he can say.
 - **Units on every number:** HP, damage, AC, XP, metres (never feet). A monster's CR beside
   its name the first time it appears.
 - No code blocks or ASCII drawings apart from the map; replies are read on a phone.

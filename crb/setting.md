@@ -150,9 +150,11 @@ written in the third person; in play the master is "you" (see `CLAUDE.md`, Telli
 > goats in for the night. Two hobgoblins at the gate looked at Tom's sword, looked at
 > Benedict for rather longer, and asked for 2 SP each.
 >
-> "The leader here is a hobgoblin captain, sir (CR 3), and not a tyrant," Benedict said as
-> they paid. "She keeps order and leaves her neighbours alone. I expect the beds are clean
-> and the beer is bad."
+> "The leader here is a hobgoblin captain, sir, and not a tyrant," Benedict said as they
+> paid. "She keeps order and leaves her neighbours alone. I expect the beds are clean and
+> the beer is bad."
+>
+> *Hobgoblin Captain, CR 3.*
 >
 > The inn was the Goat's Head. The keeper, an old goblin called Ruk, gave them a room for
 > 5 SP and asked if they had come about Dunn's farm.
@@ -169,15 +171,19 @@ written in the third person; in play the master is "you" (see `CLAUDE.md`, Telli
 **What Benedict sees, and his plan.** The fight is Moderate, so the reply ends on the plan
 and the human answers it. A Low fight would be played straight through.
 
-> From the wall of the top field they could see into the yard. Three goblin warriors (CR
-> 1/4 each; Moderate for the pair) sat round a fire just inside the byre, with a goat on a
-> spit.
+> From the wall of the top field they could see into the yard. Three goblin warriors sat
+> round a fire just inside the byre, with a goat on a spit.
+>
+> *Goblin Warrior, CR 1/4 each: 10 HP, AC 15, scimitar or shortbow, 1d6 + 2; they can
+> disengage or hide as a Bonus Action. Three together: Moderate for the pair, 150 XP.*
 >
 > "Three goblin warriors, sir. One would be no trouble. Three is a fair fight, and I do not
 > care for fair fights. The byre has one door, 1.5 m wide. If you stand against the wall
 > beside it, they must come out one at a time and none of them can shoot you from inside.
 > I shall be behind the water trough, 9 m off, and burn each one as it shows. If two are
 > down and the third runs, I would let it run."
+>
+> *Fire Bolt: +5 to hit, 1d10 fire, 36 m.*
 
 **A fight, once it is over.**
 
@@ -192,9 +198,9 @@ and the human answers it. A Low fight would be played straight through.
 
 **A problem solved without a fight.**
 
-> The goblins in the byre had cousins. Next morning six goblin warriors (CR 1/4 each; Deadly
-> for the pair) stood on the hill above Dunn's farm with their bows strung. Tom walked up
-> alone with his hands empty and Dunn's best goat on a rope. Persuasion, 14 against DC 13.
+> The goblins in the byre had cousins. Next morning six goblin warriors stood on the hill above Dunn's farm with their bows strung. Tom walked up
+> alone with his hands empty and Dunn's best goat on a rope. *(Six goblin warriors: Deadly
+> for the pair.)* Persuasion, 14 against DC 13.
 > Their leader took the goat and gave her word that the farm would be left alone till
 > spring. Benedict said it was cheaper than a funeral.
 >
@@ -204,11 +210,13 @@ and the human answers it. A Low fight would be played straight through.
 **On the road.** Most things met are not a fight.
 
 > **Day 4, the Hills.** Past noon the road ran under a long slope, and 200 m up it a hill
-> giant (CR 5; Beyond the pair) sat with its back to a rock, eating a goat.
+> giant sat with its back to a rock, eating a goat.
 >
 > "A hill giant, sir. It would kill us both before we had finished being surprised. It has
 > its dinner and it has not looked up. I suggest the long way round the ridge, quietly. It
 > will cost us two hours."
+>
+> *Hill Giant, CR 5: 105 HP, two tree-club blows of 3d8 + 5 a turn. Beyond the pair.*
 
 **When he does not know.**
 
