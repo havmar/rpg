@@ -1,0 +1,424 @@
+{
+ "hexes": {
+  "A1": {
+   "biome": "Heaven",
+   "problem": false,
+   "roll": 2,
+   "leader": "Gold Dragon Wyrmling",
+   "block": "Gold Dragon Wyrmling",
+   "cr": "3",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "B1": {
+   "biome": "Mountain",
+   "problem": true,
+   "roll": 2,
+   "leader": "Silver Dragon Wyrmling",
+   "block": "Silver Dragon Wyrmling",
+   "cr": "2",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "C1": {
+   "biome": "Arctic",
+   "problem": false,
+   "roll": 1,
+   "leader": "Ice Mephit",
+   "block": "Ice Mephit",
+   "cr": "1/2",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "D1": {
+   "biome": "Graveyard",
+   "problem": true,
+   "roll": 9,
+   "leader": "Wraith",
+   "block": "Wraith",
+   "cr": "5",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "A2": {
+   "biome": "Underdark",
+   "problem": false,
+   "roll": 8,
+   "leader": "Cloaker",
+   "block": "Cloaker",
+   "cr": "8",
+   "stages": 2,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "B2": {
+   "biome": "Forest",
+   "problem": false,
+   "roll": 3,
+   "leader": "Werewolf",
+   "block": "Werewolf",
+   "cr": "3",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "C2": {
+   "biome": "City",
+   "problem": false,
+   "roll": 16,
+   "leader": "Rakshasa",
+   "block": "Rakshasa",
+   "cr": "13",
+   "stages": 3,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "D2": {
+   "biome": "Wizard's Tower",
+   "problem": false,
+   "roll": 2,
+   "leader": "Gargoyle",
+   "block": "Gargoyle",
+   "cr": "2",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "A3": {
+   "biome": "Hills",
+   "problem": true,
+   "roll": 1,
+   "leader": "Copper Dragon Wyrmling",
+   "block": "Copper Dragon Wyrmling",
+   "cr": "1",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "B3": {
+   "biome": "Swamp",
+   "problem": false,
+   "roll": 2,
+   "leader": "Will-o'-Wisp",
+   "block": "Will-o'-Wisp",
+   "cr": "2",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "C3": {
+   "biome": "Savannah",
+   "problem": true,
+   "roll": 8,
+   "leader": "Gnoll (Assassin stat block)",
+   "block": "Assassin",
+   "cr": "8",
+   "stages": 2,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "D3": {
+   "biome": "Abyss",
+   "problem": true,
+   "roll": 1,
+   "leader": "Quasit",
+   "block": "Quasit",
+   "cr": "1",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "A4": {
+   "biome": "Jungle",
+   "problem": false,
+   "roll": 13,
+   "leader": "Jungle clansman (Archmage stat block)",
+   "block": "Archmage",
+   "cr": "12",
+   "stages": 3,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "B4": {
+   "biome": "Desert",
+   "problem": false,
+   "roll": 7,
+   "leader": "Young Brass Dragon",
+   "block": "Young Brass Dragon",
+   "cr": "6",
+   "stages": 2,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "C4": {
+   "biome": "Volcano",
+   "problem": true,
+   "roll": 11,
+   "leader": "Young Red Dragon",
+   "block": "Young Red Dragon",
+   "cr": "10",
+   "stages": 2,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "D4": {
+   "biome": "Hell",
+   "problem": true,
+   "roll": 7,
+   "leader": "Night Hag",
+   "block": "Night Hag",
+   "cr": "5",
+   "stages": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  }
+ },
+ "dungeons": {
+  "A1-1": {
+   "hex": "A1",
+   "level": 4,
+   "nature": "good",
+   "monster": "Planetar",
+   "state": "known"
+  },
+  "A1-2": {
+   "hex": "A1",
+   "level": 3,
+   "nature": "corrupted",
+   "monster": "Planetar",
+   "state": "known"
+  },
+  "B1-1": {
+   "hex": "B1",
+   "level": 2,
+   "nature": "good",
+   "monster": "Ancient Silver Dragon",
+   "state": "known"
+  },
+  "B1-2": {
+   "hex": "B1",
+   "level": 10,
+   "nature": "corrupted",
+   "monster": "Adult Silver Dragon",
+   "state": "known"
+  },
+  "C1-1": {
+   "hex": "C1",
+   "level": 3,
+   "nature": "evil",
+   "monster": "Ice Mephit",
+   "state": "known"
+  },
+  "C1-2": {
+   "hex": "C1",
+   "level": 3,
+   "nature": "evil",
+   "monster": "Remorhaz",
+   "state": "known"
+  },
+  "D1-1": {
+   "hex": "D1",
+   "level": 4,
+   "nature": "good",
+   "monster": "Ghost",
+   "state": "known"
+  },
+  "D1-2": {
+   "hex": "D1",
+   "level": 2,
+   "nature": "evil",
+   "monster": "Lich",
+   "state": "known"
+  },
+  "A2-1": {
+   "hex": "A2",
+   "level": 3,
+   "nature": "evil",
+   "monster": "Purple Worm",
+   "state": "known"
+  },
+  "A2-2": {
+   "hex": "A2",
+   "level": 9,
+   "nature": "good",
+   "monster": "Cloaker",
+   "state": "known"
+  },
+  "B2-1": {
+   "hex": "B2",
+   "level": 3,
+   "nature": "good",
+   "monster": "Treant",
+   "state": "known"
+  },
+  "B2-2": {
+   "hex": "B2",
+   "level": 7,
+   "nature": "corrupted",
+   "monster": "Treant",
+   "state": "known"
+  },
+  "C2-1": {
+   "hex": "C2",
+   "level": 2,
+   "nature": "good",
+   "monster": "Assassin",
+   "state": "known"
+  },
+  "C2-2": {
+   "hex": "C2",
+   "level": 7,
+   "nature": "corrupted",
+   "monster": "Gladiator",
+   "state": "known"
+  },
+  "D2-1": {
+   "hex": "D2",
+   "level": 4,
+   "nature": "evil",
+   "monster": "Stone Golem",
+   "state": "known"
+  },
+  "D2-2": {
+   "hex": "D2",
+   "level": 9,
+   "nature": "evil",
+   "monster": "Gargoyle",
+   "state": "known"
+  },
+  "A3-1": {
+   "hex": "A3",
+   "level": 4,
+   "nature": "evil",
+   "monster": "Wyvern",
+   "state": "known"
+  },
+  "A3-2": {
+   "hex": "A3",
+   "level": 5,
+   "nature": "evil",
+   "monster": "Basilisk",
+   "state": "known"
+  },
+  "B3-1": {
+   "hex": "B3",
+   "level": 2,
+   "nature": "evil",
+   "monster": "Adult Black Dragon",
+   "state": "known"
+  },
+  "B3-2": {
+   "hex": "B3",
+   "level": 7,
+   "nature": "evil",
+   "monster": "Ancient Black Dragon",
+   "state": "known"
+  },
+  "C3-1": {
+   "hex": "C3",
+   "level": 1,
+   "nature": "evil",
+   "monster": "Hippopotamus",
+   "state": "known"
+  },
+  "C3-2": {
+   "hex": "C3",
+   "level": 4,
+   "nature": "evil",
+   "monster": "Rhinoceros",
+   "state": "known"
+  },
+  "D3-1": {
+   "hex": "D3",
+   "level": 2,
+   "nature": "evil",
+   "monster": "Minotaur of Baphomet",
+   "state": "known"
+  },
+  "D3-2": {
+   "hex": "D3",
+   "level": 8,
+   "nature": "evil",
+   "monster": "Balor",
+   "state": "known"
+  },
+  "A4-1": {
+   "hex": "A4",
+   "level": 1,
+   "nature": "evil",
+   "monster": "Tyrannosaurus Rex",
+   "state": "known"
+  },
+  "A4-2": {
+   "hex": "A4",
+   "level": 8,
+   "nature": "corrupted",
+   "monster": "Weretiger",
+   "state": "known"
+  },
+  "B4-1": {
+   "hex": "B4",
+   "level": 3,
+   "nature": "evil",
+   "monster": "Lamia",
+   "state": "known"
+  },
+  "B4-2": {
+   "hex": "B4",
+   "level": 4,
+   "nature": "evil",
+   "monster": "Young Blue Dragon",
+   "state": "known"
+  },
+  "C4-1": {
+   "hex": "C4",
+   "level": 4,
+   "nature": "corrupted",
+   "monster": "Half-Dragon",
+   "state": "known"
+  },
+  "C4-2": {
+   "hex": "C4",
+   "level": 8,
+   "nature": "good",
+   "monster": "Half-Dragon",
+   "state": "known"
+  },
+  "D4-1": {
+   "hex": "D4",
+   "level": 1,
+   "nature": "evil",
+   "monster": "Ice Devil",
+   "state": "known"
+  },
+  "D4-2": {
+   "hex": "D4",
+   "level": 6,
+   "nature": "evil",
+   "monster": "Ice Devil",
+   "state": "known"
+  }
+ },
+ "lord": "Back",
+ "butler": "Front"
+}

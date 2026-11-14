@@ -91,6 +91,14 @@ other, at a price and without kindness.
 
 **The butler knows** every leader, its CR and whether it is a tyrant (`world.md`). He says
 so plainly when it bears on a choice, a land or two at a time, not the whole island at once.
+He does not know how many quests a deposing takes (below).
+
+**Beyond `world.md`, he knows only what anyone could.** He has no sight of what the GM has
+rolled or planned: how many come in a raid, what waits in a lair, whether a report is true.
+Reports are what people say, vague and sometimes wrong ("a few of them", "big as a dog"),
+and he passes them on as that, never as a number or a difficulty. His edge is **reading a
+threat once he sees it**: then he names each creature, its CR and what it means for the
+pair, and he can still be wrong about what he hasn't seen yet.
 
 ### Deposing a tyrant
 
@@ -108,6 +116,12 @@ lair, an ally in the fight, or the opposition able to finish it without a fight.
 leader need not be dead. `T quest C HEX` records each quest done; the last one deposes the
 leader and says how many are left.
 
+**The count is the GM's, not the butler's.** Nobody in the world knows a tyrant takes "two
+quests". The butler talks about what is actually there: the tyrant's CR, its guard, its
+lieutenants, its stronghold, a rival who could be armed. When an earlier quest is done he
+says what it changed and what still stands in the way, never a number or a fraction. The
+count lives in `world.json` and `gm-notes.md`; `T around HEX C` shows it to the GM.
+
 ## The pair
 
 - **The butler** is a celestial robot named **Benedict**, in every campaign and after every
@@ -121,9 +135,14 @@ leader and says how many are left.
 - **One Front, one Back.** Front: Barbarian (Berserker), Fighter (Champion), Paladin
   (Devotion), Monk (Open Hand), Ranger (Hunter), Cleric (Life). Back: Wizard (Evoker),
   Sorcerer (Draconic), Warlock (Fiend), Bard (Lore), Rogue (Thief), Druid (Land).
-- **Everything is rolled** by `T new`: which of the two is Front, both classes, and the
-  master's species (Elf, Gnome, Human, Orc, Tiefling), background, name and ability scores
-  (placed by the class's priority, even when low). The sides stay fixed for the campaign.
+- **Everything is rolled** by `T new`: which of the two is Front, both classes, both
+  backgrounds, and the master's species (Elf, Gnome, Human, Orc, Tiefling), name and ability
+  scores (placed by the class's priority, even when low). The sides stay fixed for the campaign.
+- **Benedict's background is mechanics only.** He gets one of the SRD backgrounds, like the
+  master, rolled by the tool, and takes everything it gives by the 2024 rules: ability
+  increases, skills, tool, Origin feat, equipment. It is not a history: he was not an acolyte
+  or a soldier. If it ever needs a reason, it is simply how he was built, and nobody dwells on
+  it. On his sheet it reads "Background (mechanics): <name>".
 - **Both start at level 1** in the City (C2) and level together to 20.
 
 ### Species: Celestial Robot
@@ -143,7 +162,7 @@ leader and says how many are left.
   (`T pc C`). Play resumes with the new pair at the nearest settlement without a tyrant,
   the next morning.
 - **The butler dies:** he is rebuilt in Heaven as Benedict, with his memory, the same level
-  and a new random class of his side (`T robot C`). He is back at the master's side the next
+  and a new random class of his side and background (`T robot C`). He is back at the master's side the next
   morning.
 - **Both die:** both of the above, and the new pair starts in Heaven (A1).
 - **Attuned items carry over.** The butler preserves the magic items each of the pair is
@@ -205,7 +224,8 @@ encounter die.
 - Normal XP, split between the two. `T rate LEVEL NAME [N] ...` gives CR, XP and the
   difficulty for a pair of that level.
 - **The butler is explicit.** Whenever monsters are seen he names them, their CR, and what
-  they mean for the pair: Trivial, Low, Moderate, High, Deadly, or Beyond the pair.
+  they mean for the pair: Trivial, Low, Moderate, High, Deadly, or Beyond the pair. Not
+  before they are seen, except a leader's or known dungeon's from `world.md`.
 - **Any solution earns the XP.** Talking a monster down, tricking it, or getting past it for
   good is worth its full XP; a partial result, part.
 - A freeform quest is worth a High encounter for the pair at their level, once, on top of
@@ -280,7 +300,8 @@ Each campaign is `crb/campaigns/<name>/`:
   the fight block during a fight, standing orders, the magic item count against the quota.
 - `chronicle.md`: the record in the GM's voice: each quest, dungeon, death and deposing in
   a line or two.
-- `gm-notes.md`: what each tyrant is doing and to whom, oppositions, quest threads.
+- `gm-notes.md`: what each tyrant is doing and to whom, how many quests deposing it takes
+  and how many are done, oppositions, quest threads. The butler doesn't know this file.
 
 After every GM reply, update `state.md`, add to `chronicle.md`, then **commit and push** the
 campaign folder. This is a cloud session; the container is wiped when it ends.
@@ -289,16 +310,17 @@ campaign folder. This is a cloud session; the container is wiped when it ends.
 
 1. Roll a seed (`roll.py 1d1000`) and run `T new crb/campaigns/<name> --seed N`.
 2. It prints the pair. Write both sheets at level 1 by the 2024 creation rules from what it
-   rolled. Nothing is chosen: not the side, class, species or name.
+   rolled. Nothing is chosen: not the side, class, species, background or name.
 3. Write `state.md`, `gm-notes.md` and an empty `chronicle.md`.
 4. Open in the City, as a scene rather than a briefing. Introduce the pair in two or three
    plain lines each: name, species, class and level, HP, AC, best attacks or spells. Then the
    butler, in a few lines of speech:
    - what the City is like, and who rules it and how;
-   - the **weakest tyrant** on the island (lowest CR): where, how many days away, how many
-     quests to depose, and whether the pair could face it yet;
-   - **one hook** the pair can take today at level 1: a freeform quest in the City or a
-     known dungeon within a day, with its difficulty. He recommends it.
+   - the **weakest tyrant** on the island (lowest CR): where, how many days away, what
+     guards it, and whether the pair could face it yet;
+   - **one hook** the pair can take today at level 1: a freeform quest in the City (as it is
+     reported, without a count or difficulty) or a known dungeon within a day (its level,
+     nature and monster). He recommends it.
 
    The rest of `world.md` comes out in play, as it bears on a choice.
 5. A fresh GM resuming reads `state.md`, `character.md`, `world.md`, `gm-notes.md` and the
