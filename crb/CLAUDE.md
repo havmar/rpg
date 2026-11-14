@@ -61,8 +61,9 @@ the files call a land a hex.
 - **Coast** has no hex. It is the outer shore of the twelve edge hexes, and its monsters are
   met there (`T encounter HEX --coast`). It has no settlement.
 - **Evil biomes:** Abyss, Hell, Graveyard, Volcano, Arctic, Swamp, Savannah. The rest are good.
-- **No drawn map in play.** Say where the pair is and list the lands around it by direction
-  and biome, from `T around HEX C`. The sea is named where there is no land.
+- **In play, no map by default.** Say where the pair is and list the lands around it by
+  direction and biome, from `T around HEX C`. The sea is named where there is no land. When
+  the human asks for the map, paste `T map` as it prints: four short lines that fit a phone.
 - **Distance is in days.** A hex's size is not fixed: reaching the settlement of a
   neighbouring hex is one day's travel; anything inside a hex is within a day.
 
@@ -185,8 +186,10 @@ encounter die.
   ID` marks it done. The GM gives the rooms a place and a reason. A cleared room stays cleared.
 - **Its monster** is rolled separately: d20, the biome's monster of nearest CR. It can be
   far above or below the dungeon's level, so no dungeon is ever just a chore. It holds the
-  dungeon's magic item, its XP is on top of the rooms', and it gets a **reaction roll**
-  like anything else: a CR 17 dragon in a level 2 ruin is someone to talk to, sneak past or
+  dungeon's magic item and its XP is on top of the rooms'.
+- **Everything in a dungeon gets a reaction roll**, rooms and monster alike, rolled when it
+  is stocked and fixed after. So a dungeon far above the pair can still be tried by talking
+  and sneaking: a CR 17 dragon in a level 2 ruin is someone to talk to, sneak past or
   come back for.
 - **Nature**, d6 per dungeon: 1–2 **good** (good or neutral creatures: guardians, to be
   talked past, helped or left alone), 3–4 **corrupted** (the same kinds turned evil: same

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """CRB world tool: the map, leaders, dungeons, encounters, difficulty. Run from the repo root.
 
-  python3 crb/tools/crb.py map                         the 16 lands as a brick wall
+  python3 crb/tools/crb.py map                         the 16 lands, compact, bricks offset
   python3 crb/tools/crb.py new DIR [--seed N]          roll a campaign: leaders, known dungeons, the pair
   python3 crb/tools/crb.py around HEX [DIR]            the hexes around HEX (with leaders if DIR)
   python3 crb/tools/crb.py folk HEX                    the biome's speaking monsters, by CR
@@ -225,12 +225,11 @@ def main(a):
     if not a: sys.exit(__doc__)
     cmd, a = a[0], a[1:]
     if cmd == "map":
-        W = 19
+        short = {"Wizard's Tower": "Tower"}
         for r in "1234":
-            pad = " " * (W // 2) if r in "24" else ""
-            print(pad + "+" + ("-" * (W - 1) + "+") * 4)
-            print(pad + "|" + "".join(f"{' ' + c + r + ' ' + MAP[c + r]:<{W - 1}}|" for c in "ABCD"))
-        print(" " * (W // 2) + "+" + ("-" * (W - 1) + "+") * 4)
+            names = [short.get(MAP[c + r], MAP[c + r]) for c in "ABCD"]
+            line = "".join(f"{n:<9}" for n in names).rstrip()
+            print(("    " + line).replace("    Underdark", "   Underdark") if r in "24" else line)
         print("North is up (cold), south is down (hot). The sea is all round: the Coast.")
     elif cmd == "new":
         os.makedirs(a[0], exist_ok=True)
@@ -313,6 +312,7 @@ def main(a):
                 g = build(b, L, min(left, 2 * BUDGET[L][1]), cap=max(L, 1), base=pool)
                 if not g: break
                 rooms.append(g); left -= sum(MON[m]["xp"] * n for m, n in g)
+            x["reactions"] = [reaction(g[0][0], x["nature"] == "corrupted") for g in rooms]
             x["rooms"] = rooms; x["total"] = sum(MON[m]["xp"] * n for g in rooms for m, n in g)
             x["reaction"] = reaction(x["monster"], x["nature"] == "corrupted"); save(a[0], w)
         note = {"good": "its creatures are good or neutral: guardians, to be talked past or helped",
@@ -320,7 +320,8 @@ def main(a):
                 "evil": "its creatures are evil or dangerous"}[x["nature"]]
         print(f"{a[1]}: {MAP[x['hex']]}, level {x['level']}, {x['nature']}: {note}.")
         print(f"The rooms are worth {x['total']} XP ({x['total'] // 2} each); its monster is extra.")
-        for i, g in enumerate(x["rooms"], 1): print(f"  {i}. " + "; ".join(tag(m, n) for m, n in g))
+        for i, g in enumerate(x["rooms"], 1):
+            print(f"  {i}. " + "; ".join(tag(m, n) for m, n in g) + f"; {x['reactions'][i - 1]}")
         print(f"  Its monster, with the magic item: {tag(x['monster'])}; {x['reaction']}")
     elif cmd == "item":
         rar = a[0].title()
