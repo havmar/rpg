@@ -23,14 +23,9 @@ Benedict does not know any of this unless it has been seen or said in play.
 
 ## Quest threads
 
-- **Hollin's mill** (open, level 1). A band of Ulfrun's raiders took Piet Hollin's mill on
-  the Cold Brook last night, an hour north of the North Gate, and are still in it eating
-  his flour and his pig. Actually: 3 clansmen (Warrior Infantry, CR 1/8) and their leader
-  Brann (Tough, CR 1/2): 175 XP, Moderate. Young, cold, hungry, a long way from home; Brann
-  is afraid to go back empty-handed to Ulfrun. Their reaction is not fixed: roll when the
-  pair shows itself (evil biome folk, but these are neutral men: no modifier, +2 if the
-  pair comes offering food). They could be talked into leaving with a sack of flour.
-  Hollin will pay 10 GP and a free bed for life.
+- **Hollin's mill** (done, day 1). Tom bought Brann's band off with 10 GP and a sack of
+  flour; they went north over the moor. Brann now owes Tom something and knows it. Ulfrun
+  will hear a story about a singing orc and a metal man; she may send someone to look.
 
 ## People met
 
@@ -38,3 +33,5 @@ Benedict does not know any of this unless it has been seen or said in play.
   Wenna (safe in the City with her aunt) not to see it burn.
 - **Sergeant Corlis Dane**, the Lord-Captain's man on the gates; wants the tax and no
   trouble he would have to report.
+- **Brann**, leader of a band of Ulfrun's raiders (Tough, CR 1/2); took the gold and
+  went home. Wants to come home a hero and not to lose his hands; owes Tom a turn.

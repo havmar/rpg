@@ -1,28 +1,21 @@
 # State
 
-**Day 1, late morning.** City (C2), an hour north of the North Gate: Hollin's mill on the
-Cold Brook. Encounter die for the day rolled: 6, nothing. Back inside before curfew (ninth
-bell) or camp out.
+**Day 1, early afternoon.** City (C2), at Hollin's mill on the Cold Brook, an hour north of
+the North Gate. Encounter die for the day rolled: 6, nothing. Curfew in the City at the
+ninth bell; the gate charges 2 SP a head coming in. Hollin offers supper and a bed at the
+mill tonight (outside the settlement: a night encounter die if they stay).
 
 ## The pair
 
 - **Tom Yarrow** (Bard 1): 10/10 HP, AC 14. Slots 2/2 (level 1). Bardic Inspiration 2/2.
-  Adrenaline Rush 2/2. Relentless Endurance ready. XP 0/300.
+  Adrenaline Rush 2/2. Relentless Endurance ready. XP 100/300.
 - **Benedict** (Paladin 1): 12/12 HP, AC 19. Slots 2/2 (level 1). Lay on Hands 5/5.
-  XP 0/300.
+  XP 100/300.
 
 ## Open quest
 
-Hollin's mill, taken up. Tom scouted it unseen (Stealth 17 against passive 10). Inside: 3
-clansmen (Warrior Infantry, CR 1/8) and Brann (Tough, CR 1/2): Moderate, 175 XP.
-
-Parley under way. Reaction 2d6 + 2 (offering food) = 5: hostile. Tom's Persuasion 14 against
-DC 15: failed by one. Brann won't take flour alone; he wants 10 GP in coin for Ulfrun, and
-the pig, which is mostly eaten. Brann is in the doorway with the heavy crossbow loaded and
-pointed at Tom; the three boys are in the yard with spears, 6 m from Benedict. Benedict is
-3 m from the door, sword sheathed, with the sack of flour at his feet. Tom is behind the
-millpond wall, 12 m from the door. Hollin is at the hedge. Waiting for the human: pay,
-argue again, or fight.
+None. Hollin's mill done (bought off: Brann took 10 GP and the flour north). High award,
+200 XP, 100 each.
 
 ## The mill
 
