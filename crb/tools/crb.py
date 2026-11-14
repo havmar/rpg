@@ -228,8 +228,8 @@ def main(a):
         short = {"Wizard's Tower": "Tower"}
         for r in "1234":
             names = [short.get(MAP[c + r], MAP[c + r]) for c in "ABCD"]
-            line = "".join(f"{n:<9}" for n in names).rstrip()
-            print(("    " + line).replace("    Underdark", "   Underdark ") if r in "24" else line)
+            line = "".join(f"{n:<12}" for n in names).rstrip()
+            print(("      " + line) if r in "24" else line)
         print("North is up (cold), south is down (hot). The sea is all round: the Coast.")
     elif cmd == "new":
         os.makedirs(a[0], exist_ok=True)
