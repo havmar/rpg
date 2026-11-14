@@ -1,28 +1,34 @@
-# Saltmarket Precinct · day 1, Monday, night
+# Saltmarket Precinct · day 3, Wednesday, morning
 
 ## The seats
 
 | Seat | Rank | Level | Pair | Day off | Now |
 |---|---|---|---|---|---|
-| the Wren | Inspector | 10 | Fighter and Druid automaton; taps every lamp post in passing | Sunday | in |
-| the Lion | Sergeant | 7 | Druid and Fighter automaton; shadow-boxes while waiting | Saturday | in |
-| the Fox | Constable | 4 | Rogue and Monk automaton; takes the stairs two at a time | Sunday | in |
+| the Wren | Inspector | 10 | Fighter and Druid automaton; taps every lamp post in passing | Sunday | hurt, in |
+| the Lion | Sergeant | 7 | Druid and Fighter automaton; shadow-boxes while waiting | Saturday | out on #7 |
+| the Fox | Constable | 4 | Rogue and Monk automaton; takes the stairs two at a time | Sunday | out on #10 |
 | the Owl **(you)** | Probationer | 1 | Wizard and Barbarian automaton; refuses to step on a drain cover | Saturday | in |
 
 ## The board
 
 | # | Reads | Where | Since | Who | Notes |
 |---|---|---|---|---|---|
-| 2 | 8 | Gasworks | Monday 6 pm | no one |  |
-| 3 | 8 | Gasworks | Monday 6 pm | no one |  |
-| 4 | 2 | Brick Fields | Monday 6 pm | no one |  |
+| 7 | 5 | Printers' Row | Tuesday 6 am | the Lion | 1× Giant Crocodile |
+| 9 | 7 | Soap Lane | Tuesday 6 pm | no one |  |
+| 10 | 4 | Soap Lane | Tuesday 6 pm | the Fox |  |
+| 11 | 3 | Brick Fields | Wednesday 6 am | no one |  |
+| 12 | 9 | Vinegar Yard | Wednesday 6 am | no one |  |
 
 ## Last heard
 
-- EVENING · day 1, Monday, 6 pm
-- NEW READING #2: reads 8, Gasworks.
-- NEW READING #3: reads 8, Gasworks.
-- NEW READING #4: reads 2, Brick Fields.
+- MORNING · day 3, Wednesday, 6 am
+- NEW READING #11: reads 3, Brick Fields.
+- NEW READING #12: reads 9, Vinegar Yard.
+- The Lion is sent to #7 (reads 5, Printers' Row).
+- #9 (reads 7, Soap Lane) waits: no pair free that can take it.
+- The Fox is sent to #10 (reads 4, Soap Lane).
+- #12 (reads 9, Vinegar Yard) waits: no pair free that can take it.
+- #11 (reads 3, Brick Fields) waits: no pair free that can take it.
 
 ## The neighbourhoods
 
