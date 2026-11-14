@@ -35,8 +35,8 @@ Benedict does not know any of this unless it has been seen or said in play.
   her household guard and rarely leaves it. On the first day of each month she rides out in
   person behind the wall-tax chest to the Barbican treasury, from the North Gate, with
   Sergeant Dane and a handful of guards: the one time she's in the street with few men round
-  her. Today is day 1 of the campaign; the month's calendar is the GM's to fix (say the next
-  first-of-month is day 30). In the confrontation, this is where and when she can be caught.
+  her. Calendar: day 1 of the campaign is the 19th of the month; the
+  next first-of-month is day 13, then every 30 days (43, 73, ...). In the confrontation, this is where and when she can be caught.
   Not a quest edge by the count (CR 4 has one quest, the confrontation itself), but it
   decides where that confrontation happens.
 
