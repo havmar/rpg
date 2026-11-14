@@ -1,6 +1,7 @@
 # CRB: Celestial Robot Butler
 
-Sixteen lands on one island, each with one settlement and one leader. Some leaders are a
+Sixteen lands on one island, each with one settlement and one leader. The world is static:
+nothing changes unless the pair changes it. Some leaders are a
 problem. Heaven has sent a **robot butler** to fight for good, and he has chosen a mortal
 to do it with: the human's character, whom he serves as a lord. The game is won when every
 problem leader is deposed.
@@ -42,9 +43,11 @@ Never read a big file whole; find the file by name and `grep -n`.
 
 ## The world
 
-A 4 × 4 map of large hexes, the same in every campaign. Rows 1 to 4 run north (cold) to
-south (hot), columns A to D west to east; rows 2 and 4 sit half a hex further east, so each
-hex has up to six neighbours: NW, NE, W, E, SW, SE. The four middle hexes are the mildest.
+Sixteen large lands laid like bricks in a wall, the same in every campaign (`T map` prints
+it). Rows 1 to 4 run north (cold) to south (hot), columns A to D west to east; rows 2 and 4
+sit half a brick further east. So a land touches the ones left and right of it (W, E), two
+above (NW, NE) and two below (SW, SE). The four middle lands are the mildest. The tool and
+the files call a land a hex.
 
 | | A | B | C | D |
 |---|---|---|---|---|
@@ -58,8 +61,8 @@ hex has up to six neighbours: NW, NE, W, E, SW, SE. The four middle hexes are th
 - **Coast** has no hex. It is the outer shore of the twelve edge hexes, and its monsters are
   met there (`T encounter HEX --coast`). It has no settlement.
 - **Evil biomes:** Abyss, Hell, Graveyard, Volcano, Arctic, Swamp, Savannah. The rest are good.
-- **No drawn map.** Say where the pair is and list the hexes around it by direction and
-  biome, from `T around HEX C`. The sea is named where there is no hex.
+- **No drawn map in play.** Say where the pair is and list the lands around it by direction
+  and biome, from `T around HEX C`. The sea is named where there is no land.
 - **Distance is in days.** A hex's size is not fixed: reaching the settlement of a
   neighbouring hex is one day's travel; anything inside a hex is within a day.
 
@@ -81,7 +84,9 @@ SRD's NPC stat blocks; the tool lists them.
 | **Good biome** | decent rule | oppresses its own people; may be starting a needless war |
 
 When play first reaches a problem hex, the GM decides which neighbour it attacks or what the
-oppression is, and writes one line in `gm-notes.md`. A quiet evil settlement trades, lodges
+oppression is, and writes one line in `gm-notes.md`. The attack is **flavour**: it never
+conquers anything, and shows up as quests (a unit of soldiers camped somewhere, a raided
+village). A quiet evil settlement trades, lodges
 travellers and gives quests like any other, at a price and without kindness.
 
 **The butler knows** every leader, its CR and whether it is a problem (`world.md`). He says
@@ -105,16 +110,17 @@ leader and says how many are left.
 
 ## The pair
 
-- **The butler** is a celestial robot, always "he", always the same name for the whole
-  campaign. A full character at the lord's level, species Celestial Robot (below). He
-  treats the lord as a lord: "my lord", formal, unhurried, immovable in opinion.
+- **The butler** is a celestial robot named **Benedict**, in every campaign and after every
+  rebuild; always "he". A full character at the lord's level, species Celestial Robot
+  (below). He treats the lord as a lord: "my lord", formal, unhurried, immovable in opinion.
 - **The lord** is the human's character: always a man, already the butler's established
   partner when play starts. How the butler chose him is never played.
 - **One Front, one Back.** Front: Barbarian (Berserker), Fighter (Champion), Paladin
   (Devotion), Monk (Open Hand), Ranger (Hunter), Cleric (Life). Back: Wizard (Evoker),
   Sorcerer (Draconic), Warlock (Fiend), Bard (Lore), Rogue (Thief), Druid (Land).
-  The human picks Front or Back for the lord at the start; the butler takes the other.
-  `T pc front|back` rolls a lord, `T robot front|back` the butler's class.
+- **Everything is rolled** by `T new`: which of the two is Front, both classes, and the
+  lord's species (Elf, Gnome, Human, Orc, Tiefling), background, name and ability scores
+  (placed by the class's priority, even when low). The sides stay fixed for the campaign.
 - **Both start at level 1** in the City (C2) and level together to 20.
 
 ### Species: Celestial Robot
@@ -130,17 +136,16 @@ leader and says how many are left.
 
 ### Death
 
-- **The lord dies:** the butler chooses a new lord of the same level and the same side
-  (Front or Back), off screen. `T pc`. Play resumes with the new pair at the nearest
-  settlement that is not a problem, the next morning.
-- **The butler dies:** he is rebuilt in Heaven with the same name and memory, the same
-  level, and a new random class of his side (`T robot`). He is back at the lord's side the
-  next morning.
+- **The lord dies:** the butler chooses a new lord of the same level and side, off screen
+  (`T pc C`). Play resumes with the new pair at the nearest quiet settlement, the next morning.
+- **The butler dies:** he is rebuilt in Heaven as Benedict, with his memory, the same level
+  and a new random class of his side (`T robot C`). He is back at the lord's side the next
+  morning.
 - **Both die:** both of the above, and the new pair starts in Heaven (A1).
-- **Magic items survive.** The butler preserves the pair's non-consumable magic items, at
-  most **6 per character**; they are with the pair when play resumes. Consumables, gold and
-  ordinary gear on a dead body are lost. Whatever was being attempted has failed: a leader
-  quest must be started again, a dungeon keeps its dead and its living.
+- **Attuned items carry over.** The butler preserves the magic items each of the pair is
+  attuned to, at most 3 each; the new lord takes the old lord's set. Everything else on a
+  dead body is lost: gold, consumables, minor and unattuned items, ordinary gear.
+- That is the whole cost. A quest in progress carries on.
 
 ## What there is to do
 
@@ -175,13 +180,19 @@ encounter die.
 - Each hex has **two known dungeons**, one of level d4 and one of level d10, and up to
   **three hidden** ones. A day spent searching finds one on a 1 in 6 (`T search C HEX`), of
   level d20. When the three are found, the hex has no more.
-- A dungeon's **monster** is the biome's monster with CR nearest its level. It is the last
-  thing in it and holds the dungeon's magic item.
-- A dungeon is worth **half a level each** at its level, if everything in it is beaten;
-  `T cleared C ID` marks it done.
-  `T dungeon C ID` stocks it the first time and prints the same rooms ever after. The GM
-  gives the rooms a place and a reason; a cleared room stays cleared.
-- The butler knows a known dungeon's level and monster before going in.
+- **Level** sets the rooms: together they are worth **half a level each** at that level.
+  `T dungeon C ID` stocks them the first time and prints the same ever after; `T cleared C
+  ID` marks it done. The GM gives the rooms a place and a reason. A cleared room stays cleared.
+- **Its monster** is rolled separately: d20, the biome's monster of nearest CR. It can be
+  far above or below the dungeon's level, so no dungeon is ever just a chore. It holds the
+  dungeon's magic item, its XP is on top of the rooms', and it gets a **reaction roll**
+  like anything else: a CR 17 dragon in a level 2 ruin is someone to talk to, sneak past or
+  come back for.
+- **Nature**, d6 per dungeon: 1–2 **good** (good or neutral creatures: guardians, to be
+  talked past, helped or left alone), 3–4 **corrupted** (the same kinds turned evil: same
+  stat blocks, reaction −2, and curing the corruption counts as beating them), 5–6 **evil**
+  (the biome's evil and dangerous creatures).
+- The butler knows a known dungeon's level, nature and monster before going in.
 
 ### XP and difficulty
 
@@ -210,7 +221,7 @@ for two characters (the table is not in the SRD):
   rewards and hoards. When one is due, pick a rarity still open in the pair's tier and roll
   `T item RARITY`; reroll an item nobody in the pair could use.
 - When the tier's quota is spent, a dungeon's item is a consumable or gold of like value.
-- Each character keeps at most 6 non-consumable items; extras are sold or given away.
+- Normal attunement: 3 items each. Those are what survive a death.
 
 ## Fights
 
@@ -271,8 +282,8 @@ campaign folder. This is a cloud session; the container is wiped when it ends.
 ## New game
 
 1. Roll a seed (`roll.py 1d1000`) and run `T new crb/campaigns/<name> --seed N`.
-2. Ask the human: Front or Back, and the butler's name. Roll `T pc` and `T robot`; the
-   human may rename the lord. Write both sheets at level 1 by the 2024 creation rules.
+2. It prints the pair. Write both sheets at level 1 by the 2024 creation rules from what it
+   rolled. Nothing is chosen: not the side, class, species or name.
 3. Write `state.md`, `gm-notes.md` and an empty `chronicle.md`.
 4. Open in the City. Introduce the pair in two or three plain lines each: name, species,
    class and level, HP, AC, best attacks or spells. Then the butler reports: the problem
@@ -284,4 +295,5 @@ campaign folder. This is a cloud session; the container is wiped when it ends.
 
 Guesses, all constants at the top of `crb.py`: problem leadership on 1–3 of a d6; known
 dungeons d4 and d10; three hidden dungeons a hex, found on a 1 in 6; strays on a 1 in 6;
-the reaction and morale numbers above. The map itself is the `MAP` table there.
+the dungeon nature d6; the reaction and morale numbers above. The map is the `MAP` table
+there, the butler's name `BUTLER`.

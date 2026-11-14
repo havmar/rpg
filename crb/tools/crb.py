@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """CRB world tool: the map, leaders, dungeons, encounters, difficulty. Run from the repo root.
 
-  python3 crb/tools/crb.py map                         the 16 hexes
-  python3 crb/tools/crb.py new DIR [--seed N]          roll a campaign: leaders, known dungeons
+  python3 crb/tools/crb.py map                         the 16 lands as a brick wall
+  python3 crb/tools/crb.py new DIR [--seed N]          roll a campaign: leaders, known dungeons, the pair
   python3 crb/tools/crb.py around HEX [DIR]            the hexes around HEX (with leaders if DIR)
   python3 crb/tools/crb.py folk HEX                    the biome's speaking monsters, by CR
   python3 crb/tools/crb.py rate LEVEL NAME [N] ...     CR, XP and difficulty for the pair
@@ -13,8 +13,8 @@
   python3 crb/tools/crb.py search DIR HEX              one day's search for a hidden dungeon
   python3 crb/tools/crb.py dungeon DIR ID              stock a dungeon (once; then it is fixed)
   python3 crb/tools/crb.py item RARITY                 a random magic item of that rarity
-  python3 crb/tools/crb.py pc front|back               a new lord: species, background, class
-  python3 crb/tools/crb.py robot front|back            the butler's new class
+  python3 crb/tools/crb.py pc DIR                      a new lord after a death (same side, random)
+  python3 crb/tools/crb.py robot DIR                   the butler rebuilt (same side, new class)
 
 Every roll is printed. --seed N on any command makes it repeatable.
 """
@@ -51,10 +51,44 @@ BUDGET = {1: (50, 75, 100), 2: (100, 150, 200), 3: (150, 225, 400), 4: (250, 375
           14: (2900, 4900, 6200), 15: (3300, 5400, 7800), 16: (3800, 6100, 9800),
           17: (4500, 7200, 11700), 18: (5000, 8700, 14200), 19: (5500, 10700, 17200),
           20: (6400, 13200, 22000)}
-FRONT = ["Barbarian", "Fighter", "Paladin", "Monk", "Ranger", "Cleric"]
-BACK = ["Wizard", "Sorcerer", "Warlock", "Bard", "Rogue", "Druid"]
-SPECIES = ["Dragonborn", "Dwarf", "Elf", "Gnome", "Goliath", "Halfling", "Human", "Orc", "Tiefling"]
+BUTLER = "Benedict"     # the butler's name, in every campaign
+SIDES = {"Front": [("Barbarian", "Berserker"), ("Fighter", "Champion"), ("Paladin", "Devotion"),
+                   ("Monk", "Open Hand"), ("Ranger", "Hunter"), ("Cleric", "Life")],
+         "Back": [("Wizard", "Evoker"), ("Sorcerer", "Draconic"), ("Warlock", "Fiend"),
+                  ("Bard", "Lore"), ("Rogue", "Thief"), ("Druid", "Land")]}
+PRIORITY = {
+    "Barbarian": "STR CON DEX WIS CHA INT", "Fighter": "STR CON DEX WIS INT CHA",
+    "Paladin": "STR CHA CON WIS DEX INT", "Monk": "DEX WIS CON STR INT CHA",
+    "Ranger": "DEX WIS CON STR INT CHA", "Cleric": "WIS CON STR DEX CHA INT",
+    "Wizard": "INT DEX CON WIS CHA STR", "Sorcerer": "CHA CON DEX WIS INT STR",
+    "Warlock": "CHA CON DEX WIS INT STR", "Bard": "CHA DEX CON WIS INT STR",
+    "Rogue": "DEX CON INT WIS CHA STR", "Druid": "WIS CON DEX INT CHA STR",
+}
+SPECIES = ["Elf", "Gnome", "Human", "Orc", "Tiefling"]
 BACKGROUNDS = ["Acolyte", "Criminal", "Sage", "Soldier"]
+NAMES = {   # the lord is always a man; names by what the species sounds like
+    "Elf": ["Percival", "Sebastian", "Julian", "Leopold", "Ambrose", "Montgomery", "Lionel", "Crispin"],
+    "Gnome": ["Archie", "Pip", "Alfie", "Bertie", "Wally", "Ned", "Gus", "Sid"],
+    "Human": ["Arthur", "Thomas", "Henry", "Walter", "George", "Albert", "Frank", "Harold"],
+    "Orc": ["Tom", "Bob", "Jack", "Joe", "Sam", "Bill", "Dan", "Jim"],
+    "Tiefling": ["Ernest", "Felix", "Clement", "Victor", "Christian", "Chance"],
+}
+SURNAMES = ["Ashcombe", "Baker", "Carter", "Cooper", "Dunmore", "Fairweather", "Greaves",
+            "Hargreaves", "Kettering", "Lowry", "Marsh", "Northcote", "Oxley", "Pendry",
+            "Quayle", "Rooke", "Sallow", "Thorne", "Underhill", "Vance", "Whitlock", "Yarrow",
+            "Tanner", "Chandler", "Fletcher", "Mercer", "Sawyer", "Wainwright", "Hobbs", "Pike"]
+NATURE = {1: "good", 2: "good", 3: "corrupted", 4: "corrupted", 5: "evil", 6: "evil"}
+
+def scores(cls):
+    rolled = sorted((sum(sorted(R.randint(1, 6) for _ in range(4))[1:]) for _ in range(6)), reverse=True)
+    return ", ".join(f"{k} {v}" for k, v in zip(PRIORITY[cls].split(), rolled))
+def new_lord(side):
+    sp = R.choice(SPECIES); cls, sub = R.choice(SIDES[side])
+    return (f"The lord: {R.choice(NAMES[sp])} {R.choice(SURNAMES)}, {sp} {cls} ({sub}), {side}, "
+            f"background {R.choice(BACKGROUNDS)}. Scores before background: {scores(cls)}.")
+def new_butler(side):
+    cls, sub = R.choice(SIDES[side])
+    return f"The butler: {BUTLER}, Celestial Robot {cls} ({sub}), {side}. Scores before background: {scores(cls)}."
 
 R = random.Random()
 def d(n, what=""):
@@ -118,8 +152,13 @@ def closest(pool, level, key):
     best = max(key(p) for p in under) if under else min(key(p) for p in pool)
     return [p for p in pool if key(p) == best]
 
-def sig(b, level):
-    pool = of(b)
+def dpool(b, nature):
+    """A dungeon's monsters by its nature. Corrupted ones are good kinds turned evil."""
+    want = ("evil", "unaligned") if nature == "evil" else ("good", "neutral")
+    return [m for m in of(b) if MON[m]["side"] in want]
+
+def sig(b, level, nature):
+    pool = dpool(b, nature)
     near = min(abs(crv(MON[m]["cr"]) - level) for m in pool)
     return R.choice([m for m in pool if abs(crv(MON[m]["cr"]) - level) == near])
 
@@ -130,9 +169,9 @@ def rate(level, groups):
             "High" if xp <= hi * 1.25 else "Deadly" if xp <= hi * 2 else "Beyond the pair")
     return xp, word, (lo, mo, hi)
 
-def build(b, level, budget, cap=None, only=None):
+def build(b, level, budget, cap=None, only=None, base=None):
     """Spend an XP budget on one or two kinds of the biome's monsters."""
-    pool = [m for m in of(b) if MON[m]["xp"] <= budget and (cap is None or crv(MON[m]["cr"]) <= cap)
+    pool = [m for m in (base or of(b)) if MON[m]["xp"] <= budget and (cap is None or crv(MON[m]["cr"]) <= cap)
             and (only is None or only(m))]
     pool = [m for m in pool if MON[m]["xp"] * 8 >= budget] or pool[-3:]
     if not pool: return []
@@ -144,8 +183,8 @@ def build(b, level, budget, cap=None, only=None):
         x = R.choice(extra); out.append((x, left // MON[x]["xp"]))
     return out
 
-def reaction(m):
-    mod = {"evil": -2, "good": 2}.get(MON[m]["side"], 0)
+def reaction(m, corrupted=False):
+    mod = -2 if corrupted else {"evil": -2, "good": 2}.get(MON[m]["side"], 0)
     a, b = d(6), d(6); t = a + b + mod
     word = ("attacks" if t <= 3 else "hostile: threatens, drives the pair off, attacks if pressed"
             if t <= 5 else "wary: keeps its distance" if t <= 8 else
@@ -165,14 +204,18 @@ def save(dirn, w):
         rule = "**problem**" if x["problem"] and not x["deposed"] else "deposed" if x["deposed"] else "quiet"
         q = f"{x['done']}/{x['stages']}" if x["problem"] else "–"
         L.append(f"| {h} | {x['biome']} | {'evil' if x['biome'] in EVIL else 'good'} | {x['leader']} | {x['cr']} | {rule} | {q} |")
-    L += ["", "## Dungeons", "", "| ID | Hex | Level | Its monster | CR | State |", "|---|---|---|---|---|---|"]
+    L += ["", "## Dungeons", "", "| ID | Land | Level | Its monster | CR | Nature | State |", "|---|---|---|---|---|---|---|"]
     for i, x in w["dungeons"].items():
-        L.append(f"| {i} | {x['hex']} {MAP[x['hex']]} | {x['level']} | {x['monster']} | {MON[x['monster']]['cr']} | {x['state']} |")
+        L.append(f"| {i} | {x['hex']} {MAP[x['hex']]} | {x['level']} | {x['monster']} | {MON[x['monster']]['cr']} | {x['nature']} | {x['state']} |")
+    L += ["", "## The pair", "", f"The lord is {w['lord']}, the butler {w['butler']}."]
     open(f"{dirn}/world.md", "w").write("\n".join(L) + "\n")
 
 def add_dungeon(w, h, level, state):
     i = f"{h}-{1 + sum(1 for x in w['dungeons'].values() if x['hex'] == h)}"
-    w["dungeons"][i] = dict(hex=h, level=level, monster=sig(MAP[h], level), state=state)
+    b = MAP[h]; nature = NATURE[d(6)]
+    if not dpool(b, nature):                      # Hell has no good kinds, Heaven no evil ones
+        nature = "evil" if nature != "evil" else "corrupted"
+    w["dungeons"][i] = dict(hex=h, level=level, nature=nature, monster=sig(b, d(20), nature), state=state)
     return i
 
 def main(a):
@@ -182,13 +225,18 @@ def main(a):
     if not a: sys.exit(__doc__)
     cmd, a = a[0], a[1:]
     if cmd == "map":
+        W = 19
         for r in "1234":
-            print(("      " if r in "24" else "") + "  ".join(f"{c+r} {MAP[c+r]:<14}" for c in "ABCD"))
-        print("Coast: the outer side of every hex except B2, C2, B3, C3.")
+            pad = " " * (W // 2) if r in "24" else ""
+            print(pad + "+" + ("-" * (W - 1) + "+") * 4)
+            print(pad + "|" + "".join(f"{' ' + c + r + ' ' + MAP[c + r]:<{W - 1}}|" for c in "ABCD"))
+        print(" " * (W // 2) + "+" + ("-" * (W - 1) + "+") * 4)
+        print("North is up (cold), south is down (hot). The sea is all round: the Coast.")
     elif cmd == "new":
         os.makedirs(a[0], exist_ok=True)
         if os.path.exists(f"{a[0]}/world.json"): sys.exit("world.json exists")
-        w = dict(hexes={}, dungeons={})
+        side = R.choice(["Front", "Back"]); other = "Back" if side == "Front" else "Front"
+        w = dict(hexes={}, dungeons={}, lord=side, butler=other)
         for h, b in MAP.items():
             prob = d(6) <= PROBLEM_ON
             roll = d(20)
@@ -198,6 +246,7 @@ def main(a):
                                  stages=stages(crv(cr)), done=0, deposed=False, hidden_found=0)
             for die in KNOWN_DICE: add_dungeon(w, h, d(die), "known")
         save(a[0], w); print(open(f"{a[0]}/world.md").read())
+        print(new_lord(side)); print(new_butler(other))
     elif cmd == "around":
         h = hexarg(a[0]); w = world(a[1]) if len(a) > 1 else None
         def line(x):
@@ -252,30 +301,39 @@ def main(a):
         elif d(6, "search") <= FIND_ON:
             q["hidden_found"] += 1; i = add_dungeon(w, h, d(20, "level"), "found")
             x = w["dungeons"][i]; save(a[0], w)
-            print(f"Found {i}: level {x['level']}, {tag(x['monster'])}")
+            print(f"Found {i}: level {x['level']}, {x['nature']}, {tag(x['monster'])}")
         else: print("Nothing today.")
     elif cmd == "dungeon":
         w = world(a[0]); x = w["dungeons"][a[1]]
         if "rooms" not in x:
-            L = x["level"]; b = MAP[x["hex"]]
+            L = x["level"]; b = MAP[x["hex"]]; pool = dpool(b, x["nature"])
             total = XP_AT[min(L, 19)] - XP_AT[min(L, 19) - 1]   # one level-up gap, shared by two
-            boss = x["monster"]; left = total - MON[boss]["xp"]; rooms = []
+            left = total; rooms = []
             while left > 0 and len(rooms) < 12:
-                g = build(b, L, min(left, 2 * BUDGET[L][1]), cap=max(L, 1))
+                g = build(b, L, min(left, 2 * BUDGET[L][1]), cap=max(L, 1), base=pool)
                 if not g: break
                 rooms.append(g); left -= sum(MON[m]["xp"] * n for m, n in g)
-            x["rooms"] = rooms; x["total"] = total; save(a[0], w)
-        print(f"{a[1]}: {MAP[x['hex']]}, level {x['level']}, worth about {x['total']} XP ({x['total'] // 2} each).")
+            x["rooms"] = rooms; x["total"] = sum(MON[m]["xp"] * n for g in rooms for m, n in g)
+            x["reaction"] = reaction(x["monster"], x["nature"] == "corrupted"); save(a[0], w)
+        note = {"good": "its creatures are good or neutral: guardians, to be talked past or helped",
+                "corrupted": "its creatures are good kinds CORRUPTED: evil now, reaction -2, same stat blocks",
+                "evil": "its creatures are evil or dangerous"}[x["nature"]]
+        print(f"{a[1]}: {MAP[x['hex']]}, level {x['level']}, {x['nature']}: {note}.")
+        print(f"The rooms are worth {x['total']} XP ({x['total'] // 2} each); its monster is extra.")
         for i, g in enumerate(x["rooms"], 1): print(f"  {i}. " + "; ".join(tag(m, n) for m, n in g))
-        print(f"  Last. {tag(x['monster'])}, with the magic item")
+        print(f"  Its monster, with the magic item: {tag(x['monster'])}; {x['reaction']}")
     elif cmd == "item":
         rar = a[0].title()
-        fs = [f[:-3] for f in os.listdir(f"{SRD}/Magic Items/{rar}") if f.endswith(".md")]
-        print(f"{rar}: {R.choice(fs)}")
+        fs = sorted(f[:-3] for f in os.listdir(f"{SRD}/Magic Items/{rar}") if f.endswith(".md"))
+        plus = {"Uncommon": 1, "Rare": 2, "Very Rare": 3}.get(rar)
+        if plus:
+            fs += [f"Weapon, +{plus} (a weapon one of the pair uses)", f"Shield, +{plus}",
+                   f"Wand of the War Mage, +{plus}"]
+            if plus > 1: fs.append(f"Armor, +{plus - 1} (armour one of the pair wears)")
+        print(f"{rar}: {R.choice(fs)}  (reference/srd/Magic Items/{rar}/ or Varies/)")
     elif cmd in ("pc", "robot"):
-        cls = R.choice(FRONT if a[0] == "front" else BACK)
-        if cmd == "pc": print(f"{R.choice(SPECIES)} {cls} ({a[0]}), background {R.choice(BACKGROUNDS)}, male")
-        else: print(f"The butler is rebuilt as a {cls} ({a[0]}).")
+        w = world(a[0])
+        print(new_lord(w["lord"]) if cmd == "pc" else new_butler(w["butler"]))
     else: sys.exit(__doc__)
 
 if __name__ == "__main__": main(sys.argv[1:])
