@@ -1,26 +1,27 @@
 # State
 
-**Day 4, past midnight.** Arctic (C1), the back of Hvitmark, below Grimhall's mound, with
-the three boys. Return trip cold saves: Tom 20 then 8 (failed: 1 Exhaustion), Benedict 15,
-14.
+**Day 5, mid-morning.** Arctic (C1), Hvitmark, the Hearth. Long Rest taken (Tom slept from
+about the second hour to the tenth). Back into town unseen (group Stealth: all beat the
+gate's passive 10).
 
 ## The pair
 
-- **Tom Yarrow** (Bard 3, Lore): 13/24 HP, AC 14. **Exhaustion 1** (−2 to D20 Tests, speed
-  −1.5 m; a Long Rest removes it). Slots L1 3/4, L2 2/2. Bardic Inspiration 2/2. Adrenaline
-  Rush 2/2. Relentless Endurance ready. Potion of Resistance (cold) unused. XP 900/2700.
-- **Benedict** (Paladin 3, Devotion): 19/28 HP, AC 20. Slots L1 3/3. Free Divine Smite used.
-  Lay on Hands 5/15. Channel Divinity 2/2. No holy symbol: no Bless or Shield of Faith.
-  XP 900/2700.
+- **Tom Yarrow** (Bard 3, Lore): 24/24 HP, AC 14. Exhaustion 0. Slots L1 4/4, L2 2/2.
+  Bardic Inspiration 2/2. Adrenaline Rush 2/2. Relentless Endurance ready. Potion of
+  Resistance (cold) unused. Lute top string still broken. XP 1300/2700.
+- **Benedict** (Paladin 3, Devotion): 28/28 HP, AC 20. Slots L1 3/3. Free Divine Smite
+  ready. Lay on Hands 15/15. Channel Divinity 2/2. No holy symbol: no Bless or Shield of
+  Faith. XP 1300/2700.
 
 ## Open quest
 
-The outcasts on the ice (for Brann): the three boys are alive, wrapped in furs, exhausted
-(Eyvind 5/9 HP), and at the back of the town with the pair. Brann's mother's house, where
-the plan was to hide them, has two of Ulfrun's sworn axes (Berserkers, CR 2) sitting at a
-brazier across the lane from it. Waiting for the human: where to take them.
+None. The outcasts on the ice done (day 4–5): the boys hidden in the Hearth's peat store by
+old Ketil. Quest finished: High at level 3, 800 XP, 400 each (on top of the mephits' 300).
 
-The mephits: 2 killed, 1 fled (morale 3 against DC 10). 300 XP, 150 each. Both to level 3.
+Heard from Ketil (report): Sigrid Ravnsdottir, the clans' law-keeper, lives by the
+moot-stone at the west end of town; there is a way in the old law to unmake a chief.
+Grim Ulfrun keeps four sworn axes. The next first of the month (the Lord-Captain's ride in
+the City) is day 13, eight days off; the City is one day south-east over the moor.
 
 ## Dungeon in progress
 

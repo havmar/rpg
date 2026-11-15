@@ -59,9 +59,9 @@ Soldier increases: DEX +2, CON +1.
 set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a token), a heavy fur cloak (Advantage on saves against extreme cold), a flask of lamp oil, entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
 5 days' rations, waterskin, disguise kit), traveller's clothes.
 
-**Gold:** 19 GP 5 SP.
+**Gold:** 18 GP 5 SP.
 
-**XP:** 900 / 2700 for level 4.
+**XP:** 1300 / 2700 for level 4.
 
 ## Benedict — the butler
 
@@ -129,7 +129,7 @@ traveller's clothes, and a butler's black coat over all of it.
 
 **Gold:** 23 GP.
 
-**XP:** 900 / 2700 for level 4.
+**XP:** 1300 / 2700 for level 4.
 
 ## Magic items
 

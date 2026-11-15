@@ -61,3 +61,8 @@ off with a whispered curse, and it came back in a fog with its friend and clawed
 to the ground. Benedict laid hands on him and killed the second, and the third fled. They
 brought the boys back across the ice wrapped in furs, and both of them were the stronger
 for it.
+They couldn't take the boys home: two of Ulfrun's sworn axes sat at a brazier across from
+Brann's mother's door. So they took them to the Hearth by the gate, past the gate watch
+without a sound, and asked old Ketil the keeper to hide them. His own son had walked out
+onto the ice last winter and not come back. He put the boys in his peat store and wouldn't
+take money for it, except one gold for the peat.

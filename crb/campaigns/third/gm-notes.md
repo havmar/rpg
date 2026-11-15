@@ -106,7 +106,8 @@ Benedict does not know any of this unless it has been seen or said in play.
   keeper, old Ketil, lost his own son to the ice last winter and hates Ulfrun: he would
   hide them in the Hearth's peat store if asked (the pair doesn't know this). Sigrid
   Ravnsdottir's house is by the moot-stone at the west end of town, unwatched.
-- **The outcasts on the ice** (open, level 2). Eyvind (Brann's younger brother, 16) and
+- **The outcasts on the ice** (done, day 5: boys hidden by Ketil in the Hearth's peat
+  store; Tom paid 1 GP for peat; Brann told by Ketil's girl at dawn). Eyvind (Brann's younger brother, 16) and
   two other boys, turned out this morning without furs. They've dug into a snow-hollow under
   a pressure ridge, two hours north of Hvitmark on the ice. Three Ice Mephits (CR 1/2 each;
   Moderate, 300 XP at level 2) have found them and circle, laughing, breathing frost on
@@ -135,3 +136,6 @@ Benedict does not know any of this unless it has been seen or said in play.
 - **Hrimgala**, the white dragon of the moor (Adult White Dragon, CR 13); has Benedict's gold
   sun and five of Tom's gold; thinks the song was bad. Wants shiny things.
 - **Eyvind**, Brann's brother, 16, on the ice with two friends.
+- **Ketil**, keeper of the Hearth by the gate; lost his son to the ice last winter; hides
+  the three boys; wants Ulfrun gone and would say so to the moot if others did first.
+- **Orm**, the smallest of the three boys, about 13; slept on Benedict's chest.
