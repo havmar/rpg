@@ -1,7 +1,11 @@
 # State
 
-**Day 3, dusk.** Forest (B2), Thornmoot, the Long Barn (free for them now: the Forest's
-thanks). Day encounter die already rolled (1: wolves, let pass).
+**Day 4, afternoon.** On the moor road from Thornmoot into the Arctic (C1), about two hours
+short of Hvitmark. Late summer: cold wind and sleet, not extreme cold (that is on the ice,
+past Hvitmark: DC 10 CON save each hour or a level of Exhaustion without protection).
+Day encounter die 1: an Adult White Dragon (CR 13), reaction 10, curious, will talk. It has
+landed 15 m off on the road and is asking for Benedict's gold sun (his holy symbol, set in
+his breastplate). Waiting for the human.
 
 ## The pair
 

@@ -82,6 +82,13 @@ Benedict does not know any of this unless it has been seen or said in play.
 - **A young green dragon** (CR 8) watches the road from the City; met day 2, wary. Lives in
   the Forest; it noticed the pair. Name unknown.
 
+- **The white dragon of the moor** (Adult White Dragon, CR 13), met day 4, curious. Calls
+  herself Hrimgala. INT 8: greedy, blunt, easily flattered, forgets slights slowly. Ulfrun's
+  clans leave her a cow on the stone at Kaldbrú every new moon so she leaves Hvitmark alone;
+  she despises Ulfrun ("the axe-woman who shouts"). Wants shiny things. A gift of 5 GP or
+  more of shine, or a song about her, keeps her friendly; refusing rudely risks a new
+  reaction roll at −2.
+
 ## People met
 
 - **Piet Hollin**, miller from north of the wall; wants his mill back and his daughter
