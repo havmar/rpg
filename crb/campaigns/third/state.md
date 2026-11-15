@@ -1,11 +1,9 @@
 # State
 
-**Day 4, dusk.** Arctic (C1), Hvitmark, Ulfrun's town; the Hearth, a bunkhouse by the gate
-(gate toll 1 SP a head and a bunk 1 SP; Tom paid 3 SP). Day encounter die 1: Hrimgala (Adult
-White Dragon, CR 13), paid off with 5 GP and Benedict's gold sun: Low award, 200 XP.
-Leader: Grim Ulfrun Grey-Axe (Berserker, CR 2), tyrant. Not extreme cold in town; on the ice
-beyond it is (DC 10 CON save each hour or a level of Exhaustion; thick furs give Advantage,
-a bedroll or Resistance to Cold makes it automatic).
+**Day 4, night, about two hours after dark.** Arctic (C1), on the ice two hours north of
+Hvitmark, at a pressure ridge. Night encounter die 4: nothing. Trail found (Survival 11
+against DC 10). Cold saves, two hours, all passed (Tom 21, 17; Benedict 10, 22). Carrying
+three old furs and a flask of hot broth from Brann's mother for the boys.
 
 ## The pair
 
@@ -17,15 +15,29 @@ a bedroll or Resistance to Cold makes it automatic).
 
 ## Open quest
 
-Offered by Brann: his brother Eyvind and two others, a band that came back empty-handed,
-were turned out on the ice by Ulfrun this morning without furs. They're somewhere out on the
-ice north of town. Waiting for the human.
+The outcasts on the ice (for Brann): Eyvind and two boys in a snow-hollow under the ridge,
+alive, very cold. Three Ice Mephits circling them: reaction 5, hostile. Benedict's plan on
+the table; waiting for the human. Bring the boys back hidden to Brann's mother's house.
 
-Earlier: the Greenwell done (day 3): rooms talked round (Low ×2 at level 1, 200 XP), Mossmother
-talked past (Moderate at level 2, 300 XP), the stone sealed and the keepers cured (quest,
-High at level 2, 400 XP). Ruin B2-1 cleared.
+## Fight block (not started)
 
-Next first of the month (the Lord-Captain's ride behind the tax chests): day 13.
+Ice Mephit ×3 (CR 1/2 each; Moderate, 300 XP at level 2). Small elementals. AC 11, HP 21
+each, speed 9 m, fly 9 m. Saves: STR −2, DEX +1, CON +0, INT −1, WIS +0, CHA +1. Vulnerable
+to fire; immune to cold, poison, Exhaustion, Poisoned. Darkvision 18 m, passive 12.
+- Claw: +3, 1d4 + 1 slashing plus 1d4 cold.
+- Frost Breath (Recharge 6): 4.5 m cone, DC 10 CON, 3d4 cold, half on a save.
+- Fog Cloud 1/day each.
+- Death Burst: when it dies, DC 10 CON in 1.5 m, 2d4 cold, half on a save.
+- Morale: check when one is Bloodied (10 HP or less) or one dies; WIS +0, DC 10.
+
+The pair: Tom 17/17 HP, AC 14, init +3, slots 3, Bardic Inspiration 2, Dissonant Whispers
+DC 12 (WIS save; mephits WIS +0), Vicious Mockery 1d6, shortbow +5 1d6 + 3, Command, Faerie
+Fire, Healing Word. Benedict 20/20 HP, AC 20, init +2 (Alert, may swap), longsword +3 1d8 + 1
+(Sap), javelins +3 1d6 + 1 (Slow), free Divine Smite (2d8 radiant), 2 slots, Lay on Hands 10.
+No Bless or Shield of Faith (no holy symbol).
+
+Ground: a pressure ridge 3 m high; the hollow is dug into its foot, mouth 1 m wide. The pair
+is 20 m south, coming over a low hummock with the lamp. Mephits 3–6 m above the hollow.
 
 ## Dungeon in progress
 

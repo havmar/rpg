@@ -52,10 +52,10 @@ Soldier increases: DEX +2, CON +1.
   Grovel or Halt).
 
 **Gear:** leather armour, 2 daggers, spear, shortbow, quiver with 20 arrows, lute, dice
-set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a token), entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
+set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a token), a heavy fur cloak (Advantage on saves against extreme cold), a flask of lamp oil, entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
 5 days' rations, waterskin, disguise kit), traveller's clothes.
 
-**Gold:** 21 GP 6 SP.
+**Gold:** 19 GP 5 SP.
 
 **XP:** 750 / 900 for level 3.
 
@@ -112,11 +112,11 @@ part of the body: an hour to don or doff, can't be removed against his will.
   saves), *Shield of Faith* (Bonus Action, Concentration, +2 AC to one creature, 10 min),
   *Cure Wounds* (touch, 2d8 + 1). Always prepared: *Divine Smite*.
 
-**Gear:** chain mail (built in), shield, longsword, 6 javelins, (holy symbol gone: the gold sun went to Hrimgala on day 4; he needs a new one, 5 GP), 2 daggers, thieves' tools, crowbar, 2 pouches, priest's pack
+**Gear:** chain mail (built in), shield, longsword, 6 javelins, (holy symbol gone: the gold sun went to Hrimgala on day 4; he needs a new one, 5 GP), a heavy fur cloak (Advantage on saves against extreme cold), 2 daggers, thieves' tools, crowbar, 2 pouches, priest's pack
 (backpack, blanket, holy water, lamp, 7 days' rations he does not eat, robe, tinderbox),
 traveller's clothes, and a butler's black coat over all of it.
 
-**Gold:** 25 GP.
+**Gold:** 23 GP.
 
 **XP:** 750 / 900 for level 3.
 
