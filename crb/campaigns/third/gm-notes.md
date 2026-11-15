@@ -74,8 +74,11 @@ Benedict does not know any of this unless it has been seen or said in play.
 - **The Greenwell, day 3:** wolves (5, indifferent) on the way, let pass. Sprites talked
   round with the leaf (Persuasion 18 against DC 15, Advantage): room done, Low award. Owls
   talked round (15 against 15, Advantage): room done, Low award. Pair now level 2. In the
-  vault: Mossmother seen (`seen` run), wary; the spring and the cracked stone 10 m off,
-  at her roots.
+  vault: Mossmother seen (`seen` run), wary. Tom's Persuasion 26 (nat 20) against DC 13: she
+  let Benedict reach the stone. He sealed the crack with holy water and a prayer. Keepers
+  cured; Mossmother came back to herself and gave them the builders' frost-glass vial
+  (Potion of Resistance, cold). Ruin cleared. Ashenroot: the Forest's friendship; free
+  lodging in Thornmoot; he will speak for them to anyone in the wood.
 - **A young green dragon** (CR 8) watches the road from the City; met day 2, wary. Lives in
   the Forest; it noticed the pair. Name unknown.
 
@@ -92,3 +95,6 @@ Benedict does not know any of this unless it has been seen or said in play.
 - **Jory Ostler**, 15, Marta's son, a singer of rude songs; in the watch-house cell.
 - **Corporal Hask**, of the Tanners' Row watch-house; lazy, in debt at dice, owes Tom a
   favour and will sell what he knows for a game he wins.
+- **Mossmother**, Ashenroot's sister, keeper of the Greenwell (Treant, CR 9), cured; wants
+  the stone left shut, and owes the pair her life.
+- **Pip**, the sprite who lowered her bow first; keeps the ring again.

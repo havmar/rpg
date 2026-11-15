@@ -57,7 +57,7 @@ set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a to
 
 **Gold:** 26 GP 9 SP.
 
-**XP:** 300 / 900 for level 3.
+**XP:** 650 / 900 for level 3.
 
 ## Benedict — the butler
 
@@ -117,8 +117,9 @@ traveller's clothes, and a butler's black coat over all of it.
 
 **Gold:** 25 GP.
 
-**XP:** 300 / 900 for level 3.
+**XP:** 650 / 900 for level 3.
 
 ## Magic items
 
-None yet.
+- **Potion of Resistance (cold)**, uncommon, consumable: drink for Resistance to Cold damage
+  for 1 hour. From Mossmother at the Greenwell. Carried by Tom.

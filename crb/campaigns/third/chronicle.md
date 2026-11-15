@@ -34,3 +34,10 @@ the black thread soured the sprites, the owls and his sister Mossmother. He gave
 from his crown and asked that none of them be killed. At the stone ring the sprites
 remembered the leaf and lowered their bows. In the yew-hall the owls let them by. Tom and
 Benedict came down the root-stair into the vault, both stronger for the day's work.
+
+Mossmother stood over the spring with black in her eyes, and Tom talked to her about her
+brother while Benedict walked to the stone with his hands empty. She let him. He knelt and
+poured his holy water into the crack and prayed, and the crack closed, and the black thread
+in the water thinned and was gone. The sprites' eyes cleared, and the owls', and last of all
+Mossmother's. She gave them a vial of frost-glass the builders had left in her keeping. That
+night in Thornmoot, Grandfather Ashenroot bowed to them, which nobody there had seen him do.

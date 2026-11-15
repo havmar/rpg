@@ -269,7 +269,7 @@
    "level": 1,
    "nature": "corrupted",
    "monster": "Treant",
-   "state": "known",
+   "state": "cleared",
    "reactions": [
     "reaction 2d6 [4+3]-2 = 5: hostile: threatens, drives the pair off, attacks if pressed",
     "reaction 2d6 [1+5]-2 = 4: hostile: threatens, drives the pair off, attacks if pressed"
