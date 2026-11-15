@@ -1,29 +1,28 @@
 # State
 
-**Day 2, night.** Forest (B2), Thornmoot. Spoke with Grandfather Ashenroot at the clearing's
-edge. Bed at the Long Barn (paid). Day encounter die 2: a young green dragon on the road,
-wary, gone.
+**Day 3, about noon.** Forest (B2), the Greenwell (ruin B2-1), in the vault under the
+yew-hall. Day encounter die 1: five wolves, indifferent, let pass.
 
 ## The pair
 
-- **Tom Yarrow** (Bard 1): 10/10 HP, AC 14. Slots 2/2 (level 1). Bardic Inspiration 2/2.
-  Adrenaline Rush 2/2. Relentless Endurance ready. XP 200/300.
-- **Benedict** (Paladin 1): 12/12 HP, AC 19. Slots 2/2 (level 1). Lay on Hands 5/5.
-  XP 200/300.
+- **Tom Yarrow** (Bard 2): 17/17 HP, AC 14. Slots 3/3 (level 1). Bardic Inspiration 2/2.
+  Adrenaline Rush 2/2. Relentless Endurance ready. XP 300/900.
+- **Benedict** (Paladin 2): 20/20 HP, AC 20. Slots 2/2 (level 1). Free Divine Smite ready.
+  Lay on Hands 10/10. Holy water ×1. XP 300/900.
 
 ## Open quest
 
-The Greenwell (ruin B2-1, level 1, corrupted), half a day north, taken up for the morning.
-Ashenroot's story: the builders set a black stone in the spring to hold down something in
-the deep water; the black thread means it has cracked. His sister Mossmother (a treant, by
-report: not seen) and her keepers (sprites in the ring, giant owls in the yew-hall) are in
-there gone wrong. He asks that none be killed if it can be helped. Tom carries an oak leaf
-from Ashenroot's crown: shown to the keepers, Advantage on Persuasion with them. Benedict
-carries a flask of holy water (priest's pack). Waiting for the human: how to go in.
+The Greenwell, for Grandfather Ashenroot: seal the cracked stone in the spring with holy
+water, cure the keepers, kill none if it can be helped.
 
 ## Dungeon in progress
 
-None.
+The Greenwell (B2-1, level 1, corrupted).
+- Room 1, the stone ring (3 Sprites): done, talked round. Low award, 100 XP.
+- Room 2, the yew-hall (3 Giant Owls): done, talked round. Low award, 100 XP.
+- The vault: Mossmother (Treant, CR 9), seen, wary, standing over the spring. The black
+  stone with its crack is at her roots, 10 m from the stair foot where the pair stands.
+  Waiting for the human: how to reach the spring.
 
 ## Standing orders
 

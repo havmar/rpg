@@ -58,16 +58,24 @@ Benedict does not know any of this unless it has been seen or said in play.
   if pressed. Mossmother in the vault by the spring, wary (7): keeps her distance, holds the
   item. All corrupted: can be cured as well as killed. The cause: the builders set a black
   seal-stone in the spring to hold down something bad in the deep water; it cracked this
-  spring and the black thread leaks from the crack. Cure: lift the cracked stone out of the
-  spring and purify the water (Benedict's flask of holy water poured in with a prayer; or
-  any Remove Curse / Lesser Restoration-type magic later). Then the black thread fades within
-  the hour and the keepers come right: sprites and owls at once, Mossmother by morning. The
-  stone itself is cold, heavy (20 kg), and should go somewhere far from water. Ashenroot
+  spring and the black thread leaks from the crack. Cure (revised day 3, before
+  it was played): the stone is a lid, not to be lifted. Pour holy water into the crack with
+  a prayer and it closes (Benedict, a paladin: no check needed if he reaches it unhindered).
+  Then the black thread fades within the hour and the keepers come right: sprites and owls
+  at once, Mossmother by morning.
+  - The thing under the stone: old, bitter, never named; the builders could not kill it.
+    Not stocked. A seed for later: a hidden B2 ruin found by `search` may be its deep vault,
+    and the pair may want to finish it one day, at a high level. Ashenroot
   can't go near: the black water rises into his roots. He has told the pair the old story
   of the stone, that his sister and her keepers are in there, and asked that none be
   killed if it can be helped. He gave Tom an oak leaf from his crown: shown to the keepers,
   it gives Advantage on Persuasion with them (not a new reaction roll). Award on top: High,
   plus his thanks and the Forest's friendship.
+- **The Greenwell, day 3:** wolves (5, indifferent) on the way, let pass. Sprites talked
+  round with the leaf (Persuasion 18 against DC 15, Advantage): room done, Low award. Owls
+  talked round (15 against 15, Advantage): room done, Low award. Pair now level 2. In the
+  vault: Mossmother seen (`seen` run), wary; the spring and the cracked stone 10 m off,
+  at her roots.
 - **A young green dragon** (CR 8) watches the road from the City; met day 2, wary. Lives in
   the Forest; it noticed the pair. Name unknown.
 

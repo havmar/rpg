@@ -24,3 +24,13 @@ Corporal Hask with great good humour, and asked for the boy. Hask let him go. Be
 scratched the cell lock with a pick so that it would look as if the boy had opened it
 himself. Jory was home before the ninth bell, and Hask, who now had friends he didn't want,
 told them over the last throw when the Lord-Captain leaves her Barbican.
+
+## Days 2–3: the road west, and the Greenwell
+
+On the road west a young green dragon watched them from a fallen oak and let them pass. In
+Thornmoot, Grandfather Ashenroot told them the Greenwell's story: the builders shut
+something old in the deep water with a black stone, and this spring the stone cracked, and
+the black thread soured the sprites, the owls and his sister Mossmother. He gave Tom a leaf
+from his crown and asked that none of them be killed. At the stone ring the sprites
+remembered the leaf and lowered their bows. In the yew-hall the owls let them by. Tom and
+Benedict came down the root-stair into the vault, both stronger for the day's work.

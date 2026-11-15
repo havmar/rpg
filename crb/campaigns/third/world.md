@@ -37,7 +37,7 @@ Its monster shows only once the pair has seen it (`seen`).
 | D1-2 | D1 Graveyard | 10 | corrupted | known | ? | ? |
 | A2-1 | A2 Underdark | 2 | evil | known | ? | ? |
 | A2-2 | A2 Underdark | 2 | corrupted | known | ? | ? |
-| B2-1 | B2 Forest | 1 | corrupted | known | ? | ? |
+| B2-1 | B2 Forest | 1 | corrupted | known | Treant | 9 |
 | B2-2 | B2 Forest | 8 | evil | known | ? | ? |
 | C2-1 | C2 City | 4 | good | known | ? | ? |
 | C2-2 | C2 City | 10 | good | known | ? | ? |

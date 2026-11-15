@@ -4,7 +4,7 @@ Campaign `third`, seed 23. The master is Back, Benedict is Front.
 
 ## Tom Yarrow — the master
 
-Orc Bard 1 (Lore at level 3). Background: Soldier. Back.
+Orc Bard 2 (Lore at level 3). Background: Soldier. Back.
 
 | STR | DEX | CON | INT | WIS | CHA |
 |---|---|---|---|---|---|
@@ -12,11 +12,12 @@ Orc Bard 1 (Lore at level 3). Background: Soldier. Back.
 
 Soldier increases: DEX +2, CON +1.
 
-- **HP** 10 (d8 + 2). **Hit Dice** 1d8. **AC** 14 (leather armour). **Speed** 9 m.
-- **Initiative** +3. **Proficiency bonus** +2. **Passive Perception** 13.
+- **HP** 17 (8 + 2, then 5 + 2). **Hit Dice** 2d8. **AC** 14 (leather armour). **Speed** 9 m.
+- **Initiative** +3. **Proficiency bonus** +2. **Passive Perception** 15.
 - **Saves:** DEX +5, CHA +4 (proficient); STR +0, CON +2, INT +0, WIS +1.
-- **Skills:** Athletics +2, Intimidation +4 (Soldier); Persuasion +4, Deception +4,
-  Perception +3 (Bard).
+- **Skills:** Athletics +2, Intimidation +4 (Soldier); Persuasion +6 (Expertise),
+  Deception +4, Perception +5 (Expertise) (Bard). Jack of All Trades: +1 to any other skill
+  check.
 - **Tools:** lute, flute, drum (Bard); dice set (Soldier).
 - **Armour:** light. **Weapons:** simple.
 - **Languages:** Common, Orc, Goblin.
@@ -37,15 +38,18 @@ Soldier increases: DEX +2, CON +1.
   Long Rest.
 - **Relentless Endurance** (Orc): once a Long Rest, drop to 1 HP instead of 0.
 - **Savage Attacker** (Origin feat).
+- **Expertise** (Bard 2): Persuasion, Perception.
+- **Jack of All Trades** (Bard 2): +1 to ability checks with skills he lacks.
 
-**Spellcasting** (CHA): spell save DC 12, spell attack +4. Slots: level 1 ×2.
+**Spellcasting** (CHA): spell save DC 12, spell attack +4. Slots: level 1 ×3.
 
 - Cantrips: *Vicious Mockery* (18 m, WIS save, 1d6 psychic and Disadvantage on its next
   attack), *Minor Illusion*.
 - Prepared (4): *Healing Word* (Bonus Action, 18 m, 2d4 + 2), *Dissonant Whispers* (18 m,
   WIS save, 3d6 psychic and it must use its Reaction to move away; half on a save),
   *Faerie Fire* (Concentration, 6 m cube, DEX save, Advantage on attacks against it),
-  *Charm Person*.
+  *Charm Person*, *Command* (18 m, WIS save, a one-word order: Approach, Drop, Flee,
+  Grovel or Halt).
 
 **Gear:** leather armour, 2 daggers, spear, shortbow, quiver with 20 arrows, lute, dice
 set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a token), entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
@@ -53,11 +57,11 @@ set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a to
 
 **Gold:** 26 GP 9 SP.
 
-**XP:** 200 / 300 for level 2.
+**XP:** 300 / 900 for level 3.
 
 ## Benedict — the butler
 
-Celestial Robot Paladin 1 (Devotion at level 3). Background (mechanics): Criminal. Front.
+Celestial Robot Paladin 2 (Devotion at level 3). Background (mechanics): Criminal. Front.
 
 | STR | DEX | CON | INT | WIS | CHA |
 |---|---|---|---|---|---|
@@ -65,8 +69,8 @@ Celestial Robot Paladin 1 (Devotion at level 3). Background (mechanics): Crimina
 
 Criminal increases: CON +2, DEX +1.
 
-- **HP** 12 (d10 + 2). **Hit Dice** 1d10. **AC** 19 (chain mail 16, shield +2, Integrated
-  Protection +1). **Speed** 9 m.
+- **HP** 20 (10 + 2, then 6 + 2). **Hit Dice** 2d10. **AC** 20 (chain mail 16, shield +2,
+  Integrated Protection +1, Defense +1). **Speed** 9 m.
 - **Initiative** +2 (Alert). **Proficiency bonus** +2. **Passive Perception** 10.
 - **Saves:** WIS +2, CHA +3 (proficient); STR +1, DEX +0, CON +2, INT −1.
 - **Skills:** Athletics +3, Insight +2 (Paladin); Sleight of Hand +2, Stealth +2 with
@@ -90,16 +94,21 @@ part of the body: an hour to don or doff, can't be removed against his will.
 
 **Features**
 
-- **Lay on Hands:** pool of 5 HP a Long Rest. Bonus Action, touch; 5 from the pool also
+- **Lay on Hands:** pool of 10 HP a Long Rest (5 × level). Bonus Action, touch; 5 from the pool also
   ends Poisoned.
 - **Weapon Mastery:** longsword (Sap), javelin (Slow).
 - **Alert** (Origin feat): + proficiency to Initiative; may swap Initiative with a willing
   ally.
+- **Fighting Style: Defense** (Paladin 2): +1 AC in armour.
+- **Paladin's Smite** (Paladin 2): *Divine Smite* always prepared; once a Long Rest without a
+  slot. *Divine Smite*: Bonus Action after a melee weapon hit, +2d8 radiant (+1d8 a slot
+  level above 1; +1d8 against Fiends and Undead).
 
 **Spellcasting** (CHA): spell save DC 11, spell attack +3. Slots: level 1 ×2.
 
-- Prepared (2): *Bless* (Concentration, up to three creatures add 1d4 to attacks and
-  saves), *Shield of Faith* (Bonus Action, Concentration, +2 AC to one creature, 10 min).
+- Prepared (3): *Bless* (Concentration, up to three creatures add 1d4 to attacks and
+  saves), *Shield of Faith* (Bonus Action, Concentration, +2 AC to one creature, 10 min),
+  *Cure Wounds* (touch, 2d8 + 1). Always prepared: *Divine Smite*.
 
 **Gear:** chain mail (built in), shield, longsword, 6 javelins, holy symbol (a gold sun
 set in the breastplate), 2 daggers, thieves' tools, crowbar, 2 pouches, priest's pack
@@ -108,7 +117,7 @@ traveller's clothes, and a butler's black coat over all of it.
 
 **Gold:** 25 GP.
 
-**XP:** 200 / 300 for level 2.
+**XP:** 300 / 900 for level 3.
 
 ## Magic items
 

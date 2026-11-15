@@ -289,7 +289,8 @@
     ]
    ],
    "total": 300,
-   "reaction": "reaction 2d6 [5+4]-2 = 7: wary: keeps its distance"
+   "reaction": "reaction 2d6 [5+4]-2 = 7: wary: keeps its distance",
+   "seen": true
   },
   "B2-2": {
    "hex": "B2",
