@@ -1,25 +1,27 @@
 # State
 
-**Day 4, afternoon.** On the moor road from Thornmoot into the Arctic (C1), about two hours
-short of Hvitmark. Late summer: cold wind and sleet, not extreme cold (that is on the ice,
-past Hvitmark: DC 10 CON save each hour or a level of Exhaustion without protection).
-Day encounter die 1: an Adult White Dragon (CR 13), Hrimgala, reaction 10, curious. Tom gave
-her 5 GP and sang her a song: Performance 4 (nat 1) against DC 12. The cold snapped a lute
-string and the rhyme went wrong. She kept the gold, unflattered, and still wants the gold
-sun (Benedict's holy symbol): no new reaction roll, but she is losing patience. A holy symbol
-costs 5 GP to replace; without one, Benedict can't cast Bless or Shield of Faith (material
-components). Waiting for the human.
+**Day 4, dusk.** Arctic (C1), Hvitmark, Ulfrun's town; the Hearth, a bunkhouse by the gate
+(1 SP a head, Tom paid for himself; Benedict stands). Day encounter die 1: Hrimgala (Adult
+White Dragon, CR 13), paid off with 5 GP and Benedict's gold sun: Low award, 200 XP.
+Leader: Grim Ulfrun Grey-Axe (Berserker, CR 2), tyrant. Not extreme cold in town; on the ice
+beyond it is (DC 10 CON save each hour or a level of Exhaustion; thick furs give Advantage,
+a bedroll or Resistance to Cold makes it automatic).
 
 ## The pair
 
 - **Tom Yarrow** (Bard 2): 17/17 HP, AC 14. Slots 3/3 (level 1). Bardic Inspiration 2/2.
-  Adrenaline Rush 2/2. Relentless Endurance ready. XP 650/900.
+  Adrenaline Rush 2/2. Relentless Endurance ready. Lute: top string broken (playable,
+  badly; new string in any town). XP 750/900.
 - **Benedict** (Paladin 2): 20/20 HP, AC 20. Slots 2/2 (level 1). Free Divine Smite ready.
-  Lay on Hands 10/10. Holy water used. XP 650/900.
+  Lay on Hands 10/10. No holy symbol: no Bless or Shield of Faith. XP 750/900.
 
 ## Open quest
 
-None. The Greenwell done (day 3): rooms talked round (Low ×2 at level 1, 200 XP), Mossmother
+Offered by Brann: his brother Eyvind and two others, a band that came back empty-handed,
+were turned out on the ice by Ulfrun this morning without furs. They're somewhere out on the
+ice north of town. Waiting for the human.
+
+Earlier: the Greenwell done (day 3): rooms talked round (Low ×2 at level 1, 200 XP), Mossmother
 talked past (Moderate at level 2, 300 XP), the stone sealed and the keepers cured (quest,
 High at level 2, 400 XP). Ruin B2-1 cleared.
 

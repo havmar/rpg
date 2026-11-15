@@ -41,3 +41,11 @@ poured his holy water into the crack and prayed, and the crack closed, and the b
 in the water thinned and was gone. The sprites' eyes cleared, and the owls', and last of all
 Mossmother's. She gave them a vial of frost-glass the builders had left in her keeping. That
 night in Thornmoot, Grandfather Ashenroot bowed to them, which nobody there had seen him do.
+
+## Day 4: the moor road and Hvitmark
+
+On the moor road into the Arctic a white dragon called Hrimgala came down out of the cloud
+and asked for Benedict's gold sun. Tom gave her gold and a song, and the cold broke his lute
+string on the second line, and she said it was a bad song and still wanted the sun. Benedict
+levered it out of his breastplate with a crowbar and gave it to her, and she flew off with
+it. They came into Hvitmark at dusk.

@@ -89,6 +89,28 @@ Benedict does not know any of this unless it has been seen or said in play.
   more of shine, or a song about her, keeps her friendly; refusing rudely risks a new
   reaction roll at −2.
 
+- **Hvitmark** (Arctic settlement): turf longhouses round a frozen mere, a palisade of
+  driftwood and whale ribs, Ulfrun's hall (Grimhall) on a mound at the north end. About 300
+  clansfolk, thin and quiet. Gate toll 1 SP; the Hearth bunkhouse 1 SP. Ulfrun's guard: four
+  sworn axes (Berserkers, CR 2) always in or at the hall; the young men are Warrior
+  Infantry. Ulfrun's law: a band that comes home empty-handed is turned out on the ice,
+  with its leader's family's furs taken. The town hates it and does nothing.
+  - Brann came home day 3 with 10 GP and the story told the other way round; Ulfrun took the
+    gold and let his band stay. Brann is grateful and ashamed: his story was a lie.
+  - Opposition: the clan elders (old Sigrid Ravnsdottir, a Priest, CR 2, keeper of the
+    clans' moot-law) remember that a chief can be unmade by the moot if a champion beats her
+    in a holmgang, a ring-duel, or if the moot votes her out with the axes standing aside.
+    Nobody has dared. This is the shape of the confrontation (CR 2: one quest).
+- **The outcasts on the ice** (open, level 2). Eyvind (Brann's younger brother, 16) and
+  two other boys, turned out this morning without furs. They've dug into a snow-hollow under
+  a pressure ridge, two hours north of Hvitmark on the ice. Three Ice Mephits (CR 1/2 each;
+  Moderate, 300 XP at level 2) have found them and circle, laughing, breathing frost on
+  them, waiting for them to die; evil, reaction roll when the pair arrives. The boys have
+  until about dawn tomorrow. Brann can't go: Ulfrun's axes watch his family. Bringing them
+  back into town openly defies Ulfrun's law; hiding them with Brann's mother, or taking them
+  south to the City or Thornmoot, doesn't. Award: High. Effect: the clans see strangers do
+  what they wouldn't, and Sigrid wants to meet the orc.
+
 ## People met
 
 - **Piet Hollin**, miller from north of the wall; wants his mill back and his daughter
@@ -105,3 +127,6 @@ Benedict does not know any of this unless it has been seen or said in play.
 - **Mossmother**, Ashenroot's sister, keeper of the Greenwell (Treant, CR 9), cured; wants
   the stone left shut, and owes the pair her life.
 - **Pip**, the sprite who lowered her bow first; keeps the ring again.
+- **Hrimgala**, the white dragon of the moor (Adult White Dragon, CR 13); has Benedict's gold
+  sun and five of Tom's gold; thinks the song was bad. Wants shiny things.
+- **Eyvind**, Brann's brother, 16, on the ice with two friends.
