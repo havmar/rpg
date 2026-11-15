@@ -55,7 +55,7 @@ Soldier increases: DEX +2, CON +1.
 set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a token), entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
 5 days' rations, waterskin, disguise kit), traveller's clothes.
 
-**Gold:** 21 GP 9 SP.
+**Gold:** 21 GP 6 SP.
 
 **XP:** 750 / 900 for level 3.
 

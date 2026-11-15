@@ -1,7 +1,7 @@
 # State
 
 **Day 4, dusk.** Arctic (C1), Hvitmark, Ulfrun's town; the Hearth, a bunkhouse by the gate
-(1 SP a head, Tom paid for himself; Benedict stands). Day encounter die 1: Hrimgala (Adult
+(gate toll 1 SP a head and a bunk 1 SP; Tom paid 3 SP). Day encounter die 1: Hrimgala (Adult
 White Dragon, CR 13), paid off with 5 GP and Benedict's gold sun: Low award, 200 XP.
 Leader: Grim Ulfrun Grey-Axe (Berserker, CR 2), tyrant. Not extreme cold in town; on the ice
 beyond it is (DC 10 CON save each hour or a level of Exhaustion; thick furs give Advantage,
