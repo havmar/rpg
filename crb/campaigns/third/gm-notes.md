@@ -56,11 +56,18 @@ Benedict does not know any of this unless it has been seen or said in play.
   her keepers. Rooms: (1) the stone ring, 3 Sprites, hostile (5): they shoot at anyone who
   comes in; (2) the yew-hall above the vault, 3 Giant Owls, hostile (4): drive off, attack
   if pressed. Mossmother in the vault by the spring, wary (7): keeps her distance, holds the
-  item. All corrupted: can be cured as well as killed (the cause is the GM's: something
-  dropped into the spring by the builders' last keeper, a cracked black stone; lift it out
-  and purify the well, e.g. with holy water or Benedict's prayer, and the keepers come
-  right). Thornmoot says: "the Greenwell's gone sour; the sprites shoot at folk; nobody's
-  seen Mossmother since spring." Ashenroot would be grateful (quest award on top).
+  item. All corrupted: can be cured as well as killed. The cause: the builders set a black
+  seal-stone in the spring to hold down something bad in the deep water; it cracked this
+  spring and the black thread leaks from the crack. Cure: lift the cracked stone out of the
+  spring and purify the water (Benedict's flask of holy water poured in with a prayer; or
+  any Remove Curse / Lesser Restoration-type magic later). Then the black thread fades within
+  the hour and the keepers come right: sprites and owls at once, Mossmother by morning. The
+  stone itself is cold, heavy (20 kg), and should go somewhere far from water. Ashenroot
+  can't go near: the black water rises into his roots. He has told the pair the old story
+  of the stone, that his sister and her keepers are in there, and asked that none be
+  killed if it can be helped. He gave Tom an oak leaf from his crown: shown to the keepers,
+  it gives Advantage on Persuasion with them (not a new reaction roll). Award on top: High,
+  plus his thanks and the Forest's friendship.
 - **A young green dragon** (CR 8) watches the road from the City; met day 2, wary. Lives in
   the Forest; it noticed the pair. Name unknown.
 

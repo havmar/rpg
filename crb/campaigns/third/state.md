@@ -1,8 +1,8 @@
 # State
 
-**Day 2, dusk.** Forest (B2), Thornmoot, the Long Barn (5 SP, Tom paid). Day encounter
-die 2: a young green dragon on the road, wary, kept its distance, gone. Leader: Grandfather
-Ashenroot (Treant, CR 9), ruler.
+**Day 2, night.** Forest (B2), Thornmoot. Spoke with Grandfather Ashenroot at the clearing's
+edge. Bed at the Long Barn (paid). Day encounter die 2: a young green dragon on the road,
+wary, gone.
 
 ## The pair
 
@@ -13,9 +13,13 @@ Ashenroot (Treant, CR 9), ruler.
 
 ## Open quest
 
-Offered: the Greenwell (ruin B2-1, level 1, corrupted), half a day north. Thornmoot says its
-sprites shoot at folk and its keeper Mossmother hasn't been seen since spring. Waiting for
-the human.
+The Greenwell (ruin B2-1, level 1, corrupted), half a day north, taken up for the morning.
+Ashenroot's story: the builders set a black stone in the spring to hold down something in
+the deep water; the black thread means it has cracked. His sister Mossmother (a treant, by
+report: not seen) and her keepers (sprites in the ring, giant owls in the yew-hall) are in
+there gone wrong. He asks that none be killed if it can be helped. Tom carries an oak leaf
+from Ashenroot's crown: shown to the keepers, Advantage on Persuasion with them. Benedict
+carries a flask of holy water (priest's pack). Waiting for the human: how to go in.
 
 ## Dungeon in progress
 
