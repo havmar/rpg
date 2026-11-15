@@ -49,3 +49,15 @@ and asked for Benedict's gold sun. Tom gave her gold and a song, and the cold br
 string on the second line, and she said it was a bad song and still wanted the sun. Benedict
 levered it out of his breastplate with a crowbar and gave it to her, and she flew off with
 it. They came into Hvitmark at dusk.
+
+## Day 4, night: the boys on the ice
+
+Brann's younger brother Eyvind and two other boys had come home empty-handed, and Ulfrun
+had their furs taken and walked them out onto the ice. Tom and Benedict bought bearskins
+and went after them in the dark. Two hours out they found the boys dug in under a pressure
+ridge, with three ice mephits taking turns to breathe frost into the hole. Benedict walked
+into the mouth of the hollow and cut the first in half with one stroke. Tom drove another
+off with a whispered curse, and it came back in a fog with its friend and clawed him nearly
+to the ground. Benedict laid hands on him and killed the second, and the third fled. They
+brought the boys back across the ice wrapped in furs, and both of them were the stronger
+for it.

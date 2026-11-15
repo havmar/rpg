@@ -101,6 +101,11 @@ Benedict does not know any of this unless it has been seen or said in play.
     clans' moot-law) remember that a chief can be unmade by the moot if a champion beats her
     in a holmgang, a ring-duel, or if the moot votes her out with the axes standing aside.
     Nobody has dared. This is the shape of the confrontation (CR 2: one quest).
+- **The outcasts on the ice, day 4 night:** mephits beaten (2 dead, 1 fled). Boys alive.
+  Back at Hvitmark past midnight; two sworn axes watch Brann's mother's house. The Hearth's
+  keeper, old Ketil, lost his own son to the ice last winter and hates Ulfrun: he would
+  hide them in the Hearth's peat store if asked (the pair doesn't know this). Sigrid
+  Ravnsdottir's house is by the moot-stone at the west end of town, unwatched.
 - **The outcasts on the ice** (open, level 2). Eyvind (Brann's younger brother, 16) and
   two other boys, turned out this morning without furs. They've dug into a snow-hollow under
   a pressure ridge, two hours north of Hvitmark on the ice. Three Ice Mephits (CR 1/2 each;

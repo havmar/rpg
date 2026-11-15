@@ -4,7 +4,7 @@ Campaign `third`, seed 23. The master is Back, Benedict is Front.
 
 ## Tom Yarrow — the master
 
-Orc Bard 2 (Lore at level 3). Background: Soldier. Back.
+Orc Bard 3 (College of Lore). Background: Soldier. Back.
 
 | STR | DEX | CON | INT | WIS | CHA |
 |---|---|---|---|---|---|
@@ -12,12 +12,12 @@ Orc Bard 2 (Lore at level 3). Background: Soldier. Back.
 
 Soldier increases: DEX +2, CON +1.
 
-- **HP** 17 (8 + 2, then 5 + 2). **Hit Dice** 2d8. **AC** 14 (leather armour). **Speed** 9 m.
+- **HP** 24 (8 + 2, then 5 + 2 a level). **Hit Dice** 3d8. **AC** 14 (leather armour). **Speed** 9 m.
 - **Initiative** +3. **Proficiency bonus** +2. **Passive Perception** 15.
 - **Saves:** DEX +5, CHA +4 (proficient); STR +0, CON +2, INT +0, WIS +1.
 - **Skills:** Athletics +2, Intimidation +4 (Soldier); Persuasion +6 (Expertise),
-  Deception +4, Perception +5 (Expertise) (Bard). Jack of All Trades: +1 to any other skill
-  check.
+  Deception +4, Perception +5 (Expertise) (Bard); Insight +3, Performance +4, Stealth +5
+  (Lore). Jack of All Trades: +1 to any other skill check.
 - **Tools:** lute, flute, drum (Bard); dice set (Soldier).
 - **Armour:** light. **Weapons:** simple.
 - **Languages:** Common, Orc, Goblin.
@@ -40,8 +40,11 @@ Soldier increases: DEX +2, CON +1.
 - **Savage Attacker** (Origin feat).
 - **Expertise** (Bard 2): Persuasion, Perception.
 - **Jack of All Trades** (Bard 2): +1 to ability checks with skills he lacks.
+- **Cutting Words** (Lore 3): Reaction, 18 m: when a creature he can see makes a damage roll
+  or succeeds on an attack roll or ability check, spend a Bardic Inspiration and subtract the
+  die from its roll.
 
-**Spellcasting** (CHA): spell save DC 12, spell attack +4. Slots: level 1 ×3.
+**Spellcasting** (CHA): spell save DC 12, spell attack +4. Slots: level 1 ×4, level 2 ×2.
 
 - Cantrips: *Vicious Mockery* (18 m, WIS save, 1d6 psychic and Disadvantage on its next
   attack), *Minor Illusion*.
@@ -49,7 +52,8 @@ Soldier increases: DEX +2, CON +1.
   WIS save, 3d6 psychic and it must use its Reaction to move away; half on a save),
   *Faerie Fire* (Concentration, 6 m cube, DEX save, Advantage on attacks against it),
   *Charm Person*, *Command* (18 m, WIS save, a one-word order: Approach, Drop, Flee,
-  Grovel or Halt).
+  Grovel or Halt), *Hold Person* (level 2, Concentration, 18 m, one Humanoid, WIS save or
+  Paralyzed; it repeats the save at the end of each of its turns).
 
 **Gear:** leather armour, 2 daggers, spear, shortbow, quiver with 20 arrows, lute, dice
 set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a token), a heavy fur cloak (Advantage on saves against extreme cold), a flask of lamp oil, entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
@@ -57,11 +61,11 @@ set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a to
 
 **Gold:** 19 GP 5 SP.
 
-**XP:** 750 / 900 for level 3.
+**XP:** 900 / 2700 for level 4.
 
 ## Benedict — the butler
 
-Celestial Robot Paladin 2 (Devotion at level 3). Background (mechanics): Criminal. Front.
+Celestial Robot Paladin 3 (Oath of Devotion). Background (mechanics): Criminal. Front.
 
 | STR | DEX | CON | INT | WIS | CHA |
 |---|---|---|---|---|---|
@@ -69,7 +73,7 @@ Celestial Robot Paladin 2 (Devotion at level 3). Background (mechanics): Crimina
 
 Criminal increases: CON +2, DEX +1.
 
-- **HP** 20 (10 + 2, then 6 + 2). **Hit Dice** 2d10. **AC** 20 (chain mail 16, shield +2,
+- **HP** 28 (10 + 2, then 6 + 2 a level). **Hit Dice** 3d10. **AC** 20 (chain mail 16, shield +2,
   Integrated Protection +1, Defense +1). **Speed** 9 m.
 - **Initiative** +2 (Alert). **Proficiency bonus** +2. **Passive Perception** 10.
 - **Saves:** WIS +2, CHA +3 (proficient); STR +1, DEX +0, CON +2, INT −1.
@@ -94,7 +98,7 @@ part of the body: an hour to don or doff, can't be removed against his will.
 
 **Features**
 
-- **Lay on Hands:** pool of 10 HP a Long Rest (5 × level). Bonus Action, touch; 5 from the pool also
+- **Lay on Hands:** pool of 15 HP a Long Rest (5 × level). Bonus Action, touch; 5 from the pool also
   ends Poisoned.
 - **Weapon Mastery:** longsword (Sap), javelin (Slow).
 - **Alert** (Origin feat): + proficiency to Initiative; may swap Initiative with a willing
@@ -103,14 +107,21 @@ part of the body: an hour to don or doff, can't be removed against his will.
 - **Paladin's Smite** (Paladin 2): *Divine Smite* always prepared; once a Long Rest without a
   slot. *Divine Smite*: Bonus Action after a melee weapon hit, +2d8 radiant (+1d8 a slot
   level above 1; +1d8 against Fiends and Undead).
+- **Channel Divinity** (Paladin 3): 2 uses; one back on a Short Rest, all on a Long Rest.
+  - *Divine Sense*: Bonus Action, 10 minutes: knows where Celestials, Fiends and Undead are
+    within 18 m, and consecrated or desecrated places.
+  - *Sacred Weapon* (Devotion): when he takes the Attack action, for 10 minutes his sword
+    adds +1 (CHA) to attack rolls, can deal Radiant damage, and sheds bright light 6 m.
 
-**Spellcasting** (CHA): spell save DC 11, spell attack +3. Slots: level 1 ×2.
+**Spellcasting** (CHA): spell save DC 11, spell attack +3. Slots: level 1 ×3.
 
 - **No holy symbol** since day 4: *Bless* and *Shield of Faith* can't be cast until he has
   one (5 GP).
-- Prepared (3): *Bless* (Concentration, up to three creatures add 1d4 to attacks and
-  saves), *Shield of Faith* (Bonus Action, Concentration, +2 AC to one creature, 10 min),
-  *Cure Wounds* (touch, 2d8 + 1). Always prepared: *Divine Smite*.
+- Prepared (4): *Bless* (Concentration, up to three creatures add 1d4 to attacks and
+  saves), *Cure Wounds* (touch, 2d8 + 1), *Heroism* (Concentration, touch: immune to
+  Frightened and 1 temporary HP each turn), *Command*.
+- Always prepared: *Divine Smite*; Oath of Devotion: *Protection from Evil and Good*,
+  *Shield of Faith* (Bonus Action, Concentration, +2 AC to one creature, 10 min).
 
 **Gear:** chain mail (built in), shield, longsword, 6 javelins, (holy symbol gone: the gold sun went to Hrimgala on day 4; he needs a new one, 5 GP), a heavy fur cloak (Advantage on saves against extreme cold), 2 daggers, thieves' tools, crowbar, 2 pouches, priest's pack
 (backpack, blanket, holy water, lamp, 7 days' rations he does not eat, robe, tinderbox),
@@ -118,7 +129,7 @@ traveller's clothes, and a butler's black coat over all of it.
 
 **Gold:** 23 GP.
 
-**XP:** 750 / 900 for level 3.
+**XP:** 900 / 2700 for level 4.
 
 ## Magic items
 
