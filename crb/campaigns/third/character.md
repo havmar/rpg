@@ -59,9 +59,9 @@ Soldier increases: DEX +2, CON +1.
 set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a token), a heavy fur cloak (Advantage on saves against extreme cold), a flask of lamp oil, entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
 5 days' rations, waterskin, disguise kit), traveller's clothes.
 
-**Gold:** 18 GP 5 SP.
+**Gold:** 26 GP 5 SP.
 
-**XP:** 1300 / 2700 for level 4.
+**XP:** 1675 / 2700 for level 4.
 
 ## Benedict — the butler
 
@@ -127,11 +127,14 @@ part of the body: an hour to don or doff, can't be removed against his will.
 (backpack, blanket, holy water, lamp, 7 days' rations he does not eat, robe, tinderbox),
 traveller's clothes, and a butler's black coat over all of it.
 
-**Gold:** 23 GP.
+**Gold:** 31 GP.
 
-**XP:** 1300 / 2700 for level 4.
+**XP:** 1675 / 2700 for level 4.
 
 ## Magic items
 
 - **Potion of Resistance (cold)**, uncommon, consumable: drink for Resistance to Cold damage
   for 1 hour. From Mossmother at the Greenwell. Carried by Tom.
+- **Potion of Climbing**, common, consumable: for 1 hour, a Climb Speed equal to Speed and
+  Advantage on Strength (Athletics) checks to climb. From the white wyrmling's cave. Carried
+  by Tom.

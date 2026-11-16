@@ -162,3 +162,4 @@ Benedict does not know any of this unless it has been seen or said in play.
 - **Ketil**, keeper of the Hearth by the gate; lost his son to the ice last winter; hides
   the three boys; wants Ulfrun gone and would say so to the moot if others did first.
 - **Orm**, the smallest of the three boys, about 13; slept on Benedict's chest.
+- **Gunnhild**, Hvitmark's smith, Ketil's sister; will make Benedict a sun amulet for 5 GP.

@@ -66,3 +66,14 @@ Brann's mother's door. So they took them to the Hearth by the gate, past the gat
 without a sound, and asked old Ketil the keeper to hide them. His own son had walked out
 onto the ice last winter and not come back. He put the boys in his peat store and wouldn't
 take money for it, except one gold for the peat.
+
+## Day 6: the wyrmling on the shore
+
+Two of Ulfrun's axes came to the Hearth to tell them the road south was open, and Benedict
+thanked them. Then Ketil sent them after the young white dragon that had been taking the
+town's goats. They found its cave on the frozen shore with three ice mephits perched over
+it, one of them the runaway from the ice. Tom's first arrow woke the dragon, and its breath
+and the mephits' frost took Benedict half to pieces. Then a mephit's claw found the gap in
+his armour and he went down on the shingle. Tom brought him up with a word, and Benedict
+got to his feet and killed the dragon with his next stroke. The last of the mephits fled.
+In the cave were sixteen gold pieces and a little bottle that smelled of moss.
