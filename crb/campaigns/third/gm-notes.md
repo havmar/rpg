@@ -101,6 +101,29 @@ Benedict does not know any of this unless it has been seen or said in play.
     clans' moot-law) remember that a chief can be unmade by the moot if a champion beats her
     in a holmgang, a ring-duel, or if the moot votes her out with the axes standing aside.
     Nobody has dared. This is the shape of the confrontation (CR 2: one quest).
+  - **The confrontation, as Sigrid lays it out (day 5).** Sigrid can call the moot: heralds
+    to the seven clan steadings, the thanes at the moot-stone on the third day (day 8, at
+    noon). At the moot anyone of the clans may name a grievance against the chief; Ulfrun
+    will answer any grievance with holmgang, as she did when she took the chief's seat. A
+    foreigner may stand champion for a clansman. Ketil will name Halvar's death if Benedict
+    stands for him. Holmgang: in the hazel ring by the moot-stone, champion against chief,
+    until one yields, dies or leaves the ring. No spell may be cast into the ring from
+    outside it ("no witchcraft over the hazel"); what a fighter does with his own body and
+    his own prayers is his. A blessing given before he steps in stays with him (Bardic
+    Inspiration given beforehand, Heroism cast beforehand: allowed). If the champion wins,
+    the moot unmakes the chief, and Sigrid names a new one by the thanes' vote (likely
+    Brann's uncle, Thane Ragnvald, a fair man).
+  - **Tom's part:** speak to the moot before the duel. Persuasion DC 15 (Advantage if the
+    three boys stand up in front of the thanes). On a success the thanes swear the axes to
+    stand aside: the fight is fair, and if Ulfrun is beaten her sworn axes yield (the edge,
+    since there are no earlier quests: this is GM judgement inside the confrontation). On a
+    failure, one sworn axe steps in when Ulfrun is Bloodied, and the thanes do nothing.
+  - **Ulfrun's response before the moot:** she hears of it on day 6 and sends two axes to
+    find "the orc and the metal man" and warn them off (talk, threats; not murder in town,
+    which would turn the moot against her). She doesn't know where the boys are.
+  - Benedict's odds alone: Berserker CR 2 against a level 3 paladin, a hard, close fight.
+    If Benedict dies, he's rebuilt (new class) and the confrontation is lost for now; the
+    holmgang can't be repeated until a new grievance is named (a month).
 - **The outcasts on the ice, day 4 night:** mephits beaten (2 dead, 1 fled). Boys alive.
   Back at Hvitmark past midnight; two sworn axes watch Brann's mother's house. The Hearth's
   keeper, old Ketil, lost his own son to the ice last winter and hates Ulfrun: he would

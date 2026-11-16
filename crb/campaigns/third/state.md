@@ -1,8 +1,6 @@
 # State
 
-**Day 5, mid-morning.** Arctic (C1), Hvitmark, the Hearth. Long Rest taken (Tom slept from
-about the second hour to the tenth). Back into town unseen (group Stealth: all beat the
-gate's passive 10).
+**Day 5, about noon.** Arctic (C1), Hvitmark, Sigrid Ravnsdottir's house by the moot-stone.
 
 ## The pair
 
@@ -15,13 +13,15 @@ gate's passive 10).
 
 ## Open quest
 
-None. The outcasts on the ice done (day 4–5): the boys hidden in the Hearth's peat store by
-old Ketil. Quest finished: High at level 3, 800 XP, 400 each (on top of the mephits' 300).
+Offered by Sigrid: depose Grim Ulfrun by the old law. Sigrid calls the moot (the thanes at
+the moot-stone at noon on day 8); Ketil names his son's death as a grievance; Ulfrun will
+answer with holmgang; Benedict stands as Ketil's champion in the hazel ring, one against
+one, until one yields, dies or leaves the ring. No spells cast into the ring from outside;
+blessings given before stepping in are allowed. Tom speaks to the moot first. Waiting for
+the human: agree, and who fights.
 
-Heard from Ketil (report): Sigrid Ravnsdottir, the clans' law-keeper, lives by the
-moot-stone at the west end of town; there is a way in the old law to unmake a chief.
-Grim Ulfrun keeps four sworn axes. The next first of the month (the Lord-Captain's ride in
-the City) is day 13, eight days off; the City is one day south-east over the moor.
+The outcasts on the ice done (day 4–5): High, 800 XP. The next first of the month (the
+Lord-Captain's ride in the City, one day south-east) is day 13.
 
 ## Dungeon in progress
 
