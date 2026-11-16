@@ -187,3 +187,24 @@ Benedict does not know any of this unless it has been seen or said in play.
   Weapon on his first attack; smite with the free use and both remaining slots as hits
   land, Lay on Hands when he is low; steps out of the ring if he is close to falling and
   she is not near done.
+
+## Day 8: the moot and the holmgang (done)
+
+- Tom's speech with the three boys standing behind him: Persuasion 24 against DC 15
+  (Advantage). The thanes swore the sworn axes to stand aside; they did, and yielded.
+- Holmgang, Benedict first (initiative 19 against 18). Bardic Inspiration and Shield of
+  Faith before the hazel (AC 22). R1: miss 11, Inspiration +4 makes 15, hit 9 + free
+  smite 11 (Ulfrun 47). Ulfrun 13 with Disadvantage, miss. R2: hit 23, 3 + smite 13
+  (Ulfrun 31, Bloodied); morale 19 with Advantage, holds; her swing (Sap and Frenzy
+  cancel) natural 1. R3: Benedict misses 10; her 8 with Advantage misses. R4: natural 20,
+  crit 9 + smite 22 = 31: Ulfrun to 0. Benedict knocked her out rather than kill her
+  (Devotion). Benedict untouched, 28/28 HP.
+- Deposed (`quest` run). The moot unmade her; thanes elected Thane Ragnvald, Brann's uncle,
+  chief. Ragnvald's first acts: no band turned out on the ice again; the boys go home.
+  Ulfrun's chest goes back to the families whose furs she took; from it Ragnvald gave the
+  champion's side a pair of sealskin boots with white goose-feather wings (Winged Boots),
+  which Ulfrun took off a southern trader years ago.
+- **Open:** by moot-law an unmade chief's life is the champion's to give or take. Sigrid
+  asks what is to be done with Ulfrun. Benedict recommends banishment with her furs and
+  her axe: out of the clans' lands by the next new moon, never to return.
+- Arctic now ruled by Ragnvald (fair). The raids on the City's northern farms stop.

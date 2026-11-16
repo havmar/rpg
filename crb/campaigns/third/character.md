@@ -61,7 +61,7 @@ set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a to
 
 **Gold:** 26 GP 4 SP.
 
-**XP:** 1675 / 2700 for level 4.
+**XP:** 2300 / 2700 for level 4.
 
 ## Benedict — the butler
 
@@ -128,7 +128,7 @@ traveller's clothes, and a butler's black coat over all of it.
 
 **Gold:** 26 GP.
 
-**XP:** 1675 / 2700 for level 4.
+**XP:** 2300 / 2700 for level 4.
 
 ## Magic items
 
@@ -137,3 +137,6 @@ traveller's clothes, and a butler's black coat over all of it.
 - **Potion of Climbing**, common, consumable: for 1 hour, a Climb Speed equal to Speed and
   Advantage on Strength (Athletics) checks to climb. From the white wyrmling's cave. Carried
   by Tom.
+- **Winged Boots**, uncommon, attunement: 4 charges, regain 1d4 at dawn; Magic action, 1
+  charge: Fly Speed 9 m for 1 hour (descends 9 m a round when it ends). From Grimhall, given
+  by Thane Ragnvald after the holmgang (day 8). Carried by Tom, not yet attuned.

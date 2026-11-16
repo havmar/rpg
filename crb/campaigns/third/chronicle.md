@@ -77,3 +77,17 @@ and the mephits' frost took Benedict half to pieces. Then a mephit's claw found 
 his armour and he went down on the shingle. Tom brought him up with a word, and Benedict
 got to his feet and killed the dragon with his next stroke. The last of the mephits fled.
 In the cave were sixteen gold pieces and a little bottle that smelled of moss.
+
+## Days 7–8: the moot and the holmgang
+
+Gunnhild the smith hammered Benedict a new sun out of a gold coin, and Ketil's girl strung
+Tom's lute with reindeer sinew. At noon on the eighth day the seven thanes met at the
+moot-stone. Tom spoke with Eyvind, Orm and Kolli standing behind him, three boys who should
+have been bones on the ice, and when he finished the thanes swore that Ulfrun's sworn axes
+would stand aside. Ketil named his son's death, Ulfrun answered with holmgang, and Benedict
+stepped into the hazel ring as Ketil's champion. Her first blow went wide and his first cut
+went home with light behind it. She bled and laughed and came on, and missed, and missed
+again. On the fourth exchange his sword found her under the arm, the light went off like a
+struck bell, and she went down in the snow and didn't get up. He had turned the edge at the
+last moment. The moot unmade her and the thanes chose Ragnvald, and nobody was sent out onto
+the ice that night.

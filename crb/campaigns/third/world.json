@@ -32,8 +32,8 @@
    "block": "Berserker",
    "cr": "2",
    "quests": 1,
-   "done": 0,
-   "deposed": false,
+   "done": 1,
+   "deposed": true,
    "hidden_found": 0
   },
   "D1": {

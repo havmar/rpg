@@ -6,7 +6,7 @@ Written by `crb.py`; don't edit. The butler knows all of this.
 |---|---|---|---|---|---|
 | A1 | Heaven | good | Gold Dragon Wyrmling | 3 | **tyrant** |
 | B1 | Mountain | good | Giant Eagle | 1 | ruler |
-| C1 | Arctic | evil | Berserker | 2 | **tyrant** |
+| C1 | Arctic | evil | Berserker | 2 | deposed |
 | D1 | Graveyard | evil | Wraith | 5 | ruler |
 | A2 | Underdark | good | Behir | 11 | **tyrant** |
 | B2 | Forest | good | Treant | 9 | ruler |
