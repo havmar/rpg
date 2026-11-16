@@ -163,3 +163,27 @@ Benedict does not know any of this unless it has been seen or said in play.
   the three boys; wants Ulfrun gone and would say so to the moot if others did first.
 - **Orm**, the smallest of the three boys, about 13; slept on Benedict's chest.
 - **Gunnhild**, Hvitmark's smith, Ketil's sister; will make Benedict a sun amulet for 5 GP.
+
+## Day 7: the eve of the moot
+
+- Long Rest night 6; day 7 in town. Gunnhild hammered Benedict a sun amulet (5 GP).
+  Ketil's girl Asa found Tom a sinew string for the lute (1 SP).
+- Sigrid's word: all seven thanes have answered the heralds. **Moot-peace** from dawn to
+  dusk at the moot-stone: no blade drawn there outside the ring. The boys are safe at the
+  moot itself; if Ulfrun is still chief at dusk, they are outlaws again and seen.
+- Brann came to the peat store at dark to see Eyvind. His report (true) of how Ulfrun took
+  the chief's seat: two-handed axe, takes blows to give them; when she bleeds she laughs
+  and gets faster and harder to stop (Bloodied Frenzy). Eyvind wants to stand up at the
+  moot; Orm is frightened but will if Eyvind does; the third boy, Kolli, says nothing.
+- **Rulings for the holmgang:** Shield of Faith, Bless or Heroism cast by Benedict on
+  himself before he steps in: allowed (his own prayer, given beforehand). Lay on Hands,
+  Cure Wounds and Divine Smite inside the ring: his own body and prayers, allowed. Tom's
+  Cutting Words from outside: witchcraft over the hazel, not allowed. Bardic Inspiration
+  given before he steps in: allowed. A fighter may yield by stepping out of the ring;
+  Ulfrun is proud and checks morale only when Bloodied (WIS save DC 10, with Advantage from
+  Bloodied Frenzy), and on a failure she yields rather than die before the clans.
+- **Benedict's plan:** boys stand up behind Tom; Tom gives him Inspiration before he steps
+  in; Shield of Faith on himself before he steps in (AC 22); sword and shield, Sacred
+  Weapon on his first attack; smite with the free use and both remaining slots as hits
+  land, Lay on Hands when he is low; steps out of the ring if he is close to falling and
+  she is not near done.

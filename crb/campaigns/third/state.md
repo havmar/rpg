@@ -1,26 +1,22 @@
 # State
 
-**Day 6, evening.** Arctic (C1), Hvitmark, the Hearth. Back from the wyrmling's cave (the
-day's encounter die was spent on the hunt). Long Rest tonight.
+**Day 7, evening.** Arctic (C1), Hvitmark, the Hearth. A day in town (no encounter die).
+Long Rest last night: all restored. Tomorrow at noon, the moot.
 
 ## The pair
 
-- **Tom Yarrow** (Bard 3, Lore): 21/24 HP, AC 14. Slots L1 1/4, L2 2/2. Bardic Inspiration
-  0/2. Adrenaline Rush 2/2. Relentless Endurance ready. XP 1675/2700.
-- **Benedict** (Paladin 3, Devotion): 4/28 HP, AC 20. Slots L1 1/3. Free Divine Smite
-  used. Lay on Hands 0/15. Channel Divinity 1/2. No holy symbol. XP 1675/2700.
-(All restored by tonight's Long Rest.)
+- **Tom Yarrow** (Bard 3, Lore): 24/24 HP, AC 14. Slots L1 4/4, L2 2/2. Bardic Inspiration
+  2/2. Adrenaline Rush 2/2. Relentless Endurance ready. XP 1675/2700. Lute mended.
+- **Benedict** (Paladin 3, Devotion): 28/28 HP, AC 20. Slots L1 3/3. Free Divine Smite
+  ready. Lay on Hands 15/15. Channel Divinity 2/2. New sun amulet (holy symbol): Bless and
+  Shield of Faith castable again. XP 1675/2700.
 
 ## Open quest
 
 The moot and the holmgang, day 8 at noon: Benedict as Ketil's champion against Grim
-Ulfrun. Tom speaks to the moot first, with the three boys. Day 7 free: the town smith,
-Gunnhild, can hammer a sun amulet from a gold coin, a holy symbol for 5 GP (ready by
-evening).
-
-The wyrmling hunt done (day 6): Wyrmling (450) and one Ice Mephit (100) killed, two Ice
-Mephits driven off (200): 750 XP, 375 each. Hoard: 16 GP (8 each) and a Potion of
-Climbing. Ketil and the herd-children are grateful.
+Ulfrun. Tom speaks to the moot first (Persuasion DC 15; Advantage if the three boys stand
+up). Moot-peace from dawn to dusk at the moot-stone. Benedict's plan proposed (see
+`gm-notes.md`, day 7); waiting on the human: do the boys stand up, and does the plan go.
 
 ## Dungeon in progress
 

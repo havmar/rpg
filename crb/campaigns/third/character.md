@@ -55,11 +55,11 @@ Soldier increases: DEX +2, CON +1.
   Grovel or Halt), *Hold Person* (level 2, Concentration, 18 m, one Humanoid, WIS save or
   Paralyzed; it repeats the save at the end of each of its turns).
 
-**Gear:** leather armour, 2 daggers, spear, shortbow, quiver with 20 arrows, lute, dice
+**Gear:** leather armour, 2 daggers, spear, shortbow, quiver with 20 arrows, lute (top string replaced with sinew, day 7), dice
 set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a token), a heavy fur cloak (Advantage on saves against extreme cold), a flask of lamp oil, entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
 5 days' rations, waterskin, disguise kit), traveller's clothes.
 
-**Gold:** 26 GP 5 SP.
+**Gold:** 26 GP 4 SP.
 
 **XP:** 1675 / 2700 for level 4.
 
@@ -115,19 +115,18 @@ part of the body: an hour to don or doff, can't be removed against his will.
 
 **Spellcasting** (CHA): spell save DC 11, spell attack +3. Slots: level 1 ×3.
 
-- **No holy symbol** since day 4: *Bless* and *Shield of Faith* can't be cast until he has
-  one (5 GP).
+- **Holy symbol:** a sun amulet hammered from a gold coin by Gunnhild of Hvitmark (day 7).
 - Prepared (4): *Bless* (Concentration, up to three creatures add 1d4 to attacks and
   saves), *Cure Wounds* (touch, 2d8 + 1), *Heroism* (Concentration, touch: immune to
   Frightened and 1 temporary HP each turn), *Command*.
 - Always prepared: *Divine Smite*; Oath of Devotion: *Protection from Evil and Good*,
   *Shield of Faith* (Bonus Action, Concentration, +2 AC to one creature, 10 min).
 
-**Gear:** chain mail (built in), shield, longsword, 6 javelins, (holy symbol gone: the gold sun went to Hrimgala on day 4; he needs a new one, 5 GP), a heavy fur cloak (Advantage on saves against extreme cold), 2 daggers, thieves' tools, crowbar, 2 pouches, priest's pack
-(backpack, blanket, holy water, lamp, 7 days' rations he does not eat, robe, tinderbox),
+**Gear:** chain mail (built in), shield, longsword, 6 javelins, a sun amulet (holy symbol, from Gunnhild, day 7; the old gold sun went to Hrimgala), a heavy fur cloak (Advantage on saves against extreme cold), 2 daggers, thieves' tools, crowbar, 2 pouches, priest's pack
+(backpack, blanket, lamp (holy water poured into the Greenwell, day 3), 7 days' rations he does not eat, robe, tinderbox),
 traveller's clothes, and a butler's black coat over all of it.
 
-**Gold:** 31 GP.
+**Gold:** 26 GP.
 
 **XP:** 1675 / 2700 for level 4.
 
