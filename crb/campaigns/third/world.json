@@ -227,7 +227,35 @@
    "level": 1,
    "nature": "evil",
    "monster": "Remorhaz",
-   "state": "known"
+   "state": "known",
+   "reactions": [
+    "reaction 2d6 [5+2]-2 = 5: hostile: threatens, drives the pair off, attacks if pressed",
+    "reaction 2d6 [6+4]-2 = 8: wary: keeps its distance",
+    "reaction 2d6 [2+1]-2 = 1: attacks"
+   ],
+   "rooms": [
+    [
+     [
+      "Ice Mephit",
+      1
+     ]
+    ],
+    [
+     [
+      "Ice Mephit",
+      1
+     ]
+    ],
+    [
+     [
+      "Ice Mephit",
+      1
+     ]
+    ]
+   ],
+   "total": 300,
+   "reaction": "reaction 2d6 [2+1]+0 = 3: attacks",
+   "seen": true
   },
   "C1-2": {
    "hex": "C1",

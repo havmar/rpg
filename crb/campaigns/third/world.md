@@ -31,7 +31,7 @@ Its monster shows only once the pair has seen it (`seen`).
 | A1-2 | A1 Heaven | 3 | corrupted | known | ? | ? |
 | B1-1 | B1 Mountain | 4 | good | known | ? | ? |
 | B1-2 | B1 Mountain | 8 | corrupted | known | ? | ? |
-| C1-1 | C1 Arctic | 1 | evil | known | ? | ? |
+| C1-1 | C1 Arctic | 1 | evil | known | Remorhaz | 11 |
 | C1-2 | C1 Arctic | 10 | good | known | ? | ? |
 | D1-1 | D1 Graveyard | 1 | corrupted | known | ? | ? |
 | D1-2 | D1 Graveyard | 10 | corrupted | known | ? | ? |

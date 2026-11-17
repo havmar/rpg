@@ -219,3 +219,18 @@ Benedict does not know any of this unless it has been seen or said in play.
 - C1-1 (Arctic ruin, level 1, evil) not yet stocked; Benedict knows only that it is there.
   Ketil can tell them where: the old barrow under the cairn on the headland, half a day
   east along the shore. (GM choice of place; stock it with `dungeon` when they go.)
+
+## Day 9: the barrow (C1-1)
+
+- Morning: Tom attuned the Winged Boots (1 hour). Shore walk east: encounter die 2, a Dragon
+  Turtle (CR 17) offshore, indifferent; speaks only Draconic and Aquan; it watched and sank.
+- The barrow of a builders' chieftain under a cairn on the headland. Room 1, the passage: an
+  Ice Mephit, hostile, fought and killed (Benedict took its death burst). Room 2, the grave
+  hall: an Ice Mephit, wary, flew off up the smoke-hole when Benedict came on (driven off).
+  Room 3, the chapel: an Ice Mephit, attacked, killed. 300 XP, 150 each.
+- Under the chapel the remorhaz has melted a shaft (it came up from below through the ice
+  and has denned in the chieftain's lower tomb, warm on the old bones). Cavern floor about
+  25 m down and along the smooth, steep shaft. The item lies in the grave-goods heap about
+  5 m from the coiled remorhaz. Its tremorsense won't feel something flying; its darkvision
+  (18 m) and passive Perception 10 can still see. Item not yet rolled (uncommon quota full:
+  roll common or rare, GM's pick when taken).
