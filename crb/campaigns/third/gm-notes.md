@@ -208,3 +208,14 @@ Benedict does not know any of this unless it has been seen or said in play.
   asks what is to be done with Ulfrun. Benedict recommends banishment with her furs and
   her axe: out of the clans' lands by the next new moon, never to return.
 - Arctic now ruled by Ragnvald (fair). The raids on the City's northern farms stop.
+- **Ulfrun's fate (day 8):** banished on Tom's word, with her furs and axe: out of the
+  clans' lands by the next new moon. She walked out of the south gate alone at dusk, toward
+  the moor road (south-west). Her parting words to Benedict: "You should have finished it,
+  tin man." Seed: she may turn up later as a sellsword elsewhere on the island, bitter,
+  maybe in the Lord-Captain's pay. Not planned further.
+- Feast in Grimhall for Ragnvald. Ragnvald will send word south to the farms that the raids
+  are over, and offers: if the pair go against the Lord-Captain, he would not mind, since
+  she let the farms burn. (No forces; flavour only, no edge.)
+- C1-1 (Arctic ruin, level 1, evil) not yet stocked; Benedict knows only that it is there.
+  Ketil can tell them where: the old barrow under the cairn on the headland, half a day
+  east along the shore. (GM choice of place; stock it with `dungeon` when they go.)

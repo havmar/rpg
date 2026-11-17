@@ -91,3 +91,6 @@ again. On the fourth exchange his sword found her under the arm, the light went 
 struck bell, and she went down in the snow and didn't get up. He had turned the edge at the
 last moment. The moot unmade her and the thanes chose Ragnvald, and nobody was sent out onto
 the ice that night.
+Tom gave Ulfrun her life on Benedict's advice, and she walked out of the south gate at dusk
+with her axe and her furs and didn't look back. That night Grimhall was full for the first
+time in years, and Tom played until the sinew string went flat.

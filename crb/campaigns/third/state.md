@@ -1,9 +1,9 @@
 # State
 
-**Day 8, afternoon.** Arctic (C1), Hvitmark, the moot-stone. Grim Ulfrun beaten in the
-holmgang and unmade by the moot: the Arctic's tyrant is deposed. Thane Ragnvald is chief.
-Ulfrun lies alive, knocked senseless; Sigrid asks the champion's side what is to be done
-with her (the decision now).
+**Day 8, night.** Arctic (C1), Hvitmark, Grimhall: the feast for the new chief, Ragnvald.
+The Arctic's tyrant is deposed; Ulfrun banished alive (gone south-west at dusk). Long Rest
+tonight. Next: the human chooses. Benedict's openings: the Lord-Captain's ride on day 13
+(the City, one day south-east), and the small Arctic ruin C1-1 on the way to level 4.
 
 ## The pair
 
