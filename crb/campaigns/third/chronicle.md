@@ -94,3 +94,16 @@ the ice that night.
 Tom gave Ulfrun her life on Benedict's advice, and she walked out of the south gate at dusk
 with her axe and her furs and didn't look back. That night Grimhall was full for the first
 time in years, and Tom played until the sinew string went flat.
+
+## Day 9: the barrow on the headland
+
+Tom put on the winged boots and walked east along the shore with Benedict, and a dragon
+turtle lifted its head out of the sea and wished them good afternoon. In the barrow under
+the cairn they killed two ice mephits and chased off a third, and under the chapel floor
+they found a hole melted through the rock and a remorhaz asleep on the chieftain's grave
+goods, with something bright in the heap beside it. Tom flew down for it. It woke as he
+reached the heap and took him in one bite. He fought inside it longer than anyone had a
+right to, and once even came back to himself in the dark, and then he died. Benedict waited
+at the lip until dusk, and when the beast came up to lie in the snow he went down into the
+chapel and found the boots where it had spat them out. He carried them back to Hvitmark
+and sat by the Hearth fire all night, and in the morning he had a new master.

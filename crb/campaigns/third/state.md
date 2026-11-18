@@ -1,29 +1,27 @@
 # State
 
-**Day 9, mid-afternoon.** Arctic (C1), the barrow under the cairn on the headland, half a
-day east of Hvitmark along the shore (ruin C1-1). Encounter die today: 2, a dragon turtle
-offshore, indifferent, passed. Rooms done; the pair at the lip of the melted shaft, looking
-down at the remorhaz. Decision: leave, or Tom tries to steal the item with the boots. Tom asked about kiting it
-from the air; Benedict's answer and revised theft plan given (see gm-notes), waiting on the human.
+**Day 10, morning.** Arctic (C1), Hvitmark, the Hearth. Tom Yarrow died yesterday in the
+barrow (swallowed by the remorhaz). Benedict brought back the Winged Boots and chose a new
+master in the night: Archie Sawyer, Gnome Bard 3 (Lore). Play resumes with the new pair.
+Long Rest last night: all restored. The first of the month (the Lord-Captain's ride) is day 13.
 
 ## The pair
 
-- **Tom Yarrow** (Bard 3, Lore): 16/24 HP, AC 14. Slots L1 4/4, L2 2/2. Bardic Inspiration
-  2/2. Adrenaline Rush 2/2. Relentless Endurance ready. XP 2450/2700. Winged Boots
-  attuned, 4/4 charges.
-- **Benedict** (Paladin 3, Devotion): 14/28 HP, AC 20. Slots L1 3/3. Free Divine Smite
+- **Archie Sawyer** (Bard 3, Lore): 24/24 HP, AC 14. Slots L1 4/4, L2 2/2. Bardic
+  Inspiration 3/3. Speak with Animals 2/2. XP 2450/2700. Winged Boots not yet attuned
+  (4/4 charges).
+- **Benedict** (Paladin 3, Devotion): 28/28 HP, AC 20. Slots L1 3/3. Free Divine Smite
   ready. Lay on Hands 15/15. Channel Divinity 2/2. XP 2450/2700.
 
 ## Done
 
-Ulfrun deposed (day 8). Barrow rooms (day 9): three Ice Mephits, two killed and one driven
-off, 300 XP, 150 each.
+Ulfrun deposed (day 8). Barrow rooms (day 9): 300 XP, 150 each. Tom Yarrow died (day 9).
 
 ## Dungeon in progress
 
 C1-1, the barrow (level 1, evil). Rooms 1 to 3 done. Its monster seen: Remorhaz (CR 11,
-7200 XP, reaction: attacks), coiled in a melted cavern about 25 m down the shaft, on the
-bones and the item. It hasn't noticed the pair (beyond its 18 m tremorsense and darkvision).
+7200 XP, reaction: attacks), denned in a melted cavern about 25 m down the shaft, on the
+bones and the item. It killed Tom Yarrow. Not cleared; the item is still in its heap.
 
 ## Standing orders
 
@@ -31,4 +29,5 @@ None.
 
 ## Magic items (tier 1–4 quota, halved)
 
-Common 1/3, Uncommon 2/2, Rare 0/1.
+Common 1/3, Uncommon 2/2, Rare 0/1. (Both potions were lost with Tom; they were consumables
+and still count.)

@@ -246,3 +246,19 @@ Benedict does not know any of this unless it has been seen or said in play.
   notices him: Command "Halt" (WIS +0 against DC 12) or Dissonant Whispers (it must use its
   Reaction to move away), and Adrenaline Rush to Dash up the shaft (18 m a turn against its
   12 m); outside, straight up out of reach and wait for it to go home.
+- **The theft (day 9), and Tom's death.** Tom's Stealth 7 against passive 10: it noticed
+  him at the heap. Initiative: Tom 4 (natural 1), the remorhaz 14. Bite 27 against AC 14,
+  25 damage: Relentless Endurance, 1 HP, grappled. Swallow: STR save 18 against DC 19,
+  swallowed. Inside, Blinded and Restrained: Healing Word on himself (7), a dagger stab
+  that missed; acid and fire for 23, down; death saves 14 and 16, then a natural 20 (1 HP,
+  up): Healing Word (8) and a stab that missed; 18 damage, down again; saves 7 and 7 with
+  damage in between: dead. The aura was ruled not to reach a swallowed creature.
+- Benedict waited by plan, came to the lip when the boots never came up, and heard nothing.
+  At dusk the beast came up the shaft and out over the headland to bask in the snow; it had
+  spat the boots, which it couldn't digest, onto the chapel floor. Benedict took them and
+  walked back to Hvitmark. The item is still in its heap; it went back down at dark.
+- **The new master** (`pc`): Archie Sawyer, Gnome Bard (Lore), Criminal, level 3. Who he
+  is: a gnome fiddler and cardsharp out of the City who came north with a fur trader two
+  weeks ago; at Ragnvald's feast he picked three purses and gave one back, to Eyvind's
+  mother, when he saw whose it was. Benedict saw that, and chose him. Archie knows the
+  Lord-Captain's City from the wrong side: he left owing Sergeant Dane's gate men money.

@@ -2,66 +2,71 @@
 
 Campaign `third`, seed 23. The master is Back, Benedict is Front.
 
-## Tom Yarrow — the master
+## Archie Sawyer — the master
 
-Orc Bard 3 (College of Lore). Background: Soldier. Back.
+Gnome Bard 3 (College of Lore), Forest Gnome (lineage spells use CHA). Background: Criminal.
+Back. Benedict's second master: chosen on the night of day 9 at Hvitmark, after Tom Yarrow
+died in the barrow (see the chronicle).
 
 | STR | DEX | CON | INT | WIS | CHA |
 |---|---|---|---|---|---|
-| 10 (+0) | 16 (+3) | 14 (+2) | 10 (+0) | 12 (+1) | 15 (+2) |
+| 9 (−1) | 16 (+3) | 15 (+2) | 10 (+0) | 13 (+1) | 16 (+3) |
 
-Soldier increases: DEX +2, CON +1.
+Criminal increases: DEX +2, CON +1.
 
 - **HP** 24 (8 + 2, then 5 + 2 a level). **Hit Dice** 3d8. **AC** 14 (leather armour). **Speed** 9 m.
-- **Initiative** +3. **Proficiency bonus** +2. **Passive Perception** 15.
-- **Saves:** DEX +5, CHA +4 (proficient); STR +0, CON +2, INT +0, WIS +1.
-- **Skills:** Athletics +2, Intimidation +4 (Soldier); Persuasion +6 (Expertise),
-  Deception +4, Perception +5 (Expertise) (Bard); Insight +3, Performance +4, Stealth +5
-  (Lore). Jack of All Trades: +1 to any other skill check.
-- **Tools:** lute, flute, drum (Bard); dice set (Soldier).
+  Small.
+- **Initiative** +5 (Alert). **Proficiency bonus** +2. **Passive Perception** 15.
+- **Saves:** DEX +5, CHA +5 (proficient); STR −1, CON +2, INT +0, WIS +1. Gnomish Cunning:
+  Advantage on INT, WIS and CHA saves.
+- **Skills:** Persuasion +7 (Expertise), Perception +5 (Expertise), Insight +3 (Bard);
+  Deception +5, Performance +5, Arcana +2 (Lore); Sleight of Hand +5, Stealth +5
+  (Criminal). Jack of All Trades: +1 to any other skill check.
+- **Tools:** thieves' tools (Criminal); flute, fiddle, drum (Bard).
 - **Armour:** light. **Weapons:** simple.
-- **Languages:** Common, Orc, Goblin.
-- **Darkvision** 36 m.
+- **Languages:** Common, Gnomish, Halfling (Common and two by the 2024 rules).
+- **Darkvision** 18 m.
 
 **Attacks**
 
 - Shortbow: +5, range 24/96 m, 1d6 + 3 piercing.
-- Dagger: +5, melee or thrown 6/18 m, 1d4 + 3 piercing (Finesse, Light).
-- Spear: +2, melee or thrown 6/18 m, 1d6 piercing (1d8 two-handed).
-- Savage Attacker: once a turn on a weapon hit, roll the damage dice twice and use either.
+- Dagger (2): +5, melee or thrown 6/18 m, 1d4 + 3 piercing (Finesse, Light).
 
 **Features**
 
-- **Bardic Inspiration** (d6), 2 a Long Rest. Bonus Action, 18 m: the ally adds the die to a
+- **Bardic Inspiration** (d6), 3 a Long Rest. Bonus Action, 18 m: the ally adds the die to a
   failed D20 Test within the hour.
-- **Adrenaline Rush** (Orc): Dash as a Bonus Action and gain 2 temporary HP; 2 a Short or
-  Long Rest.
-- **Relentless Endurance** (Orc): once a Long Rest, drop to 1 HP instead of 0.
-- **Savage Attacker** (Origin feat).
+- **Alert** (Origin feat): + proficiency to Initiative; may swap Initiative with a willing
+  ally.
+- **Gnomish Cunning; Forest Gnome:** *Minor Illusion*; *Speak with Animals* always prepared,
+  free twice a Long Rest.
 - **Expertise** (Bard 2): Persuasion, Perception.
-- **Jack of All Trades** (Bard 2): +1 to ability checks with skills he lacks.
+- **Jack of All Trades** (Bard 2).
 - **Cutting Words** (Lore 3): Reaction, 18 m: when a creature he can see makes a damage roll
   or succeeds on an attack roll or ability check, spend a Bardic Inspiration and subtract the
   die from its roll.
 
-**Spellcasting** (CHA): spell save DC 12, spell attack +4. Slots: level 1 ×4, level 2 ×2.
+**Spellcasting** (CHA): spell save DC 13, spell attack +5. Slots: level 1 ×4, level 2 ×2.
 
 - Cantrips: *Vicious Mockery* (18 m, WIS save, 1d6 psychic and Disadvantage on its next
-  attack), *Minor Illusion*.
-- Prepared (4): *Healing Word* (Bonus Action, 18 m, 2d4 + 2), *Dissonant Whispers* (18 m,
+  attack), *Mage Hand*; *Minor Illusion* (Gnome).
+- Prepared (6): *Healing Word* (Bonus Action, 18 m, 2d4 + 3), *Dissonant Whispers* (18 m,
   WIS save, 3d6 psychic and it must use its Reaction to move away; half on a save),
-  *Faerie Fire* (Concentration, 6 m cube, DEX save, Advantage on attacks against it),
-  *Charm Person*, *Command* (18 m, WIS save, a one-word order: Approach, Drop, Flee,
-  Grovel or Halt), *Hold Person* (level 2, Concentration, 18 m, one Humanoid, WIS save or
-  Paralyzed; it repeats the save at the end of each of its turns).
+  *Faerie Fire*, *Command* (18 m, WIS save, one word: Approach, Drop, Flee, Grovel, Halt),
+  *Sleep* (level 1, Concentration, 27 m, 1.5 m sphere, WIS save or Incapacitated, then
+  Unconscious), *Hold Person* (level 2, Concentration, one Humanoid, WIS save or Paralyzed).
 
-**Gear:** leather armour, 2 daggers, spear, shortbow, quiver with 20 arrows, lute (top string replaced with sinew, day 7), dice
-set, healer's kit (10 uses), an oak leaf from Ashenroot's crown (not magic: a token), a heavy fur cloak (Advantage on saves against extreme cold), a flask of lamp oil, entertainer's pack (backpack, bedroll, 2 costumes, 8 candles,
-5 days' rations, waterskin, disguise kit), traveller's clothes.
+**Gear:** leather armour, 2 daggers, shortbow and 20 arrows, fiddle, thieves' tools,
+crowbar, 2 pouches, entertainer's pack (backpack, bedroll, 2 costumes, 8 candles, 5 days'
+rations, waterskin, disguise kit), traveller's clothes, a heavy fur cloak (Advantage on saves
+against extreme cold), and the Winged Boots (Tom's).
 
-**Gold:** 26 GP 4 SP.
+**Gold:** 9 GP.
 
 **XP:** 2450 / 2700 for level 4.
+
+Tom Yarrow, Orc Bard 3, the first master, died on day 9 in the barrow on the headland,
+swallowed by the remorhaz. What he carried died with him, except the boots.
 
 ## Benedict — the butler
 
@@ -132,11 +137,7 @@ traveller's clothes, and a butler's black coat over all of it.
 
 ## Magic items
 
-- **Potion of Resistance (cold)**, uncommon, consumable: drink for Resistance to Cold damage
-  for 1 hour. From Mossmother at the Greenwell. Carried by Tom.
-- **Potion of Climbing**, common, consumable: for 1 hour, a Climb Speed equal to Speed and
-  Advantage on Strength (Athletics) checks to climb. From the white wyrmling's cave. Carried
-  by Tom.
 - **Winged Boots**, uncommon, attunement: 4 charges, regain 1d4 at dawn; Magic action, 1
   charge: Fly Speed 9 m for 1 hour (descends 9 m a round when it ends). From Grimhall, given
-  by Thane Ragnvald after the holmgang (day 8). Worn and attuned by Tom (day 9). Charges 4/4.
+  by Thane Ragnvald after the holmgang (day 8). Tom attuned them day 9 and died in them; the remorhaz spat them out on the chapel floor and
+  Benedict brought them back. Archie's now, not yet attuned. Charges 4/4 (dawn, day 10).
