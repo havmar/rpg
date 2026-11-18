@@ -3,7 +3,8 @@
 **Day 9, mid-afternoon.** Arctic (C1), the barrow under the cairn on the headland, half a
 day east of Hvitmark along the shore (ruin C1-1). Encounter die today: 2, a dragon turtle
 offshore, indifferent, passed. Rooms done; the pair at the lip of the melted shaft, looking
-down at the remorhaz. Decision: leave, or Tom tries to steal the item with the boots.
+down at the remorhaz. Decision: leave, or Tom tries to steal the item with the boots. Tom asked about kiting it
+from the air; Benedict's answer and revised theft plan given (see gm-notes), waiting on the human.
 
 ## The pair
 

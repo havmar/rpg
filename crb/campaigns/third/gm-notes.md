@@ -234,3 +234,15 @@ Benedict does not know any of this unless it has been seen or said in play.
   5 m from the coiled remorhaz. Its tremorsense won't feel something flying; its darkvision
   (18 m) and passive Perception 10 can still see. Item not yet rolled (uncommon quota full:
   roll common or rare, GM's pick when taken).
+- **Kiting ruling (day 9):** the remorhaz can't fly, climb or attack at range (reach 3 m);
+  above about 8 m in the open Tom is out of its reach. But it can't be killed that way:
+  20 arrows at +5 against AC 17 do about 60 of its 195 HP, and Vicious Mockery would take
+  about 100 rounds. And by its Intelligence (4) it won't wait under something it can't
+  reach: after a round or two it goes back down its shaft or under the ice. So luring it
+  out to rob the den would put whoever is in the den in its way home.
+- **Benedict's revised theft plan:** Benedict waits outside, 40 m off among the rocks, out
+  of its sight and tremorsense. Tom switches the boots on at the lip, flies down without
+  touching anything, Stealth +5 against passive 10, takes the item, flies up. If it
+  notices him: Command "Halt" (WIS +0 against DC 12) or Dissonant Whispers (it must use its
+  Reaction to move away), and Adrenaline Rush to Dash up the shaft (18 m a turn against its
+  12 m); outside, straight up out of reach and wait for it to go home.
