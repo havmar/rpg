@@ -262,3 +262,27 @@ Benedict does not know any of this unless it has been seen or said in play.
   weeks ago; at Ragnvald's feast he picked three purses and gave one back, to Eyvind's
   mother, when he saw whose it was. Benedict saw that, and chose him. Archie knows the
   Lord-Captain's City from the wrong side: he left owing Sergeant Dane's gate men money.
+
+## Day 10: back to the City
+
+- Archie attuned the boots; road south, no encounter. Stopped at Hollin's mill: Piet
+  Hollin wept for Tom, and was told the raids are over; he'll swear to it to anyone.
+  North Gate: none of Archie's creditors on duty (1d6: 6). Benedict paid the wall tax.
+- Marta Ostler took the news of Tom hard; gives them her loft. Jory sang for Tom.
+- **The confrontation (the Lord-Captain, CR 4; one quest, this one).** The ride on day 13:
+  from the North Gate down the Wallway, across Lantern Square past the Lantern Temple, to
+  the Old Barbican: the Lord-Captain on a grey horse, Sergeant Dane (Warrior Veteran, CR 3),
+  four Guards, the tax chest on a cart. Her "time of emergency" was the northmen; the raids
+  are now over (Ragnvald's word, Hollin's witness). If the City knows it, her excuse is gone.
+  - Mother Edda (Lantern Temple; Priest, good): starts wary of strangers, friendly once she
+    hears about Jory and the boys on the ice. She can fill Lantern Square with the quarry
+    families on the day.
+  - The guild masters: Archie's Persuasion DC 15 (Advantage with Hollin there to swear to
+    it) gets them to refuse the tax in the square, in front of her.
+  - Sergeant Dane: wants no trouble he would have to report. Faced with a crowd and the
+    guilds, a Persuasion or Intimidation DC 15 makes him stand aside with the four guards.
+  - If all of it falls in place, she stands alone in the square and must answer in front of
+    the City. She won't yield without a fight: Benedict or the pair against her (Deadly at
+    level 3; Hold Person works on her, WIS +2). She checks morale when Bloodied and yields
+    on a failure, to the crowd's judgement.
+  - Hask: will tell the exact route and time for a game of dice Archie wins.

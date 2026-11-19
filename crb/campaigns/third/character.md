@@ -131,7 +131,7 @@ part of the body: an hour to don or doff, can't be removed against his will.
 (backpack, blanket, lamp (holy water poured into the Greenwell, day 3), 7 days' rations he does not eat, robe, tinderbox),
 traveller's clothes, and a butler's black coat over all of it.
 
-**Gold:** 26 GP.
+**Gold:** 25 GP 6 SP.
 
 **XP:** 2450 / 2700 for level 4.
 
@@ -140,4 +140,4 @@ traveller's clothes, and a butler's black coat over all of it.
 - **Winged Boots**, uncommon, attunement: 4 charges, regain 1d4 at dawn; Magic action, 1
   charge: Fly Speed 9 m for 1 hour (descends 9 m a round when it ends). From Grimhall, given
   by Thane Ragnvald after the holmgang (day 8). Tom attuned them day 9 and died in them; the remorhaz spat them out on the chapel floor and
-  Benedict brought them back. Archie's now, not yet attuned. Charges 4/4 (dawn, day 10).
+  Benedict brought them back. Archie's now, attuned day 10. Charges 4/4.

@@ -1,15 +1,15 @@
 # State
 
-**Day 10, morning.** Arctic (C1), Hvitmark, the Hearth. Tom Yarrow died yesterday in the
-barrow (swallowed by the remorhaz). Benedict brought back the Winged Boots and chose a new
-master in the night: Archie Sawyer, Gnome Bard 3 (Lore). Play resumes with the new pair.
-Long Rest last night: all restored. The first of the month (the Lord-Captain's ride) is day 13.
+**Day 10, evening.** City (C2), Tanners' Row, Marta Ostler's house (she gives them her
+loft). Came south from Hvitmark (encounter die 4: nothing), by Hollin's mill. Wall tax paid
+(4 SP). The first of the month (the Lord-Captain's ride) is day 13. Benedict's plan for days
+11–12 proposed; waiting on the human.
 
 ## The pair
 
 - **Archie Sawyer** (Bard 3, Lore): 24/24 HP, AC 14. Slots L1 4/4, L2 2/2. Bardic
-  Inspiration 3/3. Speak with Animals 2/2. XP 2450/2700. Winged Boots not yet attuned
-  (4/4 charges).
+  Inspiration 3/3. Speak with Animals 2/2. XP 2450/2700. Winged Boots attuned (day 10),
+  4/4 charges.
 - **Benedict** (Paladin 3, Devotion): 28/28 HP, AC 20. Slots L1 3/3. Free Divine Smite
   ready. Lay on Hands 15/15. Channel Divinity 2/2. XP 2450/2700.
 
