@@ -1,0 +1,473 @@
+{
+ "hexes": {
+  "A1": {
+   "biome": "Heaven",
+   "tyrant": true,
+   "roll": 1,
+   "leader": "Gold Dragon Wyrmling",
+   "block": "Gold Dragon Wyrmling",
+   "cr": "3",
+   "quests": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "B1": {
+   "biome": "Mountain",
+   "tyrant": false,
+   "roll": 1,
+   "leader": "Giant Eagle",
+   "block": "Giant Eagle",
+   "cr": "1",
+   "quests": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "C1": {
+   "biome": "Arctic",
+   "tyrant": true,
+   "roll": 2,
+   "leader": "Berserker",
+   "block": "Berserker",
+   "cr": "2",
+   "quests": 1,
+   "done": 1,
+   "deposed": true,
+   "hidden_found": 0
+  },
+  "D1": {
+   "biome": "Graveyard",
+   "tyrant": false,
+   "roll": 10,
+   "leader": "Wraith",
+   "block": "Wraith",
+   "cr": "5",
+   "quests": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "A2": {
+   "biome": "Underdark",
+   "tyrant": true,
+   "roll": 18,
+   "leader": "Behir",
+   "block": "Behir",
+   "cr": "11",
+   "quests": 3,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "B2": {
+   "biome": "Forest",
+   "tyrant": false,
+   "roll": 9,
+   "leader": "Treant",
+   "block": "Treant",
+   "cr": "9",
+   "quests": 2,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "C2": {
+   "biome": "City",
+   "tyrant": true,
+   "roll": 4,
+   "leader": "Guard Captain",
+   "block": "Guard Captain",
+   "cr": "4",
+   "quests": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "D2": {
+   "biome": "Wizard's Tower",
+   "tyrant": false,
+   "roll": 2,
+   "leader": "Gargoyle",
+   "block": "Gargoyle",
+   "cr": "2",
+   "quests": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "A3": {
+   "biome": "Hills",
+   "tyrant": false,
+   "roll": 2,
+   "leader": "Ogre",
+   "block": "Ogre",
+   "cr": "2",
+   "quests": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "B3": {
+   "biome": "Swamp",
+   "tyrant": true,
+   "roll": 15,
+   "leader": "Adult Black Dragon",
+   "block": "Adult Black Dragon",
+   "cr": "14",
+   "quests": 3,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "C3": {
+   "biome": "Savannah",
+   "tyrant": false,
+   "roll": 18,
+   "leader": "Gnoll (Archmage stat block)",
+   "block": "Archmage",
+   "cr": "12",
+   "quests": 3,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "D3": {
+   "biome": "Abyss",
+   "tyrant": true,
+   "roll": 20,
+   "leader": "Balor",
+   "block": "Balor",
+   "cr": "19",
+   "quests": 3,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "A4": {
+   "biome": "Jungle",
+   "tyrant": true,
+   "roll": 4,
+   "leader": "Weretiger",
+   "block": "Weretiger",
+   "cr": "4",
+   "quests": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "B4": {
+   "biome": "Desert",
+   "tyrant": false,
+   "roll": 18,
+   "leader": "Sphinx of Valor",
+   "block": "Sphinx of Valor",
+   "cr": "17",
+   "quests": 3,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "C4": {
+   "biome": "Volcano",
+   "tyrant": true,
+   "roll": 5,
+   "leader": "Salamander",
+   "block": "Salamander",
+   "cr": "5",
+   "quests": 1,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  },
+  "D4": {
+   "biome": "Hell",
+   "tyrant": false,
+   "roll": 9,
+   "leader": "Bone Devil",
+   "block": "Bone Devil",
+   "cr": "9",
+   "quests": 2,
+   "done": 0,
+   "deposed": false,
+   "hidden_found": 0
+  }
+ },
+ "dungeons": {
+  "A1-1": {
+   "hex": "A1",
+   "level": 4,
+   "nature": "corrupted",
+   "monster": "Adult Gold Dragon",
+   "state": "known"
+  },
+  "A1-2": {
+   "hex": "A1",
+   "level": 3,
+   "nature": "corrupted",
+   "monster": "Guardian Naga",
+   "state": "known"
+  },
+  "B1-1": {
+   "hex": "B1",
+   "level": 4,
+   "nature": "good",
+   "monster": "Silver Dragon Wyrmling",
+   "state": "known"
+  },
+  "B1-2": {
+   "hex": "B1",
+   "level": 8,
+   "nature": "corrupted",
+   "monster": "Giant Eagle",
+   "state": "known"
+  },
+  "C1-1": {
+   "hex": "C1",
+   "level": 1,
+   "nature": "evil",
+   "monster": "Remorhaz",
+   "state": "known",
+   "reactions": [
+    "reaction 2d6 [5+2]-2 = 5: hostile: threatens, drives the pair off, attacks if pressed",
+    "reaction 2d6 [6+4]-2 = 8: wary: keeps its distance",
+    "reaction 2d6 [2+1]-2 = 1: attacks"
+   ],
+   "rooms": [
+    [
+     [
+      "Ice Mephit",
+      1
+     ]
+    ],
+    [
+     [
+      "Ice Mephit",
+      1
+     ]
+    ],
+    [
+     [
+      "Ice Mephit",
+      1
+     ]
+    ]
+   ],
+   "total": 300,
+   "reaction": "reaction 2d6 [2+1]+0 = 3: attacks",
+   "seen": true
+  },
+  "C1-2": {
+   "hex": "C1",
+   "level": 10,
+   "nature": "good",
+   "monster": "Berserker",
+   "state": "known"
+  },
+  "D1-1": {
+   "hex": "D1",
+   "level": 1,
+   "nature": "corrupted",
+   "monster": "Ghost",
+   "state": "known"
+  },
+  "D1-2": {
+   "hex": "D1",
+   "level": 10,
+   "nature": "corrupted",
+   "monster": "Ghost",
+   "state": "known"
+  },
+  "A2-1": {
+   "hex": "A2",
+   "level": 2,
+   "nature": "evil",
+   "monster": "Black Pudding",
+   "state": "known"
+  },
+  "A2-2": {
+   "hex": "A2",
+   "level": 2,
+   "nature": "corrupted",
+   "monster": "Gibbering Mouther",
+   "state": "known"
+  },
+  "B2-1": {
+   "hex": "B2",
+   "level": 1,
+   "nature": "corrupted",
+   "monster": "Treant",
+   "state": "cleared",
+   "reactions": [
+    "reaction 2d6 [4+3]-2 = 5: hostile: threatens, drives the pair off, attacks if pressed",
+    "reaction 2d6 [1+5]-2 = 4: hostile: threatens, drives the pair off, attacks if pressed"
+   ],
+   "rooms": [
+    [
+     [
+      "Sprite",
+      3
+     ]
+    ],
+    [
+     [
+      "Giant Owl",
+      3
+     ]
+    ]
+   ],
+   "total": 300,
+   "reaction": "reaction 2d6 [5+4]-2 = 7: wary: keeps its distance",
+   "seen": true
+  },
+  "B2-2": {
+   "hex": "B2",
+   "level": 8,
+   "nature": "evil",
+   "monster": "Young Green Dragon",
+   "state": "known"
+  },
+  "C2-1": {
+   "hex": "C2",
+   "level": 4,
+   "nature": "good",
+   "monster": "Assassin",
+   "state": "known"
+  },
+  "C2-2": {
+   "hex": "C2",
+   "level": 10,
+   "nature": "good",
+   "monster": "Assassin",
+   "state": "known"
+  },
+  "D2-1": {
+   "hex": "D2",
+   "level": 4,
+   "nature": "corrupted",
+   "monster": "Pseudodragon",
+   "state": "known"
+  },
+  "D2-2": {
+   "hex": "D2",
+   "level": 4,
+   "nature": "evil",
+   "monster": "Animated Armor",
+   "state": "known"
+  },
+  "A3-1": {
+   "hex": "A3",
+   "level": 1,
+   "nature": "corrupted",
+   "monster": "Goblin Boss",
+   "state": "known"
+  },
+  "A3-2": {
+   "hex": "A3",
+   "level": 8,
+   "nature": "good",
+   "monster": "Copper Dragon Wyrmling",
+   "state": "known"
+  },
+  "B3-1": {
+   "hex": "B3",
+   "level": 4,
+   "nature": "evil",
+   "monster": "Young Black Dragon",
+   "state": "known"
+  },
+  "B3-2": {
+   "hex": "B3",
+   "level": 2,
+   "nature": "evil",
+   "monster": "Adult Black Dragon",
+   "state": "known"
+  },
+  "C3-1": {
+   "hex": "C3",
+   "level": 3,
+   "nature": "evil",
+   "monster": "Elephant",
+   "state": "known"
+  },
+  "C3-2": {
+   "hex": "C3",
+   "level": 1,
+   "nature": "evil",
+   "monster": "Hippopotamus",
+   "state": "known"
+  },
+  "D3-1": {
+   "hex": "D3",
+   "level": 1,
+   "nature": "evil",
+   "monster": "Hezrou",
+   "state": "known"
+  },
+  "D3-2": {
+   "hex": "D3",
+   "level": 7,
+   "nature": "evil",
+   "monster": "Glabrezu",
+   "state": "known"
+  },
+  "A4-1": {
+   "hex": "A4",
+   "level": 2,
+   "nature": "corrupted",
+   "monster": "Weretiger",
+   "state": "known"
+  },
+  "A4-2": {
+   "hex": "A4",
+   "level": 4,
+   "nature": "good",
+   "monster": "Weretiger",
+   "state": "known"
+  },
+  "B4-1": {
+   "hex": "B4",
+   "level": 2,
+   "nature": "evil",
+   "monster": "Adult Blue Dragon",
+   "state": "known"
+  },
+  "B4-2": {
+   "hex": "B4",
+   "level": 5,
+   "nature": "good",
+   "monster": "Sphinx of Lore",
+   "state": "known"
+  },
+  "C4-1": {
+   "hex": "C4",
+   "level": 2,
+   "nature": "evil",
+   "monster": "Magma Mephit",
+   "state": "known"
+  },
+  "C4-2": {
+   "hex": "C4",
+   "level": 8,
+   "nature": "evil",
+   "monster": "Adult Red Dragon",
+   "state": "known"
+  },
+  "D4-1": {
+   "hex": "D4",
+   "level": 2,
+   "nature": "evil",
+   "monster": "Pit Fiend",
+   "state": "known"
+  },
+  "D4-2": {
+   "hex": "D4",
+   "level": 5,
+   "nature": "evil",
+   "monster": "Chain Devil",
+   "state": "known"
+  }
+ },
+ "master": "Back",
+ "butler": "Front"
+}

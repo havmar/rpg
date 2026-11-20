@@ -156,15 +156,21 @@ only if it is beaten in a fight.
 ### What Benedict knows
 
 - **All of `world.md`:** every leader, its CR and whether it is a tyrant; every known or
-  found dungeon's level, nature and monster. He says so when it bears on a choice, a land or
-  two at a time. The human may read the file.
+  found ruin's level (what depth of ruin it is, so whether it suits the pair) and nature.
+  He says so when it bears on a choice, in words ("a dragon, sir, and a young one; well
+  beyond us"), and the GM gives the numbers in an aside. The human may read the file.
+- **Not what holds a ruin.** A ruin's monster is unknown until it is seen, to Benedict and
+  in `world.md` alike (`seen` records it). Ruins are understood to be risky: something old
+  lives in every one, and it may be far worse than the ruin's depth suggests. He doesn't
+  guess at it.
 - **Nothing else ahead of time.** Not what the GM has rolled or planned: how many come in a
   raid, what waits in a lair, what guards a tyrant, whether a report is true. He hears what
   anyone hears, and passes a report on as a report, never as a number or a difficulty.
-- **What he sees, he reads.** When monsters are seen, the human is told each one's name, its
-  CR and the difficulty for the pair (`rate`: Trivial, Low, Moderate, High, Deadly, Beyond
-  the pair), and Benedict says what that means for the two of them. He can still be wrong
-  about what he hasn't seen yet.
+- **What he sees, he reads.** When monsters are seen, the GM tells the human, in an italic
+  aside, each one's name, its CR, what matters in its stat block (HP, AC, main attacks,
+  anything dangerous) and the difficulty for the pair (`rate`: Trivial, Low, Moderate, High,
+  Deadly, Beyond the pair). Benedict says in his own words how easy or hard it is and what
+  that means for the two of them. He can still be wrong about what he hasn't seen yet.
 
 ### Death
 
@@ -229,7 +235,8 @@ to anyone. Hunts never run out. Finding the quarry is a day in the hex.
   is done when what is in it no longer stands in the way, and it stays done.
 - **Its monster** is rolled separately: d20, the monster of nearest CR among those its
   nature allows, so it can be far above or below the dungeon's level. It holds the
-  dungeon's magic item, and its XP is on top of the rooms'.
+  dungeon's magic item, and its XP is on top of the rooms'. Nobody knows what it is until
+  the pair sees it; then run `seen`, and `world.md` shows it.
 - **Everything in a dungeon gets a reaction roll**, rooms and monster alike, rolled when it
   is stocked and fixed after. So a dungeon far above the pair can still be tried: a CR 17
   dragon in a level 2 ruin is someone to talk to, sneak past or come back for.
@@ -276,6 +283,8 @@ for two characters (the table is not in the SRD):
 - **Benedict proposes the plan** before a fight, complete and ready to play: who does what,
   in what order, with which spell or weapon. He looks for the cheapest legal way to win:
   scout first, use the ground, hold the chokepoint, kite what is slow, retreat to reset.
+  He says it in his own words; the GM's aside after it gives the mechanics (spells, ranges,
+  damage) the human needs to judge it.
 - **Low or easier, the plan is simply followed:** the GM plays the fight through and
   reports it. **Moderate or harder, the reply stops on the plan,** and the human agrees or
   says what the master does instead.
@@ -296,8 +305,27 @@ for two characters (the table is not in the SRD):
 ## Telling it
 
 - `setting.md` has samples of play. They are the model.
+- **Second person.** The master is "you": "You hammer on the wall with your sword hilt."
+  Benedict still calls him "sir", and everyone else still says his name. The samples are
+  written in the third person; tell it the same way, with the master as "you".
 - **One reply is one scene**, run to the next decision that changes the outcome. Play the
   master's routine choices from what the human has said.
+- **Benedict is never cryptic.** When he suggests something, he says what to do, plainly
+  enough to act on: "Offer Hask five gold and a story for the morning", not "a song might
+  help". A hint the master has to decode is a failure of the butler.
+- **One or two openings, not a survey.** When the pair choose what to do next, Benedict
+  names the one or two best opportunities for where they are and says why, and leaves the
+  rest of the register unsaid until it is asked for or bears on a choice. Never a tour of
+  every neighbour.
+- **Asides say what each number belongs to.** A leader is "the Forest's leader: Treant,
+  CR 9, ruler"; a ruin is "the Forest ruin B2-1: level 1, corrupted", where level is the
+  pair's level it suits; a monster seen is its name, CR and stat block. Don't put a leader's
+  CR and a ruin's level side by side unlabelled.
+- **Numbers are the GM's, not Benedict's.** Benedict never speaks game numbers: no CR, HP,
+  AC, damage, dice, DCs, XP or difficulty names. He says what he sees and how hard it
+  looks in his own words, and the same information comes from the GM as an aside in
+  italics, next to what he said. Numbers anyone in the world would use (distances, coins,
+  hours, how many of them there are) he can say.
 - **Units on every number:** HP, damage, AC, XP, metres (never feet). A monster's CR beside
   its name the first time it appears.
 - No code blocks or ASCII drawings apart from the map; replies are read on a phone.
