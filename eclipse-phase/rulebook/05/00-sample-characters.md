@@ -1,0 +1,18 @@
+# Sample Characters
+
+- [Dante](dante.pdf)
+- [Hex](hex.pdf)
+- [Qi](qi.pdf)
+- [Sava](sava.pdf)
+- [Chi](chi.pdf)
+- [Killjoy](killjoy.pdf)
+- [Njál](njal.pdf)
+- [Zahiri](zahiri.pdf)
+- [Astika](astika.pdf)
+- [Jinx](jinx.pdf)
+- [Shrike](shrike.pdf)
+- [Whisper](whisper.pdf)
+- [Amaru Timoti](amaru-timoti.pdf)
+- [Berk](berk.pdf)
+- [Elis](elis.pdf)
+- [Pivo](pivo.pdf)

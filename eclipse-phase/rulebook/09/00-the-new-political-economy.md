@@ -1,0 +1,53 @@
+# The New Political Economy
+
+<blockquote>
+
+## Inner vs. Outer
+
+Here’s your next batch of reading to catch up on your lack: collected reports on the polities and economic systems of the new transhumanity. Accounts are selected for their utility in introducing new agents to the modern political world. Authors’ biases are their own.
+
+</blockquote>
+
+<!-- TOC PLACEHOLDER -->
+
+- [The System Split](01-the-system-split.md)
+  - [The Inner System](01-the-system-split.md#the-inner-system)
+  - [The Outer System](01-the-system-split.md#the-outer-system)
+  - [Jovian Republic](01-the-system-split.md#jovian-republic)
+  - [State of the System](01-the-system-split.md#state-of-the-system)
+- [Market Economies](02-market-economies.md)
+  - [Old Market Systems](02-market-economies.md#old-market-systems)
+  - [Transitional Economies](02-market-economies.md#transitional-economies)
+  - [Intellectual Property](02-market-economies.md#intellectual-property)
+  - [Hypercorps](02-market-economies.md#hypercorps)
+  - [Indentures](02-market-economies.md#indentures)
+  - [Freelancers](02-market-economies.md#freelancers)
+  - [Oligarchs and Dynasties](02-market-economies.md#oligarchs-and-dynasties)
+- [The New Economy](03-the-new-economy.md)
+  - [Open-Source Fabrication](03-the-new-economy.md#open-source-fabrication)
+  - [Forget Money](03-the-new-economy.md#forget-money)
+  - [Property](03-the-new-economy.md#property)
+  - [Cooperative Work](03-the-new-economy.md#cooperative-work)
+  - [The Role of Rep](03-the-new-economy.md#the-role-of-rep)
+  - [Extropian Markets](03-the-new-economy.md#extropian-markets)
+- [Keeping the Peace](04-keeping-the-peace.md)
+  - [Patchwork Jurisdictions](04-keeping-the-peace.md#patchwork-jurisdictions)
+  - [The Reach of the Law](04-keeping-the-peace.md#the-reach-of-the-law)
+  - [Interstate Affairs](04-keeping-the-peace.md#interstate-affairs)
+  - [Ego Hunters](04-keeping-the-peace.md#ego-hunters)
+  - [Investigations and Forensics](04-keeping-the-peace.md#investigations-and-forensics)
+    - [The Hidden Arms Race](04-keeping-the-peace.md#the-hidden-arms-race)
+  - [Identity Issues](04-keeping-the-peace.md#identity-issues)
+  - [Prosecution and Punishment](04-keeping-the-peace.md#prosecution-and-punishment)
+  - [Extropian Contract Law](04-keeping-the-peace.md#extropian-contract-law)
+  - [Autonomist Legalities](04-keeping-the-peace.md#autonomist-legalities)
+  - [Property Claims](04-keeping-the-peace.md#property-claims)
+  - [Gatecrashing Law](04-keeping-the-peace.md#gatecrashing-law)
+- [Crime](05-crime.md)
+  - [Violence](05-crime.md#violence)
+  - [Property and Theft](05-crime.md#property-and-theft)
+    - [Intellectual Property](05-crime.md#intellectual-property)
+  - [Online Crimes](05-crime.md#online-crimes)
+  - [Vice](05-crime.md#vice)
+  - [Ego Trafficking](05-crime.md#ego-trafficking)
+  - [Other Crime](05-crime.md#other-crime)
