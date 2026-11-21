@@ -8,8 +8,17 @@ quietly fighting the existential risks that could finish transhumanity off.
 Rules: Eclipse Phase 2e as written (errata 1.4), from `eclipse-phase/rulebook/`. Paths are
 relative to the repo root, where the session runs.
 
-**Not yet decided:** who is GM and who plays, the campaign premise, campaign file layout and
-house rules. Settle these with the human before the first session and write them here.
+## The table
+
+A party of two. The human plays one character; Claude is the GM and also plays the other
+character, keeping the two roles apart: the GM knows what the character doesn't, and the
+character acts only on what it knows. The world is a sandbox and is not scaled to the pair:
+a place is as dangerous as it is, and they choose where to go.
+
+**Not yet decided:** the campaign premise (the default is a Firewall cell), campaign file
+layout and house rules beyond those below. Settle them with the human and write them here.
+This is a first try at a foreign game: play loosely, and turn what works into rules here
+after a few sessions.
 
 ## Folder layout
 
@@ -18,7 +27,9 @@ eclipse-phase/
   CLAUDE.md          this file
   rulebook/          the core book and three supplements as Markdown (CC BY-NC-SA 4.0)
   rulebook/README.md source, licence, what is where, how to refresh
+  threats.md         the opponent catalogue: book threats with stat locations, plus house-made people
   tools/roll.py      dice roller: d100 tests with 33/66 superiors and criticals, opposed tests, dice sums
+  tools/threat.py    rolls a scene's opponents from threats.md
   campaigns/<name>/  one folder per campaign, once there is one
 ```
 
@@ -51,6 +62,25 @@ rolls a skill test and reports success or failure, superior results and critical
 `--default` drops critical successes when defaulting to an aptitude; `opposed A B` settles an
 opposed test; `2d10+3` sums dice. `--seed N` makes a roll repeatable. Roll in the open and
 show the output line.
+
+## Opponents
+
+The GM does not choose who the pair fights. When a scene needs opponents, whether a fight
+is likely or they are simply there, roll them: `python3 eclipse-phase/tools/threat.py PLACE`,
+with PLACE one of `civilised`, `fringe`, `ruins`, `exoplanet`, `mesh` (defined in
+`threats.md`). Show the output. Usually the result is native to the place; on a 1 in 4 it is
+from anywhere, and the story must explain how it got there. That explanation is often the
+adventure: an exsurgent in a city is an outbreak, which is Firewall's business.
+
+- The tool already scales numbers for two characters (halved; red and ultraviolet alone).
+  Adjust only as `rulebook/18/05-npc-and-threat-rules.md` allows (Tailoring Challenges:
+  behaviour, cover, reinforcements), not by swapping the opponent.
+- An opponent need not be met head-on. What the pair does about it, fight, sneak, talk,
+  hack or flee, is theirs to choose; the colour says how wise a straight fight would be.
+- Book entries: read the stat block at the line given. House entries (people, rogue AI):
+  build them at the rolled colour from the 18/05 benchmarks, then note the stats in the
+  campaign files so they stay the same if met again.
+- Add to `threats.md` when the book or play gives new opponents; keep its columns.
 
 ## Licence
 
